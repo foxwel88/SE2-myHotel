@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;HotelBookingSystem&apos; to &apos;HotelBookingSystem_Server&apos;" description="Rename resource &apos;HotelBookingSystem&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/HotelBookingSystem" name="HotelBookingSystem_Server" stamp="1476455088602" updateReferences="true"/>
+</session>
