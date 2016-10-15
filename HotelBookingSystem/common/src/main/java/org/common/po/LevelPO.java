@@ -25,11 +25,4 @@ public class LevelPO implements Serializable {
 		this.credits = credits;
 	}
 
-	public LevelPO(int levelNum){
-		this.levelNum = levelNum;
-	}
-	
-	public LevelPO(ArrayList<Integer> credits){
-		this.credits = credits;
-	}
 }
