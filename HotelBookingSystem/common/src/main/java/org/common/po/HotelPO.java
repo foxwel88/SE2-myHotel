@@ -13,6 +13,8 @@ public class HotelPO implements Serializable {
 
 	public String address;
 	
+	public String city;
+	
 	public String area;
 	
 	public String introduce;

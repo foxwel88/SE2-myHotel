@@ -9,7 +9,7 @@ import org.common.utility.ResultMessage;
 public interface Promotionblservice {
 	public ResultMessage add(PromotionVO vo);
 	
-	public ArrayList<PromotionVO> getPromotionByHotel(String hotelAddress);
+	public ArrayList<PromotionVO> getPromotion(String hotelAddress, String userID);
 	
 	public ArrayList<PromotionVO> showHotelPromotion(String hotelAddress);
 	

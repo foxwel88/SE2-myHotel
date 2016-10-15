@@ -14,7 +14,7 @@ public class Promotion implements Promotionblservice{
 		return null;
 	}
 
-	public ArrayList<PromotionVO> getPromotionByHotel(String hotelAddress) {
+	public ArrayList<PromotionVO> getPromotion(String hotelAddress, String userID) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -9,6 +9,7 @@ import org.client.vo.HotelVO;
 import org.client.vo.UserVO;
 import org.common.utility.HotelFilter;
 import org.common.utility.ResultMessage;
+import org.common.utility.RoomType;
 
 public class Hotel implements Hotelblservice{
 
@@ -56,5 +57,6 @@ public class Hotel implements Hotelblservice{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }

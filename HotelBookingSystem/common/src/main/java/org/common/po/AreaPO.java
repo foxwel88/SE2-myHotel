@@ -10,10 +10,10 @@ public class AreaPO implements Serializable
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	public String adress;
+	public String address;
 	
-	public AreaPO(String adress){
-		this.adress = adress;
+	public AreaPO(String address){
+		this.address = address;
 	}
 
 }

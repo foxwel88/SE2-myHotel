@@ -56,5 +56,10 @@ public class PromotionDataServiceImpl implements PromotionDataService
 		// TODO Auto-generated method stub
 		
 	}
+
+	public void getPromotion(String hotelAddress, String userID) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }
