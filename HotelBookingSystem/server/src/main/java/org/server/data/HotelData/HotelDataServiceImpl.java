@@ -8,6 +8,7 @@ import org.common.dataservice.HotelDataService.HotelDataService;
 import org.common.po.AreaPO;
 import org.common.po.CityPO;
 import org.common.po.HotelPO;
+import org.common.po.RoomPO;
 import org.common.utility.HotelFilter;
 import org.common.utility.ResultMessage;
 
@@ -63,5 +64,17 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 		// TODO Auto-generated method stub
 		
 	}
+
+	public RoomPO getRooms(String hotelAddress) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public ResultMessage modifyRooms(String hotelAddress, RoomPO po) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
 
 }

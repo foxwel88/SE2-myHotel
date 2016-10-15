@@ -6,11 +6,11 @@ import java.util.Date;
 import org.common.utility.CreditOperation;
 
 public class CreditRecordPO implements Serializable {
-
+	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -7475283577458918690L;
 
 	public Date date;
 	

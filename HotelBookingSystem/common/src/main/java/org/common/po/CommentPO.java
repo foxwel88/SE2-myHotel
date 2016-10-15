@@ -4,12 +4,12 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class CommentPO implements Serializable {
-
+	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
+	private static final long serialVersionUID = 395760586893993456L;
+
 	public String UserName;
 	
 	public String hotelAdress;
