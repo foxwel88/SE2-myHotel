@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>Group37</groupId>
-  <artifactId>HotelBookingSystem</artifactId>
+  <artifactId>HotelBookingSystem_Server</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>HotelBookingSystem</name>
+  <name>HotelBookingSystem_Server</name>
   <url>http://maven.apache.org</url>
 
   <properties>
