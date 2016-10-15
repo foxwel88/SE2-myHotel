@@ -3,6 +3,8 @@ package org.client.bl.hotelbl;
 import java.util.ArrayList;
 
 import org.client.bl.hotelblservice.Hotelblservice;
+import org.client.vo.AreaVO;
+import org.client.vo.CityVO;
 import org.client.vo.HotelVO;
 import org.client.vo.UserVO;
 import org.common.utility.ResultMessage;
@@ -39,12 +41,17 @@ public class Hotel implements Hotelblservice{
 		return null;
 	}
 
-	public ArrayList<String> getCitys() {
+	public ArrayList<String> getAreas(String city) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public ArrayList<String> getAreas(String city) {
+	public ArrayList<AreaVO> getAreas(CityVO vo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public ArrayList<CityVO> getCitys() {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -2,7 +2,10 @@ package org.common.dataservice.HotelDataService;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
+import org.common.po.AreaPO;
+import org.common.po.CityPO;
 import org.common.po.HotelPO;
 import org.common.utility.HotelFilter;
 import org.common.utility.ResultMessage;
@@ -24,6 +27,12 @@ public interface HotelDataService extends Remote
 	public ResultMessage findHotels(HotelFilter filter) throws RemoteException;
 	//在数据库中增加订单的流转信息
 	
+	public ArrayList<CityPO> getCitys() throws RemoteException;
+	//在数据库中获得所有CityPO
+	
+	public ArrayList<AreaPO> getAreas(CityPO po) throws RemoteException;
+	//根据CityPO返回所有AreaPO
+
 	public void finish() throws RemoteException;
 	//结束持久化数据库的使用
 

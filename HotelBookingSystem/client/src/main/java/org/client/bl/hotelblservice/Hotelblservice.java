@@ -4,11 +4,14 @@ import java.util.ArrayList;
 
 import org.client.bl.hotelbl.HotelFilter;
 import org.client.bl.hotelbl.RoomType;
+import org.client.vo.AreaVO;
+import org.client.vo.CityVO;
 import org.client.vo.HotelVO;
 import org.client.vo.UserVO;
 import org.common.utility.ResultMessage;
 
-public interface Hotelblservice {
+public interface Hotelblservice 
+{
 	public ArrayList<HotelVO> findHotels(HotelFilter filter);
 	
 	public HotelVO getHotel(String hotelAddress);
@@ -21,8 +24,8 @@ public interface Hotelblservice {
 	
 	public HotelVO getHotelVO(String hotelAddress);
 	
-	public ArrayList<String> getCitys();
+	public ArrayList<CityVO> getCitys();
 	
-	public ArrayList<String> getAreas(String city);
+	public ArrayList<AreaVO> getAreas(CityVO vo);
 
 }
