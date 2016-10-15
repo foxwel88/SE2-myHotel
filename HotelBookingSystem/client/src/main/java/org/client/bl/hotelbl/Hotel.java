@@ -2,11 +2,12 @@ package org.client.bl.hotelbl;
 
 import java.util.ArrayList;
 
-import org.client.bl.hotelblservice.Hotelblservice;
+import org.client.blservice.hotelblservice.Hotelblservice;
 import org.client.vo.AreaVO;
 import org.client.vo.CityVO;
 import org.client.vo.HotelVO;
 import org.client.vo.UserVO;
+import org.common.utility.HotelFilter;
 import org.common.utility.ResultMessage;
 
 public class Hotel implements Hotelblservice{

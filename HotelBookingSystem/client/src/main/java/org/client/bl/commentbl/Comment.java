@@ -2,7 +2,7 @@ package org.client.bl.commentbl;
 
 import java.util.ArrayList;
 
-import org.client.bl.commentblservice.Commentblservice;
+import org.client.blservice.commentblservice.Commentblservice;
 import org.client.vo.CommentVO;
 import org.common.utility.ResultMessage;
 

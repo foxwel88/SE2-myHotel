@@ -1,4 +1,4 @@
-package org.client.bl.orderblservice;
+package org.client.blservice.orderblservice;
 
 import java.util.ArrayList;
 

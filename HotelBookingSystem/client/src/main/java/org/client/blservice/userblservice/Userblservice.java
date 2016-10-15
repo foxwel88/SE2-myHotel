@@ -1,4 +1,4 @@
-package org.client.bl.userblservice;
+package org.client.blservice.userblservice;
 
 import java.util.ArrayList;
 

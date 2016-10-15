@@ -1,4 +1,4 @@
-package org.client.bl.commentblservice;
+package org.client.blservice.commentblservice;
 
 import java.util.ArrayList;
 

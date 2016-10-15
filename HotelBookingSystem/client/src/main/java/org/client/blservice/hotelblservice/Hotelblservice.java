@@ -1,13 +1,13 @@
-package org.client.bl.hotelblservice;
+package org.client.blservice.hotelblservice;
 
 import java.util.ArrayList;
 
-import org.client.bl.hotelbl.HotelFilter;
 import org.client.bl.hotelbl.RoomType;
 import org.client.vo.AreaVO;
 import org.client.vo.CityVO;
 import org.client.vo.HotelVO;
 import org.client.vo.UserVO;
+import org.common.utility.HotelFilter;
 import org.common.utility.ResultMessage;
 
 public interface Hotelblservice 
