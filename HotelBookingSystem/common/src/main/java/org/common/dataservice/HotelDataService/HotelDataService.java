@@ -22,15 +22,15 @@ public interface HotelDataService extends Remote
 	public ResultMessage modifyHotelInfo(HotelPO po) throws RemoteException;
 	//在数据库中更新一个po
 	
-	public ResultMessage getHotelInfo(String hotelAddress) throws RemoteException;
-	//在数据库中增加订单的流转信息
+	public HotelPO getHotelInfo(String hotelAddress) throws RemoteException;
+	//返回一个酒店po
 	
 	public RoomPO getRooms(String hotelAddress) throws RemoteException;
 	
 	public ResultMessage modifyRooms(String hotelAddress, RoomPO po) throws RemoteException;
 	
-	public ResultMessage findHotels(HotelFilter filter) throws RemoteException;
-	//在数据库中增加订单的流转信息
+	public ArrayList<HotelPO> findHotels(HotelFilter filter) throws RemoteException;
+	//返回多个酒店po
 	
 	public ArrayList<CityPO> getCitys() throws RemoteException;
 	//在数据库中获得所有CityPO

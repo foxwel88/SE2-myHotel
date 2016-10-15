@@ -1,5 +1,5 @@
 package org.common.utility;
 
 public enum ResultMessage {
-	SUCCESS, NOTEXIST, WRONGFORMAT
+	SUCCESS, NOTEXIST, EXIST, WRONGFORMAT, WRONGVALUE
 }

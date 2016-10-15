@@ -14,52 +14,48 @@ import org.common.utility.ResultMessage;
 public class HotelDataServiceImpl_stub implements HotelDataService{
 
 	public void init() throws RemoteException {
-		// TODO Auto-generated method stub
 		
 	}
 
 	public ResultMessage addHotelInfo(HotelPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		return ResultMessage.SUCCESS;
 	}
 
 	public ResultMessage modifyHotelInfo(HotelPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		return ResultMessage.SUCCESS;
 	}
 
-	public ResultMessage getHotelInfo(String hotelAddress) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+	public HotelPO getHotelInfo(String hotelAddress) throws RemoteException {
+		return new HotelPO(hotelAddress, hotelAddress, hotelAddress, hotelAddress, hotelAddress, 0, 0, hotelAddress, hotelAddress);
 	}
 
 	public RoomPO getRooms(String hotelAddress) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		return new RoomPO(null, null, null);
 	}
 
 	public ResultMessage modifyRooms(String hotelAddress, RoomPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		return ResultMessage.SUCCESS;
 	}
 
-	public ResultMessage findHotels(HotelFilter filter) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<HotelPO> findHotels(HotelFilter filter) throws RemoteException {
+		ArrayList<HotelPO> hotels = new ArrayList<HotelPO>();
+		hotels.add(new HotelPO(null, null, null, null, null, 0, 0, null, null));
+		return hotels;
 	}
 
 	public ArrayList<CityPO> getCitys() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<CityPO> citys = new ArrayList<CityPO>();
+		citys.add(new CityPO(null));
+		return citys;
 	}
 
 	public ArrayList<AreaPO> getAreas(CityPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<AreaPO> areas = new ArrayList<AreaPO>();
+		areas.add(new AreaPO(null));
+		return areas;
 	}
 
 	public void finish() throws RemoteException {
-		// TODO Auto-generated method stub
 		
 	}
 

@@ -11,53 +11,44 @@ import org.common.utility.ResultMessage;
 public class PromotionDataServiceImpl_stub implements PromotionDataService{
 
 	public ResultMessage add(PromotionPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		return ResultMessage.SUCCESS;
 	}
 
 	public ResultMessage modify(PromotionPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		return ResultMessage.SUCCESS;
 	}
 
 	public ArrayList<PromotionPO> showHotelPromotion(String hotelAddress) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<PromotionPO> promotions = new ArrayList<PromotionPO>();
+		promotions.add(new PromotionPO(null, null, null, hotelAddress, 0, hotelAddress, 0));
+		return promotions;
 	}
 
 	public ArrayList<PromotionPO> showWebsitePromotion() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<PromotionPO> promotions = new ArrayList<PromotionPO>();
+		promotions.add(new PromotionPO(null, null, null, "", 0, "", 0));
+		return promotions;
 	}
 
 	public ResultMessage delete(PromotionPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		return ResultMessage.SUCCESS;
 	}
 
 	public LevelPO showLevel() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		return new LevelPO(0, null);
 	}
 
 	public ResultMessage modifyLevel(LevelPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		return ResultMessage.SUCCESS;
 	}
 
 	public void init() throws RemoteException {
-		// TODO Auto-generated method stub
 		
 	}
 
 	public void finish() throws RemoteException {
-		// TODO Auto-generated method stub
 		
 	}
 
-	public void getPromotion(String hotelAddress, String userID) throws RemoteException {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

@@ -66,10 +66,5 @@ public class PromotionDataServiceImpl extends UnicastRemoteObject implements Pro
 		// TODO Auto-generated method stub
 		
 	}
-
-	public void getPromotion(String hotelAddress, String userID) throws RemoteException  {
-		// TODO Auto-generated method stub
-		
-	}
 	
 }

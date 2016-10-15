@@ -36,7 +36,5 @@ public interface PromotionDataService extends Remote
 	
 	public void finish() throws RemoteException;
 	//结束持久化数据库的使用
-	
-	public void getPromotion(String hotelAddress, String userID)  throws RemoteException ;
 
 }

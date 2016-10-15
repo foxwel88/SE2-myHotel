@@ -10,47 +10,47 @@ import org.common.utility.ResultMessage;
 public class UserDataServiceImpl_stub implements UserDataService{
 
 	public ResultMessage add(UserPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		if(po.userName.equals("gz")) {
+			return ResultMessage.EXIST;
+		}
+		return ResultMessage.SUCCESS;
 	}
 
 	public UserPO findbyID(String ID) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		return new UserPO(null, ID, ID, ID, ID, ID, 0, null, ID, 0, 0, ID);
 	}
 
 	public UserPO findbyUserName(String userName) throws RemoteException {
-		// TODO Auto-generated method stub
+		if(userName.equals("gz")) {
+			return new UserPO(null, userName, userName, userName, userName, userName, 0, null, userName, 0, 0, userName);
+		}
 		return null;
 	}
 
 	public ResultMessage modify(UserPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		return ResultMessage.SUCCESS;
 	}
 
 	public ResultMessage Check(String userName, String password) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		if(userName.equals("gz") && password.equals("123")) {
+			return ResultMessage.SUCCESS;
+		}
+		return ResultMessage.WRONGVALUE;
 	}
 
 	public ResultMessage addCreditRecord(CreditRecordPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		return ResultMessage.SUCCESS;
 	}
 
 	public CreditRecordPO findCreditRecord(String ID) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		return new CreditRecordPO(null, ID, 0, 0, null);
 	}
 
 	public void init() throws RemoteException {
-		// TODO Auto-generated method stub
 		
 	}
 
 	public void finish() throws RemoteException {
-		// TODO Auto-generated method stub
 		
 	}
 

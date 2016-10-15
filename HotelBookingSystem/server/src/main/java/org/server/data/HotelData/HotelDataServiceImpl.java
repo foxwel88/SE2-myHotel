@@ -40,12 +40,12 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 		return null;
 	}
 
-	public ResultMessage getHotelInfo(String hotelAddress) throws RemoteException {
+	public HotelPO getHotelInfo(String hotelAddress) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public ResultMessage findHotels(HotelFilter filter) throws RemoteException {
+	public ArrayList<HotelPO> findHotels(HotelFilter filter) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

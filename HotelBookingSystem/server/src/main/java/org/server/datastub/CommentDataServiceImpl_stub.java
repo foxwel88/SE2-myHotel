@@ -9,21 +9,21 @@ import org.common.utility.ResultMessage;
 public class CommentDataServiceImpl_stub implements CommentDataService{
 
 	public void init() throws RemoteException {
-		// TODO Auto-generated method stub
 		
 	}
 
 	public CommentPO find(String hotelAddress) throws RemoteException {
+		if(hotelAddress == null || hotelAddress.length() == 0) {
+			return null;
+		}
 		return new CommentPO(hotelAddress, hotelAddress, null, 1, hotelAddress);
 	}
 
 	public ResultMessage insert(CommentPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		return ResultMessage.SUCCESS;
 	}
 
 	public void finish() throws RemoteException {
-		// TODO Auto-generated method stub
 		
 	}
 
