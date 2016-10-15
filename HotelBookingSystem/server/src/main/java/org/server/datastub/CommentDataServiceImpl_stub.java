@@ -1,6 +1,7 @@
 package org.server.datastub;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import org.common.dataservice.CommentDataService.CommentDataService;
 import org.common.po.CommentPO;
@@ -12,11 +13,10 @@ public class CommentDataServiceImpl_stub implements CommentDataService{
 		System.out.println("init!");
 	}
 
-	public CommentPO find(String hotelAddress) throws RemoteException {
-		if(hotelAddress == null || hotelAddress.length() == 0) {
-			return null;
-		}
-		return new CommentPO(hotelAddress, hotelAddress, null, 1, hotelAddress);
+	public ArrayList<CommentPO> find(String hotelAddress) throws RemoteException {
+		ArrayList<CommentPO> comments = new ArrayList<CommentPO>();
+		comments.add(new CommentPO(hotelAddress, hotelAddress, null, 1, hotelAddress));
+		return comments;
 	}
 
 	public ResultMessage insert(CommentPO po) throws RemoteException {
