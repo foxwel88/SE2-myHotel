@@ -1,7 +1,7 @@
 package org.client.vo;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 import org.common.utility.PromotionType;
 

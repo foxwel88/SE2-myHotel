@@ -2,8 +2,9 @@ package org.client.blservice.orderblservice;
 
 import java.util.ArrayList;
 
-import org.client.bl.orderbl.OrderType;
+import org.client.bl.orderbl.Order;
 import org.client.vo.OrderVO;
+import org.common.utility.OrderType;
 import org.common.utility.ResultMessage;
 
 public interface Orderblservice {

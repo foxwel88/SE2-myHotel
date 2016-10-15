@@ -11,7 +11,11 @@ public class Commentblservice_driver {
 	public static void main(String[] args){
 		Comment_stub stub = new Comment_stub();
 		
-		System.out.println(stub.getComment("GodHotel"));
+		ArrayList<CommentVO> vo=stub.getComment("GodHotel");
+		for (int i=0;i<vo.size();i++)
+		{
+	    	System.out.println(vo.get(i).comment);
+	    }
 		
 		System.out.println(stub.addComment(new CommentVO("me", "you", new Date(), 110, "Too Bad!")));		
 	}

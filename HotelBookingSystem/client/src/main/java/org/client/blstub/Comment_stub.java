@@ -22,8 +22,7 @@ public class Comment_stub implements Commentblservice{
 
 	public ResultMessage addComment(CommentVO vo) {
 		// TODO Auto-generated method stub
-		System.out.println("Add comment successfully! The comment is "+vo.comment);
-		return null;
+		return ResultMessage.SUCCESS;
 	}
 
 }
