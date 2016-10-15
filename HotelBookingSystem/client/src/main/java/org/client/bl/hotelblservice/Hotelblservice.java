@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 import org.client.bl.hotelbl.HotelFilter;
 import org.client.bl.hotelbl.RoomType;
+import org.client.vo.HotelVO;
+import org.client.vo.UserVO;
+import org.common.utility.ResultMessage;
 
 public interface Hotelblservice {
 	public ArrayList<HotelVO> findHotels(HotelFilter filter);

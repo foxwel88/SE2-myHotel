@@ -3,6 +3,9 @@ package org.client.bl.promotionbl;
 import java.util.ArrayList;
 
 import org.client.bl.promotionblservice.Promotionblservice;
+import org.client.vo.LevelVO;
+import org.client.vo.PromotionVO;
+import org.common.utility.ResultMessage;
 
 public class Promotion implements Promotionblservice{
 

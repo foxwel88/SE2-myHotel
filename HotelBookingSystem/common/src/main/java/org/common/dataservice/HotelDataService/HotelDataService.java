@@ -4,6 +4,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 import org.common.po.HotelPO;
+import org.common.utility.HotelFilter;
 import org.common.utility.ResultMessage;
 
 public interface HotelDataService extends Remote

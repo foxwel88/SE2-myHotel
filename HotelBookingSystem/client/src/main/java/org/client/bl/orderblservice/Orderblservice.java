@@ -3,6 +3,8 @@ package org.client.bl.orderblservice;
 import java.util.ArrayList;
 
 import org.client.bl.orderbl.OrderType;
+import org.client.vo.OrderVO;
+import org.common.utility.ResultMessage;
 
 public interface Orderblservice {
 	public ResultMessage createOrder(OrderVO vo);

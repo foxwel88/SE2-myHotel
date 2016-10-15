@@ -2,6 +2,10 @@ package org.client.bl.userblservice;
 
 import java.util.ArrayList;
 
+import org.client.vo.CreditRecordVO;
+import org.client.vo.UserVO;
+import org.common.utility.ResultMessage;
+
 public interface Userblservice {
 	public ResultMessage login(String userName, String password);
 	

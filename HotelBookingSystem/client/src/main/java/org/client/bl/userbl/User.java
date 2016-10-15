@@ -3,6 +3,9 @@ package org.client.bl.userbl;
 import java.util.ArrayList;
 
 import org.client.bl.userblservice.Userblservice;
+import org.client.vo.CreditRecordVO;
+import org.client.vo.UserVO;
+import org.common.utility.ResultMessage;
 
 public class User implements Userblservice{
 
