@@ -20,9 +20,9 @@ public class RoomPO implements Serializable {
 	
 	public RoomPO(ArrayList<RoomType> roomType, ArrayList<Integer> roomNum,
 				ArrayList<Double> roomPrice) {
-		this.roomType = new ArrayList<RoomType>(roomType);
-		this.roomNum = new ArrayList<Integer>(roomNum);
-		this.roomPrice = new ArrayList<Double>(roomPrice);
+		this.roomType = roomType;
+		this.roomNum = roomNum;
+		this.roomPrice = roomPrice;
 	}
 	
 

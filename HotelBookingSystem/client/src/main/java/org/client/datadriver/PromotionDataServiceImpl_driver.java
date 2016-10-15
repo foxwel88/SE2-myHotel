@@ -16,7 +16,7 @@ public class PromotionDataServiceImpl_driver {
 			System.out.println(stub.add(new PromotionPO(PromotionType.BIRTHDAYBONUS, null, null, null, 0, null, 0)));
 			System.out.println(stub.delete(new PromotionPO(PromotionType.COMPANYBONUS, null, null, null, 0, null, 0)));
 			System.out.println(stub.modify(new PromotionPO(PromotionType.VIPLEVEL, null, null, null, 0, null, 0)));
-			System.out.println(stub.modifyLevel(new LevelPO(0, null)));
+			System.out.println(stub.modifyLevel(new LevelPO(5, null)));
 			System.out.println(stub.showHotelPromotion("loveHotel"));
 			System.out.println(stub.showLevel());
 			System.out.println(stub.showWebsitePromotion());
