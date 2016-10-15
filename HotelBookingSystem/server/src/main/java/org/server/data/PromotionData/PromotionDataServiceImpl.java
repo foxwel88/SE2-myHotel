@@ -1,7 +1,7 @@
 package org.server.data.PromotionData;
 
-import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 import org.common.dataservice.PromotionDataService.PromotionDataService;
@@ -9,8 +9,18 @@ import org.common.po.LevelPO;
 import org.common.po.PromotionPO;
 import org.common.utility.ResultMessage;
 
-public class PromotionDataServiceImpl implements PromotionDataService
+public class PromotionDataServiceImpl extends UnicastRemoteObject implements PromotionDataService
 {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8003664894492865142L;
+
+	public PromotionDataServiceImpl() throws RemoteException {
+		System.out.println("promotion start");
+		// TODO Auto-generated constructor stub
+	}
 
 	public ResultMessage add(PromotionPO po) throws RemoteException {
 		// TODO Auto-generated method stub
@@ -57,7 +67,7 @@ public class PromotionDataServiceImpl implements PromotionDataService
 		
 	}
 
-	public void getPromotion(String hotelAddress, String userID) {
+	public void getPromotion(String hotelAddress, String userID) throws RemoteException  {
 		// TODO Auto-generated method stub
 		
 	}

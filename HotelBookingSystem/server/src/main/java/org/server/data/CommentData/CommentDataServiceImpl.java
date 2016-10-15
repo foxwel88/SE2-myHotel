@@ -1,14 +1,24 @@
 package org.server.data.CommentData;
 
-import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 
 import org.common.dataservice.CommentDataService.CommentDataService;
 import org.common.po.CommentPO;
 import org.common.utility.ResultMessage;
 
-public class CommentDataServiceImpl implements CommentDataService
+public class CommentDataServiceImpl extends UnicastRemoteObject implements CommentDataService 
 {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5618743255476533176L;
+
+	public CommentDataServiceImpl() throws RemoteException {
+		System.out.println("comment start");
+		// TODO Auto-generated constructor stub
+	}
 
 	public void init() throws RemoteException {
 		// TODO Auto-generated method stub

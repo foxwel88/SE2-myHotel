@@ -1,7 +1,7 @@
 package org.server.data.HotelData;
 
-import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 import org.common.dataservice.HotelDataService.HotelDataService;
@@ -11,8 +11,18 @@ import org.common.po.HotelPO;
 import org.common.utility.HotelFilter;
 import org.common.utility.ResultMessage;
 
-public class HotelDataServiceImpl implements HotelDataService
+public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDataService
 {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4005413439043494852L;
+
+	public HotelDataServiceImpl() throws RemoteException {
+		System.out.println("hotel start");
+		// TODO Auto-generated constructor stub
+	}
 
 	public void init() throws RemoteException {
 		// TODO Auto-generated method stub

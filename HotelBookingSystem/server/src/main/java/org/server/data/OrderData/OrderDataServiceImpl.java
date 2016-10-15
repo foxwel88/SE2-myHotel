@@ -1,7 +1,7 @@
 package org.server.data.OrderData;
 
-import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.Date;
 import java.util.ArrayList;
 
@@ -10,8 +10,18 @@ import org.common.po.OrderPO;
 import org.common.utility.OrderType;
 import org.common.utility.ResultMessage;
 
-public class OrderDataServiceImpl implements OrderDataService
+public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDataService
 {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6511666908358074048L;
+
+	public OrderDataServiceImpl() throws RemoteException {
+		System.out.println("order start");
+		// TODO Auto-generated constructor stub
+	}
 
 	public OrderPO getOrderPO(String orderID) throws RemoteException {
 		// TODO Auto-generated method stub

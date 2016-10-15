@@ -1,15 +1,26 @@
 package org.server.data.UserData;
 
-import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 
 import org.common.dataservice.UserDataService.UserDataService;
 import org.common.po.CreditRecordPO;
 import org.common.po.UserPO;
 import org.common.utility.ResultMessage;
 
-public class UserDataServiceImpl implements UserDataService 
+public class UserDataServiceImpl extends UnicastRemoteObject implements UserDataService 
 {
+
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2823256785769392090L;
+
+	public UserDataServiceImpl() throws RemoteException {
+		System.out.println("user start");
+		// TODO Auto-generated constructor stub
+	}
 
 	public ResultMessage add(UserPO po) throws RemoteException {
 		// TODO Auto-generated method stub
