@@ -1,5 +1,5 @@
 package org.common.utility;
 
-public class ResultMessage {
-
+public enum ResultMessage {
+	SECCUSS, NOTEXIST, WRONGFORMAT
 }

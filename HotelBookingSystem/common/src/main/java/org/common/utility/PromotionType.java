@@ -1,5 +1,5 @@
 package org.common.utility;
 
 public enum PromotionType {
-
+	BIRTHDAYBONUS, COMPANYBONUS, TRIPLEROOMBONUS, SPECIALDATE, VIPLEVEL, SPECIALAREA
 }
