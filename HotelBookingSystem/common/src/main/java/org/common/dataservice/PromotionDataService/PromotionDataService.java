@@ -1,9 +1,11 @@
-package org.common.dataservice;
+package org.common.dataservice.PromotionDataService;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import org.common.po.LevelPO;
+import org.common.po.PromotionPO;
 import org.common.utility.ResultMessage;
 
 public interface PromotionDataService extends Remote

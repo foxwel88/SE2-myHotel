@@ -1,8 +1,10 @@
-package org.common.dataservice;
+package org.common.dataservice.UserDataService;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
+import org.common.po.CreditRecordPO;
+import org.common.po.UserPO;
 import org.common.utility.ResultMessage;
 
 public interface UserDataService extends Remote 
