@@ -14,7 +14,7 @@ import org.common.utility.ResultMessage;
 public class HotelDataServiceImpl_stub implements HotelDataService{
 
 	public void init() throws RemoteException {
-		
+		System.out.println("init!");
 	}
 
 	public ResultMessage addHotelInfo(HotelPO po) throws RemoteException {
@@ -56,7 +56,7 @@ public class HotelDataServiceImpl_stub implements HotelDataService{
 	}
 
 	public void finish() throws RemoteException {
-		
+		System.out.println("finish");
 	}
 
 }

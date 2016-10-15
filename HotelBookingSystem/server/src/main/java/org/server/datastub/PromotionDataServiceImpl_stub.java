@@ -43,11 +43,11 @@ public class PromotionDataServiceImpl_stub implements PromotionDataService{
 	}
 
 	public void init() throws RemoteException {
-		
+		System.out.println("init!");
 	}
 
 	public void finish() throws RemoteException {
-		
+		System.out.println("finish");
 	}
 
 

@@ -9,7 +9,7 @@ import org.common.utility.ResultMessage;
 public class CommentDataServiceImpl_stub implements CommentDataService{
 
 	public void init() throws RemoteException {
-		
+		System.out.println("init!");
 	}
 
 	public CommentPO find(String hotelAddress) throws RemoteException {
@@ -24,7 +24,7 @@ public class CommentDataServiceImpl_stub implements CommentDataService{
 	}
 
 	public void finish() throws RemoteException {
-		
+		System.out.println("finish");
 	}
 
 }
