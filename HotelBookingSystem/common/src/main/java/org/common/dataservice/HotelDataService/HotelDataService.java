@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import org.common.po.AreaPO;
 import org.common.po.CityPO;
 import org.common.po.HotelPO;
+import org.common.po.RoomPO;
 import org.common.utility.HotelFilter;
 import org.common.utility.ResultMessage;
 
@@ -23,6 +24,10 @@ public interface HotelDataService extends Remote
 	
 	public ResultMessage getHotelInfo(String hotelAddress) throws RemoteException;
 	//在数据库中增加订单的流转信息
+	
+	public RoomPO getRooms(String hotelAddress) throws RemoteException;
+	
+	public ResultMessage modifyRooms(String hotelAddress, RoomPO po) throws RemoteException;
 	
 	public ResultMessage findHotels(HotelFilter filter) throws RemoteException;
 	//在数据库中增加订单的流转信息
