@@ -26,8 +26,10 @@ public class PromotionPO implements Serializable {
 	
 	public double discount;
 	
+	public String name;
+	
 	public PromotionPO(PromotionType type, Date startTime, Date endTime, String hotelName,
-			int level, String area, double discount) {
+			int level, String area, double discount, String name) {
 		this.type = type;
 		this.startTime = startTime;
 		this.endTime = endTime;
@@ -35,6 +37,7 @@ public class PromotionPO implements Serializable {
 		this.level = level;
 		this.area = area;
 		this.discount = discount;
+		this.name = name;
 	}
 
 }

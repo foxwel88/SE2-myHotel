@@ -26,7 +26,7 @@ public class HotelDataServiceImpl_stub implements HotelDataService{
 	}
 
 	public HotelPO getHotelInfo(String hotelAddress) throws RemoteException {
-		return new HotelPO(hotelAddress, hotelAddress, hotelAddress, hotelAddress, hotelAddress, 0, 0, hotelAddress, hotelAddress);
+		return new HotelPO(hotelAddress, hotelAddress, hotelAddress, hotelAddress, hotelAddress, 0, 0, hotelAddress, hotelAddress, hotelAddress);
 	}
 
 	public RoomPO getRooms(String hotelAddress) throws RemoteException {
@@ -39,7 +39,7 @@ public class HotelDataServiceImpl_stub implements HotelDataService{
 
 	public ArrayList<HotelPO> findHotels(HotelFilter filter) throws RemoteException {
 		ArrayList<HotelPO> hotels = new ArrayList<HotelPO>();
-		hotels.add(new HotelPO(null, null, null, null, null, 0, 0, null, null));
+		hotels.add(new HotelPO(null, null, null, null, null, 0, 0, null, null, null));
 		return hotels;
 	}
 

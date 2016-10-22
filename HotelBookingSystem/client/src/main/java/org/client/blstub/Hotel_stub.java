@@ -13,8 +13,8 @@ import org.common.utility.RoomType;
 
 public class Hotel_stub implements Hotelblservice{
 
-	HotelVO hotelvo1=new HotelVO("goodhotel","aaa","bbb","ccc","xxxxx",4,3,"good","xixixi",null,null,null);
-	HotelVO hotelvo2=new HotelVO("goodhotel","aaa","bbb","ccc","xxxxx",4,3,"good","xixixi",null,null,null);
+	HotelVO hotelvo1=new HotelVO("goodhotel","aaa","bbb","ccc","xxxxx",4,3,"good","xixixi",null,null,null, null);
+	HotelVO hotelvo2=new HotelVO("goodhotel","aaa","bbb","ccc","xxxxx",4,3,"good","xixixi",null,null,null, null);
 
 	public ArrayList<HotelVO> findHotels(HotelFilter filter) {
 		// TODO Auto-generated method stub

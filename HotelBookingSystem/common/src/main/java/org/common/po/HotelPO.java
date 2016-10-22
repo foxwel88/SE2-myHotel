@@ -27,8 +27,10 @@ public class HotelPO implements Serializable {
 	
 	public String checkInInfos;
 	
+	public String cooperators;
+	
 	public HotelPO(String hotelName, String address, String city, String area, String introduce,
-			double rank, int star, String facility, String checkInInfos) {
+			double rank, int star, String facility, String checkInInfos, String cooperators) {
 		this.hotelName = hotelName;
 		this.address = address;
 		this.city = city;
@@ -38,6 +40,7 @@ public class HotelPO implements Serializable {
 		this.star = star;
 		this.facility = facility;
 		this.checkInInfos = checkInInfos;
+		this.cooperators = cooperators;
 	}
 	
 	

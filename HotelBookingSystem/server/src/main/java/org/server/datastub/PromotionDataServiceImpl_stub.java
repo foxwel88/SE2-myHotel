@@ -20,13 +20,13 @@ public class PromotionDataServiceImpl_stub implements PromotionDataService{
 
 	public ArrayList<PromotionPO> showHotelPromotion(String hotelAddress) throws RemoteException {
 		ArrayList<PromotionPO> promotions = new ArrayList<PromotionPO>();
-		promotions.add(new PromotionPO(null, null, null, hotelAddress, 0, hotelAddress, 0));
+		promotions.add(new PromotionPO(null, null, null, hotelAddress, 0, hotelAddress, 0, hotelAddress));
 		return promotions;
 	}
 
 	public ArrayList<PromotionPO> showWebsitePromotion() throws RemoteException {
 		ArrayList<PromotionPO> promotions = new ArrayList<PromotionPO>();
-		promotions.add(new PromotionPO(null, null, null, "", 0, "", 0));
+		promotions.add(new PromotionPO(null, null, null, "", 0, "", 0, null));
 		return promotions;
 	}
 

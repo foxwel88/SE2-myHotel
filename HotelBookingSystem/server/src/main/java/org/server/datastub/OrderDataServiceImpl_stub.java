@@ -13,24 +13,24 @@ import org.common.utility.RoomType;
 public class OrderDataServiceImpl_stub implements OrderDataService{
 
 	public OrderPO getOrderPO(String orderID) throws RemoteException {
-		return new OrderPO(null, null, null, null, null, null, null, orderID, orderID, orderID, null, 0, 0, false);
+		return new OrderPO(null, null, null, null, null, null, null, orderID, orderID, orderID, null, 0, 0, false, orderID);
 	}
 
 	public ArrayList<OrderPO> getUserOrderPO(String userID, OrderType type) throws RemoteException {
 		ArrayList<OrderPO> pos = new ArrayList<OrderPO>();
-		pos.add(new OrderPO(type, null, null, null, null, null, null, userID, userID, userID, null, 0, 0, false));
+		pos.add(new OrderPO(type, null, null, null, null, null, null, userID, userID, userID, null, 0, 0, false, userID));
 		return pos;
 	}
 
 	public ArrayList<OrderPO> getHotelOrderPO(String hotelID, OrderType type) throws RemoteException {
 		ArrayList<OrderPO> pos = new ArrayList<OrderPO>();
-		pos.add(new OrderPO(type, null, null, null, null, null, null, hotelID, hotelID, hotelID, null, 0, 0, false));
+		pos.add(new OrderPO(type, null, null, null, null, null, null, hotelID, hotelID, hotelID, null, 0, 0, false, hotelID));
 		return pos;
 	}
 
 	public ArrayList<OrderPO> getAbnormalOrderPO(Date date) throws RemoteException {
 		ArrayList<OrderPO> pos = new ArrayList<OrderPO>();
-		pos.add(new OrderPO(OrderType.ABNORMAL, date, date, date, date, null, null, "", "", "", RoomType.BIG, 0, 0, false));
+		pos.add(new OrderPO(OrderType.ABNORMAL, date, date, date, date, null, null, "", "", "", RoomType.BIG, 0, 0, false, null));
 		return pos;
 	}
 

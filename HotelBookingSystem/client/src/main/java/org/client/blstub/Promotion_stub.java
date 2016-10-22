@@ -11,8 +11,8 @@ import org.common.utility.ResultMessage;
 
 public class Promotion_stub implements Promotionblservice{
 	
-	PromotionVO vo1=new PromotionVO(PromotionType.SPECIALDATE, new Date(), new Date(), "goodhotel",2 , "lalal", 0.8);
-	PromotionVO vo2=new PromotionVO(PromotionType.SPECIALDATE, new Date(), new Date(), "goodhotel",2 , "lalal", 0.8);
+	PromotionVO vo1=new PromotionVO(PromotionType.SPECIALDATE, new Date(), new Date(), "goodhotel",2 , "lalal", 0.8, null);
+	PromotionVO vo2=new PromotionVO(PromotionType.SPECIALDATE, new Date(), new Date(), "goodhotel",2 , "lalal", 0.8, null);
 	ArrayList<PromotionVO> vo=new ArrayList<PromotionVO>();
 
 	public ResultMessage add(PromotionVO vo) {
