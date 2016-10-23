@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<Pane prefHeight="680.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="683.0" fitWidth="1103.0">
+         <image>
+            <Image url="@2.jpg" />
+         </image>
+      </ImageView>
+      <GridPane layoutX="2.0" layoutY="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1100.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="294.66424560546875" minHeight="10.0" prefHeight="53.233951568603516" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="662.7235107421875" minHeight="10.0" prefHeight="626.7660484313965" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+               <children>
+                  <GridPane layoutX="482.0" layoutY="300.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="30.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="511.5321044921875" minWidth="10.0" prefWidth="120.53018188476562" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="919.4698181152344" minWidth="10.0" prefWidth="919.4698181152344" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <GridPane>
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.56);">
+                                 <children>
+                                    <Label alignment="CENTER" layoutX="23.0" layoutY="49.0" text="首页" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="43.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="43.0">
+                                       <font>
+                                          <Font name="Microsoft YaHei UI Light" size="21.0" />
+                                       </font>
+                                    </Label>
+                                 </children></AnchorPane>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0,0,0,0.50);" GridPane.rowIndex="1">
+                                 <children>
+                                    <Label alignment="CENTER" layoutX="21.0" layoutY="43.0" text="酒店信息" textAlignment="CENTER" textFill="WHITE">
+                                       <font>
+                                          <Font name="Microsoft YaHei UI Light" size="21.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.44);" GridPane.rowIndex="2">
+                                 <children>
+                                    <Label alignment="CENTER" layoutX="22.0" layoutY="43.0" text="执行订单" textAlignment="CENTER" textFill="WHITE">
+                                       <font>
+                                          <Font name="Microsoft YaHei UI Light" size="21.0" />
+                                       </font>
+                                    </Label>
+                                 </children></AnchorPane>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.38);" GridPane.rowIndex="3">
+                                 <children>
+                                    <Label text="历史订单" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="43.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="43.0">
+                                       <font>
+                                          <Font name="Microsoft YaHei UI Light" size="21.0" />
+                                       </font>
+                                    </Label>
+                                 </children></AnchorPane>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(255,255,255,0.4);" GridPane.rowIndex="4">
+                                 <children>
+                                    <Label layoutX="16.0" layoutY="47.0" prefHeight="34.0" prefWidth="84.0" text="促销策略" AnchorPane.bottomAnchor="38.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="41.0">
+                                       <font>
+                                          <Font name="Microsoft YaHei UI Light" size="21.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <effect>
+                                    <DropShadow />
+                                 </effect></AnchorPane>
+                           </children>
+                        </GridPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.4);" GridPane.columnIndex="1">
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                           <children>
+                              <Pane layoutX="67.0" layoutY="60.0" prefHeight="475.0" prefWidth="782.0" style="-fx-background-color: rgba(0,0,0,0.4);">
+                                 <children>
+                                    <Label layoutX="180.0" layoutY="418.0" text="&lt;上一页" textFill="WHITE">
+                                       <font>
+                                          <Font name="Microsoft YaHei" size="15.0" />
+                                       </font></Label>
+                                    <Label layoutX="303.0" layoutY="418.0" text="下一页&gt;" textFill="WHITE">
+                                       <font>
+                                          <Font name="Microsoft YaHei" size="15.0" />
+                                       </font></Label>
+                                    <Pane layoutX="27.0" layoutY="65.0" prefHeight="55.0" prefWidth="727.0" style="-fx-background-color: rgba(0,0,0,0.3);">
+                                       <children>
+                                          <Button layoutX="649.0" layoutY="12.0" mnemonicParsing="false" style="-fx-background-color: rgba(255,255,255,0.2);" text="编辑" textFill="WHITE">
+                                             <font>
+                                                <Font name="Microsoft YaHei" size="15.0" />
+                                             </font></Button>
+                                          <Label alignment="CENTER" layoutX="10.0" layoutY="13.0" prefHeight="28.0" prefWidth="241.0" text="猴年生日福利" textFill="WHITE">
+                                             <font>
+                                                <Font name="Microsoft YaHei" size="15.0" />
+                                             </font></Label>
+                                          <Label alignment="CENTER" layoutX="271.0" layoutY="13.0" prefHeight="28.0" prefWidth="97.0" text="生日特惠类" textFill="WHITE">
+                                             <font>
+                                                <Font name="Microsoft YaHei" size="15.0" />
+                                             </font></Label>
+                                          <Label alignment="CENTER" layoutX="458.0" layoutY="13.0" prefHeight="28.0" prefWidth="97.0" text="7.5折" textFill="WHITE">
+                                             <font>
+                                                <Font name="Microsoft YaHei" size="15.0" />
+                                             </font></Label>
+                                       </children>
+                                    </Pane>
+                                    <Pane layoutX="28.0" layoutY="136.0" prefHeight="55.0" prefWidth="727.0" style="-fx-background-color: rgba(0,0,0,0.3);">
+                                       <children>
+                                          <Button layoutX="648.0" layoutY="12.0" mnemonicParsing="false" style="-fx-background-color: rgba(255,255,255,0.2);" text="编辑" textFill="WHITE">
+                                             <font>
+                                                <Font name="Microsoft YaHei" size="15.0" />
+                                             </font></Button>
+                                          <Label alignment="CENTER" layoutX="8.0" layoutY="13.0" prefHeight="28.0" prefWidth="241.0" text="2016企业伙伴特惠" textFill="WHITE">
+                                             <font>
+                                                <Font name="Microsoft YaHei" size="15.0" />
+                                             </font></Label>
+                                          <Label alignment="CENTER" layoutX="269.0" layoutY="13.0" prefHeight="28.0" prefWidth="97.0" text="企业折扣类" textFill="WHITE">
+                                             <font>
+                                                <Font name="Microsoft YaHei" size="15.0" />
+                                             </font></Label>
+                                          <Label alignment="CENTER" layoutX="456.0" layoutY="13.0" prefHeight="28.0" prefWidth="97.0" text="7折" textFill="WHITE">
+                                             <font>
+                                                <Font name="Microsoft YaHei" size="15.0" />
+                                             </font></Label>
+                                       </children>
+                                    </Pane>
+                                    <Pane layoutX="28.0" layoutY="204.0" prefHeight="55.0" prefWidth="727.0" style="-fx-background-color: rgba(0,0,0,0.3);">
+                                       <children>
+                                          <Button layoutX="648.0" layoutY="13.0" mnemonicParsing="false" style="-fx-background-color: rgba(255,255,255,0.2);" text="编辑" textFill="WHITE">
+                                             <font>
+                                                <Font name="Microsoft YaHei" size="15.0" />
+                                             </font></Button>
+                                          <Label alignment="CENTER" layoutX="7.0" layoutY="14.0" prefHeight="28.0" prefWidth="241.0" text="冬季特惠" textFill="WHITE">
+                                             <font>
+                                                <Font name="Microsoft YaHei" size="15.0" />
+                                             </font></Label>
+                                          <Label alignment="CENTER" layoutX="269.0" layoutY="14.0" prefHeight="28.0" prefWidth="97.0" text="特定日期类" textFill="WHITE">
+                                             <font>
+                                                <Font name="Microsoft YaHei" size="15.0" />
+                                             </font></Label>
+                                          <Label alignment="CENTER" layoutX="456.0" layoutY="14.0" prefHeight="28.0" prefWidth="97.0" text="8折" textFill="WHITE">
+                                             <font>
+                                                <Font name="Microsoft YaHei" size="15.0" />
+                                             </font></Label>
+                                       </children>
+                                    </Pane>
+                                    <Label layoutX="394.0" layoutY="418.0" text="跳转至第" textFill="WHITE">
+                                       <font>
+                                          <Font name="Microsoft YaHei" size="15.0" />
+                                       </font></Label>
+                                    <TextField layoutX="466.0" layoutY="416.0" prefHeight="20.0" prefWidth="30.0" style="-fx-background-color: rgba(255,255,255,0.1);">
+                                       <font>
+                                          <Font name="Microsoft YaHei" size="15.0" />
+                                       </font></TextField>
+                                    <Label layoutX="262.0" layoutY="418.0" text="1" textFill="WHITE">
+                                       <font>
+                                          <Font name="Microsoft YaHei" size="15.0" />
+                                       </font></Label>
+                                    <Label layoutX="510.0" layoutY="418.0" text="页" textFill="WHITE">
+                                       <font>
+                                          <Font name="Microsoft YaHei" size="15.0" />
+                                       </font></Label>
+                                    <Button layoutX="613.0" layoutY="413.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="141.0" style="-fx-background-color: rgba(255,255,255,0.2);" text="添加促销策略" textFill="WHITE">
+                                       <font>
+                                          <Font name="Microsoft YaHei" size="15.0" />
+                                       </font></Button>
+                                    <Label layoutX="111.0" layoutY="35.0" prefHeight="20.0" prefWidth="643.0" text="      名称                                    类型                                    额度                  " textFill="WHITE">
+                                       <font>
+                                          <Font name="Microsoft YaHei" size="15.0" />
+                                       </font></Label>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="60.0" prefWidth="1118.0" style="-fx-background-color: rgba(0,0,0,0.4);">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" blendMode="SOFT_LIGHT" fill="#0000000d" height="65.0" stroke="BLACK" strokeType="INSIDE" width="110.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="990.0" AnchorPane.topAnchor="0.0" />
+                  <Label layoutX="38.0" layoutY="8.0" text="&lt;" textFill="#868686">
+                     <font>
+                        <Font size="39.0" />
+                     </font>
+                     <effect>
+                        <Blend mode="LIGHTEN" />
+                     </effect>
+                  </Label>
+                  <Label layoutX="850.0" layoutY="16.0" prefHeight="34.0" prefWidth="188.0" text="Welcome, 李华！" textFill="WHITE" textOverrun="LEADING_ELLIPSIS">
+                     <font>
+                        <Font name="Microsoft YaHei UI Light" size="24.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="60.0" fitWidth="48.0" layoutX="1038.0" layoutY="9.0" preserveRatio="true">
+                     <image>
+                        <Image url="@profile.png" />
+                     </image>
+                     <effect>
+                        <ColorAdjust brightness="0.63" />
+                     </effect>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </children>
+      </GridPane>
+   </children>
+</Pane>
