@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.Blend?>
 <?import javafx.scene.effect.ColorAdjust?>
@@ -234,6 +235,11 @@
                                     </Label>
                                  </children>
                               </GridPane>
+                              <Button layoutX="770.0" layoutY="513.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-background-color: rgba(0,0,0,0.4);" text="评价订单" textFill="WHITE">
+                                 <font>
+                                    <Font name="Microsoft YaHei" size="18.0" />
+                                 </font>
+                              </Button>
                            </children>
                         </AnchorPane>
                      </children>

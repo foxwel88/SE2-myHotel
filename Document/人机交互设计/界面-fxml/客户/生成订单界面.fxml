@@ -64,46 +64,46 @@
                                                 <Font name="Microsoft YaHei" size="16.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="253.0" layoutY="176.0" text="月" AnchorPane.leftAnchor="253.0">
+                                          <Label layoutX="253.0" layoutY="178.0" text="月" AnchorPane.leftAnchor="253.0" AnchorPane.topAnchor="178.0">
                                              <font>
                                                 <Font name="Microsoft YaHei" size="16.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="335.0" layoutY="176.0" text="日">
+                                          <Label layoutX="335.0" layoutY="176.0" text="日" AnchorPane.topAnchor="178.0">
                                              <font>
                                                 <Font name="Microsoft YaHei" size="16.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="463.0" layoutY="176.0" text="月">
+                                          <Label layoutX="463.0" layoutY="176.0" text="月" AnchorPane.topAnchor="178.0">
                                              <font>
                                                 <Font name="Microsoft YaHei" size="16.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="549.0" layoutY="176.0" text="日">
+                                          <Label layoutX="548.0" layoutY="178.0" text="日" AnchorPane.topAnchor="178.0">
                                              <font>
                                                 <Font name="Microsoft YaHei" size="16.0" />
                                              </font>
                                           </Label>
                                           <ChoiceBox layoutX="193.0" layoutY="177.0" prefHeight="23.0" prefWidth="55.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.leftAnchor="193.0" />
-                                          <ChoiceBox layoutX="273.0" layoutY="177.0" prefHeight="23.0" prefWidth="56.0" style="-fx-background-color: rgba(255,255,255,0.4);" />
-                                          <ChoiceBox layoutX="486.0" layoutY="176.0" prefHeight="23.0" prefWidth="55.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.leftAnchor="484.0" />
-                                          <ChoiceBox layoutX="402.0" layoutY="176.0" prefHeight="23.0" prefWidth="55.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.leftAnchor="402.0" />
+                                          <ChoiceBox layoutX="273.0" layoutY="177.0" prefHeight="23.0" prefWidth="56.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.topAnchor="177.0" />
+                                          <ChoiceBox layoutX="486.0" layoutY="176.0" prefHeight="23.0" prefWidth="55.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.leftAnchor="484.0" AnchorPane.topAnchor="177.0" />
+                                          <ChoiceBox layoutX="402.0" layoutY="176.0" prefHeight="23.0" prefWidth="55.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.leftAnchor="402.0" AnchorPane.topAnchor="177.0" />
                                           <Label layoutX="12.0" layoutY="46.0" text="酒店名称" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="46.0">
                                              <font>
                                                 <Font name="Microsoft YaHei" size="16.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="457.0" layoutY="113.0" prefHeight="22.0" prefWidth="88.0" text="所属商圈" AnchorPane.leftAnchor="402.0">
+                                          <Label layoutX="457.0" layoutY="113.0" prefHeight="22.0" prefWidth="88.0" text="所属商圈" AnchorPane.leftAnchor="402.0" AnchorPane.topAnchor="109.0">
                                              <font>
                                                 <Font name="Microsoft YaHei" size="16.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="12.0" layoutY="112.0" text="所属城市" AnchorPane.leftAnchor="12.0">
+                                          <Label layoutX="12.0" layoutY="109.0" text="所属城市" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="109.0">
                                              <font>
                                                 <Font name="Microsoft YaHei" size="16.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="13.0" layoutY="79.0" text="酒店地址" AnchorPane.leftAnchor="13.0">
+                                          <Label layoutX="13.0" layoutY="79.0" text="酒店地址" AnchorPane.leftAnchor="12.0">
                                              <font>
                                                 <Font name="Microsoft YaHei" size="16.0" />
                                              </font>
@@ -114,8 +114,6 @@
                                              </font>
                                           </Label>
                                           <Separator layoutX="13.0" layoutY="166.0" prefHeight="11.0" prefWidth="806.0" />
-                                          <ChoiceBox layoutX="193.0" layoutY="111.0" prefHeight="23.0" prefWidth="75.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.leftAnchor="193.0" />
-                                          <ChoiceBox layoutX="484.0" layoutY="112.0" prefHeight="23.0" prefWidth="159.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.leftAnchor="484.0" />
                                           <Label layoutX="12.0" layoutY="208.0" text="最晚入住时间" AnchorPane.leftAnchor="12.0">
                                              <font>
                                                 <Font name="Microsoft YaHei" size="16.0" />
@@ -141,9 +139,19 @@
                                                 <Font name="Microsoft YaHei" size="16.0" />
                                              </font>
                                           </Label>
-                                          <Label layoutX="371.0" layoutY="169.0" text="-">
+                                          <Label layoutX="371.0" layoutY="172.0" text="-">
                                              <font>
                                                 <Font name="Microsoft JhengHei" size="24.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="182.0" layoutY="115.0" prefHeight="22.0" prefWidth="70.0" text="南京" AnchorPane.leftAnchor="193.0" AnchorPane.topAnchor="109.0">
+                                             <font>
+                                                <Font name="Microsoft YaHei" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="484.0" layoutY="109.0" prefHeight="22.0" prefWidth="70.0" text="某商圈" AnchorPane.topAnchor="109.0">
+                                             <font>
+                                                <Font name="Microsoft YaHei" size="16.0" />
                                              </font>
                                           </Label>
                                        </children>
@@ -235,7 +243,7 @@
                                                 <Font name="Microsoft YaHei" size="16.0" />
                                              </font>
                                           </Label>
-                                          <CheckBox layoutX="471.0" layoutY="71.0" mnemonicParsing="false" />
+                                          <CheckBox layoutX="471.0" layoutY="72.0" mnemonicParsing="false" />
                                        </children>
                                     </AnchorPane>
                                     <Separator layoutX="5.0" layoutY="478.0" prefHeight="11.0" prefWidth="806.0" />
