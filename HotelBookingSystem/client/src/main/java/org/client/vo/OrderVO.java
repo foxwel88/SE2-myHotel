@@ -14,6 +14,8 @@ public class OrderVO implements Serializable{
 
 	public OrderType type;
 	
+	public Data generatedData;
+	
 	public Date schFrom;
 	
 	public Date schTo;
@@ -34,6 +36,8 @@ public class OrderVO implements Serializable{
 	
 	public RoomType roomType;
 	
+	public double totalPrice;
+	
 	public int roomNum;
 	
 	public int numOfPeople;
@@ -42,10 +46,11 @@ public class OrderVO implements Serializable{
 	
 	public String customerName;
 	
-	public OrderVO(OrderType type, Date schFrom, Date schTo, Date actFrom, Date actTo,
+	public OrderVO(OrderType type, Data generatedData, Date schFrom, Date schTo, Date actFrom, Date actTo,
 			Date latestTime, Date cancelTime, String hotelAddress, String orderID,
-			String hotelName, RoomType roomType, int roomNum, int numOfPeople, boolean existsChild, String customerName) {
+			String hotelName, RoomType roomType, double totalPrice, int roomNum, int numOfPeople, boolean existsChild, String customerName) {
 		this.type = type;
+		this.generatedData = generatedData;
 		this.schFrom = schFrom;
 		this.schTo = schTo;
 		this.actFrom = actFrom;
@@ -56,6 +61,7 @@ public class OrderVO implements Serializable{
 		this.orderID = orderID;
 		this.hotelName = hotelName;
 		this.roomType = roomType;
+		this.totalPrice = totalPrice;
 		this.roomNum = roomNum;
 		this.numOfPeople = numOfPeople;
 		this.existsChild = existsChild;

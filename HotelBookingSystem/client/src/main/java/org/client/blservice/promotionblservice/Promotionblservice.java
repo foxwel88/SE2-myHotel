@@ -17,8 +17,6 @@ public interface Promotionblservice {
 	
 	public ResultMessage modify(PromotionVO vo);
 	
-	public ResultMessage delete(PromotionVO vo);
-	
 	public LevelVO showLevel();
 	
 	public ResultMessage modifyLevel(LevelVO vo);

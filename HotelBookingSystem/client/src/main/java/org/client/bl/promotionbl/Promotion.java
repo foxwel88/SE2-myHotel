@@ -34,11 +34,6 @@ public class Promotion implements Promotionblservice{
 		return null;
 	}
 
-	public ResultMessage delete(PromotionVO vo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	public LevelVO showLevel() {
 		// TODO Auto-generated method stub
 		return null;

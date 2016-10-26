@@ -12,8 +12,8 @@ import org.common.utility.RoomType;
 
 public class Order_stub implements Orderblservice{
 
-	OrderVO vo1=new OrderVO(OrderType.ABNORMAL,new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),"aaaaa","11111","lalala",RoomType.BIG,2,2,true, null);
-	OrderVO vo2=new OrderVO(OrderType.ABNORMAL,new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),"aaaaa","11111","lalala",RoomType.BIG,2,2,true, null);
+	OrderVO vo1=new OrderVO(OrderType.ABNORMAL,new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),"aaaaa","11111","lalala",RoomType.BIG,100,2,2,true, null);
+	OrderVO vo2=new OrderVO(OrderType.ABNORMAL,new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),"aaaaa","11111","lalala",RoomType.BIG,100,2,2,true, null);
 	ArrayList<OrderVO> vo=new ArrayList<OrderVO>();
 	public ResultMessage createOrder(OrderVO vo) {
 		// TODO Auto-generated method stub

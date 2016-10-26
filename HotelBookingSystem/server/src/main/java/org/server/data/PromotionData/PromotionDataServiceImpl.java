@@ -42,11 +42,6 @@ public class PromotionDataServiceImpl extends UnicastRemoteObject implements Pro
 		return null;
 	}
 
-	public ResultMessage delete(PromotionPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	public LevelPO showLevel() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;

@@ -22,9 +22,6 @@ public interface PromotionDataService extends Remote
 	public ArrayList<PromotionPO> showWebsitePromotion() throws RemoteException;
 	//返回网站策略的PromotionPO记录
 	
-	public ResultMessage delete(PromotionPO po) throws RemoteException;
-	//删除一个PO
-	
 	public LevelPO showLevel() throws RemoteException;
 	//返回LevelPO记录
 	

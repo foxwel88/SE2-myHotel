@@ -30,10 +30,6 @@ public class PromotionDataServiceImpl_stub implements PromotionDataService{
 		return promotions;
 	}
 
-	public ResultMessage delete(PromotionPO po) throws RemoteException {
-		return ResultMessage.SUCCESS;
-	}
-
 	public LevelPO showLevel() throws RemoteException {
 		return new LevelPO(0, null);
 	}

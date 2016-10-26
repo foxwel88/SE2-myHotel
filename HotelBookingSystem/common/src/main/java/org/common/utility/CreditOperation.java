@@ -1,5 +1,5 @@
 package org.common.utility;
 
 public enum CreditOperation {
-	INCREASE, DRCREASE
+	FINISHORDER, EXCEPTIONORDER, CANCELORER, RECHARGE
 }

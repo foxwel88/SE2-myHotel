@@ -42,11 +42,6 @@ public class Promotion_stub implements Promotionblservice{
 		return ResultMessage.SUCCESS;
 	}
 
-	public ResultMessage delete(PromotionVO vo) {
-		// TODO Auto-generated method stub
-		return ResultMessage.SUCCESS;
-	}
-
 	public LevelVO showLevel() {
 		// TODO Auto-generated method stub
 		ArrayList<Integer> level=new ArrayList<Integer>();
