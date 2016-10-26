@@ -1,6 +1,6 @@
 package org.client.blservice.promotionblservice;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.client.vo.LevelVO;
 import org.client.vo.PromotionVO;
@@ -9,11 +9,11 @@ import org.common.utility.ResultMessage;
 public interface Promotionblservice {
 	public ResultMessage add(PromotionVO vo);
 	
-	public ArrayList<PromotionVO> getPromotion(String hotelAddress, String userID);
+	public List<PromotionVO> getPromotion(String hotelAddress, String userID);
 	
-	public ArrayList<PromotionVO> showHotelPromotion(String hotelAddress);
+	public List<PromotionVO> showHotelPromotion(String hotelAddress);
 	
-	public ArrayList<PromotionVO> showWebsitePromotion();
+	public List<PromotionVO> showWebsitePromotion();
 	
 	public ResultMessage modify(PromotionVO vo);
 	

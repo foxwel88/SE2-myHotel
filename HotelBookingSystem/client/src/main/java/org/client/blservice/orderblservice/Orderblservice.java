@@ -1,6 +1,6 @@
 package org.client.blservice.orderblservice;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.client.bl.orderbl.Order;
 import org.client.vo.OrderVO;
@@ -14,11 +14,11 @@ public interface Orderblservice {
 	
 	public OrderVO getOrder(String ID);
 	
-	public ArrayList<OrderVO> getAbnormalOrder();
+	public List<OrderVO> getAbnormalOrder();
 	
-	public ArrayList<OrderVO> getUserOrderList(String userID, OrderType type);
+	public List<OrderVO> getUserOrderList(String userID, OrderType type);
 	
-	public ArrayList<OrderVO> getHotelOrderList(String hotelID, OrderType type);
+	public List<OrderVO> getHotelOrderList(String hotelID, OrderType type);
 	
 	public ResultMessage executeOrder (String orderID);
 	

@@ -2,7 +2,7 @@ package org.server.data.HotelData;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.ArrayList;
+import java.util.List;
 
 import org.common.dataservice.HotelDataService.HotelDataService;
 import org.common.po.AreaPO;
@@ -45,17 +45,17 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 		return null;
 	}
 
-	public ArrayList<HotelPO> findHotels(HotelFilter filter) throws RemoteException {
+	public List<HotelPO> findHotels(HotelFilter filter) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public ArrayList<CityPO> getCitys() throws RemoteException {
+	public List<CityPO> getCitys() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public ArrayList<AreaPO> getAreas(CityPO po) throws RemoteException {
+	public List<AreaPO> getAreas(CityPO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

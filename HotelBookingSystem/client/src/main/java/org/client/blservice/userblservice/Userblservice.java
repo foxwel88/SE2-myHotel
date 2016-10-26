@@ -1,6 +1,6 @@
 package org.client.blservice.userblservice;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.client.vo.CreditRecordVO;
 import org.client.vo.UserVO;
@@ -23,7 +23,7 @@ public interface Userblservice {
 	
 	public ResultMessage addCreditRecord (CreditRecordVO vo);
 	
-	public ArrayList<CreditRecordVO> findCreditRecord(String ID);
+	public List<CreditRecordVO> findCreditRecord(String ID);
 	
 	
 }

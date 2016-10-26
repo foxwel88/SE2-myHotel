@@ -2,7 +2,7 @@ package org.server.data.PromotionData;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.ArrayList;
+import java.util.List;
 
 import org.common.dataservice.PromotionDataService.PromotionDataService;
 import org.common.po.LevelPO;
@@ -32,12 +32,12 @@ public class PromotionDataServiceImpl extends UnicastRemoteObject implements Pro
 		return null;
 	}
 
-	public ArrayList<PromotionPO> showHotelPromotion(String hotelAddress) throws RemoteException {
+	public List<PromotionPO> showHotelPromotion(String hotelAddress) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public ArrayList<PromotionPO> showWebsitePromotion() throws RemoteException {
+	public List<PromotionPO> showWebsitePromotion() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

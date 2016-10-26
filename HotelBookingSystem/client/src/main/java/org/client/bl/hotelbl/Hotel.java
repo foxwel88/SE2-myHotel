@@ -1,6 +1,6 @@
 package org.client.bl.hotelbl;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.client.blservice.hotelblservice.Hotelblservice;
 import org.client.vo.AreaVO;
@@ -13,7 +13,7 @@ import org.common.utility.RoomType;
 
 public class Hotel implements Hotelblservice{
 
-	public ArrayList<HotelVO> findHotels(HotelFilter filter) {
+	public List<HotelVO> findHotels(HotelFilter filter) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -43,17 +43,17 @@ public class Hotel implements Hotelblservice{
 		return null;
 	}
 
-	public ArrayList<String> getAreas(String city) {
+	public List<String> getAreas(String city) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public ArrayList<AreaVO> getAreas(CityVO vo) {
+	public List<AreaVO> getAreas(CityVO vo) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public ArrayList<CityVO> getCitys() {
+	public List<CityVO> getCitys() {
 		// TODO Auto-generated method stub
 		return null;
 	}
