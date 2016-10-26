@@ -59,8 +59,8 @@ public class User_stub implements Userblservice {
 
 	public ArrayList<CreditRecordVO> findCreditRecord(String ID) {
 		// TODO Auto-generated method stub
-		CreditRecordVO vo1=new CreditRecordVO(new Date(), "13232323232323232323", 100, 200, CreditOperation.INCREASE); 
-		CreditRecordVO vo2=new CreditRecordVO(new Date(), "13232323232323232323", 100, 200, CreditOperation.INCREASE); 
+		CreditRecordVO vo1=new CreditRecordVO(new Date(), "13232323232323232323", 100, 200, CreditOperation.RECHARGE); 
+		CreditRecordVO vo2=new CreditRecordVO(new Date(), "13232323232323232323", 100, 200, CreditOperation.RECHARGE); 
 		ArrayList<CreditRecordVO> vo=new ArrayList<CreditRecordVO>();
 		vo.add(vo1);
 		vo.add(vo2);

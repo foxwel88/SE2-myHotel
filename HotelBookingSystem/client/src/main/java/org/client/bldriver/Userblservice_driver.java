@@ -19,7 +19,7 @@ public class Userblservice_driver {
 		System.out.println(stub.findbyUserName("sfd"));
 		System.out.println(stub.modifyPassword("das", "sac", "hjm"));
 		System.out.println(stub.modify(new UserVO(UserType.CUSTOMER, "123", "123", "123", "312", "ce", 1.1, new Date(), "2142ew", 5, 6.6, "sad")));
-		System.out.println(stub.addCreditRecord (new CreditRecordVO(new Date(), "sdf", 1.8, 9.9, CreditOperation.INCREASE)));
+		System.out.println(stub.addCreditRecord (new CreditRecordVO(new Date(), "sdf", 1.8, 9.9, CreditOperation.RECHARGE)));
 		System.out.println(stub.findCreditRecord("ouiy"));
 	}
 }

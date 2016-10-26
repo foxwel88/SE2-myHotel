@@ -30,7 +30,7 @@ public class OrderDataServiceImpl_stub implements OrderDataService{
 
 	public ArrayList<OrderPO> getAbnormalOrderPO(Date date) throws RemoteException {
 		ArrayList<OrderPO> pos = new ArrayList<OrderPO>();
-		pos.add(new OrderPO(OrderType.ABNORMAL, data, date, date, date, date, null, null, "", "", "", RoomType.BIG, 100, 0, 0, false, null));
+		pos.add(new OrderPO(OrderType.ABNORMAL, date, date, date, date, date, null, null, "", "", "", RoomType.BIG, 100, 0, 0, false, null));
 		return pos;
 	}
 
