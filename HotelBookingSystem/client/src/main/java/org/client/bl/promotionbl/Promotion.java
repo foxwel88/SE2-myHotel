@@ -1,6 +1,6 @@
 package org.client.bl.promotionbl;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.client.blservice.promotionblservice.Promotionblservice;
 import org.client.vo.LevelVO;
@@ -14,17 +14,17 @@ public class Promotion implements Promotionblservice{
 		return null;
 	}
 
-	public ArrayList<PromotionVO> getPromotion(String hotelAddress, String userID) {
+	public List<PromotionVO> getPromotion(String hotelAddress, String userID) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public ArrayList<PromotionVO> showHotelPromotion(String hotelAddress) {
+	public List<PromotionVO> showHotelPromotion(String hotelAddress) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public ArrayList<PromotionVO> showWebsitePromotion() {
+	public List<PromotionVO> showWebsitePromotion() {
 		// TODO Auto-generated method stub
 		return null;
 	}

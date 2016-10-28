@@ -2,7 +2,7 @@ package org.server.data.CommentData;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.ArrayList;
+import java.util.List;
 
 import org.common.dataservice.CommentDataService.CommentDataService;
 import org.common.po.CommentPO;
@@ -26,7 +26,7 @@ public class CommentDataServiceImpl extends UnicastRemoteObject implements Comme
 		
 	}
 
-	public ArrayList<CommentPO> find(String hotelAddress) throws RemoteException {
+	public List<CommentPO> find(String hotelAddress) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

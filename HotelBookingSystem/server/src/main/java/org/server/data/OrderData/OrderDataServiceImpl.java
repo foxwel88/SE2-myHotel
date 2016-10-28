@@ -3,7 +3,7 @@ package org.server.data.OrderData;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.Date;
-import java.util.ArrayList;
+import java.util.List;
 
 import org.common.dataservice.OrderDataService.OrderDataService;
 import org.common.po.OrderPO;
@@ -28,17 +28,17 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 		return null;
 	}
 
-	public ArrayList<OrderPO> getUserOrderPO(String userID, OrderType type) throws RemoteException {
+	public List<OrderPO> getUserOrderPO(String userID, OrderType type) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public ArrayList<OrderPO> getHotelOrderPO(String hotelID, OrderType type) throws RemoteException {
+	public List<OrderPO> getHotelOrderPO(String hotelID, OrderType type) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public ArrayList<OrderPO> getAbnormalOrderPO(Date date) throws RemoteException {
+	public List<OrderPO> getAbnormalOrderPO(Date date) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
