@@ -1,6 +1,6 @@
 package org.client.bl.userbl;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import org.client.blservice.userblservice.Userblservice;
 import org.client.vo.CreditRecordVO;
@@ -49,7 +49,7 @@ public class User implements Userblservice{
 		return null;
 	}
 
-	public List<CreditRecordVO> findCreditRecord(String ID) {
+	public ArrayList<CreditRecordVO> findCreditRecord(String ID) {
 		// TODO Auto-generated method stub
 		return null;
 	}

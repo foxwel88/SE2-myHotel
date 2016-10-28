@@ -1,6 +1,6 @@
 package org.client.blservice.hotelblservice;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import org.client.vo.AreaVO;
 import org.client.vo.CityVO;
@@ -12,7 +12,7 @@ import org.common.utility.RoomType;
 
 public interface Hotelblservice 
 {
-	public List<HotelVO> findHotels(HotelFilter filter);
+	public ArrayList<HotelVO> findHotels(HotelFilter filter);
 	
 	public HotelVO getHotel(String hotelAddress);
 	
@@ -24,8 +24,8 @@ public interface Hotelblservice
 	
 	public HotelVO getHotelVO(String hotelAddress);
 	
-	public List<CityVO> getCitys();
+	public ArrayList<CityVO> getCitys();
 	
-	public List<AreaVO> getAreas(CityVO vo);
+	public ArrayList<AreaVO> getAreas(CityVO vo);
 
 }

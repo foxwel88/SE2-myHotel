@@ -1,6 +1,6 @@
 package org.client.bl.orderbl;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import org.client.blservice.orderblservice.Orderblservice;
 import org.client.vo.OrderVO;
@@ -24,17 +24,17 @@ public class Order implements Orderblservice{
 		return null;
 	}
 
-	public List<OrderVO> getAbnormalOrder() {
+	public ArrayList<OrderVO> getAbnormalOrder() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public List<OrderVO> getUserOrderList(String userID, OrderType type) {
+	public ArrayList<OrderVO> getUserOrderList(String userID, OrderType type) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public List<OrderVO> getHotelOrderList(String hotelID, OrderType type) {
+	public ArrayList<OrderVO> getHotelOrderList(String hotelID, OrderType type) {
 		// TODO Auto-generated method stub
 		return null;
 	}

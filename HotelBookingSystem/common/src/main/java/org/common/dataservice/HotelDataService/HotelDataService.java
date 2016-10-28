@@ -2,7 +2,7 @@ package org.common.dataservice.HotelDataService;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.util.List;
+import java.util.ArrayList;
 
 import org.common.po.AreaPO;
 import org.common.po.CityPO;
@@ -29,13 +29,13 @@ public interface HotelDataService extends Remote
 	
 	public ResultMessage modifyRooms(String hotelAddress, RoomPO po) throws RemoteException;
 	
-	public List<HotelPO> findHotels(HotelFilter filter) throws RemoteException;
+	public ArrayList<HotelPO> findHotels(HotelFilter filter) throws RemoteException;
 	//返回多个酒店po
 	
-	public List<CityPO> getCitys() throws RemoteException;
+	public ArrayList<CityPO> getCitys() throws RemoteException;
 	//在数据库中获得所有CityPO
 	
-	public List<AreaPO> getAreas(CityPO po) throws RemoteException;
+	public ArrayList<AreaPO> getAreas(CityPO po) throws RemoteException;
 	//根据CityPO返回所有AreaPO
 
 	public void finish() throws RemoteException;

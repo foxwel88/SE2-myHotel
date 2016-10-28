@@ -2,7 +2,7 @@ package org.common.dataservice.PromotionDataService;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.util.List;
+import java.util.ArrayList;
 
 import org.common.po.LevelPO;
 import org.common.po.PromotionPO;
@@ -16,10 +16,10 @@ public interface PromotionDataService extends Remote
 	public ResultMessage modify(PromotionPO po) throws RemoteException;
 	//更新一个PO
 	
-	public List<PromotionPO>  showHotelPromotion(String hotelAddress) throws RemoteException;
+	public ArrayList<PromotionPO>  showHotelPromotion(String hotelAddress) throws RemoteException;
 	//按hotelAddress进行查找返回该酒店的PromotionPO记录
 	
-	public List<PromotionPO> showWebsitePromotion() throws RemoteException;
+	public ArrayList<PromotionPO> showWebsitePromotion() throws RemoteException;
 	//返回网站策略的PromotionPO记录
 	
 	public LevelPO showLevel() throws RemoteException;

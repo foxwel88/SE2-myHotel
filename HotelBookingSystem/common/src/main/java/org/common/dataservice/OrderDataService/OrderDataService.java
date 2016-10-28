@@ -3,7 +3,7 @@ package org.common.dataservice.OrderDataService;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.sql.Date;
-import java.util.List;
+import java.util.ArrayList;
 
 import org.common.po.OrderPO;
 import org.common.utility.OrderType;
@@ -14,13 +14,13 @@ public interface OrderDataService extends Remote
 	public OrderPO getOrderPO(String orderID) throws RemoteException;
 	//系统返回一条订单信息
 	
-	public List<OrderPO> getUserOrderPO (String userID, OrderType type) throws RemoteException;
+	public ArrayList<OrderPO> getUserOrderPO (String userID, OrderType type) throws RemoteException;
 	//返回某客户某种类全部订单po
 	
-	public List<OrderPO> getHotelOrderPO (String hotelID, OrderType type) throws RemoteException;
+	public ArrayList<OrderPO> getHotelOrderPO (String hotelID, OrderType type) throws RemoteException;
 	//返回某酒店某种类全部订单po
 	
-	public List<OrderPO> getAbnormalOrderPO (Date date) throws RemoteException;
+	public ArrayList<OrderPO> getAbnormalOrderPO (Date date) throws RemoteException;
 	//返回当日全部异常订单po
 	
 	public ResultMessage add (OrderPO po) throws RemoteException;

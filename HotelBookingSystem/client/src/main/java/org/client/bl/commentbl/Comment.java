@@ -1,6 +1,6 @@
 package org.client.bl.commentbl;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import org.client.blservice.commentblservice.Commentblservice;
 import org.client.vo.CommentVO;
@@ -8,7 +8,7 @@ import org.common.utility.ResultMessage;
 
 public class Comment implements Commentblservice{
 
-	public List<CommentVO> getComment(String hotelAddress) {
+	public ArrayList<CommentVO> getComment(String hotelAddress) {
 		return null;
 	}
 
