@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -24,6 +25,9 @@
                <font>
                   <Font name="Microsoft YaHei UI Light" size="20.0" />
                </font>
+               <effect>
+                  <ColorAdjust contrast="0.2" />
+               </effect>
             </Button>
             <Label layoutX="113.0" layoutY="109.0" text="酒店预订管理系统" textFill="WHITE">
                <font>
@@ -33,6 +37,11 @@
                   <Bloom threshold="0.89" />
                </effect>
             </Label>
+            <Button defaultButton="true" layoutX="66.0" layoutY="417.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="318.0" style="-fx-background-color: rgba(255,45,45,0.5);" text="没有账号？点击注册" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft YaHei UI Light" size="20.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </children>
