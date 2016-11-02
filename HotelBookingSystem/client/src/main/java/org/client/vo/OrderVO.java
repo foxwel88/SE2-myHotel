@@ -12,7 +12,7 @@ public class OrderVO implements Serializable{
 	 */
 	private static final long serialVersionUID = -8958928454707420061L;
 
-	public OrderType type;
+	public String type;
 	
 	public Date generatedDate;
 	
@@ -34,7 +34,7 @@ public class OrderVO implements Serializable{
 	
 	public String hotelName;
 	
-	public RoomType roomType;
+	public String roomType;
 	
 	public double totalPrice;
 	
@@ -46,9 +46,9 @@ public class OrderVO implements Serializable{
 	
 	public String customerName;
 	
-	public OrderVO(OrderType type, Date generatedDate, Date schFrom, Date schTo, Date actFrom, Date actTo,
+	public OrderVO(String type, Date generatedDate, Date schFrom, Date schTo, Date actFrom, Date actTo,
 			Date latestTime, Date cancelTime, String hotelAddress, String orderID,
-			String hotelName, RoomType roomType, double totalPrice, int roomNum, int numOfPeople, boolean existsChild, String customerName) {
+			String hotelName, String roomType, double totalPrice, int roomNum, int numOfPeople, boolean existsChild, String customerName) {
 		this.type = type;
 		this.generatedDate = generatedDate;
 		this.schFrom = schFrom;

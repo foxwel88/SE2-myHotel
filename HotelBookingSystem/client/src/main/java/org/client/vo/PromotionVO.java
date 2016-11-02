@@ -11,7 +11,7 @@ public class PromotionVO implements Serializable{
 	 */
 	private static final long serialVersionUID = 1774019741909946616L;
 
-	public PromotionType type; 
+	public String type; 
 	
 	public Date startTime;
 	
@@ -27,7 +27,7 @@ public class PromotionVO implements Serializable{
 	
 	public String name;
 	
-	public PromotionVO(PromotionType type, Date startTime, Date endTime, String hotelName,
+	public PromotionVO(String type, Date startTime, Date endTime, String hotelName,
 			int level, String area, double discount, String name) {
 		this.type = type;
 		this.startTime = startTime;

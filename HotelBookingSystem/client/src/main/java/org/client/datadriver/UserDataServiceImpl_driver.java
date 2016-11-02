@@ -17,7 +17,7 @@ public class UserDataServiceImpl_driver {
 			System.out.println(stub.add(new UserPO(UserType.CUSTOMER, 
 					"誰説我不會編程", "QinLiu", "0101010101", "njuse", "13344456789", 0, null, null, 0, 0, null)));
 			System.out.println(stub.addCreditRecord(new CreditRecordPO(null, "012345678920161015211206",
-					0, 0, CreditOperation.EXCEPTIONORDER)));
+					0, 0, CreditOperation.EXCEPTIONORDER, null)));
 			System.out.println(stub.Check("gz", "123"));
 			System.out.println(stub.findbyID("0123456789"));
 			System.out.println(stub.findbyUserName("gg"));

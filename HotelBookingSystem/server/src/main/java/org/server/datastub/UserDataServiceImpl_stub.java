@@ -43,7 +43,7 @@ public class UserDataServiceImpl_stub implements UserDataService{
 	}
 
 	public CreditRecordPO findCreditRecord(String ID) throws RemoteException {
-		return new CreditRecordPO(null, ID, 0, 0, null);
+		return new CreditRecordPO(null, ID, 0, 0, null, ID);
 	}
 
 	public void init() throws RemoteException {

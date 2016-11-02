@@ -11,7 +11,7 @@ public class UserVO implements Serializable{
 	 */
 	private static final long serialVersionUID = 1767049142801881395L;
 
-	public UserType type;
+	public String type;
 	
 	public String userName;
 	
@@ -34,7 +34,7 @@ public class UserVO implements Serializable{
 	public double creditToNext;
 	
 	public String hotelAddress;
-	public UserVO(UserType type, String userName, String name, String ID, String passWord,
+	public UserVO(String type, String userName, String name, String ID, String passWord,
 			String phoneNumber, double credit, Date birthday, String companyName, int level,
 			double creditToNext, String hotelAddress) {
 		this.type = type;

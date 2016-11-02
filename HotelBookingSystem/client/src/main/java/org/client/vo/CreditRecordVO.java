@@ -19,9 +19,9 @@ public class CreditRecordVO implements Serializable{
 	
 	public double result;
 	
-	public CreditOperation op;
+	public String op;
 	
-	public CreditRecordVO(Date date, String orderID, double change, double result, CreditOperation op){
+	public CreditRecordVO(Date date, String orderID, double change, double result, String op){
 		this.date = date;
 		this.orderID = orderID;
 		this.change = change;

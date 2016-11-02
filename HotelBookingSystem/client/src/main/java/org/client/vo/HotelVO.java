@@ -29,7 +29,7 @@ public class HotelVO implements Serializable{
 	
 	public String checkInInfos;
 	
-	public ArrayList<RoomType> roomType;
+	public ArrayList<String> roomType;
 	
 	public ArrayList<Integer> roomNum;
 	
@@ -37,7 +37,7 @@ public class HotelVO implements Serializable{
 	
 	public ArrayList<String> cooperators;
 	public HotelVO(String hotelName, String address, String city, String area, String introduce,
-			double rank, int star, String facility, String checkInInfos, ArrayList<RoomType> roomType,
+			double rank, int star, String facility, String checkInInfos, ArrayList<String> roomType,
 			ArrayList<Integer> roomNum, ArrayList<Double> roomPrice, ArrayList<String> cooperators) {
 		
 		this.hotelName = hotelName;
@@ -49,7 +49,7 @@ public class HotelVO implements Serializable{
 		this.star = star;
 		this.facility = facility;
 		this.checkInInfos = checkInInfos;
-		if (roomType==null) this.roomType=null;else this.roomType = new ArrayList<RoomType>(roomType);
+		if (roomType==null) this.roomType=null;else this.roomType = new ArrayList<String>(roomType);
 		if (roomNum==null) this.roomNum=null;else this.roomNum = new ArrayList<Integer>(roomNum);
 		if (roomPrice==null) this.roomPrice=null;else this.roomPrice = new ArrayList<Double>(roomPrice);
 		if (cooperators==null) this.cooperators=null;else this.cooperators = new ArrayList<String>(cooperators);
