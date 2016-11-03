@@ -2,16 +2,17 @@ package org.client.datadriver;
 
 import java.rmi.RemoteException;
 
+import org.client.rmi.RMIHelper;
+import org.common.dataservice.UserDataService.UserDataService;
 import org.common.po.CreditRecordPO;
 import org.common.po.UserPO;
 import org.common.utility.CreditOperation;
 import org.common.utility.UserType;
-import org.server.datastub.UserDataServiceImpl_stub;
 
 public class UserDataServiceImpl_driver {
 
 	public static void main(String[] args) {
-		UserDataServiceImpl_stub stub = new UserDataServiceImpl_stub();
+		UserDataService stub = RMIHelper.getInstance().getUserDataServiceImpl();
 		try {
 			stub.init();
 			System.out.println(stub.add(new UserPO(UserType.CUSTOMER, 

@@ -2,16 +2,17 @@ package org.client.datadriver;
 
 import java.rmi.RemoteException;
 
+import org.client.rmi.RMIHelper;
+import org.common.dataservice.HotelDataService.HotelDataService;
 import org.common.po.CityPO;
 import org.common.po.HotelPO;
 import org.common.po.RoomPO;
 import org.common.utility.HotelFilter;
-import org.server.datastub.HotelDataServiceImpl_stub;
 
 public class HotelDataServiceImpl_driver {
 	
 	public static void main(String[] args) {
-		HotelDataServiceImpl_stub stub = new HotelDataServiceImpl_stub();
+		HotelDataService stub = RMIHelper.getInstance().getHotelDataServiceImpl();
 		try {
 			stub.init();
 			System.out.println(stub.addHotelInfo(new HotelPO(null, null, null, null, null, 0, 0, null, null, null)));

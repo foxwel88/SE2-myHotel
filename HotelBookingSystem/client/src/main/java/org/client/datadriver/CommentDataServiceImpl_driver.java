@@ -2,13 +2,14 @@ package org.client.datadriver;
 
 import java.rmi.RemoteException;
 
+import org.client.rmi.RMIHelper;
+import org.common.dataservice.CommentDataService.CommentDataService;
 import org.common.po.CommentPO;
-import org.server.datastub.CommentDataServiceImpl_stub;
 
 public class CommentDataServiceImpl_driver {
 
 	public static void main(String[] args) {
-		CommentDataServiceImpl_stub stub = new CommentDataServiceImpl_stub();
+		CommentDataService stub = RMIHelper.getInstance().getCommentDataServiceImpl();
 		try {
 			stub.init();
 			System.out.println(stub.find("7days"));

@@ -2,15 +2,16 @@ package org.client.datadriver;
 
 import java.rmi.RemoteException;
 
+import org.client.rmi.RMIHelper;
+import org.common.dataservice.PromotionDataService.PromotionDataService;
 import org.common.po.LevelPO;
 import org.common.po.PromotionPO;
 import org.common.utility.PromotionType;
-import org.server.datastub.PromotionDataServiceImpl_stub;
 
 public class PromotionDataServiceImpl_driver {
 
 	public static void main(String[] args) {
-		PromotionDataServiceImpl_stub stub = new PromotionDataServiceImpl_stub();
+		PromotionDataService stub = RMIHelper.getInstance().getPromotionDataServiceImpl();
 		try {
 			stub.init();
 			System.out.println(stub.add(new PromotionPO(PromotionType.BIRTHDAYBONUS, null, null, null, 0, null, 0, null)));

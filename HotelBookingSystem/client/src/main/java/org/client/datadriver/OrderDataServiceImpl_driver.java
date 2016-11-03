@@ -3,14 +3,15 @@ package org.client.datadriver;
 import java.rmi.RemoteException;
 import java.sql.Date;
 
+import org.client.rmi.RMIHelper;
+import org.common.dataservice.OrderDataService.OrderDataService;
 import org.common.po.OrderPO;
 import org.common.utility.OrderType;
-import org.server.datastub.OrderDataServiceImpl_stub;
 
 public class OrderDataServiceImpl_driver {
 
 	public static void main(String[] args) {
-		OrderDataServiceImpl_stub stub = new OrderDataServiceImpl_stub();
+		OrderDataService stub = RMIHelper.getInstance().getOrderDataServiceImpl();
 		try {
 			stub.init();
 			System.out.println(stub.add(new OrderPO(null, null, null, null, null, null, null, null, null, null, null, null, 100, 0, 0, false, null, null)));
