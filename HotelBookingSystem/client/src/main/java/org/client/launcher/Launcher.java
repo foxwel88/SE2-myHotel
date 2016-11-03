@@ -1,5 +1,7 @@
 package org.client.launcher;
 
+import org.client.rmi.RMIHelper;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -23,7 +25,9 @@ public class Launcher extends Application {
 	}
 	
 	public static void main(String[] args) {
+		RMIHelper.getInstance().init();
 		launch(args);
+		
 	}
 	
 	public void exit() {
