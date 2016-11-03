@@ -10,11 +10,11 @@ import org.common.utility.ResultMessage;
 public class OrderList {
 	
 	@SuppressWarnings("unused")
-	private ArrayList<OrderVO> list;
+	private ArrayList<Order> list;
 	
 	
 	public ResultMessage setOrderList (List<OrderPO> polist) {
-		list=new ArrayList<OrderVO>();
+		list=new ArrayList<Order>();
 		return null;
 	}
 	

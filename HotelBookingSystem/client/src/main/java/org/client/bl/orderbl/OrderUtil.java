@@ -7,8 +7,12 @@ import org.common.utility.OrderType;
 import org.common.utility.ResultMessage;
 
 public class OrderUtil {
+	
 	private static OrderUtil util;
 
+	private OrderUtil() {
+		
+	}
 	
 	public static OrderUtil getInstance() {
 		if (util == null) {
