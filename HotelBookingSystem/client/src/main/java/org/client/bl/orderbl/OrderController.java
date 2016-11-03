@@ -64,5 +64,10 @@ public class OrderController implements Orderblservice{
 		return null;
 	}
 
+	public List<String> getHistoryHotels(String userId) {
+		// TODO Auto-generated method stub
+		return OrderUtil.getInstance().getHistoryHotels(userId);
+	}
 
+	
 }

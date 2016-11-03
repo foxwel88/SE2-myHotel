@@ -23,4 +23,6 @@ public interface Orderblservice {
 	public ResultMessage executeOrder (String orderID);
 	
 	public ResultMessage cancelAbnormalOrder (String orderID, Boolean isHalf);
+	
+	public List<String> getHistoryHotels(String userId);
 }
