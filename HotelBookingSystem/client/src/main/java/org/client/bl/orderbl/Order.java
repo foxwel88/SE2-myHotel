@@ -1,53 +1,37 @@
 package org.client.bl.orderbl;
 
-import java.util.List;
-
-import org.client.blservice.orderblservice.Orderblservice;
 import org.client.vo.OrderVO;
-import org.common.utility.OrderType;
+import org.common.po.OrderPO;
 import org.common.utility.ResultMessage;
 
-public class Order implements Orderblservice{
-
-	public ResultMessage createOrder(OrderVO vo) {
-		// TODO Auto-generated method stub
+public class Order {
+	
+	public ResultMessage setOrder (OrderVO vo) {
 		return null;
 	}
-
-	public ResultMessage cancelOrder(String orderID) {
-		// TODO Auto-generated method stub
+	
+	public ResultMessage setOrder (OrderPO po) {
 		return null;
 	}
-
-	public OrderVO getOrder(String ID) {
-		// TODO Auto-generated method stub
+	
+	public OrderVO getOrderVO () {
 		return null;
 	}
-
-	public List<OrderVO> getAbnormalOrder() {
-		// TODO Auto-generated method stub
+	
+	public OrderPO getOrderPO () {
 		return null;
 	}
-
-	public List<OrderVO> getUserOrderList(String userID, OrderType type) {
-		// TODO Auto-generated method stub
+	
+	public ResultMessage cancelOrder () {
 		return null;
 	}
-
-	public List<OrderVO> getHotelOrderList(String hotelID, OrderType type) {
-		// TODO Auto-generated method stub
+	
+	public ResultMessage executeOrder () {
 		return null;
 	}
-
-	public ResultMessage executeOrder(String orderID) {
-		// TODO Auto-generated method stub
+	
+	public ResultMessage cancelAbnormalOrder (Boolean isHalf) {
 		return null;
 	}
-
-	public ResultMessage cancelAbnormalOrder(String orderID, Boolean isHalf) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 
 }

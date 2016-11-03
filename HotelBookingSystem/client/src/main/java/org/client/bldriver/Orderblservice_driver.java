@@ -2,7 +2,7 @@ package org.client.bldriver;
 
 import java.util.Date;
 
-import org.client.bl.orderbl.Order;
+import org.client.bl.orderbl.OrderController;
 import org.client.blstub.Order_stub;
 import org.client.vo.OrderVO;
 import org.common.utility.OrderType;
