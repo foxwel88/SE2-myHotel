@@ -9,6 +9,7 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 
 import org.server.data.datafactory.DataFactory;
+import org.server.datastub.DataStubFactory;
 public class RMIHelper {
 	
 	public static RMIHelper rmihelper;
@@ -41,6 +42,30 @@ public class RMIHelper {
 		}
 	
 		reg=null;
+	}
+	
+	public void buildStubConnection() {
+		try {
+			reg=LocateRegistry.createRegistry(8888);
+			Naming.rebind("rmi://localhost:8888/CommentDataServiceObject",DataStubFactory.getInstance().getCommentDataServiceImpl());
+			System.out.println("Comment succed");
+			Naming.rebind("rmi://localhost:8888/HotelDataServiceObject",DataStubFactory.getInstance().getHotelDataServiceImpl());
+			System.out.println("hotel succed");
+			Naming.rebind("rmi://localhost:8888/OrderDataServiceObject",DataStubFactory.getInstance().getOrderDataServiceImpl());
+			System.out.println("order succed");
+			Naming.rebind("rmi://localhost:8888/PromotionDataServiceObject",DataStubFactory.getInstance().getPromotionDataServiceImpl());
+			System.out.println("promotion succed");
+			Naming.rebind("rmi://localhost:8888/UserDataServiceObject",DataStubFactory.getInstance().getUserDataServiceImpl());
+			System.out.println("user succeed");
+			System.out.println("Connect successfully");
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+	
+		}catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void buildConnection() {

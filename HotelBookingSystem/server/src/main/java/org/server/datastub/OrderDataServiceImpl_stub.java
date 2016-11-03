@@ -1,6 +1,7 @@
 package org.server.datastub;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.Date;
 import java.util.ArrayList;
 
@@ -10,7 +11,17 @@ import org.common.utility.OrderType;
 import org.common.utility.ResultMessage;
 import org.common.utility.RoomType;
 
-public class OrderDataServiceImpl_stub implements OrderDataService{
+public class OrderDataServiceImpl_stub extends UnicastRemoteObject implements OrderDataService{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -446301487541339431L;
+
+	protected OrderDataServiceImpl_stub() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	public OrderPO getOrderPO(String orderID) throws RemoteException {
 		return new OrderPO(null, null, null, null, null, null, null, null, orderID, orderID, orderID, null, 100, 0, 0, false, orderID, orderID);

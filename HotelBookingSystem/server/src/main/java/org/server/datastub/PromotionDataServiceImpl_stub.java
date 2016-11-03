@@ -1,6 +1,7 @@
 package org.server.datastub;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 import org.common.dataservice.PromotionDataService.PromotionDataService;
@@ -8,7 +9,17 @@ import org.common.po.LevelPO;
 import org.common.po.PromotionPO;
 import org.common.utility.ResultMessage;
 
-public class PromotionDataServiceImpl_stub implements PromotionDataService{
+public class PromotionDataServiceImpl_stub extends UnicastRemoteObject implements PromotionDataService{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5293362855285814646L;
+
+	protected PromotionDataServiceImpl_stub() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	public ResultMessage add(PromotionPO po) throws RemoteException {
 		return ResultMessage.SUCCESS;

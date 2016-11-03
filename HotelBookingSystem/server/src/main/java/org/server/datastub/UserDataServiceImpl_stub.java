@@ -1,13 +1,24 @@
 package org.server.datastub;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 
 import org.common.dataservice.UserDataService.UserDataService;
 import org.common.po.CreditRecordPO;
 import org.common.po.UserPO;
 import org.common.utility.ResultMessage;
 
-public class UserDataServiceImpl_stub implements UserDataService{
+public class UserDataServiceImpl_stub extends UnicastRemoteObject implements UserDataService{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6141135701304906056L;
+
+	protected UserDataServiceImpl_stub() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	public ResultMessage add(UserPO po) throws RemoteException {
 		if(po.userName.equals("gz")) {
