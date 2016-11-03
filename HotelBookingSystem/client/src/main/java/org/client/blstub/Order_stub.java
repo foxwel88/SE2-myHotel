@@ -2,6 +2,7 @@ package org.client.blstub;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.client.bl.orderbl.OrderController;
 import org.client.blservice.orderblservice.Orderblservice;
@@ -55,6 +56,14 @@ public class Order_stub implements Orderblservice{
 	public ResultMessage cancelAbnormalOrder(String orderID, Boolean isHalf) {
 		// TODO Auto-generated method stub
 		return ResultMessage.SUCCESS;
+	}
+
+	public List<String> getHistoryHotels(String userId) {
+		// TODO Auto-generated method stub
+		List<String> list=new ArrayList<String>();
+		list.add("1号酒店");
+		list.add("2号酒店");
+		return list;
 	}
 
 	

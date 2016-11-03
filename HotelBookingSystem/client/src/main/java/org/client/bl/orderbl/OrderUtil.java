@@ -24,13 +24,20 @@ public class OrderUtil {
 	public OrderVO getOrder (String orderID) {
 		return null;
 	}
+	
 	public List<OrderVO> getAbnormalOrder () {
 		return null;
 	}
+	
 	public List<OrderVO> getUserOrderList (String UserID, OrderType type) {
 		return null;
 	}
+	
 	public List<OrderVO> getHotelOrderList (String hoteladdress, OrderType type) {
+		return null;
+	}
+	
+	public List<String> getHistoryHotels(String userId) {
 		return null;
 	}
 
