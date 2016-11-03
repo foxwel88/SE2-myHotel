@@ -11,6 +11,19 @@ import org.common.utility.ResultMessage;
 
 public class OrderController implements Orderblservice{
 
+	private static OrderController controller;
+	
+	private OrderController() {
+		
+	}
+	
+	public static OrderController getInstance() {
+		if (controller == null) {
+			controller = new OrderController();
+		}
+		return controller;
+	}
+	
 	public ResultMessage createOrder(OrderVO vo) {
 		// TODO Auto-generated method stub
 		return OrderUtil.getInstance().createOrder(vo);
