@@ -7,8 +7,7 @@ import java.util.List;
 import org.common.po.CommentPO;
 import org.common.utility.ResultMessage;
 
-public interface CommentDataService extends Remote
-{
+public interface CommentDataService extends Remote {
 	public void init() throws RemoteException;
 	//初始化持久化数据库
 	

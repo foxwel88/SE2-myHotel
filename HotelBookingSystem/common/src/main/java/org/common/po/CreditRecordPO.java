@@ -24,7 +24,7 @@ public class CreditRecordPO implements Serializable {
 	
 	public CreditOperation op;
 	
-	public CreditRecordPO(Date date, String orderID, double change, double result, CreditOperation op, String userId){
+	public CreditRecordPO(Date date, String orderID, double change, double result, CreditOperation op, String userId) {
 		this.date = date;
 		this.orderID = orderID;
 		this.change = change;

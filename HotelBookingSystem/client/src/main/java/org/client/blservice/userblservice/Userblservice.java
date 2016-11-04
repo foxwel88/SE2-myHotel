@@ -17,7 +17,8 @@ public interface Userblservice {
 	
 	public UserVO findbyUserName(String userName);
 	
-	public ResultMessage modifyPassword(String userName, String oldPassword, String newPassword);
+	public ResultMessage modifyPassword(String userName, 
+			String oldPassword, String newPassword);
 	
 	public ResultMessage modify(UserVO vo);
 	

@@ -2,7 +2,7 @@ package org.client.vo;
 
 import java.io.Serializable;
 
-public class AreaVO implements Serializable{
+public class AreaVO implements Serializable {
 	/**
 	 * 
 	 */
@@ -10,7 +10,7 @@ public class AreaVO implements Serializable{
 	
 	public String address;
 	
-	public AreaVO(String address){
+	public AreaVO(String address) {
 		this.address = address;
 	}
 }

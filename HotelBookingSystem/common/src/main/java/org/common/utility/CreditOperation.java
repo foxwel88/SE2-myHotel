@@ -5,22 +5,27 @@ public enum CreditOperation {
 	
 	private String s;
 	
-	private CreditOperation(String s) 
-	{
+	private CreditOperation(String s) {
 		this.s = s;
 	}
 	
-	public String getString() 
-	{
+	public String getString() {
 		return s;
 	}
 	
-	public CreditOperation getType(String ss) 
-	{
-		if (ss.equals("执行订单")) return CreditOperation.FINISHORDER;
-		if (ss.equals("恢复异常订单")) return CreditOperation.EXCEPTIONORDER;
-		if (ss.equals("撤销订单")) return CreditOperation.CANCELORER;
-		if (ss.equals("信用充值")) return CreditOperation.RECHARGE;
+	public CreditOperation getType(String ss) {
+		if (ss.equals("执行订单")) {
+			return CreditOperation.FINISHORDER;
+		}
+		if (ss.equals("恢复异常订单")) {
+			return CreditOperation.EXCEPTIONORDER;
+		}
+		if (ss.equals("撤销订单")) {
+			return CreditOperation.CANCELORER;
+		}
+		if (ss.equals("信用充值")) {
+			return CreditOperation.RECHARGE;
+		}
 		return null;
 	}
 }

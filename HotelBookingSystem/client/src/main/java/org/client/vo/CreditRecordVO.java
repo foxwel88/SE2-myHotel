@@ -5,7 +5,7 @@ import java.util.Date;
 
 import org.common.utility.CreditOperation;
 
-public class CreditRecordVO implements Serializable{
+public class CreditRecordVO implements Serializable {
 	/**
 	 * 
 	 */
@@ -21,7 +21,7 @@ public class CreditRecordVO implements Serializable{
 	
 	public String op;
 	
-	public CreditRecordVO(Date date, String orderID, double change, double result, String op){
+	public CreditRecordVO(Date date, String orderID, double change, double result, String op) {
 		this.date = date;
 		this.orderID = orderID;
 		this.change = change;

@@ -5,11 +5,12 @@ import org.common.po.UserPO;
 import org.common.utility.ResultMessage;
 
 public class User {
-	public ResultMessage modifyPassword(String userName, String oldPassword, String newPassword){
+	public ResultMessage modifyPassword(String userName, 
+			String oldPassword, String newPassword) {
 		return null;
 	}
 	
-	public ResultMessage modify(UserVO vo){
+	public ResultMessage modify(UserVO vo) {
 		return null;
 	}
 	

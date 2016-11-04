@@ -5,22 +5,27 @@ public enum UserType {
 	
 	private String s;
 	
-	private UserType(String s) 
-	{
+	private UserType(String s) {
 		this.s = s;
 	}
 	
-	public String getString() 
-	{
+	public String getString() {
 		return s;
 	}
 	
-	public UserType getType(String ss) 
-	{
-		if (ss.equals("客户")) return UserType.CUSTOMER;
-		if (ss.equals("酒店工作人员")) return UserType.HOTELMANAGER;
-		if (ss.equals("网站管理人员")) return UserType.WEBMANAGER;
-		if (ss.equals("网站营销人员")) return UserType.WEBMARKETER;
+	public UserType getType(String ss) {
+		if (ss.equals("客户")) {
+			return UserType.CUSTOMER;
+		}
+		if (ss.equals("酒店工作人员")) {
+			return UserType.HOTELMANAGER;
+		}
+		if (ss.equals("网站管理人员")) {
+			return UserType.WEBMANAGER;
+		}
+		if (ss.equals("网站营销人员")) {
+			return UserType.WEBMARKETER;
+		}
 		return null;
 	}
 }

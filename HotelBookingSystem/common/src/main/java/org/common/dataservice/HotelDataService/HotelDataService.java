@@ -11,8 +11,7 @@ import org.common.po.RoomPO;
 import org.common.utility.HotelFilter;
 import org.common.utility.ResultMessage;
 
-public interface HotelDataService extends Remote
-{
+public interface HotelDataService extends Remote {
 	public void init() throws RemoteException;
 	//初始化持久化数据库
 	

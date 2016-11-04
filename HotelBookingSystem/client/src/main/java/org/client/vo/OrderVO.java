@@ -6,7 +6,7 @@ import java.util.Date;
 import org.common.utility.OrderType;
 import org.common.utility.RoomType;
 
-public class OrderVO implements Serializable{
+public class OrderVO implements Serializable {
 	/**
 	 * 
 	 */

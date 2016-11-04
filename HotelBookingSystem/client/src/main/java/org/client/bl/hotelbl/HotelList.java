@@ -14,9 +14,9 @@ public class HotelList {
 	}
 	
 	public List<HotelVO> getVOs() {
-		if(list != null) {
+		if (list != null) {
 			List<HotelVO> voList = new ArrayList<HotelVO>();
-			for(Hotel h: list) {
+			for (Hotel h: list) {
 				voList.add(h.generateVO());
 			}
 			return voList;

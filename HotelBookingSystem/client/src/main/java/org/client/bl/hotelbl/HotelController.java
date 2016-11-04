@@ -11,7 +11,7 @@ import org.common.utility.HotelFilter;
 import org.common.utility.ResultMessage;
 import org.common.utility.RoomType;
 
-public class HotelController implements Hotelblservice{
+public class HotelController implements Hotelblservice {
 
 	public List<HotelVO> findHotels(HotelFilter filter) {
 		return HotelUtil.getInstance().getHotelList(filter);

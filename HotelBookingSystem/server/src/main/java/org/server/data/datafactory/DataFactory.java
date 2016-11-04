@@ -11,31 +11,31 @@ import org.server.data.UserData.UserDataServiceImpl;
 public class DataFactory {
 	private static DataFactory datafactory;
 	
-	public static DataFactory getInstance(){
-		if(datafactory == null){
-			datafactory=new DataFactory();
+	public static DataFactory getInstance() {
+		if (datafactory == null) {
+			datafactory = new DataFactory();
 		}
 		return datafactory;
 	}
 	
-	public CommentDataServiceImpl getCommentDataServiceImpl() throws RemoteException{
+	public CommentDataServiceImpl getCommentDataServiceImpl() throws RemoteException {
 		return new CommentDataServiceImpl();
 	}
 	
-	public HotelDataServiceImpl getHotelDataServiceImpl() throws RemoteException{
+	public HotelDataServiceImpl getHotelDataServiceImpl() throws RemoteException {
 
 		return new HotelDataServiceImpl();
 	}
 	
-	public OrderDataServiceImpl getOrderDataServiceImpl() throws RemoteException{
+	public OrderDataServiceImpl getOrderDataServiceImpl() throws RemoteException {
 		return new OrderDataServiceImpl();
 	}
 	
-	public PromotionDataServiceImpl getPromotionDataServiceImpl() throws RemoteException{
+	public PromotionDataServiceImpl getPromotionDataServiceImpl() throws RemoteException {
 		return new PromotionDataServiceImpl();
 	}
 	
-	public UserDataServiceImpl getUserDataServiceImpl() throws RemoteException{
+	public UserDataServiceImpl getUserDataServiceImpl() throws RemoteException {
 		return new UserDataServiceImpl();
 	}
 }

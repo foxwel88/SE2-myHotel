@@ -7,7 +7,7 @@ import org.client.vo.CreditRecordVO;
 import org.client.vo.UserVO;
 import org.common.utility.ResultMessage;
 
-public class UserController implements Userblservice{
+public class UserController implements Userblservice {
 
 	public ResultMessage login(String userName, String password) {
 		// TODO Auto-generated method stub
@@ -34,7 +34,8 @@ public class UserController implements Userblservice{
 		return UserUtil.getInstance().findbyUserName(userName);
 	}
 
-	public ResultMessage modifyPassword(String userName, String oldPassword, String newPassword) {
+	public ResultMessage modifyPassword(String userName,
+			String oldPassword, String newPassword) {
 		// TODO Auto-generated method stub
 		return UserUtil.getInstance().modifyPassword(userName, oldPassword, newPassword);
 	}

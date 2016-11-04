@@ -6,7 +6,8 @@ import org.common.po.HotelPO;
 public class Hotel {
 
 	public HotelVO generateVO() {
-		return new HotelVO(null, null, null, null, null, 0, 0, null, null, null, null, null, null);
+		return new HotelVO(null, null, null, null, null, 0, 0, null, 
+		        null, null, null, null, null);
 	}
 	
 	public Hotel initByPO(HotelPO po) {
@@ -14,6 +15,7 @@ public class Hotel {
 	}
 	
 	public HotelPO modify(HotelVO vo) {
-		return new HotelPO(null, null, null, null, null, 0, 0, null, null, null);
+		return new HotelPO(null, null, null, null, null, 0, 0, null,
+		        null, null);
 	}
 }

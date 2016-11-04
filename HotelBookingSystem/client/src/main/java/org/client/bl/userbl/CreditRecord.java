@@ -11,7 +11,7 @@ public class CreditRecord {
 		return null;
 	}
 	
-	public CreditRecordVO getCreditRecordVO(){
+	public CreditRecordVO getCreditRecordVO() {
 		return null;
 	}
 	

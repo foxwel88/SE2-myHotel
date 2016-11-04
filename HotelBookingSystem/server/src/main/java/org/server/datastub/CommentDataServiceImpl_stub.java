@@ -8,7 +8,7 @@ import org.common.dataservice.CommentDataService.CommentDataService;
 import org.common.po.CommentPO;
 import org.common.utility.ResultMessage;
 
-public class CommentDataServiceImpl_stub extends UnicastRemoteObject implements CommentDataService{
+public class CommentDataServiceImpl_stub extends UnicastRemoteObject implements CommentDataService {
 
 	/**
 	 * 

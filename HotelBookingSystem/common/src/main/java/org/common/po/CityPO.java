@@ -11,7 +11,7 @@ public class CityPO implements Serializable {
 	
 	public String cityName;
 	
-	public CityPO(String cityName){
+	public CityPO(String cityName) {
 		this.cityName = cityName;
 	}
 }

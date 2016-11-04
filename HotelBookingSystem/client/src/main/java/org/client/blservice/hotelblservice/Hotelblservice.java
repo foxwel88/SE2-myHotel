@@ -10,8 +10,7 @@ import org.common.utility.HotelFilter;
 import org.common.utility.ResultMessage;
 import org.common.utility.RoomType;
 
-public interface Hotelblservice 
-{
+public interface Hotelblservice {
 	public List<HotelVO> findHotels(HotelFilter filter);
 	
 	public HotelVO getHotel(String hotelAddress);

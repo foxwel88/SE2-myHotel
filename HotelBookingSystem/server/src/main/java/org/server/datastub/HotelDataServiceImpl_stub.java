@@ -12,7 +12,7 @@ import org.common.po.RoomPO;
 import org.common.utility.HotelFilter;
 import org.common.utility.ResultMessage;
 
-public class HotelDataServiceImpl_stub extends UnicastRemoteObject implements HotelDataService{
+public class HotelDataServiceImpl_stub extends UnicastRemoteObject implements HotelDataService {
 
 	/**
 	 * 

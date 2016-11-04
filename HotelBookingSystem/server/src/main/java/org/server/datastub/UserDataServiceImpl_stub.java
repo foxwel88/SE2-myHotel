@@ -8,7 +8,7 @@ import org.common.po.CreditRecordPO;
 import org.common.po.UserPO;
 import org.common.utility.ResultMessage;
 
-public class UserDataServiceImpl_stub extends UnicastRemoteObject implements UserDataService{
+public class UserDataServiceImpl_stub extends UnicastRemoteObject implements UserDataService {
 
 	/**
 	 * 
@@ -21,7 +21,7 @@ public class UserDataServiceImpl_stub extends UnicastRemoteObject implements Use
 	}
 
 	public ResultMessage add(UserPO po) throws RemoteException {
-		if(po.userName.equals("gz")) {
+		if (po.userName.equals("gz")) {
 			return ResultMessage.EXIST;
 		}
 		return ResultMessage.SUCCESS;
@@ -32,7 +32,7 @@ public class UserDataServiceImpl_stub extends UnicastRemoteObject implements Use
 	}
 
 	public UserPO findbyUserName(String userName) throws RemoteException {
-		if(userName.equals("gz")) {
+		if (userName.equals("gz")) {
 			return new UserPO(null, userName, userName, userName, userName, userName, 0, null, userName, 0, 0, userName);
 		}
 		return null;
@@ -43,7 +43,7 @@ public class UserDataServiceImpl_stub extends UnicastRemoteObject implements Use
 	}
 
 	public ResultMessage Check(String userName, String password) throws RemoteException {
-		if(userName.equals("gz") && password.equals("123")) {
+		if (userName.equals("gz") && password.equals("123")) {
 			return ResultMessage.SUCCESS;
 		}
 		return ResultMessage.WRONGVALUE;

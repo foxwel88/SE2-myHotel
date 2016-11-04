@@ -10,14 +10,14 @@ public class CreditRecordList {
 	
 	private ArrayList<CreditRecord> list;
 	
-	public ResultMessage initList(String ID){
+	public ResultMessage initList(String ID) {
 		return null;
 	}
 	
-	public List<CreditRecordVO> getVOs(){
-		if(list != null) {
+	public List<CreditRecordVO> getVOs() {
+		if (list != null) {
 			List<CreditRecordVO> voList = new ArrayList<CreditRecordVO>();
-			for(CreditRecord c: list) {
+			for (CreditRecord c: list) {
 				voList.add(c.getCreditRecordVO());
 			}
 			return voList;

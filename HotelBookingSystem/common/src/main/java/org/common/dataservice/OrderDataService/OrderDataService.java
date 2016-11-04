@@ -9,8 +9,7 @@ import org.common.po.OrderPO;
 import org.common.utility.OrderType;
 import org.common.utility.ResultMessage;
 
-public interface OrderDataService extends Remote
-{
+public interface OrderDataService extends Remote {
 	public OrderPO getOrderPO(String orderID) throws RemoteException;
 	//系统返回一条订单信息
 	

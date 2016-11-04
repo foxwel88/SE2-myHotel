@@ -20,7 +20,7 @@ public class CommentPO implements Serializable {
 	
 	public String comment;
 	
-	public CommentPO(String UserName, String hotelAddress, Date date, int rank, String comment){
+	public CommentPO(String UserName, String hotelAddress, Date date, int rank, String comment) {
 		this.UserName = UserName;
 		this.hotelAddress = hotelAddress;
 		this.date = date;

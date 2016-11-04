@@ -5,7 +5,7 @@ import org.common.utility.ResultMessage;
 
 public class Promotion {
 
-	public ResultMessage modify (PromotionVO vo){
+	public ResultMessage modify (PromotionVO vo) {
 		return null;
 	}
 	

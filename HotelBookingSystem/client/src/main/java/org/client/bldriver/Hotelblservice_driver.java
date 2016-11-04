@@ -13,13 +13,20 @@ import org.common.utility.UserType;
 
 public class Hotelblservice_driver {
 	
-	public static void main(String[] args){
+	public static void main(String[] args) {
 		Hotel_stub stub = new Hotel_stub();
 		
 		System.out.println(stub.findHotels(new HotelFilter()));
 		System.out.println(stub.getHotel("dsfc"));
-		System.out.println(stub.addHotel(new HotelVO("dvs", "wqd", "vxvsd", "qwd", "cszq", 2.2, 9, "XAa", "346fv", new ArrayList<String>(), new ArrayList<Integer>(), new ArrayList<Double>(), null), new UserVO(UserType.CUSTOMER.getString(), "123", "123", "123", "312", "ce", 1.1, new Date(), "2142ew", 5, 6.6, "sad")));
-		System.out.println(stub.modifyHotel(new HotelVO("dvs", "wqd", "vxvsd", "qwd", "cszq", 2.2, 9, "XAa", "346fv", new ArrayList<String>(), new ArrayList<Integer>(), new ArrayList<Double>(), null)));
+		System.out.println(stub.addHotel(new HotelVO("dvs", "wqd", "vxvsd", "qwd", "cszq",
+				2.2, 9, "XAa", "346fv", new ArrayList<String>(), 
+				new ArrayList<Integer>(), new ArrayList<Double>(), null), 
+				new UserVO(UserType.CUSTOMER.getString(), 
+				"123", "123", "123", "312", "ce", 1.1, 
+				new Date(), "2142ew", 5, 6.6, "sad")));
+		System.out.println(stub.modifyHotel(new HotelVO("dvs", "wqd", "vxvsd", "qwd",
+				"cszq", 2.2, 9, "XAa", "346fv", new ArrayList<String>(),
+				new ArrayList<Integer>(), new ArrayList<Double>(), null)));
 		System.out.println(stub.changeRoom(RoomType.BIG, 6));
 		System.out.println(stub.getHotelVO("ddl"));
 		System.out.println(stub.getCitys());

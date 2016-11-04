@@ -9,8 +9,7 @@ import org.common.po.LevelPO;
 import org.common.po.PromotionPO;
 import org.common.utility.ResultMessage;
 
-public class PromotionDataServiceImpl extends UnicastRemoteObject implements PromotionDataService
-{
+public class PromotionDataServiceImpl extends UnicastRemoteObject implements PromotionDataService {
 
 	/**
 	 * 

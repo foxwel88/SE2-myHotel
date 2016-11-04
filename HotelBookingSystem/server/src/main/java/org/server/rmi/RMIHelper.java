@@ -10,29 +10,29 @@ import java.rmi.registry.LocateRegistry;
 
 import org.server.data.datafactory.DataFactory;
 import org.server.datastub.DataStubFactory;
+
 public class RMIHelper {
-	
+		
 	public static RMIHelper rmihelper;
+	
 	Remote reg;
 	
-	private RMIHelper()
-	{
+	private RMIHelper() {
 		
 	}
 	
-	public static RMIHelper getinstance()
-	{
-		if(rmihelper == null){
-			rmihelper=new RMIHelper();
+	public static RMIHelper getinstance() {
+		if (rmihelper == null) {
+			rmihelper = new RMIHelper();
 		}
 		return rmihelper;
 	}
 
-	public void releaseConnection(){
+	public void releaseConnection() {
 		try {
 			
 			java.rmi.server.UnicastRemoteObject.unexportObject(reg,true);
-		}  	catch (NoSuchObjectException e) {
+		} catch (NoSuchObjectException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -41,12 +41,12 @@ public class RMIHelper {
 			e.printStackTrace();
 		}
 	
-		reg=null;
+		reg = null;
 	}
 	
 	public void buildStubConnection() {
 		try {
-			reg=LocateRegistry.createRegistry(8888);
+			reg = LocateRegistry.createRegistry(8888);
 			Naming.rebind("rmi://localhost:8888/CommentDataServiceObject",DataStubFactory.getInstance().getCommentDataServiceImpl());
 			System.out.println("Comment succed");
 			Naming.rebind("rmi://localhost:8888/HotelDataServiceObject",DataStubFactory.getInstance().getHotelDataServiceImpl());
@@ -62,7 +62,7 @@ public class RMIHelper {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 	
-		}catch (MalformedURLException e) {
+		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -70,7 +70,7 @@ public class RMIHelper {
 	
 	public void buildConnection() {
 		try {
-			reg=LocateRegistry.createRegistry(8888);
+			reg = LocateRegistry.createRegistry(8888);
 			Naming.rebind("rmi://localhost:8888/CommentDataServiceObject",DataFactory.getInstance().getCommentDataServiceImpl());
 			System.out.println("Comment succed");
 			Naming.rebind("rmi://localhost:8888/HotelDataServiceObject",DataFactory.getInstance().getHotelDataServiceImpl());
@@ -86,7 +86,7 @@ public class RMIHelper {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 	
-		}catch (MalformedURLException e) {
+		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

@@ -16,15 +16,18 @@ public class UserDataServiceImpl_driver {
 		try {
 			stub.init();
 			System.out.println(stub.add(new UserPO(UserType.CUSTOMER, 
-					"誰説我不會編程", "QinLiu", "0101010101", "njuse", "13344456789", 0, null, null, 0, 0, null)));
-			System.out.println(stub.addCreditRecord(new CreditRecordPO(null, "012345678920161015211206",
+					"誰説我不會編程", "QinLiu", "0101010101", "njuse",
+					"13344456789", 0, null, null, 0, 0, null)));
+			System.out.println(stub.addCreditRecord(new CreditRecordPO(null,
+					"012345678920161015211206",
 					0, 0, CreditOperation.EXCEPTIONORDER, null)));
 			System.out.println(stub.Check("gz", "123"));
 			System.out.println(stub.findbyID("0123456789"));
 			System.out.println(stub.findbyUserName("gg"));
 			System.out.println(stub.findCreditRecord("0123455678"));
 			System.out.println(stub.modify(new UserPO(UserType.WEBMANAGER,
-					"阿喀琉斯", "一名香港記者", null, "runningNews", null, 0, null, null, 0, 0, null)));
+					"阿喀琉斯", "一名香港記者",
+					null, "runningNews", null, 0, null, null, 0, 0, null)));
 			stub.finish();
 		} catch (RemoteException e1) {
 			e1.printStackTrace();

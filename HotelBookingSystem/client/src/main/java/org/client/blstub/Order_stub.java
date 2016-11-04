@@ -10,11 +10,20 @@ import org.common.utility.OrderType;
 import org.common.utility.ResultMessage;
 import org.common.utility.RoomType;
 
-public class Order_stub implements Orderblservice{
+public class Order_stub implements Orderblservice {
 
-	OrderVO vo1=new OrderVO(OrderType.ABNORMAL.getString(),new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),"aaaaa","11111","lalala",RoomType.BIG.getString(),100,2,2,true, null);
-	OrderVO vo2=new OrderVO(OrderType.ABNORMAL.getString(),new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),"aaaaa","11111","lalala",RoomType.BIG.getString(),100,2,2,true, null);
-	ArrayList<OrderVO> vo=new ArrayList<OrderVO>();
+	OrderVO vo1 = new OrderVO(OrderType.ABNORMAL.getString()
+			,new Date(),new Date(),new Date(),new Date()
+			,new Date(),new Date(),new Date(),
+			"aaaaa","11111","lalala",RoomType.BIG.getString(),100,2,2,true, null);
+
+	OrderVO vo2 = new OrderVO(OrderType.ABNORMAL.getString(),
+			new Date(),new Date(),new Date(),new Date()
+			,new Date(),new Date(),new Date(),
+			"aaaaa","11111","lalala",RoomType.BIG.getString(),100,2,2,true, null);
+
+	ArrayList<OrderVO> vo = new ArrayList<OrderVO>();
+	
 	public ResultMessage createOrder(OrderVO vo) {
 		// TODO Auto-generated method stub
 		return ResultMessage.SUCCESS;
@@ -59,7 +68,7 @@ public class Order_stub implements Orderblservice{
 
 	public List<String> getHistoryHotels(String userId) {
 		// TODO Auto-generated method stub
-		List<String> list=new ArrayList<String>();
+		List<String> list = new ArrayList<String>();
 		list.add("1号酒店");
 		list.add("2号酒店");
 		return list;

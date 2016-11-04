@@ -10,10 +10,12 @@ public class UserUtil {
 	
 	private static UserUtil userUtil;
 	
-	private UserUtil(){}
+	private UserUtil() {
+		
+	}
 	
 	public static UserUtil getInstance() {
-		if(userUtil == null) {
+		if (userUtil == null) {
 			userUtil = new UserUtil();
 		}
 		return userUtil;
@@ -41,11 +43,12 @@ public class UserUtil {
 		return list.getVOs();
 	}
 	
-	public ResultMessage modifyPassword(String userName, String oldPassword, String newPassword){
+	public ResultMessage modifyPassword(String userName, 
+			String oldPassword, String newPassword) {
 		return null;
 	}
 	
-	public ResultMessage modify(UserVO vo){
+	public ResultMessage modify(UserVO vo) {
 		return null;
 	}
 }

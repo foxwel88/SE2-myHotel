@@ -9,11 +9,15 @@ import org.client.vo.PromotionVO;
 import org.common.utility.PromotionType;
 import org.common.utility.ResultMessage;
 
-public class Promotion_stub implements Promotionblservice{
+public class Promotion_stub implements Promotionblservice {
 	
-	PromotionVO vo1=new PromotionVO(PromotionType.SPECIALDATE.getString(), new Date(), new Date(), "goodhotel",2 , "lalal", 0.8, null);
-	PromotionVO vo2=new PromotionVO(PromotionType.SPECIALDATE.getString(), new Date(), new Date(), "goodhotel",2 , "lalal", 0.8, null);
-	ArrayList<PromotionVO> vo=new ArrayList<PromotionVO>();
+	PromotionVO vo1 = new PromotionVO(PromotionType.SPECIALDATE.getString()
+			, new Date(), new Date(), "goodhotel",2 , "lalal", 0.8, null);
+	
+	PromotionVO vo2 = new PromotionVO(PromotionType.SPECIALDATE.getString()
+			, new Date(), new Date(), "goodhotel",2 , "lalal", 0.8, null);
+	
+	ArrayList<PromotionVO> vo = new ArrayList<PromotionVO>();
 
 	public ResultMessage add(PromotionVO vo) {
 		// TODO Auto-generated method stub
@@ -44,7 +48,7 @@ public class Promotion_stub implements Promotionblservice{
 
 	public LevelVO showLevel() {
 		// TODO Auto-generated method stub
-		ArrayList<Integer> level=new ArrayList<Integer>();
+		ArrayList<Integer> level = new ArrayList<Integer>();
 		level.add(100);
 		level.add(200);
 		level.add(300);

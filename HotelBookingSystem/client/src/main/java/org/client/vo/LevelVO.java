@@ -3,7 +3,7 @@ package org.client.vo;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class LevelVO implements Serializable{
+public class LevelVO implements Serializable {
 	
 	/**
 	 * 
@@ -17,7 +17,7 @@ public class LevelVO implements Serializable{
 	 */
 	public ArrayList<Integer> credits;
 	
-	public LevelVO(int levelNum, ArrayList<Integer> credits){
+	public LevelVO(int levelNum, ArrayList<Integer> credits) {
 		this.levelNum = levelNum;
 		this.credits = credits;
 	}

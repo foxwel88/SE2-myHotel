@@ -8,10 +8,8 @@ import org.common.po.CreditRecordPO;
 import org.common.po.UserPO;
 import org.common.utility.ResultMessage;
 
-public class UserDataServiceImpl extends UnicastRemoteObject implements UserDataService 
-{
+public class UserDataServiceImpl extends UnicastRemoteObject implements UserDataService {
 
-	
 	/**
 	 * 
 	 */

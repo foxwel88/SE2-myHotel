@@ -8,11 +8,11 @@ import org.common.utility.ResultMessage;
 
 public class CommentUtil {
 	
-	public static List<CommentVO> getComment(String hotelAddress){
+	public static List<CommentVO> getComment(String hotelAddress) {
 		return new ArrayList<CommentVO>();
 	}
 	
-	public static ResultMessage addComment(CommentVO vo){
+	public static ResultMessage addComment(CommentVO vo) {
 		return null;
 	}
 }

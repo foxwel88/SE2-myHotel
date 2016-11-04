@@ -16,31 +16,30 @@ public class RMIHelper {
 	
 	private static RMIHelper rmihelper;
 	
-	private RMIHelper()
-	{
+	private RMIHelper() {
 		
 	}
 	
-	public static RMIHelper getInstance()
-	{
-		if (rmihelper==null)
-		{
-			rmihelper=new RMIHelper();
+	public static RMIHelper getInstance() {
+		if (rmihelper == null) {
+			rmihelper = new RMIHelper();
 		}
 		return rmihelper;
 	}
 	
 	private static UserDataService UserDataServiceImpl;
+	
 	private static HotelDataService HotelDataServiceImpl;
+	
 	private static OrderDataService OrderDataServiceImpl;
+	
 	private static PromotionDataService PromotionDataServiceImpl;
+	
 	private static CommentDataService CommentDataServiceImpl;
 	
 	
-	public void init()
-	{
-		try
-		{
+	public void init() {
+		try {
 			CommentDataServiceImpl = (CommentDataService)Naming.lookup("rmi://localhost:8888/CommentDataServiceObject");
 			//System.out.println("Comment succed");
 			HotelDataServiceImpl = (HotelDataService)Naming.lookup("rmi://localhost:8888/HotelDataServiceObject");
@@ -53,21 +52,32 @@ public class RMIHelper {
 			//System.out.println("user succeed");
 			//System.out.println("Connect successfully");
 		}
-		catch (MalformedURLException e) 
-		{
+		catch (MalformedURLException e) {
 			e.printStackTrace();
-		} catch (RemoteException e) 
-		{
+		} catch (RemoteException e) {
 			e.printStackTrace();
-		} catch (NotBoundException e) 
-		{
+		} catch (NotBoundException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public UserDataService getUserDataServiceImpl() {return UserDataServiceImpl;}
-	public HotelDataService getHotelDataServiceImpl() {return HotelDataServiceImpl;}
-	public OrderDataService getOrderDataServiceImpl() {return OrderDataServiceImpl;}
-	public PromotionDataService getPromotionDataServiceImpl() {return PromotionDataServiceImpl;}
-	public CommentDataService getCommentDataServiceImpl() {return CommentDataServiceImpl;}
+	public UserDataService getUserDataServiceImpl() {
+		return UserDataServiceImpl;
+	}
+	
+	public HotelDataService getHotelDataServiceImpl() {
+		return HotelDataServiceImpl;
+	}
+	
+	public OrderDataService getOrderDataServiceImpl() {
+		return OrderDataServiceImpl;
+	}
+	
+	public PromotionDataService getPromotionDataServiceImpl() {
+		return PromotionDataServiceImpl;
+	}
+	
+	public CommentDataService getCommentDataServiceImpl() {
+		return CommentDataServiceImpl;
+	}
 }

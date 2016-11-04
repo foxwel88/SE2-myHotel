@@ -11,14 +11,17 @@ import org.common.utility.ResultMessage;
 import org.common.utility.UserType;
 
 public class User_stub implements Userblservice {
-	UserVO uservo=new UserVO(UserType.CUSTOMER.getString(),"Tom","汤姆","1234567890","1111111111","132323232323",100,new Date(),null,2,10,null);
+	UserVO uservo = new UserVO(UserType.CUSTOMER.getString(),
+			"Tom","汤姆","1234567890","1111111111","132323232323",
+			100,new Date(),null,2,10,null);
 	
 	public ResultMessage login(String userName, String password) {
 		// TODO Auto-generated method stub
-		if (userName.equals("123")&&password.equals("111111111111111111")) 
-		{
+		if (userName.equals("123") && password.equals("111111111111111111")) {
 			return ResultMessage.SUCCESS;
-		}else return ResultMessage.WRONGPASSWORD;
+		} else {
+			return ResultMessage.WRONGPASSWORD;
+		}
 	}
 
 	public ResultMessage logout(String ID) {
@@ -42,7 +45,8 @@ public class User_stub implements Userblservice {
 		return uservo;
 	}
 
-	public ResultMessage modifyPassword(String userName, String oldPassword, String newPassword) {
+	public ResultMessage modifyPassword(String userName, 
+			String oldPassword, String newPassword) {
 		// TODO Auto-generated method stub
 		return ResultMessage.SUCCESS;
 	}
@@ -59,9 +63,13 @@ public class User_stub implements Userblservice {
 
 	public ArrayList<CreditRecordVO> findCreditRecord(String ID) {
 		// TODO Auto-generated method stub
-		CreditRecordVO vo1=new CreditRecordVO(new Date(), "13232323232323232323", 100, 200, CreditOperation.RECHARGE.getString()); 
-		CreditRecordVO vo2=new CreditRecordVO(new Date(), "13232323232323232323", 100, 200, CreditOperation.RECHARGE.getString()); 
-		ArrayList<CreditRecordVO> vo=new ArrayList<CreditRecordVO>();
+		CreditRecordVO vo1 = new CreditRecordVO(new Date(),
+				"13232323232323232323", 100, 200, 
+				CreditOperation.RECHARGE.getString()); 
+		CreditRecordVO vo2 = new CreditRecordVO(new Date(),
+				"13232323232323232323", 100, 200, 
+				CreditOperation.RECHARGE.getString()); 
+		ArrayList<CreditRecordVO> vo = new ArrayList<CreditRecordVO>();
 		vo.add(vo1);
 		vo.add(vo2);
 		return vo;

@@ -5,7 +5,7 @@ import java.util.Date;
 
 import org.common.utility.PromotionType;
 
-public class PromotionVO implements Serializable{
+public class PromotionVO implements Serializable {
 	/**
 	 * 
 	 */

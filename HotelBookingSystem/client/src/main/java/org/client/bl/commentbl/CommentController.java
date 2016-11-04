@@ -6,7 +6,7 @@ import org.client.blservice.commentblservice.Commentblservice;
 import org.client.vo.CommentVO;
 import org.common.utility.ResultMessage;
 
-public class CommentController implements Commentblservice{
+public class CommentController implements Commentblservice {
 
 	public List<CommentVO> getComment(String hotelAddress) {
 		ArrayList<CommentVO> commentVOList = new ArrayList();

@@ -7,8 +7,7 @@ import org.common.po.CreditRecordPO;
 import org.common.po.UserPO;
 import org.common.utility.ResultMessage;
 
-public interface UserDataService extends Remote 
-{
+public interface UserDataService extends Remote {
 	public ResultMessage add(UserPO po) throws RemoteException;
 	//在数据库中增加一个UserPO记录
 	

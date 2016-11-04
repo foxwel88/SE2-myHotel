@@ -14,7 +14,7 @@ public class OrderList {
 	
 	
 	public ResultMessage setOrderList (List<OrderPO> polist) {
-		list=new ArrayList<Order>();
+		list = new ArrayList<Order>();
 		return null;
 	}
 	

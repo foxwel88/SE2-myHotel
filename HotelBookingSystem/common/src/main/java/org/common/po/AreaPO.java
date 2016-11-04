@@ -11,7 +11,7 @@ public class AreaPO implements Serializable {
 	
 	public String address;
 	
-	public AreaPO(String address){
+	public AreaPO(String address) {
 		this.address = address;
 	}
 

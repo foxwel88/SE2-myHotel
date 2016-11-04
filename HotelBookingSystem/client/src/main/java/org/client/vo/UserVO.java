@@ -5,7 +5,7 @@ import java.util.Date;
 
 import org.common.utility.UserType;
 
-public class UserVO implements Serializable{
+public class UserVO implements Serializable {
 	/**
 	 * 
 	 */
@@ -34,6 +34,7 @@ public class UserVO implements Serializable{
 	public double creditToNext;
 	
 	public String hotelAddress;
+	
 	public UserVO(String type, String userName, String name, String ID, String passWord,
 			String phoneNumber, double credit, Date birthday, String companyName, int level,
 			double creditToNext, String hotelAddress) {

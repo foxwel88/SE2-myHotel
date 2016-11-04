@@ -18,9 +18,13 @@ import java.awt.Font;
 public class test extends JFrame {
 
 	private JPanel contentPane;
+	
 	JButton stopbutton;
+	
 	JButton startbutton;
+	
 	private JButton btnStartstub;
+	
 	public test() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 352, 82);

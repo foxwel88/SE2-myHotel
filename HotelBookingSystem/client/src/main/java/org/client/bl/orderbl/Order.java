@@ -15,7 +15,7 @@ public class Order {
 	}
 	
 	public OrderVO getOrderVO () {
-		return null;
+		return null; 
 	}
 	
 	public OrderPO getOrderPO () {

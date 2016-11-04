@@ -11,7 +11,7 @@ import org.common.utility.OrderType;
 import org.common.utility.ResultMessage;
 import org.common.utility.RoomType;
 
-public class OrderDataServiceImpl_stub extends UnicastRemoteObject implements OrderDataService{
+public class OrderDataServiceImpl_stub extends UnicastRemoteObject implements OrderDataService {
 
 	/**
 	 * 

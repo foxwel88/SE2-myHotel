@@ -9,7 +9,7 @@ import org.client.vo.OrderVO;
 import org.common.utility.OrderType;
 import org.common.utility.ResultMessage;
 
-public class OrderController implements Orderblservice{
+public class OrderController implements Orderblservice {
 
 	private static OrderController controller;
 	

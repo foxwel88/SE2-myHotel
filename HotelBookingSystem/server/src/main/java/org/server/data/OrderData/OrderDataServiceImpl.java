@@ -10,8 +10,7 @@ import org.common.po.OrderPO;
 import org.common.utility.OrderType;
 import org.common.utility.ResultMessage;
 
-public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDataService
-{
+public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDataService {
 
 	/**
 	 * 

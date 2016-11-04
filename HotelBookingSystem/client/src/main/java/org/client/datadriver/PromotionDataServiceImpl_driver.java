@@ -14,8 +14,10 @@ public class PromotionDataServiceImpl_driver {
 		PromotionDataService stub = RMIHelper.getInstance().getPromotionDataServiceImpl();
 		try {
 			stub.init();
-			System.out.println(stub.add(new PromotionPO(PromotionType.BIRTHDAYBONUS, null, null, null, 0, null, 0, null)));
-			System.out.println(stub.modify(new PromotionPO(PromotionType.VIPLEVEL, null, null, null, 0, null, 0, null)));
+			System.out.println(stub.add(new PromotionPO(PromotionType.BIRTHDAYBONUS,
+					null, null, null, 0, null, 0, null)));
+			System.out.println(stub.modify(new PromotionPO(PromotionType.VIPLEVEL,
+					null, null, null, 0, null, 0, null)));
 			System.out.println(stub.modifyLevel(new LevelPO(5, null)));
 			System.out.println(stub.showHotelPromotion("loveHotel"));
 			System.out.println(stub.showLevel());

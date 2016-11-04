@@ -8,15 +8,14 @@ import org.common.po.LevelPO;
 import org.common.po.PromotionPO;
 import org.common.utility.ResultMessage;
 
-public interface PromotionDataService extends Remote
-{
+public interface PromotionDataService extends Remote {
 	public ResultMessage add(PromotionPO po) throws RemoteException;
 	//在数据库中增加一个PromotionPO记录
 	
 	public ResultMessage modify(PromotionPO po) throws RemoteException;
 	//更新一个PO
 	
-	public List<PromotionPO>  showHotelPromotion(String hotelAddress) throws RemoteException;
+	public List<PromotionPO> showHotelPromotion(String hotelAddress) throws RemoteException;
 	//按hotelAddress进行查找返回该酒店的PromotionPO记录
 	
 	public List<PromotionPO> showWebsitePromotion() throws RemoteException;

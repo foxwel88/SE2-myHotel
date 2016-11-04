@@ -8,6 +8,7 @@ import org.common.utility.ResultMessage;
 
 public class HotelUtil {
 	private static HotelUtil util;
+	
 	private HotelList hotelList;
 	
 	private HotelUtil() {
@@ -15,7 +16,7 @@ public class HotelUtil {
 	}
 	
 	public static HotelUtil getInstance() {
-		if(util == null) {
+		if (util == null) {
 			util = new HotelUtil();
 		}
 		return util;

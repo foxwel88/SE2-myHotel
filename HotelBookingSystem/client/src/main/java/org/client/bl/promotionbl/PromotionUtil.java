@@ -7,19 +7,19 @@ import org.common.utility.ResultMessage;
 
 public class PromotionUtil {
 	
-	public static ResultMessage add(PromotionVO vo){
+	public static ResultMessage add(PromotionVO vo) {
 		return null;
 	}
 	
-	public static List<PromotionVO> getPromotion (String hotelAddress, String userID){
+	public static List<PromotionVO> getPromotion (String hotelAddress, String userID) {
 		return new ArrayList<PromotionVO>();
 	}
 	
-	public static List<PromotionVO> showHotelPromotion (String hotelAddress){
+	public static List<PromotionVO> showHotelPromotion (String hotelAddress) {
 		return new ArrayList<PromotionVO>();
 	}
 	
-	public static List<PromotionVO> showWebsitePromotion(){
+	public static List<PromotionVO> showWebsitePromotion() {
 		return new ArrayList<PromotionVO>();
 	}
 	
