@@ -21,7 +21,7 @@ public class Hotel_stub implements Hotelblservice {
 			,"bbb","ccc","xxxxx",4,3,"good",
 			"xixixi",null,null,null, null);
 
-	public ArrayList<HotelVO> findHotels(HotelFilter filter) {
+	public ArrayList<HotelVO> findHotels(HotelFilter filter, String id, boolean historyOnly) {
 		// TODO Auto-generated method stub
 		ArrayList<HotelVO> vo = new ArrayList<HotelVO>();
 		vo.add(hotelvo1);

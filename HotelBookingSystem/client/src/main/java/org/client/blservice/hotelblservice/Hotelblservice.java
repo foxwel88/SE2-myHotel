@@ -11,7 +11,7 @@ import org.common.utility.ResultMessage;
 import org.common.utility.RoomType;
 
 public interface Hotelblservice {
-	public List<HotelVO> findHotels(HotelFilter filter);
+	public List<HotelVO> findHotels(HotelFilter filter, String userId, boolean historyOnly);
 	
 	public ResultMessage addHotel(HotelVO hotelVO, UserVO userVO);
 	

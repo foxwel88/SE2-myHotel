@@ -1,19 +1,31 @@
 package org.common.utility;
 
+import java.util.List;
+
 public class HotelFilter {
-	
-	public boolean priceNormalOrder;
-	
-	public boolean rankNormalOrder;
 	
 	public boolean livedOnly;
 	
-	public int star;
+	public List<String> livedAddresses;
 	
-	public double rank;
+	public int minStar;
+	
+	public int maxStar;
+	
+	public double minRank;
+	
+	public double maxRank;
+	
+	public double minPrice;
+	
+	public double maxPrice;
 	
 	public String city;
 	
-	public String area;
+	public String area; 
+	
+	public RoomType roomType;
+	
+	public int roomNum;
 	
 }

@@ -3,6 +3,7 @@ package org.client.bl.hotelbl;
 import java.rmi.RemoteException;
 import java.util.List;
 
+import org.client.bl.orderbl.OrderController;
 import org.client.bl.userbl.UserController;
 import org.client.blservice.hotelblservice.Hotelblservice;
 import org.client.rmi.RMIHelper;
@@ -17,7 +18,12 @@ import org.common.utility.RoomType;
 
 public class HotelController implements Hotelblservice {
 
-	public List<HotelVO> findHotels(HotelFilter filter) {
+	public List<HotelVO> findHotels(HotelFilter filter, String userId, boolean historyOnly) {
+		if (userId != null && historyOnly) {
+			OrderController orderController = OrderController.getInstance(); // here needs mocks
+			List<String> addresses = orderController.getHistoryHotels(userId);
+			filter.livedAddresses = addresses;
+		}
 		return HotelUtil.getInstance().getHotelList(filter);
 	}
 

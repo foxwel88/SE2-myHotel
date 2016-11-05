@@ -16,7 +16,7 @@ public class Hotelblservice_driver {
 	public static void main(String[] args) {
 		Hotel_stub stub = new Hotel_stub();
 		
-		System.out.println(stub.findHotels(new HotelFilter()));
+		System.out.println(stub.findHotels(new HotelFilter(), null, false));
 		System.out.println(stub.getHotel("dsfc"));
 		System.out.println(stub.addHotel(new HotelVO("dvs", "wqd", "vxvsd", "qwd", "cszq",
 				2.2, 9, "XAa", "346fv", new ArrayList<String>(), 
