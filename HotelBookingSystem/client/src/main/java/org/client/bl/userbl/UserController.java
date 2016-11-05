@@ -43,7 +43,7 @@ public class UserController implements Userblservice {
 	}
 
 	public ResultMessage modifyPassword(String userName, String oldPassword, String newPassword) {
-		return null;
+		return UserUtil.getInstance().modifyPassword(userName, oldPassword, newPassword);
 	}
 
 	public ResultMessage modify(UserVO vo) {
