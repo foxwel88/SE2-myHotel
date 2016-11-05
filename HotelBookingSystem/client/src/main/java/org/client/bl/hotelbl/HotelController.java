@@ -25,8 +25,10 @@ public class HotelController implements Hotelblservice {
 	
 	private Orderblservice orderBl;
 	
+	public HotelUtil util;
+	
 	private HotelController() {
-		
+		util = HotelUtil.getInstance();
 	}
 	
 	public void setUserblservice(Userblservice u) {
@@ -52,7 +54,8 @@ public class HotelController implements Hotelblservice {
 			List<String> addresses = orderBl.getHistoryHotels(userId);
 			filter.setHistory(addresses);
 		}
-		return HotelUtil.getInstance().getHotelList(filter);
+		List<HotelVO> list = util.getHotelList(filter);
+		return list;
 	}
 
 	public ResultMessage addHotel(HotelVO hotelVO, UserVO userVO) {
@@ -61,7 +64,7 @@ public class HotelController implements Hotelblservice {
 		} 
 		ResultMessage userRe = userBl.add(userVO);
 		
-		ResultMessage hotelRe = HotelUtil.getInstance().addHotel(hotelVO);
+		ResultMessage hotelRe = util.addHotel(hotelVO);
 		if (userRe != ResultMessage.SUCCESS) {
 			return userRe;
 		}
@@ -75,7 +78,7 @@ public class HotelController implements Hotelblservice {
 	 * 修改酒店信息，包括酒店持久化对象和房间持久化对象的信息
 	 */
 	public ResultMessage modifyHotel(HotelVO vo) {
-		return HotelUtil.getInstance().modify(vo);
+		return util.modify(vo);
 	}
 
 	/**
@@ -93,7 +96,7 @@ public class HotelController implements Hotelblservice {
 	}
 
 	public HotelVO getHotelVO(String hotelAddress) {
-		return HotelUtil.getInstance().getHotel(hotelAddress);
+		return util.getHotel(hotelAddress);
 	}
 
 	public List<AreaVO> getAreas(CityVO vo) {

@@ -1,10 +1,13 @@
 package org.client.launcher;
 
+import java.io.InputStream;
+
 import org.client.rmi.RMIHelper;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -13,9 +16,10 @@ public class Launcher extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			GridPane root = (GridPane)FXMLLoader.load
-					(getClass().getResource("test2.fxml"));
-			Scene scene = new Scene(root,800,600);
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("登录界面.fxml"));
+			AnchorPane root = loader.load();
+			Scene scene = new Scene(root,450,550);
 			scene.getStylesheets().add(getClass().getResource
 					("application.css").toExternalForm());
 			primaryStage.setTitle("酒店预订管理系统");
