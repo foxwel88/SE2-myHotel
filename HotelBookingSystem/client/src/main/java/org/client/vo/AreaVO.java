@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.common.po.AreaPO;
+import org.common.utility.ResultMessage;
 
 public class AreaVO implements Serializable {
 	/**
@@ -14,8 +15,11 @@ public class AreaVO implements Serializable {
 	
 	public String address;
 	
+	public ResultMessage resultMessage;
+	
 	public AreaVO(String address) {
 		this.address = address;
+		resultMessage = ResultMessage.SUCCESS;
 	}
 	
 	public static List<AreaVO> generateVOList(List<AreaPO> pos) {
@@ -25,5 +29,9 @@ public class AreaVO implements Serializable {
 			vos.add(vo);
 		}
 		return vos;
+	}
+	
+	public AreaVO(ResultMessage resultMessage) {
+		this.resultMessage = resultMessage;
 	}
 }

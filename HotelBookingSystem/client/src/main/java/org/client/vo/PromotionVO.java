@@ -3,7 +3,7 @@ package org.client.vo;
 import java.io.Serializable;
 import java.util.Date;
 
-import org.common.utility.PromotionType;
+import org.common.utility.ResultMessage;
 
 public class PromotionVO implements Serializable {
 	/**
@@ -27,6 +27,8 @@ public class PromotionVO implements Serializable {
 	
 	public String name;
 	
+	public ResultMessage resultMessage;
+	
 	public PromotionVO(String type, Date startTime, Date endTime, String hotelName,
 			int level, String area, double discount, String name) {
 		this.type = type;
@@ -37,5 +39,10 @@ public class PromotionVO implements Serializable {
 		this.area = area;
 		this.discount = discount;
 		this.name = name;
+		resultMessage = ResultMessage.SUCCESS;
+	}
+	
+	public PromotionVO(ResultMessage resultMessage) {
+		this.resultMessage = resultMessage;
 	}
 }

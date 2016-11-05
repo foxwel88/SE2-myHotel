@@ -3,7 +3,7 @@ package org.client.vo;
 import java.io.Serializable;
 import java.util.Date;
 
-import org.common.utility.UserType;
+import org.common.utility.ResultMessage;
 
 public class UserVO implements Serializable {
 	/**
@@ -35,6 +35,8 @@ public class UserVO implements Serializable {
 	
 	public String hotelAddress;
 	
+	public ResultMessage resultMessage;
+	
 	public UserVO(String type, String userName, String name, String ID, String passWord,
 			String phoneNumber, double credit, Date birthday, String companyName, int level,
 			double creditToNext, String hotelAddress) {
@@ -50,5 +52,10 @@ public class UserVO implements Serializable {
 		this.level = level;
 		this.creditToNext = creditToNext;
 		this.hotelAddress = hotelAddress;
+		resultMessage = ResultMessage.SUCCESS;
+	}
+	
+	public UserVO(ResultMessage resultMessage) {
+		this.resultMessage = resultMessage;
 	}
 }
