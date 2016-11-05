@@ -4,6 +4,7 @@ import java.util.Date;
 
 import org.client.vo.UserVO;
 import org.common.po.UserPO;
+import org.common.utility.UserType;
 
 public class User {
 	
@@ -118,7 +119,8 @@ public class User {
 	 * @return
 	 */
 	public UserPO getUserPO() {
-		return null;
+		return new UserPO(UserType.getType(type), userName, name, ID, passWord,phoneNumber, credit, birthday, companyName, level,
+				creditToNext, hotelAddress);
 	}
 	
 }

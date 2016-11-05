@@ -1,7 +1,7 @@
 package org.common.po;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 import org.common.utility.UserType;
 

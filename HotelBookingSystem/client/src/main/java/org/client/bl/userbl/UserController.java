@@ -8,6 +8,19 @@ import org.client.vo.UserVO;
 import org.common.utility.ResultMessage;
 
 public class UserController implements Userblservice {
+	
+	private static UserController controller;
+	
+	private UserController() {
+		
+	}
+	
+	public static UserController getInstance() {
+		if (controller == null) {
+			controller = new UserController();
+		}
+		return controller;
+	}
 
 	public ResultMessage login(String userName, String password) {
 		return Account.getInstance().login(userName, password);
