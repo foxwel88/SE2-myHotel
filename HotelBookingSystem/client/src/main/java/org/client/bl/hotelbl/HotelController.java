@@ -6,6 +6,8 @@ import java.util.List;
 import org.client.bl.orderbl.OrderController;
 import org.client.bl.userbl.UserController;
 import org.client.blservice.hotelblservice.Hotelblservice;
+import org.client.blservice.orderblservice.Orderblservice;
+import org.client.blservice.userblservice.Userblservice;
 import org.client.rmi.RMIHelper;
 import org.client.vo.AreaVO;
 import org.client.vo.CityVO;
@@ -19,8 +21,20 @@ import org.common.utility.RoomType;
 public class HotelController implements Hotelblservice {
 	private static HotelController controller;
 	
+	private static Userblservice userBl;
+	
+	private static Orderblservice orderBl;
+	
 	private HotelController() {
 		
+	}
+	
+	public void setUserblservice(Userblservice u) {
+		userBl = u;
+	}
+	
+	public void setOrderblservice(Orderblservice o) {
+		orderBl = o;
 	}
 	
 	public static HotelController getInstance() {
@@ -32,16 +46,20 @@ public class HotelController implements Hotelblservice {
 	
 	public List<HotelVO> findHotels(HotelFilter filter, String userId, boolean historyOnly) {
 		if (userId != null && historyOnly) {
-			OrderController orderController = OrderController.getInstance(); // here needs mocks
-			List<String> addresses = orderController.getHistoryHotels(userId);
-			filter.livedAddresses = addresses;
+			if (orderBl == null) { // when orderBl is not set by external driver
+				orderBl = OrderController.getInstance(); // use true logic code
+			}
+			List<String> addresses = orderBl.getHistoryHotels(userId);
+			filter.setHistory(addresses);
 		}
 		return HotelUtil.getInstance().getHotelList(filter);
 	}
 
 	public ResultMessage addHotel(HotelVO hotelVO, UserVO userVO) {
-		UserController userController = UserController.getInstance();       // here needs mock
-		ResultMessage userRe = userController.add(userVO);
+		if (userBl == null) { // when userBl is not set by external driver
+			userBl = UserController.getInstance(); // use true logic code
+		} 
+		ResultMessage userRe = userBl.add(userVO);
 		
 		ResultMessage hotelRe = HotelUtil.getInstance().addHotel(hotelVO);
 		if (userRe != ResultMessage.SUCCESS) {
