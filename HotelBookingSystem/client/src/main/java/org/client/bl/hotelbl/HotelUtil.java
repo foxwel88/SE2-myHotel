@@ -61,17 +61,6 @@ public class HotelUtil {
 		return hotelList.getVOs();
 	}
 
-	public ResultMessage changeRoom(RoomType type, int num, String hotelAddress) {
-		HotelDataService dao = RMIHelper.getInstance().getHotelDataServiceImpl();
-		try {
-			dao.changeRoom(type, num, hotelAddress);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-			return ResultMessage.CONNECTIONFAIL;
-		}
-		return ResultMessage.SUCCESS;
-	}
-
 	/**
 	 * 用于工作人员维护酒店信息，更新酒店和房间的持久化对象
 	 * @param HotelVO
