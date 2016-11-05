@@ -9,12 +9,12 @@ import org.common.utility.ResultMessage;
 public class CommentController implements Commentblservice {
 
 	public List<CommentVO> getComment(String hotelAddress) {
-		ArrayList<CommentVO> commentVOList = new ArrayList();
+		ArrayList<CommentVO> commentVOList = new ArrayList<CommentVO>();
 		return commentVOList;
 	}
 
 	public ResultMessage addComment(CommentVO vo) {
-		return null;
+		return CommentUtil.addComment(vo);
 	}
 
 }

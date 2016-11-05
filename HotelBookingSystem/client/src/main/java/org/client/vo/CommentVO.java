@@ -12,9 +12,9 @@ public class CommentVO implements Serializable {
 	 */
 	private static final long serialVersionUID = 7340680975558493014L;
 
-	public String UserName;
+	public String userName;
 	
-	public String hotelAdress;
+	public String hotelAdrress;
 	
 	public Date date;
 	
@@ -24,9 +24,9 @@ public class CommentVO implements Serializable {
 	
 	public ResultMessage resultMessage;
 	
-	public CommentVO(String UserName, String hotelAdress, Date date, int rank, String comment) {
-		this.UserName = UserName;
-		this.hotelAdress = hotelAdress;
+	public CommentVO(String UserName, String hotelAdrress, Date date, int rank, String comment) {
+		this.userName = UserName;
+		this.hotelAdrress = hotelAdrress;
 		this.date = date;
 		this.rank = rank;
 		this.comment = comment;
