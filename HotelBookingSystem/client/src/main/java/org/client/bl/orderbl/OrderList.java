@@ -9,20 +9,32 @@ import org.common.utility.ResultMessage;
 
 public class OrderList {
 	
-	@SuppressWarnings("unused")
 	private ArrayList<Order> list;
 	
 	
 	public ResultMessage setOrderList (List<OrderPO> polist) {
 		list = new ArrayList<Order>();
-		return null;
+		for (int i = 0;i < polist.size(); ++i) {
+			Order myorder = new Order();
+			myorder.setOrder(polist.get(i));
+			list.add(myorder);
+		}
+		return ResultMessage.SUCCESS;
 	}
 	
 	public List<OrderVO> getOrderListVO () {
-		return null;
+		List<OrderVO> reslist = new ArrayList<OrderVO>();
+		for (int i = 0;i < list.size(); ++i) {
+			reslist.add(list.get(i).getOrderVO());
+		}
+		return reslist;
 	}
 	
 	public List<String> getHotelList() {
-		return null;
+		List<String> reslist = new ArrayList<String>();
+		for (int i = 0;i < list.size(); ++i) {
+			reslist.add(list.get(i).hotelAddress);
+		}
+		return reslist;
 	}
 }
