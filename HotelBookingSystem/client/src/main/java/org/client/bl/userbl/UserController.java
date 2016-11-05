@@ -42,9 +42,8 @@ public class UserController implements Userblservice {
 		return UserUtil.getInstance().findbyUserName(userName);
 	}
 
-	public ResultMessage modifyPassword(String userName,
-			String oldPassword, String newPassword) {
-		return UserUtil.getInstance().modifyPassword(userName, oldPassword, newPassword);
+	public ResultMessage modifyPassword(String userName, String oldPassword, String newPassword) {
+		return null;
 	}
 
 	public ResultMessage modify(UserVO vo) {

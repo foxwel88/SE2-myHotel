@@ -1,7 +1,7 @@
 package org.common.po;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 import org.common.utility.PromotionType;
 
@@ -28,8 +28,7 @@ public class PromotionPO implements Serializable {
 	
 	public String name;
 	
-	public PromotionPO(PromotionType type, Date startTime, Date endTime, String hotelName,
-			int level, String area, double discount, String name) {
+	public PromotionPO(PromotionType type, Date startTime, Date endTime, String hotelName, int level, String area, double discount, String name) {
 		this.type = type;
 		this.startTime = startTime;
 		this.endTime = endTime;
