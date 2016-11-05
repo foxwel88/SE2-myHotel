@@ -21,9 +21,9 @@ import org.common.utility.RoomType;
 public class HotelController implements Hotelblservice {
 	private static HotelController controller;
 	
-	private static Userblservice userBl;
+	private Userblservice userBl;
 	
-	private static Orderblservice orderBl;
+	private Orderblservice orderBl;
 	
 	private HotelController() {
 		

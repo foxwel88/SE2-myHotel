@@ -48,16 +48,17 @@ public class RMIHelper {
 		try {
 			reg = LocateRegistry.createRegistry(8888);
 			Naming.rebind("rmi://localhost:8888/CommentDataServiceObject",DataStubFactory.getInstance().getCommentDataServiceImpl());
-			System.out.println("Comment succed");
+			System.out.println("comment succeed");
 			Naming.rebind("rmi://localhost:8888/HotelDataServiceObject",DataStubFactory.getInstance().getHotelDataServiceImpl());
-			System.out.println("hotel succed");
+			System.out.println("hotel succeed");
 			Naming.rebind("rmi://localhost:8888/OrderDataServiceObject",DataStubFactory.getInstance().getOrderDataServiceImpl());
-			System.out.println("order succed");
+			System.out.println("order succeed");
 			Naming.rebind("rmi://localhost:8888/PromotionDataServiceObject",DataStubFactory.getInstance().getPromotionDataServiceImpl());
-			System.out.println("promotion succed");
+			System.out.println("promotion succeed");
 			Naming.rebind("rmi://localhost:8888/UserDataServiceObject",DataStubFactory.getInstance().getUserDataServiceImpl());
 			System.out.println("user succeed");
 			System.out.println("Connect successfully");
+			System.out.println();
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -72,16 +73,17 @@ public class RMIHelper {
 		try {
 			reg = LocateRegistry.createRegistry(8888);
 			Naming.rebind("rmi://localhost:8888/CommentDataServiceObject",DataFactory.getInstance().getCommentDataServiceImpl());
-			System.out.println("Comment succed");
+			System.out.println("comment succeed");
 			Naming.rebind("rmi://localhost:8888/HotelDataServiceObject",DataFactory.getInstance().getHotelDataServiceImpl());
-			System.out.println("hotel succed");
+			System.out.println("hotel succeed");
 			Naming.rebind("rmi://localhost:8888/OrderDataServiceObject",DataFactory.getInstance().getOrderDataServiceImpl());
-			System.out.println("order succed");
+			System.out.println("order succeed");
 			Naming.rebind("rmi://localhost:8888/PromotionDataServiceObject",DataFactory.getInstance().getPromotionDataServiceImpl());
-			System.out.println("promotion succed");
+			System.out.println("promotion succeed");
 			Naming.rebind("rmi://localhost:8888/UserDataServiceObject",DataFactory.getInstance().getUserDataServiceImpl());
-			System.out.println("user succeed");
+			System.out.println("user succeeed");
 			System.out.println("Connect successfully");
+			System.out.println();
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

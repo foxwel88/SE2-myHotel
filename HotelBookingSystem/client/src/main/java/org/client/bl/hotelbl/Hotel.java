@@ -82,12 +82,14 @@ public class Hotel {
 		this.cooperators = vo.cooperators;
 		
 		//deformat the cooperators'info
-		StringBuilder sb = new StringBuilder();
-		for (String s: cooperators) {
-			sb.append(s);
-			sb.append(","); // english
+		if (cooperators != null) {       // in the add hotel case this is null
+			StringBuilder sb = new StringBuilder();
+			for (String s: cooperators) {
+				sb.append(s);
+				sb.append(","); // english
+			}
+			this.cooperators_po = sb.toString();
 		}
-		this.cooperators_po = sb.toString();
 		
 		return new HotelPO(hotelName, address, city, area, introduce, rank, star, facility, checkInInfos, cooperators_po);
 	}

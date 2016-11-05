@@ -1,10 +1,16 @@
 package org.common.utility;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HotelFilter {
+public class HotelFilter implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -421561104499778313L;
+
 	public boolean livedOnly = false;
 	
 	public List<String> livedAddresses;
