@@ -31,7 +31,7 @@ public class OrderController implements Orderblservice {
 
 	public ResultMessage cancelOrder(String orderID) {
 		// TODO Auto-generated method stub
-		return OrderUtil.getInstance().cancelOrder();
+		return OrderUtil.getInstance().cancelOrder(orderID);
 	}
 
 	public OrderVO getOrder(String ID) {
@@ -56,7 +56,7 @@ public class OrderController implements Orderblservice {
 
 	public ResultMessage executeOrder(String orderID) {
 		// TODO Auto-generated method stub
-		return OrderUtil.getInstance().executeOrder();
+		return OrderUtil.getInstance().executeOrder(orderID);
 	}
 
 	public ResultMessage cancelAbnormalOrder(String orderID, Boolean isHalf) {
