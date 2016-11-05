@@ -27,8 +27,8 @@ public class HotelController implements Hotelblservice {
 	
 	public HotelUtil util;
 	
-	private HotelController() {
-		util = HotelUtil.getInstance();
+	public HotelController() {
+		util = new HotelUtil();
 	}
 	
 	public void setUserblservice(Userblservice u) {

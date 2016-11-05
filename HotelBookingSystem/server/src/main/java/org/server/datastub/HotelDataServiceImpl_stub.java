@@ -42,6 +42,12 @@ public class HotelDataServiceImpl_stub extends UnicastRemoteObject implements Ho
 	}
 
 	public ResultMessage modifyHotelInfo(HotelPO po) throws RemoteException {
+		if (po.hotelName == null || po.address == null || 
+				po.hotelName.isEmpty() || po.address.isEmpty()
+				|| po.city == null || po.area == null
+				|| po.city.isEmpty() || po.area.isEmpty()) {
+			return ResultMessage.WRONGFORMAT;
+		}
 		return ResultMessage.SUCCESS;
 	}
 

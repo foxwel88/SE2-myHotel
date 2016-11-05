@@ -1,8 +1,6 @@
 package org.client.bl.hotelbl;
 
 import static org.junit.Assert.*;
-import static org.easymock.EasyMock.*;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -23,21 +21,16 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.server.rmi.RMIHelper;
-import org.easymock.*;
 
-public class HotelControllerTest extends EasyMockSupport {
+public class HotelControllerTest {
 	
 	HotelController controller;
-	
-	HotelUtil util;
 	
 	@Before
 	public void setUp() throws Exception {
 		RMIHelper.getinstance().buildStubConnection();	
 		org.client.rmi.RMIHelper.getInstance().init();
-		controller = HotelController.getInstance();
-		util = strictMock(HotelUtil.class);
-		controller.util = util;
+		controller = new HotelController();
 	}
 
 	@Test
@@ -48,12 +41,7 @@ public class HotelControllerTest extends EasyMockSupport {
 		filter.setRank(1, 5);
 		Orderblservice orderstub = new Order_stub();
 		controller.setOrderblservice(orderstub);
-		
-		//record the whole processing path
-		util.getHotelList(filter);
-		replayAll();
 				
-		//verify step
 		List<HotelVO> hotels = null;
 		try {
 			hotels = controller.findHotels(filter, "小红", true);
@@ -61,7 +49,6 @@ public class HotelControllerTest extends EasyMockSupport {
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 		}
-		verifyAll();
 		
 		//assert
 		assertEquals(false, hotels.isEmpty());
@@ -74,13 +61,8 @@ public class HotelControllerTest extends EasyMockSupport {
 		Userblservice userstub = new User_stub();
 		controller.setUserblservice(userstub);
 		
-		//record 
-		expect(util.addHotel(vo)).andReturn(ResultMessage.SUCCESS);
-		replayAll();
-		
 		//verify
 		ResultMessage result = controller.addHotel(vo, uvo);
-		verifyAll();
 		
 		//assert
 		assertEquals(ResultMessage.SUCCESS, result);
@@ -92,14 +74,9 @@ public class HotelControllerTest extends EasyMockSupport {
 		UserVO uvo = new UserVO("客户", "X", "Y", "1234567890", "first0xaa55", "12233345678", 21.21, new Date(19890604), "μ's", 0, 10, null);
 		Userblservice userstub = new User_stub();
 		controller.setUserblservice(userstub);
-		
-		//record 
-		expect(util.addHotel(vo)).andReturn(ResultMessage.WRONGFORMAT);
-		replayAll();
-		
+				
 		//verify
 		ResultMessage result = controller.addHotel(vo, uvo);
-		verifyAll();
 		
 		//assert
 		assertEquals(ResultMessage.WRONGFORMAT, result);
@@ -114,17 +91,11 @@ public class HotelControllerTest extends EasyMockSupport {
 		HotelVO vo = new HotelVO("lovelive", "unknown", "南京", "仙林中心", "niconiconi", 5, 5, "", "", roomType, roomNum, roomPrice, cooperators);
 		HotelVO vo2 = new HotelVO("123", "unknown", "", "仙林中心", "niconiconi", 5, 5, "", "", roomType, roomNum, roomPrice, cooperators);
 		
-		//record
-		expect(util.modify(vo)).andReturn(ResultMessage.SUCCESS);
-		expect(util.modify(vo2)).andReturn(ResultMessage.WRONGFORMAT);
-		replayAll();
-		
 		//verify and assert
 		ResultMessage result = controller.modifyHotel(vo);	
 		assertEquals(ResultMessage.SUCCESS, result);
 		result = controller.modifyHotel(vo2);
 		assertEquals(ResultMessage.WRONGFORMAT, result);
-		verifyAll();
 	}
 	
 	@Test
@@ -134,15 +105,10 @@ public class HotelControllerTest extends EasyMockSupport {
 	}
 	
 	@Test
-	public void testGetVO() {
-		//record
-		util.getHotel("123");
-		replayAll();
-		
+	public void testGetVO() {		
 		//verify and assert
 		HotelVO vo = controller.getHotelVO("123");
 		assertEquals(false, vo.address.isEmpty());
-		verifyAll();
 	}
 	
 	@Test

@@ -13,19 +13,11 @@ import org.common.utility.HotelFilter;
 import org.common.utility.ResultMessage;
 
 public class HotelUtil {
-	private static HotelUtil util;
 	
-	private static HotelList hotelList;
+	private HotelList hotelList;
 	
-	private HotelUtil() {
+	public HotelUtil() {
 		
-	}
-	
-	public static HotelUtil getInstance() {
-		if (util == null) {
-			util = new HotelUtil();
-		}
-		return util;
 	}
 	
 	public ResultMessage addHotel(HotelVO vo) {
@@ -40,7 +32,7 @@ public class HotelUtil {
 		}
 	}
 	
-	public static HotelVO getHotel(String hotelAddress) {
+	public HotelVO getHotel(String hotelAddress) {
 		HotelDataService dao = RMIHelper.getInstance().getHotelDataServiceImpl();
 		HotelPO po;
 		try {
@@ -54,7 +46,7 @@ public class HotelUtil {
 		return h.generateVO();
 	}
 	
-	public static List<HotelVO> getHotelList(HotelFilter filter) {
+	public List<HotelVO> getHotelList(HotelFilter filter) {
 		hotelList = new HotelList();
 		hotelList.initList(filter);
 		List<HotelVO> list = hotelList.getVOs();
