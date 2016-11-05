@@ -6,6 +6,12 @@ public class HotelFilter {
 	
 	public boolean rankNormalOrder;
 	
+	public boolean livedOnly;
+	
+	public int star;
+	
+	public double rank;
+	
 	public String city;
 	
 	public String area;

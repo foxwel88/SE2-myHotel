@@ -3,6 +3,7 @@ package org.server.datastub;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.common.dataservice.HotelDataService.HotelDataService;
 import org.common.po.AreaPO;
@@ -11,6 +12,7 @@ import org.common.po.HotelPO;
 import org.common.po.RoomPO;
 import org.common.utility.HotelFilter;
 import org.common.utility.ResultMessage;
+import org.common.utility.RoomType;
 
 public class HotelDataServiceImpl_stub extends UnicastRemoteObject implements HotelDataService {
 
@@ -41,11 +43,13 @@ public class HotelDataServiceImpl_stub extends UnicastRemoteObject implements Ho
 		return new HotelPO(hotelAddress, hotelAddress, hotelAddress, hotelAddress, hotelAddress, 0, 0, hotelAddress, hotelAddress, hotelAddress);
 	}
 
-	public RoomPO getRooms(String hotelAddress) throws RemoteException {
-		return new RoomPO(null, null, null);
+	public List<RoomPO> getRooms(String hotelAddress) throws RemoteException {
+		List<RoomPO> list = new ArrayList<RoomPO>();
+		list.add(new RoomPO("small",0,0));
+		return list;
 	}
 
-	public ResultMessage modifyRooms(String hotelAddress, RoomPO po) throws RemoteException {
+	public ResultMessage modifyRooms(String hotelAddress, List<RoomPO> po) throws RemoteException {
 		return ResultMessage.SUCCESS;
 	}
 
@@ -57,7 +61,7 @@ public class HotelDataServiceImpl_stub extends UnicastRemoteObject implements Ho
 
 	public ArrayList<CityPO> getCitys() throws RemoteException {
 		ArrayList<CityPO> citys = new ArrayList<CityPO>();
-		citys.add(new CityPO(null));
+		citys.add(new CityPO("7days"));
 		return citys;
 	}
 
@@ -69,6 +73,10 @@ public class HotelDataServiceImpl_stub extends UnicastRemoteObject implements Ho
 
 	public void finish() throws RemoteException {
 		System.out.println("finish");
+	}
+
+	public ResultMessage changeRoom(RoomType type, int num, String hotelAddress) throws RemoteException {
+		return ResultMessage.SUCCESS;
 	}
 
 }

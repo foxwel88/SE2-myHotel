@@ -2,8 +2,7 @@ package org.client.vo;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-
-import org.common.utility.RoomType;
+import java.util.List;
 
 public class HotelVO implements Serializable {
 	/**
@@ -29,17 +28,17 @@ public class HotelVO implements Serializable {
 	
 	public String checkInInfos;
 	
-	public ArrayList<String> roomType;
+	public List<String> roomType;
 	
-	public ArrayList<Integer> roomNum;
+	public List<Integer> roomNum;
 	
-	public ArrayList<Double> roomPrice;
+	public List<Double> roomPrice;
 	
-	public ArrayList<String> cooperators;
+	public List<String> cooperators;
 	
 	public HotelVO(String hotelName, String address, String city, String area, String introduce,
-			double rank, int star, String facility, String checkInInfos, ArrayList<String> roomType,
-			ArrayList<Integer> roomNum, ArrayList<Double> roomPrice, ArrayList<String> cooperators) {
+			double rank, int star, String facility, String checkInInfos, List<String> roomType,
+			List<Integer> roomNum, List<Double> roomPrice, List<String> cooperators) {
 		
 		this.hotelName = hotelName;
 		this.address = address;

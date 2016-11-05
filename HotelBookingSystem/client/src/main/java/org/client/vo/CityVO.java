@@ -1,6 +1,10 @@
 package org.client.vo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.common.po.CityPO;
 
 public class CityVO implements Serializable {
 	
@@ -13,5 +17,18 @@ public class CityVO implements Serializable {
 	
 	public CityVO(String cityName) {
 		this.cityName = cityName;
+	}
+	
+	public static List<CityVO> generateVOList(List<CityPO> pos) {
+		List<CityVO> vos = new ArrayList<CityVO>();
+		for (CityPO p: pos) {
+			CityVO vo = new CityVO(p.cityName);
+			vos.add(vo);
+		}
+		return vos;
+	}
+	
+	public static CityPO generatePO(CityVO vo) {
+		return new CityPO(vo.cityName);
 	}
 }

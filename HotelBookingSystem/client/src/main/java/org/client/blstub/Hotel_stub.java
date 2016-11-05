@@ -44,7 +44,7 @@ public class Hotel_stub implements Hotelblservice {
 		return ResultMessage.SUCCESS;
 	}
 
-	public ResultMessage changeRoom(RoomType type, int num) {
+	public ResultMessage changeRoom(RoomType type, int num, String hotelAddress) {
 		// TODO Auto-generated method stub
 		return ResultMessage.SUCCESS;
 	}

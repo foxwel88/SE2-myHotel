@@ -1,21 +1,95 @@
 package org.client.bl.hotelbl;
 
+import java.util.List;
+
 import org.client.vo.HotelVO;
 import org.common.po.HotelPO;
 
 public class Hotel {
+	public String hotelName;
 
+	public String address;
+	
+	public String city;
+	
+	public String area;
+	
+	public String introduce;
+	
+	public double rank;
+	
+	public int star;
+	
+	public String facility;
+	
+	public String checkInInfos;
+	
+	public String cooperators_po;
+		
+	public List<String> roomType;
+	
+	public List<Integer> roomNum;
+	
+	public List<Double> roomPrice;
+	
+	public List<String> cooperators;
+
+	/**
+	 * 根据自己保存的信息生成一个hotelVO
+	 * @return hotelVO
+	 */
 	public HotelVO generateVO() {
-		return new HotelVO(null, null, null, null, null, 0, 0, null, 
-		        null, null, null, null, null);
+		return new HotelVO(hotelName, address, city, area, introduce, rank, star, facility, checkInInfos, roomType, roomNum, roomPrice, cooperators);
 	}
 	
+	/**
+	 * 用po中的信息修改自己的保存值，并返回自己
+	 * @param po
+	 * @return this
+	 */
 	public Hotel initByPO(HotelPO po) {
+		this.hotelName = po.hotelName;
+		this.address = po.address;
+		this.city = po.city;
+		this.area = po.area;
+		this.introduce = po.introduce;
+		this.rank = po.rank;
+		this.star = po.star;
+		this.facility = po.facility;
+		this.checkInInfos = po.checkInInfos;
+		this.cooperators_po = po.cooperators;
 		return this;
 	}
 	
+	/**
+	 * 用vo中的信息修改自己的保存值，并返回一个相应的po
+	 * @param hotelVO
+	 * @return 对应的hotelPO
+	 */
 	public HotelPO modify(HotelVO vo) {
-		return new HotelPO(null, null, null, null, null, 0, 0, null,
-		        null, null);
+		this.hotelName = vo.hotelName;
+		this.address = vo.address;
+		this.city = vo.city;
+		this.area = vo.area;
+		this.introduce = vo.introduce;
+		this.rank = vo.rank;
+		this.star = vo.star;
+		this.facility = vo.facility;
+		this.checkInInfos = vo.checkInInfos;
+		this.roomType = vo.roomType;
+		this.roomNum = vo.roomNum;
+		this.roomPrice = vo.roomPrice;
+		this.cooperators = vo.cooperators;
+		
+		//deformat the cooperators'info
+		StringBuilder sb = new StringBuilder();
+		for (String s: cooperators) {
+			sb.append(s);
+			sb.append(","); // english
+		}
+		this.cooperators_po = sb.toString();
+		
+		return new HotelPO(hotelName, address, city, area, introduce, rank, star, facility, checkInInfos, cooperators_po);
 	}
+	
 }

@@ -1,6 +1,7 @@
 package org.client.datadriver;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import org.client.rmi.RMIHelper;
 import org.common.dataservice.HotelDataService.HotelDataService;
@@ -26,8 +27,7 @@ public class HotelDataServiceImpl_driver {
 			System.out.println(stub.modifyHotelInfo
 					(new HotelPO(null, null, null, null,
 							null, 0, 0, null, null, null)));
-			System.out.println(stub.modifyRooms("loveHotel"
-					, new RoomPO(null, null, null)));
+			System.out.println(stub.modifyRooms("loveHotel", new ArrayList<RoomPO>()));
 			stub.finish();
 		} catch (RemoteException e1) {
 			e1.printStackTrace();

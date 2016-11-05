@@ -13,7 +13,7 @@ public enum RoomType {
 		return s;
 	}
 	
-	public RoomType getType(String ss) {
+	public static RoomType getType(String ss) {
 		if (ss.equals("单人间")) {
 			return RoomType.SINGLE;
 		}

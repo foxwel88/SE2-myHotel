@@ -27,7 +27,7 @@ public class Hotelblservice_driver {
 		System.out.println(stub.modifyHotel(new HotelVO("dvs", "wqd", "vxvsd", "qwd",
 				"cszq", 2.2, 9, "XAa", "346fv", new ArrayList<String>(),
 				new ArrayList<Integer>(), new ArrayList<Double>(), null)));
-		System.out.println(stub.changeRoom(RoomType.BIG, 6));
+		System.out.println(stub.changeRoom(RoomType.BIG, 6, "7days"));
 		System.out.println(stub.getHotelVO("ddl"));
 		System.out.println(stub.getCitys());
 		System.out.println(stub.getAreas(new CityVO("sc")));

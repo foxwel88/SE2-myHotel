@@ -10,7 +10,6 @@ import org.common.dataservice.HotelDataService.HotelDataService;
 import org.common.dataservice.OrderDataService.OrderDataService;
 import org.common.dataservice.PromotionDataService.PromotionDataService;
 import org.common.dataservice.UserDataService.UserDataService;
-import org.server.data.datafactory.DataFactory;
 
 public class RMIHelper {
 	

@@ -10,6 +10,7 @@ import org.common.po.HotelPO;
 import org.common.po.RoomPO;
 import org.common.utility.HotelFilter;
 import org.common.utility.ResultMessage;
+import org.common.utility.RoomType;
 
 public interface HotelDataService extends Remote {
 	public void init() throws RemoteException;
@@ -24,9 +25,14 @@ public interface HotelDataService extends Remote {
 	public HotelPO getHotelInfo(String hotelAddress) throws RemoteException;
 	//返回一个酒店po
 	
-	public RoomPO getRooms(String hotelAddress) throws RemoteException;
+	public List<RoomPO> getRooms(String hotelAddress) throws RemoteException;
+	//返回房间信息
 	
-	public ResultMessage modifyRooms(String hotelAddress, RoomPO po) throws RemoteException;
+	public ResultMessage modifyRooms(String hotelAddress, List<RoomPO> po) throws RemoteException;
+	//在数据库中更新房间po
+	
+	public ResultMessage changeRoom(RoomType type, int num, String hotelAddress) throws RemoteException;
+	//在数据库中更新房间po
 	
 	public List<HotelPO> findHotels(HotelFilter filter) throws RemoteException;
 	//返回多个酒店po

@@ -13,13 +13,11 @@ import org.common.utility.RoomType;
 public interface Hotelblservice {
 	public List<HotelVO> findHotels(HotelFilter filter);
 	
-	public HotelVO getHotel(String hotelAddress);
-	
 	public ResultMessage addHotel(HotelVO hotelVO, UserVO userVO);
 	
 	public ResultMessage modifyHotel(HotelVO vo);
 	
-	public ResultMessage changeRoom(RoomType type, int num);
+	public ResultMessage changeRoom(RoomType type, int num, String hotelAddress);
 	
 	public HotelVO getHotelVO(String hotelAddress);
 	
