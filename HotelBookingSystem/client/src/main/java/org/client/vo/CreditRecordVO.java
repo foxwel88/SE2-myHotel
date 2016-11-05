@@ -3,7 +3,7 @@ package org.client.vo;
 import java.io.Serializable;
 import java.util.Date;
 
-import org.common.utility.CreditOperation;
+import org.common.utility.ResultMessage;
 
 public class CreditRecordVO implements Serializable {
 	/**
@@ -21,11 +21,18 @@ public class CreditRecordVO implements Serializable {
 	
 	public String op;
 	
+	public ResultMessage resultMessage;
+	
 	public CreditRecordVO(Date date, String orderID, double change, double result, String op) {
 		this.date = date;
 		this.orderID = orderID;
 		this.change = change;
 		this.result = result;
 		this.op = op;
+		resultMessage = ResultMessage.SUCCESS;
+	}
+	
+	public CreditRecordVO(ResultMessage resultMessage) {
+		this.resultMessage = resultMessage;
 	}
 }

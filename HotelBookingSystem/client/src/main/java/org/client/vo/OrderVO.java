@@ -3,8 +3,7 @@ package org.client.vo;
 import java.io.Serializable;
 import java.util.Date;
 
-import org.common.utility.OrderType;
-import org.common.utility.RoomType;
+import org.common.utility.ResultMessage;
 
 public class OrderVO implements Serializable {
 	/**
@@ -46,6 +45,8 @@ public class OrderVO implements Serializable {
 	
 	public String customerName;
 	
+	public ResultMessage resultMessage;
+	
 	public OrderVO(String type, Date generatedDate, Date schFrom, Date schTo, Date actFrom, Date actTo,
 			Date latestTime, Date cancelTime, String hotelAddress, String orderID,
 			String hotelName, String roomType, double totalPrice, int roomNum, int numOfPeople, boolean existsChild, String customerName) {
@@ -66,5 +67,10 @@ public class OrderVO implements Serializable {
 		this.numOfPeople = numOfPeople;
 		this.existsChild = existsChild;
 		this.customerName = customerName;
+		resultMessage = ResultMessage.SUCCESS;
+	}
+	
+	public OrderVO(ResultMessage resultMessage) {
+		this.resultMessage = resultMessage;
 	}
 }

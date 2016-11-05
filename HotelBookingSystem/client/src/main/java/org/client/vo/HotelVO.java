@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.common.utility.ResultMessage;
+
 public class HotelVO implements Serializable {
 	/**
 	 * 
@@ -36,6 +38,8 @@ public class HotelVO implements Serializable {
 	
 	public List<String> cooperators;
 	
+	public ResultMessage resultMessage;
+	
 	public HotelVO(String hotelName, String address, String city, String area, String introduce,
 			double rank, int star, String facility, String checkInInfos, List<String> roomType,
 			List<Integer> roomNum, List<Double> roomPrice, List<String> cooperators) {
@@ -49,6 +53,7 @@ public class HotelVO implements Serializable {
 		this.star = star;
 		this.facility = facility;
 		this.checkInInfos = checkInInfos;
+		resultMessage = ResultMessage.SUCCESS;
 		if (roomType == null) {
 			this.roomType = null;
 		} else {
@@ -69,6 +74,10 @@ public class HotelVO implements Serializable {
 		} else {
 			this.cooperators = new ArrayList<String>(cooperators);
 		}
+	}
+	
+	public HotelVO(ResultMessage resultMessage) {
+		this.resultMessage = resultMessage;
 	}
 	
 }

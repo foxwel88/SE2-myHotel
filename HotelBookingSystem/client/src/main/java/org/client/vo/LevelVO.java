@@ -3,6 +3,8 @@ package org.client.vo;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import org.common.utility.ResultMessage;
+
 public class LevelVO implements Serializable {
 	
 	/**
@@ -17,8 +19,15 @@ public class LevelVO implements Serializable {
 	 */
 	public ArrayList<Integer> credits;
 	
+	public ResultMessage resultMessage;
+	
 	public LevelVO(int levelNum, ArrayList<Integer> credits) {
 		this.levelNum = levelNum;
 		this.credits = credits;
+		resultMessage = ResultMessage.SUCCESS;
+	}
+	
+	public LevelVO(ResultMessage resultMessage) {
+		this.resultMessage = resultMessage;
 	}
 }
