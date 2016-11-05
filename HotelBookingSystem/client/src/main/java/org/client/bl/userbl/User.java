@@ -62,6 +62,11 @@ public class User {
 		return getUserPO();
 	}
 	
+	/**
+	 * 初始化领域类
+	 * @param po 用来初始化的PO
+	 * @return 领域类自身
+	 */
 	public User initbyPO(UserPO po) {
 		this.birthday = po.birthday;
 		this.companyName = po.companyName;
@@ -73,19 +78,45 @@ public class User {
 		this.name = po.name;
 		this.passWord = po.passWord;
 		this.phoneNumber = po.phoneNumber;
-		this.type = po.type;
+		this.type = po.type.getString();
 		this.userName = po.userName;
 		return this;
 	}
 	
+	/**
+	 * 初始化领域类
+	 * @param vo 用来初始化的VO
+	 * @return 初始化后的领域类自身
+	 */
 	public User initbyVO(UserVO vo) {
+		this.birthday = vo.birthday;
+		this.companyName = vo.companyName;
+		this.credit = vo.credit;
+		this.creditToNext = vo.creditToNext;
+		this.hotelAddress = vo.hotelAddress;
+		this.ID = vo.ID;
+		this.level = vo.level;
+		this.name = vo.name;
+		this.passWord = vo.passWord;
+		this.phoneNumber = vo.phoneNumber;
+		this.type = vo.type;
+		this.userName = vo.userName;
 		return this;
 	}
 	
+	/**
+	 * 返回该领域类对应的UserVO
+	 * @return
+	 */
 	public UserVO getUserVO() {
-		return null;
+		return new UserVO(type, userName, name, ID, passWord,phoneNumber, credit, birthday, companyName, level,
+				creditToNext, hotelAddress);
 	}
 
+	/**
+	 * 返回该领域类对应的UserPO
+	 * @return
+	 */
 	public UserPO getUserPO() {
 		return null;
 	}
