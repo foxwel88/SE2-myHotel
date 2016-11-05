@@ -7,7 +7,7 @@ import org.client.vo.CreditRecordVO;
 import org.common.utility.ResultMessage;
 
 public class CreditRecordList {
-	
+
 	private ArrayList<CreditRecord> list;
 	
 	public ResultMessage initList(String ID) {
