@@ -17,7 +17,19 @@ import org.common.utility.ResultMessage;
 import org.common.utility.RoomType;
 
 public class HotelController implements Hotelblservice {
-
+	private static HotelController controller;
+	
+	private HotelController() {
+		
+	}
+	
+	public static HotelController getInstance() {
+		if (controller == null) {
+			controller = new HotelController();
+		} 
+		return controller;
+	}
+	
 	public List<HotelVO> findHotels(HotelFilter filter, String userId, boolean historyOnly) {
 		if (userId != null && historyOnly) {
 			OrderController orderController = OrderController.getInstance(); // here needs mocks
@@ -28,7 +40,7 @@ public class HotelController implements Hotelblservice {
 	}
 
 	public ResultMessage addHotel(HotelVO hotelVO, UserVO userVO) {
-		UserController userController = new UserController();       // here needs mock
+		UserController userController = UserController.getInstance();       // here needs mock
 		ResultMessage userRe = userController.add(userVO);
 		
 		ResultMessage hotelRe = HotelUtil.getInstance().addHotel(hotelVO);
