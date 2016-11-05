@@ -70,18 +70,31 @@ public class UserUtil {
 	}
 	
 	public ResultMessage addCreditRecord (CreditRecordVO vo) {
-		//增加信用记录
+		// 增加用户属性的信用值
+		ResultMessage message = null;
 		UserDataService dao = RMIHelper.getInstance().getUserDataServiceImpl();
+		String id = vo.userId;
+		UserVO userVO = findbyID(id);
+		UserPO userPO = null;
+		user = user.initbyVO(userVO);
+		userPO = user.changeCredit(vo.change);
+		try {
+			message = dao.modify(userPO);
+		} catch (RemoteException e1) {
+			e1.printStackTrace();
+		}
+		if (message != ResultMessage.SUCCESS) {
+			return message;
+		}
+		
+		//增加信用记录
 		creditRecord = creditRecord.initbyVO(vo);
 		CreditRecordPO po = creditRecord.getCreditRecordPO(vo);
-		ResultMessage message = null;
 		try {
 			message = dao.addCreditRecord(po);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		
-		// 增加用户属性的信用值
 		
 		return message;
 	}

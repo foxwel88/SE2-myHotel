@@ -42,6 +42,11 @@ public class User {
 		return getUserPO();
 	}
 	
+	public UserPO changeCredit(double change) {
+		this.credit = this.credit + change;
+		return getUserPO();
+	}
+	
 	/**
 	 * 修改用户信息
 	 * @param vo 修改后的VO

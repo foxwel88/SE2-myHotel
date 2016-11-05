@@ -1,5 +1,9 @@
 package org.client.bl.userbl;
 
+import java.rmi.RemoteException;
+
+import org.client.rmi.RMIHelper;
+import org.common.dataservice.UserDataService.UserDataService;
 import org.common.utility.ResultMessage;
 
 public class Account {
@@ -18,10 +22,17 @@ public class Account {
 	}
 	
 	public ResultMessage login(String userName, String password) {
-		return null;
+		UserDataService dao = RMIHelper.getInstance().getUserDataServiceImpl();
+		ResultMessage message = null;
+		try {
+			message = dao.Check(userName, password);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return message;
 	}
 	
 	public ResultMessage logout(String ID) {
-		return null;
+		return ResultMessage.SUCCESS;
 	}
 }
