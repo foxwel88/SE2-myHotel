@@ -2,7 +2,6 @@ package org.common.dataservice.OrderDataService;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.sql.Date;
 import java.util.List;
 
 import org.common.po.OrderPO;
@@ -19,7 +18,7 @@ public interface OrderDataService extends Remote {
 	public List<OrderPO> getHotelOrderPO (String hotelID, OrderType type) throws RemoteException;
 	//返回某酒店某种类全部订单po
 	
-	public List<OrderPO> getAbnormalOrderPO (Date date) throws RemoteException;
+	public List<OrderPO> getAbnormalOrderPO () throws RemoteException;
 	//返回当日全部异常订单po
 	
 	public ResultMessage add (OrderPO po) throws RemoteException;

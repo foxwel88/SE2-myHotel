@@ -21,4 +21,8 @@ public class OrderList {
 	public List<OrderVO> getOrderListVO () {
 		return null;
 	}
+	
+	public List<String> getHotelList() {
+		return null;
+	}
 }

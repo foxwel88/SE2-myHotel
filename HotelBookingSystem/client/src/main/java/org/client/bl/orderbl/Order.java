@@ -21,17 +21,5 @@ public class Order {
 	public OrderPO getOrderPO () {
 		return null;
 	}
-	
-	public ResultMessage cancelOrder () {
-		return null;
-	}
-	
-	public ResultMessage executeOrder () {
-		return null;
-	}
-	
-	public ResultMessage cancelAbnormalOrder (Boolean isHalf) {
-		return null;
-	}
 
 }

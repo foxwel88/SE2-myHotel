@@ -39,9 +39,9 @@ public class OrderDataServiceImpl_stub extends UnicastRemoteObject implements Or
 		return pos;
 	}
 
-	public ArrayList<OrderPO> getAbnormalOrderPO(Date date) throws RemoteException {
+	public ArrayList<OrderPO> getAbnormalOrderPO() throws RemoteException {
 		ArrayList<OrderPO> pos = new ArrayList<OrderPO>();
-		pos.add(new OrderPO(OrderType.ABNORMAL, date, date, date, date, date, null, null, "", "", "", RoomType.BIG, 100, 0, 0, false, null, null));
+		pos.add(new OrderPO(OrderType.ABNORMAL, null, null, null, null, null, null, null, "", "", "", RoomType.BIG, 100, 0, 0, false, null, null));
 		return pos;
 	}
 

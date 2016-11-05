@@ -13,7 +13,7 @@ public enum UserType {
 		return s;
 	}
 	
-	public UserType getType(String ss) {
+	public static UserType getType(String ss) {
 		if (ss.equals("客户")) {
 			return UserType.CUSTOMER;
 		}

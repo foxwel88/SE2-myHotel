@@ -31,7 +31,7 @@ public class OrderController implements Orderblservice {
 
 	public ResultMessage cancelOrder(String orderID) {
 		// TODO Auto-generated method stub
-		return null;
+		return OrderUtil.getInstance().cancelOrder();
 	}
 
 	public OrderVO getOrder(String ID) {
@@ -56,12 +56,12 @@ public class OrderController implements Orderblservice {
 
 	public ResultMessage executeOrder(String orderID) {
 		// TODO Auto-generated method stub
-		return null;
+		return OrderUtil.getInstance().executeOrder();
 	}
 
 	public ResultMessage cancelAbnormalOrder(String orderID, Boolean isHalf) {
 		// TODO Auto-generated method stub
-		return null;
+		return OrderUtil.getInstance().cancelAbnormalOrder(orderID,isHalf);
 	}
 
 	public List<String> getHistoryHotels(String userId) {

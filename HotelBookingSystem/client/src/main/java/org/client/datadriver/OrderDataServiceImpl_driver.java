@@ -18,7 +18,7 @@ public class OrderDataServiceImpl_driver {
 					null, null, null, null, null, null,
 					null, null, null, null, null, null,
 					100, 0, 0, false, null, null)));
-			System.out.println(stub.getAbnormalOrderPO(new Date(0)));
+			System.out.println(stub.getAbnormalOrderPO());
 			System.out.println(stub.getHotelOrderPO("loveHotel", OrderType.UNEXECUTED));
 			System.out.println(stub.getOrderPO("012345678920161015211206"));
 			System.out.println(stub.getUserOrderPO("0123456788", OrderType.ABNORMAL));

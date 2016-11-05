@@ -14,7 +14,7 @@ public enum OrderType {
 		return s;
 	}
 	
-	public OrderType getType(String ss) {
+	public static OrderType getType(String ss) {
 		if (ss.equals("未执行订单")) {
 			return OrderType.UNEXECUTED;
 		}

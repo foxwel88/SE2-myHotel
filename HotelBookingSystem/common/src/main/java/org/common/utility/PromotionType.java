@@ -13,7 +13,7 @@ public enum PromotionType {
 		return s;
 	}
 	
-	public PromotionType getType(String ss) {
+	public static PromotionType getType(String ss) {
 		if (ss.equals("生日促销")) {
 			return PromotionType.BIRTHDAYBONUS;
 		}

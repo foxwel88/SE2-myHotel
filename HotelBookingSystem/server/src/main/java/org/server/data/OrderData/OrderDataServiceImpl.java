@@ -37,7 +37,7 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 		return null;
 	}
 
-	public List<OrderPO> getAbnormalOrderPO(Date date) throws RemoteException {
+	public List<OrderPO> getAbnormalOrderPO() throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

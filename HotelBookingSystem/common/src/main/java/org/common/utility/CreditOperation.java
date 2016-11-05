@@ -13,7 +13,7 @@ public enum CreditOperation {
 		return s;
 	}
 	
-	public CreditOperation getType(String ss) {
+	public static CreditOperation getType(String ss) {
 		if (ss.equals("执行订单")) {
 			return CreditOperation.FINISHORDER;
 		}
