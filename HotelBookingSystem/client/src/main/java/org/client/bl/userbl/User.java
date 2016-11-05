@@ -2,19 +2,35 @@ package org.client.bl.userbl;
 
 import org.client.vo.UserVO;
 import org.common.po.UserPO;
-import org.common.utility.ResultMessage;
 
 public class User {
-	public ResultMessage modifyPassword(String userName, 
+	public UserPO modifyPassword(String userName, 
 			String oldPassword, String newPassword) {
 		return null;
 	}
 	
-	public ResultMessage modify(UserVO vo) {
+	public UserPO modify(UserVO vo) {
 		return null;
 	}
 	
-	public UserPO getUserPO(UserVO vo) {
+	public UserPO addUser(UserVO vo) {
 		return null;
 	}
+	
+	public User initbyPO(UserPO po) {
+		return this;
+	}
+	
+	public User initbyVO(UserVO vo) {
+		return this;
+	}
+	
+	public UserVO getUserVO() {
+		return null;
+	}
+
+	public UserPO getUserPO() {
+		return null;
+	}
+	
 }
