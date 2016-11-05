@@ -2,6 +2,7 @@ package org.server.datastub;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 
 import org.common.dataservice.UserDataService.UserDataService;
 import org.common.po.CreditRecordPO;
@@ -53,16 +54,18 @@ public class UserDataServiceImpl_stub extends UnicastRemoteObject implements Use
 		return ResultMessage.SUCCESS;
 	}
 
-	public CreditRecordPO findCreditRecord(String ID) throws RemoteException {
-		return new CreditRecordPO(null, ID, 0, 0, null, ID);
-	}
-
 	public void init() throws RemoteException {
 		System.out.println("init!");
 	}
 
 	public void finish() throws RemoteException {
 		System.out.println("finish");
+	}
+
+	public ArrayList<CreditRecordPO> findCreditRecords(String ID) throws RemoteException {
+		ArrayList<CreditRecordPO> list = new ArrayList<CreditRecordPO>();
+		list.add(new CreditRecordPO(null, ID, 0, 0, null, ID));
+		return list;
 	}
 
 }

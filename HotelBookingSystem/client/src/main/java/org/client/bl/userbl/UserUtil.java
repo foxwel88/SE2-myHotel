@@ -7,6 +7,7 @@ import org.client.rmi.RMIHelper;
 import org.client.vo.CreditRecordVO;
 import org.client.vo.UserVO;
 import org.common.dataservice.UserDataService.UserDataService;
+import org.common.po.CreditRecordPO;
 import org.common.po.UserPO;
 import org.common.utility.ResultMessage;
 
@@ -16,8 +17,12 @@ public class UserUtil {
 	
 	private User user;
 	
+	private CreditRecord creditRecord;
+	
+	
 	private UserUtil() {
 		user = new User();
+		creditRecord = new CreditRecord();
 	}
 	
 	public static UserUtil getInstance() {
@@ -65,7 +70,20 @@ public class UserUtil {
 	}
 	
 	public ResultMessage addCreditRecord (CreditRecordVO vo) {
-		return null;
+		//增加信用记录
+		UserDataService dao = RMIHelper.getInstance().getUserDataServiceImpl();
+		creditRecord = creditRecord.initbyVO(vo);
+		CreditRecordPO po = creditRecord.getCreditRecordPO(vo);
+		ResultMessage message = null;
+		try {
+			message = dao.addCreditRecord(po);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		// 增加用户属性的信用值
+		
+		return message;
 	}
 	
 	public List<CreditRecordVO> findCreditRecord(String ID) {
@@ -74,14 +92,14 @@ public class UserUtil {
 		return list.getVOs();
 	}
 	
-	public ResultMessage modifyPassword(String userName, String oldPassWord, String newPassWord) {
+	public ResultMessage modifyPassword(String userName, String oldPassword, String newPassword) {
 		UserDataService dao = RMIHelper.getInstance().getUserDataServiceImpl();
 		ResultMessage message = null;
 		UserVO vo = null;
 		UserPO po = null;
 		//检查密码是否正确
 		try {
-			message = dao.Check(userName, oldPassWord);
+			message = dao.Check(userName, oldPassword);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -89,13 +107,13 @@ public class UserUtil {
 			return message;
 		}
 		//检查新密码格式
-		if (!checkPasswordFormat(newPassWord)) {
+		if (!checkPasswordFormat(newPassword)) {
 			return ResultMessage.WRONGFORMAT;
 		}
 		//修改密码
 		vo = findbyUserName(userName);
 		user = user.initbyVO(vo);
-		po = user.modifyPassword(newPassWord);
+		po = user.modifyPassword(newPassword);
 		try {
 			message = dao.modify(po);
 		} catch (RemoteException e) {

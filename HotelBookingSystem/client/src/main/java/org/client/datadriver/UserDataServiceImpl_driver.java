@@ -24,7 +24,7 @@ public class UserDataServiceImpl_driver {
 			System.out.println(stub.Check("gz", "123"));
 			System.out.println(stub.findbyID("0123456789"));
 			System.out.println(stub.findbyUserName("gg"));
-			System.out.println(stub.findCreditRecord("0123455678"));
+			System.out.println(stub.findCreditRecords("0123455678"));
 			System.out.println(stub.modify(new UserPO(UserType.WEBMANAGER,
 					"阿喀琉斯", "一名香港記者",
 					null, "runningNews", null, 0, null, null, 0, 0, null)));
