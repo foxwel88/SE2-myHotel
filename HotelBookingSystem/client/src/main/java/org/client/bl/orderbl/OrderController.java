@@ -2,8 +2,7 @@ package org.client.bl.orderbl;
 
 import java.util.List;
 
-
-
+import org.client.blservice.hotelblservice.Hotelblservice;
 import org.client.blservice.orderblservice.Orderblservice;
 import org.client.blservice.userblservice.Userblservice;
 import org.client.vo.OrderVO;
@@ -29,6 +28,10 @@ public class OrderController implements Orderblservice {
 	
 	public void setUserblservice(Userblservice userController) {
 		this.orderutil.setUserblservice(userController);
+	}
+	
+	public void setHotelblservice(Hotelblservice hotelController) {
+		this.orderutil.setHotelblservice(hotelController);
 	}
 	
 	

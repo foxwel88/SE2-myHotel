@@ -2,18 +2,13 @@ package org.client.bl.orderbl;
 
 import static org.junit.Assert.*;
 
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import static org.easymock.EasyMock.*;
 
-import org.client.vo.HotelVO;
 import org.client.vo.OrderVO;
-import org.common.dataservice.HotelDataService.HotelDataService;
-import org.common.dataservice.OrderDataService.OrderDataService;
-import org.common.po.HotelPO;
 import org.common.po.OrderPO;
 import org.common.utility.HotelFilter;
 import org.common.utility.OrderType;

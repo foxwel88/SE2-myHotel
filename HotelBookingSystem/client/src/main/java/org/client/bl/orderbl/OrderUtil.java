@@ -3,10 +3,13 @@ package org.client.bl.orderbl;
 import java.rmi.RemoteException;
 import java.util.List;
 
+import org.client.bl.hotelbl.HotelController;
 import org.client.bl.userbl.UserController;
+import org.client.blservice.hotelblservice.Hotelblservice;
 import org.client.blservice.userblservice.Userblservice;
 import org.client.rmi.RMIHelper;
 import org.client.vo.CreditRecordVO;
+import org.client.vo.HotelVO;
 import org.client.vo.OrderVO;
 import org.client.vo.UserVO;
 import org.common.dataservice.OrderDataService.OrderDataService;
@@ -14,6 +17,7 @@ import org.common.po.OrderPO;
 import org.common.utility.CreditOperation;
 import org.common.utility.OrderType;
 import org.common.utility.ResultMessage;
+import org.common.utility.RoomType;
 
 public class OrderUtil {
 	
@@ -23,9 +27,12 @@ public class OrderUtil {
 	
 	protected Userblservice userController;
 	
+	protected Hotelblservice hotelController;
+	
 	private OrderUtil() {
 		dao = RMIHelper.getInstance().getOrderDataServiceImpl();
 		userController = UserController.getInstance();
+		hotelController = HotelController.getInstance();
 	}
 	
 	public static OrderUtil getInstance() {
@@ -39,10 +46,21 @@ public class OrderUtil {
 		this.userController = userController;
 	}
 	
+	public void setHotelblservice(Hotelblservice hotelController) {
+		this.hotelController = hotelController;
+	}
+	
 	private boolean check(OrderVO vo) {
 		if (vo.phoneNumber.length() != 11) {
 			return false;
 		}
+		
+		for (int i = 0; i < 11; ++i) {
+			if (!((vo.phoneNumber.charAt(i) <= '9') && (vo.phoneNumber.charAt(i) >= '0'))) {
+				return false;
+			}
+		}
+		
 		return true;
 	}
 	
@@ -50,6 +68,13 @@ public class OrderUtil {
 		if (ID.length() != 24) {
 			return false;
 		}
+	
+		for (int i = 0; i < 11; ++i) {
+			if (!((ID.charAt(i) <= '9') && (ID.charAt(i) >= '0'))) {
+				return false;
+			}
+		}
+		
 		return true;
 	}
 	
@@ -58,7 +83,7 @@ public class OrderUtil {
 		
 		UserVO uservo = userController.findbyUserName(vo.customerName);
 		
-		if (uservo.credit == 0) {
+		if (uservo.credit <= 0) {
 			return ResultMessage.CREDITNOTENOUGH;
 		}
 		
@@ -66,6 +91,26 @@ public class OrderUtil {
 			return ResultMessage.WRONGFORMAT;
 		}
 		
+		HotelVO hotelvo = hotelController.getHotelVO(vo.hotelAddress);
+		
+		List<String> roomtype = hotelvo.roomType;
+		
+		List<Integer> roomnum = hotelvo.roomNum;
+		
+		if (hotelvo.roomType != null) {
+		
+			for (int i = 0; i < roomtype.size(); ++i) {
+				if (roomtype.get(i) == vo.roomType) {
+					if (roomnum.get(i) < vo.roomNum) {
+						return ResultMessage.ROOMNOTENOUGH;
+					} else {
+						hotelController.changeRoom(RoomType.getType(vo.roomType), roomnum.get(i) - vo.roomNum, vo.hotelAddress);
+					}
+					break;
+					
+				}
+			}
+		}
 		myorder.setOrder(vo);
 		OrderPO po = myorder.getOrderPO();
 		try {
@@ -115,7 +160,7 @@ public class OrderUtil {
 		}
 	}
 	
-	public List<OrderVO> getUserOrderList (String userID, OrderType type) {
+	public List<OrderVO> getUserOrderList (String userID, OrderType type) {		
 		OrderList mylist = new OrderList();
 		try {
 			mylist.setOrderList(dao.getUserOrderPO(userID, type));
@@ -140,6 +185,10 @@ public class OrderUtil {
 	}
 	
 	public ResultMessage cancelOrder (String orderID) {
+		
+		if (!checkOrderID(orderID)) {
+			return ResultMessage.WRONGFORMAT;
+		}
 		
 		Order myorder = new Order();
 		OrderPO orderpo = null;
@@ -171,6 +220,11 @@ public class OrderUtil {
 	}
 	
 	public ResultMessage executeOrder (String orderID) {
+		
+		if (!checkOrderID(orderID)) {
+			return ResultMessage.WRONGFORMAT;
+		}
+		
 		Order myorder = new Order();
 		OrderPO orderpo = null;
 		try {
@@ -180,6 +234,7 @@ public class OrderUtil {
 			e.printStackTrace();
 			return ResultMessage.CONNECTIONFAIL;
 		}
+		
 		
 		if ((myorder.type != OrderType.UNEXECUTED) && (myorder.type != OrderType.ABNORMAL)) {
 			return ResultMessage.NOTEXIST;
@@ -205,6 +260,11 @@ public class OrderUtil {
 	}
 	
 	public ResultMessage cancelAbnormalOrder (String orderID,Boolean isHalf) {
+		
+		if (!checkOrderID(orderID)) {
+			return ResultMessage.WRONGFORMAT;
+		}
+		
 		Order myorder = new Order();
 		OrderPO orderpo = null;
 		try {

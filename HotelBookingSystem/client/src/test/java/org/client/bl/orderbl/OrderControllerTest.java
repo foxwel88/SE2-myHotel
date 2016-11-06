@@ -1,21 +1,12 @@
 package org.client.bl.orderbl;
 
 import static org.junit.Assert.*;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-import org.client.blservice.orderblservice.Orderblservice;
-import org.client.blservice.userblservice.Userblservice;
-import org.client.blstub.Order_stub;
+import org.client.blstub.Hotel_stub;
 import org.client.blstub.User_stub;
-import org.client.vo.AreaVO;
-import org.client.vo.CityVO;
-import org.client.vo.HotelVO;
 import org.client.vo.OrderVO;
-import org.client.vo.UserVO;
-import org.common.utility.HotelFilter;
 import org.common.utility.OrderType;
 import org.common.utility.ResultMessage;
 import org.common.utility.RoomType;
@@ -38,6 +29,7 @@ public class OrderControllerTest {
 		org.client.rmi.RMIHelper.getInstance().init();
 		controller = OrderController.getInstance();
 		controller.setUserblservice(new User_stub());
+		controller.setHotelblservice(new Hotel_stub());
 	}
 
 	@Test
