@@ -6,7 +6,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import org.server.rmi.RMIHelper;
-import org.server.rmi.RMIHelper;
 
 
 import java.awt.FlowLayout;
@@ -15,6 +14,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 
+@SuppressWarnings("serial")
 public class test extends JFrame {
 
 	private JPanel contentPane;

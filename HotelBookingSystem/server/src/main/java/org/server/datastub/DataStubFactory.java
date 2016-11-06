@@ -2,12 +2,6 @@ package org.server.datastub;
 
 import java.rmi.RemoteException;
 
-import org.server.data.CommentData.CommentDataServiceImpl;
-import org.server.data.HotelData.HotelDataServiceImpl;
-import org.server.data.OrderData.OrderDataServiceImpl;
-import org.server.data.PromotionData.PromotionDataServiceImpl;
-import org.server.data.UserData.UserDataServiceImpl;
-
 public class DataStubFactory {
 	private static DataStubFactory datafactory;
 	

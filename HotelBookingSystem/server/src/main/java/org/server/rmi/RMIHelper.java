@@ -1,7 +1,6 @@
 package org.server.rmi;
 
 import java.net.MalformedURLException;
-import java.rmi.AlreadyBoundException;
 import java.rmi.Naming;
 import java.rmi.NoSuchObjectException;
 import java.rmi.Remote;
@@ -33,10 +32,6 @@ public class RMIHelper {
 			
 			java.rmi.server.UnicastRemoteObject.unexportObject(reg,true);
 		} catch (NoSuchObjectException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

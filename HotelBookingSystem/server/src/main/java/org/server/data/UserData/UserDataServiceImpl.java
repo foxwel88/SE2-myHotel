@@ -2,7 +2,6 @@ package org.server.data.UserData;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.common.dataservice.UserDataService.UserDataService;
