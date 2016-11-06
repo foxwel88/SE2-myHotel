@@ -12,6 +12,12 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * 
+ * userBl模块集成测试，用到的userBl类均为真实类，DAO为stub
+ * @author gyue
+ *
+ */
 public class UserControllerTest {
 	
 	UserController controller;
