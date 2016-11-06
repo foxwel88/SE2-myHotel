@@ -53,6 +53,9 @@ public class UserUtil {
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
+		if (po == null) {
+			return null;
+		}
 		user = user.initbyPO(po);
 		return user.getUserVO();
 	}
@@ -64,6 +67,9 @@ public class UserUtil {
 			po = dao.findbyUserName(userName);
 		} catch (RemoteException e) {
 			e.printStackTrace();
+		}
+		if (po == null) {
+			return null;
 		}
 		user = user.initbyPO(po);
 		return user.getUserVO();
