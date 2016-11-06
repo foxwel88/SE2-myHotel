@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import org.common.dataservice.UserDataService.UserDataService;
 import org.common.po.CreditRecordPO;
 import org.common.po.UserPO;
+import org.common.utility.CreditOperation;
 import org.common.utility.ResultMessage;
+import org.common.utility.UserType;
 
 public class UserDataServiceImpl_stub extends UnicastRemoteObject implements UserDataService {
 
@@ -29,12 +31,12 @@ public class UserDataServiceImpl_stub extends UnicastRemoteObject implements Use
 	}
 
 	public UserPO findbyID(String ID) throws RemoteException {
-		return new UserPO(null, ID, ID, ID, ID, ID, 0, null, ID, 0, 0, ID);
+		return new UserPO(UserType.CUSTOMER, ID, ID, ID, ID, ID, 0, null, ID, 0, 0, ID);
 	}
 
 	public UserPO findbyUserName(String userName) throws RemoteException {
 		if (userName.equals("gz")) {
-			return new UserPO(null, userName, userName, userName, userName, userName, 0, null, userName, 0, 0, userName);
+			return new UserPO(UserType.CUSTOMER, userName, userName, userName, userName, userName, 0, null, userName, 0, 0, userName);
 		}
 		return null;
 	}
@@ -64,7 +66,7 @@ public class UserDataServiceImpl_stub extends UnicastRemoteObject implements Use
 
 	public ArrayList<CreditRecordPO> findCreditRecords(String ID) throws RemoteException {
 		ArrayList<CreditRecordPO> list = new ArrayList<CreditRecordPO>();
-		list.add(new CreditRecordPO(null, ID, 0, 0, null, ID));
+		list.add(new CreditRecordPO(null, ID, 0, 0, CreditOperation.RECHARGE, ID));
 		return list;
 	}
 
