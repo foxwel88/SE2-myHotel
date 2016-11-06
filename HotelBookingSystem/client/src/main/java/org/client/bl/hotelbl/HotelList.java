@@ -13,9 +13,17 @@ import org.common.utility.HotelFilter;
 public class HotelList {
 	public List<Hotel> list;
 	
+	public HotelDataService dao;
+	
+	public void setDAO(HotelDataService d) {
+		dao = d;
+	}
+	
 	public HotelList initList(HotelFilter filter) {
 		list = new ArrayList<Hotel>();
-		HotelDataService dao = RMIHelper.getInstance().getHotelDataServiceImpl();
+		if (dao == null) {
+			dao = RMIHelper.getInstance().getHotelDataServiceImpl();
+		}
 		List<HotelPO> pos = null;
 		try {
 			pos = dao.findHotels(filter);

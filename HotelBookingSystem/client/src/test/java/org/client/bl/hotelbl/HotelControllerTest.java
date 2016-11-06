@@ -22,6 +22,11 @@ import org.junit.Before;
 import org.junit.Test;
 import org.server.rmi.RMIHelper;
 
+/**
+ * hotelbl模块集成测试，用到的hotelbl类均为真实类，dao和其它bl模块的类为stub
+ * @author Hirico
+ *
+ */
 public class HotelControllerTest {
 	
 	HotelController controller;
@@ -108,7 +113,7 @@ public class HotelControllerTest {
 	public void testGetVO() {		
 		//verify and assert
 		HotelVO vo = controller.getHotelVO("123");
-		assertEquals(false, vo.address.isEmpty());
+		assertEquals(false, vo.city.isEmpty());
 	}
 	
 	@Test
