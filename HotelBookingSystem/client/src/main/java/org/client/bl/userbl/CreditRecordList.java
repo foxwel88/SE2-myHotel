@@ -13,10 +13,18 @@ public class CreditRecordList {
 
 	private ArrayList<CreditRecord> list;
 	
+	private UserDataService dao;
+	
+	public void setDao(UserDataService dao) {
+		this.dao = dao;
+	}
+	
 	public CreditRecordList initList(String ID) {
 		list = new ArrayList<CreditRecord>();
-		UserDataService dao = RMIHelper.getInstance().getUserDataServiceImpl();
-		ArrayList<CreditRecordPO> poList = new ArrayList<CreditRecordPO>();
+		if (dao == null) {
+			dao = RMIHelper.getInstance().getUserDataServiceImpl();
+		}
+		List<CreditRecordPO> poList = new ArrayList<CreditRecordPO>();
 		try {
 			poList = dao.findCreditRecords(ID);
 		} catch (RemoteException e) {

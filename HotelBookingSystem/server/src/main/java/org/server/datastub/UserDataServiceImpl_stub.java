@@ -3,6 +3,7 @@ package org.server.datastub;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.common.dataservice.UserDataService.UserDataService;
 import org.common.po.CreditRecordPO;
@@ -64,8 +65,8 @@ public class UserDataServiceImpl_stub extends UnicastRemoteObject implements Use
 		System.out.println("finish");
 	}
 
-	public ArrayList<CreditRecordPO> findCreditRecords(String ID) throws RemoteException {
-		ArrayList<CreditRecordPO> list = new ArrayList<CreditRecordPO>();
+	public List<CreditRecordPO> findCreditRecords(String ID) throws RemoteException {
+		List<CreditRecordPO> list = new ArrayList<CreditRecordPO>();
 		list.add(new CreditRecordPO(null, ID, 0, 0, CreditOperation.RECHARGE, ID));
 		return list;
 	}

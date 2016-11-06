@@ -3,6 +3,7 @@ package org.server.data.UserData;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.common.dataservice.UserDataService.UserDataService;
 import org.common.po.CreditRecordPO;
@@ -61,7 +62,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 		
 	}
 
-	public ArrayList<CreditRecordPO> findCreditRecords(String ID) throws RemoteException {
+	public List<CreditRecordPO> findCreditRecords(String ID) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}

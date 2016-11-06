@@ -3,6 +3,7 @@ package org.common.dataservice.UserDataService;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.common.po.CreditRecordPO;
 import org.common.po.UserPO;
@@ -27,7 +28,7 @@ public interface UserDataService extends Remote {
 	public ResultMessage addCreditRecord(CreditRecordPO po) throws RemoteException;
 	//在数据库中增加一个CreditRecordPO记录
 	
-	public ArrayList<CreditRecordPO> findCreditRecords(String ID) throws RemoteException;
+	public List<CreditRecordPO> findCreditRecords(String ID) throws RemoteException;
 	//按ID进行查找返回相应的CreditRecordPO记录
 	
 	public void init() throws RemoteException;
