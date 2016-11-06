@@ -2,7 +2,7 @@ package org.server.datastub;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 
 import org.common.dataservice.OrderDataService.OrderDataService;
@@ -17,31 +17,87 @@ public class OrderDataServiceImpl_stub extends UnicastRemoteObject implements Or
 	 * 
 	 */
 	private static final long serialVersionUID = -446301487541339431L;
-
+	
+	private OrderPO po1;
+	
+	private OrderPO po2;
+	
+	private OrderPO po3;
+	
+	private OrderPO po4;
+	
 	protected OrderDataServiceImpl_stub() throws RemoteException {
 		super();
+		po1 = new OrderPO(OrderType.UNEXECUTED,new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),
+					"南京市仙林大道168号栖霞大酒店","000000000120161122112233","栖霞大酒店",RoomType.BIG,100,1,2,false, "foxwel","0000000001","13919191919");
+		
+		po2 = new OrderPO(OrderType.CANCELED,new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),
+				"南京市中山路222号七天连锁酒店","000000000120161122112244","栖霞大酒店",RoomType.BIG,120,1,2,false, "foxwel","0000000001","13919191919");
+	
+		po3 = new OrderPO(OrderType.UNEXECUTED,new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),
+				"南京市中山路222号七天连锁酒店","000001234520161122112255","栖七天连锁酒店大酒店",RoomType.SINGLE,150,1,2,false, "ct","0000012345","13645454545");
+		
+		po4 = new OrderPO(OrderType.ABNORMAL,new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),
+				"南京市仙林大道168号栖霞大酒店","000001234520161122112266","栖七天连锁酒店大酒店",RoomType.SINGLE,350,1,2,false, "ct","0000012345","13645454545");
+	
 		// TODO Auto-generated constructor stub
 	}
 
 	public OrderPO getOrderPO(String orderID) throws RemoteException {
-		return new OrderPO(null, null, null, null, null, null, null, null, orderID, orderID, orderID, null, 100, 0, 0, false, orderID, orderID);
+		if (orderID.equals("000000000120161122112233")) {
+			return po1;
+		}
+		
+		if (orderID.equals("000000000120161122112244")) {
+			return po2;
+		}
+		
+		if (orderID.equals("000001234520161122112255")) {
+			return po3;
+		}
+		
+		if (orderID.equals("000001234520161122112266")) {
+			return po4;
+		}
+		
+		return null;
 	}
 
 	public ArrayList<OrderPO> getUserOrderPO(String userID, OrderType type) throws RemoteException {
 		ArrayList<OrderPO> pos = new ArrayList<OrderPO>();
-		pos.add(new OrderPO(type, null, null, null, null, null, null, null, userID, userID, userID, null, 100, 0, 0, false, userID, userID));
+		
+		if (userID.equals("0000000001")) {
+			pos.add(po1);
+			pos.add(po2);
+		}
+		
+		if (userID.equals("0000012345")) {
+			pos.add(po3);
+			pos.add(po4);
+		}
+		
 		return pos;
 	}
 
 	public ArrayList<OrderPO> getHotelOrderPO(String hotelID, OrderType type) throws RemoteException {
 		ArrayList<OrderPO> pos = new ArrayList<OrderPO>();
-		pos.add(new OrderPO(type, null, null, null, null, null, null, null, hotelID, hotelID, hotelID, null, 100, 0, 0, false, hotelID, hotelID));
+		
+		if (hotelID.equals("南京市仙林大道168号栖霞大酒店")) {
+			pos.add(po1);
+			pos.add(po4);
+		}
+		
+		if (hotelID.equals("南京市中山路222号七天连锁酒店")) {
+			pos.add(po2);
+			pos.add(po3);
+		}
+		
 		return pos;
 	}
 
 	public ArrayList<OrderPO> getAbnormalOrderPO() throws RemoteException {
 		ArrayList<OrderPO> pos = new ArrayList<OrderPO>();
-		pos.add(new OrderPO(OrderType.ABNORMAL, null, null, null, null, null, null, null, "", "", "", RoomType.BIG, 100, 0, 0, false, null, null));
+		pos.add(po4);
 		return pos;
 	}
 

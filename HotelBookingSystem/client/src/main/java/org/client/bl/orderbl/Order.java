@@ -2,7 +2,7 @@ package org.client.bl.orderbl;
 
 import java.util.Date;
 
-import org.client.bl.userbl.UserController;
+import org.client.blservice.userblservice.Userblservice;
 import org.client.vo.OrderVO;
 import org.client.vo.UserVO;
 import org.common.po.OrderPO;
@@ -12,6 +12,7 @@ import org.common.utility.RoomType;
 
 public class Order {
 	
+	public Userblservice userController;
 	
 	public OrderType type;
 	
@@ -49,9 +50,15 @@ public class Order {
 	
 	public String customerName;
 	
+	public String phoneNumber;
+	
+	public Order() {
+		this.userController = OrderUtil.getInstance().userController;
+	}
+	
 	public ResultMessage setOrder (OrderVO vo) {
 		this.customerName = vo.customerName;
-		UserVO uservo = UserController.getInstance().findbyUserName(customerName);
+		UserVO uservo = userController.findbyUserName(customerName);
 		this.userID = uservo.ID;
 		
 		this.type = OrderType.getType(vo.type);
@@ -71,6 +78,7 @@ public class Order {
 		this.numOfPeople = vo.numOfPeople;
 		this.existsChild = vo.existsChild;
 		
+		this.phoneNumber = vo.phoneNumber;
 		
 		return ResultMessage.SUCCESS;
 	}
@@ -96,16 +104,18 @@ public class Order {
 		this.numOfPeople = po.numOfPeople;
 		this.existsChild = po.existsChild;
 		
+		this.phoneNumber = po.phoneNumber;
+		
 		return ResultMessage.SUCCESS;
 	}
 	
 	public OrderVO getOrderVO () {
-		OrderVO vo = new OrderVO(type.getString(),generatedDate,schFrom,schTo,actFrom,actTo,latestTime,cancelTime,hotelAddress,orderID,hotelName,roomType.getString(),totalPrice,roomNum,numOfPeople,existsChild,customerName);
+		OrderVO vo = new OrderVO(type.getString(),generatedDate,schFrom,schTo,actFrom,actTo,latestTime,cancelTime,hotelAddress,orderID,hotelName,roomType.getString(),totalPrice,roomNum,numOfPeople,existsChild,customerName,phoneNumber);
 		return vo;
 	}
 	
 	public OrderPO getOrderPO () {
-		OrderPO po = new OrderPO(type,generatedDate,schFrom,schTo,actFrom,actTo,latestTime,cancelTime,hotelAddress,orderID,hotelName,roomType,totalPrice,roomNum,numOfPeople,existsChild,customerName,userID);
+		OrderPO po = new OrderPO(type,generatedDate,schFrom,schTo,actFrom,actTo,latestTime,cancelTime,hotelAddress,orderID,hotelName,roomType,totalPrice,roomNum,numOfPeople,existsChild,customerName,userID,phoneNumber);
 		return po;
 	}
 

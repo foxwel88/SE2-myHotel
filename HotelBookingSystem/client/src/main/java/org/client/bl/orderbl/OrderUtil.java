@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.util.List;
 
 import org.client.bl.userbl.UserController;
+import org.client.blservice.userblservice.Userblservice;
 import org.client.rmi.RMIHelper;
 import org.client.vo.CreditRecordVO;
 import org.client.vo.OrderVO;
@@ -18,10 +19,13 @@ public class OrderUtil {
 	
 	private static OrderUtil util;
 	
-	private static OrderDataService dao;
+	private OrderDataService dao;
+	
+	protected Userblservice userController;
 	
 	private OrderUtil() {
 		dao = RMIHelper.getInstance().getOrderDataServiceImpl();
+		userController = UserController.getInstance();
 	}
 	
 	public static OrderUtil getInstance() {
@@ -31,14 +35,28 @@ public class OrderUtil {
 		return util;
 	}
 	
+	public void setUserblservice(Userblservice userController) {
+		this.userController = userController;
+	}
+	
 	private boolean check(OrderVO vo) {
+		if (vo.phoneNumber.length() != 11) {
+			return false;
+		}
+		return true;
+	}
+	
+	private boolean checkOrderID(String ID) {
+		if (ID.length() != 24) {
+			return false;
+		}
 		return true;
 	}
 	
 	public ResultMessage createOrder(OrderVO vo) {
 		Order myorder = new Order();
 		
-		UserVO uservo = UserController.getInstance().findbyUserName(vo.customerName);
+		UserVO uservo = userController.findbyUserName(vo.customerName);
 		
 		if (uservo.credit == 0) {
 			return ResultMessage.CREDITNOTENOUGH;
@@ -59,9 +77,24 @@ public class OrderUtil {
 	}
 	
 	public OrderVO getOrder (String orderID) {
+		
+		if (!checkOrderID(orderID)) {
+			OrderVO vo = new OrderVO(ResultMessage.WRONGFORMAT);
+			return vo;
+		}
+		
 		Order myorder = new Order();
 		try {
-			myorder.setOrder(dao.getOrderPO(orderID));
+			OrderPO respo = dao.getOrderPO(orderID);
+			
+			if (respo == null) {
+				OrderVO vo = new OrderVO(ResultMessage.NOTEXIST);
+				return vo;
+			}
+			
+			myorder.setOrder(respo);
+			
+			
 			return myorder.getOrderVO();
 		} catch (RemoteException e) {
 			e.printStackTrace();
@@ -112,6 +145,7 @@ public class OrderUtil {
 		OrderPO orderpo = null;
 		try {
 			orderpo = dao.getOrderPO(orderID);
+			myorder.setOrder(orderpo);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			return ResultMessage.CONNECTIONFAIL;
@@ -141,12 +175,13 @@ public class OrderUtil {
 		OrderPO orderpo = null;
 		try {
 			orderpo = dao.getOrderPO(orderID);
+			myorder.setOrder(orderpo);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			return ResultMessage.CONNECTIONFAIL;
 		}
 		
-		if ((myorder.type != OrderType.UNEXECUTED) || (myorder.type != OrderType.ABNORMAL)) {
+		if ((myorder.type != OrderType.UNEXECUTED) && (myorder.type != OrderType.ABNORMAL)) {
 			return ResultMessage.NOTEXIST;
 		}
 		
@@ -162,9 +197,9 @@ public class OrderUtil {
 		}
 		
 
-		UserVO uservo = UserController.getInstance().findbyID(myorder.userID);
+		UserVO uservo = userController.findbyID(myorder.userID);
 		CreditRecordVO creditrecordvo = new CreditRecordVO(null, myorder.orderID, uservo.ID, myorder.totalPrice, uservo.credit + (myorder.totalPrice), CreditOperation.FINISHORDER.toString());
-		UserController.getInstance().addCreditRecord(creditrecordvo);
+		userController.addCreditRecord(creditrecordvo);
 
 		return ResultMessage.SUCCESS;
 	}
@@ -174,6 +209,7 @@ public class OrderUtil {
 		OrderPO orderpo = null;
 		try {
 			orderpo = dao.getOrderPO(orderID);
+			myorder.setOrder(orderpo);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			return ResultMessage.CONNECTIONFAIL;
@@ -195,7 +231,7 @@ public class OrderUtil {
 		}
 		
 
-		UserVO uservo = UserController.getInstance().findbyID(myorder.userID);
+		UserVO uservo = userController.findbyID(myorder.userID);
 		
 		double temp = myorder.totalPrice / 2.0;
 		if (isHalf) {
@@ -203,7 +239,7 @@ public class OrderUtil {
 		}
 		
 		CreditRecordVO creditrecordvo = new CreditRecordVO(null, myorder.orderID, uservo.ID, temp, uservo.credit + temp, CreditOperation.EXCEPTIONORDER.toString());
-		UserController.getInstance().addCreditRecord(creditrecordvo);
+		userController.addCreditRecord(creditrecordvo);
 
 		return ResultMessage.SUCCESS;
 	}

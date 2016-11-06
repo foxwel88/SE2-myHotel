@@ -45,11 +45,14 @@ public class OrderVO implements Serializable {
 	
 	public String customerName;
 	
+	public String phoneNumber;
+	
 	public ResultMessage resultMessage;
 	
 	public OrderVO(String type, Date generatedDate, Date schFrom, Date schTo, Date actFrom, Date actTo,
 			Date latestTime, Date cancelTime, String hotelAddress, String orderID,
-			String hotelName, String roomType, double totalPrice, int roomNum, int numOfPeople, boolean existsChild, String customerName) {
+			String hotelName, String roomType, double totalPrice, int roomNum, int numOfPeople, boolean existsChild, 
+			String customerName, String phoneNumber) {
 		this.type = type;
 		this.generatedDate = generatedDate;
 		this.schFrom = schFrom;
@@ -67,6 +70,7 @@ public class OrderVO implements Serializable {
 		this.numOfPeople = numOfPeople;
 		this.existsChild = existsChild;
 		this.customerName = customerName;
+		this.phoneNumber = phoneNumber;
 		resultMessage = ResultMessage.SUCCESS;
 	}
 	
