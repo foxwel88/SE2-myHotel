@@ -9,12 +9,11 @@ import org.client.vo.CommentVO;
 import org.common.utility.ResultMessage;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.server.rmi.RMIHelper;
 
 /**
- * commentbl模块集成测试，用到的commentbl类均为真实类，dataservice和其它bl模块的类为stub
+ * commentbl模块集成测试，用到的commentbl类均为真实类，dataservice为stub
  */
 public class CommentControllerTest {
 	CommentController commentController;
@@ -23,10 +22,8 @@ public class CommentControllerTest {
 	public void setUp() throws Exception {
 		RMIHelper.getinstance().buildStubConnection();
 		org.client.rmi.RMIHelper.getInstance().init();
-		commentController = new CommentController();
+		commentController = CommentController.getInstance();
 	}
-	
-	
 	
 	@Test(timeout = 1000)
 	public void testgetComment() {

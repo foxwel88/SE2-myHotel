@@ -26,7 +26,7 @@ public class PromotionController implements Promotionblservice {
 		level = Level.getInstance();
 	}
 	
-	public PromotionController getInstance() {
+	public static PromotionController getInstance() {
 		if (promotionController == null) {
 			promotionController = new PromotionController();
 		}
@@ -67,6 +67,7 @@ public class PromotionController implements Promotionblservice {
 
 	public ResultMessage modify(PromotionVO vo) {
 		Promotion promotion = null;
+		
 		for (int i = 0; i < hotelPromotionList.size(); i++) {
 			if (vo.name == hotelPromotionList.get(i).name) {
 				promotion = hotelPromotionList.get(i);
@@ -90,6 +91,10 @@ public class PromotionController implements Promotionblservice {
 
 	public ResultMessage modifyLevel(LevelVO vo) {
 		return level.modifyLevel(vo);
+	}
+	
+	public double getPrice (String userID, String hotelAddress, double rawPrice) {
+		return PromotionUtil.getPrice(userID, hotelAddress, rawPrice);
 	}
 
 }

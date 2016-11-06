@@ -72,34 +72,38 @@ public class Promotion {
 	}
 	
 	ResultMessage modify (PromotionVO vo) {
-		RMIHelper rmihelper = RMIHelper.getInstance();
-		
-		PromotionDataService promotionDataService = rmihelper.getPromotionDataServiceImpl();
-		
-		type = vo.type;
-		
-		startTime = vo.startTime;
-		
-		endTime = vo.endTime;
-		
-		hotelName = vo.hotelName;
-		
-		level = vo.level;
-		
-		area = vo.area;
-		
-		discount = vo.discount;
-		
-		name = vo.name;
-		
-		PromotionPO po = new PromotionPO(PromotionType.getType(type), startTime, endTime, hotelName, level, area, discount, name);
-		
-		try {
-			promotionDataService.modify(po);
+		if (PromotionUtil.checkPromotionFormat(vo, false)) {
+			RMIHelper rmihelper = RMIHelper.getInstance();
 			
-			return ResultMessage.SUCCESS;
-		} catch (RemoteException rex) {
-			return ResultMessage.CONNECTIONFAIL;
+			PromotionDataService promotionDataService = rmihelper.getPromotionDataServiceImpl();
+			
+			type = vo.type;
+			
+			startTime = vo.startTime;
+			
+			endTime = vo.endTime;
+			
+			hotelName = vo.hotelName;
+			
+			level = vo.level;
+			
+			area = vo.area;
+			
+			discount = vo.discount;
+			
+			name = vo.name;
+			
+			PromotionPO po = new PromotionPO(PromotionType.getType(type), startTime, endTime, hotelName, level, area, discount, name);
+			
+			try {
+				promotionDataService.modify(po);
+				
+				return ResultMessage.SUCCESS;
+			} catch (RemoteException rex) {
+				return ResultMessage.CONNECTIONFAIL;
+			}
+		} else {
+			return ResultMessage.WRONGFORMAT;
 		}
 	}
 }

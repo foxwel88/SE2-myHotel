@@ -3,10 +3,12 @@ package org.server.datastub;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
+import java.util.Date;
 
 import org.common.dataservice.PromotionDataService.PromotionDataService;
 import org.common.po.LevelPO;
 import org.common.po.PromotionPO;
+import org.common.utility.PromotionType;
 import org.common.utility.ResultMessage;
 
 public class PromotionDataServiceImpl_stub extends UnicastRemoteObject implements PromotionDataService {
@@ -31,13 +33,13 @@ public class PromotionDataServiceImpl_stub extends UnicastRemoteObject implement
 
 	public ArrayList<PromotionPO> showHotelPromotion(String hotelAddress) throws RemoteException {
 		ArrayList<PromotionPO> promotions = new ArrayList<PromotionPO>();
-		promotions.add(new PromotionPO(null, null, null, hotelAddress, 0, hotelAddress, 0, hotelAddress));
+		promotions.add(new PromotionPO(PromotionType.SPECIALDATE, new Date(100000), new Date(1000000), hotelAddress, 3, hotelAddress, 5, hotelAddress));
 		return promotions;
 	}
 
 	public ArrayList<PromotionPO> showWebsitePromotion() throws RemoteException {
 		ArrayList<PromotionPO> promotions = new ArrayList<PromotionPO>();
-		promotions.add(new PromotionPO(null, null, null, "", 0, "", 0, null));
+		promotions.add(new PromotionPO(PromotionType.BIRTHDAYBONUS, new Date(100000), new Date(1000000), "add", 3, "add", 5, "add"));
 		return promotions;
 	}
 

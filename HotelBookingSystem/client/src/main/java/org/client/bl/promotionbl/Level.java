@@ -48,22 +48,47 @@ public class Level {
 	}
 	
 	ResultMessage modifyLevel (LevelVO vo) {
-		RMIHelper rmihelper = RMIHelper.getInstance();
-		
-		PromotionDataService promotionDataService = rmihelper.getPromotionDataServiceImpl();
-		
-		levelNum = vo.levelNum;
-		
-		credits = vo.credits;
-		
-		LevelPO po = new LevelPO(levelNum, credits);
-		
-		try {
-			promotionDataService.modifyLevel(po);
+		if (checkLevelFormat(vo)) {
+			RMIHelper rmihelper = RMIHelper.getInstance();
 			
-			return ResultMessage.SUCCESS;
-		} catch (RemoteException rex) {
-			return ResultMessage.CONNECTIONFAIL;
+			PromotionDataService promotionDataService = rmihelper.getPromotionDataServiceImpl();
+			
+			levelNum = vo.levelNum;
+			
+			credits = vo.credits;
+			
+			LevelPO po = new LevelPO(levelNum, credits);
+			
+			try {
+				promotionDataService.modifyLevel(po);
+				
+				return ResultMessage.SUCCESS;
+			} catch (RemoteException rex) {
+				return ResultMessage.CONNECTIONFAIL;
+			}
+		} else {
+			return ResultMessage.WRONGFORMAT;
 		}
+	}
+	
+	private boolean checkLevelFormat(LevelVO vo) {
+		boolean isOK = true;
+		
+		if (vo.levelNum < 1) {
+			isOK = false;
+		}
+		
+		if (vo.credits.size() != vo.levelNum) {
+			isOK = false;
+		}
+		
+		for (int i = 0; i < vo.credits.size(); i++) {
+			if (vo.credits.get(i) <= 0) {
+				isOK = false;
+				break;
+			}
+		}
+		
+		return isOK;
 	}
 }

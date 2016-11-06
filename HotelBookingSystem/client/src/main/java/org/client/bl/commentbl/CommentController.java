@@ -6,6 +6,19 @@ import org.client.vo.CommentVO;
 import org.common.utility.ResultMessage;
 
 public class CommentController implements Commentblservice {
+	
+	private static CommentController commentController;
+	
+	private CommentController() {
+		
+	}
+	
+	public static CommentController getInstance() {
+		if (commentController == null) {
+			commentController = new CommentController();
+		}
+		return commentController;
+	}
 
 	public List<CommentVO> getComment(String hotelAddress) {
 		List<CommentVO> commentVOList = CommentUtil.getComment(hotelAddress);
