@@ -17,15 +17,25 @@ import org.easymock.Mock;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
 
 /**
- * 对HotelList类的单元测试，协作对象中dao为mock，hotel为真实对象
+ * 对HotelList类的单元测试，协作对象中dao和hotel为mock
  * @author Hirico
  *
  */
+
+@RunWith(PowerMockRunner.class)
+@PrepareForTest( { Hotel.class, HotelList.class, HotelDataService.class})
 public class HotelListTest extends EasyMockSupport {
 
 	HotelList hotelList;
+	
+	@Mock
+	Hotel h;
 	
 	@Mock
 	HotelDataService dao;
@@ -35,6 +45,8 @@ public class HotelListTest extends EasyMockSupport {
 		hotelList = new HotelList();
 		dao = mock(HotelDataService.class);
 		hotelList.setDAO(dao);
+		h = mock(Hotel.class);
+		PowerMockito.whenNew(Hotel.class).withNoArguments().thenReturn(h);
 	}
 
 	@After
@@ -55,13 +67,14 @@ public class HotelListTest extends EasyMockSupport {
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
+		expect(h.initByPO(fake)).andReturn(h);
+		expect(h.generateVO()).andReturn(new HotelVO("123", "123", "x", "y", "z", 1, 2, "good", "", null, null, null, null));
 		replayAll();
 		
 		//verify
 		hotelList.initList(filter);
 		List<HotelVO> vo = hotelList.getVOs();
 		verifyAll();
-		assertEquals(2, hotelList.list.get(0).star);
 		assertEquals("good", vo.get(0).facility);
 	}
 
