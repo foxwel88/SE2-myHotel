@@ -20,7 +20,7 @@ public class User_stub implements Userblservice {
 		if (userName.equals("123") && password.equals("111111111111111111")) {
 			return ResultMessage.SUCCESS;
 		} else {
-			return ResultMessage.WRONGPASSWORD;
+			return ResultMessage.WRONG_PASSWORD;
 		}
 	}
 

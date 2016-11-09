@@ -28,7 +28,7 @@ public class HotelUtil {
 			return dao.addHotelInfo(po);
 		} catch (RemoteException e) {
 			e.printStackTrace();
-			return ResultMessage.CONNECTIONFAIL;
+			return ResultMessage.CONNECTION_FAIL;
 		}
 	}
 	
@@ -74,7 +74,7 @@ public class HotelUtil {
 			roomRe = dao.modifyRooms(vo.address, rooms);
 		} catch (RemoteException e) {
 			e.printStackTrace();
-			return ResultMessage.CONNECTIONFAIL;
+			return ResultMessage.CONNECTION_FAIL;
 		}
 		if (hotelRe != ResultMessage.SUCCESS) {
 			return hotelRe;

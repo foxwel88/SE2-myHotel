@@ -55,7 +55,7 @@ public class OrderListTest extends EasyMockSupport {
 
 		expect(myorder.setOrder(po1)).andReturn(ResultMessage.SUCCESS);
 		
-		expect(myorder.getOrderVO()).andReturn(new OrderVO(OrderType.UNEXECUTED.getString(),new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),
+		expect(myorder.getOrderVO()).andReturn(new OrderVO("i'm a userid",OrderType.UNEXECUTED.getString(),new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),
 				"南京市仙林大道168号栖霞大酒店","000000000120161122112233","栖霞大酒店",RoomType.BIG.getString(),100,1,2,false, "foxwel","13919191919"));
 		
 		replayAll();

@@ -127,7 +127,7 @@ public class UserUtil {
 		}
 		//检查新密码格式
 		if (!checkPasswordFormat(newPassword)) {
-			return ResultMessage.WRONGFORMAT;
+			return ResultMessage.WRONG_FORMAT;
 		}
 		//修改密码
 		vo = findbyUserName(userName);

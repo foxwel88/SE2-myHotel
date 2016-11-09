@@ -84,7 +84,7 @@ public class HotelControllerTest {
 		ResultMessage result = controller.addHotel(vo, uvo);
 		
 		//assert
-		assertEquals(ResultMessage.WRONGFORMAT, result);
+		assertEquals(ResultMessage.WRONG_FORMAT, result);
 	}
 	
 	@Test
@@ -100,7 +100,7 @@ public class HotelControllerTest {
 		ResultMessage result = controller.modifyHotel(vo);	
 		assertEquals(ResultMessage.SUCCESS, result);
 		result = controller.modifyHotel(vo2);
-		assertEquals(ResultMessage.WRONGFORMAT, result);
+		assertEquals(ResultMessage.WRONG_FORMAT, result);
 	}
 	
 	@Test

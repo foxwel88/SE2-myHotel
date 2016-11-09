@@ -19,6 +19,8 @@ public class Promotion {
 	
 	String hotelName;
 	
+	String hotelAddress;
+	
 	int level;
 	
 	String area;
@@ -35,6 +37,8 @@ public class Promotion {
 		endTime = vo.endTime;
 		
 		hotelName = vo.hotelName;
+		
+		hotelAddress = vo.hotelAddress;
 		
 		level = vo.level;
 		
@@ -64,11 +68,11 @@ public class Promotion {
 	}
 	
 	PromotionVO toVO() {
-		return new PromotionVO(type, startTime, endTime, hotelName, level, area, discount, hotelName);
+		return new PromotionVO(type, startTime, endTime, hotelName, hotelAddress, level, area, discount, hotelName);
 	}
 	
 	PromotionPO toPO() {
-		return new PromotionPO(PromotionType.getType(type), startTime, endTime, hotelName, level, area, discount, hotelName);
+		return new PromotionPO(PromotionType.getType(type), startTime, endTime, hotelName, hotelAddress, level, area, discount, hotelName);
 	}
 	
 	ResultMessage modify (PromotionVO vo) {
@@ -93,17 +97,17 @@ public class Promotion {
 			
 			name = vo.name;
 			
-			PromotionPO po = new PromotionPO(PromotionType.getType(type), startTime, endTime, hotelName, level, area, discount, name);
+			PromotionPO po = new PromotionPO(PromotionType.getType(type), startTime, endTime, hotelName, hotelAddress, level, area, discount, name);
 			
 			try {
 				promotionDataService.modify(po);
 				
 				return ResultMessage.SUCCESS;
 			} catch (RemoteException rex) {
-				return ResultMessage.CONNECTIONFAIL;
+				return ResultMessage.CONNECTION_FAIL;
 			}
 		} else {
-			return ResultMessage.WRONGFORMAT;
+			return ResultMessage.WRONG_FORMAT;
 		}
 	}
 }

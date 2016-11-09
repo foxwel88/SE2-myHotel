@@ -50,7 +50,7 @@ public class UserDataServiceImpl_stub extends UnicastRemoteObject implements Use
 		if (userName.equals("gz") && password.equals("123")) {
 			return ResultMessage.SUCCESS;
 		}
-		return ResultMessage.WRONGVALUE;
+		return ResultMessage.WRONG_VALUE;
 	}
 
 	public ResultMessage addCreditRecord(CreditRecordPO po) throws RemoteException {

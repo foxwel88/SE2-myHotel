@@ -12,10 +12,10 @@ import org.common.utility.ResultMessage;
 public class Promotion_stub implements Promotionblservice {
 	
 	PromotionVO vo1 = new PromotionVO(PromotionType.SPECIALDATE.getString()
-			, new Date(), new Date(), "goodhotel",2 , "lalal", 0.8, null);
+			, new Date(), new Date(), "goodhotel","address",2 , "lalal", 0.8, null);
 	
 	PromotionVO vo2 = new PromotionVO(PromotionType.SPECIALDATE.getString()
-			, new Date(), new Date(), "goodhotel",2 , "lalal", 0.8, null);
+			, new Date(), new Date(), "goodhotel","address",2 , "lalal", 0.8, null);
 	
 	ArrayList<PromotionVO> vo = new ArrayList<PromotionVO>();
 

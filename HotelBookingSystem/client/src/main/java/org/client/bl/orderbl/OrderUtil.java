@@ -84,11 +84,11 @@ public class OrderUtil {
 		UserVO uservo = userController.findbyUserName(vo.customerName);
 		
 		if (uservo.credit <= 0) {
-			return ResultMessage.CREDITNOTENOUGH;
+			return ResultMessage.CREDIT_NOT_ENOUGH;
 		}
 		
 		if (!check(vo)) {
-			return ResultMessage.WRONGFORMAT;
+			return ResultMessage.WRONG_FORMAT;
 		}
 		
 		HotelVO hotelvo = hotelController.getHotelVO(vo.hotelAddress);
@@ -102,7 +102,7 @@ public class OrderUtil {
 			for (int i = 0; i < roomtype.size(); ++i) {
 				if (roomtype.get(i) == vo.roomType) {
 					if (roomnum.get(i) < vo.roomNum) {
-						return ResultMessage.ROOMNOTENOUGH;
+						return ResultMessage.ROOM_NOT_ENOUGH;
 					} else {
 						hotelController.changeRoom(RoomType.getType(vo.roomType), roomnum.get(i) - vo.roomNum, vo.hotelAddress);
 					}
@@ -117,14 +117,14 @@ public class OrderUtil {
 			return dao.add(po);
 		} catch (RemoteException e) {
 			e.printStackTrace();
-			return ResultMessage.CONNECTIONFAIL;
+			return ResultMessage.CONNECTION_FAIL;
 		}
 	}
 	
 	public OrderVO getOrder (String orderID) {
 		
 		if (!checkOrderID(orderID)) {
-			OrderVO vo = new OrderVO(ResultMessage.WRONGFORMAT);
+			OrderVO vo = new OrderVO(ResultMessage.WRONG_FORMAT);
 			return vo;
 		}
 		
@@ -133,7 +133,7 @@ public class OrderUtil {
 			OrderPO respo = dao.getOrderPO(orderID);
 			
 			if (respo == null) {
-				OrderVO vo = new OrderVO(ResultMessage.NOTEXIST);
+				OrderVO vo = new OrderVO(ResultMessage.NOT_EXIST);
 				return vo;
 			}
 			
@@ -143,7 +143,7 @@ public class OrderUtil {
 			return myorder.getOrderVO();
 		} catch (RemoteException e) {
 			e.printStackTrace();
-			OrderVO vo = new OrderVO(ResultMessage.CONNECTIONFAIL);
+			OrderVO vo = new OrderVO(ResultMessage.CONNECTION_FAIL);
 			return vo;
 		}
 	}
@@ -187,7 +187,7 @@ public class OrderUtil {
 	public ResultMessage cancelOrder (String orderID) {
 		
 		if (!checkOrderID(orderID)) {
-			return ResultMessage.WRONGFORMAT;
+			return ResultMessage.WRONG_FORMAT;
 		}
 		
 		Order myorder = new Order();
@@ -197,11 +197,11 @@ public class OrderUtil {
 			myorder.setOrder(orderpo);
 		} catch (RemoteException e) {
 			e.printStackTrace();
-			return ResultMessage.CONNECTIONFAIL;
+			return ResultMessage.CONNECTION_FAIL;
 		}
 		
 		if (myorder.type != OrderType.UNEXECUTED) {
-			return ResultMessage.NOTEXIST;
+			return ResultMessage.NOT_EXIST;
 		}
 		
 		myorder.type = OrderType.CANCELED;
@@ -213,7 +213,7 @@ public class OrderUtil {
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return ResultMessage.CONNECTIONFAIL;
+			return ResultMessage.CONNECTION_FAIL;
 		}
 		
 		return ResultMessage.SUCCESS;
@@ -222,7 +222,7 @@ public class OrderUtil {
 	public ResultMessage executeOrder (String orderID) {
 		
 		if (!checkOrderID(orderID)) {
-			return ResultMessage.WRONGFORMAT;
+			return ResultMessage.WRONG_FORMAT;
 		}
 		
 		Order myorder = new Order();
@@ -232,12 +232,12 @@ public class OrderUtil {
 			myorder.setOrder(orderpo);
 		} catch (RemoteException e) {
 			e.printStackTrace();
-			return ResultMessage.CONNECTIONFAIL;
+			return ResultMessage.CONNECTION_FAIL;
 		}
 		
 		
 		if ((myorder.type != OrderType.UNEXECUTED) && (myorder.type != OrderType.ABNORMAL)) {
-			return ResultMessage.NOTEXIST;
+			return ResultMessage.NOT_EXIST;
 		}
 		
 		myorder.type = OrderType.EXECUTED;
@@ -248,7 +248,7 @@ public class OrderUtil {
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return ResultMessage.CONNECTIONFAIL;
+			return ResultMessage.CONNECTION_FAIL;
 		}
 		
 
@@ -262,7 +262,7 @@ public class OrderUtil {
 	public ResultMessage cancelAbnormalOrder (String orderID,Boolean isHalf) {
 		
 		if (!checkOrderID(orderID)) {
-			return ResultMessage.WRONGFORMAT;
+			return ResultMessage.WRONG_FORMAT;
 		}
 		
 		Order myorder = new Order();
@@ -272,11 +272,11 @@ public class OrderUtil {
 			myorder.setOrder(orderpo);
 		} catch (RemoteException e) {
 			e.printStackTrace();
-			return ResultMessage.CONNECTIONFAIL;
+			return ResultMessage.CONNECTION_FAIL;
 		}
 		
 		if (myorder.type != OrderType.ABNORMAL) {
-			return ResultMessage.NOTEXIST;
+			return ResultMessage.NOT_EXIST;
 		}
 		
 		myorder.type = OrderType.UNEXECUTED;
@@ -287,7 +287,7 @@ public class OrderUtil {
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return ResultMessage.CONNECTIONFAIL;
+			return ResultMessage.CONNECTION_FAIL;
 		}
 		
 

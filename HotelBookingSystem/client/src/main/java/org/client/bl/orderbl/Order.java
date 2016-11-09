@@ -57,6 +57,7 @@ public class Order {
 	}
 	
 	public ResultMessage setOrder (OrderVO vo) {
+		this.userID = vo.userID;
 		this.customerName = vo.customerName;
 		UserVO uservo = userController.findbyUserName(customerName);
 		this.userID = uservo.ID;
@@ -110,7 +111,7 @@ public class Order {
 	}
 	
 	public OrderVO getOrderVO () {
-		OrderVO vo = new OrderVO(type.getString(),generatedDate,schFrom,schTo,actFrom,actTo,latestTime,cancelTime,hotelAddress,orderID,hotelName,roomType.getString(),totalPrice,roomNum,numOfPeople,existsChild,customerName,phoneNumber);
+		OrderVO vo = new OrderVO("i'm a userid",type.getString(),generatedDate,schFrom,schTo,actFrom,actTo,latestTime,cancelTime,hotelAddress,orderID,hotelName,roomType.getString(),totalPrice,roomNum,numOfPeople,existsChild,customerName,phoneNumber);
 		return vo;
 	}
 	

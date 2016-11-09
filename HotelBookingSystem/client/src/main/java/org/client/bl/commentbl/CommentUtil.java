@@ -29,7 +29,7 @@ public class CommentUtil {
 				commentVOList.add(new CommentVO(po.userName, po.hotelAddress, po.date, po.rank, po.comment));
 			}
 		} catch (RemoteException rex) {
-			commentVOList.add(new CommentVO(ResultMessage.CONNECTIONFAIL));
+			commentVOList.add(new CommentVO(ResultMessage.CONNECTION_FAIL));
 		}
 		return commentVOList;
 	}
@@ -45,10 +45,10 @@ public class CommentUtil {
 				
 				return commentDataService.insert(po);
 			} else {
-				return ResultMessage.WRONGFORMAT;
+				return ResultMessage.WRONG_FORMAT;
 			}
 		} catch (RemoteException rex) {
-			return ResultMessage.CONNECTIONFAIL;
+			return ResultMessage.CONNECTION_FAIL;
 		}
 	}
 	

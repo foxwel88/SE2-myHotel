@@ -79,7 +79,7 @@ public class PromotionController implements Promotionblservice {
 			}
 		}
 		if (promotion == null) {
-			return ResultMessage.NOTEXIST;
+			return ResultMessage.NOT_EXIST;
 		} else {
 			return promotion.modify(vo);
 		}

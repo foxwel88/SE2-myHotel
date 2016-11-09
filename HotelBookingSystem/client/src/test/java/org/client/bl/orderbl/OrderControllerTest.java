@@ -35,7 +35,7 @@ public class OrderControllerTest {
 	@Test
 	public void testCreateOrder1() {
 		
-		OrderVO vo = new OrderVO(OrderType.UNEXECUTED.getString(),new Date(),new Date(),new Date(),new Date(),new Date(),
+		OrderVO vo = new OrderVO("i'm a userid",OrderType.UNEXECUTED.getString(),new Date(),new Date(),new Date(),new Date(),new Date(),
 				new Date(),new Date(),"南京市仙林大道168号栖霞大酒店","000000000120161122112233","栖霞大酒店",RoomType.BIG.toString(),100,1,2,false, "foxwel","13919191919");
 
 		ResultMessage result = null;
@@ -54,7 +54,7 @@ public class OrderControllerTest {
 	@Test
 	public void testCreateOrder2() {
 		
-		OrderVO vo = new OrderVO(OrderType.UNEXECUTED.getString(),new Date(),new Date(),new Date(),new Date(),new Date(),
+		OrderVO vo = new OrderVO("i'm a userid",OrderType.UNEXECUTED.getString(),new Date(),new Date(),new Date(),new Date(),new Date(),
 				new Date(),new Date(),"南京市仙林大道168号栖霞大酒店","000000000120161122112233","栖霞大酒店",RoomType.BIG.toString(),100,1,2,false, "foxwel","139191919");
 
 		ResultMessage result = null;
@@ -67,7 +67,7 @@ public class OrderControllerTest {
 		}
 		
 		//assert
-		assertEquals(ResultMessage.WRONGFORMAT, result);
+		assertEquals(ResultMessage.WRONG_FORMAT, result);
 	}
 	
 	@Test
@@ -95,7 +95,7 @@ public class OrderControllerTest {
 		}
 		
 		//assert
-		assertEquals(ResultMessage.WRONGFORMAT, vo.resultMessage);
+		assertEquals(ResultMessage.WRONG_FORMAT, vo.resultMessage);
 	}
 	
 	@Test
@@ -106,7 +106,7 @@ public class OrderControllerTest {
 		vo = controller.getOrder("000000000120161122112200");
 		
 		//assert
-		assertEquals(ResultMessage.NOTEXIST, vo.resultMessage);
+		assertEquals(ResultMessage.NOT_EXIST, vo.resultMessage);
 	}
 	
 	@Test
@@ -246,7 +246,7 @@ public class OrderControllerTest {
 		}
 		
 		//assert
-		assertEquals(ResultMessage.NOTEXIST, resultmessage);
+		assertEquals(ResultMessage.NOT_EXIST, resultmessage);
 	}
 	
 	@Test
@@ -277,7 +277,7 @@ public class OrderControllerTest {
 		}
 		
 		//assert
-		assertEquals(ResultMessage.NOTEXIST, resultmessage);
+		assertEquals(ResultMessage.NOT_EXIST, resultmessage);
 	}
 	
 	@Test
@@ -308,7 +308,7 @@ public class OrderControllerTest {
 		}
 		
 		//assert
-		assertEquals(ResultMessage.NOTEXIST, resultmessage);
+		assertEquals(ResultMessage.NOT_EXIST, resultmessage);
 	}
 	
 	@After

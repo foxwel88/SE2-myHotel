@@ -36,7 +36,7 @@ public class HotelDataServiceImpl_stub extends UnicastRemoteObject implements Ho
 				po.hotelName.isEmpty() || po.address.isEmpty()
 				|| po.city == null || po.area == null
 				|| po.city.isEmpty() || po.area.isEmpty()) {
-			return ResultMessage.WRONGFORMAT;
+			return ResultMessage.WRONG_FORMAT;
 		}
 		return ResultMessage.SUCCESS;
 	}
@@ -46,7 +46,7 @@ public class HotelDataServiceImpl_stub extends UnicastRemoteObject implements Ho
 				po.hotelName.isEmpty() || po.address.isEmpty()
 				|| po.city == null || po.area == null
 				|| po.city.isEmpty() || po.area.isEmpty()) {
-			return ResultMessage.WRONGFORMAT;
+			return ResultMessage.WRONG_FORMAT;
 		}
 		return ResultMessage.SUCCESS;
 	}
@@ -89,7 +89,7 @@ public class HotelDataServiceImpl_stub extends UnicastRemoteObject implements Ho
 
 	public ResultMessage changeRoom(RoomType type, int num, String hotelAddress) throws RemoteException {
 		if (num < 0) {
-			return ResultMessage.WRONGFORMAT;
+			return ResultMessage.WRONG_FORMAT;
 		}
 		return ResultMessage.SUCCESS;
 	}

@@ -90,7 +90,7 @@ public class HotelController implements Hotelblservice {
 			dao.changeRoom(type, num, hotelAddress);
 		} catch (RemoteException e) {
 			e.printStackTrace();
-			return ResultMessage.CONNECTIONFAIL;
+			return ResultMessage.CONNECTION_FAIL;
 		}
 		return ResultMessage.SUCCESS;
 	}

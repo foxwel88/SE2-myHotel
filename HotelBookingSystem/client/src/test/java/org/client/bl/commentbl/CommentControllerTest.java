@@ -39,7 +39,7 @@ public class CommentControllerTest {
 	
 	@Test(timeout = 1000)
 	public void testaddComment2() {
-		assertEquals(ResultMessage.WRONGFORMAT, commentController.addComment(new CommentVO("你的名字", "大酒店", new Date(), 5, "噫")));
+		assertEquals(ResultMessage.WRONG_FORMAT, commentController.addComment(new CommentVO("你的名字", "大酒店", new Date(), 5, "噫")));
 	}
 	
 	@After

@@ -30,10 +30,10 @@ public class PromotionUtil {
 			if (checkPromotionFormat(vo, true)) {
 				return promotionDataService.add(new Promotion(vo).toPO());
 			} else {
-				return ResultMessage.WRONGFORMAT;
+				return ResultMessage.WRONG_FORMAT;
 			}
 		} catch (RemoteException rex) {
-			return ResultMessage.CONNECTIONFAIL;
+			return ResultMessage.CONNECTION_FAIL;
 		}
 	}
 	
@@ -66,7 +66,7 @@ public class PromotionUtil {
 			List<PromotionPO> promotionPOList = promotionDataService.showHotelPromotion(hotelAddress);
 			
 			if (promotionPOList == null) {
-				promotionList.add(new Promotion(new PromotionVO(ResultMessage.NOTEXIST)));
+				promotionList.add(new Promotion(new PromotionVO(ResultMessage.NOT_EXIST)));
 				
 				return promotionList;
 			}

@@ -33,7 +33,7 @@ public class Level {
 				
 				level = new Level(levelPO.levelNum, levelPO.credits);
 			} catch (RemoteException rex) {
-				System.out.println(ResultMessage.CONNECTIONFAIL);
+				System.out.println(ResultMessage.CONNECTION_FAIL);
 			}
 		}
 		return level;
@@ -43,7 +43,7 @@ public class Level {
 		if (level != null) {
 			return new LevelVO(levelNum, credits);
 		} else {
-			return new LevelVO(ResultMessage.NOTEXIST);
+			return new LevelVO(ResultMessage.NOT_EXIST);
 		}
 	}
 	
@@ -64,10 +64,10 @@ public class Level {
 				
 				return ResultMessage.SUCCESS;
 			} catch (RemoteException rex) {
-				return ResultMessage.CONNECTIONFAIL;
+				return ResultMessage.CONNECTION_FAIL;
 			}
 		} else {
-			return ResultMessage.WRONGFORMAT;
+			return ResultMessage.WRONG_FORMAT;
 		}
 	}
 	
