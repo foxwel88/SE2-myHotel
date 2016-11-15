@@ -1,4 +1,4 @@
-package org.client.presentation.userui;
+package org.client.presentation.customer;
 /**
  * 
  * 客户-查看信用记录

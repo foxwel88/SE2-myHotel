@@ -1,4 +1,4 @@
-package org.client.presentation.userui;
+package org.client.presentation.webmanager;
 
 /**
  * 

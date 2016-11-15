@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.launcher.LoginController">
    <children>
       <ImageView fitHeight="568.0" fitWidth="450.0" preserveRatio="true">
          <image>
@@ -19,9 +19,9 @@
       </ImageView>
       <AnchorPane prefHeight="550.0" prefWidth="450.0" style="-fx-background-color: rgba(0,0,0,0.5);">
          <children>
-            <TextField layoutX="66.0" layoutY="184.0" prefHeight="61.0" prefWidth="318.0" promptText="输入您的账号" style="-fx-background-color: rgba(0,0,0,0.7);" AnchorPane.leftAnchor="66.0" />
-            <TextField layoutX="66.0" layoutY="259.0" prefHeight="61.0" prefWidth="318.0" promptText="输入您的密码" style="-fx-background-color: rgba(0,0,0,0.7);" AnchorPane.leftAnchor="66.0" />
-            <Button defaultButton="true" layoutX="66.0" layoutY="348.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="318.0" style="-fx-background-color: rgba(255,255,255,0.5);" text="登录" AnchorPane.leftAnchor="66.0">
+            <TextField id="accountField" fx:id="accountField" layoutX="66.0" layoutY="184.0" prefHeight="61.0" prefWidth="318.0" promptText="输入您的账号" style="-fx-background-color: rgba(0,0,0,0.7); -fx-text-inner-color: white;" AnchorPane.leftAnchor="66.0" />
+            <TextField id="pwField" fx:id="pwField" layoutX="66.0" layoutY="259.0" prefHeight="61.0" prefWidth="318.0" promptText="输入您的密码" style="-fx-background-color: rgba(0,0,0,0.7); -fx-text-inner-color: white;" AnchorPane.leftAnchor="66.0" />
+            <Button id="loginButton" fx:id="loginButton" defaultButton="true" layoutX="66.0" layoutY="348.0" mnemonicParsing="false" onAction="#handleLoginAction" prefHeight="49.0" prefWidth="318.0" style="-fx-background-color: rgba(255,255,255,0.5);" text="登录" AnchorPane.leftAnchor="66.0">
                <font>
                   <Font name="Microsoft YaHei UI Light" size="20.0" />
                </font>
@@ -37,7 +37,7 @@
                   <Bloom threshold="0.89" />
                </effect>
             </Label>
-            <Button defaultButton="true" layoutX="66.0" layoutY="417.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="318.0" style="-fx-background-color: rgba(255,45,45,0.5);" text="没有账号？点击注册" textFill="WHITE">
+            <Button id="registerButton" fx:id="registerButton" defaultButton="true" layoutX="66.0" layoutY="417.0" mnemonicParsing="false" onAction="#handleRegisterAction" prefHeight="49.0" prefWidth="318.0" style="-fx-background-color: rgba(255,45,45,0.5);" text="没有账号？点击注册" textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei UI Light" size="20.0" />
                </font>

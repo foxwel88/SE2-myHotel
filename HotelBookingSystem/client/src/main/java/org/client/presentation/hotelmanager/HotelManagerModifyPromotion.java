@@ -1,4 +1,4 @@
-package org.client.presentation.promotionui;
+package org.client.presentation.hotelmanager;
 
 /**
  * 

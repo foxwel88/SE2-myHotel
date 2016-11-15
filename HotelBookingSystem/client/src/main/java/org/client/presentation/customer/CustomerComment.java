@@ -1,4 +1,4 @@
-package org.client.presentation.commentui;
+package org.client.presentation.customer;
 /**
  * 
  * 客户-评价订单

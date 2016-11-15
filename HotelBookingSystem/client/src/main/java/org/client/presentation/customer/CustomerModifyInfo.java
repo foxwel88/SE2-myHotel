@@ -1,4 +1,4 @@
-package org.client.presentation.userui;
+package org.client.presentation.customer;
 /**
  * 
  * 客户-修改个人信息

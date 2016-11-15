@@ -9,6 +9,11 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+/**
+ * 
+ * 登录
+ *
+ */
 public class Launcher extends Application {
 
 	@Override
@@ -18,8 +23,6 @@ public class Launcher extends Application {
 			loader.setLocation(getClass().getResource("登录界面.fxml"));
 			AnchorPane root = loader.load();
 			Scene scene = new Scene(root,450,550);
-			scene.getStylesheets().add(getClass().getResource
-					("application.css").toExternalForm());
 			primaryStage.setTitle("酒店预订管理系统");
 			primaryStage.setScene(scene);
 			primaryStage.show();
@@ -30,8 +33,7 @@ public class Launcher extends Application {
 	
 	public static void main(String[] args) {
 		RMIHelper.getInstance().init();
-		launch(args);
-		
+		launch(args);		
 	}
 	
 	public void exit() {
