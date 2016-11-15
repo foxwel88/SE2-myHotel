@@ -20,7 +20,7 @@ public class Launcher extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("登录界面.fxml"));
+			loader.setLocation(getClass().getResource("../../../登录界面.fxml"));
 			AnchorPane root = loader.load();
 			Scene scene = new Scene(root,450,550);
 			primaryStage.setTitle("酒店预订管理系统");
