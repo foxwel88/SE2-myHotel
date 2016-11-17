@@ -15,6 +15,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -35,7 +36,7 @@ public class LoginController {
     private TextField accountField;
 
 	@FXML
-    private TextField pwField;
+    private PasswordField pwField;
 
 	@FXML
     private Button loginButton;
@@ -62,16 +63,16 @@ public class LoginController {
 		Parent root = null;
 		if (result == ResultMessage.SUCCESS) {
 			if (userBl.findbyUserName(account).type.equals("酒店工作人员")) {
-				root = FXMLLoader.load(getClass().getResource("../../../酒店工作人员/酒店工作人员主界面.fxml"));
+				root = FXMLLoader.load(getClass().getResource("/酒店工作人员/酒店工作人员主界面.fxml"));
 			}
 			else if (userBl.findbyUserName(account).type.equals("网站管理人员")) {
-				root = FXMLLoader.load(getClass().getResource("../../../网站管理人员/网站管理人员主界面.fxml"));
+				root = FXMLLoader.load(getClass().getResource("/网站管理人员/网站管理人员主界面.fxml"));
 			}
 			else if (userBl.findbyUserName(account).type.equals("网站营销人员")) {
-				root = FXMLLoader.load(getClass().getResource("../../../网站管理人员/网站营销人员主界面.fxml"));
+				root = FXMLLoader.load(getClass().getResource("/网站管理人员/网站营销人员主界面.fxml"));
 			}
 			else if (userBl.findbyUserName(account).type.equals("客户")) {
-				root = FXMLLoader.load(getClass().getResource("../../../客户/客户主界面.fxml"));
+				root = FXMLLoader.load(getClass().getResource("/客户/客户主界面.fxml"));
 			}
 			
 			Scene scene = new Scene(root);
