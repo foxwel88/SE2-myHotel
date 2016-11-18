@@ -7,6 +7,8 @@ import java.util.ResourceBundle;
 import org.client.bl.userbl.UserController;
 import org.client.blservice.userblservice.Userblservice;
 import org.client.blstub.User_stub;
+import org.client.presentation.hotelmanager.HotelManagerController;
+import org.client.vo.UserVO;
 import org.common.utility.ResultMessage;
 
 import javafx.event.ActionEvent;
@@ -62,17 +64,21 @@ public class LoginController {
 		Stage stage = (Stage)accountField.getScene().getWindow();
 		Parent root = null;
 		if (result == ResultMessage.SUCCESS) {
-			if (userBl.findbyUserName(account).type.equals("酒店工作人员")) {
-				root = FXMLLoader.load(getClass().getResource("/酒店工作人员/酒店工作人员主界面.fxml"));
-			}
-			else if (userBl.findbyUserName(account).type.equals("网站管理人员")) {
-				root = FXMLLoader.load(getClass().getResource("/网站管理人员/网站管理人员主界面.fxml"));
-			}
-			else if (userBl.findbyUserName(account).type.equals("网站营销人员")) {
-				root = FXMLLoader.load(getClass().getResource("/网站管理人员/网站营销人员主界面.fxml"));
-			}
-			else if (userBl.findbyUserName(account).type.equals("客户")) {
-				root = FXMLLoader.load(getClass().getResource("/客户/客户主界面.fxml"));
+			UserVO uservo = userBl.findbyUserName(account);
+			switch(uservo.type) {
+				case "酒店工作人员":
+					root = FXMLLoader.load(getClass().getResource("/酒店工作人员/酒店工作人员主界面.fxml"));
+					HotelManagerController.init(uservo.hotelAddress);
+					break;
+				case "网站管理人员":
+					root = FXMLLoader.load(getClass().getResource("/网站管理人员/网站管理人员主界面.fxml"));
+					break;
+				case "网站营销人员":
+					root = FXMLLoader.load(getClass().getResource("/网站管理人员/网站营销人员主界面.fxml"));
+					break;
+				case "客户":
+					root = FXMLLoader.load(getClass().getResource("/客户/客户主界面.fxml"));
+					break;
 			}
 			
 			Scene scene = new Scene(root);

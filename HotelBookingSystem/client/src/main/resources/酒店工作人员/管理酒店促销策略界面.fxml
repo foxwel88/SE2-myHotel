@@ -16,7 +16,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="680.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+<Pane prefHeight="680.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.presentation.hotelmanager.HotelManagerCheckPromotion">
    <children>
       <ImageView fitHeight="683.0" fitWidth="1103.0">
          <image>
@@ -57,7 +57,7 @@
                            <children>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.56);">
                                  <children>
-                                    <Label alignment="CENTER" layoutX="23.0" layoutY="49.0" text="首页" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="43.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="43.0">
+                                    <Label fx:id="mainLabel" alignment="CENTER" layoutX="23.0" layoutY="49.0" onMouseClicked="#handleSwitch" text="首页" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="43.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="43.0">
                                        <font>
                                           <Font name="Microsoft YaHei UI Light" size="21.0" />
                                        </font>
@@ -65,7 +65,7 @@
                                  </children></AnchorPane>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0,0,0,0.50);" GridPane.rowIndex="1">
                                  <children>
-                                    <Label alignment="CENTER" layoutX="21.0" layoutY="43.0" text="酒店信息" textAlignment="CENTER" textFill="WHITE">
+                                    <Label fx:id="infoLabel" alignment="CENTER" layoutX="18.0" layoutY="43.0" onMouseClicked="#handleSwitch" text="酒店信息" textAlignment="CENTER" textFill="WHITE">
                                        <font>
                                           <Font name="Microsoft YaHei UI Light" size="21.0" />
                                        </font>
@@ -74,7 +74,7 @@
                               </AnchorPane>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.44);" GridPane.rowIndex="2">
                                  <children>
-                                    <Label alignment="CENTER" layoutX="22.0" layoutY="43.0" text="执行订单" textAlignment="CENTER" textFill="WHITE">
+                                    <Label fx:id="executeLabel" alignment="CENTER" layoutX="18.0" layoutY="43.0" onMouseClicked="#handleSwitch" text="执行订单" textAlignment="CENTER" textFill="WHITE">
                                        <font>
                                           <Font name="Microsoft YaHei UI Light" size="21.0" />
                                        </font>
@@ -82,7 +82,7 @@
                                  </children></AnchorPane>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.38);" GridPane.rowIndex="3">
                                  <children>
-                                    <Label text="历史订单" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="43.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="43.0">
+                                    <Label fx:id="historyLabel" layoutX="18.0" onMouseClicked="#handleSwitch" text="历史订单" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="43.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="43.0">
                                        <font>
                                           <Font name="Microsoft YaHei UI Light" size="21.0" />
                                        </font>
@@ -106,13 +106,13 @@
                               <DropShadow />
                            </effect>
                            <children>
-                              <Pane layoutX="67.0" layoutY="60.0" prefHeight="475.0" prefWidth="782.0" style="-fx-background-color: rgba(0,0,0,0.4);">
+                              <Pane layoutX="64.0" layoutY="60.0" prefHeight="475.0" prefWidth="782.0" style="-fx-background-color: rgba(0,0,0,0.4);">
                                  <children>
-                                    <Label layoutX="180.0" layoutY="418.0" text="&lt;上一页" textFill="WHITE">
+                                    <Label layoutX="184.0" layoutY="424.0" text="&lt;上一页" textFill="WHITE">
                                        <font>
                                           <Font name="Microsoft YaHei" size="15.0" />
                                        </font></Label>
-                                    <Label layoutX="303.0" layoutY="418.0" text="下一页&gt;" textFill="WHITE">
+                                    <Label layoutX="306.0" layoutY="424.0" text="下一页&gt;" textFill="WHITE">
                                        <font>
                                           <Font name="Microsoft YaHei" size="15.0" />
                                        </font></Label>
@@ -176,19 +176,19 @@
                                              </font></Label>
                                        </children>
                                     </Pane>
-                                    <Label layoutX="394.0" layoutY="418.0" text="跳转至第" textFill="WHITE">
+                                    <Label layoutX="415.0" layoutY="424.0" text="跳转至第" textFill="WHITE">
                                        <font>
                                           <Font name="Microsoft YaHei" size="15.0" />
                                        </font></Label>
-                                    <TextField layoutX="466.0" layoutY="416.0" prefHeight="20.0" prefWidth="30.0" style="-fx-background-color: rgba(255,255,255,0.1);">
+                                    <TextField layoutX="479.0" layoutY="420.0" prefHeight="20.0" prefWidth="30.0" style="-fx-background-color: rgba(255,255,255,0.1);">
                                        <font>
                                           <Font name="Microsoft YaHei" size="15.0" />
                                        </font></TextField>
-                                    <Label layoutX="262.0" layoutY="418.0" text="1" textFill="WHITE">
+                                    <Label layoutX="266.0" layoutY="424.0" text="1" textFill="WHITE">
                                        <font>
                                           <Font name="Microsoft YaHei" size="15.0" />
                                        </font></Label>
-                                    <Label layoutX="510.0" layoutY="418.0" text="页" textFill="WHITE">
+                                    <Label layoutX="515.0" layoutY="423.0" text="页" textFill="WHITE">
                                        <font>
                                           <Font name="Microsoft YaHei" size="15.0" />
                                        </font></Label>

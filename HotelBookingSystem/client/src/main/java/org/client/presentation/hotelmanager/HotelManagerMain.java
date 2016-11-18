@@ -47,8 +47,20 @@ public class HotelManagerMain {
 	}
 	
 	@FXML
-    void handleInfoLabel(MouseEvent event) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("/酒店工作人员/维护酒店信息界面.fxml"));
+    void handleSwitch(MouseEvent event) throws IOException {
+		Parent root = null;
+		Label source = (Label)event.getSource();
+
+		if (source == infoLabel) {
+			root = FXMLLoader.load(getClass().getResource("/酒店工作人员/维护酒店信息界面.fxml"));
+		} else if (source == executeLabel) {
+			root = FXMLLoader.load(getClass().getResource("/酒店工作人员/执行订单界面.fxml"));
+		} else if (source == historyLabel) {
+			root = FXMLLoader.load(getClass().getResource("/酒店工作人员/浏览酒店历史订单界面.fxml"));
+		} else if (source == promotionLabel) {
+			root = FXMLLoader.load(getClass().getResource("/酒店工作人员/管理酒店促销策略界面.fxml"));
+		}
+		
 		Scene scene = new Scene(root);
 		Stage stage = (Stage)infoLabel.getScene().getWindow();
 		stage.setScene(scene);
