@@ -11,13 +11,26 @@ import org.common.utility.ResultMessage;
 import org.common.utility.UserType;
 
 public class User_stub implements Userblservice {
-	UserVO uservo = new UserVO(UserType.CUSTOMER.getString(),
+	UserVO customer = new UserVO(UserType.CUSTOMER.getString(),
 			"Tom","汤姆","1234567890","456","132323232323",
+			100,new Date(),null,2,10,null);
+	
+	UserVO webMarketer = new UserVO(UserType.WEBMARKETER.getString(),
+			"Tom","TOM","1234567890","456","132323232323",
+			100,new Date(),null,2,10,null);
+	
+	UserVO webManager = new UserVO(UserType.WEBMANAGER.getString(),
+			"Tom","TOM","1234567890","456","132323232323",
+			100,new Date(),null,2,10,null);
+	
+	UserVO hotelManager = new UserVO(UserType.HOTELMANAGER.getString(),
+			"Tom","TOM","1234567890","456","132323232323",
 			100,new Date(),null,2,10,null);
 	
 	public ResultMessage login(String userName, String password) {
 		// TODO Auto-generated method stub
-		if (userName.equals("123") && password.equals("456")) {
+		if ((userName.equals("123") || userName.equals("hotelManager") || userName.equals("webManager")
+				|| userName.equals("webMarketer")) && password.equals("456")) {
 			return ResultMessage.SUCCESS;
 		} else {
 			return ResultMessage.WRONG_PASSWORD;
@@ -37,12 +50,23 @@ public class User_stub implements Userblservice {
 	public UserVO findbyID(String ID) {
 		// TODO Auto-generated method stub
 		
-		return uservo;
+		return customer;
 	}
 
 	public UserVO findbyUserName(String userName) {
 		// TODO Auto-generated method stub
-		return uservo;
+		switch(userName) {
+			case "123" :
+				return customer;
+			case "webManager" :
+				return webManager;
+			case "webMarketer" :
+				return webMarketer;
+			case "hotelManager" :
+				return hotelManager;
+			
+		}
+		return null;
 	}
 
 	public ResultMessage modifyPassword(String userName, 

@@ -74,7 +74,7 @@ public class LoginController {
 					root = FXMLLoader.load(getClass().getResource("/网站管理人员/网站管理人员主界面.fxml"));
 					break;
 				case "网站营销人员":
-					root = FXMLLoader.load(getClass().getResource("/网站管理人员/网站营销人员主界面.fxml"));
+					root = FXMLLoader.load(getClass().getResource("/网站营销人员/网站营销人员主界面.fxml"));
 					break;
 				case "客户":
 					root = FXMLLoader.load(getClass().getResource("/客户/客户主界面.fxml"));
