@@ -8,23 +8,4 @@ import javafx.fxml.FXML;
  *
  */
 public class CustomerHistoryOrder {
-	@FXML
-	void turnToCustomerMain() {
-		SwitchSceneUtil.turnToCustomerMain();
-	}
-	
-	@FXML
-	void turnToCustomerInfo() {
-		SwitchSceneUtil.turnToCustomerInfo();
-	}
-	
-	@FXML
-	void turnToCustomerHotelList() {
-		SwitchSceneUtil.turnToCustomerHotelList();
-	}
-	
-	@FXML
-	void turnToCustomerUnexcutedOrderList() {
-		SwitchSceneUtil.turnToCustomerUnexcutedOrderList();
-	}
 }

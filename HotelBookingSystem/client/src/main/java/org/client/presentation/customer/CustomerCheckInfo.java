@@ -1,6 +1,8 @@
 package org.client.presentation.customer;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * 
@@ -10,32 +12,15 @@ import javafx.fxml.FXML;
 
 public class CustomerCheckInfo {
 	@FXML
-	void turnToCustomerMain() {
-		SwitchSceneUtil.turnToCustomerMain();
-	}
-	
-	@FXML
-	void turnToCustomerHotelList() {
-		SwitchSceneUtil.turnToCustomerHotelList();
-	}
-	
-	@FXML
-	void turnToCustomerHistoryOrderList() {
-		SwitchSceneUtil.turnToCustomerHistoryOrderList();
-	}
-	
-	@FXML
-	void turnToCustomerUnexcutedOrderList() {
-		SwitchSceneUtil.turnToCustomerUnexcutedOrderList();
-	}
+	AnchorPane root;
 	
 	@FXML
 	void turnToCustomerCheckCredit() {
-		SwitchSceneUtil.turnToCustomerCheckCredit();
+		SwitchSceneUtil.turnToCustomerCheckCredit(root);
 	}
 	
 	@FXML
 	void turnToCustomerModifyInfo() {
-		SwitchSceneUtil.turnToCustomerModifyInfo();
+		SwitchSceneUtil.turnToCustomerModifyInfo(root);
 	}
 }
