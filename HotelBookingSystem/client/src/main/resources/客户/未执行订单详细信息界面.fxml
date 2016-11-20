@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="680.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+<Pane prefHeight="680.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.presentation.customer.CustomerHistoryOrder">
    <children>
       <ImageView fitHeight="683.0" fitWidth="1103.0">
          <image>
@@ -54,7 +54,7 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.5);" GridPane.rowIndex="1">
+                              <AnchorPane onMouseClicked="#turnToCustomerInfo" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.5);" GridPane.rowIndex="1">
                                  <children>
                                     <Label text="个人信息" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="45.0">
                                        <font>
@@ -62,7 +62,7 @@
                                        </font>
                                     </Label>
                                  </children></AnchorPane>
-                              <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.44);" GridPane.rowIndex="2">
+                              <AnchorPane onMouseClicked="#turnToCustomerHotelList" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.44);" GridPane.rowIndex="2">
                                  <children>
                                     <Label text="酒店列表" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="45.0">
                                        <font>
@@ -70,7 +70,7 @@
                                        </font>
                                     </Label>
                                  </children></AnchorPane>
-                              <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.38);" GridPane.rowIndex="3">
+                              <AnchorPane onMouseClicked="#turnToCustomerHistoryOrderList" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.38);" GridPane.rowIndex="3">
                                  <children>
                                     <Label text="历史订单" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="45.0">
                                        <font>
@@ -79,7 +79,7 @@
                                     </Label>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.4);" GridPane.rowIndex="4">
+                              <AnchorPane onMouseClicked="#turnToCustomerUnexcutedOrderList" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.4);" GridPane.rowIndex="4">
                                  <children>
                                     <Label layoutX="19.0" layoutY="22.0" prefHeight="75.0" prefWidth="81.0" text="未执行订单" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="22.0">
                                        <font>
@@ -91,7 +91,7 @@
                                     <DropShadow />
                                  </effect>
                               </AnchorPane>
-                              <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.56);">
+                              <AnchorPane onMouseClicked="#turnToCustomerMain" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.56);">
                                  <children>
                                     <Label layoutX="29.0" layoutY="45.0" text="主界面" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="45.0">
                                        <font>

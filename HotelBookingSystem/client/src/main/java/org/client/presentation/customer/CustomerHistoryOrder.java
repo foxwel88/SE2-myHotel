@@ -6,5 +6,19 @@ package org.client.presentation.customer;
  *
  */
 public class CustomerHistoryOrder {
-
+	public void turnToCustomerMain() {
+		SwitchSceneUtil.turnToCustomerMain();
+	}
+	
+	public void turnToCustomerInfo() {
+		SwitchSceneUtil.turnToCustomerInfo();
+	}
+	
+	public void turnToCustomerHotelList() {
+		SwitchSceneUtil.turnToCustomerHotelList();
+	}
+	
+	public void turnToCustomerUnexcutedOrderList() {
+		SwitchSceneUtil.turnToCustomerUnexcutedOrderList();
+	}
 }

@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="680.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+<Pane prefHeight="680.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.presentation.customer.CustomerCheckInfo">
    <children>
       <ImageView fitHeight="683.0" fitWidth="1103.0">
          <image>
@@ -66,7 +66,7 @@
                                     </Label>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.44);" GridPane.rowIndex="2">
+                              <AnchorPane onMouseClicked="#turnToCustomerHotelList" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.44);" GridPane.rowIndex="2">
                                  <children>
                                     <Label text="酒店列表" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="45.0">
                                        <font>
@@ -74,7 +74,7 @@
                                        </font>
                                     </Label>
                                  </children></AnchorPane>
-                              <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.38);" GridPane.rowIndex="3">
+                              <AnchorPane onMouseClicked="#turnToCustomerHistoryOrderList" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.38);" GridPane.rowIndex="3">
                                  <children>
                                     <Label text="历史订单" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="45.0">
                                        <font>
@@ -82,7 +82,7 @@
                                        </font>
                                     </Label>
                                  </children></AnchorPane>
-                              <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.56);">
+                              <AnchorPane onMouseClicked="#turnToCustomerMain" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.56);">
                                  <children>
                                     <Label layoutX="29.0" layoutY="45.0" text="主界面" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="45.0">
                                        <font>
@@ -91,7 +91,7 @@
                                     </Label>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.32);" GridPane.rowIndex="4">
+                              <AnchorPane onMouseClicked="#turnToCustomerUnexcutedOrderList" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.32);" GridPane.rowIndex="4">
                                  <children>
                                     <Label layoutY="24.0" prefHeight="69.0" prefWidth="80.0" text="未执行订单" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="24.0">
                                        <font>
@@ -205,12 +205,12 @@
                                           <Font name="Microsoft YaHei" size="20.0" />
                                        </font>
                                     </Label>
-                                    <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: rgba(0,0,0,0.4);" text="查看详细信用记录" textFill="WHITE" GridPane.rowIndex="14">
+                                    <Button mnemonicParsing="false" onMouseClicked="#turnToCustomerCheckCredit" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: rgba(0,0,0,0.4);" text="查看详细信用记录" textFill="WHITE" GridPane.rowIndex="14">
                                        <font>
                                           <Font name="Microsoft YaHei" size="15.0" />
                                        </font>
                                     </Button>
-                                    <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="148.0" style="-fx-background-color: rgba(0,0,0,0.4);" text="修改个人信息" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="14">
+                                    <Button mnemonicParsing="false" onMouseClicked="#turnToCustomerModifyInfo" prefHeight="30.0" prefWidth="148.0" style="-fx-background-color: rgba(0,0,0,0.4);" text="修改个人信息" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="14">
                                        <font>
                                           <Font name="Microsoft YaHei" size="15.0" />
                                        </font>
