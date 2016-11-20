@@ -229,7 +229,7 @@
                                                 <Font name="Microsoft YaHei" size="15.0" />
                                              </font>
                                           </Label>
-                                          <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="255.0" style="-fx-background-color: rgba(0,0,0,0.1);" text="执行该订单" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                          <Button fx:id="executeButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#execute" prefHeight="30.0" prefWidth="255.0" style="-fx-background-color: rgba(0,0,0,0.1);" text="执行该订单" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="6">
                                              <font>
                                                 <Font name="Microsoft YaHei" size="15.0" />
                                              </font>
