@@ -254,7 +254,7 @@
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
                                  </children>
                               </GridPane>
-                              <Button layoutX="741.0" layoutY="514.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="101.0" style="-fx-background-color: rgba(0,0,00,0.4);" text="添加" textFill="WHITE">
+                              <Button fx:id="addButton" layoutX="741.0" layoutY="514.0" mnemonicParsing="false" onMouseClicked="#handleAdd" prefHeight="30.0" prefWidth="101.0" style="-fx-background-color: rgba(0,0,00,0.4);" text="添加" textFill="WHITE" AnchorPane.bottomAnchor="23.0" AnchorPane.leftAnchor="741.0" AnchorPane.rightAnchor="78.0" AnchorPane.topAnchor="514.0">
                                  <font>
                                     <Font name="Microsoft YaHei" size="15.0" />
                                  </font>

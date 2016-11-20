@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -38,11 +39,15 @@ public class WebMarketerCheckPromotion {
     private AnchorPane orderPane;
 	
 	@FXML
+	private Button addButton;
+	
+	@FXML
     void initialize() {
         assert creditPane != null : "fx:id=\"creditPane\" was not injected: check your FXML file '管理促销策略界面.fxml'.";
         assert levelPane != null : "fx:id=\"levelPane\" was not injected: check your FXML file '管理促销策略界面.fxml'.";
         assert orderPane != null : "fx:id=\"orderPane\" was not injected: check your FXML file '管理促销策略界面.fxml'.";
         assert mainPane != null : "fx:id=\"mainPane\" was not injected: check your FXML file '管理促销策略界面.fxml'.";
+        assert addButton != null : "fx:id=\"addButton\"was not injected: check your FXML file '管理促销策略界面.fxml'.";
 	}
 	
 	@FXML
@@ -62,6 +67,15 @@ public class WebMarketerCheckPromotion {
 		
 		Scene scene = new Scene(root);
 		Stage stage = (Stage)creditPane.getScene().getWindow();
+		stage.setScene(scene);
+		stage.show();
+	}
+	
+	@FXML
+	void handleAdd(MouseEvent event) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("/网站营销人员/修改促销策略界面.fxml"));
+		Scene scene = new Scene(root);
+		Stage stage = (Stage)mainPane.getScene().getWindow();
 		stage.setScene(scene);
 		stage.show();
 	}

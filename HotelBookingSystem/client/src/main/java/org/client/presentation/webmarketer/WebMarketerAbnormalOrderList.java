@@ -39,10 +39,10 @@ public class WebMarketerAbnormalOrderList {
 	
 	@FXML
     void initialize() {
-        assert creditPane != null : "fx:id=\"creditPane\" was not injected: check your FXML file '浏览异常订单界面.fxml'.";
-        assert levelPane != null : "fx:id=\"levelPane\" was not injected: check your FXML file '浏览异常订单界面.fxml'.";
-        assert mainPane != null : "fx:id=\"orderPane\" was not injected: check your FXML file '浏览异常订单界面.fxml'.";
-        assert promotionPane != null : "fx:id=\"promotionPane\" was not injected: check your FXML file '浏览异常订单界面.fxml'.";
+        assert creditPane != null : "fx:id=\"creditPane\" was not injected: check your FXML file '异常订单详细信息界面.fxml'.";
+        assert levelPane != null : "fx:id=\"levelPane\" was not injected: check your FXML file '异常订单详细信息界面.fxml'.";
+        assert mainPane != null : "fx:id=\"orderPane\" was not injected: check your FXML file '异常订单详细信息界面.fxml'.";
+        assert promotionPane != null : "fx:id=\"promotionPane\" was not injected: check your FXML file '异常订单详细信息界面.fxml'.";
 	}
 	
 	@FXML
