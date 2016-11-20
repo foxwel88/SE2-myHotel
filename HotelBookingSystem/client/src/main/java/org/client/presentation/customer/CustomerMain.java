@@ -1,8 +1,6 @@
 package org.client.presentation.customer;
 
-import javafx.application.Application;
 import javafx.fxml.FXML;
-import javafx.stage.Stage;
 
 /**
  * 
@@ -29,9 +27,5 @@ public class CustomerMain {
 	@FXML
 	void turnToCustomerUnexcutedOrderList() {
 		SwitchSceneUtil.turnToCustomerUnexcutedOrderList();
-	}
-	
-	public static void setStage(Stage stage) {
-		
 	}
 }
