@@ -14,6 +14,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 /**
@@ -24,6 +27,12 @@ import javafx.stage.Stage;
 public class WebManagerCheckCustomer {
 
 	private WebManagerController controller;
+	
+	@FXML
+	private AnchorPane anchorpane;
+	
+	@FXML
+	private GridPane gridpane;
 	
 	@FXML
     private URL location;
@@ -93,6 +102,12 @@ public class WebManagerCheckCustomer {
         assert levelLabel != null : "fx:id=\"levelLabel\" was not injected: check your FXML file '浏览客户信息界面.fxml'.";
         assert birthLabel != null : "fx:id=\"birthLabel\" was not injected: check your FXML file '浏览客户信息界面.fxml'.";
         assert typeLabel != null : "fx:id=\"typeLabel\" was not injected: check your FXML file '浏览客户信息界面.fxml'.";
+		nameLabel.setText("");
+		phoneLabel.setText("");
+		userNameLabel.setText("");
+		creditLabel.setText("");
+		typeLabel.setText("");
+		birthLabel.setText("");
 	}
 
 	
@@ -119,11 +134,17 @@ public class WebManagerCheckCustomer {
 	
 	@FXML
 	void handleModifyAction(MouseEvent event) throws IOException {
+		/*
 		Parent root = FXMLLoader.load(getClass().getResource("/网站管理人员/修改客户信息界面.fxml"));
 		Scene scene = new Scene(root);
 		Stage stage = (Stage)toHomeLabel.getScene().getWindow();
 		stage.setScene(scene);
 		stage.show();
+		*/
+		
+		AnchorPane root = FXMLLoader.load(getClass().getResource("/网站管理人员/temp.fxml"));
+		gridpane.getChildren().set(1,root);
+		GridPane.setConstraints(root, 1, 0);
 	}
 	
 	@FXML

@@ -56,7 +56,7 @@ public class WebManagerCheckHotelManager {
 			root = FXMLLoader.load(getClass().getResource("/网站管理人员/新增酒店界面.fxml"));
 		}
 		
-		Scene scene = new Scene(root);
+		Scene scene = new Scene(root,1099,680);
 		Stage stage = (Stage)toCustomerLabel.getScene().getWindow();
 		stage.setScene(scene);
 		stage.show();

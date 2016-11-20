@@ -34,7 +34,7 @@
          <children>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                <children>
-                  <GridPane layoutX="482.0" layoutY="300.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="30.0">
+                  <GridPane fx:id="gridpane" layoutX="482.0" layoutY="300.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="30.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="511.5321044921875" minWidth="10.0" prefWidth="120.53018188476562" />
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="919.4698181152344" minWidth="10.0" prefWidth="919.4698181152344" />
@@ -102,7 +102,7 @@
                               </AnchorPane>
                            </children>
                         </GridPane>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.4);" GridPane.columnIndex="1">
+                        <AnchorPane fx:id="anchorpane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.4);" GridPane.columnIndex="1">
                            <effect>
                               <DropShadow />
                            </effect>
