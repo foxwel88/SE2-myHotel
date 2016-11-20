@@ -59,7 +59,7 @@
                            <children>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.56);">
                                  <children>
-                                    <Label fx:id="mainLabel" alignment="CENTER" layoutX="23.0" layoutY="49.0" onMouseClicked="#handleSwitch" text="首页" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="43.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="43.0">
+                                    <Label fx:id="mainLabel" alignment="CENTER" layoutX="2.0" onMouseClicked="#handleSwitch" prefHeight="114.0" prefWidth="120.0" text="首页" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="0.0">
                                        <font>
                                           <Font name="Microsoft YaHei UI Light" size="21.0" />
                                        </font>
@@ -79,7 +79,7 @@
                               </AnchorPane>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.44);" GridPane.rowIndex="2">
                                  <children>
-                                    <Label fx:id="executeLabel" layoutX="18.0" layoutY="43.0" onMouseClicked="#handleSwitch" text="执行订单" textAlignment="CENTER" textFill="WHITE">
+                                    <Label fx:id="executeLabel" alignment="CENTER" layoutY="3.0" onMouseClicked="#handleSwitch" prefHeight="106.0" prefWidth="120.0" text="执行订单" textAlignment="CENTER" textFill="WHITE">
                                        <font>
                                           <Font name="Microsoft YaHei UI Light" size="21.0" />
                                        </font>
@@ -87,7 +87,7 @@
                                  </children></AnchorPane>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.38);" GridPane.rowIndex="3">
                                  <children>
-                                    <Label fx:id="historyLabel" layoutX="18.0" layoutY="40.0" onMouseClicked="#handleSwitch" prefHeight="34.0" prefWidth="84.0" text="历史订单" textFill="WHITE">
+                                    <Label fx:id="historyLabel" alignment="CENTER" layoutX="-1.0" layoutY="4.0" onMouseClicked="#handleSwitch" prefHeight="106.0" prefWidth="120.0" text="历史订单" textFill="WHITE">
                                        <font>
                                           <Font name="Microsoft YaHei UI Light" size="21.0" />
                                        </font>
@@ -95,7 +95,7 @@
                                  </children></AnchorPane>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.32);" GridPane.rowIndex="4">
                                  <children>
-                                    <Label fx:id="promotionLabel" layoutX="16.0" layoutY="47.0" onMouseClicked="#handleSwitch" prefHeight="34.0" prefWidth="84.0" text="促销策略" textFill="WHITE" AnchorPane.bottomAnchor="38.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="41.0">
+                                    <Label fx:id="promotionLabel" alignment="CENTER" onMouseClicked="#handleSwitch" prefHeight="113.0" prefWidth="120.0" text="促销策略" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <font>
                                           <Font name="Microsoft YaHei UI Light" size="21.0" />
                                        </font>
@@ -167,16 +167,16 @@
                                           <Font name="Microsoft YaHei" size="16.0" />
                                        </font>
                                     </Label>
-                                    <ChoiceBox prefHeight="0.0" prefWidth="125.0" style="-fx-background-color: rgba(255,255,255,0.1);" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                    <ChoiceBox prefHeight="27.0" prefWidth="125.0" style="-fx-background-color: rgba(255,255,255,0.1);" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                    <TextField prefHeight="30.0" prefWidth="205.0" style="-fx-background-color: rgba(255,255,255,0.1);" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                    <TextField prefHeight="27.0" prefWidth="311.0" style="-fx-background-color: rgba(255,255,255,0.1);" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                                    <ChoiceBox prefHeight="27.0" prefWidth="125.0" style="-fx-background-color: rgba(255,255,255,0.1);" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-                                    <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="11">
+                                    <ChoiceBox fx:id="city" prefHeight="0.0" prefWidth="125.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <ChoiceBox fx:id="area" prefHeight="27.0" prefWidth="125.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                    <TextField fx:id="address" prefHeight="30.0" prefWidth="205.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                    <TextField fx:id="name" prefHeight="27.0" prefWidth="311.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                    <ChoiceBox fx:id="star" prefHeight="27.0" prefWidth="125.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                                    <TextArea fx:id="intro" prefHeight="200.0" prefWidth="200.0" style="-fx-text-inner-color: white; -fx-text-fill: #ffffff;" GridPane.columnIndex="1" GridPane.rowIndex="11">
                                        <effect>
                                           <ColorAdjust brightness="-0.6" />
                                        </effect></TextArea>
-                                    <TextArea prefHeight="200.0" prefWidth="200.0" style="text-area-background: rgba(0,0,0,0.1);" GridPane.columnIndex="1" GridPane.rowIndex="13">
+                                    <TextArea fx:id="facility" prefHeight="200.0" prefWidth="200.0" style="text-area-background: rgba(0,0,0,0.1); -fx-text-inner-color: white; -fx-text-fill: #ffffff;" GridPane.columnIndex="1" GridPane.rowIndex="13">
                                        <effect>
                                           <ColorAdjust brightness="-0.6" />
                                        </effect></TextArea>
@@ -189,7 +189,7 @@
                                           <Font name="Microsoft YaHei" size="16.0" />
                                        </font>
                                     </Label>
-                                    <ChoiceBox layoutX="87.0" layoutY="17.0" prefHeight="30.0" prefWidth="83.0" style="-fx-background-color: rgba(255,255,255,0.1);" />
+                                    <ChoiceBox fx:id="roomType" layoutX="87.0" layoutY="17.0" prefHeight="30.0" prefWidth="83.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-text-inner-color: white;" />
                                     <Label layoutX="188.0" layoutY="15.0" prefHeight="34.0" prefWidth="83.0" text="数量" textFill="WHITE">
                                        <font>
                                           <Font name="Microsoft YaHei" size="16.0" />
@@ -200,8 +200,8 @@
                                           <Font name="Microsoft YaHei" size="16.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="230.0" layoutY="17.0" prefHeight="30.0" prefWidth="59.0" style="-fx-background-color: rgba(255,255,255,0.1);" />
-                                    <TextField layoutX="370.0" layoutY="16.0" prefHeight="30.0" prefWidth="59.0" style="-fx-background-color: rgba(255,255,255,0.1);" />
+                                    <TextField fx:id="roomNum" layoutX="230.0" layoutY="17.0" prefHeight="30.0" prefWidth="59.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-text-inner-color: white;" />
+                                    <TextField fx:id="roomPrice" layoutX="370.0" layoutY="16.0" prefHeight="30.0" prefWidth="59.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-text-inner-color: white;" />
                                     <Label layoutX="12.0" layoutY="100.0" prefHeight="34.0" prefWidth="125.0" text="房间入住信息：" textFill="WHITE">
                                        <font>
                                           <Font name="Microsoft YaHei" size="16.0" />
@@ -212,7 +212,7 @@
                                           <Font name="Microsoft YaHei" size="16.0" />
                                        </font>
                                     </Label>
-                                    <ChoiceBox layoutX="327.0" layoutY="102.0" prefHeight="30.0" prefWidth="109.0" style="-fx-background-color: rgba(255,255,255,0.1);" />
+                                    <ChoiceBox fx:id="roomNumber" layoutX="327.0" layoutY="102.0" prefHeight="30.0" prefWidth="109.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-text-inner-color: white;" />
                                     <Label layoutX="14.0" layoutY="147.0" prefHeight="34.0" prefWidth="83.0" text="入住时间" textFill="WHITE">
                                        <font>
                                           <Font name="Microsoft YaHei" size="16.0" />
@@ -223,9 +223,9 @@
                                           <Font name="Microsoft YaHei" size="16.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="95.0" layoutY="149.0" prefHeight="30.0" prefWidth="103.0" style="-fx-background-color: rgba(255,255,255,0.1);" />
-                                    <TextField layoutX="326.0" layoutY="149.0" prefHeight="30.0" prefWidth="109.0" style="-fx-background-color: rgba(255,255,255,0.1);" />
-                                    <Button layoutX="327.0" layoutY="197.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="109.0" style="-fx-background-color: rgba(0,0,0,0.1);" text="保存" textFill="WHITE">
+                                    <TextField fx:id="startTime" layoutX="95.0" layoutY="149.0" prefHeight="30.0" prefWidth="103.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-text-inner-color: white;" />
+                                    <TextField fx:id="endTime" layoutX="326.0" layoutY="149.0" prefHeight="30.0" prefWidth="109.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-text-inner-color: white;" />
+                                    <Button fx:id="saveButton" layoutX="327.0" layoutY="197.0" mnemonicParsing="false" onAction="#saveRoom" prefHeight="34.0" prefWidth="109.0" style="-fx-background-color: rgba(0,0,0,0.1);" text="保存" textFill="WHITE">
                                        <font>
                                           <Font name="Microsoft YaHei" size="16.0" />
                                        </font>
@@ -235,24 +235,24 @@
                                           <Font name="Microsoft YaHei" size="16.0" />
                                        </font>
                                     </Label>
-                                    <ChoiceBox layoutX="87.0" layoutY="265.0" prefHeight="30.0" prefWidth="323.0" style="-fx-background-color: rgba(255,255,255,0.1);" />
-                                    <TextField layoutX="88.0" layoutY="313.0" prefHeight="30.0" prefWidth="323.0" style="-fx-background-color: rgba(255,255,255,0.1);" />
-                                    <Button layoutX="87.0" layoutY="363.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="90.0" style="-fx-background-color: rgba(0,0,0,0.1);" text="添加" textFill="WHITE">
+                                    <ChoiceBox fx:id="cooperatorBox" layoutX="87.0" layoutY="265.0" prefHeight="30.0" prefWidth="323.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-text-inner-color: white;" />
+                                    <TextField fx:id="cooperatorField" layoutX="88.0" layoutY="313.0" prefHeight="30.0" prefWidth="323.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-text-inner-color: white;" />
+                                    <Button fx:id="addButton" layoutX="87.0" layoutY="363.0" mnemonicParsing="false" onAction="#addCooperator" prefHeight="34.0" prefWidth="90.0" style="-fx-background-color: rgba(0,0,0,0.1);" text="添加" textFill="WHITE">
                                        <font>
                                           <Font name="Microsoft YaHei" size="16.0" />
                                        </font>
                                     </Button>
-                                    <Button layoutX="204.0" layoutY="363.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="90.0" style="-fx-background-color: rgba(0,0,0,0.1);" text="修改" textFill="WHITE">
+                                    <Button fx:id="changeButton" layoutX="204.0" layoutY="363.0" mnemonicParsing="false" onAction="#changeCooperator" prefHeight="34.0" prefWidth="90.0" style="-fx-background-color: rgba(0,0,0,0.1);" text="修改" textFill="WHITE">
                                        <font>
                                           <Font name="Microsoft YaHei" size="16.0" />
                                        </font>
                                     </Button>
-                                    <Button layoutX="321.0" layoutY="363.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="90.0" style="-fx-background-color: rgba(0,0,0,0.1);" text="删除" textFill="WHITE">
+                                    <Button fx:id="deleteButton" layoutX="321.0" layoutY="363.0" mnemonicParsing="false" onAction="#deleteCooperator" prefHeight="34.0" prefWidth="90.0" style="-fx-background-color: rgba(0,0,0,0.1);" text="删除" textFill="WHITE">
                                        <font>
                                           <Font name="Microsoft YaHei" size="16.0" />
                                        </font>
                                     </Button>
-                                    <Button layoutX="346.0" layoutY="430.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="83.0" style="-fx-background-color: rgba(0,0,0,0.1);" text="提交" textFill="WHITE">
+                                    <Button fx:id="handInButton" layoutX="346.0" layoutY="430.0" mnemonicParsing="false" onAction="#handIn" prefHeight="34.0" prefWidth="83.0" style="-fx-background-color: rgba(0,0,0,0.1);" text="提交" textFill="WHITE">
                                        <font>
                                           <Font name="Microsoft YaHei" size="16.0" />
                                        </font>

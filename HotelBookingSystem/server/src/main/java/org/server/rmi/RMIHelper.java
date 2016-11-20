@@ -52,6 +52,7 @@ public class RMIHelper {
 			System.out.println("promotion succeed");
 			Naming.rebind("rmi://localhost:8888/UserDataServiceObject",DataStubFactory.getInstance().getUserDataServiceImpl());
 			System.out.println("user succeed");
+			Naming.rebind("rmi://localhost:8888/TimeServiceObject",DataFactory.getInstance().getTimeServiceImpl());
 			System.out.println("Connect successfully");
 			System.out.println();
 		} catch (RemoteException e) {
@@ -77,6 +78,7 @@ public class RMIHelper {
 			System.out.println("promotion succeed");
 			Naming.rebind("rmi://localhost:8888/UserDataServiceObject",DataFactory.getInstance().getUserDataServiceImpl());
 			System.out.println("user succeeed");
+			Naming.rebind("rmi://localhost:8888/TimeServiceObject",DataFactory.getInstance().getTimeServiceImpl());
 			System.out.println("Connect successfully");
 			System.out.println();
 		} catch (RemoteException e) {

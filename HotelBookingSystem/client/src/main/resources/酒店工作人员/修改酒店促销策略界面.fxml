@@ -58,7 +58,7 @@
                            <children>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.56);">
                                  <children>
-                                    <Label fx:id="mainLabel" alignment="CENTER" layoutX="23.0" layoutY="49.0" onMouseClicked="#handleSwitch" text="首页" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="43.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="43.0">
+                                    <Label fx:id="mainLabel" alignment="CENTER" layoutX="2.0" layoutY="5.0" onMouseClicked="#handleSwitch" prefHeight="104.0" prefWidth="120.0" text="首页" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="5.0">
                                        <font>
                                           <Font name="Microsoft YaHei UI Light" size="21.0" />
                                        </font>
@@ -66,7 +66,7 @@
                                  </children></AnchorPane>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0,0,0,0.50);" GridPane.rowIndex="1">
                                  <children>
-                                    <Label fx:id="infoLabel" layoutX="18.0" layoutY="45.0" onMouseClicked="#handleSwitch" text="酒店信息" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="43.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="43.0">
+                                    <Label fx:id="infoLabel" alignment="CENTER" layoutX="2.0" layoutY="4.0" onMouseClicked="#handleSwitch" prefHeight="104.0" prefWidth="120.0" text="酒店信息" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="4.0">
                                        <font>
                                           <Font name="Microsoft YaHei UI Light" size="21.0" />
                                        </font>
@@ -75,7 +75,7 @@
                               </AnchorPane>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.44);" GridPane.rowIndex="2">
                                  <children>
-                                    <Label fx:id="executeLabel" layoutX="18.0" layoutY="43.0" onMouseClicked="#handleSwitch" text="执行订单" textAlignment="CENTER" textFill="WHITE">
+                                    <Label fx:id="executeLabel" alignment="CENTER" layoutX="4.0" layoutY="3.0" onMouseClicked="#handleSwitch" prefHeight="104.0" prefWidth="110.0" text="执行订单" textAlignment="CENTER" textFill="WHITE">
                                        <font>
                                           <Font name="Microsoft YaHei UI Light" size="21.0" />
                                        </font>
@@ -83,7 +83,7 @@
                                  </children></AnchorPane>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.38);" GridPane.rowIndex="3">
                                  <children>
-                                    <Label fx:id="historyLabel" layoutX="18.0" onMouseClicked="#handleSwitch" text="历史订单" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="43.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="43.0">
+                                    <Label fx:id="historyLabel" alignment="CENTER" layoutX="-1.0" layoutY="4.0" onMouseClicked="#handleSwitch" prefHeight="104.0" prefWidth="120.0" text="历史订单" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="4.0">
                                        <font>
                                           <Font name="Microsoft YaHei UI Light" size="21.0" />
                                        </font>

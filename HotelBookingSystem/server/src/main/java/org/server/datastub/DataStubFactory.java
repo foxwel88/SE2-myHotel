@@ -1,5 +1,6 @@
 package org.server.datastub;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 public class DataStubFactory {
@@ -32,4 +33,5 @@ public class DataStubFactory {
 	public UserDataServiceImpl_stub getUserDataServiceImpl() throws RemoteException {
 		return new UserDataServiceImpl_stub();
 	}
+
 }

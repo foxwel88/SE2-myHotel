@@ -13,8 +13,8 @@ import org.common.utility.RoomType;
 
 public class Hotel_stub implements Hotelblservice {
 
-	HotelVO hotelvo1 = new HotelVO("goodhotel","aaa"
-			,"bbb","ccc","xxxxx",4,3,"good",
+	HotelVO hotelvo1 = new HotelVO("goodhotel","XianLin Campus"
+			,"Nanjing","XianLin","a good hotel",4,3,"good",
 			"xixixi",null,null,null, null);
 	
 	HotelVO hotelvo2 = new HotelVO("goodhotel","aaa"

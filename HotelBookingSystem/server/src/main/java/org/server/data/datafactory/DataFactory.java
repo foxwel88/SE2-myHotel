@@ -2,11 +2,13 @@ package org.server.data.datafactory;
 
 import java.rmi.RemoteException;
 
+import org.common.utility.TimeService;
 import org.server.data.CommentData.CommentDataServiceImpl;
 import org.server.data.HotelData.HotelDataServiceImpl;
 import org.server.data.OrderData.OrderDataServiceImpl;
 import org.server.data.PromotionData.PromotionDataServiceImpl;
 import org.server.data.UserData.UserDataServiceImpl;
+import org.server.time.TimeServiceImpl;
 
 public class DataFactory {
 	private static DataFactory datafactory;
@@ -37,5 +39,9 @@ public class DataFactory {
 	
 	public UserDataServiceImpl getUserDataServiceImpl() throws RemoteException {
 		return new UserDataServiceImpl();
+	}
+
+	public TimeServiceImpl getTimeServiceImpl() throws RemoteException {
+		return new TimeServiceImpl();
 	}
 }

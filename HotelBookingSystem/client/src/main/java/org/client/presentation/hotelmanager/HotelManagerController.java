@@ -12,7 +12,9 @@ import org.client.blstub.Hotel_stub;
 import org.client.blstub.Order_stub;
 import org.client.blstub.Promotion_stub;
 import org.client.blstub.User_stub;
+import org.client.vo.HotelVO;
 import org.client.vo.PromotionVO;
+import org.common.utility.ResultMessage;
 
 /**
  * 酒店工作人员界面的总Controller，负责调用Logic层的方法
@@ -57,6 +59,14 @@ public class HotelManagerController {
 	
 	public List<PromotionVO> getPromotions() {
 		return promotionbl.showHotelPromotion(hotelAddress);
+	}
+	
+	public HotelVO getHotelInfo() {
+		return hotelbl.getHotelVO(hotelAddress);
+	}
+	
+	public ResultMessage modifyHotel(HotelVO vo) {
+		return hotelbl.modifyHotel(vo);
 	}
 	
 	
