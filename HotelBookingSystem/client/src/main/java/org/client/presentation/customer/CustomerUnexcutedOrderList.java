@@ -1,24 +1,30 @@
 package org.client.presentation.customer;
 
+import javafx.fxml.FXML;
+
 /**
  * 
  * 客户-浏览客户未执行订单
  *
  */
 public class CustomerUnexcutedOrderList {
-	public void turnToCustomerMain() {
+	@FXML
+	void turnToCustomerMain() {
 		SwitchSceneUtil.turnToCustomerMain();
 	}
 	
-	public void turnToCustomerInfo() {
+	@FXML
+	void turnToCustomerInfo() {
 		SwitchSceneUtil.turnToCustomerInfo();
 	}
 	
-	public void turnToCustomerHotelList() {
+	@FXML
+	void turnToCustomerHotelList() {
 		SwitchSceneUtil.turnToCustomerHotelList();
 	}
 	
-	public void turnToCustomerHistoryOrderList() {
+	@FXML
+	void turnToCustomerHistoryOrderList() {
 		SwitchSceneUtil.turnToCustomerHistoryOrderList();
 	}
 }

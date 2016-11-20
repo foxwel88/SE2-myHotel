@@ -1,8 +1,8 @@
 package org.client.presentation.customer;
 
-import javafx.stage.*;
-
 import javafx.application.Application;
+import javafx.fxml.FXML;
+import javafx.stage.Stage;
 
 /**
  * 
@@ -15,35 +15,31 @@ public class CustomerMain extends Application {
 	
 	private Stage stage = null;
 	
-	public static CustomerMain getInstance() {
+	public static CustomerMain getInstance(Stage stage) {
 		if (customerMain == null) {
 			customerMain = new CustomerMain();
 		}
+		customerMain.setStage(stage);
 		return customerMain;
 	}
 	
-	/*
-	 * 过一阵子再写setStage的检查
-	 * 因为客户进入的第一个页面必然是主界面，因此客户第一次进入主界面的时候setStage方法必须被调用，确保工具类的stage被初始化
-	 */
-	public void setStage (Stage stage) {
-		this.stage = stage;
-		SwitchSceneUtil.setStage(stage);
-	}
-	
-	public void turnToCustomerInfo() {
+	@FXML
+	void turnToCustomerInfo() {
 		SwitchSceneUtil.turnToCustomerInfo();
 	}
 	
-	public void turnToCustomerHotelList() {
+	@FXML
+	void turnToCustomerHotelList() {
 		SwitchSceneUtil.turnToCustomerHotelList();
 	}
 	
-	public void turnToCustomerHistoryOrderList() {
+	@FXML
+	void turnToCustomerHistoryOrderList() {
 		SwitchSceneUtil.turnToCustomerHistoryOrderList();
 	}
 	
-	public void turnToCustomerUnexcutedOrderList() {
+	@FXML
+	void turnToCustomerUnexcutedOrderList() {
 		SwitchSceneUtil.turnToCustomerUnexcutedOrderList();
 	}
 	
@@ -52,12 +48,16 @@ public class CustomerMain extends Application {
 	 */
 	@Override
 	public void start(Stage primaryStage) {
-		CustomerMain main = CustomerMain.getInstance();
-		main.setStage(primaryStage);
+		CustomerMain main = CustomerMain.getInstance(primaryStage);
 		SwitchSceneUtil.turnToCustomerMain();
 	}
 	
 	public static void main(String[] args) {
 		launch(args);		
+	}
+	
+	private void setStage (Stage stage) {
+		this.stage = stage;
+		SwitchSceneUtil.setStage(stage);
 	}
 }

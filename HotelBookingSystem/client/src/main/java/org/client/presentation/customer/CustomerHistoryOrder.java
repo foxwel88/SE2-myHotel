@@ -1,24 +1,30 @@
 package org.client.presentation.customer;
 
+import javafx.fxml.FXML;
+
 /**
  * 
  * 客户-浏览客户历史订单
  *
  */
 public class CustomerHistoryOrder {
-	public void turnToCustomerMain() {
+	@FXML
+	void turnToCustomerMain() {
 		SwitchSceneUtil.turnToCustomerMain();
 	}
 	
-	public void turnToCustomerInfo() {
+	@FXML
+	void turnToCustomerInfo() {
 		SwitchSceneUtil.turnToCustomerInfo();
 	}
 	
-	public void turnToCustomerHotelList() {
+	@FXML
+	void turnToCustomerHotelList() {
 		SwitchSceneUtil.turnToCustomerHotelList();
 	}
 	
-	public void turnToCustomerUnexcutedOrderList() {
+	@FXML
+	void turnToCustomerUnexcutedOrderList() {
 		SwitchSceneUtil.turnToCustomerUnexcutedOrderList();
 	}
 }

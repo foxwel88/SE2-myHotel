@@ -1,4 +1,7 @@
 package org.client.presentation.customer;
+
+import javafx.fxml.FXML;
+
 /**
  * 
  * 客户-查看客户信息
@@ -6,27 +9,33 @@ package org.client.presentation.customer;
  */
 
 public class CustomerCheckInfo {
-	public void turnToCustomerMain() {
+	@FXML
+	void turnToCustomerMain() {
 		SwitchSceneUtil.turnToCustomerMain();
 	}
 	
-	public void turnToCustomerHotelList() {
+	@FXML
+	void turnToCustomerHotelList() {
 		SwitchSceneUtil.turnToCustomerHotelList();
 	}
 	
-	public void turnToCustomerHistoryOrderList() {
+	@FXML
+	void turnToCustomerHistoryOrderList() {
 		SwitchSceneUtil.turnToCustomerHistoryOrderList();
 	}
 	
-	public void turnToCustomerUnexcutedOrderList() {
+	@FXML
+	void turnToCustomerUnexcutedOrderList() {
 		SwitchSceneUtil.turnToCustomerUnexcutedOrderList();
 	}
 	
-	public void turnToCustomerCheckCredit() {
+	@FXML
+	void turnToCustomerCheckCredit() {
 		SwitchSceneUtil.turnToCustomerCheckCredit();
 	}
 	
-	public void turnToCustomerModifyInfo() {
+	@FXML
+	void turnToCustomerModifyInfo() {
 		SwitchSceneUtil.turnToCustomerModifyInfo();
 	}
 }
