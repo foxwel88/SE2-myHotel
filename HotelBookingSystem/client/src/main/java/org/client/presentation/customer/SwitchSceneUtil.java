@@ -8,13 +8,13 @@ import javafx.stage.Stage;
 public class SwitchSceneUtil {
 	private static Stage stage = null;
 	
-	static void setStage(Stage stage) {
+	public static void setStage(Stage stage) {
 		SwitchSceneUtil.stage = stage;
 	}
 	
 	static void turnToCustomerMain() {
-		stage.setTitle("酒店预订管理系统");
 		turnToAnotherScene("/客户/客户主界面.fxml");
+		stage.setTitle("酒店预订管理系统");
 		stage.show();
 	}
 	

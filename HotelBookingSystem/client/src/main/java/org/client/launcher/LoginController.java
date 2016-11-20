@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import org.client.bl.userbl.UserController;
 import org.client.blservice.userblservice.Userblservice;
 import org.client.blstub.User_stub;
+import org.client.presentation.customer.SwitchSceneUtil;
 import org.client.presentation.hotelmanager.HotelManagerController;
 import org.client.vo.UserVO;
 import org.common.utility.ResultMessage;
@@ -78,6 +79,7 @@ public class LoginController {
 					break;
 				case "个人客户":
 					root = FXMLLoader.load(getClass().getResource("/客户/客户主界面.fxml"));
+					SwitchSceneUtil.setStage(stage);
 					break;
 			}
 			
