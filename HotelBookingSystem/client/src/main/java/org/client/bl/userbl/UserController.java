@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.client.blservice.userblservice.Userblservice;
 import org.client.vo.CreditRecordVO;
+import org.client.vo.UserLevelVO;
 import org.client.vo.UserVO;
 import org.common.utility.ResultMessage;
 
@@ -56,6 +57,12 @@ public class UserController implements Userblservice {
 
 	public List<CreditRecordVO> findCreditRecord(String ID) {
 		return UserUtil.getInstance().findCreditRecord(ID);
+	}
+
+	@Override
+	public UserLevelVO getLevel(String userName) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

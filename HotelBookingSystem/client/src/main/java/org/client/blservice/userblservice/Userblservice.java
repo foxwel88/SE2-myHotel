@@ -3,6 +3,7 @@ package org.client.blservice.userblservice;
 import java.util.List;
 
 import org.client.vo.CreditRecordVO;
+import org.client.vo.UserLevelVO;
 import org.client.vo.UserVO;
 import org.common.utility.ResultMessage;
 
@@ -26,5 +27,6 @@ public interface Userblservice {
 	
 	public List<CreditRecordVO> findCreditRecord(String ID);
 	
+	public UserLevelVO getLevel(String ID);
 	
 }
