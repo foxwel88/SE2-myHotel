@@ -12,6 +12,8 @@ import org.client.blstub.Hotel_stub;
 import org.client.blstub.Order_stub;
 import org.client.blstub.Promotion_stub;
 import org.client.blstub.User_stub;
+import org.client.vo.AreaVO;
+import org.client.vo.CityVO;
 import org.client.vo.HotelVO;
 import org.client.vo.PromotionVO;
 import org.common.utility.ResultMessage;
@@ -67,6 +69,14 @@ public class HotelManagerController {
 	
 	public ResultMessage modifyHotel(HotelVO vo) {
 		return hotelbl.modifyHotel(vo);
+	}
+	
+	public List<CityVO> getCitys() {
+		return hotelbl.getCitys();
+	}
+	
+	public List<AreaVO> getAreas(CityVO vo) {
+		return hotelbl.getAreas(vo);
 	}
 	
 	

@@ -8,6 +8,8 @@ import java.util.List;
 
 import static org.easymock.EasyMock.*;
 
+import org.client.vo.AreaVO;
+import org.client.vo.CityVO;
 import org.client.vo.HotelVO;
 import org.common.dataservice.HotelDataService.HotelDataService;
 import org.common.po.HotelPO;
@@ -68,7 +70,7 @@ public class HotelListTest extends EasyMockSupport {
 			e.printStackTrace();
 		}
 		expect(h.initByPO(fake)).andReturn(h);
-		expect(h.generateVO()).andReturn(new HotelVO("123", "123", "x", "y", "z", 1, 2, "good", "", null, null, null, null));
+		expect(h.generateVO()).andReturn(new HotelVO("123", "123", new CityVO("x"), new AreaVO("y"), "z", 1, 2, "good", "", null, null, null, null));
 		replayAll();
 		
 		//verify

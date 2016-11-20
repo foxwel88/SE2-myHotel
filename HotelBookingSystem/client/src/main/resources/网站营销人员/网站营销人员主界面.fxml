@@ -55,35 +55,35 @@
                            <children>
                               <AnchorPane fx:id="orderPane" onMouseClicked="#handleSwitch" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.32);" GridPane.rowIndex="4">
                                  <children>
-                                    <Label layoutX="18.0" layoutY="43.0" text="异常订单" textFill="WHITE">
+                                    <Text fill="WHITE" layoutX="18.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="异常订单" textAlignment="CENTER" wrappingWidth="85.0" AnchorPane.bottomAnchor="43.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="43.0">
                                        <font>
-                                          <Font name="Microsoft YaHei" size="21.0" />
+                                          <Font name="Microsoft YaHei UI Light" size="21.0" />
                                        </font>
-                                    </Label>
+                                    </Text>
                                  </children></AnchorPane>
                               <AnchorPane fx:id="levelPane" onMouseClicked="#handleSwitch" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.44);" GridPane.rowIndex="2">
                                  <children>
-                                    <Label layoutX="18.0" layoutY="43.0" text="等级制度" textFill="WHITE">
+                                    <Text fill="WHITE" layoutX="18.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="等级制度" textAlignment="CENTER" wrappingWidth="85.0" AnchorPane.bottomAnchor="43.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="43.0">
                                        <font>
-                                          <Font name="Microsoft YaHei" size="21.0" />
+                                          <Font name="Microsoft YaHei UI Light" size="21.0" />
                                        </font>
-                                    </Label>
+                                    </Text>
                                  </children></AnchorPane>
                               <AnchorPane fx:id="promotionPane" onMouseClicked="#handleSwitch" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.38);" GridPane.rowIndex="3">
                                  <children>
-                                    <Label layoutX="18.0" layoutY="43.0" text="促销策略" textFill="WHITE">
+                                    <Text fill="WHITE" layoutX="17.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="促销策略" textAlignment="CENTER" wrappingWidth="85.0" AnchorPane.bottomAnchor="42.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="18.0" AnchorPane.topAnchor="43.0">
                                        <font>
-                                          <Font name="Microsoft YaHei" size="21.0" />
+                                          <Font name="Microsoft YaHei UI Light" size="21.0" />
                                        </font>
-                                    </Label>
+                                    </Text>
                                  </children></AnchorPane>
                               <AnchorPane fx:id="creditPane" onMouseClicked="#handleSwitch" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.5);" GridPane.rowIndex="1">
                                  <children>
-                                    <Label layoutX="18.0" layoutY="43.0" text="信用充值" textFill="WHITE">
+                                    <Text fill="WHITE" layoutX="18.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="信用充值" textAlignment="CENTER" wrappingWidth="85.0" AnchorPane.bottomAnchor="43.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="43.0">
                                        <font>
-                                          <Font name="Microsoft YaHei" size="21.0" />
+                                          <Font name="Microsoft YaHei UI Light" size="21.0" />
                                        </font>
-                                    </Label>
+                                    </Text>
                                  </children>
                               </AnchorPane>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.4);">
@@ -91,11 +91,11 @@
                                     <DropShadow />
                                  </effect>
                                  <children>
-                                    <Label layoutX="39.0" layoutY="43.0" text="首页">
+                                    <Text layoutX="18.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="首页" textAlignment="CENTER" wrappingWidth="85.0" AnchorPane.bottomAnchor="43.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="43.0">
                                        <font>
-                                          <Font name="Microsoft YaHei" size="21.0" />
+                                          <Font name="Microsoft YaHei UI Light" size="21.0" />
                                        </font>
-                                    </Label>
+                                    </Text>
                                  </children>
                               </AnchorPane>
                            </children>

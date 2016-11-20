@@ -2,11 +2,18 @@ package org.client.presentation.hotelmanager;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
+import org.client.rmi.RMIHelper;
+import org.client.vo.AreaVO;
+import org.client.vo.CityVO;
 import org.client.vo.HotelVO;
 import org.common.utility.ResultMessage;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +22,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -147,9 +155,9 @@ public class HotelManagerModifyHotel {
     void handIn(ActionEvent event) {
 		
 		vo.address = address.getText().trim();
-		vo.area = area.getValue();
+		vo.area = new AreaVO(area.getValue());
 		//vo.checkInInfos
-		vo.city = city.getValue();
+		vo.city = new CityVO(city.getValue());
 		//vo.cooperators
 		vo.facility = facility.getText().trim();
 		vo.hotelName = name.getText().trim();
@@ -183,17 +191,50 @@ public class HotelManagerModifyHotel {
 		vo = HotelManagerController.getInstance().getHotelInfo();
 		
 		//set values
+				
+		//city
+		List<CityVO> cityVOs = HotelManagerController.getInstance().getCitys();
+		ArrayList<String> cityList = new ArrayList<String>();
+		for (CityVO v: cityVOs) {
+			cityList.add(v.cityName);
+		}
+		ObservableList<String> citys = FXCollections.observableArrayList(cityList);
+		city.setItems(citys);
+		city.setValue(vo.city.cityName);
+		
+		//area
+		List<AreaVO> areaVOs = HotelManagerController.getInstance().getAreas(vo.city);
+		ArrayList<String> areaList = new ArrayList<String>();
+		for (AreaVO v: areaVOs) {
+			areaList.add(v.address);
+		}
+		ObservableList<String> areas = FXCollections.observableArrayList(areaList);
+		area.setItems(areas);
+		area.setValue(vo.area.address);
+		
+		//address
 		address.setText(vo.address);
-		area.setValue(vo.area);
+		
 		//checkInInfos
-		city.setValue(vo.city);
-		//cooperators
+		
+		//cooperators		
+		ObservableList<String> cooperators = FXCollections.observableArrayList(vo.cooperators);
+		cooperatorBox.setItems(cooperators);
+		
+		//facility, name, intro
 		facility.setText(vo.facility);
 		facility.setStyle("-fx-text-fill: black;");
 		name.setText(vo.hotelName);
 		intro.setText(vo.introduce);
 		intro.setStyle("-fx-text-fill: black;");
+		
 		//roomNum roomPrice roomType
+		ObservableList<String> roomTypes = FXCollections.observableArrayList(vo.roomType);
+		roomType.setItems(roomTypes);
+		
+		//star
+		ObservableList<Integer> stars = FXCollections.observableArrayList(1,2,3,4,5);
+		star.setItems(stars);
 		star.setValue(vo.star);
 	}
 }
