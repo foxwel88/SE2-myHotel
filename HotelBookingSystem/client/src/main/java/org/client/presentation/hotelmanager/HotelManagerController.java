@@ -15,6 +15,7 @@ import org.client.blstub.User_stub;
 import org.client.vo.AreaVO;
 import org.client.vo.CityVO;
 import org.client.vo.HotelVO;
+import org.client.vo.OrderVO;
 import org.client.vo.PromotionVO;
 import org.common.utility.ResultMessage;
 
@@ -37,6 +38,8 @@ public class HotelManagerController {
 	private static HotelManagerController controller;
 	
 	private String hotelAddress;
+	
+	private OrderVO currentOrder;
 	
 	private HotelManagerController(String hotelAddress) { // stub version
 		userbl = new User_stub();
@@ -77,6 +80,10 @@ public class HotelManagerController {
 	
 	public List<AreaVO> getAreas(CityVO vo) {
 		return hotelbl.getAreas(vo);
+	}
+	
+	public ResultMessage executeOrder() {
+		return orderbl.executeOrder(currentOrder.orderID);
 	}
 	
 	

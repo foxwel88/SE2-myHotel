@@ -85,7 +85,6 @@ public class LoginController {
 			
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
-			stage.show();
 		}	
 		else if (result == ResultMessage.CONNECTION_FAIL) {
 			
