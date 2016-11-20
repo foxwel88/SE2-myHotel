@@ -52,8 +52,8 @@ public class UserControllerTest {
 	
 	@Test
 	public void testAdd() {
-		UserVO vo1 = new UserVO("客户", "Saber", "Y", "1234567890", "first0xaa55", "12233345678", 21.21, new Date(19890604), "μ's", 0, 10, null);
-		UserVO vo2 = new UserVO("客户", "gz", "Y", "1234567890", "first0xaa55", "12233345678", 21.21, new Date(19890604), "μ's", 0, 10, null);
+		UserVO vo1 = new UserVO("客户", "Saber", "Y", "1234567890", "first0xaa55", "12233345678", 21.21, new Date(19890604), "μ's", null);
+		UserVO vo2 = new UserVO("客户", "gz", "Y", "1234567890", "first0xaa55", "12233345678", 21.21, new Date(19890604), "μ's", null);
 		
 		// verify
 		ResultMessage message1 = controller.add(vo1);
@@ -115,7 +115,7 @@ public class UserControllerTest {
 	
 	@Test
 	public void testModify() {
-		UserVO vo = new UserVO("客户", "Saber", "Y", "1234567890", "first0xaa55", "12233345678", 21.21, new Date(19890604), "μ's", 0, 10, null);
+		UserVO vo = new UserVO("客户", "Saber", "Y", "1234567890", "first0xaa55", "12233345678", 21.21, new Date(19890604), "μ's", null);
 		
 		// verify
 		ResultMessage message = controller.modify(vo);

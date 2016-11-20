@@ -32,12 +32,12 @@ public class UserDataServiceImpl_stub extends UnicastRemoteObject implements Use
 	}
 
 	public UserPO findbyID(String ID) throws RemoteException {
-		return new UserPO(UserType.CUSTOMER, ID, ID, ID, ID, ID, 0, null, ID, 0, 0, ID);
+		return new UserPO(UserType.PERSONALCUSTOMER, ID, ID, ID, ID, ID, 0, null, ID, ID);
 	}
 
 	public UserPO findbyUserName(String userName) throws RemoteException {
 		if (userName.equals("gz")) {
-			return new UserPO(UserType.CUSTOMER, userName, userName, userName, userName, userName, 0, null, userName, 0, 0, userName);
+			return new UserPO(UserType.PERSONALCUSTOMER, userName, userName, userName, userName, userName, 0, null, userName, userName);
 		}
 		return null;
 	}

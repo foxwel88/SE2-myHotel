@@ -26,10 +26,6 @@ public class User {
 	
 	public String companyName;
 	
-	public int level;
-	
-	public double creditToNext;
-	
 	public String hotelAddress;
 	
 	/**
@@ -56,10 +52,8 @@ public class User {
 		this.birthday = vo.birthday;
 		this.companyName = vo.companyName;
 		this.credit = vo.credit;
-		this.creditToNext = vo.creditToNext;
 		this.hotelAddress = vo.hotelAddress;
 		this.ID = vo.ID;
-		this.level = vo.level;
 		this.name = vo.name;
 		this.passWord = vo.passWord;
 		this.phoneNumber = vo.phoneNumber;
@@ -77,10 +71,8 @@ public class User {
 		this.birthday = po.birthday;
 		this.companyName = po.companyName;
 		this.credit = po.credit;
-		this.creditToNext = po.creditToNext;
 		this.hotelAddress = po.hotelAddress;
 		this.ID = po.ID;
-		this.level = po.level;
 		this.name = po.name;
 		this.passWord = po.passWord;
 		this.phoneNumber = po.phoneNumber;
@@ -98,10 +90,8 @@ public class User {
 		this.birthday = vo.birthday;
 		this.companyName = vo.companyName;
 		this.credit = vo.credit;
-		this.creditToNext = vo.creditToNext;
 		this.hotelAddress = vo.hotelAddress;
 		this.ID = vo.ID;
-		this.level = vo.level;
 		this.name = vo.name;
 		this.passWord = vo.passWord;
 		this.phoneNumber = vo.phoneNumber;
@@ -115,8 +105,7 @@ public class User {
 	 * @return
 	 */
 	public UserVO getUserVO() {
-		return new UserVO(type, userName, name, ID, passWord,phoneNumber, credit, birthday, companyName, level,
-				creditToNext, hotelAddress);
+		return new UserVO(type, userName, name, ID, passWord,phoneNumber, credit, birthday, companyName, hotelAddress);
 	}
 
 	/**
@@ -124,8 +113,7 @@ public class User {
 	 * @return
 	 */
 	public UserPO getUserPO() {
-		return new UserPO(UserType.getType(type), userName, name, ID, passWord,phoneNumber, credit, birthday, companyName, level,
-				creditToNext, hotelAddress);
+		return new UserPO(UserType.getType(type), userName, name, ID, passWord,phoneNumber, credit, birthday, companyName, hotelAddress);
 	}
 	
 }

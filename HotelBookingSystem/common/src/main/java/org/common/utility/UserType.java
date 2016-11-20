@@ -1,7 +1,7 @@
 package org.common.utility;
 
 public enum UserType {
-	CUSTOMER("客户"), HOTELMANAGER("酒店工作人员"), WEBMANAGER("网站管理人员"), WEBMARKETER("网站营销人员"); 
+	PERSONALCUSTOMER("个人客户"), COMPANYCUSTOMER("企业客户"), HOTELMANAGER("酒店工作人员"), WEBMANAGER("网站管理人员"), WEBMARKETER("网站营销人员"); 
 	
 	private String s;
 	
@@ -14,8 +14,11 @@ public enum UserType {
 	}
 	
 	public static UserType getType(String ss) {
-		if (ss.equals("客户")) {
-			return UserType.CUSTOMER;
+		if (ss.equals("个人客户")) {
+			return UserType.PERSONALCUSTOMER;
+		}
+		if (ss.equals("企业客户")) {
+			return UserType.COMPANYCUSTOMER;
 		}
 		if (ss.equals("酒店工作人员")) {
 			return UserType.HOTELMANAGER;

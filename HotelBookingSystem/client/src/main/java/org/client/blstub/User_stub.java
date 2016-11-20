@@ -11,21 +11,28 @@ import org.common.utility.ResultMessage;
 import org.common.utility.UserType;
 
 public class User_stub implements Userblservice {
-	UserVO customer = new UserVO(UserType.CUSTOMER.getString(),
+	@SuppressWarnings("deprecation")
+	Date date = new Date("1997-1-1");
+	
+	UserVO personalCustomer = new UserVO(UserType.PERSONALCUSTOMER.getString(),
 			"Tom","汤姆","1234567890","456","132323232323",
-			100,new Date(),null,2,10,null);
+			100,date,null,null);
+	
+	UserVO companyCustomer = new UserVO(UserType.COMPANYCUSTOMER.getString(),
+			"Tony","托尼","0000000012","456","13989829292",
+			500,date,null,null);
 	
 	UserVO webMarketer = new UserVO(UserType.WEBMARKETER.getString(),
 			"Tom","TOM","1234567890","456","132323232323",
-			100,new Date(),null,2,10,null);
+			100,new Date(),null,null);
 	
 	UserVO webManager = new UserVO(UserType.WEBMANAGER.getString(),
 			"Tom","TOM","1234567890","456","132323232323",
-			100,new Date(),null,2,10,null);
+			100,new Date(),null,null);
 	
 	UserVO hotelManager = new UserVO(UserType.HOTELMANAGER.getString(),
 			"Tom","TOM","1234567890","456","132323232323",
-			100,new Date(),null,2,10,null);
+			100,new Date(),null,null);
 	
 	public ResultMessage login(String userName, String password) {
 		// TODO Auto-generated method stub
@@ -50,14 +57,14 @@ public class User_stub implements Userblservice {
 	public UserVO findbyID(String ID) {
 		// TODO Auto-generated method stub
 		
-		return customer;
+		return personalCustomer;
 	}
 
 	public UserVO findbyUserName(String userName) {
 		// TODO Auto-generated method stub
 		switch(userName) {
 			case "123" :
-				return customer;
+				return personalCustomer;
 			case "webManager" :
 				return webManager;
 			case "webMarketer" :

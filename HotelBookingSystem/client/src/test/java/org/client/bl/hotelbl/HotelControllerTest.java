@@ -62,7 +62,7 @@ public class HotelControllerTest {
 	@Test
 	public void testAddHotel() {		
 		HotelVO vo = new HotelVO("lovelive", "unknown", "南京", "仙林中心", "niconiconi", 5, 5, "", "", null, null, null, null);
-		UserVO uvo = new UserVO("客户", "X", "Y", "1234567890", "first0xaa55", "12233345678", 21.21, new Date(19890604), "μ's", 0, 10, null);
+		UserVO uvo = new UserVO("客户", "X", "Y", "1234567890", "first0xaa55", "12233345678", 21.21, new Date(19890604), "μ's",null);
 		Userblservice userstub = new User_stub();
 		controller.setUserblservice(userstub);
 		
@@ -76,7 +76,7 @@ public class HotelControllerTest {
 	@Test
 	public void testAddHotel2() {		
 		HotelVO vo = new HotelVO("", "unknown", "南京", "仙林中心", "niconiconi", 5, 5, "", "", null, null, null, null);
-		UserVO uvo = new UserVO("客户", "X", "Y", "1234567890", "first0xaa55", "12233345678", 21.21, new Date(19890604), "μ's", 0, 10, null);
+		UserVO uvo = new UserVO("客户", "X", "Y", "1234567890", "first0xaa55", "12233345678", 21.21, new Date(19890604), "μ's", null);
 		Userblservice userstub = new User_stub();
 		controller.setUserblservice(userstub);
 				
