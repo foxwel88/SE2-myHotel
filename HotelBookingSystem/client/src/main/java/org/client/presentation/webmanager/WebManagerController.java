@@ -22,7 +22,7 @@ public class WebManagerController {
 		userbl = new User_stub();
 	}
 	
-	public WebManagerController getInstance() {
+	public static WebManagerController getInstance() {
 		if (controller == null) {
 			controller = new WebManagerController();
 		}

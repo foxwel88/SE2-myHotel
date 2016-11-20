@@ -138,12 +138,12 @@
                                           <Font name="Microsoft YaHei" size="20.0" />
                                        </font>
                                     </Label>
-                                    <Label prefHeight="60.0" prefWidth="160.0" text="王小二" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                                    <Label fx:id="nameLabel" prefHeight="60.0" prefWidth="160.0" text="王小二" GridPane.columnIndex="2" GridPane.rowIndex="4">
                                        <font>
                                           <Font name="Microsoft YaHei" size="20.0" />
                                        </font>
                                     </Label>
-                                    <Label prefHeight="60.0" prefWidth="160.0" text="13912391919" GridPane.columnIndex="2" GridPane.rowIndex="8">
+                                    <Label fx:id="phoneLabel" prefHeight="60.0" prefWidth="160.0" text="13912391919" GridPane.columnIndex="2" GridPane.rowIndex="8">
                                        <font>
                                           <Font name="Microsoft YaHei" size="20.0" />
                                        </font>
@@ -158,18 +158,18 @@
                                           <Font name="Microsoft YaHei" size="20.0" />
                                        </font>
                                     </Label>
-                                    <Label prefHeight="60.0" prefWidth="160.0" text="Foxwel" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                    <Label fx:id="userNameLabel" prefHeight="60.0" prefWidth="160.0" text="Foxwel" GridPane.columnIndex="2" GridPane.rowIndex="2">
                                        <font>
                                           <Font name="Microsoft YaHei" size="20.0" />
                                        </font>
                                     </Label>
-                                    <TextField prefHeight="27.0" prefWidth="141.0" />
-                                    <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="98.0" text="搜索账号" GridPane.columnIndex="2">
+                                    <TextField fx:id="userNameTextField" prefHeight="27.0" prefWidth="141.0" />
+                                    <Button fx:id="searchButton" mnemonicParsing="false" onMouseClicked="#handleSearchAction" prefHeight="37.0" prefWidth="98.0" text="搜索账号" GridPane.columnIndex="2">
                                        <font>
                                           <Font name="Microsoft YaHei" size="15.0" />
                                        </font>
                                     </Button>
-                                    <Button mnemonicParsing="false" prefHeight="37.0" prefWidth="98.0" text="修改信息" GridPane.columnIndex="2" GridPane.rowIndex="16">
+                                    <Button fx:id="modifyButton" mnemonicParsing="false" onMouseClicked="#handleModifyAction" prefHeight="37.0" prefWidth="98.0" text="修改信息" GridPane.columnIndex="2" GridPane.rowIndex="16">
                                        <font>
                                           <Font name="Microsoft YaHei" size="15.0" />
                                        </font>
@@ -179,7 +179,7 @@
                                           <Font name="Microsoft YaHei" size="20.0" />
                                        </font>
                                     </Label>
-                                    <Label prefHeight="27.0" prefWidth="488.0" text="400" GridPane.columnIndex="2" GridPane.rowIndex="10">
+                                    <Label fx:id="creditLabel" prefHeight="27.0" prefWidth="488.0" text="400" GridPane.columnIndex="2" GridPane.rowIndex="10">
                                        <font>
                                           <Font name="Microsoft YaHei" size="20.0" />
                                        </font>
@@ -189,7 +189,7 @@
                                           <Font name="Microsoft YaHei" size="20.0" />
                                        </font>
                                     </Label>
-                                    <Label prefHeight="60.0" prefWidth="160.0" text="生日" GridPane.rowIndex="14">
+                                    <Label fx:id="PorCLabel" prefHeight="60.0" prefWidth="160.0" text="生日" GridPane.rowIndex="14">
                                        <font>
                                           <Font name="Microsoft YaHei" size="20.0" />
                                        </font>
@@ -199,17 +199,17 @@
                                           <Font name="Microsoft YaHei" size="20.0" />
                                        </font>
                                     </Label>
-                                    <Label prefHeight="27.0" prefWidth="488.0" text="2" GridPane.columnIndex="2" GridPane.rowIndex="12">
+                                    <Label fx:id="levelLabel" prefHeight="27.0" prefWidth="488.0" text="2" GridPane.columnIndex="2" GridPane.rowIndex="12">
                                        <font>
                                           <Font name="Microsoft YaHei" size="20.0" />
                                        </font>
                                     </Label>
-                                    <Label prefHeight="27.0" prefWidth="488.0" text="1997-4-1" GridPane.columnIndex="2" GridPane.rowIndex="14">
+                                    <Label fx:id="birthLabel" prefHeight="27.0" prefWidth="488.0" text="1997-4-1" GridPane.columnIndex="2" GridPane.rowIndex="14">
                                        <font>
                                           <Font name="Microsoft YaHei" size="20.0" />
                                        </font>
                                     </Label>
-                                    <Label prefHeight="27.0" prefWidth="488.0" text="个人客户" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                                    <Label fx:id="typeLabel" prefHeight="27.0" prefWidth="488.0" text="个人客户" GridPane.columnIndex="2" GridPane.rowIndex="6">
                                        <font>
                                           <Font name="Microsoft YaHei" size="20.0" />
                                        </font>
