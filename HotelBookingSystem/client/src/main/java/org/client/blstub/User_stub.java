@@ -5,6 +5,7 @@ import java.util.Date;
 
 import org.client.blservice.userblservice.Userblservice;
 import org.client.vo.CreditRecordVO;
+import org.client.vo.UserLevelVO;
 import org.client.vo.UserVO;
 import org.common.utility.CreditOperation;
 import org.common.utility.ResultMessage;
@@ -12,7 +13,7 @@ import org.common.utility.UserType;
 
 public class User_stub implements Userblservice {
 	@SuppressWarnings("deprecation")
-	Date date = new Date("1997-1-1");
+	Date date = new Date("1997/1/1");
 	
 	UserVO personalCustomer = new UserVO(UserType.PERSONALCUSTOMER.getString(),
 			"Tom","汤姆","1234567890","456","132323232323",
@@ -104,6 +105,12 @@ public class User_stub implements Userblservice {
 		vo.add(vo1);
 		vo.add(vo2);
 		return vo;
+	}
+
+	@Override
+	public UserLevelVO getLevel(String ID) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
