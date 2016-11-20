@@ -2,6 +2,8 @@ package org.client.bl.hotelbl;
 
 import java.util.List;
 
+import org.client.vo.AreaVO;
+import org.client.vo.CityVO;
 import org.client.vo.HotelVO;
 import org.common.po.HotelPO;
 
@@ -39,7 +41,7 @@ public class Hotel {
 	 * @return hotelVO
 	 */
 	public HotelVO generateVO() {
-		return new HotelVO(hotelName, address, city, area, introduce, rank, star, facility, checkInInfos, roomType, roomNum, roomPrice, cooperators);
+		return new HotelVO(hotelName, address, new CityVO(city), new AreaVO(area), introduce, rank, star, facility, checkInInfos, roomType, roomNum, roomPrice, cooperators);
 	}
 	
 	/**
@@ -69,8 +71,8 @@ public class Hotel {
 	public HotelPO modify(HotelVO vo) {
 		this.hotelName = vo.hotelName;
 		this.address = vo.address;
-		this.city = vo.city;
-		this.area = vo.area;
+		this.city = vo.city.cityName;
+		this.area = vo.area.address;
 		this.introduce = vo.introduce;
 		this.rank = vo.rank;
 		this.star = vo.star;
