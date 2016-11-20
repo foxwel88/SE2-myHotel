@@ -12,11 +12,11 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="680.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+<Pane prefHeight="680.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.presentation.webmanager.WebManagerMain">
    <children>
       <ImageView fitHeight="683.0" fitWidth="1103.0">
          <image>
-            <Image url="@2.jpg" />
+            <Image url="@../2.jpg" />
          </image>
       </ImageView>
       <GridPane layoutX="2.0" layoutY="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1100.0">
@@ -64,7 +64,7 @@
                                  </effect></AnchorPane>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0,0,0,0.5);" GridPane.rowIndex="1">
                                  <children>
-                                    <Label text="管理客户" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
+                                    <Label fx:id="toCustomerLabel" onMouseClicked="#handleSwitch" text="管理客户" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="34.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="50.0">
                                        <font>
                                           <Font name="Microsoft YaHei Light" size="21.0" />
                                        </font>
@@ -73,7 +73,7 @@
                               </AnchorPane>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.32);" GridPane.rowIndex="4">
                                  <children>
-                                    <Label text="新增酒店" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="49.0">
+                                    <Label fx:id="toNewLabel" onMouseClicked="#handleSwitch" text="新增酒店" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="50.0">
                                        <font>
                                           <Font name="Microsoft YaHei Light" size="21.0" />
                                        </font>
@@ -82,12 +82,7 @@
                               </AnchorPane>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.44);" GridPane.rowIndex="2">
                                  <children>
-                                    <Label text="管理酒店" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="33.0">
-                                       <font>
-                                          <Font name="Microsoft YaHei Light" size="21.0" />
-                                       </font>
-                                    </Label>
-                                    <Label text="工作人员" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="23.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="16.0">
+                                    <Label fx:id="toHotelLabel" layoutX="8.0" layoutY="22.0" onMouseClicked="#handleSwitch" prefHeight="69.0" prefWidth="104.0" text="管理酒店工作人员" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="22.0">
                                        <font>
                                           <Font name="Microsoft YaHei Light" size="21.0" />
                                        </font>
@@ -96,12 +91,7 @@
                               </AnchorPane>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.38);" GridPane.rowIndex="3">
                                  <children>
-                                    <Label text="管理网站" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="33.0">
-                                       <font>
-                                          <Font name="Microsoft YaHei Light" size="21.0" />
-                                       </font>
-                                    </Label>
-                                    <Label text="营销人员" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="23.0" AnchorPane.leftAnchor="20.0">
+                                    <Label fx:id="toWebLabel" layoutX="22.0" layoutY="22.0" onMouseClicked="#handleSwitch" prefHeight="69.0" prefWidth="85.0" text="管理网站营销人员" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="22.0">
                                        <font>
                                           <Font name="Microsoft YaHei Light" size="21.0" />
                                        </font>
@@ -148,7 +138,7 @@
                   </Label>
                   <ImageView fitHeight="60.0" fitWidth="48.0" layoutX="1038.0" layoutY="9.0" preserveRatio="true">
                      <image>
-                        <Image url="@profile.png" />
+                        <Image url="@../profile.png" />
                      </image>
                      <effect>
                         <ColorAdjust brightness="0.63" />

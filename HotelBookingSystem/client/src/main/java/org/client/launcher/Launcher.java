@@ -32,7 +32,7 @@ public class Launcher extends Application {
 	}
 	
 	public static void main(String[] args) {
-		RMIHelper.getInstance().init();
+		//RMIHelper.getInstance().init();
 		launch(args);		
 	}
 	

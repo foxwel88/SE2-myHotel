@@ -16,7 +16,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="680.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+<Pane prefHeight="680.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.presentation.webmanager.WebManagerCheckWebMarketer">
    <children>
       <ImageView fitHeight="683.0" fitWidth="1103.0">
          <image>
@@ -57,7 +57,7 @@
                            <children>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.56);">
                                  <children>
-                                    <Label text="首页" textFill="WHITE" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="50.0">
+                                    <Label fx:id="toHomeLabel" onMouseClicked="#handleSwitch" text="首页" textFill="WHITE" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="50.0">
                                        <font>
                                           <Font name="Microsoft YaHei Light" size="21.0" />
                                        </font>
@@ -65,7 +65,7 @@
                                  </children></AnchorPane>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0,0,0,0.5);" GridPane.rowIndex="1">
                                  <children>
-                                    <Label text="管理客户" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
+                                    <Label fx:id="toCustomerLabel" onMouseClicked="#handleSwitch" text="管理客户" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
                                        <font>
                                           <Font name="Microsoft YaHei Light" size="21.0" />
                                        </font>
@@ -74,12 +74,7 @@
                               </AnchorPane>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.44);" GridPane.rowIndex="2">
                                  <children>
-                                    <Label text="管理酒店" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="33.0">
-                                       <font>
-                                          <Font name="Microsoft YaHei Light" size="21.0" />
-                                       </font>
-                                    </Label>
-                                    <Label text="工作人员" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="23.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="16.0">
+                                    <Label fx:id="toHotelLabel" onMouseClicked="#handleSwitch" prefHeight="65.0" prefWidth="84.0" text="管理酒店工作人员" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="22.0">
                                        <font>
                                           <Font name="Microsoft YaHei Light" size="21.0" />
                                        </font>
@@ -87,12 +82,7 @@
                                  </children></AnchorPane>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(255,255,255,0.4);" GridPane.rowIndex="3">
                                  <children>
-                                    <Label text="管理网站" textAlignment="CENTER" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="33.0">
-                                       <font>
-                                          <Font name="Microsoft YaHei Light" size="21.0" />
-                                       </font>
-                                    </Label>
-                                    <Label text="营销人员" textAlignment="CENTER" AnchorPane.bottomAnchor="23.0" AnchorPane.leftAnchor="20.0">
+                                    <Label prefHeight="65.0" prefWidth="84.0" text="管理网站营销人员" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="22.0">
                                        <font>
                                           <Font name="Microsoft YaHei Light" size="21.0" />
                                        </font>
@@ -103,7 +93,7 @@
                                  </effect></AnchorPane>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.32);" GridPane.rowIndex="4">
                                  <children>
-                                    <Label text="新增酒店" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="49.0">
+                                    <Label fx:id="toNewLabel" onMouseClicked="#handleSwitch" text="新增酒店" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="50.0">
                                        <font>
                                           <Font name="Microsoft YaHei Light" size="21.0" />
                                        </font>
