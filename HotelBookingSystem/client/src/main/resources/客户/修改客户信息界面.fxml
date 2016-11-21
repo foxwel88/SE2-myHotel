@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="567.0" prefWidth="920.0" style="-fx-background-color: rgba(255,255,255,0.4);" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="root" prefHeight="567.0" prefWidth="920.0" style="-fx-background-color: rgba(255,255,255,0.4);" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.presentation.customer.CustomerModifyInfo">
    <effect>
       <DropShadow />
    </effect>
@@ -73,12 +73,12 @@
             </TextField>
          </children>
       </GridPane>
-      <Button layoutX="323.0" layoutY="328.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="98.0" style="-fx-background-color: rgba(0,0,0,0.4);" text="确认修改" textFill="WHITE">
+      <Button layoutX="323.0" layoutY="328.0" mnemonicParsing="false" onMouseClicked="#confirmChangeInfo" prefHeight="37.0" prefWidth="98.0" style="-fx-background-color: rgba(0,0,0,0.4);" text="确认修改" textFill="WHITE">
          <font>
             <Font name="Microsoft YaHei" size="15.0" />
          </font>
       </Button>
-      <Button layoutX="200.0" layoutY="328.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="98.0" style="-fx-background-color: rgba(0,0,0,0.4);" text="放弃修改" textFill="WHITE">
+      <Button layoutX="200.0" layoutY="328.0" mnemonicParsing="false" onMouseClicked="#cancelChangeInfo" prefHeight="37.0" prefWidth="98.0" style="-fx-background-color: rgba(0,0,0,0.4);" text="放弃修改" textFill="WHITE">
          <font>
             <Font name="Microsoft YaHei" size="15.0" />
          </font>
@@ -116,7 +116,7 @@
             <PasswordField prefHeight="91.0" prefWidth="196.0" style="-fx-background-color: rgba(255,255,255,0.4);" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
       </GridPane>
-      <Button layoutX="666.0" layoutY="264.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="98.0" style="-fx-background-color: rgba(0,0,0,0.4);" text="修改密码" textFill="WHITE">
+      <Button layoutX="666.0" layoutY="264.0" mnemonicParsing="false" onMouseClicked="#confirmChangePassword" prefHeight="37.0" prefWidth="98.0" style="-fx-background-color: rgba(0,0,0,0.4);" text="修改密码" textFill="WHITE">
          <font>
             <Font name="Microsoft YaHei" size="15.0" />
          </font>

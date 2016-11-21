@@ -1,8 +1,8 @@
 package org.client.presentation.customer;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 
 /**
  * 
@@ -14,13 +14,15 @@ public class CustomerCheckInfo {
 	@FXML
 	AnchorPane root;
 	
+	SwitchSceneUtil sceneSetter = new SwitchSceneUtil();
+	
 	@FXML
 	void turnToCustomerCheckCredit() {
-		SwitchSceneUtil.turnToCustomerCheckCredit(root);
+		sceneSetter.turnToAnotherScene((GridPane)root.getParent(), "/客户/查看信用记录界面.fxml");
 	}
 	
 	@FXML
 	void turnToCustomerModifyInfo() {
-		SwitchSceneUtil.turnToCustomerModifyInfo(root);
+		sceneSetter.turnToAnotherScene((GridPane)root.getParent(), "/客户/修改客户信息界面.fxml");
 	}
 }
