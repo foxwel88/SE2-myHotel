@@ -25,45 +25,8 @@ public class HotelManagerExecutedOrder {
     private URL location;
 
 	@FXML
-    private Label mainLabel;
-
-	@FXML
-    private Label infoLabel;
-
-	@FXML
-    private Label executeLabel;
-
-	@FXML
-    private Label promotionLabel;
-
-	@FXML
-    void handleSwitch(MouseEvent event) throws IOException {
-		Parent root = null;
-		Label source = (Label)event.getSource();
-
-		if (source == infoLabel) {
-			root = FXMLLoader.load(getClass().getResource("/酒店工作人员/维护酒店信息界面.fxml"));
-		} else if (source == executeLabel) {
-			root = FXMLLoader.load(getClass().getResource("/酒店工作人员/执行订单界面.fxml"));
-		} else if (source == mainLabel) {
-			root = FXMLLoader.load(getClass().getResource("/酒店工作人员/酒店工作人员主界面.fxml"));
-		} else if (source == promotionLabel) {
-			root = FXMLLoader.load(getClass().getResource("/酒店工作人员/管理酒店促销策略界面.fxml"));
-		}
-		
-		Scene scene = new Scene(root);
-		Stage stage = (Stage)infoLabel.getScene().getWindow();
-		stage.setScene(scene);
-		stage.show();
-	}
-
-	@FXML
     void initialize() {
-        assert mainLabel != null : "fx:id=\"mainLabel\" was not injected: check your FXML file '已执行订单详细信息界面.fxml'.";
-        assert infoLabel != null : "fx:id=\"infoLabel\" was not injected: check your FXML file '已执行订单详细信息界面.fxml'.";
-        assert executeLabel != null : "fx:id=\"executeLabel\" was not injected: check your FXML file '已执行订单详细信息界面.fxml'.";
-        assert promotionLabel != null : "fx:id=\"promotionLabel\" was not injected: check your FXML file '已执行订单详细信息界面.fxml'.";
-
+        
 	}
 }
 

@@ -33,28 +33,12 @@ public class HotelManagerMain {
 
 	@FXML
     private URL location;
-
-	@FXML
-    private Label infoLabel;
-
-	@FXML
-    private Label executeLabel;
-
-	@FXML
-    private Label historyLabel;
-
-	@FXML
-    private Label promotionLabel;
 	
 	@FXML
     private Label timeLabel;
 
 	@FXML
     void initialize() {
-		assert infoLabel != null : "fx:id=\"infoLabel\" was not injected: check your FXML file '酒店工作人员主界面.fxml'.";
-		assert executeLabel != null : "fx:id=\"executeLabel\" was not injected: check your FXML file '酒店工作人员主界面.fxml'.";
-		assert historyLabel != null : "fx:id=\"historyLabel\" was not injected: check your FXML file '酒店工作人员主界面.fxml'.";
-		assert promotionLabel != null : "fx:id=\"promotionLabel\" was not injected: check your FXML file '酒店工作人员主界面.fxml'.";
 		assert timeLabel != null : "fx:id=\"timeLabel\" was not injected: check your FXML file '酒店工作人员主界面.fxml'.";
 		
 		//clock
@@ -76,26 +60,6 @@ public class HotelManagerMain {
 		timeline.play();
 	}
 	
-	@FXML
-    void handleSwitch(MouseEvent event) throws IOException {
-		Parent root = null;
-		Label source = (Label)event.getSource();
-
-		if (source == infoLabel) {
-			root = FXMLLoader.load(getClass().getResource("/酒店工作人员/维护酒店信息界面.fxml"));
-		} else if (source == executeLabel) {
-			root = FXMLLoader.load(getClass().getResource("/酒店工作人员/执行订单界面.fxml"));
-		} else if (source == historyLabel) {
-			root = FXMLLoader.load(getClass().getResource("/酒店工作人员/浏览酒店历史订单界面.fxml"));
-		} else if (source == promotionLabel) {
-			root = FXMLLoader.load(getClass().getResource("/酒店工作人员/管理酒店促销策略界面.fxml"));
-		}
-		
-		Scene scene = new Scene(root);
-		Stage stage = (Stage)infoLabel.getScene().getWindow();
-		stage.setScene(scene);
-		stage.show();
-	}
 }
 
 

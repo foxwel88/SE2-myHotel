@@ -68,7 +68,7 @@ public class LoginController {
 			UserVO uservo = userBl.findbyUserName(account);
 			switch(uservo.type) {
 				case "酒店工作人员":
-					root = FXMLLoader.load(getClass().getResource("/酒店工作人员/酒店工作人员主界面.fxml"));
+					root = FXMLLoader.load(getClass().getResource("/酒店工作人员/guide.fxml"));
 					HotelManagerController.init(uservo.hotelAddress);
 					break;
 				case "网站管理人员":
