@@ -92,7 +92,7 @@ public class Level {
 		return isOK;
 	}
 	
-	private int calLevel(double credit) {
+	int calLevel(double credit) {
 		for (int i = levelNum - 1; i >= 0; i++) {
 			if (credit >= credits.get(i)) {
 				return i + 1;

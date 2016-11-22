@@ -98,7 +98,7 @@ public class PromotionController implements Promotionblservice {
 	}
 	
 	public int calLevel(double credit) {
-		return calLevel(credit);
+		return level.calLevel(credit);
 	}
 
 }
