@@ -79,7 +79,7 @@ public class CustomerController_Main {
 	}
 	
 	/*
-	 * 此方法用于加载除了导航栏以外的界面
+	 * 此方法用于切换除了导航栏以外的界面
 	 */
 	private void turnToAnotherScene(String resource) {
 		try {
@@ -95,11 +95,13 @@ public class CustomerController_Main {
 		}
 	}
 	
+	/*
+	 * 下面五个方法调用了导航栏的切换方法和页面的跳转方法
+	 */
 	@FXML
 	void turnToCusController_Main() {
 		switchGuide(0);
 		turnToCustomerMain();
-		SwitchSceneUtil.stage.setTitle("酒店预订管理系统");
 		SwitchSceneUtil.stage.show();
 	}
 	
@@ -127,6 +129,9 @@ public class CustomerController_Main {
 		turnToCustomerUnexcutedOrderList();
 	}
 	
+	/*
+	 * 下面的方法都是调用页面跳转的方法
+	 */
 	void turnToCustomerMain() {
 		turnToAnotherScene("/客户/主界面.fxml");
 	}

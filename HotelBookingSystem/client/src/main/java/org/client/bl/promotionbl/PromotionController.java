@@ -96,5 +96,9 @@ public class PromotionController implements Promotionblservice {
 	public double getPrice (String userID, String hotelAddress, double rawPrice) {
 		return PromotionUtil.getPrice(userID, hotelAddress, rawPrice);
 	}
+	
+	public int calLevel(double credit) {
+		return calLevel(credit);
+	}
 
 }

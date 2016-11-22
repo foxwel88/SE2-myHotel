@@ -8,4 +8,6 @@ import javafx.fxml.FXML;
  *
  */
 public class CustomerHistoryOrder {
+	private int presentLabel = 0;
+	
 }

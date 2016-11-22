@@ -79,7 +79,7 @@ public class LoginController {
 					break;
 				case "个人客户":
 					root = FXMLLoader.load(getClass().getResource("/客户/导航_主界面.fxml"));
-					SwitchSceneUtil.setStage(stage);
+					SwitchSceneUtil.init(stage, uservo.ID);
 					break;
 			}
 			

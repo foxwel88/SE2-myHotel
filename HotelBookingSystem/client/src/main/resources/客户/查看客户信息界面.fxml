@@ -49,12 +49,12 @@
                   <Font name="Microsoft YaHei" size="20.0" />
                </font>
             </Label>
-            <Label prefHeight="60.0" prefWidth="160.0" text="王小二" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Label fx:id="name" prefHeight="60.0" prefWidth="160.0" text="王小二" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font name="Microsoft YaHei" size="20.0" />
                </font>
             </Label>
-            <Label prefHeight="60.0" prefWidth="160.0" text="13912391919" GridPane.columnIndex="1" GridPane.rowIndex="6">
+            <Label fx:id="accountType" prefHeight="60.0" prefWidth="160.0" text="13912391919" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <font>
                   <Font name="Microsoft YaHei" size="20.0" />
                </font>
@@ -69,7 +69,7 @@
                   <Font name="Microsoft YaHei" size="20.0" />
                </font>
             </Label>
-            <Label prefHeight="60.0" prefWidth="160.0" text="Foxwel" GridPane.columnIndex="1">
+            <Label fx:id="account" prefHeight="60.0" prefWidth="160.0" text="Foxwel" GridPane.columnIndex="1">
                <font>
                   <Font name="Microsoft YaHei" size="20.0" />
                </font>
@@ -79,7 +79,7 @@
                   <Font name="Microsoft YaHei" size="20.0" />
                </font>
             </Label>
-            <Label prefHeight="27.0" prefWidth="488.0" text="400" GridPane.columnIndex="1" GridPane.rowIndex="8">
+            <Label fx:id="credit" prefHeight="27.0" prefWidth="488.0" text="400" GridPane.columnIndex="1" GridPane.rowIndex="8">
                <font>
                   <Font name="Microsoft YaHei" size="20.0" />
                </font>
@@ -99,17 +99,17 @@
                   <Font name="Microsoft YaHei" size="20.0" />
                </font>
             </Label>
-            <Label prefHeight="27.0" prefWidth="488.0" text="2" GridPane.columnIndex="1" GridPane.rowIndex="10">
+            <Label fx:id="level" prefHeight="27.0" prefWidth="488.0" text="2" GridPane.columnIndex="1" GridPane.rowIndex="10">
                <font>
                   <Font name="Microsoft YaHei" size="20.0" />
                </font>
             </Label>
-            <Label prefHeight="27.0" prefWidth="488.0" text="1997-4-1" GridPane.columnIndex="1" GridPane.rowIndex="12">
+            <Label fx:id="birthday" prefHeight="27.0" prefWidth="488.0" text="1997-4-1" GridPane.columnIndex="1" GridPane.rowIndex="12">
                <font>
                   <Font name="Microsoft YaHei" size="20.0" />
                </font>
             </Label>
-            <Label prefHeight="27.0" prefWidth="488.0" text="个人客户" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <Label fx:id="accountType" prefHeight="27.0" prefWidth="488.0" text="个人客户" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <font>
                   <Font name="Microsoft YaHei" size="20.0" />
                </font>
