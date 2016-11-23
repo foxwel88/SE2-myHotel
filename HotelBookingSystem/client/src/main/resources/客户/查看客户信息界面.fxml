@@ -54,7 +54,7 @@
                   <Font name="Microsoft YaHei" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="accountType" prefHeight="60.0" prefWidth="160.0" text="13912391919" GridPane.columnIndex="1" GridPane.rowIndex="6">
+            <Label fx:id="phoneNumber" prefHeight="60.0" prefWidth="160.0" text="13912391919" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <font>
                   <Font name="Microsoft YaHei" size="20.0" />
                </font>

@@ -3,6 +3,7 @@ package org.server.datastub;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.common.dataservice.UserDataService.UserDataService;
@@ -32,12 +33,12 @@ public class UserDataServiceImpl_stub extends UnicastRemoteObject implements Use
 	}
 
 	public UserPO findbyID(String ID) throws RemoteException {
-		return new UserPO(UserType.PERSONALCUSTOMER, ID, ID, ID, ID, ID, 0, null, ID, ID);
+		return new UserPO(UserType.PERSONALCUSTOMER, "Foxwel_Stub", "王小二", ID, "password", "11122233333", 1500, new Date(1000000), "无", "无");
 	}
 
 	public UserPO findbyUserName(String userName) throws RemoteException {
 		if (userName.equals("gz")) {
-			return new UserPO(UserType.PERSONALCUSTOMER, userName, userName, userName, userName, userName, 0, null, userName, userName);
+			return new UserPO(UserType.PERSONALCUSTOMER, userName, userName, userName, userName, userName, 0, new Date(1000000), userName, userName);
 		}
 		return null;
 	}

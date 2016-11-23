@@ -28,10 +28,18 @@ public class CustomerController_Main {
 	@FXML
 	AnchorPane unexcutedTab;
 	
+	@FXML
+	Label welcomeLabel;
+	
 	private int presentGuide = 0;
 	
 	public GridPane getGridPane() {
 		return gridpane;
+	}
+	
+	@FXML
+	void initialize() {
+		welcomeLabel.setText("Welcome," + SwitchSceneUtil.getVO().name + "!");
 	}
 	
 	/*

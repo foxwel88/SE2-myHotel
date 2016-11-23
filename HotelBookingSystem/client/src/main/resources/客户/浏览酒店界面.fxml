@@ -28,21 +28,21 @@
                   <Font name="Microsoft JhengHei" size="15.0" />
                </font>
             </Label>
-            <TextField layoutX="395.0" layoutY="16.0" prefHeight="27.0" prefWidth="389.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.topAnchor="16.0" />
+            <TextField fx:id="hotelName" layoutX="395.0" layoutY="16.0" prefHeight="27.0" prefWidth="389.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.topAnchor="16.0" />
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="465.0" layoutY="98.0" prefHeight="22.0" prefWidth="183.0" text="只显示曾经预定过的酒店" textFill="#ccf57a" wrapText="true" AnchorPane.topAnchor="98.0">
                <font>
                   <Font name="Microsoft JhengHei" size="16.0" />
                </font>
             </Label>
-            <CheckBox layoutX="653.0" layoutY="100.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="0.0" AnchorPane.topAnchor="100.0" />
+            <CheckBox fx:id="everOrdered" layoutX="653.0" layoutY="100.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="0.0" AnchorPane.topAnchor="100.0" />
             <Label layoutX="691.0" layoutY="64.0" text="房间类型" AnchorPane.topAnchor="64.0">
                <font>
                   <Font name="Microsoft JhengHei" size="15.0" />
                </font>
             </Label>
-            <ChoiceBox layoutX="759.0" layoutY="61.0" prefHeight="23.0" prefWidth="113.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.leftAnchor="759.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="61.0" />
-            <ChoiceBox layoutX="34.0" layoutY="16.0" prefHeight="27.0" prefWidth="96.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.topAnchor="16.0" />
-            <ChoiceBox layoutX="186.0" layoutY="16.0" prefHeight="27.0" prefWidth="120.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.leftAnchor="186.0" AnchorPane.topAnchor="16.0" />
+            <ChoiceBox fx:id="roomType" layoutX="759.0" layoutY="61.0" prefHeight="23.0" prefWidth="113.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.leftAnchor="759.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="61.0" />
+            <ChoiceBox fx:id="city" layoutX="34.0" layoutY="16.0" prefHeight="27.0" prefWidth="96.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.topAnchor="16.0" />
+            <ChoiceBox fx:id="area" layoutX="186.0" layoutY="16.0" prefHeight="27.0" prefWidth="120.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.leftAnchor="186.0" AnchorPane.topAnchor="16.0" />
             <Label layoutX="165.0" layoutY="24.0" prefHeight="15.0" prefWidth="30.0" text="商圈" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="20.0">
                <font>
                   <Font name="Microsoft JhengHei" size="15.0" />
@@ -58,7 +58,7 @@
                   <Font name="Microsoft JhengHei" size="15.0" />
                </font>
             </Label>
-            <TextField layoutX="759.0" layoutY="99.0" prefHeight="23.0" prefWidth="150.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.leftAnchor="759.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="99.0" />
+            <TextField fx:id="roomNum" layoutX="759.0" layoutY="99.0" prefHeight="23.0" prefWidth="150.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.leftAnchor="759.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="99.0" />
             <Separator layoutY="50.0" prefHeight="0.0" prefWidth="808.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
             <Button layoutX="802.0" layoutY="16.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="70.0" style="-fx-background-color: rgba(0,0,0,0.4);" text="搜索" textFill="WHITE" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="16.0">
                <font>
@@ -70,8 +70,8 @@
                   <Font name="Microsoft JhengHei" size="15.0" />
                </font>
             </Label>
-            <ChoiceBox layoutX="139.0" layoutY="61.0" prefHeight="23.0" prefWidth="55.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.leftAnchor="139.0" AnchorPane.rightAnchor="681.0" />
-            <ChoiceBox layoutX="66.0" layoutY="61.0" prefHeight="3.0" prefWidth="55.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.leftAnchor="66.0" AnchorPane.rightAnchor="756.0" AnchorPane.topAnchor="61.0" />
+            <ChoiceBox fx:id="upperStar" layoutX="139.0" layoutY="61.0" prefHeight="23.0" prefWidth="55.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.leftAnchor="139.0" AnchorPane.rightAnchor="681.0" />
+            <ChoiceBox fx:id="lowerStar" layoutX="66.0" layoutY="61.0" prefHeight="3.0" prefWidth="55.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.leftAnchor="66.0" AnchorPane.rightAnchor="756.0" AnchorPane.topAnchor="61.0" />
             <Label layoutX="237.0" layoutY="64.0" prefHeight="15.0" prefWidth="36.0" text="评分" AnchorPane.leftAnchor="237.0" AnchorPane.topAnchor="64.0">
                <font>
                   <Font name="Microsoft JhengHei" size="15.0" />
@@ -82,8 +82,8 @@
                   <Font name="Microsoft JhengHei" size="15.0" />
                </font>
             </Label>
-            <TextField layoutX="616.0" layoutY="61.0" prefHeight="23.0" prefWidth="55.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.topAnchor="61.0" />
-            <TextField layoutX="536.0" layoutY="61.0" prefHeight="23.0" prefWidth="55.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.topAnchor="61.0" />
+            <TextField fx:id="toPrice" layoutX="616.0" layoutY="61.0" prefHeight="23.0" prefWidth="55.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.topAnchor="61.0" />
+            <TextField fx:id="fromPrice" layoutX="536.0" layoutY="61.0" prefHeight="23.0" prefWidth="55.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.topAnchor="61.0" />
             <Label layoutX="600.0" layoutY="62.0" text="-" AnchorPane.topAnchor="62.0">
                <font>
                   <Font name="Microsoft JhengHei" size="15.0" />
@@ -94,11 +94,11 @@
                   <Font name="Microsoft JhengHei" size="15.0" />
                </font>
             </Label>
-            <ChoiceBox layoutX="66.0" layoutY="95.0" prefHeight="23.0" prefWidth="134.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.leftAnchor="66.0" AnchorPane.rightAnchor="680.0" AnchorPane.topAnchor="95.0" />
-            <ChoiceBox layoutX="304.0" layoutY="95.0" prefHeight="23.0" prefWidth="134.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.topAnchor="95.0" />
+            <ChoiceBox fx:id="fromDate" layoutX="66.0" layoutY="95.0" prefHeight="23.0" prefWidth="134.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.leftAnchor="66.0" AnchorPane.rightAnchor="680.0" AnchorPane.topAnchor="95.0" />
+            <ChoiceBox fx:id="toDate" layoutX="304.0" layoutY="95.0" prefHeight="23.0" prefWidth="134.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.topAnchor="95.0" />
             <Label layoutX="129.0" layoutY="65.0" prefHeight="17.0" prefWidth="9.0" text="-" AnchorPane.topAnchor="65.0" />
-            <ChoiceBox layoutX="304.0" layoutY="61.0" prefHeight="23.0" prefWidth="55.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.topAnchor="61.0" />
-            <ChoiceBox layoutX="382.0" layoutY="61.0" prefHeight="23.0" prefWidth="56.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.topAnchor="61.0" />
+            <ChoiceBox fx:id="lowerScore" layoutX="304.0" layoutY="61.0" prefHeight="23.0" prefWidth="55.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.topAnchor="61.0" />
+            <ChoiceBox fx:id="upperScore" layoutX="382.0" layoutY="61.0" prefHeight="23.0" prefWidth="56.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.topAnchor="61.0" />
             <Label layoutX="367.0" layoutY="64.0" prefHeight="17.0" prefWidth="15.0" text="-" AnchorPane.topAnchor="64.0" />
             <Label layoutX="237.0" layoutY="97.0" prefHeight="15.0" prefWidth="75.0" text="退房日期" AnchorPane.topAnchor="97.0">
                <font>

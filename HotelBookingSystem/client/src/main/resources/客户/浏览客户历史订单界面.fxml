@@ -14,7 +14,7 @@
       <DropShadow />
    </effect>
    <children>
-      <Pane layoutX="63.0" layoutY="62.0" prefHeight="55.0" prefWidth="175.0" style="-fx-background-color: rgba(0,0,0,0.3);">
+      <Pane fx:id="finishedOrder" layoutX="63.0" layoutY="62.0" prefHeight="55.0" prefWidth="175.0" style="-fx-background-color: rgba(0,0,0,0.3);">
          <children>
             <Label alignment="CENTER" layoutX="32.0" layoutY="16.0" prefHeight="24.0" prefWidth="101.0" text="已执行订单" textAlignment="CENTER" textFill="WHITE">
                <font>
@@ -23,7 +23,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane layoutX="241.0" layoutY="62.0" prefHeight="55.0" prefWidth="175.0" style="-fx-background-color: rgba(255,255,255,0.2);">
+      <Pane fx:id="canceledOrder" layoutX="241.0" layoutY="62.0" prefHeight="55.0" prefWidth="175.0" style="-fx-background-color: rgba(255,255,255,0.2);">
          <children>
             <Label layoutX="39.0" layoutY="16.0" text="已撤销订单">
                <font>
@@ -32,7 +32,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane layoutX="419.0" layoutY="62.0" prefHeight="55.0" prefWidth="175.0" style="-fx-background-color: rgba(255,255,255,0.2);">
+      <Pane fx:id="exceptionOrder" layoutX="419.0" layoutY="62.0" prefHeight="55.0" prefWidth="175.0" style="-fx-background-color: rgba(255,255,255,0.2);">
          <children>
             <Label layoutX="52.0" layoutY="16.0" text="异常订单">
                <font>
@@ -43,12 +43,12 @@
       </Pane>
       <Pane layoutX="63.0" layoutY="117.0" prefHeight="418.0" prefWidth="785.0" style="-fx-border-style: dashed;">
          <children>
-            <Label layoutX="180.0" layoutY="368.0" text="&lt;上一页">
+            <Label fx:id="previousPage" layoutX="180.0" layoutY="368.0" text="&lt;上一页">
                <font>
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="304.0" layoutY="368.0" text="下一页&gt;">
+            <Label fx:id="nextPage" layoutX="304.0" layoutY="368.0" text="下一页&gt;">
                <font>
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
@@ -58,8 +58,8 @@
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
             </Label>
-            <TextField layoutX="483.0" layoutY="365.0" prefHeight="20.0" prefWidth="30.0" style="-fx-background-color: rgba(255,255,255,0.4);" />
-            <Label layoutX="265.0" layoutY="368.0" text="1">
+            <TextField fx:id="toPage" layoutX="483.0" layoutY="365.0" prefHeight="20.0" prefWidth="30.0" style="-fx-background-color: rgba(255,255,255,0.4);" />
+            <Label fx:id="cuerentPage" layoutX="265.0" layoutY="368.0" text="1">
                <font>
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
@@ -76,12 +76,32 @@
                         <Font name="Microsoft YaHei" size="20.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="45.0" prefWidth="135.0" text="2009/00/00">
+                  <Label fx:id="date1" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="135.0" text="2009/00/00">
                      <font>
                         <Font name="Microsoft YaHei" size="15.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="55.0" prefHeight="45.0" prefWidth="135.0" text="2222/22/22">
+                  <Label fx:id="date2" alignment="CENTER" layoutX="10.0" layoutY="55.0" prefHeight="50.0" prefWidth="135.0" text="2222/22/22">
+                     <font>
+                        <Font name="Microsoft YaHei" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="date3" alignment="CENTER" prefHeight="50.0" prefWidth="135.0" text="2222/22/22">
+                     <font>
+                        <Font name="Microsoft YaHei" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="date4" alignment="CENTER" prefHeight="50.0" prefWidth="135.0" text="2222/22/22">
+                     <font>
+                        <Font name="Microsoft YaHei" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="date5" alignment="CENTER" prefHeight="50.0" prefWidth="135.0" text="2222/22/22">
+                     <font>
+                        <Font name="Microsoft YaHei" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="date6" alignment="CENTER" prefHeight="50.0" prefWidth="135.0" text="2222/22/22">
                      <font>
                         <Font name="Microsoft YaHei" size="15.0" />
                      </font>
@@ -95,12 +115,32 @@
                         <Font name="Microsoft YaHei" size="20.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="45.0" prefWidth="290.0" text="南京市xxx大街yyy号zzz处">
+                  <Label fx:id="hotelAddress1" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="290.0" text="南京市xxx大街yyy号zzz处">
                      <font>
                         <Font name="Microsoft YaHei" size="15.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="45.0" prefWidth="290.0" text="同上">
+                  <Label fx:id="hotelAddress2" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="290.0" text="同上">
+                     <font>
+                        <Font name="Microsoft YaHei" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="hotelAddress3" alignment="CENTER" prefHeight="50.0" prefWidth="290.0" text="同上">
+                     <font>
+                        <Font name="Microsoft YaHei" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="hotelAddress4" alignment="CENTER" prefHeight="50.0" prefWidth="290.0" text="同上">
+                     <font>
+                        <Font name="Microsoft YaHei" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="hotelAddress5" alignment="CENTER" prefHeight="50.0" prefWidth="290.0" text="同上">
+                     <font>
+                        <Font name="Microsoft YaHei" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="hotelAddress6" alignment="CENTER" prefHeight="50.0" prefWidth="290.0" text="同上">
                      <font>
                         <Font name="Microsoft YaHei" size="15.0" />
                      </font>
@@ -114,12 +154,44 @@
                         <Font name="Microsoft YaHei" size="20.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="45.0" prefWidth="275.0" text="单人间">
+                  <Label fx:id="roomType1" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="275.0" text="单人间">
                      <font>
                         <Font name="Microsoft YaHei" size="15.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="55.0" prefHeight="45.0" prefWidth="275.0" text="八人间">
+                  <Label fx:id="roomType2" alignment="CENTER" layoutX="10.0" layoutY="55.0" prefHeight="50.0" prefWidth="275.0" text="八人间">
+                     <font>
+                        <Font name="Microsoft YaHei" size="15.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Label>
+                  <Label fx:id="roomType3" alignment="CENTER" prefHeight="50.0" prefWidth="275.0" text="八人间">
+                     <font>
+                        <Font name="Microsoft YaHei" size="15.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Label>
+                  <Label fx:id="roomType4" alignment="CENTER" prefHeight="50.0" prefWidth="275.0" text="八人间">
+                     <font>
+                        <Font name="Microsoft YaHei" size="15.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Label>
+                  <Label fx:id="roomType5" alignment="CENTER" prefHeight="50.0" prefWidth="275.0" text="八人间">
+                     <font>
+                        <Font name="Microsoft YaHei" size="15.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Label>
+                  <Label fx:id="roomType6" alignment="CENTER" prefHeight="50.0" prefWidth="275.0" text="八人间">
                      <font>
                         <Font name="Microsoft YaHei" size="15.0" />
                      </font>
@@ -136,12 +208,32 @@
                         <Font name="Microsoft YaHei" size="20.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="45.0" prefWidth="244.0" text="1">
+                  <Label fx:id="roomNum1" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="244.0" text="1">
                      <font>
                         <Font name="Microsoft YaHei" size="15.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="55.0" prefHeight="45.0" prefWidth="244.0" text="8">
+                  <Label fx:id="roomNum2" alignment="CENTER" layoutX="10.0" layoutY="55.0" prefHeight="50.0" prefWidth="244.0" text="8">
+                     <font>
+                        <Font name="Microsoft YaHei" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="roomNum3" alignment="CENTER" prefHeight="50.0" prefWidth="244.0" text="8">
+                     <font>
+                        <Font name="Microsoft YaHei" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="roomNum4" alignment="CENTER" prefHeight="50.0" prefWidth="244.0" text="8">
+                     <font>
+                        <Font name="Microsoft YaHei" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="roomNum5" alignment="CENTER" prefHeight="50.0" prefWidth="244.0" text="8">
+                     <font>
+                        <Font name="Microsoft YaHei" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="roomNum6" alignment="CENTER" prefHeight="50.0" prefWidth="244.0" text="8">
                      <font>
                         <Font name="Microsoft YaHei" size="15.0" />
                      </font>

@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.client.bl.promotionbl.PromotionController;
 import org.client.bl.userbl.UserController;
+import org.client.blstub.User_stub;
 import org.client.vo.UserVO;
 
 import javafx.fxml.FXMLLoader;
@@ -40,11 +41,12 @@ public class SwitchSceneUtil {
 		setUser(userID);
 	}
 	
+	// TODO 现在用的还是User_Stub
 	public static UserVO getVO() {
-		return userController.findbyID(userID);
+		User_stub stub = new User_stub();
+		return stub.findbyID(userID);
+//		return userController.findbyID(userID);
 	}
-	
-	
 	
 	/*
 	 * 这个方法是唯一一个需要实例化后使用的方法，方法实现了页面跳转的逻辑

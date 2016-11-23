@@ -127,7 +127,7 @@
                   <DropShadow />
                </effect>
                <children>
-                  <Label layoutX="850.0" layoutY="16.0" prefHeight="34.0" prefWidth="188.0" text="Welcome, 李华！" textFill="WHITE" textOverrun="LEADING_ELLIPSIS">
+                  <Label fx:id="welcomeLabel" layoutX="850.0" layoutY="16.0" prefHeight="34.0" prefWidth="188.0" text="Welcome, 李华！" textFill="WHITE" textOverrun="LEADING_ELLIPSIS">
                      <font>
                         <Font name="Microsoft YaHei UI Light" size="24.0" />
                      </font>

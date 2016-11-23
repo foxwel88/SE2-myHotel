@@ -40,7 +40,8 @@ public class CustomerCheckInfo {
 	
 	SwitchSceneUtil sceneSetter = new SwitchSceneUtil();
 	
-	public CustomerCheckInfo() {
+	@FXML
+	void initialize() {
 		UserVO vo = SwitchSceneUtil.getVO();
 		account.setText(vo.userName);
 		name.setText(vo.name);
@@ -48,7 +49,13 @@ public class CustomerCheckInfo {
 		phoneNumber.setText(vo.phoneNumber);
 		credit.setText(String.valueOf(vo.credit));
 		level.setText(String.valueOf(SwitchSceneUtil.promotionController.calLevel(vo.credit)));
-		birthday.setText(vo.birthday.toString());
+		StringBuilder dateBuilder = new StringBuilder();
+		dateBuilder.append(vo.birthday.getYear());
+		dateBuilder.append("/");
+		dateBuilder.append(vo.birthday.getMonth() + 1);
+		dateBuilder.append("/");
+		dateBuilder.append(vo.birthday.getDate());
+		birthday.setText(dateBuilder.toString());
 	}
 	
 	@FXML

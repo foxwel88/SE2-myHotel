@@ -36,12 +36,12 @@
                   <Font name="Microsoft YaHei" size="20.0" />
                </font>
             </Label>
-            <TextField prefHeight="27.0" prefWidth="141.0" style="-fx-background-color: rgba(255,255,255,0.4);" text="王小二" GridPane.columnIndex="1">
+            <TextField fx:id="name" prefHeight="27.0" prefWidth="141.0" style="-fx-background-color: rgba(255,255,255,0.4);" text="王小二" GridPane.columnIndex="1">
                <font>
                   <Font name="Microsoft YaHei" size="18.0" />
                </font>
             </TextField>
-            <TextField prefHeight="27.0" prefWidth="141.0" style="-fx-background-color: rgba(255,255,255,0.4);" text="13919191919" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <TextField fx:id="phoneNumber" prefHeight="27.0" prefWidth="141.0" style="-fx-background-color: rgba(255,255,255,0.4);" text="13919191919" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font name="Microsoft YaHei" size="18.0" />
                </font>
@@ -56,17 +56,17 @@
                   <Font name="Microsoft YaHei" size="20.0" />
                </font>
             </Label>
-            <TextField prefHeight="27.0" prefWidth="141.0" style="-fx-background-color: rgba(255,255,255,0.4);" text="1997-4-1" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <TextField fx:id="birthday" prefHeight="27.0" prefWidth="141.0" style="-fx-background-color: rgba(255,255,255,0.4);" text="1997-4-1" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <font>
                   <Font name="Microsoft YaHei" size="18.0" />
                </font>
             </TextField>
-            <Label disable="true" prefHeight="60.0" prefWidth="160.0" text="企业名称" GridPane.rowIndex="6">
+            <Label fx:id="companyLabel" disable="true" prefHeight="60.0" prefWidth="160.0" text="企业名称" GridPane.rowIndex="6">
                <font>
                   <Font name="Microsoft YaHei" size="20.0" />
                </font>
             </Label>
-            <TextField disable="true" prefHeight="27.0" prefWidth="141.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+            <TextField fx:id="company" disable="true" prefHeight="27.0" prefWidth="141.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <font>
                   <Font name="Microsoft YaHei" size="18.0" />
                </font>
@@ -111,9 +111,9 @@
                   <Font name="Microsoft YaHei" size="20.0" />
                </font>
             </Label>
-            <PasswordField prefHeight="91.0" prefWidth="211.0" style="-fx-background-color: rgba(255,255,255,0.4);" GridPane.columnIndex="1" />
-            <PasswordField prefHeight="57.0" prefWidth="196.0" style="-fx-background-color: rgba(255,255,255,0.4);" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <PasswordField prefHeight="91.0" prefWidth="196.0" style="-fx-background-color: rgba(255,255,255,0.4);" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <PasswordField fx:id="originPassword" prefHeight="91.0" prefWidth="211.0" style="-fx-background-color: rgba(255,255,255,0.4);" GridPane.columnIndex="1" />
+            <PasswordField fx:id="newPassword" prefHeight="57.0" prefWidth="196.0" style="-fx-background-color: rgba(255,255,255,0.4);" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <PasswordField fx:id="newPasswordAgain" prefHeight="91.0" prefWidth="196.0" style="-fx-background-color: rgba(255,255,255,0.4);" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
       </GridPane>
       <Button layoutX="666.0" layoutY="264.0" mnemonicParsing="false" onMouseClicked="#confirmChangePassword" prefHeight="37.0" prefWidth="98.0" style="-fx-background-color: rgba(0,0,0,0.4);" text="修改密码" textFill="WHITE">
