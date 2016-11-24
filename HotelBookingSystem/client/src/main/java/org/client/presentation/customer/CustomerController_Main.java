@@ -47,7 +47,7 @@ public class CustomerController_Main {
 	 * 参数0-4分别表示改变主界面、客户信息、酒店列表、历史订单列表、未执行订单列表的导航栏
 	 */
 	private void changeGuideTab(int whichOne) {
-		AnchorPane tempPane = ((AnchorPane)((GridPane)gridpane.getChildren().get(0)).getChildren().get(whichOne));
+		AnchorPane tempPane = ((AnchorPane)((GridPane)gridpane.getChildren().get(0)).getChildren().get(whichOne));		// 
 		((Label)tempPane.getChildren().get(0)).setStyle("-fx-text-fill: black");
 		tempPane.setStyle("-fx-background-color: rgba(255,255,255,0.4)");
 		tempPane.setEffect(new DropShadow());
@@ -110,7 +110,6 @@ public class CustomerController_Main {
 	void turnToCusController_Main() {
 		switchGuide(0);
 		turnToCustomerMain();
-		SwitchSceneUtil.stage.show();
 	}
 	
 	@FXML

@@ -1,11 +1,15 @@
 package org.client.presentation.customer;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.client.bl.promotionbl.PromotionController;
 import org.client.bl.userbl.UserController;
+import org.client.blstub.Order_stub;
 import org.client.blstub.User_stub;
+import org.client.vo.OrderVO;
 import org.client.vo.UserVO;
+import org.common.utility.OrderType;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
@@ -46,6 +50,24 @@ public class SwitchSceneUtil {
 		User_stub stub = new User_stub();
 		return stub.findbyID(userID);
 //		return userController.findbyID(userID);
+	}
+	
+	// TODO 现在用的还是Order_Stub
+	public static List<OrderVO> getFinishedOrderList() {
+		Order_stub stub = new Order_stub();
+		return stub.getUserOrderList(userID, OrderType.EXECUTED);
+	}
+	
+	// TODO 现在用的还是Order_Stub
+	public static List<OrderVO> getCanceledOrderList() {
+		Order_stub stub = new Order_stub();
+		return stub.getUserOrderList(userID, OrderType.CANCELED);
+	}
+	
+	// TODO 现在用的还是Order_Stub
+	public static List<OrderVO> getAbnormalOrderList() {
+		Order_stub stub = new Order_stub();
+		return stub.getUserOrderList(userID, OrderType.ABNORMAL);
 	}
 	
 	/*

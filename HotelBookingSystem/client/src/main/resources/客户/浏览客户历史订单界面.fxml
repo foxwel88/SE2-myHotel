@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -14,27 +14,27 @@
       <DropShadow />
    </effect>
    <children>
-      <Pane fx:id="finishedOrder" layoutX="63.0" layoutY="62.0" prefHeight="55.0" prefWidth="175.0" style="-fx-background-color: rgba(0,0,0,0.3);">
+      <Pane fx:id="finishedOrder" layoutX="63.0" layoutY="62.0" onMouseClicked="#switchToFinishedOrder" prefHeight="55.0" prefWidth="175.0" style="-fx-background-color: rgba(0,0,0,0.3);">
          <children>
-            <Label alignment="CENTER" layoutX="32.0" layoutY="16.0" prefHeight="24.0" prefWidth="101.0" text="已执行订单" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="finishedOrderText" alignment="CENTER" layoutX="32.0" layoutY="16.0" prefHeight="24.0" prefWidth="101.0" text="已执行订单" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei" size="18.0" />
                </font>
             </Label>
          </children>
       </Pane>
-      <Pane fx:id="canceledOrder" layoutX="241.0" layoutY="62.0" prefHeight="55.0" prefWidth="175.0" style="-fx-background-color: rgba(255,255,255,0.2);">
+      <Pane fx:id="canceledOrder" layoutX="241.0" layoutY="62.0" onMouseClicked="#switchToCanceledOrder" prefHeight="55.0" prefWidth="175.0" style="-fx-background-color: rgba(255,255,255,0.2);">
          <children>
-            <Label layoutX="39.0" layoutY="16.0" text="已撤销订单">
+            <Label fx:id="canceledOrderText" layoutX="39.0" layoutY="16.0" text="已撤销订单">
                <font>
                   <Font name="Microsoft YaHei" size="18.0" />
                </font>
             </Label>
          </children>
       </Pane>
-      <Pane fx:id="exceptionOrder" layoutX="419.0" layoutY="62.0" prefHeight="55.0" prefWidth="175.0" style="-fx-background-color: rgba(255,255,255,0.2);">
+      <Pane fx:id="exceptionOrder" layoutX="419.0" layoutY="62.0" onMouseClicked="#switchToExceptionOrder" prefHeight="55.0" prefWidth="175.0" style="-fx-background-color: rgba(255,255,255,0.2);">
          <children>
-            <Label layoutX="52.0" layoutY="16.0" text="异常订单">
+            <Label fx:id="exceptionOrderText" layoutX="52.0" layoutY="16.0" text="异常订单">
                <font>
                   <Font name="Microsoft YaHei" size="18.0" />
                </font>
@@ -59,7 +59,7 @@
                </font>
             </Label>
             <TextField fx:id="toPage" layoutX="483.0" layoutY="365.0" prefHeight="20.0" prefWidth="30.0" style="-fx-background-color: rgba(255,255,255,0.4);" />
-            <Label fx:id="cuerentPage" layoutX="265.0" layoutY="368.0" text="1">
+            <Label fx:id="currentPage" layoutX="265.0" layoutY="368.0" text="1">
                <font>
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
@@ -69,175 +69,176 @@
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
             </Label>
-            <VBox layoutX="15.0" layoutY="14.0" prefHeight="344.0" prefWidth="135.0">
+            <VBox layoutX="16.0" layoutY="14.0" prefHeight="344.0" prefWidth="752.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="45.0" prefWidth="135.0" text="时间">
-                     <font>
-                        <Font name="Microsoft YaHei" size="20.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="date1" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="135.0" text="2009/00/00">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="date2" alignment="CENTER" layoutX="10.0" layoutY="55.0" prefHeight="50.0" prefWidth="135.0" text="2222/22/22">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="date3" alignment="CENTER" prefHeight="50.0" prefWidth="135.0" text="2222/22/22">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="date4" alignment="CENTER" prefHeight="50.0" prefWidth="135.0" text="2222/22/22">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="date5" alignment="CENTER" prefHeight="50.0" prefWidth="135.0" text="2222/22/22">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="date6" alignment="CENTER" prefHeight="50.0" prefWidth="135.0" text="2222/22/22">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                  </Label>
-               </children>
-            </VBox>
-            <VBox layoutX="158.0" layoutY="14.0" prefHeight="344.0" prefWidth="228.0">
-               <children>
-                  <Label alignment="CENTER" prefHeight="45.0" prefWidth="290.0" text="酒店地址">
-                     <font>
-                        <Font name="Microsoft YaHei" size="20.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="hotelAddress1" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="290.0" text="南京市xxx大街yyy号zzz处">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="hotelAddress2" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="290.0" text="同上">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="hotelAddress3" alignment="CENTER" prefHeight="50.0" prefWidth="290.0" text="同上">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="hotelAddress4" alignment="CENTER" prefHeight="50.0" prefWidth="290.0" text="同上">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="hotelAddress5" alignment="CENTER" prefHeight="50.0" prefWidth="290.0" text="同上">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="hotelAddress6" alignment="CENTER" prefHeight="50.0" prefWidth="290.0" text="同上">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                  </Label>
-               </children>
-            </VBox>
-            <VBox layoutX="402.0" layoutY="14.0" prefHeight="344.0" prefWidth="168.0">
-               <children>
-                  <Label alignment="CENTER" prefHeight="45.0" prefWidth="275.0" text="房型">
-                     <font>
-                        <Font name="Microsoft YaHei" size="20.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="roomType1" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="275.0" text="单人间">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="roomType2" alignment="CENTER" layoutX="10.0" layoutY="55.0" prefHeight="50.0" prefWidth="275.0" text="八人间">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </Label>
-                  <Label fx:id="roomType3" alignment="CENTER" prefHeight="50.0" prefWidth="275.0" text="八人间">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </Label>
-                  <Label fx:id="roomType4" alignment="CENTER" prefHeight="50.0" prefWidth="275.0" text="八人间">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </Label>
-                  <Label fx:id="roomType5" alignment="CENTER" prefHeight="50.0" prefWidth="275.0" text="八人间">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </Label>
-                  <Label fx:id="roomType6" alignment="CENTER" prefHeight="50.0" prefWidth="275.0" text="八人间">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </Label>
-               </children>
-            </VBox>
-            <VBox layoutX="597.0" layoutY="14.0" prefHeight="344.0" prefWidth="159.0">
-               <children>
-                  <Label alignment="CENTER" prefHeight="45.0" prefWidth="244.0" text="房间数量">
-                     <font>
-                        <Font name="Microsoft YaHei" size="20.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="roomNum1" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="244.0" text="1">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="roomNum2" alignment="CENTER" layoutX="10.0" layoutY="55.0" prefHeight="50.0" prefWidth="244.0" text="8">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="roomNum3" alignment="CENTER" prefHeight="50.0" prefWidth="244.0" text="8">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="roomNum4" alignment="CENTER" prefHeight="50.0" prefWidth="244.0" text="8">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="roomNum5" alignment="CENTER" prefHeight="50.0" prefWidth="244.0" text="8">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="roomNum6" alignment="CENTER" prefHeight="50.0" prefWidth="244.0" text="8">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                  </Label>
+                  <HBox prefHeight="50.0" prefWidth="200.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="290.0" text="时间">
+                           <font>
+                              <Font name="Microsoft YaHei" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="290.0" text="酒店地址">
+                           <font>
+                              <Font name="Microsoft YaHei" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="290.0" text="房型">
+                           <font>
+                              <Font name="Microsoft YaHei" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="290.0" text="房间数量">
+                           <font>
+                              <Font name="Microsoft YaHei" size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="order1" prefHeight="50.0" prefWidth="200.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="290.0" text="1999/01/01">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="290.0" text="南京市xxx大街yyy号zzz处">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="290.0" text="单人间">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="290.0" text="1">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="order2" prefHeight="50.0" prefWidth="200.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="290.0" text="2000/02/02">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="290.0" text="同上">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="290.0" text="八人间">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="290.0" text="1">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="order3" prefHeight="50.0" prefWidth="200.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="290.0" text="2000/02/02">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="290.0" text="同上">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="290.0" text="八人间">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="290.0" text="1">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="order4" prefHeight="50.0" prefWidth="200.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="290.0" text="2000/02/02">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="290.0" text="同上">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="290.0" text="八人间">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="290.0" text="1">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="order5" prefHeight="50.0" prefWidth="200.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="290.0" text="2000/02/02">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="290.0" text="同上">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="290.0" text="八人间">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="290.0" text="1">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="order6" prefHeight="50.0" prefWidth="200.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="290.0" text="2000/02/02">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="290.0" text="同上">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="290.0" text="八人间">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="290.0" text="1">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
                </children>
             </VBox>
          </children>
