@@ -1,15 +1,14 @@
 package org.client.presentation.webmanager;
 
-import java.io.IOException;
-import java.net.URL;
+
+import org.client.vo.UserVO;
+import org.common.utility.ResultMessage;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
 
 /**
  * 
@@ -17,48 +16,61 @@ import javafx.stage.Stage;
  *
  */
 public class WebManagerCheckWebMarketer {
-	@FXML
-    private URL location;
-
-	@FXML
-    private Label toCustomerLabel;
-
-	@FXML
-    private Label toHotelLabel;
-
-	@FXML
-    private Label toHomeLabel;
-
-	@FXML
-    private Label toNewLabel;
-
+	private WebManagerController controller;
 	
 	@FXML
-    void initialize() throws IOException {
-        assert toCustomerLabel != null : "fx:id=\"toCustomerLabel\" was not injected: check your FXML file '浏览网站营销人员信息界面.fxml'.";
-        assert toHotelLabel != null : "fx:id=\"toHotelLabel\" was not injected: check your FXML file '浏览网站营销人员信息界面.fxml'.";
-        assert toHomeLabel != null : "fx:id=\"toHomeLabel\" was not injected: check your FXML file '浏览网站营销人员信息界面.fxml'.";
-        assert toNewLabel != null : "fx:id=\"toNewLabel\" was not injected: check your FXML file '浏览网站营销人员信息界面.fxml'.";
+	private Label nameLabel;
+
+	@FXML
+	private Label phoneLabel;
+
+	@FXML
+	private Label userNameLabel;
+
+	@FXML
+	private TextField userNameTextField;
+
+	@FXML
+	private Button modifyButton;
+
+	@FXML
+	private Button searchButton;
+
+	@FXML
+	private Button addUserButton;
+
+	@FXML
+	void handleAddAction(MouseEvent event) {
+
+	}
+
+	void clear() {
+		nameLabel.setText("");
+		phoneLabel.setText("");
+		userNameLabel.setText("");
 	}
 	
 	@FXML
-    void handleSwitch(MouseEvent event) throws IOException {
-		Parent root = null;
-		Label source = (Label)event.getSource();
+	void initialize() {
+		controller = WebManagerController.getInstance();
+		clear();
+	}
+	
+	@FXML
+	void handleModifyAction(MouseEvent event) {
 
-		if (source == toCustomerLabel) {
-			root = FXMLLoader.load(getClass().getResource("/网站管理人员/浏览客户信息界面.fxml"));
-		} else if (source == toHotelLabel) {
-			root = FXMLLoader.load(getClass().getResource("/网站管理人员/浏览酒店工作人员信息界面.fxml"));
-		} else if (source == toHomeLabel) {
-			root = FXMLLoader.load(getClass().getResource("/网站管理人员/网站管理人员主界面.fxml"));
-		} else if (source == toNewLabel) {
-			root = FXMLLoader.load(getClass().getResource("/网站管理人员/新增酒店界面.fxml"));
+	}
+
+	@FXML
+	void handleSearchAction(MouseEvent event) {
+		clear();
+		UserVO vo = controller.findbyUserName(userNameTextField.getText());
+		if (vo.resultMessage == ResultMessage.SUCCESS) {
+			if (vo.type.equals("网站营销人员")) {
+				nameLabel.setText(vo.name);
+				phoneLabel.setText(vo.phoneNumber);
+				userNameLabel.setText(vo.userName);
+			}
 		}
-		
-		Scene scene = new Scene(root,1099,680);
-		Stage stage = (Stage)toCustomerLabel.getScene().getWindow();
-		stage.setScene(scene);
-		stage.show();
 	}
 }

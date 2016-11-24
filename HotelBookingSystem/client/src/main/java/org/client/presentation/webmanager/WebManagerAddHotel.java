@@ -1,15 +1,12 @@
 package org.client.presentation.webmanager;
 
-import java.io.IOException;
-import java.net.URL;
-
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
 
 /**
  * 
@@ -18,47 +15,54 @@ import javafx.stage.Stage;
  */
 public class WebManagerAddHotel {
 	@FXML
-    private URL location;
+	private ChoiceBox< ? > cityChoiceBox;
 
 	@FXML
-    private Label toCustomerLabel;
+	private ChoiceBox< ? > areaChoiceBox;
 
 	@FXML
-    private Label toHotelLabel;
+	private TextField hotelAddressTextField;
 
 	@FXML
-    private Label toWebLabel;
+	private TextField hotelNameTextField;
 
 	@FXML
-    private Label toHomeLabel;
+	private ChoiceBox< ? > StarChoiceBox;
 
-	
 	@FXML
-    void initialize() throws IOException {
-        assert toCustomerLabel != null : "fx:id=\"toCustomerLabel\" was not injected: check your FXML file '新增酒店界面.fxml'.";
-        assert toHotelLabel != null : "fx:id=\"toHotelLabel\" was not injected: check your FXML file '新增酒店界面.fxml'.";
-        assert toWebLabel != null : "fx:id=\"toWebLabel\" was not injected: check your FXML file '新增酒店界面.fxml'.";
-        assert toHomeLabel != null : "fx:id=\"toHomeLabel\" was not injected: check your FXML file '新增酒店界面.fxml'.";
+	private TextArea introduceTextArea;
+
+	@FXML
+	private TextArea serverTextArea;
+
+	@FXML
+	private TextField userNameTextField;
+
+	@FXML
+	private PasswordField passwordField;
+
+	@FXML
+	private PasswordField passwordField2;
+
+	@FXML
+	private TextField nameTextField;
+
+	@FXML
+	private TextField phoneTextField;
+
+	@FXML
+	private Button cancelButton;
+
+	@FXML
+	private Button confirmButton;
+
+	@FXML
+	void handleCancelAction(MouseEvent event) {
+
 	}
-	
-	@FXML
-    void handleSwitch(MouseEvent event) throws IOException {
-		Parent root = null;
-		Label source = (Label)event.getSource();
 
-		if (source == toCustomerLabel) {
-			root = FXMLLoader.load(getClass().getResource("/网站管理人员/浏览客户信息界面.fxml"));
-		} else if (source == toHotelLabel) {
-			root = FXMLLoader.load(getClass().getResource("/网站管理人员/浏览酒店工作人员信息界面.fxml"));
-		} else if (source == toWebLabel) {
-			root = FXMLLoader.load(getClass().getResource("/网站管理人员/浏览网站营销人员信息界面.fxml"));
-		} else if (source == toHomeLabel) {
-			root = FXMLLoader.load(getClass().getResource("/网站管理人员/网站管理人员主界面.fxml"));
-		}
-		
-		Scene scene = new Scene(root);
-		Stage stage = (Stage)toCustomerLabel.getScene().getWindow();
-		stage.setScene(scene);
-		stage.show();
+	@FXML
+	void handleConfirmAction(MouseEvent event) {
+
 	}
 }

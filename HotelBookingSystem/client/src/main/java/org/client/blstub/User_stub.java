@@ -64,18 +64,6 @@ public class User_stub implements Userblservice {
 	public UserVO findbyUserName(String userName) {
 		// TODO Auto-generated method stub
 		switch(userName) {
-			case "Tom" :
-				return personalCustomer;
-			case "Tony" :
-				return companyCustomer;
-			case "Bob" :
-				return webManager;
-			case "Sam" :
-				return webMarketer;
-			case "Mac" :
-				return hotelManager;
-		}
-		switch(userName) {
 			case "123" :
 				return personalCustomer;
 			case "webManager" :
@@ -84,9 +72,24 @@ public class User_stub implements Userblservice {
 				return webMarketer;
 			case "hotelManager" :
 				return hotelManager;
-			
 		}
-		return null;
+		if (userName.equals("Tom")) {
+			return personalCustomer;
+		}
+		if (userName.equals("Tony")) {
+			return companyCustomer;
+		}
+		if (userName.equals("Bob")) {
+			return webMarketer;
+		}
+		if (userName.equals("Sam")) {
+			return webManager;
+		}
+		if (userName.equals("Mac")) {
+			return hotelManager;
+		}
+		UserVO vo = new UserVO(ResultMessage.NOT_EXIST);
+		return vo;
 	}
 
 	public ResultMessage modifyPassword(String userName, 

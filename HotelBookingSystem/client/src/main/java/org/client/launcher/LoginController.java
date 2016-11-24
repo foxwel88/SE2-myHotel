@@ -72,7 +72,7 @@ public class LoginController {
 					HotelManagerController.init(uservo.hotelAddress);
 					break;
 				case "网站管理人员":
-					root = FXMLLoader.load(getClass().getResource("/网站管理人员/网站管理人员主界面.fxml"));
+					root = FXMLLoader.load(getClass().getResource("/网站管理人员/导航.fxml"));
 					break;
 				case "网站营销人员":
 					root = FXMLLoader.load(getClass().getResource("/网站营销人员/guide.fxml"));
