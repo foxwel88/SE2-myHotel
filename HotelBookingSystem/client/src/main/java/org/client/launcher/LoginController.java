@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import org.client.bl.userbl.UserController;
 import org.client.blservice.userblservice.Userblservice;
 import org.client.blstub.User_stub;
 import org.client.presentation.customer.SwitchSceneUtil;
@@ -100,8 +99,5 @@ public class LoginController {
 		System.out.println("username:123 password:456");
 		System.out.println("you can use this customer account for test");
 	}
-	
-	
-	
 	
 }

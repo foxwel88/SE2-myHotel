@@ -6,13 +6,10 @@ import org.client.vo.UserVO;
 import org.common.utility.ResultMessage;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 
 /**
  * 
@@ -76,7 +73,7 @@ public class WebManagerCheckCustomer {
 	
 	@FXML
 	void handleModifyAction(MouseEvent event) throws IOException {
-		Parent mypane = FXMLLoader.load(getClass().getResource("/网站管理人员/修改客户信息界面.fxml"));
+		//Parent mypane = FXMLLoader.load(getClass().getResource("/网站管理人员/修改客户信息界面.fxml"));
 	}
 	
 	@FXML
