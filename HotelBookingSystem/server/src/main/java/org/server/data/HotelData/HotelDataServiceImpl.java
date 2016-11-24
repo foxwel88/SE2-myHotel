@@ -79,6 +79,18 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public ResultMessage increaseAvailableRoom(RoomType type, String hotelAddress) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResultMessage decreaseAvailableRoom(RoomType type, String hotelAddress) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 

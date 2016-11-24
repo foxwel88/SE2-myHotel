@@ -13,37 +13,44 @@ import org.common.utility.ResultMessage;
 import org.common.utility.RoomType;
 
 public interface HotelDataService extends Remote {
-	public void init() throws RemoteException;
+	
 	//初始化持久化数据库
-	
-	public ResultMessage addHotelInfo(HotelPO po) throws RemoteException;
-	//在数据库中插入一个po
-	
-	public ResultMessage modifyHotelInfo(HotelPO po) throws RemoteException;
-	//在数据库中更新一个po
-	
-	public HotelPO getHotelInfo(String hotelAddress) throws RemoteException;
-	//返回一个酒店po
-	
-	public List<RoomPO> getRooms(String hotelAddress) throws RemoteException;
-	//返回房间信息
-	
-	public ResultMessage modifyRooms(String hotelAddress, List<RoomPO> po) throws RemoteException;
-	//在数据库中更新房间po
-	
-	public ResultMessage changeRoom(RoomType type, int num, String hotelAddress) throws RemoteException;
-	//在数据库中更新房间po
-	
-	public List<HotelPO> findHotels(HotelFilter filter) throws RemoteException;
-	//返回多个酒店po
-	
-	public List<CityPO> getCitys() throws RemoteException;
-	//在数据库中获得所有CityPO
-	
-	public List<AreaPO> getAreas(CityPO po) throws RemoteException;
-	//根据CityPO返回所有AreaPO
+	public void init() throws RemoteException;
 
-	public void finish() throws RemoteException;
+	//在数据库中插入一个po
+	public ResultMessage addHotelInfo(HotelPO po) throws RemoteException;
+
+	//在数据库中更新一个po
+	public ResultMessage modifyHotelInfo(HotelPO po) throws RemoteException;
+
+	//返回一个酒店po
+	public HotelPO getHotelInfo(String hotelAddress) throws RemoteException;
+	
+	//返回房间信息
+	public List<RoomPO> getRooms(String hotelAddress) throws RemoteException;
+
+	//在数据库中更新房间po
+	public ResultMessage modifyRooms(String hotelAddress, List<RoomPO> po) throws RemoteException;
+
+	//在数据库中更新房间po
+	public ResultMessage changeRoom(RoomType type, int num, String hotelAddress) throws RemoteException;
+
+	//返回多个酒店po
+	public List<HotelPO> findHotels(HotelFilter filter) throws RemoteException;
+
+	//在数据库中获得所有CityPO
+	public List<CityPO> getCitys() throws RemoteException;
+
+	//根据CityPO返回所有AreaPO
+	public List<AreaPO> getAreas(CityPO po) throws RemoteException;
+
 	//结束持久化数据库的使用
+	public void finish() throws RemoteException;
+
+	//增加一个某类型可用房间
+	public ResultMessage increaseAvailableRoom(RoomType type, String hotelAddress) throws RemoteException;
+
+	//减少一个某类型可用房间
+	public ResultMessage decreaseAvailableRoom(RoomType type, String hotelAddress) throws RemoteException;
 
 }

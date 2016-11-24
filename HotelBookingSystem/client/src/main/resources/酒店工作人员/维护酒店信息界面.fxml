@@ -124,7 +124,6 @@
                   <Font name="Microsoft YaHei" size="16.0" />
                </font>
             </Label>
-            <ChoiceBox fx:id="roomNumber" layoutX="327.0" layoutY="102.0" prefHeight="30.0" prefWidth="109.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-text-inner-color: white;" />
             <Label layoutX="14.0" layoutY="147.0" prefHeight="34.0" prefWidth="83.0" text="入住时间" textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei" size="16.0" />
@@ -169,6 +168,7 @@
                   <Font name="Microsoft YaHei" size="16.0" />
                </font>
             </Button>
+            <TextField fx:id="roomNumber" layoutX="326.0" layoutY="104.0" prefHeight="30.0" prefWidth="109.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-text-inner-color: white;" />
          </children>
       </AnchorPane>
    </children>

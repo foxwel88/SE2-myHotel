@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import org.client.bl.hotelbl.HotelController;
 import org.client.rmi.RMIHelper;
 import org.client.vo.AreaVO;
 import org.client.vo.CityVO;
@@ -45,7 +46,7 @@ public class HotelManagerModifyHotel {
     private Button saveButton;
 
 	@FXML
-    private Button addButton;
+    private Button addButton; //check in info
 
 	@FXML
     private Button changeButton;
@@ -86,8 +87,14 @@ public class HotelManagerModifyHotel {
 	@FXML
     private TextField roomPrice;
 	
+	private ArrayList<String> roomTypes;
+	
+	private ArrayList<Integer> roomNums;
+	
+	private ArrayList<Double> roomPrices;
+	
 	@FXML
-    private ChoiceBox<String> roomNumber;
+    private TextField roomNumber;
 
 	@FXML
     private TextField startTime;
@@ -140,7 +147,7 @@ public class HotelManagerModifyHotel {
 
 	@FXML
     void saveRoom(ActionEvent event) {
-
+		
 	}
 
 	@FXML

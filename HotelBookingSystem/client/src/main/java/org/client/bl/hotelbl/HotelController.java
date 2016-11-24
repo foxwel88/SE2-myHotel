@@ -117,5 +117,27 @@ public class HotelController implements Hotelblservice {
 		return null;
 	}
 
+	public ResultMessage increaseAvailableRoom(RoomType type, String hotelAddress) {
+		HotelDataService dao = RMIHelper.getInstance().getHotelDataServiceImpl();
+		try {
+			dao.increaseAvailableRoom(type, hotelAddress);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return ResultMessage.CONNECTION_FAIL;
+		}
+		return ResultMessage.SUCCESS;
+	}
+
+	public ResultMessage decreaseAvailableRoom(RoomType type, String hotelAddress) {
+		HotelDataService dao = RMIHelper.getInstance().getHotelDataServiceImpl();
+		try {
+			dao.decreaseAvailableRoom(type, hotelAddress);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return ResultMessage.CONNECTION_FAIL;
+		}
+		return ResultMessage.SUCCESS;
+	}
+
 
 }

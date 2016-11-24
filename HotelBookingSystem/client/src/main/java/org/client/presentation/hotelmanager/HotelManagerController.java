@@ -1,23 +1,21 @@
 package org.client.presentation.hotelmanager;
 
+import java.util.Date;
 import java.util.List;
 
-import org.client.blservice.commentblservice.Commentblservice;
 import org.client.blservice.hotelblservice.Hotelblservice;
 import org.client.blservice.orderblservice.Orderblservice;
 import org.client.blservice.promotionblservice.Promotionblservice;
-import org.client.blservice.userblservice.Userblservice;
-import org.client.blstub.Comment_stub;
 import org.client.blstub.Hotel_stub;
 import org.client.blstub.Order_stub;
 import org.client.blstub.Promotion_stub;
-import org.client.blstub.User_stub;
 import org.client.vo.AreaVO;
 import org.client.vo.CityVO;
 import org.client.vo.HotelVO;
 import org.client.vo.OrderVO;
 import org.client.vo.PromotionVO;
 import org.common.utility.ResultMessage;
+import org.common.utility.RoomType;
 
 /**
  * 酒店工作人员界面的总Controller，负责调用Logic层的方法
@@ -25,7 +23,6 @@ import org.common.utility.ResultMessage;
  *
  */
 public class HotelManagerController {
-	private Userblservice userbl;
 	
 	private Hotelblservice hotelbl;
 	
@@ -33,19 +30,16 @@ public class HotelManagerController {
 	
 	private Orderblservice orderbl;
 	
-	private Commentblservice commentbl;
-	
 	private static HotelManagerController controller;
 	
 	private String hotelAddress;
 	
-	private OrderVO currentOrder;
+	public OrderVO currentOrder;
 	
-	private HotelManagerController(String hotelAddress) { // stub version
-		userbl = new User_stub();
+	//stub version
+	private HotelManagerController(String hotelAddress) { 
 		hotelbl = new Hotel_stub();
 		promotionbl = new Promotion_stub();
-		commentbl = new Comment_stub();
 		orderbl = new Order_stub();
 		this.hotelAddress = hotelAddress;
 	}
@@ -84,6 +78,21 @@ public class HotelManagerController {
 	
 	public ResultMessage executeOrder() {
 		return orderbl.executeOrder(currentOrder.orderID);
+	}
+	
+	public ResultMessage addPromotion(PromotionVO vo) {
+		return promotionbl.add(vo);
+	}
+	
+	public ResultMessage modifyPromotion(PromotionVO vo) {
+		return promotionbl.modify(vo);
+	}
+	
+	//Need orderbl's modify method 
+	public ResultMessage checkout(Date checkoutDate) {
+		currentOrder.actTo = checkoutDate;
+		hotelbl.decreaseAvailableRoom(RoomType.getType(currentOrder.roomType), hotelAddress);
+		return ResultMessage.SUCCESS;
 	}
 	
 	

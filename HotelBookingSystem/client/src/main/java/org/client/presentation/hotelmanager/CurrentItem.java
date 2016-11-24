@@ -4,6 +4,11 @@ import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.AnchorPane;
 
+/**
+ * 导航栏中当前选择的项，用于修改跳转时的视觉变化
+ * @author Hirico
+ *
+ */
 public class CurrentItem {
 	public Label label;
 	

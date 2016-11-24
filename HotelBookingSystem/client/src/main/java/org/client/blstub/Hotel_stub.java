@@ -45,7 +45,6 @@ public class Hotel_stub implements Hotelblservice {
 			checkInInfo, roomTypes, roomNums, roomPrices, cooperators);
 
 	public ArrayList<HotelVO> findHotels(HotelFilter filter, String id, boolean historyOnly) {
-		// TODO Auto-generated method stub
 		ArrayList<HotelVO> vo = new ArrayList<HotelVO>();
 		vo.add(hotelvo1);
 		vo.add(hotelvo2);
@@ -53,32 +52,26 @@ public class Hotel_stub implements Hotelblservice {
 	}
 
 	public HotelVO getHotel(String hotelAddress) {
-		// TODO Auto-generated method stub
 		return hotelvo1;
 	}
 
 	public ResultMessage addHotel(HotelVO hotelVO, UserVO userVO) {
-		// TODO Auto-generated method stub
 		return ResultMessage.SUCCESS;
 	}
 
 	public ResultMessage modifyHotel(HotelVO vo) {
-		// TODO Auto-generated method stub
 		return ResultMessage.SUCCESS;
 	}
 
 	public ResultMessage changeRoom(RoomType type, int num, String hotelAddress) {
-		// TODO Auto-generated method stub
 		return ResultMessage.SUCCESS;
 	}
 
 	public HotelVO getHotelVO(String hotelAddress) {
-		// TODO Auto-generated method stub
 		return hotelvo1;
 	}
 
 	public ArrayList<CityVO> getCitys() {
-		// TODO Auto-generated method stub
 		ArrayList<CityVO> vo = new ArrayList<CityVO>();
 		vo.add(city1);
 		vo.add(city2);
@@ -86,11 +79,20 @@ public class Hotel_stub implements Hotelblservice {
 	}
 
 	public ArrayList<AreaVO> getAreas(CityVO vo) {
-		// TODO Auto-generated method stub
 		ArrayList<AreaVO> vo3 = new ArrayList<AreaVO>();
 		vo3.add(area1);
 		vo3.add(area2);
 		return vo3;
+	}
+
+	@Override
+	public ResultMessage increaseAvailableRoom(RoomType type, String hotelAddress) {
+		return ResultMessage.SUCCESS;
+	}
+
+	@Override
+	public ResultMessage decreaseAvailableRoom(RoomType type, String hotelAddress) {
+		return ResultMessage.SUCCESS;
 	}
 
 }

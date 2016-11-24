@@ -19,6 +19,10 @@ public interface Hotelblservice {
 	
 	public ResultMessage changeRoom(RoomType type, int num, String hotelAddress);
 	
+	public ResultMessage increaseAvailableRoom(RoomType type, String hotelAddress);
+	
+	public ResultMessage decreaseAvailableRoom(RoomType type, String hotelAddress);
+	
 	public HotelVO getHotelVO(String hotelAddress);
 	
 	public List<CityVO> getCitys();
