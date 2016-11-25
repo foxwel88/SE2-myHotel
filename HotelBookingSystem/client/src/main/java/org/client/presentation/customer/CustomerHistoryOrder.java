@@ -8,6 +8,11 @@ import org.client.vo.OrderVO;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
@@ -17,6 +22,8 @@ import javafx.scene.layout.Pane;
  *
  */
 public class CustomerHistoryOrder {
+	@FXML
+	AnchorPane root;
 	
 	@FXML
 	Pane finishedOrder;
@@ -69,6 +76,7 @@ public class CustomerHistoryOrder {
 	@FXML
 	HBox order6;
 	
+	// currentLabel 表示当前显示的订单列表中订单的类型
 	// 0表示当前显示的是已执行订单界面，1表示是已撤销订单界面，2表示异常订单界面
 	private int currentLabel = 0;
 	
@@ -79,6 +87,9 @@ public class CustomerHistoryOrder {
 	private ArrayList<OrderVO> abnormalOrderList;
 	
 	private ArrayList<HBox> boxList;
+	
+	// 该字段表示同时显示的最大订单的数量
+	private static final int MAX_ORDER_ONE_OAGE = 6;
 	
 	@FXML
 	void initialize() {
@@ -92,9 +103,8 @@ public class CustomerHistoryOrder {
 		showFinishedOrderList();
 	}
 	
-	/**
-	 * 切换三种订单列表
-	 * @param whichOne 0表示切换至已执行订单，1表示切换为已撤销订单，2表示切换为异常订单
+	/*
+	 * 以下三种方法用于切换三种订单列表
 	 */
 	@FXML
 	void switchToFinishedOrder() {
@@ -105,6 +115,7 @@ public class CustomerHistoryOrder {
 		canceledOrderText.setStyle("-fx-text-fill: black");
 		exceptionOrderText.setStyle("-fx-text-fill: black");
 		currentLabel = 0;
+		currentPage.setText(String.valueOf(1));
 		showFinishedOrderList();
 	}
 	
@@ -117,6 +128,7 @@ public class CustomerHistoryOrder {
 		canceledOrderText.setStyle("-fx-text-fill: white");
 		exceptionOrderText.setStyle("-fx-text-fill: black");
 		currentLabel = 1;
+		currentPage.setText(String.valueOf(1));
 		showCanceledOrderList();
 	}
 	
@@ -129,7 +141,140 @@ public class CustomerHistoryOrder {
 		canceledOrderText.setStyle("-fx-text-fill: black");
 		exceptionOrderText.setStyle("-fx-text-fill: white");
 		currentLabel = 2;
+		currentPage.setText(String.valueOf(1));
 		showExceptionOrderList();
+	}
+	/************************************************************************************/
+	
+	@FXML
+	void turnToNextPage() {
+		switch (currentLabel) {
+			case 0:
+				if (Integer.parseInt(currentPage.getText()) < calMaxPage(finishedOrderList)) {
+					currentPage.setText(String.valueOf(Integer.parseInt(currentPage.getText()) + 1));
+					showFinishedOrderList();
+				}
+				break;
+			case 1:
+				if (Integer.parseInt(currentPage.getText()) < calMaxPage(canceledOrderList)) {
+					currentPage.setText(String.valueOf(Integer.parseInt(currentPage.getText()) + 1));
+					showFinishedOrderList();
+				}
+				break;
+			case 2:
+				if (Integer.parseInt(currentPage.getText()) < calMaxPage(abnormalOrderList)) {
+					currentPage.setText(String.valueOf(Integer.parseInt(currentPage.getText()) + 1));
+					showFinishedOrderList();
+				}
+				break;
+		}
+	}
+	
+	@FXML
+	void turnToPreviousPage() {
+		switch (currentLabel) {
+			case 0:
+				if (Integer.parseInt(currentPage.getText()) > 1) {
+					currentPage.setText(String.valueOf(Integer.parseInt(currentPage.getText()) - 1));
+					showFinishedOrderList();
+				}
+				break;
+			case 1:
+				if (Integer.parseInt(currentPage.getText()) > 1) {
+					currentPage.setText(String.valueOf(Integer.parseInt(currentPage.getText()) - 1));
+					showCanceledOrderList();
+				}
+				break;
+			case 2:
+				if (Integer.parseInt(currentPage.getText()) > 1) {
+					currentPage.setText(String.valueOf(Integer.parseInt(currentPage.getText()) - 1));
+					showExceptionOrderList();
+				}
+				break;
+		}
+	}
+	
+	@FXML
+	void turnToSpecialPage(KeyEvent event) {
+		if (event.getCode() == KeyCode.ENTER) {
+			int goalPage = checkGoalPage();
+			currentPage.setText(String.valueOf(goalPage));
+			switch (currentLabel) {
+				case 0:
+					showFinishedOrderList();
+					break;
+				case 1:
+					showCanceledOrderList();
+					break;
+				case 2:
+					showExceptionOrderList();
+					break;
+			}
+		}
+	}
+	
+	/*
+	 * 此方法用于跳转到某条详细订单信息界面
+	 */
+	@FXML
+	void checkDetailedOrder(MouseEvent event) {
+		String orderID;
+		int page = Integer.parseInt(currentPage.getText());
+		for (int i = 0; i < MAX_ORDER_ONE_OAGE; i++) {
+			if (((HBox)(event.getSource())).equals(boxList.get(i))) {
+				switch (currentLabel) {
+					case 0:
+						orderID = finishedOrderList.get((page - 1) * MAX_ORDER_ONE_OAGE + i).orderID;
+						SwitchSceneUtil.turnToAnotherScene((GridPane)root.getParent(), "/客户/已执行订单详细信息界面.fxml", orderID);
+						break;
+					case 1:
+						orderID = canceledOrderList.get((page - 1) * MAX_ORDER_ONE_OAGE + i).orderID;
+						SwitchSceneUtil.turnToAnotherScene((GridPane)root.getParent(), "/客户/已撤销订单详细信息界面.fxml", orderID);
+						break;
+					case 2:
+						orderID = abnormalOrderList.get((page - 1) * MAX_ORDER_ONE_OAGE + i).orderID;
+						SwitchSceneUtil.turnToAnotherScene((GridPane)root.getParent(), "/客户/异常订单详细信息界面.fxml", orderID);
+						break;
+				}
+				break;
+			}
+		}
+	}
+	
+	/*
+	 * 此方法用于检查用户输入的目标跳转页面是否合法 （在第1页和最后一页之间）
+	 * 此方法在用户敲击回车确认输入时被调用
+	 * 此方法被调用之后会把文本框中的内容变为合法值
+	 */
+	int checkGoalPage() {
+		int goalPage;
+		try {
+			goalPage = Integer.parseInt(toPage.getText());
+		} catch (NumberFormatException numFormex) {
+			goalPage = (int)Double.parseDouble(toPage.getText());
+		}
+		if (goalPage < 1) {
+			goalPage = 1;
+		}
+		switch (currentLabel) {
+			case 0:
+				if (goalPage > calMaxPage(finishedOrderList)) {
+					goalPage = calMaxPage(finishedOrderList);
+				}
+				break;
+			case 1:
+				if (goalPage > calMaxPage(canceledOrderList)) {
+					goalPage = calMaxPage(canceledOrderList);
+				}
+				break;
+			case 2:
+				if (goalPage > calMaxPage(abnormalOrderList)) {
+					goalPage = calMaxPage(abnormalOrderList);
+				}
+				break;
+		}
+		toPage.setText(String.valueOf(goalPage));
+		return goalPage;
 	}
 	
 	void showFinishedOrderList() {
@@ -148,10 +293,17 @@ public class CustomerHistoryOrder {
 	}
 	
 	/*
-	 * 这个方法的作用是设置界面上显示的内容
+	 * 此方法用于计算某种订单列表能够展开的最大页数
+	 */
+	private int calMaxPage(ArrayList<OrderVO> voList) {
+		return (voList.size() / MAX_ORDER_ONE_OAGE) + 1;
+	}
+	
+	/*
+	 * 这个方法的作用是设置单个订单列表全部订单的内容
 	 */
 	private void setContent() {
-		for (int i = 0; i < 6; i++) {
+		for (int i = 0; i < MAX_ORDER_ONE_OAGE; i++) {
 			if (hotelAddress(i) != null) {
 				getDateLabel(boxList.get(i)).setText(date(i));
 				getHotelAddressLabel(boxList.get(i)).setText(hotelAddress(i));
@@ -184,13 +336,14 @@ public class CustomerHistoryOrder {
 	private Label getRoomNumLabel(HBox order) {
 		return (Label)(order.getChildren().get(3));
 	}
+	/********************************************************/
 	
 	/**
 	 * 下面四种方法分别用来获得某个订单的订单时间、酒店地址、房间类型、房间数量的信息
-	 * @param i 范围是0到5
+	 * @param i 范围是 0 到 MAX_ORDER_ONE_OAGE - 1
 	 */
 	private String date(int i) {
-		int seq = (Integer.parseInt(currentPage.getText()) - 1) * 6 + i;	// 计算当前页面第i个信息字段在arraylist中的实际位置；
+		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_ORDER_ONE_OAGE + i;	// 计算当前页面第i个信息字段在arraylist中的实际位置；
 		Date tempDate;
 		StringBuilder sb = new StringBuilder();
 		try {
@@ -209,7 +362,7 @@ public class CustomerHistoryOrder {
 	}
 	
 	private String hotelAddress(int i) {
-		int seq = (Integer.parseInt(currentPage.getText()) - 1) * 6 + i;	// 计算当前页面第i个信息字段在arraylist中的实际位置；
+		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_ORDER_ONE_OAGE + i;
 		try {
 			if (currentLabel == 0) {
 				return finishedOrderList.get(seq).hotelAddress;
@@ -224,7 +377,7 @@ public class CustomerHistoryOrder {
 	}
 	
 	private String roomType(int i) {
-		int seq = (Integer.parseInt(currentPage.getText()) - 1) * 6 + i;	// 计算当前页面第i个信息字段在arraylist中的实际位置；
+		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_ORDER_ONE_OAGE + i;
 		try {
 			if (currentLabel == 0) {
 				return finishedOrderList.get(seq).roomType;
@@ -239,7 +392,7 @@ public class CustomerHistoryOrder {
 	}
 	
 	private int roomNum(int i) {
-		int seq = (Integer.parseInt(currentPage.getText()) - 1) * 6 + i;	// 计算当前页面第i个信息字段在arraylist中的实际位置；
+		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_ORDER_ONE_OAGE + i;
 		try {
 			if (currentLabel == 0) {
 				return finishedOrderList.get(seq).roomNum;
@@ -252,4 +405,5 @@ public class CustomerHistoryOrder {
 			return -1;
 		}
 	}
+	/**************************************************************************************/
 }

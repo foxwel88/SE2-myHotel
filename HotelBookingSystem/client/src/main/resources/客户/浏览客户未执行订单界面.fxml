@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="567.0" prefWidth="920.0" style="-fx-background-color: rgba(255,255,255,0.4);" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.presentation.customer.CustomerUnexcutedOrderList">
+<AnchorPane fx:id="root" prefHeight="567.0" prefWidth="920.0" style="-fx-background-color: rgba(255,255,255,0.4);" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.presentation.customer.CustomerUnexcutedOrderList">
    <effect>
       <DropShadow />
    </effect>
@@ -59,7 +59,7 @@
                      </children>
                   </HBox>
                   <Separator prefWidth="200.0" />
-                  <HBox fx:id="order1" prefHeight="40.0" prefWidth="200.0">
+                  <HBox fx:id="order1" onMouseClicked="#checkDetailedOrder" prefHeight="40.0" prefWidth="200.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="40.0" prefWidth="167.0" text="1992/01/01">
                            <font>
@@ -88,7 +88,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox fx:id="order2" prefHeight="40.0" prefWidth="200.0">
+                  <HBox fx:id="order2" onMouseClicked="#checkDetailedOrder" prefHeight="40.0" prefWidth="200.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="40.0" prefWidth="167.0" text="2004/11/11">
                            <font>
@@ -117,7 +117,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox fx:id="order3" prefHeight="40.0" prefWidth="200.0">
+                  <HBox fx:id="order3" onMouseClicked="#checkDetailedOrder" prefHeight="40.0" prefWidth="200.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="40.0" prefWidth="167.0" text="2004/11/11">
                            <font>
@@ -146,7 +146,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox fx:id="order4" prefHeight="40.0" prefWidth="200.0">
+                  <HBox fx:id="order4" onMouseClicked="#checkDetailedOrder" prefHeight="40.0" prefWidth="200.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="40.0" prefWidth="167.0" text="2004/11/11">
                            <font>
@@ -175,7 +175,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox fx:id="order5" prefHeight="40.0" prefWidth="200.0">
+                  <HBox fx:id="order5" onMouseClicked="#checkDetailedOrder" prefHeight="40.0" prefWidth="200.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="40.0" prefWidth="167.0" text="2004/11/11">
                            <font>
@@ -204,7 +204,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox fx:id="order6" prefHeight="40.0" prefWidth="200.0">
+                  <HBox fx:id="order6" onMouseClicked="#checkDetailedOrder" prefHeight="40.0" prefWidth="200.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="40.0" prefWidth="167.0" text="2004/11/11">
                            <font>
@@ -233,7 +233,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox fx:id="order7" prefHeight="40.0" prefWidth="200.0">
+                  <HBox fx:id="order7" onMouseClicked="#checkDetailedOrder" prefHeight="40.0" prefWidth="200.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="40.0" prefWidth="167.0" text="2004/11/11">
                            <font>
@@ -262,7 +262,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox fx:id="order8" prefHeight="40.0" prefWidth="200.0">
+                  <HBox fx:id="order8" onMouseClicked="#checkDetailedOrder" prefHeight="40.0" prefWidth="200.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="40.0" prefWidth="167.0" text="2004/11/11">
                            <font>
@@ -291,7 +291,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox fx:id="order9" prefHeight="40.0" prefWidth="200.0">
+                  <HBox fx:id="order9" onMouseClicked="#checkDetailedOrder" prefHeight="40.0" prefWidth="200.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="40.0" prefWidth="167.0" text="2004/11/11">
                            <font>
@@ -320,7 +320,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox fx:id="order10" prefHeight="40.0" prefWidth="200.0">
+                  <HBox fx:id="order10" onMouseClicked="#checkDetailedOrder" prefHeight="40.0" prefWidth="200.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="40.0" prefWidth="167.0" text="2004/11/11">
                            <font>
@@ -349,7 +349,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox fx:id="order11" prefHeight="40.0" prefWidth="200.0">
+                  <HBox fx:id="order11" onMouseClicked="#checkDetailedOrder" prefHeight="40.0" prefWidth="200.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="40.0" prefWidth="167.0" text="2004/11/11">
                            <font>
@@ -384,12 +384,12 @@
       </GridPane>
       <AnchorPane layoutX="39.0" layoutY="520.0" prefHeight="36.0" prefWidth="708.0">
          <children>
-            <Label layoutX="193.0" layoutY="5.0" text="&lt;上一页">
+            <Label fx:id="previousPage" layoutX="193.0" layoutY="5.0" onMouseClicked="#turnToPreviousPage" text="&lt;上一页">
                <font>
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="354.0" layoutY="5.0" text="下一页&gt;">
+            <Label fx:id="nextPage" layoutX="354.0" layoutY="5.0" onMouseClicked="#turnToNextPage" text="下一页&gt;">
                <font>
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
@@ -399,7 +399,7 @@
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="300.0" layoutY="5.0" text="1">
+            <Label fx:id="currentPage" layoutX="300.0" layoutY="5.0" text="1">
                <font>
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
@@ -409,7 +409,7 @@
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
             </Label>
-            <TextField layoutX="596.0" layoutY="3.0" prefHeight="20.0" prefWidth="30.0" style="-fx-background-color: rgba(0,0,0,0.1);" />
+            <TextField fx:id="toPage" layoutX="596.0" layoutY="3.0" onKeyPressed="#turnToSpecialPage" prefHeight="20.0" prefWidth="30.0" style="-fx-background-color: rgba(0,0,0,0.1);" />
          </children>
       </AnchorPane>
    </children>

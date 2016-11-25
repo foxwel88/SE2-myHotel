@@ -10,8 +10,6 @@ public class HotelFilter implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -421561104499778313L;
-
-	public boolean livedOnly = false;
 	
 	public List<String> livedAddresses;
 	
@@ -59,7 +57,6 @@ public class HotelFilter implements Serializable {
 	}
 	
 	public void setHistory(List<String> addresses) {
-		livedOnly = true;
 		this.livedAddresses = new ArrayList<String>(addresses);
 	}
 	

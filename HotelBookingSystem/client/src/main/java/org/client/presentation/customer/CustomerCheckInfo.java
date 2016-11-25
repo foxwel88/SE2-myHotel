@@ -38,8 +38,6 @@ public class CustomerCheckInfo {
 	@FXML
 	Label birthday;
 	
-	SwitchSceneUtil sceneSetter = new SwitchSceneUtil();
-	
 	@FXML
 	void initialize() {
 		UserVO vo = SwitchSceneUtil.getVO();
@@ -60,11 +58,11 @@ public class CustomerCheckInfo {
 	
 	@FXML
 	void turnToCustomerCheckCredit() {
-		sceneSetter.turnToAnotherScene((GridPane)root.getParent(), "/客户/查看信用记录界面.fxml");
+		SwitchSceneUtil.turnToAnotherScene((GridPane)root.getParent(), "/客户/查看信用记录界面.fxml");
 	}
 	
 	@FXML
 	void turnToCustomerModifyInfo() {
-		sceneSetter.turnToAnotherScene((GridPane)root.getParent(), "/客户/修改客户信息界面.fxml");
+		SwitchSceneUtil.turnToAnotherScene((GridPane)root.getParent(), "/客户/修改客户信息界面.fxml");
 	}
 }

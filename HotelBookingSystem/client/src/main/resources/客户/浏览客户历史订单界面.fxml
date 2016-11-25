@@ -43,12 +43,12 @@
       </Pane>
       <Pane layoutX="63.0" layoutY="117.0" prefHeight="418.0" prefWidth="785.0" style="-fx-border-style: dashed;">
          <children>
-            <Label fx:id="previousPage" layoutX="180.0" layoutY="368.0" text="&lt;上一页">
+            <Label fx:id="previousPage" layoutX="180.0" layoutY="368.0" onMouseClicked="#turnToPreviousPage" text="&lt;上一页">
                <font>
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
             </Label>
-            <Label fx:id="nextPage" layoutX="304.0" layoutY="368.0" text="下一页&gt;">
+            <Label fx:id="nextPage" layoutX="304.0" layoutY="368.0" onMouseClicked="#turnToNextPage" text="下一页&gt;">
                <font>
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
@@ -58,7 +58,7 @@
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="toPage" layoutX="483.0" layoutY="365.0" prefHeight="20.0" prefWidth="30.0" style="-fx-background-color: rgba(255,255,255,0.4);" />
+            <TextField fx:id="toPage" layoutX="483.0" layoutY="365.0" onKeyPressed="#turnToSpecialPage" prefHeight="20.0" prefWidth="30.0" style="-fx-background-color: rgba(255,255,255,0.4);" />
             <Label fx:id="currentPage" layoutX="265.0" layoutY="368.0" text="1">
                <font>
                   <Font name="Microsoft YaHei" size="15.0" />
@@ -95,7 +95,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox fx:id="order1" prefHeight="50.0" prefWidth="200.0">
+                  <HBox fx:id="order1" onMouseClicked="#checkDetailedOrder" prefHeight="50.0" prefWidth="200.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="50.0" prefWidth="290.0" text="1999/01/01">
                            <font>
@@ -119,7 +119,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox fx:id="order2" prefHeight="50.0" prefWidth="200.0">
+                  <HBox fx:id="order2" onMouseClicked="#checkDetailedOrder" prefHeight="50.0" prefWidth="200.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="50.0" prefWidth="290.0" text="2000/02/02">
                            <font>
@@ -143,7 +143,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox fx:id="order3" prefHeight="50.0" prefWidth="200.0">
+                  <HBox fx:id="order3" onMouseClicked="#checkDetailedOrder" prefHeight="50.0" prefWidth="200.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="50.0" prefWidth="290.0" text="2000/02/02">
                            <font>
@@ -167,7 +167,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox fx:id="order4" prefHeight="50.0" prefWidth="200.0">
+                  <HBox fx:id="order4" onMouseClicked="#checkDetailedOrder" prefHeight="50.0" prefWidth="200.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="50.0" prefWidth="290.0" text="2000/02/02">
                            <font>
@@ -191,7 +191,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox fx:id="order5" prefHeight="50.0" prefWidth="200.0">
+                  <HBox fx:id="order5" onMouseClicked="#checkDetailedOrder" prefHeight="50.0" prefWidth="200.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="50.0" prefWidth="290.0" text="2000/02/02">
                            <font>
@@ -215,7 +215,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox fx:id="order6" prefHeight="50.0" prefWidth="200.0">
+                  <HBox fx:id="order6" onMouseClicked="#checkDetailedOrder" prefHeight="50.0" prefWidth="200.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="50.0" prefWidth="290.0" text="2000/02/02">
                            <font>

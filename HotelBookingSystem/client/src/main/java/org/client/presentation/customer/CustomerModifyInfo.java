@@ -42,8 +42,6 @@ public class CustomerModifyInfo {
 	@FXML
 	TextField newPasswordAgain;
 	
-	SwitchSceneUtil sceneSetter = new SwitchSceneUtil();
-	
 	@FXML
 	void initialize() {
 		UserVO vo = SwitchSceneUtil.getVO();
@@ -61,16 +59,16 @@ public class CustomerModifyInfo {
 	
 	@FXML
 	void confirmChangeInfo() {
-		sceneSetter.turnToAnotherScene((GridPane)root.getParent(), "/客户/查看客户信息界面.fxml");
+		SwitchSceneUtil.turnToAnotherScene((GridPane)root.getParent(), "/客户/查看客户信息界面.fxml");
 	}
 	
 	@FXML
 	void cancelChangeInfo() {
-		sceneSetter.turnToAnotherScene((GridPane)root.getParent(), "/客户/查看客户信息界面.fxml");
+		SwitchSceneUtil.turnToAnotherScene((GridPane)root.getParent(), "/客户/查看客户信息界面.fxml");
 	}
 	
 	@FXML
 	void confirmChangePassword() {
-		sceneSetter.turnToAnotherScene((GridPane)root.getParent(), "/客户/修改客户信息界面.fxml");
+		SwitchSceneUtil.turnToAnotherScene((GridPane)root.getParent(), "/客户/修改客户信息界面.fxml");
 	}
 }

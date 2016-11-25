@@ -14,10 +14,8 @@ public class CustomerCheckHotel {
 	@FXML
 	AnchorPane root;
 	
-	SwitchSceneUtil sceneSetter = new SwitchSceneUtil();
-	
 	@FXML
 	void turnToCustomerGenerateOrder() {
-		sceneSetter.turnToAnotherScene((GridPane)root.getParent(), "/客户/生成订单界面.fxml");
+		SwitchSceneUtil.turnToAnotherScene((GridPane)root.getParent(), "/客户/生成订单界面.fxml");
 	}
 }

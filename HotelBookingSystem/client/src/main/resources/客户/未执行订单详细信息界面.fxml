@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="567.0" prefWidth="920.0" style="-fx-background-color: rgba(255,255,255,0.4);" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="root" prefHeight="567.0" prefWidth="920.0" style="-fx-background-color: rgba(255,255,255,0.4);" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.presentation.customer.CustomerUnexcutedOrder">
    <effect>
       <DropShadow />
    </effect>
@@ -76,54 +76,54 @@
                   <Font name="Microsoft YaHei" size="20.0" />
                </font>
             </Label>
-            <Label prefHeight="20.0" prefWidth="626.0" text="201609170224201314359745" GridPane.columnIndex="1">
+            <Label fx:id="orderID" prefHeight="20.0" prefWidth="626.0" text="201609170224201314359745" GridPane.columnIndex="1">
                <font>
                   <Font name="Microsoft YaHei" size="20.0" />
                </font>
             </Label>
-            <Label prefHeight="20.0" prefWidth="626.0" text="仙林酒店，南京市仙林商圈仙林路" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Label fx:id="hotelAddress" prefHeight="20.0" prefWidth="626.0" text="仙林酒店，南京市仙林商圈仙林路" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font name="Microsoft YaHei" size="20.0" />
                </font>
             </Label>
-            <Label prefHeight="20.0" prefWidth="626.0" text="双人间" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Label fx:id="roomType" prefHeight="20.0" prefWidth="626.0" text="双人间" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font name="Microsoft YaHei" size="20.0" />
                </font>
             </Label>
-            <Label prefHeight="20.0" prefWidth="626.0" text="1 间" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <Label fx:id="roomNum" prefHeight="20.0" prefWidth="626.0" text="1 间" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <font>
                   <Font name="Microsoft YaHei" size="20.0" />
                </font>
             </Label>
-            <Label prefHeight="20.0" prefWidth="626.0" text="2016/9/17" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <Label fx:id="appointedArrivalTime" prefHeight="20.0" prefWidth="626.0" text="2016/9/17" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <font>
                   <Font name="Microsoft YaHei" size="20.0" />
                </font>
             </Label>
-            <Label prefHeight="20.0" prefWidth="626.0" text="2016/9/17中午12点 到 2016/9/19中午10点" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <Label fx:id="appointedLivingTime" prefHeight="20.0" prefWidth="626.0" text="2016/9/17中午12点 到 2016/9/19中午10点" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <font>
                   <Font name="Microsoft YaHei" size="20.0" />
                </font>
             </Label>
-            <Label prefHeight="20.0" prefWidth="626.0" text="小红，小明" GridPane.columnIndex="1" GridPane.rowIndex="6">
+            <Label fx:id="resident" prefHeight="20.0" prefWidth="626.0" text="小红，小明" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <font>
                   <Font name="Microsoft YaHei" size="20.0" />
                </font>
             </Label>
-            <Label prefHeight="20.0" prefWidth="626.0" text="233" GridPane.columnIndex="1" GridPane.rowIndex="7">
+            <Label fx:id="totalPrice" prefHeight="20.0" prefWidth="626.0" text="233" GridPane.columnIndex="1" GridPane.rowIndex="7">
                <font>
                   <Font name="Microsoft YaHei" size="20.0" />
                </font>
             </Label>
-            <Label prefHeight="20.0" prefWidth="626.0" text="2016/9/16" GridPane.columnIndex="1" GridPane.rowIndex="8">
+            <Label fx:id="generatedTime" prefHeight="20.0" prefWidth="626.0" text="2016/9/16" GridPane.columnIndex="1" GridPane.rowIndex="8">
                <font>
                   <Font name="Microsoft YaHei" size="20.0" />
                </font>
             </Label>
          </children>
       </GridPane>
-      <Button layoutX="760.0" layoutY="493.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="98.0" style="-fx-background-color: rgba(0,0,0,0.4);" text="撤销" textFill="WHITE">
+      <Button fx:id="cancelButton" layoutX="760.0" layoutY="493.0" mnemonicParsing="false" onMouseClicked="#cancelOrder" prefHeight="36.0" prefWidth="98.0" style="-fx-background-color: rgba(0,0,0,0.4);" text="撤销" textFill="WHITE">
          <font>
             <Font name="Microsoft YaHei" size="18.0" />
          </font>

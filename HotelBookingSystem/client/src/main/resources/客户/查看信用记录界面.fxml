@@ -8,22 +8,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="567.0" prefWidth="920.0" style="-fx-background-color: rgba(255,255,255,0.4);" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="567.0" prefWidth="920.0" style="-fx-background-color: rgba(255,255,255,0.4);" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.presentation.customer.CustomerCheckCredit">
    <effect>
       <DropShadow />
    </effect>
    <children>
       <GridPane layoutX="14.0" layoutY="14.0" prefHeight="516.0" prefWidth="890.0">
          <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="357.0" minWidth="10.0" prefWidth="301.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="316.0" minWidth="10.0" prefWidth="143.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="212.0" minWidth="10.0" prefWidth="123.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="203.0" minWidth="10.0" prefWidth="142.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="181.0" minWidth="10.0" prefWidth="181.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="301.0" />
          </columnConstraints>
          <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -34,164 +31,239 @@
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Label text="订单号" textAlignment="CENTER">
-                     <font>
-                        <Font name="Microsoft JhengHei" size="21.0" />
-                     </font>
-                  </Label>
+                  <HBox prefHeight="60.0" prefWidth="200.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="63.0" prefWidth="301.0" text="订单号" textAlignment="CENTER">
+                           <font>
+                              <Font name="Microsoft JhengHei" size="21.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="63.0" prefWidth="143.0" text="时间" textAlignment="CENTER">
+                           <font>
+                              <Font name="Microsoft JhengHei" size="21.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="63.0" prefWidth="123.0" text="操作类型" textAlignment="CENTER">
+                           <font>
+                              <Font name="Microsoft JhengHei" size="21.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="63.0" prefWidth="142.0" text="信用变化额度" textAlignment="CENTER">
+                           <font>
+                              <Font name="Microsoft JhengHei" size="21.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="63.0" prefWidth="181.0" text="此次变化后信用值" textAlignment="CENTER">
+                           <font>
+                              <Font name="Microsoft JhengHei" size="21.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
                   <Separator prefWidth="200.0" />
-                  <Label alignment="CENTER" prefHeight="60.0" prefWidth="333.0" text="--------------------------------">
-                     <font>
-                        <Font name="Microsoft JhengHei" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="43.0" prefHeight="60.0" prefWidth="358.0" text="123908108401984018409180">
-                     <font>
-                        <Font name="Microsoft JhengHei" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="103.0" prefHeight="60.0" prefWidth="333.0" text="123908108401984018409180">
-                     <font>
-                        <Font name="Microsoft JhengHei" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="163.0" prefHeight="60.0" prefWidth="360.0" text="123908108401984018409180">
-                     <font>
-                        <Font name="Microsoft JhengHei" size="16.0" />
-                     </font>
-                  </Label>
-               </children>
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-            </VBox>
-            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
-               <children>
-                  <Label text="时间" textAlignment="CENTER">
-                     <font>
-                        <Font name="Microsoft JhengHei" size="21.0" />
-                     </font>
-                  </Label>
-                  <Separator prefWidth="200.0" />
-                  <Label alignment="CENTER" prefHeight="60.0" prefWidth="246.0" text="2003/09/09">
-                     <font>
-                        <Font name="Microsoft JhengHei" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="43.0" prefHeight="60.0" prefWidth="246.0" text="2003/09/09">
-                     <font>
-                        <Font name="Microsoft JhengHei" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="103.0" prefHeight="60.0" prefWidth="246.0" text="2003/09/09">
-                     <font>
-                        <Font name="Microsoft JhengHei" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="163.0" prefHeight="60.0" prefWidth="246.0" text="2003/09/09">
-                     <font>
-                        <Font name="Microsoft JhengHei" size="16.0" />
-                     </font>
-                  </Label>
-               </children>
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-            </VBox>
-            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowSpan="4">
-               <children>
-                  <Label text="操作类型" textAlignment="CENTER">
-                     <font>
-                        <Font name="Microsoft JhengHei" size="21.0" />
-                     </font>
-                  </Label>
-                  <Separator prefWidth="200.0" />
-                  <Label alignment="CENTER" prefHeight="60.0" prefWidth="242.0" text="充值">
-                     <font>
-                        <Font name="Microsoft JhengHei" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="43.0" prefHeight="60.0" prefWidth="242.0" text="完成订单">
-                     <font>
-                        <Font name="Microsoft JhengHei" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="103.0" prefHeight="60.0" prefWidth="242.0" text="违约订单">
-                     <font>
-                        <Font name="Microsoft JhengHei" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="163.0" prefHeight="60.0" prefWidth="242.0" text="延迟入住">
-                     <font>
-                        <Font name="Microsoft JhengHei" size="16.0" />
-                     </font>
-                  </Label>
-               </children>
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-            </VBox>
-            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="3">
-               <children>
-                  <Label text="信用变化额度" textAlignment="CENTER">
-                     <font>
-                        <Font name="Microsoft JhengHei" size="21.0" />
-                     </font>
-                  </Label>
-                  <Separator prefWidth="200.0" />
-                  <Label alignment="CENTER" prefHeight="60.0" prefWidth="241.0" text="+100">
-                     <font>
-                        <Font name="Microsoft JhengHei" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="43.0" prefHeight="60.0" prefWidth="241.0" text="+100">
-                     <font>
-                        <Font name="Microsoft JhengHei" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="103.0" prefHeight="60.0" prefWidth="241.0" text="-100">
-                     <font>
-                        <Font name="Microsoft JhengHei" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="163.0" prefHeight="60.0" prefWidth="241.0" text="+50">
-                     <font>
-                        <Font name="Microsoft JhengHei" size="16.0" />
-                     </font>
-                  </Label>
-               </children>
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-            </VBox>
-            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="4">
-               <children>
-                  <Label text="此次变化后信用值" textAlignment="CENTER">
-                     <font>
-                        <Font name="Microsoft JhengHei" size="21.0" />
-                     </font>
-                  </Label>
-                  <Separator prefWidth="200.0" />
-                  <Label alignment="CENTER" prefHeight="60.0" prefWidth="251.0" text="100">
-                     <font>
-                        <Font name="Microsoft JhengHei" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="43.0" prefHeight="60.0" prefWidth="251.0" text="200">
-                     <font>
-                        <Font name="Microsoft JhengHei" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="103.0" prefHeight="60.0" prefWidth="251.0" text="100">
-                     <font>
-                        <Font name="Microsoft JhengHei" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="163.0" prefHeight="60.0" prefWidth="251.0" text="150">
-                     <font>
-                        <Font name="Microsoft JhengHei" size="16.0" />
-                     </font>
-                  </Label>
+                  <HBox fx:id="record1" prefHeight="60.0" prefWidth="200.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="301.0" text="--------------------------------">
+                           <font>
+                              <Font name="Microsoft JhengHei" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="143.0" text="2003/09/09">
+                           <font>
+                              <Font name="Microsoft JhengHei" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="123.0" text="充值">
+                           <font>
+                              <Font name="Microsoft JhengHei" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="142.0" text="+100">
+                           <font>
+                              <Font name="Microsoft JhengHei" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="181.0" text="100">
+                           <font>
+                              <Font name="Microsoft JhengHei" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="record2" prefHeight="60.0" prefWidth="200.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="301.0" text="123908108401984018409180">
+                           <font>
+                              <Font name="Microsoft JhengHei" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="143.0" text="2003/09/09">
+                           <font>
+                              <Font name="Microsoft JhengHei" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="123.0" text="完成订单">
+                           <font>
+                              <Font name="Microsoft JhengHei" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="142.0" text="+100">
+                           <font>
+                              <Font name="Microsoft JhengHei" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="181.0" text="200">
+                           <font>
+                              <Font name="Microsoft JhengHei" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="record3" prefHeight="60.0" prefWidth="200.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="301.0" text="123908108401984018409180">
+                           <font>
+                              <Font name="Microsoft JhengHei" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="143.0" text="2003/09/09">
+                           <font>
+                              <Font name="Microsoft JhengHei" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="123.0" text="违约订单">
+                           <font>
+                              <Font name="Microsoft JhengHei" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="142.0" text="-100">
+                           <font>
+                              <Font name="Microsoft JhengHei" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="181.0" text="100">
+                           <font>
+                              <Font name="Microsoft JhengHei" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="record4" prefHeight="60.0" prefWidth="200.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="301.0" text="123908108401984018409180">
+                           <font>
+                              <Font name="Microsoft JhengHei" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="143.0" text="2003/09/09">
+                           <font>
+                              <Font name="Microsoft JhengHei" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="123.0" text="延迟入住">
+                           <font>
+                              <Font name="Microsoft JhengHei" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="142.0" text="+50">
+                           <font>
+                              <Font name="Microsoft JhengHei" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="181.0" text="150">
+                           <font>
+                              <Font name="Microsoft JhengHei" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="record5" prefHeight="60.0" prefWidth="200.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="301.0">
+                           <font>
+                              <Font name="Microsoft JhengHei" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="143.0">
+                           <font>
+                              <Font name="Microsoft JhengHei" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="123.0">
+                           <font>
+                              <Font name="Microsoft JhengHei" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="142.0">
+                           <font>
+                              <Font name="Microsoft JhengHei" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="181.0">
+                           <font>
+                              <Font name="Microsoft JhengHei" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="record6" prefHeight="60.0" prefWidth="200.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="301.0">
+                           <font>
+                              <Font name="Microsoft JhengHei" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="143.0">
+                           <font>
+                              <Font name="Microsoft JhengHei" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="123.0">
+                           <font>
+                              <Font name="Microsoft JhengHei" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="142.0">
+                           <font>
+                              <Font name="Microsoft JhengHei" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="181.0">
+                           <font>
+                              <Font name="Microsoft JhengHei" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="record7" prefHeight="60.0" prefWidth="200.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="301.0">
+                           <font>
+                              <Font name="Microsoft JhengHei" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="143.0">
+                           <font>
+                              <Font name="Microsoft JhengHei" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="123.0">
+                           <font>
+                              <Font name="Microsoft JhengHei" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="142.0">
+                           <font>
+                              <Font name="Microsoft JhengHei" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="181.0">
+                           <font>
+                              <Font name="Microsoft JhengHei" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
                </children>
                <GridPane.margin>
                   <Insets />
@@ -201,12 +273,12 @@
       </GridPane>
       <AnchorPane layoutX="19.0" layoutY="530.0" prefHeight="36.0" prefWidth="880.0">
          <children>
-            <Label layoutX="193.0" layoutY="5.0" text="&lt;上一页">
+            <Label fx:id="previousPage" layoutX="193.0" layoutY="5.0" onMouseClicked="#turnToPreviousPage" text="&lt;上一页">
                <font>
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="354.0" layoutY="5.0" text="下一页&gt;">
+            <Label fx:id="nextPage" layoutX="354.0" layoutY="5.0" onMouseClicked="#turnToNextPage" text="下一页&gt;">
                <font>
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
@@ -216,7 +288,7 @@
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="300.0" layoutY="5.0" text="1">
+            <Label fx:id="currentPage" layoutX="300.0" layoutY="5.0" text="1">
                <font>
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
@@ -226,7 +298,7 @@
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
             </Label>
-            <TextField layoutX="596.0" layoutY="3.0" prefHeight="20.0" prefWidth="30.0" style="-fx-background-color: rgba(0,0,0,0.1);" />
+            <TextField fx:id="toPage" layoutX="596.0" layoutY="3.0" onKeyPressed="#turnToSpecialPage" prefHeight="20.0" prefWidth="30.0" style="-fx-background-color: rgba(0,0,0,0.1);" />
          </children>
       </AnchorPane>
    </children>
