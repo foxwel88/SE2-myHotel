@@ -1,10 +1,14 @@
 package org.client.presentation.webmanager;
 
 
+import java.io.IOException;
+
 import org.client.vo.UserVO;
 import org.common.utility.ResultMessage;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -18,6 +22,8 @@ import javafx.scene.input.MouseEvent;
 public class WebManagerCheckHotelManager {
 	
 	private WebManagerController controller;
+	
+	private UserVO nowvo;
 	
 	@FXML
 	private Label nameLabel;
@@ -40,6 +46,14 @@ public class WebManagerCheckHotelManager {
 	@FXML
 	private Label hotelLabel;
 	
+	void changeContent(UserVO vo) {
+		nowvo = vo;
+		nameLabel.setText(vo.name);
+		phoneLabel.setText(vo.phoneNumber);
+		userNameLabel.setText(vo.userName);
+		hotelLabel.setText(vo.hotelAddress);
+	}
+	
 	void clear() {
 		nameLabel.setText("");
 		phoneLabel.setText("");
@@ -54,8 +68,14 @@ public class WebManagerCheckHotelManager {
 	}
 	
 	@FXML
-	void handleModifyAction(MouseEvent event) {
-
+	void handleModifyAction(MouseEvent event) throws IOException {
+		if (!userNameLabel.getText().equals("")) {
+			FXMLLoader fxmlLoader = new FXMLLoader();
+			Parent mypane = fxmlLoader.load(getClass().getResource("/网站管理人员/修改酒店工作人员界面.fxml").openStream());
+			WebManagerModifyHotelManager webController = (WebManagerModifyHotelManager) fxmlLoader.getController();
+			webController.changeContent(nowvo);
+			ChangePane.getInstance().turn(mypane);
+		}
 	}
 
 	@FXML
@@ -64,10 +84,7 @@ public class WebManagerCheckHotelManager {
 		UserVO vo = controller.findbyUserName(userNameTextField.getText());
 		if (vo.resultMessage == ResultMessage.SUCCESS) {
 			if (vo.type.equals("酒店工作人员")) {
-				nameLabel.setText(vo.name);
-				phoneLabel.setText(vo.phoneNumber);
-				userNameLabel.setText(vo.userName);
-				hotelLabel.setText(vo.hotelAddress);
+				changeContent(vo);
 			}
 		}
 	}

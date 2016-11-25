@@ -1,10 +1,14 @@
 package org.client.presentation.webmanager;
 
 
+import java.io.IOException;
+
 import org.client.vo.UserVO;
 import org.common.utility.ResultMessage;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -17,6 +21,8 @@ import javafx.scene.input.MouseEvent;
  */
 public class WebManagerCheckWebMarketer {
 	private WebManagerController controller;
+	
+	private UserVO nowvo;
 	
 	@FXML
 	private Label nameLabel;
@@ -39,9 +45,20 @@ public class WebManagerCheckWebMarketer {
 	@FXML
 	private Button addUserButton;
 
+	void changeContent(UserVO vo) {
+		nowvo = vo;
+		nameLabel.setText(vo.name);
+		phoneLabel.setText(vo.phoneNumber);
+		userNameLabel.setText(vo.userName);
+	}
+	
 	@FXML
-	void handleAddAction(MouseEvent event) {
-
+	void handleAddAction(MouseEvent event) throws IOException {
+		FXMLLoader fxmlLoader = new FXMLLoader();
+		Parent mypane = fxmlLoader.load(getClass().getResource("/网站管理人员/新增网站营销人员界面.fxml").openStream());
+		WebManagerAddWebMarketer webController = (WebManagerAddWebMarketer) fxmlLoader.getController();
+		webController.changeContent(nowvo);
+		ChangePane.getInstance().turn(mypane);
 	}
 
 	void clear() {
@@ -57,8 +74,14 @@ public class WebManagerCheckWebMarketer {
 	}
 	
 	@FXML
-	void handleModifyAction(MouseEvent event) {
-
+	void handleModifyAction(MouseEvent event) throws IOException {
+		if (!userNameLabel.getText().equals("")) {
+			FXMLLoader fxmlLoader = new FXMLLoader();
+			Parent mypane = fxmlLoader.load(getClass().getResource("/网站管理人员/修改网站营销人员界面.fxml").openStream());
+			WebManagerModifyWebMarketer webController = (WebManagerModifyWebMarketer) fxmlLoader.getController();
+			webController.changeContent(nowvo);
+			ChangePane.getInstance().turn(mypane);
+		}
 	}
 
 	@FXML
@@ -67,9 +90,7 @@ public class WebManagerCheckWebMarketer {
 		UserVO vo = controller.findbyUserName(userNameTextField.getText());
 		if (vo.resultMessage == ResultMessage.SUCCESS) {
 			if (vo.type.equals("网站营销人员")) {
-				nameLabel.setText(vo.name);
-				phoneLabel.setText(vo.phoneNumber);
-				userNameLabel.setText(vo.userName);
+				changeContent(vo);
 			}
 		}
 	}

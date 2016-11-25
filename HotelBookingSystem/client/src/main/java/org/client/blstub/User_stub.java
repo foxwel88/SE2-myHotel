@@ -125,13 +125,14 @@ public class User_stub implements Userblservice {
 	@Override
 	public UserLevelVO getLevel(String ID) {
 		// TODO Auto-generated method stub
-		return null;
+		UserLevelVO levelvo = new UserLevelVO(200, 1);
+		return levelvo;
 	}
 
 	@Override
 	public String getNewID() {
 		// TODO Auto-generated method stub
-		return null;
+		return "0000012314";
 	}
 
 }

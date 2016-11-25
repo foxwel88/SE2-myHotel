@@ -1,11 +1,16 @@
 package org.client.presentation.webmanager;
 
 
+import java.util.List;
+
 import org.client.blservice.hotelblservice.Hotelblservice;
 import org.client.blservice.userblservice.Userblservice;
 import org.client.blstub.Hotel_stub;
 import org.client.blstub.User_stub;
+import org.client.vo.AreaVO;
+import org.client.vo.CityVO;
 import org.client.vo.HotelVO;
+import org.client.vo.UserLevelVO;
 import org.client.vo.UserVO;
 import org.common.utility.ResultMessage;
 
@@ -49,4 +54,19 @@ public class WebManagerController {
 		return userbl.modify(vo);
 	}
 	
+	public UserLevelVO getLevel(String ID) {
+		return userbl.getLevel(ID);
+	}
+	
+	public String getNewID() {
+		return userbl.getNewID();
+	}
+	
+	public List<CityVO> getCitys() {
+		return hotelbl.getCitys();
+	}
+	
+	public List<AreaVO> getAreas(CityVO vo) {
+		return hotelbl.getAreas(vo);
+	}
 }

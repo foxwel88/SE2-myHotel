@@ -136,12 +136,16 @@ public class WebManagerGuide {
 	}
 	
 	void changePane(Parent pane) {
+		/*
 		mainPane.getChildren().set(1, pane);
 		GridPane.setConstraints(pane, 1, 0);
+		*/
+		ChangePane.getInstance().turn(pane);
 	}
 
 	@FXML
 	void initialize() {
+		ChangePane.getInstance().setMainPane(mainPane);
 		try {
 			AnchorPane mypane = FXMLLoader.load(getClass().getResource("/网站管理人员/网站管理人员主界面.fxml"));
 			mainPane.add(mypane, 1, 0);

@@ -6,6 +6,8 @@ import org.client.vo.UserVO;
 import org.common.utility.ResultMessage;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -20,7 +22,7 @@ public class WebManagerCheckCustomer {
 
 	private WebManagerController controller;
 	
-	
+	private UserVO nowvo;
 
 	@FXML
 	private Label PorCLabel;
@@ -55,7 +57,7 @@ public class WebManagerCheckCustomer {
 	@FXML
     private Label typeLabel;
 
-	void clear() {
+	void clearContent() {
 		typeLabel.setText("");
 		nameLabel.setText("");
 		phoneLabel.setText("");
@@ -65,35 +67,47 @@ public class WebManagerCheckCustomer {
 		birthLabel.setText("");
 	}
 	
+	void changeContent(UserVO vo) {
+		nowvo = vo;
+		nameLabel.setText(vo.name);
+		phoneLabel.setText(vo.phoneNumber);
+		userNameLabel.setText(vo.userName);
+		creditLabel.setText(Double.toString(vo.credit));
+		typeLabel.setText(vo.type);
+		levelLabel.setText(Integer.toString(controller.getLevel(vo.ID).level));
+		if (vo.type.equals("个人客户")) {
+			PorCLabel.setText("生日");
+			birthLabel.setText(vo.birthday.toString());
+		} else {
+			PorCLabel.setText("企业名称");
+			birthLabel.setText(vo.companyName);
+		}
+	}
+	
 	@FXML
 	void initialize() {
 		controller = WebManagerController.getInstance();
-		clear();
+		clearContent();
 	}
 	
 	@FXML
 	void handleModifyAction(MouseEvent event) throws IOException {
-		//Parent mypane = FXMLLoader.load(getClass().getResource("/网站管理人员/修改客户信息界面.fxml"));
+		if (!userNameLabel.getText().equals("")) {
+			FXMLLoader fxmlLoader = new FXMLLoader();
+			Parent mypane = fxmlLoader.load(getClass().getResource("/网站管理人员/修改客户信息界面.fxml").openStream());
+			WebManagerModifyCustomer webController = (WebManagerModifyCustomer) fxmlLoader.getController();
+			webController.changeContent(nowvo);
+			ChangePane.getInstance().turn(mypane);
+		}
 	}
 	
 	@FXML
 	void handleSearchAction(MouseEvent event) {
-		clear();
+		clearContent();
 		UserVO vo = controller.findbyUserName(userNameTextField.getText());
 		if (vo.resultMessage == ResultMessage.SUCCESS) {
 			if (vo.type.equals("个人客户") || vo.type.equals("企业客户")) {
-				nameLabel.setText(vo.name);
-				phoneLabel.setText(vo.phoneNumber);
-				userNameLabel.setText(vo.userName);
-				creditLabel.setText(Double.toString(vo.credit));
-				typeLabel.setText(vo.type);
-				if (vo.type.equals("个人客户")) {
-					PorCLabel.setText("生日");
-					birthLabel.setText(vo.birthday.toString());
-				} else {
-					PorCLabel.setText("企业名称");
-					birthLabel.setText(vo.companyName);
-				}
+				changeContent(vo);
 			}
 		}
 	}

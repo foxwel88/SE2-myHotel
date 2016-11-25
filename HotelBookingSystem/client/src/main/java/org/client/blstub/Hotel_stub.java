@@ -22,6 +22,10 @@ public class Hotel_stub implements Hotelblservice {
 	
 	AreaVO area2 = new AreaVO("新街口");
 	
+	AreaVO area3 = new AreaVO("西四环");
+	
+	AreaVO area4 = new AreaVO("奥体中心");
+	
 	String checkInInfo = "";
 	
 	List<String> cooperators = new ArrayList<String>(Arrays.asList
@@ -71,17 +75,23 @@ public class Hotel_stub implements Hotelblservice {
 		return hotelvo1;
 	}
 
-	public ArrayList<CityVO> getCitys() {
+	public List<CityVO> getCitys() {
 		ArrayList<CityVO> vo = new ArrayList<CityVO>();
 		vo.add(city1);
 		vo.add(city2);
 		return vo;
 	}
 
-	public ArrayList<AreaVO> getAreas(CityVO vo) {
+	public List<AreaVO> getAreas(CityVO vo) {
 		ArrayList<AreaVO> vo3 = new ArrayList<AreaVO>();
-		vo3.add(area1);
-		vo3.add(area2);
+		if (vo.cityName.equals("南京")) {
+			vo3.add(area1);
+			vo3.add(area2);
+		}
+		if (vo.cityName.equals("北京")) {
+			vo3.add(area3);
+			vo3.add(area4);
+		}
 		return vo3;
 	}
 
