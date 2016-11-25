@@ -23,6 +23,7 @@ public class CityVO implements Serializable {
 		resultMessage = ResultMessage.SUCCESS;
 	}
 	
+	/*For fast transfer from data to view, called from hotelLogic*/
 	public static List<CityVO> generateVOList(List<CityPO> pos) {
 		List<CityVO> vos = new ArrayList<CityVO>();
 		for (CityPO p: pos) {
