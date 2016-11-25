@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 import org.common.utility.TimeService;
 
@@ -26,6 +27,10 @@ public class TimeServiceImpl extends UnicastRemoteObject implements TimeService 
 	public String getCurrentTime() throws RemoteException {
 		currentTime = dateFormat.format(Calendar.getInstance().getTime());
 		return currentTime;
+	}
+
+	public Date getDate() throws RemoteException {
+		return new Date();
 	}
 
 }
