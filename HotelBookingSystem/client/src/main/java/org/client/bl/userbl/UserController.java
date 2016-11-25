@@ -64,5 +64,11 @@ public class UserController implements Userblservice {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public String getNewID() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

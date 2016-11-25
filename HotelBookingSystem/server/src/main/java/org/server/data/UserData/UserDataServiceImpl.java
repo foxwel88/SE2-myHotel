@@ -66,4 +66,10 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 		return null;
 	}
 
+	@Override
+	public String getNewID() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
