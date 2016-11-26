@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Bloom?>
 <?import javafx.scene.image.Image?>
@@ -9,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.launcher.RegisterController">
    <children>
       <ImageView fitHeight="568.0" fitWidth="450.0" preserveRatio="true">
          <image>
@@ -18,8 +19,7 @@
       </ImageView>
       <AnchorPane prefHeight="550.0" prefWidth="450.0" style="-fx-background-color: rgba(0,0,0,0.5);">
          <children>
-            <TextField layoutX="98.0" layoutY="182.0" prefHeight="61.0" prefWidth="318.0" promptText="输入您的账号" style="-fx-background-color: rgba(0,0,0,0.7);" AnchorPane.leftAnchor="98.0" />
-            <TextField layoutX="98.0" layoutY="258.0" prefHeight="61.0" prefWidth="318.0" promptText="长度大于6位的数字字母组合" style="-fx-background-color: rgba(0,0,0,0.7);" AnchorPane.leftAnchor="98.0" />
+            <TextField fx:id="userNameTextField" layoutX="98.0" layoutY="182.0" prefHeight="61.0" prefWidth="318.0" promptText="输入您的账号" style="-fx-background-color: rgba(0,0,0,0.7);" AnchorPane.leftAnchor="98.0" AnchorPane.topAnchor="182.0" />
             <Label layoutX="113.0" layoutY="109.0" text="酒店预订管理系统" textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei UI Light" size="28.0" />
@@ -28,13 +28,12 @@
                   <Bloom threshold="0.89" />
                </effect>
             </Label>
-            <Button defaultButton="true" layoutX="98.0" layoutY="420.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="318.0" style="-fx-background-color: rgba(255,45,45,0.5);" text="立即注册" textFill="WHITE">
+            <Button defaultButton="true" layoutX="98.0" layoutY="420.0" mnemonicParsing="false" onMouseClicked="#handleSignUpAction" prefHeight="49.0" prefWidth="318.0" style="-fx-background-color: rgba(255,45,45,0.5);" text="立即注册" textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei UI Light" size="20.0" />
                </font>
             </Button>
-            <TextField layoutX="98.0" layoutY="335.0" prefHeight="61.0" prefWidth="318.0" promptText="再次输入您的密码" style="-fx-background-color: rgba(0,0,0,0.7);" />
-            <Label layoutX="38.0" layoutY="202.0" text="账号：" textFill="WHITE">
+            <Label layoutX="38.0" layoutY="202.0" text="账号：" textFill="WHITE" AnchorPane.topAnchor="202.0">
                <font>
                   <Font name="Microsoft YaHei UI Light" size="16.0" />
                </font>
@@ -42,7 +41,7 @@
                   <Bloom threshold="0.89" />
                </effect>
             </Label>
-            <Label layoutX="38.0" layoutY="278.0" text="密码：" textFill="WHITE">
+            <Label layoutX="38.0" layoutY="278.0" text="密码：" textFill="WHITE" AnchorPane.topAnchor="278.0">
                <font>
                   <Font name="Microsoft YaHei UI Light" size="16.0" />
                </font>
@@ -50,7 +49,7 @@
                   <Bloom threshold="0.89" />
                </effect>
             </Label>
-            <Label layoutX="22.0" layoutY="355.0" text="确认密码：" textFill="WHITE">
+            <Label layoutX="22.0" layoutY="355.0" text="确认密码：" textFill="WHITE" AnchorPane.topAnchor="355.0">
                <font>
                   <Font name="Microsoft YaHei UI Light" size="16.0" />
                </font>
@@ -58,6 +57,8 @@
                   <Bloom threshold="0.89" />
                </effect>
             </Label>
+            <PasswordField fx:id="passwordField" layoutX="86.0" layoutY="287.0" prefHeight="61.0" prefWidth="318.0" promptText="长度大于6位的数字字母组合" style="-fx-background-color: rgba(0,0,0,0.7);" AnchorPane.leftAnchor="98.0" AnchorPane.topAnchor="258.0" />
+            <PasswordField fx:id="passwordField2" layoutX="96.0" layoutY="297.0" prefHeight="61.0" prefWidth="318.0" promptText="请再输入你的密码" style="-fx-background-color: rgba(0,0,0,0.7);" AnchorPane.leftAnchor="98.0" AnchorPane.topAnchor="335.0" />
          </children>
       </AnchorPane>
    </children>

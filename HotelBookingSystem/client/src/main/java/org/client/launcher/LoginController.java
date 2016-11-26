@@ -96,8 +96,10 @@ public class LoginController {
 	
 	@FXML
 	private void handleRegisterAction(ActionEvent event) throws IOException {
-		System.out.println("username:123 password:456");
-		System.out.println("you can use this customer account for test");
+		Stage stage = (Stage)accountField.getScene().getWindow();
+		Parent root = FXMLLoader.load(getClass().getResource("/注册界面.fxml"));
+		Scene scene = new Scene(root);
+		stage.setScene(scene);
 	}
 	
 }
