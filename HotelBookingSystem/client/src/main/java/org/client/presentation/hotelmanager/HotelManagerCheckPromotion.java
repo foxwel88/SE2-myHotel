@@ -1,6 +1,5 @@
 package org.client.presentation.hotelmanager;
 
-import java.awt.Color;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -15,7 +14,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -23,9 +21,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
-import javafx.stage.Stage;
 
 /**
  * FXML Controller
@@ -87,7 +83,7 @@ public class HotelManagerCheckPromotion {
 		
 	}
 	
-	/*持有导航界面GridPane的引用，为了完成从浏览到编辑界面的跳转 */
+	/** 持有导航界面GridPane的引用，为了完成从浏览到编辑界面的跳转 */
 	void setParentGridPane(GridPane parent) {
 		parentPane = parent;
 	}
@@ -133,7 +129,7 @@ public class HotelManagerCheckPromotion {
 		}
 	}
 	
-	/*替换promotionPanes的内容，将其设为contentPane的子女显示,并更改pageNumLabel和pageNum */
+	/** 替换promotionPanes的内容，将其设为contentPane的子女显示，并更改pageNumLabel和pageNum */
 	void switchCurrentPage(int toPageNum) {
 		
 		//修改currentPromotionPanes

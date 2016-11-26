@@ -1,26 +1,19 @@
 package org.client.presentation.hotelmanager;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import org.client.presentation.hotelmanager.HotelManagerCheckPromotion.PromotionPane;
 import org.client.vo.OrderVO;
 
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Stage;
 
 /**
  * FXML Controller
@@ -74,7 +67,7 @@ public class HotelManagerExecute {
 		
 	}
 	
-	/*持有导航界面GridPane的引用，为了完成从浏览到编辑界面的跳转
+	/** 持有导航界面GridPane的引用，为了完成从浏览到编辑界面的跳转
 	 *另外还包含了第一页显示的任务，因为初始化第一页的元素必须在获得gridPane之后 */
 	void setParentGridPane(GridPane parent) {
 		parentPane = parent;
@@ -102,7 +95,7 @@ public class HotelManagerExecute {
 		}
 	}
 	
-	/*替换promotionPanes的内容，将其设为contentPane的子女显示,并更改pageNumLabel和pageNum */
+	/** 替换promotionPanes的内容，将其设为contentPane的子女显示,并更改pageNumLabel和pageNum */
 	void switchCurrentPage(int toPageNum) {
 		
 		//修改currentPromotionPanes

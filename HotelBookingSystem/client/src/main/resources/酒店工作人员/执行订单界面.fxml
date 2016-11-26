@@ -50,7 +50,7 @@
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
             </Label>
-            <AnchorPane fx:id="contentPane" layoutX="23.0" layoutY="13.0" prefHeight="350.0" prefWidth="740.0">
+            <AnchorPane fx:id="contentPane" layoutX="23.0" layoutY="14.0" prefHeight="350.0" prefWidth="740.0">
                <children>
                   <Pane layoutX="7.0" prefHeight="55.0" prefWidth="727.0" style="-fx-background-color: rgba(0,0,0,0.3);">
                      <children>

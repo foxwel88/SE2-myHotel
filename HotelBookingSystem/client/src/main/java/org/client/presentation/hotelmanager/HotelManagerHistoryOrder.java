@@ -141,7 +141,7 @@ public class HotelManagerHistoryOrder {
 		currentOrders = HotelManagerController.getInstance().getExecutedOrders();
 	}
 	
-	/*持有导航界面GridPane的引用，为了完成从浏览到编辑界面的跳转
+	/** 持有导航界面GridPane的引用，为了完成从浏览到编辑界面的跳转
 	 *另外还包含了第一页显示的任务，因为初始化第一页的元素必须在获得gridPane之后 */
 	void setParentGridPane(GridPane parent) {
 		parentPane = parent;
@@ -150,7 +150,7 @@ public class HotelManagerHistoryOrder {
 		CurrentTabItem.getInstance().active();
 	}
 	
-	/*替换promotionPanes的内容，将其设为contentPane的子女显示,并更改pageNumLabel和pageNum */
+	/** 替换promotionPanes的内容，将其设为contentPane的子女显示，并更改pageNumLabel和pageNum */
 	void switchCurrentPage(int toPageNum) {
 		
 		//修改currentPromotionPanes

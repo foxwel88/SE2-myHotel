@@ -143,62 +143,62 @@ public class Order_stub implements Orderblservice {
 			,new Date(100000000),new Date(100000000),new Date(100000000),
 			"ahotel8","260000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, null,"13671717171");
 	
-	OrderVO uvo1 = new OrderVO("i'm a userid",OrderType.ABNORMAL.getString(),
+	OrderVO uvo1 = new OrderVO("i'm a userid",OrderType.UNEXECUTED.getString(),
 			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
 			"uhotel1","270000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, null,"13671717171");
 	
-	OrderVO uvo2 = new OrderVO("i'm a userid",OrderType.ABNORMAL.getString(),
+	OrderVO uvo2 = new OrderVO("i'm a userid",OrderType.UNEXECUTED.getString(),
 			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
 			"uhotel2","280000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, null,"13671717171");
 	
-	OrderVO uvo3 = new OrderVO("i'm a userid",OrderType.ABNORMAL.getString(),
+	OrderVO uvo3 = new OrderVO("i'm a userid",OrderType.UNEXECUTED.getString(),
 			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
 			"uhotel3","290000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, null,"13671717171");
 	
-	OrderVO uvo4 = new OrderVO("i'm a userid",OrderType.ABNORMAL.getString(),
+	OrderVO uvo4 = new OrderVO("i'm a userid",OrderType.UNEXECUTED.getString(),
 			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
 			"uhotel4","300000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, null,"13671717171");
 	
-	OrderVO uvo5 = new OrderVO("i'm a userid",OrderType.ABNORMAL.getString(),
+	OrderVO uvo5 = new OrderVO("i'm a userid",OrderType.UNEXECUTED.getString(),
 			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
 			"uhotel5","310000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, null,"13671717171");
 	
-	OrderVO uvo6 = new OrderVO("i'm a userid",OrderType.ABNORMAL.getString(),
+	OrderVO uvo6 = new OrderVO("i'm a userid",OrderType.UNEXECUTED.getString(),
 			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
 			"uhotel6","320000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, null,"13671717171");
 	
-	OrderVO uvo7 = new OrderVO("i'm a userid",OrderType.ABNORMAL.getString(),
+	OrderVO uvo7 = new OrderVO("i'm a userid",OrderType.UNEXECUTED.getString(),
 			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
 			"uhotel7","330000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, null,"13671717171");
 	
-	OrderVO uvo8 = new OrderVO("i'm a userid",OrderType.ABNORMAL.getString(),
+	OrderVO uvo8 = new OrderVO("i'm a userid",OrderType.UNEXECUTED.getString(),
 			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
 			"uhotel8","340000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, null,"13671717171");
 	
-	OrderVO uvo9 = new OrderVO("i'm a userid",OrderType.ABNORMAL.getString(),
+	OrderVO uvo9 = new OrderVO("i'm a userid",OrderType.UNEXECUTED.getString(),
 			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
 			"uhotel9","350000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, null,"13671717171");
 	
-	OrderVO uvo10 = new OrderVO("i'm a userid",OrderType.ABNORMAL.getString(),
+	OrderVO uvo10 = new OrderVO("i'm a userid",OrderType.UNEXECUTED.getString(),
 			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
 			"uhotel10","360000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, null,"13671717171");
 	
-	OrderVO uvo11 = new OrderVO("i'm a userid",OrderType.ABNORMAL.getString(),
+	OrderVO uvo11 = new OrderVO("i'm a userid",OrderType.UNEXECUTED.getString(),
 			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
 			"uhotel11","370000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, null,"13671717171");
 	
-	OrderVO uvo12 = new OrderVO("i'm a userid",OrderType.ABNORMAL.getString(),
+	OrderVO uvo12 = new OrderVO("i'm a userid",OrderType.UNEXECUTED.getString(),
 			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
 			"uhotel12","380000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, null,"13671717171");
@@ -327,6 +327,47 @@ public class Order_stub implements Orderblservice {
 	public ArrayList<OrderVO> getHotelOrderList(String hotelID, OrderType type) {
 		// TODO Auto-generated method stub
 		vo = new ArrayList<>();
+
+		switch (type) {
+			case ABNORMAL:
+				vo = getAbnormalOrder();
+				break;
+			case EXECUTED:
+				vo.add(fvo1);
+				vo.add(fvo2);
+				vo.add(fvo3);
+				vo.add(fvo4);
+				vo.add(fvo5);
+				vo.add(fvo6);
+				vo.add(fvo7);
+				vo.add(fvo8);
+				break;
+			case CANCELED:
+				vo.add(cvo1);
+				vo.add(cvo2);
+				vo.add(cvo3);
+				vo.add(cvo4);
+				vo.add(cvo5);
+				vo.add(cvo6);
+				vo.add(cvo7);
+				vo.add(cvo8);
+				break;
+			case UNEXECUTED:
+				vo.add(uvo1);
+				vo.add(uvo2);
+				vo.add(uvo3);
+				vo.add(uvo4);
+				vo.add(uvo5);
+				vo.add(uvo6);
+				vo.add(uvo7);
+				vo.add(uvo8);
+				vo.add(uvo9);
+				vo.add(uvo10);
+				vo.add(uvo11);
+				vo.add(uvo12);
+				break;
+		}
+		
 		return vo;
 	}
 
