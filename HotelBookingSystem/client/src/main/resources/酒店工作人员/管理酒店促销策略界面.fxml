@@ -121,7 +121,7 @@
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
             </Label>
-            <Button layoutX="613.0" layoutY="413.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="141.0" style="-fx-background-color: rgba(255,255,255,0.2);" text="添加促销策略" textFill="WHITE">
+            <Button layoutX="613.0" layoutY="413.0" mnemonicParsing="false" onAction="#addPromotion" prefHeight="34.0" prefWidth="141.0" style="-fx-background-color: rgba(255,255,255,0.2);" text="添加促销策略" textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>

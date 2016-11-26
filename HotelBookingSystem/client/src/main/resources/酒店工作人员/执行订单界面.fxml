@@ -24,127 +24,131 @@
       </Pane>
       <Pane layoutX="64.0" layoutY="117.0" prefHeight="418.0" prefWidth="785.0" style="-fx-background-color: rgba(0,0,0,0.4);" AnchorPane.leftAnchor="64.0" AnchorPane.topAnchor="117.0">
          <children>
-            <Label layoutX="277.0" layoutY="384.0" text="&lt;上一页" textFill="WHITE">
+            <Label fx:id="prevPage" layoutX="228.0" layoutY="377.0" onMouseClicked="#toPrevPage" text="&lt;上一页" textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="401.0" layoutY="384.0" text="下一页&gt;" textFill="WHITE">
+            <Label fx:id="nextPage" layoutX="352.0" layoutY="377.0" onMouseClicked="#toNextPage" text="下一页&gt;" textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
             </Label>
-            <Pane layoutX="28.0" layoutY="15.0" prefHeight="55.0" prefWidth="727.0" style="-fx-background-color: rgba(0,0,0,0.3);">
-               <children>
-                  <Button layoutX="649.0" layoutY="12.0" mnemonicParsing="false" style="-fx-background-color: rgba(255,255,255,0.2);" text="详情" textFill="WHITE">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                  </Button>
-                  <Label layoutX="292.0" layoutY="14.0" prefHeight="28.0" prefWidth="339.0" text="订单号：  014689110120161021165044" textFill="WHITE">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="25.0" layoutY="13.0" prefHeight="28.0" prefWidth="175.0" text="姓名：袁世凯" textFill="WHITE">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-            <Pane layoutX="29.0" layoutY="86.0" prefHeight="55.0" prefWidth="727.0" style="-fx-background-color: rgba(0,0,0,0.3);">
-               <children>
-                  <Button layoutX="648.0" layoutY="12.0" mnemonicParsing="false" style="-fx-background-color: rgba(255,255,255,0.2);" text="详情" textFill="WHITE">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                  </Button>
-                  <Label layoutX="291.0" layoutY="13.0" prefHeight="28.0" prefWidth="339.0" text="订单号：  720882410120161021122230" textFill="WHITE">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="25.0" layoutY="14.0" prefHeight="28.0" prefWidth="175.0" text="姓名：曾国藩" textFill="WHITE">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-            <Pane layoutX="29.0" layoutY="154.0" prefHeight="55.0" prefWidth="727.0" style="-fx-background-color: rgba(0,0,0,0.3);">
-               <children>
-                  <Button layoutX="648.0" layoutY="13.0" mnemonicParsing="false" style="-fx-background-color: rgba(255,255,255,0.2);" text="详情" textFill="WHITE">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                  </Button>
-                  <Label layoutX="290.0" layoutY="14.0" prefHeight="28.0" prefWidth="339.0" text="订单号：  433259340120161021082913" textFill="WHITE">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="24.0" layoutY="14.0" prefHeight="28.0" prefWidth="175.0" text="姓名：孙文" textFill="WHITE">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-            <Pane layoutX="29.0" layoutY="222.0" prefHeight="55.0" prefWidth="727.0" style="-fx-background-color: rgba(0,0,0,0.3);">
-               <children>
-                  <Button layoutX="648.0" layoutY="12.0" mnemonicParsing="false" style="-fx-background-color: rgba(255,255,255,0.2);" text="详情" textFill="WHITE">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                  </Button>
-                  <Label layoutX="291.0" layoutY="12.0" prefHeight="28.0" prefWidth="339.0" text="订单号：  003076110420161021060025" textFill="WHITE">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="25.0" layoutY="14.0" prefHeight="28.0" prefWidth="175.0" text="姓名：蒋中正" textFill="WHITE">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-            <Pane layoutX="28.0" layoutY="294.0" prefHeight="55.0" prefWidth="727.0" style="-fx-background-color: rgba(0,0,0,0.3);">
-               <children>
-                  <Button layoutX="649.0" layoutY="12.0" mnemonicParsing="false" style="-fx-background-color: rgba(255,255,255,0.2);" text="详情" textFill="WHITE">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                  </Button>
-                  <Label layoutX="292.0" layoutY="13.0" prefHeight="28.0" prefWidth="339.0" text="订单号：  000374550820161020224538" textFill="WHITE">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="26.0" layoutY="14.0" prefHeight="28.0" prefWidth="175.0" text="姓名：李华" textFill="WHITE">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-            <Label layoutX="516.0" layoutY="384.0" text="跳转至第" textFill="WHITE">
+            <Label layoutX="467.0" layoutY="377.0" text="跳转至第" textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
             </Label>
-            <TextField layoutX="580.0" layoutY="381.0" prefHeight="20.0" prefWidth="30.0" style="-fx-background-color: rgba(255,255,255,0.1);" />
-            <Label layoutX="362.0" layoutY="384.0" text="1" textFill="WHITE">
+            <TextField fx:id="jumpField" layoutX="531.0" layoutY="374.0" onAction="#jump" prefHeight="20.0" prefWidth="30.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-text-inner-color: white;" />
+            <Label fx:id="pageNumLabel" layoutX="313.0" layoutY="377.0" text="1" textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="613.0" layoutY="384.0" text="页" textFill="WHITE">
+            <Label layoutX="564.0" layoutY="377.0" text="页" textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
             </Label>
+            <AnchorPane fx:id="contentPane" layoutX="23.0" layoutY="13.0" prefHeight="350.0" prefWidth="740.0">
+               <children>
+                  <Pane layoutX="7.0" prefHeight="55.0" prefWidth="727.0" style="-fx-background-color: rgba(0,0,0,0.3);">
+                     <children>
+                        <Button layoutX="649.0" layoutY="12.0" mnemonicParsing="false" style="-fx-background-color: rgba(255,255,255,0.2);" text="详情" textFill="WHITE">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Button>
+                        <Label layoutX="292.0" layoutY="14.0" prefHeight="28.0" prefWidth="339.0" text="订单号：  014689110120161021165044" textFill="WHITE">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="25.0" layoutY="13.0" prefHeight="28.0" prefWidth="175.0" text="姓名：袁世凯" textFill="WHITE">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="7.0" layoutY="289.0" prefHeight="55.0" prefWidth="727.0" style="-fx-background-color: rgba(0,0,0,0.3);">
+                     <children>
+                        <Button layoutX="648.0" layoutY="12.0" mnemonicParsing="false" style="-fx-background-color: rgba(255,255,255,0.2);" text="详情" textFill="WHITE">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Button>
+                        <Label layoutX="291.0" layoutY="13.0" prefHeight="28.0" prefWidth="339.0" text="订单号：  720882410120161021122230" textFill="WHITE">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="25.0" layoutY="14.0" prefHeight="28.0" prefWidth="175.0" text="姓名：曾国藩" textFill="WHITE">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="7.0" layoutY="221.0" prefHeight="55.0" prefWidth="727.0" style="-fx-background-color: rgba(0,0,0,0.3);">
+                     <children>
+                        <Button layoutX="648.0" layoutY="13.0" mnemonicParsing="false" style="-fx-background-color: rgba(255,255,255,0.2);" text="详情" textFill="WHITE">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Button>
+                        <Label layoutX="290.0" layoutY="14.0" prefHeight="28.0" prefWidth="339.0" text="订单号：  433259340120161021082913" textFill="WHITE">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="24.0" layoutY="14.0" prefHeight="28.0" prefWidth="175.0" text="姓名：孙文" textFill="WHITE">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="7.0" layoutY="148.0" prefHeight="55.0" prefWidth="727.0" style="-fx-background-color: rgba(0,0,0,0.3);">
+                     <children>
+                        <Button layoutX="648.0" layoutY="12.0" mnemonicParsing="false" style="-fx-background-color: rgba(255,255,255,0.2);" text="详情" textFill="WHITE">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Button>
+                        <Label layoutX="291.0" layoutY="12.0" prefHeight="28.0" prefWidth="339.0" text="订单号：  003076110420161021060025" textFill="WHITE">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="25.0" layoutY="14.0" prefHeight="28.0" prefWidth="175.0" text="姓名：蒋中正" textFill="WHITE">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="7.0" layoutY="74.0" prefHeight="55.0" prefWidth="727.0" style="-fx-background-color: rgba(0,0,0,0.3);">
+                     <children>
+                        <Button layoutX="649.0" layoutY="12.0" mnemonicParsing="false" style="-fx-background-color: rgba(255,255,255,0.2);" text="详情" textFill="WHITE">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Button>
+                        <Label layoutX="292.0" layoutY="13.0" prefHeight="28.0" prefWidth="339.0" text="订单号：  000374550820161020224538" textFill="WHITE">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="26.0" layoutY="14.0" prefHeight="28.0" prefWidth="175.0" text="姓名：李华" textFill="WHITE">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+            </AnchorPane>
          </children>
       </Pane>
    </children>

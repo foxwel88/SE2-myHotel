@@ -122,6 +122,7 @@ public class HotelManagerGuide {
 					break;
 				case EXECUTE:
 					root = loader.load(getClass().getResource("/酒店工作人员/执行订单界面.fxml").openStream());
+					((HotelManagerExecute)loader.getController()).setParentGridPane(belowGridPane);
 					break;
 				case HISTORY:
 					root = loader.load(getClass().getResource("/酒店工作人员/浏览酒店历史订单界面.fxml").openStream());

@@ -14,6 +14,7 @@ import org.client.vo.CityVO;
 import org.client.vo.HotelVO;
 import org.client.vo.OrderVO;
 import org.client.vo.PromotionVO;
+import org.common.utility.OrderType;
 import org.common.utility.ResultMessage;
 import org.common.utility.RoomType;
 
@@ -54,6 +55,22 @@ public class HotelManagerController {
 			throw new NullPointerException();
 		}
 		return controller;
+	}
+	
+	public List<OrderVO> getUnexecutedOrders() {
+		return orderbl.getHotelOrderList(hotelAddress, OrderType.UNEXECUTED);
+	}
+	
+	public List<OrderVO> getExecutedOrders() {
+		return orderbl.getHotelOrderList(hotelAddress, OrderType.EXECUTED);
+	}
+	
+	public List<OrderVO> getCancelledOrders() {
+		return orderbl.getHotelOrderList(hotelAddress, OrderType.CANCELED);
+	}
+	
+	public List<OrderVO> getAbnormalOrders() {
+		return orderbl.getHotelOrderList(hotelAddress, OrderType.ABNORMAL);
 	}
 	
 	public List<PromotionVO> getPromotions() {

@@ -92,8 +92,17 @@ public class HotelManagerCheckPromotion {
 		parentPane = parent;
 	}
 	
-	void addPromotion() {
-		
+	@FXML
+	void addPromotion(ActionEvent event) {
+		Parent modifyRoot = null;
+		FXMLLoader loader = new FXMLLoader();
+		try {
+			modifyRoot = loader.load(getClass().getResource("/酒店工作人员/修改酒店促销策略界面.fxml").openStream());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		parentPane.getChildren().set(1, modifyRoot);
+		GridPane.setConstraints(modifyRoot, 1, 0);
 	}
 	
 	void modifyPromotion(PromotionVO vo) {
@@ -167,6 +176,7 @@ public class HotelManagerCheckPromotion {
 		PromotionVO promotionVO;
 		
 		PromotionPane(PromotionVO vo) {
+			super();
 			name = new Label(vo.name);
 			type = new Label(vo.type);
 			discount = new Label(String.valueOf(vo.discount) + "折");
