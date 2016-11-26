@@ -1,6 +1,8 @@
 package org.client.blstub;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 
 import org.client.blservice.promotionblservice.Promotionblservice;
@@ -12,12 +14,17 @@ import org.common.utility.ResultMessage;
 public class Promotion_stub implements Promotionblservice {
 	
 	PromotionVO vo1 = new PromotionVO(PromotionType.SPECIALDATE.getString()
-			, new Date(), new Date(), "goodhotel","address",2 , "lalal", 0.8, null);
+			, Calendar.getInstance().getTime(), Calendar.getInstance().getTime(), "goodhotel","address",2 , "", 7.5, "期末特惠");
 	
-	PromotionVO vo2 = new PromotionVO(PromotionType.SPECIALDATE.getString()
-			, new Date(), new Date(), "goodhotel","address",2 , "lalal", 0.8, null);
+	PromotionVO vo2 = new PromotionVO(PromotionType.SPECIALAREA.getString()
+			, Calendar.getInstance().getTime(), Calendar.getInstance().getTime(), "","",2 , "仙林中心", 7.8, "仙林中心地区促销活动");
 	
-	ArrayList<PromotionVO> vo = new ArrayList<PromotionVO>();
+	PromotionVO vo3 = new PromotionVO(PromotionType.BIRTHDAYBONUS.getString()
+			, new Date(), new Date(), "goodhotel","address",1 , "", 8, "生日特惠");
+	
+	ArrayList<PromotionVO> generalVOs = new ArrayList<PromotionVO>(Arrays.asList(new PromotionVO[]{vo1, vo2, vo3}));
+	
+	ArrayList<PromotionVO> hotelVOs = new ArrayList<PromotionVO>(Arrays.asList(new PromotionVO[]{vo1, vo3}));
 
 	public ResultMessage add(PromotionVO vo) {
 		// TODO Auto-generated method stub
@@ -26,19 +33,17 @@ public class Promotion_stub implements Promotionblservice {
 
 	public ArrayList<PromotionVO> getPromotion(String hotelAddress, String userID) {
 		// TODO Auto-generated method stub
-		vo.add(vo1);
-		vo.add(vo2);
-		return vo;
+		return generalVOs;
 	}
 
 	public ArrayList<PromotionVO> showHotelPromotion(String hotelAddress) {
 		// TODO Auto-generated method stub
-		return vo;
+		return hotelVOs;
 	}
 
 	public ArrayList<PromotionVO> showWebsitePromotion() {
 		// TODO Auto-generated method stub
-		return vo;
+		return generalVOs;
 	}
 
 	public ResultMessage modify(PromotionVO vo) {

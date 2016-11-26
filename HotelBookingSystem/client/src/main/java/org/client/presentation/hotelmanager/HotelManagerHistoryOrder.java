@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 /**
@@ -23,10 +24,17 @@ public class HotelManagerHistoryOrder {
 
 	@FXML
     private URL location;
+	
+	// the gridPane in Guide
+	private GridPane parentPane;
 
 	@FXML
     void initialize() {
 		
+	}
+	
+	void setParentGridPane(GridPane parent) {
+		parentPane = parent;
 	}
 	
 }

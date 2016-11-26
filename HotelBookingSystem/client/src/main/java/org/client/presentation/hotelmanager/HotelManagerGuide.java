@@ -111,22 +111,25 @@ public class HotelManagerGuide {
 	/*change the content of the gridpane */
 	void changeContent(GuideLabelType to) {
 		Parent root = null;
+		FXMLLoader loader = new FXMLLoader();
 		try {
 			switch(to) {
 				case MAIN:
-					root = FXMLLoader.load(getClass().getResource("/酒店工作人员/酒店工作人员主界面.fxml"));
+					root = loader.load(getClass().getResource("/酒店工作人员/酒店工作人员主界面.fxml").openStream());
 					break;
 				case INFO:
-					root = FXMLLoader.load(getClass().getResource("/酒店工作人员/维护酒店信息界面.fxml"));
+					root = loader.load(getClass().getResource("/酒店工作人员/维护酒店信息界面.fxml").openStream());
 					break;
 				case EXECUTE:
-					root = FXMLLoader.load(getClass().getResource("/酒店工作人员/执行订单界面.fxml"));
+					root = loader.load(getClass().getResource("/酒店工作人员/执行订单界面.fxml").openStream());
 					break;
 				case HISTORY:
-					root = FXMLLoader.load(getClass().getResource("/酒店工作人员/浏览酒店历史订单界面.fxml"));
+					root = loader.load(getClass().getResource("/酒店工作人员/浏览酒店历史订单界面.fxml").openStream());
+					((HotelManagerHistoryOrder)loader.getController()).setParentGridPane(belowGridPane);
 					break;
 				case PROMOTION:
-					root = FXMLLoader.load(getClass().getResource("/酒店工作人员/管理酒店促销策略界面.fxml"));
+					root = loader.load(getClass().getResource("/酒店工作人员/管理酒店促销策略界面.fxml").openStream());
+					((HotelManagerCheckPromotion)loader.getController()).setParentGridPane(belowGridPane);
 					break;
 			}
 		} catch (IOException e) {

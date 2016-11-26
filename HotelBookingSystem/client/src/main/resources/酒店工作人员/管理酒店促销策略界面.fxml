@@ -15,99 +15,103 @@
    <children>
       <Pane layoutX="64.0" layoutY="60.0" prefHeight="475.0" prefWidth="782.0" style="-fx-background-color: rgba(0,0,0,0.4);">
          <children>
-            <Label layoutX="184.0" layoutY="424.0" text="&lt;上一页" textFill="WHITE">
+            <Label fx:id="prevPage" layoutX="184.0" layoutY="424.0" onMouseClicked="#toPrevPage" text="&lt;上一页" textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="306.0" layoutY="424.0" text="下一页&gt;" textFill="WHITE">
+            <Label fx:id="nextPage" layoutX="306.0" layoutY="424.0" onMouseClicked="#toNextPage" text="下一页&gt;" textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
             </Label>
-            <Pane layoutX="27.0" layoutY="65.0" prefHeight="55.0" prefWidth="727.0" style="-fx-background-color: rgba(0,0,0,0.3);">
+            <AnchorPane fx:id="contentPane" layoutX="21.0" layoutY="63.0" prefHeight="350.0" prefWidth="740.0">
                <children>
-                  <Button layoutX="649.0" layoutY="12.0" mnemonicParsing="false" style="-fx-background-color: rgba(255,255,255,0.2);" text="编辑" textFill="WHITE">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                  </Button>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="13.0" prefHeight="28.0" prefWidth="241.0" text="猴年生日福利" textFill="WHITE">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="271.0" layoutY="13.0" prefHeight="28.0" prefWidth="97.0" text="生日特惠类" textFill="WHITE">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="458.0" layoutY="13.0" prefHeight="28.0" prefWidth="97.0" text="7.5折" textFill="WHITE">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                  </Label>
+                  <Pane prefHeight="55.0" prefWidth="727.0" style="-fx-background-color: rgba(0,0,0,0.3);">
+                     <children>
+                        <Button layoutX="649.0" layoutY="12.0" mnemonicParsing="false" style="-fx-background-color: rgba(255,255,255,0.2);" text="编辑" textFill="WHITE">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Button>
+                        <Label alignment="CENTER" layoutX="10.0" layoutY="13.0" prefHeight="28.0" prefWidth="241.0" text="猴年生日福利" textFill="WHITE">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" layoutX="271.0" layoutY="13.0" prefHeight="28.0" prefWidth="97.0" text="生日特惠类" textFill="WHITE">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" layoutX="458.0" layoutY="13.0" prefHeight="28.0" prefWidth="97.0" text="7.5折" textFill="WHITE">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutY="175.0" prefHeight="55.0" prefWidth="727.0" style="-fx-background-color: rgba(0,0,0,0.3);">
+                     <children>
+                        <Button layoutX="648.0" layoutY="12.0" mnemonicParsing="false" style="-fx-background-color: rgba(255,255,255,0.2);" text="编辑" textFill="WHITE">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Button>
+                        <Label alignment="CENTER" layoutX="8.0" layoutY="13.0" prefHeight="28.0" prefWidth="241.0" text="2016企业伙伴特惠" textFill="WHITE">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" layoutX="269.0" layoutY="13.0" prefHeight="28.0" prefWidth="97.0" text="企业折扣类" textFill="WHITE">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" layoutX="456.0" layoutY="13.0" prefHeight="28.0" prefWidth="97.0" text="7折" textFill="WHITE">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutY="85.0" prefHeight="55.0" prefWidth="727.0" style="-fx-background-color: rgba(0,0,0,0.3);">
+                     <children>
+                        <Button layoutX="648.0" layoutY="13.0" mnemonicParsing="false" style="-fx-background-color: rgba(255,255,255,0.2);" text="编辑" textFill="WHITE">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Button>
+                        <Label alignment="CENTER" layoutX="7.0" layoutY="14.0" prefHeight="28.0" prefWidth="241.0" text="冬季特惠" textFill="WHITE">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" layoutX="269.0" layoutY="14.0" prefHeight="28.0" prefWidth="97.0" text="特定日期类" textFill="WHITE">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" layoutX="456.0" layoutY="14.0" prefHeight="28.0" prefWidth="97.0" text="8折" textFill="WHITE">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
                </children>
-            </Pane>
-            <Pane layoutX="28.0" layoutY="136.0" prefHeight="55.0" prefWidth="727.0" style="-fx-background-color: rgba(0,0,0,0.3);">
-               <children>
-                  <Button layoutX="648.0" layoutY="12.0" mnemonicParsing="false" style="-fx-background-color: rgba(255,255,255,0.2);" text="编辑" textFill="WHITE">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                  </Button>
-                  <Label alignment="CENTER" layoutX="8.0" layoutY="13.0" prefHeight="28.0" prefWidth="241.0" text="2016企业伙伴特惠" textFill="WHITE">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="269.0" layoutY="13.0" prefHeight="28.0" prefWidth="97.0" text="企业折扣类" textFill="WHITE">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="456.0" layoutY="13.0" prefHeight="28.0" prefWidth="97.0" text="7折" textFill="WHITE">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-            <Pane layoutX="28.0" layoutY="204.0" prefHeight="55.0" prefWidth="727.0" style="-fx-background-color: rgba(0,0,0,0.3);">
-               <children>
-                  <Button layoutX="648.0" layoutY="13.0" mnemonicParsing="false" style="-fx-background-color: rgba(255,255,255,0.2);" text="编辑" textFill="WHITE">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                  </Button>
-                  <Label alignment="CENTER" layoutX="7.0" layoutY="14.0" prefHeight="28.0" prefWidth="241.0" text="冬季特惠" textFill="WHITE">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="269.0" layoutY="14.0" prefHeight="28.0" prefWidth="97.0" text="特定日期类" textFill="WHITE">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="456.0" layoutY="14.0" prefHeight="28.0" prefWidth="97.0" text="8折" textFill="WHITE">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
+            </AnchorPane>
             <Label layoutX="415.0" layoutY="424.0" text="跳转至第" textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
             </Label>
-            <TextField layoutX="479.0" layoutY="420.0" prefHeight="20.0" prefWidth="30.0" style="-fx-background-color: rgba(255,255,255,0.1);">
+            <TextField fx:id="jumpField" layoutX="479.0" layoutY="420.0" onAction="#jumpPage" prefHeight="20.0" prefWidth="30.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-text-inner-color: white;">
                <font>
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
             </TextField>
-            <Label layoutX="266.0" layoutY="424.0" text="1" textFill="WHITE">
+            <Label fx:id="pageNumLabel" layoutX="266.0" layoutY="424.0" text="1" textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
