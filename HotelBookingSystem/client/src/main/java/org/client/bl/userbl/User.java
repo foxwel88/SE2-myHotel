@@ -6,6 +6,11 @@ import org.client.vo.UserVO;
 import org.common.po.UserPO;
 import org.common.utility.UserType;
 
+/**
+ * user的领域类
+ * @author gyue
+ * @version 2016/11/27 gyue
+ */
 public class User {
 	
 	public String type;

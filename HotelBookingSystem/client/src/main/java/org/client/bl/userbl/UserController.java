@@ -22,6 +22,9 @@ public class UserController implements Userblservice {
 		
 	}
 	
+	/**
+	 * 单件设计模式
+	 */
 	public static UserController getInstance() {
 		if (controller == null) {
 			controller = new UserController();
@@ -29,48 +32,81 @@ public class UserController implements Userblservice {
 		return controller;
 	}
 
+	/**
+	 * 登录
+	 */
 	public ResultMessage login(String userName, String password) {
 		return Account.getInstance().login(userName, password);
 	}
 
+	/**
+	 * 登出
+	 */
 	public ResultMessage logout(String ID) {
 		return Account.getInstance().logout(ID);
 	}
 
+	/**
+	 * 增加用户
+	 */
 	public ResultMessage add(UserVO vo) {
 		return UserUtil.getInstance().add(vo);
 	}
 
+	/**
+	 * 用ID获取用户VO
+	 */
 	public UserVO findbyID(String ID) {
 		return UserUtil.getInstance().findbyID(ID);
 	}
 
+	/**
+	 * 用UserName获取用户VO
+	 */
 	public UserVO findbyUserName(String userName) {
 		return UserUtil.getInstance().findbyUserName(userName);
 	}
 
+	/**
+	 * 更改用户密码
+	 */
 	public ResultMessage modifyPassword(String userName, String oldPassword, String newPassword) {
 		return UserUtil.getInstance().modifyPassword(userName, oldPassword, newPassword);
 	}
 
+	/**
+	 * 更改用户VO
+	 */
 	public ResultMessage modify(UserVO vo) {
 		return UserUtil.getInstance().modify(vo);
 	}
 
+	/**
+	 * 增加信用记录
+	 */
 	public ResultMessage addCreditRecord(CreditRecordVO vo) {
 		return UserUtil.getInstance().addCreditRecord(vo);
 	}
 
+	/**
+	 * 查找信用记录列表
+	 */
 	public List<CreditRecordVO> findCreditRecord(String ID) {
 		return UserUtil.getInstance().findCreditRecord(ID);
 	}
 
+	/**
+	 * 获得该用户的等级VO
+	 */
 	public UserLevelVO getLevel(String userName) {
 		return UserUtil.getInstance().getLevel(userName);
 	}
 
+	/**
+	 * 为新的用户获取一个ID
+	 */
 	public String getNewID() {
-		return null;
+		return UserUtil.getInstance().getNewID();
 	}
 	
 }

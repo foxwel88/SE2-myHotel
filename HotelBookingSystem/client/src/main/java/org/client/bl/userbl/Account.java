@@ -6,6 +6,11 @@ import org.client.rmi.RMIHelper;
 import org.common.dataservice.UserDataService.UserDataService;
 import org.common.utility.ResultMessage;
 
+/**
+ * 管理登录登出的工具类
+ * @author gyue
+ * @version 2016/11/27 gyue
+ */
 public class Account {
 	
 	private static Account account = null;

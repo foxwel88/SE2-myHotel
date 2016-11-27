@@ -181,6 +181,16 @@ public class UserUtil {
 		return new UserLevelVO(credit, level);
 	}
 	
+	public String getNewID() {
+		UserDataService dao = RMIHelper.getInstance().getUserDataServiceImpl();
+		try {
+			return dao.getNewID();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return "";
+	}
+	
 	private boolean checkPasswordFormat(String password) {
 		if (password.length() <= 6) {
 			return false;
