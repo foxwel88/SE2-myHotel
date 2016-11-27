@@ -144,6 +144,11 @@
                         <Font name="Microsoft YaHei" size="15.0" />
                      </font>
                   </Button>
+                  <Label fx:id="resultLabel" alignment="CENTER" prefHeight="20.0" prefWidth="246.0" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                     <font>
+                        <Font name="Microsoft YaHei" size="15.0" />
+                     </font>
+                  </Label>
                </children>
             </GridPane>
          </children>

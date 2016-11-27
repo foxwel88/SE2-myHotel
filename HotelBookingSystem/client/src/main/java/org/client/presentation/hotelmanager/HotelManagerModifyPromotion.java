@@ -59,13 +59,16 @@ public class HotelManagerModifyPromotion {
 	@FXML
     private ChoiceBox<String> typeBox;
 	
+	@FXML
+	private Label resultLabel;
+	
 	private DateFormat dateFormat;
 	
 	private PromotionVO vo;
 
 	@FXML
     void save(ActionEvent event) {
-
+		
 	}
 
 	@FXML
@@ -77,6 +80,7 @@ public class HotelManagerModifyPromotion {
 		assert endTimeLabel != null : "fx:id=\"endTimeLabel\" was not injected: check your FXML file '修改酒店促销策略界面.fxml'.";
 		assert levelBox != null : "fx:id=\"levelBox\" was not injected: check your FXML file '修改酒店促销策略界面.fxml'.";
 		assert typeBox != null : "fx:id=\"typeBox\" was not injected: check your FXML file '修改酒店促销策略界面.fxml'.";
+		assert resultLabel != null : "fx:id=\"resultLabel\" was not injected: check your FXML file '修改酒店促销策略界面.fxml'.";
         
 		dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		

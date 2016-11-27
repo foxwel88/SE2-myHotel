@@ -1,33 +1,26 @@
 package org.client.presentation.hotelmanager;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import org.client.bl.hotelbl.HotelController;
-import org.client.rmi.RMIHelper;
 import org.client.vo.AreaVO;
 import org.client.vo.CityVO;
 import org.client.vo.HotelVO;
 import org.common.utility.ResultMessage;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
 
 /**
  * FXML Controller
@@ -87,7 +80,7 @@ public class HotelManagerModifyHotel {
 	@FXML
     private TextField roomPrice;
 	
-	private ArrayList<String> roomTypes;
+	private ObservableList<String> roomTypes;
 	
 	private ArrayList<Integer> roomNums;
 	
@@ -101,62 +94,113 @@ public class HotelManagerModifyHotel {
 
 	@FXML
     private TextField endTime;
+	
+	private String newCheckInInfos = "";
     
 	@FXML
     private ChoiceBox<String> cooperatorBox;
+	
+	private ObservableList<String> currentCooperators;
 
 	@FXML
     private TextField cooperatorField;
+	
+	@FXML
+	private Label resultLabel;
+	
+	@FXML
+    private Button roomSaveButton;
 	
 	private HotelVO vo;
 	
 	@FXML
 	void addCooperator(ActionEvent event) {
-
+		currentCooperators.add(cooperatorField.getText().trim());
 	}
 
 	@FXML
     void changeCooperator(ActionEvent event) {
-
+		int index = currentCooperators.indexOf(cooperatorBox.getValue());
+		currentCooperators.set(index, cooperatorField.getText().trim());
+		cooperatorBox.setValue(cooperatorField.getText().trim());
 	}
 
 	@FXML
     void deleteCooperator(ActionEvent event) {
-
+		currentCooperators.remove(cooperatorBox.getValue());
 	}
 
+	/**最终提交，只有提交才会保存所有修改的信息 */
 	@FXML
     void handIn(ActionEvent event) {
 		
 		vo.address = address.getText().trim();
 		vo.area = new AreaVO(area.getValue());
-		//vo.checkInInfos
+		vo.checkInInfos += newCheckInInfos;
 		vo.city = new CityVO(city.getValue());
-		//vo.cooperators
+		vo.cooperators = new ArrayList<String>(currentCooperators);
 		vo.facility = facility.getText().trim();
 		vo.hotelName = name.getText().trim();
 		vo.introduce = intro.getText().trim();
-		//vo.roomNum
-		//vo.roomPrice
-		//vo.roomType
+		
+		vo.roomNum = new ArrayList<Integer>(roomNums);
+		vo.roomPrice = new ArrayList<Double>(roomPrices);
+		
 		vo.star = star.getValue();
 		
 		ResultMessage result = HotelManagerController.getInstance().modifyHotel(vo);
-		
+		switch(result) {
+			case SUCCESS:
+				resultLabel.setText("编辑成功");
+				break;
+			case WRONG_FORMAT:
+				resultLabel.setText("输入信息格式有误");
+				break;
+			default:
+				resultLabel.setText("错误");
+				break;
+		}
 	}
 
+	/**保存当前选择的房间信息 */
 	@FXML
     void saveRoom(ActionEvent event) {
-		
+		int index = roomTypes.indexOf(roomType.getValue());
+		roomNums.set(index, Integer.parseInt(roomNum.getText().trim()));
+		roomPrices.set(index, Double.parseDouble(roomPrice.getText().trim()));
+	}
+	
+	/**保存（添加）当前输入的入住信息 */
+	@FXML
+	void saveCheckIn(ActionEvent event) {
+		newCheckInInfos += (roomNumber.getText() + "," + startTime.getText() + "," + endTime.getText() + ";");
 	}
 
 	@FXML
     void initialize() {
+		assert city != null : "fx:id=\"city\" was not injected: check your FXML file '维护酒店信息界面.fxml'.";
+		assert area != null : "fx:id=\"area\" was not injected: check your FXML file '维护酒店信息界面.fxml'.";
+		assert address != null : "fx:id=\"address\" was not injected: check your FXML file '维护酒店信息界面.fxml'.";
+		assert name != null : "fx:id=\"name\" was not injected: check your FXML file '维护酒店信息界面.fxml'.";
+		assert star != null : "fx:id=\"star\" was not injected: check your FXML file '维护酒店信息界面.fxml'.";
+		assert intro != null : "fx:id=\"intro\" was not injected: check your FXML file '维护酒店信息界面.fxml'.";
+		assert facility != null : "fx:id=\"facility\" was not injected: check your FXML file '维护酒店信息界面.fxml'.";
+		assert roomType != null : "fx:id=\"roomType\" was not injected: check your FXML file '维护酒店信息界面.fxml'.";
+		assert roomNum != null : "fx:id=\"roomNum\" was not injected: check your FXML file '维护酒店信息界面.fxml'.";
+		assert roomPrice != null : "fx:id=\"roomPrice\" was not injected: check your FXML file '维护酒店信息界面.fxml'.";
+		assert startTime != null : "fx:id=\"startTime\" was not injected: check your FXML file '维护酒店信息界面.fxml'.";
+		assert endTime != null : "fx:id=\"endTime\" was not injected: check your FXML file '维护酒店信息界面.fxml'.";
 		assert saveButton != null : "fx:id=\"saveButton\" was not injected: check your FXML file '维护酒店信息界面.fxml'.";
+		assert cooperatorBox != null : "fx:id=\"cooperatorBox\" was not injected: check your FXML file '维护酒店信息界面.fxml'.";
+		assert cooperatorField != null : "fx:id=\"cooperatorField\" was not injected: check your FXML file '维护酒店信息界面.fxml'.";
 		assert addButton != null : "fx:id=\"addButton\" was not injected: check your FXML file '维护酒店信息界面.fxml'.";
 		assert changeButton != null : "fx:id=\"changeButton\" was not injected: check your FXML file '维护酒店信息界面.fxml'.";
 		assert deleteButton != null : "fx:id=\"deleteButton\" was not injected: check your FXML file '维护酒店信息界面.fxml'.";
 		assert handInButton != null : "fx:id=\"handInButton\" was not injected: check your FXML file '维护酒店信息界面.fxml'.";
+		assert roomNumber != null : "fx:id=\"roomNumber\" was not injected: check your FXML file '维护酒店信息界面.fxml'.";
+		assert resultLabel != null : "fx:id=\"resultLabel\" was not injected: check your FXML file '维护酒店信息界面.fxml'.";
+		assert roomSaveButton != null : "fx:id=\"roomSaveButton\" was not injected: check your FXML file '维护酒店信息界面.fxml'.";
+
 		
 		vo = HotelManagerController.getInstance().getHotelInfo();
 		
@@ -171,13 +215,12 @@ public class HotelManagerModifyHotel {
 		ObservableList<String> citys = FXCollections.observableArrayList(cityList);
 		city.setItems(citys);
 		city.setValue(vo.city.cityName);
+		city.getSelectionModel().selectedItemProperty()
+    			.addListener( (ObservableValue< ? extends String> observable, String oldValue, String newValue) 
+    				-> area.setItems(FXCollections.observableArrayList(HotelManagerController.getInstance().getAreas(city.getValue()))));
 		
 		//area
-		List<AreaVO> areaVOs = HotelManagerController.getInstance().getAreas(vo.city);
-		ArrayList<String> areaList = new ArrayList<String>();
-		for (AreaVO v: areaVOs) {
-			areaList.add(v.address);
-		}
+		List<String> areaList = HotelManagerController.getInstance().getAreas(city.getValue());
 		ObservableList<String> areas = FXCollections.observableArrayList(areaList);
 		area.setItems(areas);
 		area.setValue(vo.area.address);
@@ -185,11 +228,13 @@ public class HotelManagerModifyHotel {
 		//address
 		address.setText(vo.address);
 		
-		//checkInInfos
+		//checkInInfos (no need)
 		
 		//cooperators		
-		ObservableList<String> cooperators = FXCollections.observableArrayList(vo.cooperators);
-		cooperatorBox.setItems(cooperators);
+		currentCooperators = FXCollections.observableArrayList(vo.cooperators);
+		cooperatorBox.setItems(currentCooperators);
+		cooperatorBox.getSelectionModel().selectedItemProperty()
+	    	.addListener( (ObservableValue< ? extends String> observable, String oldValue, String newValue) -> cooperatorField.setText(newValue) );
 		
 		//facility, name, intro
 		facility.setText(vo.facility);
@@ -199,8 +244,19 @@ public class HotelManagerModifyHotel {
 		intro.setStyle("-fx-text-fill: black;");
 		
 		//roomNum roomPrice roomType
-		ObservableList<String> roomTypes = FXCollections.observableArrayList(vo.roomType);
+		roomTypes = FXCollections.observableArrayList(vo.roomType);
 		roomType.setItems(roomTypes);
+		
+		roomNums = new ArrayList<Integer>(vo.roomNum);
+		roomPrices = new ArrayList<Double>(vo.roomPrice);
+		
+		roomType.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+			@Override
+			public void changed(ObservableValue< ? extends Number> observableValue, Number oldIndex, Number newIndex) {
+				roomNum.setText(roomNums.get((Integer)newIndex).toString());
+				roomPrice.setText(roomPrices.get((Integer)newIndex).toString());
+			}
+		});
 		
 		//star
 		ObservableList<Integer> stars = FXCollections.observableArrayList(1,2,3,4,5);

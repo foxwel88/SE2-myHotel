@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import org.client.vo.OrderVO;
+import org.common.utility.ResultMessage;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -45,8 +46,19 @@ public class HotelManagerAbnormalOrder {
     private Button executeButton;
 	
 	@FXML
+    private Label resultLabel;
+	
+	@FXML
 	void execute(ActionEvent event) {
-		HotelManagerController.getInstance().executeOrder();
+		ResultMessage result = HotelManagerController.getInstance().executeOrder();
+		switch(result) {
+			case SUCCESS:
+				resultLabel.setText("执行完成");
+				break;
+			default:
+				resultLabel.setText("执行遇到错误");
+				break;
+		}
 	}
 
 	@FXML
@@ -58,6 +70,7 @@ public class HotelManagerAbnormalOrder {
         assert childrenLabel != null : "fx:id=\"childrenLabel\" was not injected: check your FXML file '异常订单详细信息界面.fxml'.";
         assert orderTypeLabel != null : "fx:id=\"orderTypeLabel\" was not injected: check your FXML file '异常订单详细信息界面.fxml'.";
 		assert executeButton != null : "fx:id=\"executeButton\" was not injected: check your FXML file '异常订单详细信息界面.fxml'.";
+		assert resultLabel != null : "fx:id=\"resultLabel\" was not injected: check your FXML file '异常订单详细信息界面.fxml'.";
 		
 		OrderVO vo = HotelManagerController.getInstance().currentOrder;
 		

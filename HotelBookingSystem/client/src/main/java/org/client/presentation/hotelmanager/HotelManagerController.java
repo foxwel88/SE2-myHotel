@@ -1,5 +1,6 @@
 package org.client.presentation.hotelmanager;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -89,8 +90,14 @@ public class HotelManagerController {
 		return hotelbl.getCitys();
 	}
 	
-	public List<AreaVO> getAreas(CityVO vo) {
-		return hotelbl.getAreas(vo);
+	/**把从logic层拿上来的vo换成string */
+	public List<String> getAreas(String cityName) {
+		List<AreaVO> voList = hotelbl.getAreas(new CityVO(cityName));
+		List<String> result = new ArrayList<String>();
+		for (AreaVO v: voList) {
+			result.add(v.address);
+		}
+		return result;
 	}
 	
 	public ResultMessage executeOrder() {

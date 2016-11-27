@@ -54,6 +54,9 @@ public class HotelManagerUnexecutedOrder {
 	
 	@FXML
     private Button executeButton;
+	
+	@FXML
+    private Label resultLabel;
 
 	@FXML
 	void initialize() {	
@@ -67,6 +70,7 @@ public class HotelManagerUnexecutedOrder {
 		assert customerNameLabel != null : "fx:id=\"customerNameLabel\" was not injected: check your FXML file '未执行订单详细信息界面.fxml'.";
 		assert startTimeLabel != null : "fx:id=\"startTimeLabel\" was not injected: check your FXML file '未执行订单详细信息界面.fxml'.";
 		assert endTimeLabel != null : "fx:id=\"endTimeLabel\" was not injected: check your FXML file '未执行订单详细信息界面.fxml'.";
+		assert resultLabel != null : "fx:id=\"resultLabel\" was not injected: check your FXML file '未执行订单详细信息界面.fxml'.";
         
 		OrderVO vo = HotelManagerController.getInstance().currentOrder;
         
@@ -90,6 +94,14 @@ public class HotelManagerUnexecutedOrder {
 	@FXML
     void execute(ActionEvent event) {
 		ResultMessage result = HotelManagerController.getInstance().executeOrder();
+		switch(result) {
+			case SUCCESS:
+				resultLabel.setText("执行成功");
+				break;
+			default:
+				resultLabel.setText("执行遇到错误");
+				break;
+		}
 	}
 }
 

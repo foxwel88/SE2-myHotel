@@ -16,6 +16,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -88,8 +90,13 @@ public class LoginController {
 		else if (result == ResultMessage.CONNECTION_FAIL) {
 			
 		}
-		else if (result == ResultMessage.WRONG_PASSWORD) {
-			
+		else if (result == ResultMessage.WRONG_USERNAME || result == ResultMessage.WRONG_PASSWORD) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Error Dialog");
+			alert.setHeaderText(null);
+			alert.setContentText("用户名或密码错误");
+
+			alert.showAndWait();
 		}
 		
 	}
