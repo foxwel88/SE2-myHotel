@@ -68,10 +68,6 @@ public class WebMarketerGuide {
 		assert orderPane != null : "fx:id=\"orderPane\" was not injected: check your FXML file 'guide.fxml'.";
 		assert orderLabel != null : "fx:id=\"orderLabel\" was not injected: check your FXML file 'guide.fxml'.";
 		try {
-			if (belowGridPane == null) {
-				System.out.println("find!");
-				return;
-			}
 			belowGridPane.add((Node) FXMLLoader.load(getClass().getResource("/网站营销人员/网站营销人员主界面.fxml")), 1, 0);
 			CurrentItem.setInstance(mainLabel, mainPane, GuideLabelType.MAIN);
 		} catch (IOException e) {
@@ -134,28 +130,34 @@ public class WebMarketerGuide {
 	
 	void changeContent(GuideLabelType to) {
 		Parent root = null;
+		FXMLLoader loader = new FXMLLoader();
 		try {
 			switch(to) {
 				case MAIN:
-					root = FXMLLoader.load(getClass().getResource("/网站营销人员/网站营销人员主界面.fxml"));
+					root = loader.load(getClass().getResource("/网站营销人员/网站营销人员主界面.fxml").openStream());
 					break;
 				case CREDIT:
-					root = FXMLLoader.load(getClass().getResource("/网站营销人员/信用充值界面.fxml"));
+					root = loader.load(getClass().getResource("/网站营销人员/信用充值界面.fxml").openStream());
 					break;
 				case LEVEL:
-					root = FXMLLoader.load(getClass().getResource("/网站营销人员/修改会员等级制度界面.fxml"));
+					root = loader.load(getClass().getResource("/网站营销人员/修改会员等级制度界面.fxml").openStream());
 					break;
 				case PROMOTION:
-					root = FXMLLoader.load(getClass().getResource("/网站营销人员/管理促销策略界面.fxml"));
+					root = loader.load(getClass().getResource("/网站营销人员/管理促销策略界面.fxml").openStream());
+					((WebMarketerCheckPromotion)loader.getController()).setParentGridPane(belowGridPane);
 					break;
 				case ORDER:
-					root = FXMLLoader.load(getClass().getResource("/网站营销人员/浏览异常订单界面.fxml"));
+					root = loader.load(getClass().getResource("/网站营销人员/浏览异常订单界面.fxml").openStream());
+					((WebMarketerAbnormalOrderList)loader.getController()).setParentGridPane(belowGridPane);
 					break;
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
+		if (root == null) {
+			System.out.println("find!");
+		}
 		belowGridPane.getChildren().set(1, root);
 		GridPane.setConstraints(root, 1, 0);
 	}

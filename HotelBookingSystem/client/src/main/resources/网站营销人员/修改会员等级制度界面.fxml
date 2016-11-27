@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="567.0" prefWidth="920.0" style="-fx-background-color: rgba(255,255,255,0.4);" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="567.0" prefWidth="920.0" style="-fx-background-color: rgba(255,255,255,0.4);" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.presentation.webmarketer.WebMarketerModifyLevel">
    <effect>
       <DropShadow />
    </effect>
@@ -96,7 +96,7 @@
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <TextField layoutX="41.0" layoutY="5.0" style="-fx-background-color: rgba(255,255,255,0.4);" text="124.5" AnchorPane.leftAnchor="41.0">
+                  <TextField fx:id="levelOneTextField" layoutX="41.0" layoutY="5.0" style="-fx-background-color: rgba(255,255,255,0.4);" text="124.5" AnchorPane.leftAnchor="41.0">
                      <font>
                         <Font name="Microsoft YaHei" size="16.0" />
                      </font>
@@ -106,7 +106,7 @@
             <AnchorPane opacity="0.4" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #555555;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <children>
-                  <TextField layoutX="44.0" layoutY="5.0" style="-fx-background-color: rgba(255,255,255,0.4);" text="1245" AnchorPane.leftAnchor="41.0">
+                  <TextField fx:id="levelTwoTextField" layoutX="44.0" layoutY="5.0" style="-fx-background-color: rgba(255,255,255,0.4);" text="1245" AnchorPane.leftAnchor="41.0">
                      <font>
                         <Font name="Microsoft YaHei" size="16.0" />
                      </font>
@@ -116,7 +116,7 @@
             <AnchorPane opacity="0.4" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #555555;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <children>
-                  <TextField layoutX="41.0" layoutY="5.0" style="-fx-background-color: rgba(255,255,255,0.4);" text="12450" AnchorPane.leftAnchor="41.0">
+                  <TextField fx:id="levelThreeTextField" layoutX="41.0" layoutY="5.0" style="-fx-background-color: rgba(255,255,255,0.4);" text="12450" AnchorPane.leftAnchor="41.0">
                      <font>
                         <Font name="Microsoft YaHei" size="16.0" />
                      </font>
@@ -126,7 +126,7 @@
             <AnchorPane opacity="0.4" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #555555;" GridPane.columnIndex="1" GridPane.rowIndex="6" />
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
                <children>
-                  <TextField layoutX="38.0" layoutY="5.0" style="-fx-background-color: rgba(255,255,255,0.4);" text="124500" AnchorPane.leftAnchor="41.0">
+                  <TextField fx:id="levelFourTextField" layoutX="38.0" layoutY="5.0" style="-fx-background-color: rgba(255,255,255,0.4);" text="124500" AnchorPane.leftAnchor="41.0">
                      <font>
                         <Font name="Microsoft YaHei" size="16.0" />
                      </font>
@@ -145,7 +145,7 @@
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
                <children>
-                  <TextField layoutX="51.0" layoutY="4.0" style="-fx-background-color: rgba(255,255,255,0.4);" text="1245000" AnchorPane.leftAnchor="41.0">
+                  <TextField fx:id="levelFiveTextField" layoutX="51.0" layoutY="4.0" style="-fx-background-color: rgba(255,255,255,0.4);" text="1245000" AnchorPane.leftAnchor="41.0">
                      <font>
                         <Font name="Microsoft YaHei" size="16.0" />
                      </font>
@@ -154,12 +154,12 @@
             </AnchorPane>
          </children>
       </GridPane>
-      <Button layoutX="644.0" layoutY="507.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="100.0" style="-fx-background-color: rgba(0,0,0,0.4);" text="取消变更" textFill="WHITE">
+      <Button fx:id="cancelButton" layoutX="644.0" layoutY="507.0" mnemonicParsing="false" onMouseClicked="#cancelButtom" prefHeight="36.0" prefWidth="100.0" style="-fx-background-color: rgba(0,0,0,0.4);" text="取消变更" textFill="WHITE">
          <font>
             <Font name="Microsoft YaHei" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="789.0" layoutY="507.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="100.0" style="-fx-background-color: rgba(0,0,0,0.4);" text="确定" textFill="WHITE">
+      <Button fx:id="confirmButton" layoutX="789.0" layoutY="507.0" mnemonicParsing="false" onMouseClicked="#handleConfirm" prefHeight="36.0" prefWidth="100.0" style="-fx-background-color: rgba(0,0,0,0.4);" text="确定" textFill="WHITE">
          <font>
             <Font name="Microsoft YaHei" size="18.0" />
          </font>

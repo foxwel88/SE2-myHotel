@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="567.0" prefWidth="920.0" style="-fx-background-color: rgba(255,255,255,0.4);" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="567.0" prefWidth="920.0" style="-fx-background-color: rgba(255,255,255,0.4);" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.presentation.webmarketer.WebMarketerModifyCredit">
    <effect>
       <DropShadow />
    </effect>
@@ -28,8 +28,8 @@
          <children>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <TextField layoutX="46.0" layoutY="22.0" prefHeight="30.0" prefWidth="296.0" promptText="请输入客户ID" style="-fx-background-color: rgba(255,255,255,0.6);" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="46.0" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="22.0" />
-                  <Button layoutX="421.0" layoutY="19.0" mnemonicParsing="false" style="-fx-background-color: rgba(0,0,0,0.4);" text="搜索客户" textFill="WHITE">
+                  <TextField fx:id="searchTextField" layoutX="46.0" layoutY="22.0" prefHeight="30.0" prefWidth="296.0" promptText="请输入客户账号" style="-fx-background-color: rgba(255,255,255,0.6);" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="46.0" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="22.0" />
+                  <Button fx:id="searchButton" layoutX="421.0" layoutY="19.0" mnemonicParsing="false" onMouseClicked="#handleSearch" style="-fx-background-color: rgba(0,0,0,0.4);" text="搜索客户" textFill="WHITE">
                      <font>
                         <Font name="Microsoft YaHei" size="18.0" />
                      </font>
@@ -74,25 +74,25 @@
                               <Font name="Microsoft YaHei" size="20.0" />
                            </font>
                         </Text>
-                        <Text fill="#222222" strokeType="OUTSIDE" strokeWidth="0.0" text="阿尔托莉雅" wrappingWidth="290.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Text fx:id="nameText" fill="#222222" strokeType="OUTSIDE" strokeWidth="0.0" text="阿尔托莉雅" wrappingWidth="290.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
                               <Font name="Microsoft YaHei" size="19.0" />
                            </font>
                         </Text>
-                        <Text fill="#222222" strokeType="OUTSIDE" strokeWidth="0.0" text="2333333333" wrappingWidth="290.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <Text fx:id="idText" fill="#222222" strokeType="OUTSIDE" strokeWidth="0.0" text="2333333333" wrappingWidth="290.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <font>
                               <Font name="Microsoft YaHei" size="19.0" />
                            </font>
                         </Text>
-                        <Text fill="#222222" strokeType="OUTSIDE" strokeWidth="0.0" text="666" wrappingWidth="290.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                        <Text fx:id="currentCreditText" fill="#222222" strokeType="OUTSIDE" strokeWidth="0.0" text="666" wrappingWidth="290.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                            <font>
                               <Font name="Microsoft YaHei" size="19.0" />
                            </font>
                         </Text>
-                        <TextField prefHeight="30.0" prefWidth="391.0" style="-fx-background-color: rgba(255,255,255,0.6);" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                        <TextField fx:id="addCreditTextField" prefHeight="30.0" prefWidth="391.0" style="-fx-background-color: rgba(255,255,255,0.6);" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                      </children>
                   </GridPane>
-                  <Button layoutX="425.0" layoutY="341.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="100.0" style="-fx-background-color: rgba(0,0,0,0.4);" text="确定" textFill="WHITE">
+                  <Button fx:id="confirmButton" layoutX="425.0" layoutY="341.0" mnemonicParsing="false" onMouseClicked="#handleConfirm" prefHeight="36.0" prefWidth="100.0" style="-fx-background-color: rgba(0,0,0,0.4);" text="确定" textFill="WHITE">
                      <font>
                         <Font name="Microsoft YaHei" size="18.0" />
                      </font>
