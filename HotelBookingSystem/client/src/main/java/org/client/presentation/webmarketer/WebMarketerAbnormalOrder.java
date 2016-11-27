@@ -15,9 +15,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
 /**
- * 
- * 网站营销人员-异常订单详情
- *
+ * FXML COntroller
+ * 网站工作人员-异常订单详细信息
+ * @author gyue
+ * @version 2016/11/27 gyue
  */
 public class WebMarketerAbnormalOrder {
 
@@ -106,7 +107,7 @@ public class WebMarketerAbnormalOrder {
 		assert halfRecBox != null : "fx:id=\"halfRecBox\" was not injected: check your FXML file '异常订单详细信息界面.fxml'.";
 
 		controller = WebMarketerController.getInstance();
-		dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		dateFormat = new SimpleDateFormat("yyyy-MM-dd"); //设置日期格式
 		
 	}
 	

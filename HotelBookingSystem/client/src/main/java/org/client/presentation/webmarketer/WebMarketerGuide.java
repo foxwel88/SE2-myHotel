@@ -13,6 +13,13 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
+/**
+ * FXML Controller
+ * controller of webMarketer's guide
+ * @author gyue
+ * @version 2016/11/27 gyue
+ * 
+ */
 public class WebMarketerGuide {
 
 	@FXML

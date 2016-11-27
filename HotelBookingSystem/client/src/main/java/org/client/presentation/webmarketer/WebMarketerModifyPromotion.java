@@ -22,9 +22,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
 
 /**
- * 
+ * FXML COntroller
  * 网站管理人员-修改促销策略界面
- *
+ * @author gyue
+ * @version 2016/11/27 gyue
  */
 public class WebMarketerModifyPromotion {
 

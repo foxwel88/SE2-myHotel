@@ -21,12 +21,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 
 /**
- * 
  * FXML Controller
- * 网站营销人员-管理网站促销策略
- *
+ * 网站营销人员-浏览促销策略
+ * @author gyue
+ * @version 2016/11/27 gyue
  */
 public class WebMarketerCheckPromotion {
 	/**
@@ -246,13 +247,16 @@ public class WebMarketerCheckPromotion {
 			// set style
 			type = new Text(promotionVO.type);
 			type.setFont(Font.font("Microsoft YaHei", 18));
+			type.setTextAlignment(TextAlignment.CENTER);
 			
 			discount = new Text(new Double(promotionVO.discount).toString());
 			discount.setFont(Font.font("Microsoft YaHei", 18));
+			discount.setTextAlignment(TextAlignment.CENTER);
 			
 			detail = new Button("编辑");
 			detail.setFont(Font.font("Microsoft YaHei", 15));
 			detail.setStyle("-fx-background-color:rgba(0,0,0,0.4); -fx-text-fill: white");
+			detail.setTextAlignment(TextAlignment.CENTER);
 			
 			// add node
 			this.getChildren().add(type);
