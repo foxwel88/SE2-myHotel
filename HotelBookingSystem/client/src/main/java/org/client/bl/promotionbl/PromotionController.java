@@ -8,6 +8,11 @@ import org.client.vo.LevelVO;
 import org.client.vo.PromotionVO;
 import org.common.utility.ResultMessage;
 
+/**
+ * bl层promotion模块的控制器类
+ * @author fraliphsoft
+ * @version fraliphsoft 11/27
+ */
 public class PromotionController implements Promotionblservice {
 	
 	private static PromotionController promotionController;

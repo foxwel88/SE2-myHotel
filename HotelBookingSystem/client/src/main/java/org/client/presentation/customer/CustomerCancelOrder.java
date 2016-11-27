@@ -10,7 +10,8 @@ import javafx.scene.layout.AnchorPane;
 /**
  * 
  * 客户-已撤销订单详细信息
- *
+ * @author fraliphsoft
+ * @version fraliphsoft 11/27
  */
 public class CustomerCancelOrder {
 	@FXML

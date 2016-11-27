@@ -1,5 +1,6 @@
 package org.client.presentation.customer;
 
+import org.client.blstub.User_stub;
 import org.client.vo.UserVO;
 
 import javafx.fxml.FXML;
@@ -11,7 +12,8 @@ import javafx.scene.layout.GridPane;
 /**
  * 
  * 客户-修改个人信息
- *
+ * @author fraliphsoft
+ * @version fraliphsoft 11/27
  */
 
 public class CustomerModifyInfo {
@@ -69,6 +71,16 @@ public class CustomerModifyInfo {
 	
 	@FXML
 	void confirmChangePassword() {
-		SwitchSceneUtil.turnToAnotherScene((GridPane)root.getParent(), "/客户/修改客户信息界面.fxml");
+		User_stub stub = new User_stub();
+		// 检查两次输入的新密码是否一致
+		String newPassword1 = newPassword.getText();
+		String newPassword2 = newPasswordAgain.getText();
+		if (newPassword1.equals(newPassword2)) {
+			stub.modifyPassword(SwitchSceneUtil.getUserVO().userName, originPassword.getText(), newPassword1);
+			System.out.println("ok");
+			SwitchSceneUtil.turnToAnotherScene((GridPane)root.getParent(), "/客户/修改客户信息界面.fxml");
+			System.out.println("ok2");
+		}
+		System.out.println("no");
 	}
 }

@@ -8,6 +8,12 @@ import org.client.vo.UserLevelVO;
 import org.client.vo.UserVO;
 import org.common.utility.ResultMessage;
 
+/**
+ * userbl模块的controller
+ * @author gyue
+ * @version 2016/11/27 gyue
+ *
+ */
 public class UserController implements Userblservice {
 	
 	private static UserController controller;
@@ -59,15 +65,11 @@ public class UserController implements Userblservice {
 		return UserUtil.getInstance().findCreditRecord(ID);
 	}
 
-	@Override
 	public UserLevelVO getLevel(String userName) {
-		// TODO Auto-generated method stub
-		return null;
+		return UserUtil.getInstance().getLevel(userName);
 	}
 
-	@Override
 	public String getNewID() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	

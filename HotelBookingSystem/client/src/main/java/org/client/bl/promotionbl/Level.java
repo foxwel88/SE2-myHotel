@@ -9,6 +9,11 @@ import org.common.dataservice.PromotionDataService.PromotionDataService;
 import org.common.po.LevelPO;
 import org.common.utility.ResultMessage;
 
+/**
+ * 实现了和等级制度相关的逻辑
+ * @author fraliphsoft
+ * @version fraliphsoft 11/27
+ */
 public class Level {
 	private int levelNum;
 	

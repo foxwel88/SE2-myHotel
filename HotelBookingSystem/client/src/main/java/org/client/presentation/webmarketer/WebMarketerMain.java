@@ -9,6 +9,8 @@ import javafx.fxml.FXML;
  * 
  * FXML Controller
  * 网站营销人员-主界面
+ * @author gyue
+ * @version 2016/11/27
  *
  */
 public class WebMarketerMain {

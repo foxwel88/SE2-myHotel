@@ -6,6 +6,12 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
+/**
+ * 
+ * 客户-主界面
+ * @author fraliphsoft
+ * @version fraliphsoft 11/27
+ */
 public class CustomerController_Main {
 	@FXML
 	GridPane gridpane;

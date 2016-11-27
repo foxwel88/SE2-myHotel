@@ -1,6 +1,7 @@
 package org.client.bl.orderbl;
 
 import java.rmi.RemoteException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import org.client.bl.hotelbl.HotelController;
@@ -18,6 +19,16 @@ import org.common.utility.CreditOperation;
 import org.common.utility.OrderType;
 import org.common.utility.ResultMessage;
 import org.common.utility.RoomType;
+import org.common.utility.TimeService;
+
+
+/**
+ * 
+ * bl层order模块的工具类
+ * @author Foxwel
+ * @version 2016/11/27 Foxwel
+ * 
+ */
 
 public class OrderUtil {
 	
@@ -25,14 +36,18 @@ public class OrderUtil {
 	
 	private OrderDataService dao;
 	
+	private TimeService timedao;
+	
 	protected Userblservice userController;
 	
 	protected Hotelblservice hotelController;
+	
 	
 	private OrderUtil() {
 		dao = RMIHelper.getInstance().getOrderDataServiceImpl();
 		userController = UserController.getInstance();
 		hotelController = HotelController.getInstance();
+		timedao = RMIHelper.getInstance().getTimeServiceImpl();
 	}
 	
 	public static OrderUtil getInstance() {
@@ -48,6 +63,17 @@ public class OrderUtil {
 	
 	public void setHotelblservice(Hotelblservice hotelController) {
 		this.hotelController = hotelController;
+	}
+	
+	private String getOrderID(String userID) {
+		SimpleDateFormat timeFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+		try {
+			return userID + timeFormat.format(timedao.getDate());
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 	private boolean check(OrderVO vo) {
@@ -93,12 +119,8 @@ public class OrderUtil {
 		
 		HotelVO hotelvo = hotelController.getHotelVO(vo.hotelAddress);
 		
-		List<String> roomtype = hotelvo.roomType;
-		
-		List<Integer> roomnum = hotelvo.roomNum;
-		
 		if (hotelvo.roomType != null) {
-		
+			/*
 			for (int i = 0; i < roomtype.size(); ++i) {
 				if (roomtype.get(i) == vo.roomType) {
 					if (roomnum.get(i) < vo.roomNum) {
@@ -110,8 +132,25 @@ public class OrderUtil {
 					
 				}
 			}
+			*/
+			ResultMessage message = hotelController.decreaseAvailableRoom(RoomType.getType(vo.roomType), vo.hotelAddress);
+			if (message != ResultMessage.SUCCESS) {
+				return message;
+			}
+		} else {
+			return ResultMessage.WRONG_FORMAT;
 		}
+		
 		myorder.setOrder(vo);
+		try {
+			myorder.generatedDate = timedao.getDate();
+		} catch (RemoteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+			return ResultMessage.CONNECTION_FAIL;
+		}
+		myorder.orderID = getOrderID(myorder.userID);
+		
 		OrderPO po = myorder.getOrderPO();
 		try {
 			return dao.add(po);
@@ -205,7 +244,12 @@ public class OrderUtil {
 		}
 		
 		myorder.type = OrderType.CANCELED;
-		myorder.cancelTime = null;
+		try {
+			myorder.cancelTime = timedao.getDate();
+		} catch (RemoteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 		orderpo = myorder.getOrderPO();
 		try {
@@ -226,21 +270,30 @@ public class OrderUtil {
 		}
 		
 		Order myorder = new Order();
+		
 		OrderPO orderpo = null;
+		
 		try {
 			orderpo = dao.getOrderPO(orderID);
-			myorder.setOrder(orderpo);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			return ResultMessage.CONNECTION_FAIL;
 		}
 		
+		myorder.setOrder(orderpo);
 		
 		if ((myorder.type != OrderType.UNEXECUTED) && (myorder.type != OrderType.ABNORMAL)) {
 			return ResultMessage.NOT_EXIST;
 		}
 		
 		myorder.type = OrderType.EXECUTED;
+		try {
+			myorder.actFrom = timedao.getDate();
+		} catch (RemoteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+			return ResultMessage.CONNECTION_FAIL;
+		}
 		
 		orderpo = myorder.getOrderPO();
 		try {
@@ -250,10 +303,15 @@ public class OrderUtil {
 			e.printStackTrace();
 			return ResultMessage.CONNECTION_FAIL;
 		}
-		
 
 		UserVO uservo = userController.findbyID(myorder.userID);
-		CreditRecordVO creditrecordvo = new CreditRecordVO(null, myorder.orderID, uservo.ID, myorder.totalPrice, uservo.credit + (myorder.totalPrice), CreditOperation.FINISHORDER.toString());
+		CreditRecordVO creditrecordvo = null;
+		try {
+			creditrecordvo = new CreditRecordVO(timedao.getDate(), myorder.orderID, uservo.ID, myorder.totalPrice, uservo.credit + (myorder.totalPrice), CreditOperation.FINISHORDER.toString());
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		userController.addCreditRecord(creditrecordvo);
 
 		return ResultMessage.SUCCESS;
@@ -269,11 +327,12 @@ public class OrderUtil {
 		OrderPO orderpo = null;
 		try {
 			orderpo = dao.getOrderPO(orderID);
-			myorder.setOrder(orderpo);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			return ResultMessage.CONNECTION_FAIL;
 		}
+		
+		myorder.setOrder(orderpo);
 		
 		if (myorder.type != OrderType.ABNORMAL) {
 			return ResultMessage.NOT_EXIST;
@@ -298,7 +357,14 @@ public class OrderUtil {
 			temp = temp / 2.0;
 		}
 		
-		CreditRecordVO creditrecordvo = new CreditRecordVO(null, myorder.orderID, uservo.ID, temp, uservo.credit + temp, CreditOperation.EXCEPTIONORDER.toString());
+		CreditRecordVO creditrecordvo;
+		try {
+			creditrecordvo = new CreditRecordVO(timedao.getDate(), myorder.orderID, uservo.ID, temp, uservo.credit + temp, CreditOperation.EXCEPTIONORDER.toString());
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return ResultMessage.CONNECTION_FAIL;
+		}
 		userController.addCreditRecord(creditrecordvo);
 
 		return ResultMessage.SUCCESS;
@@ -315,5 +381,30 @@ public class OrderUtil {
 			return null;
 		}
 	}
-
+	
+	public ResultMessage checkOut(String ID) {
+		OrderPO po = null;
+		try {
+			po = dao.getOrderPO(ID);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Order myorder = new Order();
+		myorder.setOrder(po);
+		if (myorder.type == OrderType.EXECUTED) {
+			try {
+				myorder.actTo = timedao.getDate();
+				dao.modify(myorder.getOrderPO());
+			} catch (RemoteException e) {
+				// TODO Auto-generated catch block
+				return ResultMessage.CONNECTION_FAIL;
+			}
+		
+			hotelController.increaseAvailableRoom(myorder.roomType, myorder.hotelAddress);
+			return ResultMessage.SUCCESS;
+		} else {
+			return ResultMessage.WRONG_ORDER_TYPE;
+		}
+	}
 }

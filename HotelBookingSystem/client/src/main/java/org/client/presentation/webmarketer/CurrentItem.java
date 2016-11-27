@@ -4,6 +4,11 @@ import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.AnchorPane;
 
+/**
+ * 导航栏中当前选择的项，用于修改跳转时的视觉变化
+ * @author gyue
+ * @version 2016/11/27 gyue
+ */
 public class CurrentItem {
 	
 	public Label label;
@@ -28,6 +33,9 @@ public class CurrentItem {
 		return current = new CurrentItem(l, p, t);
 	}
 	
+	/**
+	 * 将没有被选择的项暗掉
+	 */
 	public void deActive() {
 		label.setStyle("-fx-text-fill: white");
 		pane.setEffect(null);
@@ -50,6 +58,9 @@ public class CurrentItem {
 		}		
 	}
 	
+	/**
+	 * 将被选择的项高亮显示
+	 */
 	public void active() {
 		label.setStyle("-fx-text-fill: black");
 		pane.setStyle("-fx-background-color: rgba(255,255,255,0.4)");

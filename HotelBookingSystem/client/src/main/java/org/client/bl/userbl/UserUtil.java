@@ -3,14 +3,24 @@ package org.client.bl.userbl;
 import java.rmi.RemoteException;
 import java.util.List;
 
+import org.client.bl.promotionbl.PromotionController;
+import org.client.blservice.promotionblservice.Promotionblservice;
 import org.client.rmi.RMIHelper;
 import org.client.vo.CreditRecordVO;
+import org.client.vo.LevelVO;
+import org.client.vo.UserLevelVO;
 import org.client.vo.UserVO;
 import org.common.dataservice.UserDataService.UserDataService;
 import org.common.po.CreditRecordPO;
 import org.common.po.UserPO;
 import org.common.utility.ResultMessage;
 
+/**
+ * userbl模块的工具类
+ * @author gyue
+ * @version 2016/11/12 gyue
+ *
+ */
 public class UserUtil {
 	
 	private static UserUtil userUtil;
@@ -69,7 +79,7 @@ public class UserUtil {
 			e.printStackTrace();
 		}
 		if (po == null) {
-			return null;
+			return new UserVO(ResultMessage.NOT_EXIST);
 		}
 		user = user.initbyPO(po);
 		return user.getUserVO();
@@ -153,6 +163,22 @@ public class UserUtil {
 			e.printStackTrace();
 		}
 		return message;
+	}
+	
+	public UserLevelVO getLevel(String userName) {
+		UserVO userVO = findbyUserName(userName);
+		if (userVO.resultMessage != ResultMessage.SUCCESS) {
+			return new UserLevelVO(ResultMessage.NOT_EXIST);
+		}
+		
+		Promotionblservice promotionbl = PromotionController.getInstance();
+		LevelVO levelVO = promotionbl.showLevel();
+		int level = 0;
+		double credit = userVO.credit;
+		while (credit >= levelVO.credits.get(level)) {
+			level++;
+		}
+		return new UserLevelVO(credit, level);
 	}
 	
 	private boolean checkPasswordFormat(String password) {

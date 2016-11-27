@@ -24,9 +24,10 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 /**
- * 
- * 网站营销人员-浏览异常订单
- *
+ * FXML Controller
+ * 网站营销人员-浏览异常订单界面
+ * @author gyue
+ * @version 2016/11/27 gyue
  */
 public class WebMarketerAbnormalOrderList {
 	/**

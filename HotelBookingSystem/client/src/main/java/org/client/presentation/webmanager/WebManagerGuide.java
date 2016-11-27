@@ -10,6 +10,15 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
+
+/**
+ * 
+ * 网站管理人员的界面及其导航
+ * @author Foxwel
+ * @version 2016/11/27 Foxwel
+ * 
+ */
+
 public class WebManagerGuide {
 	
 	@FXML

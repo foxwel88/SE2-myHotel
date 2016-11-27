@@ -17,6 +17,8 @@ import javafx.scene.input.MouseEvent;
 /**
  * 
  * 网站工作人员-浏览酒店工作人员信息
+ * @author Foxwel
+ * @version 2016/11/27 Foxwel
  *
  */
 public class WebManagerCheckHotelManager {

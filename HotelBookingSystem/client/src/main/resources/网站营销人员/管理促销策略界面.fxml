@@ -119,7 +119,7 @@
                               <Font name="Microsoft YaHei" size="18.0" />
                            </font>
                         </Text>
-                        <Text layoutX="398.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7.5" textAlignment="CENTER" wrappingWidth="120.00000953674316" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="9.0">
+                        <Text layoutX="400.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7.5" textAlignment="CENTER" wrappingWidth="120.00000953674316" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="9.0">
                            <font>
                               <Font name="Microsoft YaHei" size="18.0" />
                            </font>

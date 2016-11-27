@@ -15,6 +15,8 @@ import javafx.scene.text.Text;
  * 
  * FXML Controller
  * 网站营销人员-信用充值界面
+ * @author gyue
+ * @version 2016/11/27 gyue
  *
  */
 public class WebMarketerModifyCredit {

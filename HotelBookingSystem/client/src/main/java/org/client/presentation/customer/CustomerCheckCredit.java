@@ -18,7 +18,8 @@ import javafx.scene.layout.HBox;
 /**
  * 
  * 客户-查看信用记录
- *
+ * @author fraliphsoft
+ * @version fraliphsoft 11/27
  */
 
 public class CustomerCheckCredit {

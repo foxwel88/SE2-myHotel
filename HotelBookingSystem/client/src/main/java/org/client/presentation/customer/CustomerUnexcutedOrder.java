@@ -11,7 +11,8 @@ import javafx.scene.layout.GridPane;
 /**
  * 
  * 客户-未执行订单详细信息
- *
+ * @author fraliphsoft
+ * @version fraliphsoft 11/27
  */
 public class CustomerUnexcutedOrder {
 	@FXML
