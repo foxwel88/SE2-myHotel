@@ -1,6 +1,7 @@
 package org.client.bl.orderbl;
 
 import java.rmi.RemoteException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import org.client.bl.hotelbl.HotelController;
@@ -62,6 +63,17 @@ public class OrderUtil {
 	
 	public void setHotelblservice(Hotelblservice hotelController) {
 		this.hotelController = hotelController;
+	}
+	
+	private String getOrderID(String userID) {
+		SimpleDateFormat timeFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+		try {
+			return userID + timeFormat.format(timedao.getDate());
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 	private boolean check(OrderVO vo) {
@@ -130,6 +142,15 @@ public class OrderUtil {
 		}
 		
 		myorder.setOrder(vo);
+		try {
+			myorder.generatedDate = timedao.getDate();
+		} catch (RemoteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+			return ResultMessage.CONNECTION_FAIL;
+		}
+		myorder.orderID = getOrderID(myorder.userID);
+		
 		OrderPO po = myorder.getOrderPO();
 		try {
 			return dao.add(po);
@@ -223,7 +244,12 @@ public class OrderUtil {
 		}
 		
 		myorder.type = OrderType.CANCELED;
-		myorder.cancelTime = null;
+		try {
+			myorder.cancelTime = timedao.getDate();
+		} catch (RemoteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 		orderpo = myorder.getOrderPO();
 		try {

@@ -1,6 +1,5 @@
 package org.server.datastub;
 
-import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 public class DataStubFactory {

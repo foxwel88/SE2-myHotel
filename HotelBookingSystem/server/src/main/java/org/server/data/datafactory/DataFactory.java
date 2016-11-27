@@ -2,7 +2,6 @@ package org.server.data.datafactory;
 
 import java.rmi.RemoteException;
 
-import org.common.utility.TimeService;
 import org.server.data.CommentData.CommentDataServiceImpl;
 import org.server.data.HotelData.HotelDataServiceImpl;
 import org.server.data.OrderData.OrderDataServiceImpl;
