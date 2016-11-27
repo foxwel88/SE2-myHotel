@@ -80,5 +80,11 @@ public class OrderController implements Orderblservice {
 		return orderutil.getHistoryHotels(userId);
 	}
 
+	@Override
+	public ResultMessage checkOut(String ID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 }
