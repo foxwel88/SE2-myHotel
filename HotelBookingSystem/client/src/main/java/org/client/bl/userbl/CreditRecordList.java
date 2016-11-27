@@ -9,6 +9,11 @@ import org.client.vo.CreditRecordVO;
 import org.common.dataservice.UserDataService.UserDataService;
 import org.common.po.CreditRecordPO;
 
+/**
+ * 信用记录的list
+ * @author gyue
+ * @version 2016/11/27 gyue
+ */
 public class CreditRecordList {
 
 	private ArrayList<CreditRecord> list;

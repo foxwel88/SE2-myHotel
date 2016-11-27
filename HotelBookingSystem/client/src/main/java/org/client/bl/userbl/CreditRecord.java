@@ -5,6 +5,11 @@ import org.client.vo.CreditRecordVO;
 import org.common.po.CreditRecordPO;
 import org.common.utility.CreditOperation;
 
+/**
+ * 信用记录领域类
+ * @author gyue
+ * @version 2016/11/27 gyue
+ */
 public class CreditRecord {
 	
 	public Date date;
