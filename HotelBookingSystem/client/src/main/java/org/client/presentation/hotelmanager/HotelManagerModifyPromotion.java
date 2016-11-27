@@ -19,16 +19,19 @@ import java.util.ResourceBundle;
 import org.client.vo.PromotionVO;
 import org.common.utility.ResultMessage;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Font;
+import javafx.util.Callback;
 
 public class HotelManagerModifyPromotion {
 
@@ -71,6 +74,13 @@ public class HotelManagerModifyPromotion {
 		if (!modifyMode) {
 			vo = new PromotionVO();
 		}
+		//界面先自己检查
+		if (!isFormatCorrect()) {
+			resultLabel.setText("输入信息格式有误");
+			return;
+		} 
+		
+		//赋值
 		vo.discount = Double.parseDouble(discountLabel.getText());
 		vo.name = nameLabel.getText();
 		
@@ -127,6 +137,22 @@ public class HotelManagerModifyPromotion {
 		ObservableList<String> typeList = FXCollections.observableArrayList((new ArrayList<String>(Arrays.asList(new String[]{"生日促销","企业促销","三间以上促销","特定日期促销"}))));
 		typeBox.setItems(typeList);
 
+		//起始时间必须先于结束时间
+		
+		startTimePicker.setValue(LocalDate.now());
+		Callback<DatePicker, DateCell> endDayCellFactory = dp -> new DateCell() {
+			@Override
+			public void updateItem(LocalDate item, boolean empty) {
+				super.updateItem(item, empty);
+
+				if (item.isBefore(startTimePicker.getValue()) || item.isEqual(startTimePicker.getValue())) {
+					setStyle("-fx-background-color: #ffc0cb;");
+					Platform.runLater(() -> setDisable(true));
+				}
+			}
+		};
+		
+		endTimePicker.setDayCellFactory(endDayCellFactory);
 	}
 	
 	void setPromotionVO(PromotionVO vo) {
@@ -146,6 +172,20 @@ public class HotelManagerModifyPromotion {
 		typeBox.setStyle("-fx-text-fill: white");
 		
 		modifyMode = true;
+	}
+	
+	boolean isFormatCorrect() {
+		//time order
+		if (startTimePicker.getValue().isAfter(endTimePicker.getValue()) || startTimePicker.getValue().isEqual(endTimePicker.getValue())) {
+			return false;
+		}
+		
+		//discount range
+		if (Double.parseDouble(discountLabel.getText()) <= 0 || Double.parseDouble(discountLabel.getText()) >= 10) {
+			return false;
+		}
+		
+		return true;
 	}
 }
 
