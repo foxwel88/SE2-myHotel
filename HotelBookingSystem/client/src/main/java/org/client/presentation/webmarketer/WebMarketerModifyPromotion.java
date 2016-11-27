@@ -134,9 +134,6 @@ public class WebMarketerModifyPromotion {
 		discountLabel.setText(String.valueOf(vo.discount));
 		discountLabel.setFont(Font.font("Microsoft YaHei", 15));
 		
-		if (fromDateLabel == null) {
-			System.out.println("find!");
-		}
 		fromDateLabel.setText(dateFormat.format(vo.startTime));
 		fromDateLabel.setFont(Font.font("Microsoft YaHei", 15));
 		

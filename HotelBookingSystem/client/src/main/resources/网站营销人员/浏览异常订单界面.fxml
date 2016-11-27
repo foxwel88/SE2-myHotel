@@ -138,12 +138,12 @@
             <Font name="Microsoft YaHei" size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="jumpField" layoutX="537.0" layoutY="524.0" onAction="#jumpPage" prefHeight="20.0" prefWidth="30.0" style="-fx-background-color: rgba(0,0,0,0.1);">
+      <TextField fx:id="jumpField" layoutX="538.0" layoutY="524.0" onAction="#jumpPage" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: rgba(0,0,0,0.1);">
          <font>
             <Font name="Microsoft YaHei" size="15.0" />
          </font>
       </TextField>
-      <Label layoutX="576.0" layoutY="529.0" text="页">
+      <Label layoutX="594.0" layoutY="529.0" text="页">
          <font>
             <Font name="Microsoft YaHei" size="15.0" />
          </font>

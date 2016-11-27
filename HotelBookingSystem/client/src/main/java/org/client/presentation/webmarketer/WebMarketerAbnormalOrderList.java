@@ -37,7 +37,7 @@ public class WebMarketerAbnormalOrderList {
 	/**
 	 * 每个页面上的促销策略数量
 	 */
-	private static final int NUM_OF_PROMOTION_PER_PAGE = 5;
+	private static final int NUM_OF_ORDER_PER_PAGE = 5;
 
 	@FXML
     private ResourceBundle resources;
@@ -105,7 +105,12 @@ public class WebMarketerAbnormalOrderList {
 
 	@FXML
     void jumpPage(ActionEvent event) {
-		int toPageNum = Integer.parseInt(jumpField.getText().trim());
+		int toPageNum = pageNum;
+		try {
+			toPageNum = Integer.parseInt(jumpField.getText().trim());
+		} catch (RuntimeException e) {
+			switchCurrentPage(pageNum);
+		}
 		if (toPageNum >= FIRST_PAGE_NUM) {					
 			switchCurrentPage(toPageNum);
 		}
@@ -142,14 +147,16 @@ public class WebMarketerAbnormalOrderList {
 		// 修改currentNamePanes和currentDetailPanes
 		currentOrderPanes = new ArrayList<>();
 		// 当前页面要显示的第一个促销策略在list中的位置
-		int fromNum = (toPageNum - 1) * NUM_OF_PROMOTION_PER_PAGE;
+		int fromNum = (toPageNum - 1) * NUM_OF_ORDER_PER_PAGE;
 		// 当前页面要显示的最后一个促销策略在list中的位置
-		int toNum = (toPageNum - 1) * NUM_OF_PROMOTION_PER_PAGE + Math.min(NUM_OF_PROMOTION_PER_PAGE,
-				orderList.size() - NUM_OF_PROMOTION_PER_PAGE * (toPageNum - 1));
+		int toNum = (toPageNum - 1) * NUM_OF_ORDER_PER_PAGE + Math.min(NUM_OF_ORDER_PER_PAGE,
+				orderList.size() - NUM_OF_ORDER_PER_PAGE * (toPageNum - 1));
 		// 当前页面显示的促销策略总数
 		int promotionNums = toNum - fromNum;
+		// 促销策略可能的最大页数
+		int maxPageNum = (orderList.size() + NUM_OF_ORDER_PER_PAGE - 1) / NUM_OF_ORDER_PER_PAGE;
 		if ((promotionNums <= 0) && (toPageNum > FIRST_PAGE_NUM)) { // 当前页面显示促销策略数量不小于0
-			pageNumLabel.setText(String.valueOf(pageNum));
+			switchCurrentPage(maxPageNum);
 			return;
 		}
 		for (int i = fromNum; i < toNum; i++) {
@@ -166,6 +173,7 @@ public class WebMarketerAbnormalOrderList {
 		// 修改pageNum
 		pageNum = toPageNum;
 		pageNumLabel.setText(String.valueOf(pageNum));
+		jumpField.setText("");
 	}
 	
 	/**
