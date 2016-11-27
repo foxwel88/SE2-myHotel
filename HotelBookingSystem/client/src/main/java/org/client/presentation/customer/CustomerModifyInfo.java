@@ -44,7 +44,7 @@ public class CustomerModifyInfo {
 	
 	@FXML
 	void initialize() {
-		UserVO vo = SwitchSceneUtil.getVO();
+		UserVO vo = SwitchSceneUtil.getUserVO();
 		name.setText(vo.name);
 		phoneNumber.setText(vo.phoneNumber);
 		company.setText(vo.companyName);

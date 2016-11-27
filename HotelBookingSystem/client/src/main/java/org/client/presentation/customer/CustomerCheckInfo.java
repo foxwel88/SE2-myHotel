@@ -40,7 +40,7 @@ public class CustomerCheckInfo {
 	
 	@FXML
 	void initialize() {
-		UserVO vo = SwitchSceneUtil.getVO();
+		UserVO vo = SwitchSceneUtil.getUserVO();
 		account.setText(vo.userName);
 		name.setText(vo.name);
 		accountType.setText(vo.type);

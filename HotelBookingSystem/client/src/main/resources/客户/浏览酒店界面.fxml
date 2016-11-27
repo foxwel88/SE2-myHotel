@@ -11,11 +11,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="567.0" prefWidth="920.0" style="-fx-background-color: rgba(255,255,255,0.4);" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="root" prefHeight="567.0" prefWidth="920.0" style="-fx-background-color: rgba(255,255,255,0.4);" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.presentation.customer.CustomerCheckHotelList">
    <effect>
       <DropShadow />
    </effect>
@@ -60,7 +61,7 @@
             </Label>
             <TextField fx:id="roomNum" layoutX="759.0" layoutY="99.0" prefHeight="23.0" prefWidth="150.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.leftAnchor="759.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="99.0" />
             <Separator layoutY="50.0" prefHeight="0.0" prefWidth="808.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-            <Button layoutX="802.0" layoutY="16.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="70.0" style="-fx-background-color: rgba(0,0,0,0.4);" text="搜索" textFill="WHITE" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="16.0">
+            <Button fx:id="searchButton" layoutX="802.0" layoutY="16.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="70.0" style="-fx-background-color: rgba(0,0,0,0.4);" text="搜索" textFill="WHITE" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="16.0">
                <font>
                   <Font name="Microsoft JhengHei" size="15.0" />
                </font>
@@ -121,14 +122,14 @@
             <RowConstraints maxHeight="123.0" minHeight="10.0" percentHeight="100.0" prefHeight="60.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <VBox prefHeight="200.0" prefWidth="133.0">
+            <VBox fx:id="pictureBox" prefHeight="200.0" prefWidth="133.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="120.0" style="-fx-border-style: solid;">
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="114.0" style="-fx-border-style: solid;">
                      <VBox.margin>
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="73.0" prefWidth="139.0" style="-fx-border-style: solid;" text="picture">
+                  <Label alignment="CENTER" prefHeight="73.0" prefWidth="114.0" style="-fx-border-style: solid;" text="picture">
                      <font>
                         <Font name="Microsoft JhengHei" size="16.0" />
                      </font>
@@ -136,7 +137,7 @@
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
                   </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="34.0" prefHeight="73.0" prefWidth="139.0" style="-fx-border-style: solid;" text="picture">
+                  <Label alignment="CENTER" layoutX="10.0" layoutY="34.0" prefHeight="73.0" prefWidth="114.0" style="-fx-border-style: solid;" text="picture">
                      <font>
                         <Font name="Microsoft JhengHei" size="16.0" />
                      </font>
@@ -144,7 +145,7 @@
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
                   </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="106.0" prefHeight="73.0" prefWidth="139.0" style="-fx-border-style: solid;" text="picture">
+                  <Label alignment="CENTER" layoutX="10.0" layoutY="106.0" prefHeight="73.0" prefWidth="114.0" style="-fx-border-style: solid;" text="picture">
                      <font>
                         <Font name="Microsoft JhengHei" size="16.0" />
                      </font>
@@ -152,7 +153,7 @@
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
                   </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="179.0" prefHeight="73.0" prefWidth="139.0" style="-fx-border-style: solid;" text="picture">
+                  <Label alignment="CENTER" layoutX="10.0" layoutY="179.0" prefHeight="73.0" prefWidth="114.0" style="-fx-border-style: solid;" text="picture">
                      <font>
                         <Font name="Microsoft JhengHei" size="16.0" />
                      </font>
@@ -160,7 +161,7 @@
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
                   </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="252.0" prefHeight="73.0" prefWidth="139.0" style="-fx-border-style: solid;" text="picture">
+                  <Label alignment="CENTER" layoutX="10.0" layoutY="252.0" prefHeight="73.0" prefWidth="114.0" style="-fx-border-style: solid;" text="picture">
                      <font>
                         <Font name="Microsoft JhengHei" size="16.0" />
                      </font>
@@ -170,9 +171,9 @@
                   </Label>
                </children>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
+            <VBox fx:id="hotelNameBox" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
                <children>
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="186.0" style="-fx-border-style: solid;" text="酒店名称">
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="137.0" style="-fx-border-style: solid;" text="酒店名称">
                      <VBox.margin>
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
@@ -180,51 +181,71 @@
                         <Font name="Microsoft JhengHei" size="16.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="73.0" prefWidth="174.0" style="-fx-border-style: solid;" text="杜厦大酒店" textFill="#00fff6" underline="true">
+                  <Pane prefHeight="73.0" prefWidth="137.0" style="-fx-border-style: solid;">
                      <VBox.margin>
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
-                     <font>
-                        <Font name="Microsoft JhengHei" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="34.0" prefHeight="73.0" prefWidth="174.0" style="-fx-border-style: solid;" text="杜厦小酒店" textFill="#00fff6" underline="true">
-                     <font>
-                        <Font name="Microsoft JhengHei" size="16.0" />
-                     </font>
+                     <children>
+                        <Label layoutX="29.0" layoutY="26.0" onMouseClicked="#checkDetailedHotel" text="杜厦大酒店" textFill="#00fff6" underline="true">
+                           <font>
+                              <Font name="Microsoft YaHei" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="73.0" prefWidth="137.0" style="-fx-border-style: solid;">
                      <VBox.margin>
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="106.0" prefHeight="73.0" prefWidth="174.0" style="-fx-border-style: solid;" text="杜厦中酒店" textFill="#00fff6" underline="true">
-                     <font>
-                        <Font name="Microsoft JhengHei" size="16.0" />
-                     </font>
+                     <children>
+                        <Label layoutX="29.0" layoutY="26.0" onMouseClicked="#checkDetailedHotel" text="杜厦大酒店" textFill="#00fff6" underline="true">
+                           <font>
+                              <Font name="Microsoft YaHei" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="73.0" prefWidth="137.0" style="-fx-border-style: solid;">
                      <VBox.margin>
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="179.0" prefHeight="73.0" prefWidth="174.0" style="-fx-border-style: solid;" text="杜厦酒店" textFill="#00fff6" underline="true">
-                     <font>
-                        <Font name="Microsoft JhengHei" size="16.0" />
-                     </font>
+                     <children>
+                        <Label layoutX="29.0" layoutY="26.0" onMouseClicked="#checkDetailedHotel" text="杜厦大酒店" textFill="#00fff6" underline="true">
+                           <font>
+                              <Font name="Microsoft YaHei" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="73.0" prefWidth="137.0" style="-fx-border-style: solid;">
                      <VBox.margin>
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="252.0" prefHeight="73.0" prefWidth="174.0" style="-fx-border-style: solid;" text="杜厦大大酒店" textFill="#00fff6" underline="true">
-                     <font>
-                        <Font name="Microsoft JhengHei" size="16.0" />
-                     </font>
+                     <children>
+                        <Label layoutX="29.0" layoutY="26.0" onMouseClicked="#checkDetailedHotel" text="杜厦大酒店" textFill="#00fff6" underline="true">
+                           <font>
+                              <Font name="Microsoft YaHei" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="73.0" prefWidth="137.0" style="-fx-border-style: solid;">
                      <VBox.margin>
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
-                  </Label>
+                     <children>
+                        <Label layoutX="29.0" layoutY="26.0" onMouseClicked="#checkDetailedHotel" text="杜厦大酒店" textFill="#00fff6" underline="true">
+                           <font>
+                              <Font name="Microsoft YaHei" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
                </children>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2">
+            <VBox fx:id="starAndScoreBox" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2">
                <children>
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="200.0" style="-fx-border-style: solid;" text="星级/评分">
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="95.0" style="-fx-border-style: solid;" text="星级/评分">
                      <VBox.margin>
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
@@ -232,7 +253,7 @@
                         <Font name="Microsoft JhengHei" size="16.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="37.0" prefWidth="100.0" style="-fx-border-style: solid;" text="*****">
+                  <Label alignment="CENTER" prefHeight="37.0" prefWidth="95.0" style="-fx-border-style: solid;" text="*****">
                      <VBox.margin>
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
@@ -240,7 +261,7 @@
                         <Font name="Microsoft JhengHei" size="12.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="46.0" prefHeight="37.0" prefWidth="100.0" style="-fx-border-style: solid;" text="9.8">
+                  <Label alignment="CENTER" layoutX="10.0" layoutY="46.0" prefHeight="37.0" prefWidth="95.0" style="-fx-border-style: solid;" text="9.8">
                      <VBox.margin>
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
@@ -248,7 +269,7 @@
                         <Font name="Microsoft JhengHei" size="16.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="34.0" prefHeight="37.0" prefWidth="100.0" style="-fx-border-style: solid;" text="*****">
+                  <Label alignment="CENTER" layoutX="10.0" layoutY="34.0" prefHeight="37.0" prefWidth="95.0" style="-fx-border-style: solid;" text="*****">
                      <font>
                         <Font name="Microsoft JhengHei" size="12.0" />
                      </font>
@@ -256,7 +277,7 @@
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
                   </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="70.0" prefHeight="37.0" prefWidth="100.0" style="-fx-border-style: solid;" text="9.8">
+                  <Label alignment="CENTER" layoutX="10.0" layoutY="70.0" prefHeight="37.0" prefWidth="95.0" style="-fx-border-style: solid;" text="9.8">
                      <font>
                         <Font name="Microsoft JhengHei" size="16.0" />
                      </font>
@@ -264,7 +285,7 @@
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
                   </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="106.0" prefHeight="37.0" prefWidth="100.0" style="-fx-border-style: solid;" text="*****">
+                  <Label alignment="CENTER" layoutX="10.0" layoutY="106.0" prefHeight="37.0" prefWidth="95.0" style="-fx-border-style: solid;" text="*****">
                      <font>
                         <Font name="Microsoft JhengHei" size="12.0" />
                      </font>
@@ -272,7 +293,7 @@
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
                   </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="143.0" prefHeight="37.0" prefWidth="100.0" style="-fx-border-style: solid;" text="9.8">
+                  <Label alignment="CENTER" layoutX="10.0" layoutY="143.0" prefHeight="37.0" prefWidth="95.0" style="-fx-border-style: solid;" text="9.8">
                      <font>
                         <Font name="Microsoft JhengHei" size="16.0" />
                      </font>
@@ -280,7 +301,7 @@
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
                   </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="180.0" prefHeight="37.0" prefWidth="100.0" style="-fx-border-style: solid;" text="*****">
+                  <Label alignment="CENTER" layoutX="10.0" layoutY="180.0" prefHeight="37.0" prefWidth="95.0" style="-fx-border-style: solid;" text="*****">
                      <font>
                         <Font name="Microsoft JhengHei" size="12.0" />
                      </font>
@@ -288,7 +309,7 @@
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
                   </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="217.0" prefHeight="37.0" prefWidth="100.0" style="-fx-border-style: solid;" text="9.8">
+                  <Label alignment="CENTER" layoutX="10.0" layoutY="217.0" prefHeight="37.0" prefWidth="95.0" style="-fx-border-style: solid;" text="9.8">
                      <font>
                         <Font name="Microsoft JhengHei" size="16.0" />
                      </font>
@@ -296,7 +317,7 @@
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
                   </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="254.0" prefHeight="37.0" prefWidth="100.0" style="-fx-border-style: solid;" text="*****">
+                  <Label alignment="CENTER" layoutX="10.0" layoutY="254.0" prefHeight="37.0" prefWidth="95.0" style="-fx-border-style: solid;" text="*****">
                      <font>
                         <Font name="Microsoft JhengHei" size="12.0" />
                      </font>
@@ -304,7 +325,7 @@
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
                   </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="291.0" prefHeight="37.0" prefWidth="100.0" style="-fx-border-style: solid;" text="9.8">
+                  <Label alignment="CENTER" layoutX="10.0" layoutY="291.0" prefHeight="37.0" prefWidth="95.0" style="-fx-border-style: solid;" text="9.8">
                      <font>
                         <Font name="Microsoft JhengHei" size="16.0" />
                      </font>
@@ -314,9 +335,9 @@
                   </Label>
                </children>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="4">
+            <VBox fx:id="hotelAddressBox" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="3">
                <children>
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="200.0" style="-fx-border-style: solid;" text="价格">
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="175.0" style="-fx-border-style: solid;" text="地址">
                      <VBox.margin>
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
@@ -324,7 +345,7 @@
                         <Font name="Microsoft JhengHei" size="16.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="73.0" prefWidth="175.0" style="-fx-border-style: solid;" text="¥328.0起">
+                  <Label alignment="CENTER" prefHeight="73.0" prefWidth="175.0" style="-fx-border-style: solid;" text="XX圈南京市仙林大道163号南京大学仙林校区" wrapText="true">
                      <VBox.margin>
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
@@ -332,7 +353,7 @@
                         <Font name="Microsoft JhengHei" size="16.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="34.0" prefHeight="73.0" prefWidth="175.0" style="-fx-border-style: solid;" text="¥328.0起">
+                  <Label alignment="CENTER" layoutX="10.0" layoutY="34.0" prefHeight="73.0" prefWidth="175.0" style="-fx-border-style: solid;" text="XX圈南京市仙林大道163号南京大学仙林校区" wrapText="true">
                      <font>
                         <Font name="Microsoft JhengHei" size="16.0" />
                      </font>
@@ -340,7 +361,7 @@
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
                   </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="106.0" prefHeight="73.0" prefWidth="175.0" style="-fx-border-style: solid;" text="¥328.0起">
+                  <Label alignment="CENTER" layoutX="10.0" layoutY="106.0" prefHeight="73.0" prefWidth="175.0" style="-fx-border-style: solid;" text="XX圈南京市仙林大道163号南京大学仙林校区" wrapText="true">
                      <font>
                         <Font name="Microsoft JhengHei" size="16.0" />
                      </font>
@@ -348,7 +369,7 @@
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
                   </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="179.0" prefHeight="73.0" prefWidth="175.0" style="-fx-border-style: solid;" text="¥328.0起">
+                  <Label alignment="CENTER" layoutX="10.0" layoutY="179.0" prefHeight="73.0" prefWidth="175.0" style="-fx-border-style: solid;" text="XX圈南京市仙林大道163号南京大学仙林校区" wrapText="true">
                      <font>
                         <Font name="Microsoft JhengHei" size="16.0" />
                      </font>
@@ -356,7 +377,7 @@
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
                   </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="252.0" prefHeight="73.0" prefWidth="175.0" style="-fx-border-style: solid;" text="¥328.0起">
+                  <Label alignment="CENTER" layoutX="10.0" layoutY="252.0" prefHeight="73.0" prefWidth="175.0" style="-fx-border-style: solid;" text="XX圈南京市仙林大道163号南京大学仙林校区" wrapText="true">
                      <font>
                         <Font name="Microsoft JhengHei" size="16.0" />
                      </font>
@@ -366,14 +387,9 @@
                   </Label>
                </children>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="6">
+            <VBox fx:id="priceBox" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="4">
                <children>
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="183.0" style="-fx-border-style: solid;">
-                     <VBox.margin>
-                        <Insets bottom="-1.0" right="-1.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label alignment="CENTER" prefHeight="73.0" prefWidth="219.0" style="-fx-border-style: solid;" text="预定此酒店" textFill="#00fff6" underline="true">
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="109.0" style="-fx-border-style: solid;" text="价格">
                      <VBox.margin>
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
@@ -381,7 +397,15 @@
                         <Font name="Microsoft JhengHei" size="16.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="34.0" prefHeight="73.0" prefWidth="219.0" style="-fx-border-style: solid;" text="预定此酒店" textFill="#00fff6" underline="true">
+                  <Label alignment="CENTER" prefHeight="73.0" prefWidth="109.0" style="-fx-border-style: solid;" text="¥328.0起">
+                     <VBox.margin>
+                        <Insets bottom="-1.0" right="-1.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Microsoft JhengHei" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="10.0" layoutY="34.0" prefHeight="73.0" prefWidth="109.0" style="-fx-border-style: solid;" text="¥328.0起">
                      <font>
                         <Font name="Microsoft JhengHei" size="16.0" />
                      </font>
@@ -389,7 +413,7 @@
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
                   </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="106.0" prefHeight="73.0" prefWidth="219.0" style="-fx-border-style: solid;" text="预定此酒店" textFill="#00fff6" underline="true">
+                  <Label alignment="CENTER" layoutX="10.0" layoutY="106.0" prefHeight="73.0" prefWidth="109.0" style="-fx-border-style: solid;" text="¥328.0起">
                      <font>
                         <Font name="Microsoft JhengHei" size="16.0" />
                      </font>
@@ -397,7 +421,7 @@
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
                   </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="179.0" prefHeight="73.0" prefWidth="219.0" style="-fx-border-style: solid;" text="预定此酒店" textFill="#00fff6" underline="true">
+                  <Label alignment="CENTER" layoutX="10.0" layoutY="179.0" prefHeight="73.0" prefWidth="109.0" style="-fx-border-style: solid;" text="¥328.0起">
                      <font>
                         <Font name="Microsoft JhengHei" size="16.0" />
                      </font>
@@ -405,7 +429,7 @@
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
                   </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="252.0" prefHeight="73.0" prefWidth="219.0" style="-fx-border-style: solid;" text="预定此酒店" textFill="#00fff6" underline="true">
+                  <Label alignment="CENTER" layoutX="10.0" layoutY="252.0" prefHeight="73.0" prefWidth="109.0" style="-fx-border-style: solid;" text="¥328.0起">
                      <font>
                         <Font name="Microsoft JhengHei" size="16.0" />
                      </font>
@@ -415,25 +439,9 @@
                   </Label>
                </children>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="3">
+            <VBox fx:id="leftRoomNumBox" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="5">
                <children>
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="183.0" style="-fx-border-style: solid;" text="地址">
-                     <VBox.margin>
-                        <Insets bottom="-1.0" right="-1.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font name="Microsoft JhengHei" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" prefHeight="73.0" prefWidth="210.0" style="-fx-border-style: solid;" text="XX圈南京市仙林大道163号南京大学仙林校区" wrapText="true">
-                     <VBox.margin>
-                        <Insets bottom="-1.0" right="-1.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font name="Microsoft JhengHei" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="34.0" prefHeight="73.0" prefWidth="210.0" style="-fx-border-style: solid;" text="XX圈南京市仙林大道163号南京大学仙林校区" wrapText="true">
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="122.0" style="-fx-border-style: solid;" text="剩余客房数量">
                      <font>
                         <Font name="Microsoft JhengHei" size="16.0" />
                      </font>
@@ -441,7 +449,7 @@
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
                   </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="106.0" prefHeight="73.0" prefWidth="210.0" style="-fx-border-style: solid;" text="XX圈南京市仙林大道163号南京大学仙林校区" wrapText="true">
+                  <Label alignment="CENTER" prefHeight="73.0" prefWidth="122.0" style="-fx-border-style: solid;" text="15">
                      <font>
                         <Font name="Microsoft JhengHei" size="16.0" />
                      </font>
@@ -449,7 +457,7 @@
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
                   </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="179.0" prefHeight="73.0" prefWidth="210.0" style="-fx-border-style: solid;" text="XX圈南京市仙林大道163号南京大学仙林校区" wrapText="true">
+                  <Label alignment="CENTER" layoutX="10.0" layoutY="34.0" prefHeight="73.0" prefWidth="122.0" style="-fx-border-style: solid;" text="15">
                      <font>
                         <Font name="Microsoft JhengHei" size="16.0" />
                      </font>
@@ -457,7 +465,23 @@
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
                   </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="252.0" prefHeight="73.0" prefWidth="210.0" style="-fx-border-style: solid;" text="XX圈南京市仙林大道163号南京大学仙林校区" wrapText="true">
+                  <Label alignment="CENTER" layoutX="10.0" layoutY="106.0" prefHeight="73.0" prefWidth="122.0" style="-fx-border-style: solid;" text="15">
+                     <font>
+                        <Font name="Microsoft JhengHei" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="-1.0" right="-1.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="10.0" layoutY="179.0" prefHeight="73.0" prefWidth="122.0" style="-fx-border-style: solid;" text="15">
+                     <font>
+                        <Font name="Microsoft JhengHei" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="-1.0" right="-1.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="10.0" layoutY="252.0" prefHeight="73.0" prefWidth="122.0" style="-fx-border-style: solid;" text="15">
                      <font>
                         <Font name="Microsoft JhengHei" size="16.0" />
                      </font>
@@ -467,68 +491,85 @@
                   </Label>
                </children>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="5">
+            <VBox fx:id="makeOrderBox" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="6">
                <children>
-                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="200.0" style="-fx-border-style: solid;" text="剩余客房数量">
-                     <font>
-                        <Font name="Microsoft JhengHei" size="16.0" />
-                     </font>
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="135.0" style="-fx-border-style: solid;">
                      <VBox.margin>
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="73.0" prefWidth="175.0" style="-fx-border-style: solid;" text="15">
-                     <font>
-                        <Font name="Microsoft JhengHei" size="16.0" />
-                     </font>
+                  <Pane prefHeight="73.0" prefWidth="135.0" style="-fx-border-style: solid;">
                      <VBox.margin>
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="34.0" prefHeight="73.0" prefWidth="175.0" style="-fx-border-style: solid;" text="15">
-                     <font>
-                        <Font name="Microsoft JhengHei" size="16.0" />
-                     </font>
+                     <children>
+                        <Label layoutX="28.0" layoutY="26.0" onMouseClicked="#turnToGenerateOrderScene" text="预订此酒店" textFill="#00fff6" underline="true">
+                           <font>
+                              <Font name="Microsoft YaHei" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="73.0" prefWidth="135.0" style="-fx-border-style: solid;">
                      <VBox.margin>
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="106.0" prefHeight="73.0" prefWidth="175.0" style="-fx-border-style: solid;" text="15">
-                     <font>
-                        <Font name="Microsoft JhengHei" size="16.0" />
-                     </font>
+                     <children>
+                        <Label layoutX="28.0" layoutY="26.0" onMouseClicked="#turnToGenerateOrderScene" text="预订此酒店" textFill="#00fff6" underline="true">
+                           <font>
+                              <Font name="Microsoft YaHei" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="73.0" prefWidth="135.0" style="-fx-border-style: solid;">
                      <VBox.margin>
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="179.0" prefHeight="73.0" prefWidth="175.0" style="-fx-border-style: solid;" text="15">
-                     <font>
-                        <Font name="Microsoft JhengHei" size="16.0" />
-                     </font>
+                     <children>
+                        <Label layoutX="28.0" layoutY="26.0" onMouseClicked="#turnToGenerateOrderScene" text="预订此酒店" textFill="#00fff6" underline="true">
+                           <font>
+                              <Font name="Microsoft YaHei" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="73.0" prefWidth="135.0" style="-fx-border-style: solid;">
                      <VBox.margin>
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="252.0" prefHeight="73.0" prefWidth="175.0" style="-fx-border-style: solid;" text="15">
-                     <font>
-                        <Font name="Microsoft JhengHei" size="16.0" />
-                     </font>
+                     <children>
+                        <Label layoutX="28.0" layoutY="26.0" onMouseClicked="#turnToGenerateOrderScene" text="预订此酒店" textFill="#00fff6" underline="true">
+                           <font>
+                              <Font name="Microsoft YaHei" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="73.0" prefWidth="135.0" style="-fx-border-style: solid;">
                      <VBox.margin>
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
-                  </Label>
+                     <children>
+                        <Label layoutX="28.0" layoutY="26.0" onMouseClicked="#turnToGenerateOrderScene" text="预订此酒店" textFill="#00fff6" underline="true">
+                           <font>
+                              <Font name="Microsoft YaHei" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
                </children>
             </VBox>
          </children>
       </GridPane>
       <AnchorPane layoutX="26.0" layoutY="522.0" prefHeight="36.0" prefWidth="880.0">
          <children>
-            <Label layoutX="193.0" layoutY="5.0" text="&lt;上一页">
+            <Label fx:id="previousPage" layoutX="193.0" layoutY="5.0" onMouseClicked="#turnToPreviousPage" text="&lt;上一页">
                <font>
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="354.0" layoutY="5.0" text="下一页&gt;">
+            <Label fx:id="nextPage" layoutX="354.0" layoutY="5.0" onMouseClicked="#turnToNextPage" text="下一页&gt;">
                <font>
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
@@ -538,7 +579,7 @@
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="300.0" layoutY="5.0" text="1">
+            <Label fx:id="currentPage" layoutX="300.0" layoutY="5.0" text="1">
                <font>
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
@@ -548,7 +589,7 @@
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
             </Label>
-            <TextField layoutX="596.0" layoutY="3.0" prefHeight="20.0" prefWidth="30.0" style="-fx-background-color: rgba(0,0,0,0.1);" />
+            <TextField fx:id="toPage" layoutX="596.0" layoutY="3.0" onKeyPressed="#turnToSpecialPage" prefHeight="20.0" prefWidth="30.0" style="-fx-background-color: rgba(0,0,0,0.1);" />
          </children>
       </AnchorPane>
    </children>

@@ -33,18 +33,45 @@ public class HotelFilter implements Serializable {
 	
 	public int roomNum = -1;
 	
+	@Deprecated
 	public void setRank(double min, double max) {
 		minRank = min;
 		maxRank = max;
 	}
 	
+	@Deprecated
 	public void setPrice(double min, double max) {
 		minPrice = min;
 		maxPrice = max;
 	}
 	
+	@Deprecated
 	public void setStar(int min, int max) {
 		minStar = min;
+		maxStar = max;
+	}
+	
+	public void setLowerRank(double min) {
+		minRank = min;
+	}
+	
+	public void setUpperRank(double max) {
+		maxRank = max;
+	}
+	
+	public void setLowerPrice(double min) {
+		minPrice = min;
+	}
+	
+	public void setUpperPrice(double max) {
+		maxPrice = max;
+	}
+	
+	public void setLowerStar(int min) {
+		minStar = min;
+	}
+	
+	public void setUpperStar(int max) {
 		maxStar = max;
 	}
 	

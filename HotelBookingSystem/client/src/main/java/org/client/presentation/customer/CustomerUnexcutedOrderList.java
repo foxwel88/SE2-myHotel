@@ -128,12 +128,16 @@ public class CustomerUnexcutedOrderList {
 	void checkDetailedOrder(MouseEvent event) {
 		String orderID;
 		int page = Integer.parseInt(currentPage.getText());
-		for (int i = 0; i < MAX_ORDER_ONE_OAGE; i++) {
-			if (((HBox)(event.getSource())).equals(boxList.get(i))) {
-				orderID = unExcutedOrderList.get((page - 1) * MAX_ORDER_ONE_OAGE + i).orderID;
-				SwitchSceneUtil.turnToAnotherScene((GridPane)root.getParent(), "/客户/未执行订单详细信息界面.fxml", orderID);
-				break;
+		try {
+			for (int i = 0; i < MAX_ORDER_ONE_OAGE; i++) {
+				if (((HBox)(event.getSource())).equals(boxList.get(i))) {
+					orderID = unExcutedOrderList.get((page - 1) * MAX_ORDER_ONE_OAGE + i).orderID;
+					SwitchSceneUtil.turnToDetailedOrderScene((GridPane)root.getParent(), "/客户/未执行订单详细信息界面.fxml", orderID);
+					break;
+				}
 			}
+		} catch (IndexOutOfBoundsException indexOutOfBoundsException) {
+			// 点击无订单的订单列表区域会出现此异常，可以忽略
 		}
 	}
 	
@@ -273,6 +277,4 @@ public class CustomerUnexcutedOrderList {
 		}
 	}
 	/**************************************************************************************/
-	
-	
 }

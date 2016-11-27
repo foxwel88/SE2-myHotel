@@ -220,24 +220,29 @@ public class CustomerHistoryOrder {
 	void checkDetailedOrder(MouseEvent event) {
 		String orderID;
 		int page = Integer.parseInt(currentPage.getText());
-		for (int i = 0; i < MAX_ORDER_ONE_OAGE; i++) {
-			if (((HBox)(event.getSource())).equals(boxList.get(i))) {
-				switch (currentLabel) {
-					case 0:
-						orderID = finishedOrderList.get((page - 1) * MAX_ORDER_ONE_OAGE + i).orderID;
-						SwitchSceneUtil.turnToAnotherScene((GridPane)root.getParent(), "/客户/已执行订单详细信息界面.fxml", orderID);
-						break;
-					case 1:
-						orderID = canceledOrderList.get((page - 1) * MAX_ORDER_ONE_OAGE + i).orderID;
-						SwitchSceneUtil.turnToAnotherScene((GridPane)root.getParent(), "/客户/已撤销订单详细信息界面.fxml", orderID);
-						break;
-					case 2:
-						orderID = abnormalOrderList.get((page - 1) * MAX_ORDER_ONE_OAGE + i).orderID;
-						SwitchSceneUtil.turnToAnotherScene((GridPane)root.getParent(), "/客户/异常订单详细信息界面.fxml", orderID);
-						break;
+		try {
+			for (int i = 0; i < MAX_ORDER_ONE_OAGE; i++) {
+				HBox clickedBox = (HBox)(event.getSource());
+				if (clickedBox.equals(boxList.get(i))) {
+					switch (currentLabel) {
+						case 0:
+							orderID = finishedOrderList.get((page - 1) * MAX_ORDER_ONE_OAGE + i).orderID;
+							SwitchSceneUtil.turnToDetailedOrderScene((GridPane)root.getParent(), "/客户/已执行订单详细信息界面.fxml", orderID);
+							break;
+						case 1:
+							orderID = canceledOrderList.get((page - 1) * MAX_ORDER_ONE_OAGE + i).orderID;
+							SwitchSceneUtil.turnToDetailedOrderScene((GridPane)root.getParent(), "/客户/已撤销订单详细信息界面.fxml", orderID);
+							break;
+						case 2:
+							orderID = abnormalOrderList.get((page - 1) * MAX_ORDER_ONE_OAGE + i).orderID;
+							SwitchSceneUtil.turnToDetailedOrderScene((GridPane)root.getParent(), "/客户/异常订单详细信息界面.fxml", orderID);
+							break;
+					}
+					break;
 				}
-				break;
 			}
+		} catch (IndexOutOfBoundsException indexOutOfBoundsException) {
+			// 点击无订单的订单列表区域会出现此异常，可以忽略
 		}
 	}
 	

@@ -32,7 +32,7 @@ public class CustomerController_Main {
 	
 	@FXML
 	void initialize() {
-		welcomeLabel.setText("Welcome," + SwitchSceneUtil.getVO().name + "!");
+		welcomeLabel.setText("Welcome," + SwitchSceneUtil.getUserVO().name + "!");
 	}
 	
 	/*
