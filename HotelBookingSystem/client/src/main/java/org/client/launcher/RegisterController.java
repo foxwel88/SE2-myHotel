@@ -13,6 +13,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -29,11 +31,26 @@ public class RegisterController {
 	private PasswordField passwordField2;
 
 	@FXML
+    private Label birthLabel;
+
+	@FXML
+    private ChoiceBox< String > typeChoiceBox;
+
+	@FXML
+    private TextField phoneTextField;
+	
+	@FXML
+    private TextField nameTextField;
+
+	@FXML
+    private TextField birthTextField;
+	
+	@FXML
 	void handleSignUpAction(MouseEvent event) throws IOException {
 		Userblservice userBl = new User_stub();
 		if (passwordField.getText().equals(passwordField2.getText())) {
-			UserVO vo = new UserVO(UserType.PERSONALCUSTOMER.getString(), userNameTextField.getText(), "", userBl.getNewID(), passwordField.getText(),
-					"", 200, new Date(), "", "");
+			UserVO vo = new UserVO(UserType.PERSONALCUSTOMER.getString(), userNameTextField.getText(), nameTextField.getText(), userBl.getNewID(),
+					passwordField.getText(), phoneTextField.getText(), 200, new Date(), null, null);
 			
 			ResultMessage message = userBl.add(vo);
 			if (message == ResultMessage.SUCCESS) {

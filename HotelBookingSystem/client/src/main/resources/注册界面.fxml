@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
@@ -10,17 +11,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.launcher.RegisterController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.launcher.RegisterController">
    <children>
-      <ImageView fitHeight="568.0" fitWidth="450.0" preserveRatio="true">
+      <ImageView fitHeight="700.0" fitWidth="450.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@1.jpg" />
          </image>
       </ImageView>
-      <AnchorPane prefHeight="550.0" prefWidth="450.0" style="-fx-background-color: rgba(0,0,0,0.5);">
+      <AnchorPane prefHeight="700.0" prefWidth="450.0" style="-fx-background-color: rgba(0,0,0,0.5);">
          <children>
-            <TextField fx:id="userNameTextField" layoutX="98.0" layoutY="182.0" prefHeight="61.0" prefWidth="318.0" promptText="输入您的账号" style="-fx-background-color: rgba(0,0,0,0.7);" AnchorPane.leftAnchor="98.0" AnchorPane.topAnchor="182.0" />
-            <Label layoutX="113.0" layoutY="109.0" text="酒店预订管理系统" textFill="WHITE">
+            <TextField fx:id="userNameTextField" layoutX="98.0" layoutY="111.0" prefHeight="61.0" prefWidth="318.0" promptText="输入您的账号" style="-fx-background-color: rgba(0,0,0,0.7);" AnchorPane.leftAnchor="105.0" AnchorPane.rightAnchor="27.0" AnchorPane.topAnchor="110.0" />
+            <Label layoutX="113.0" layoutY="42.0" text="酒店预订管理系统" textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei UI Light" size="28.0" />
                </font>
@@ -28,12 +29,12 @@
                   <Bloom threshold="0.89" />
                </effect>
             </Label>
-            <Button defaultButton="true" layoutX="98.0" layoutY="420.0" mnemonicParsing="false" onMouseClicked="#handleSignUpAction" prefHeight="49.0" prefWidth="318.0" style="-fx-background-color: rgba(255,45,45,0.5);" text="立即注册" textFill="WHITE">
+            <Button defaultButton="true" layoutX="105.0" layoutY="633.0" mnemonicParsing="false" onMouseClicked="#handleSignUpAction" prefHeight="49.0" prefWidth="318.0" style="-fx-background-color: rgba(255,45,45,0.5);" text="立即注册" textFill="WHITE" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="105.0">
                <font>
                   <Font name="Microsoft YaHei UI Light" size="20.0" />
                </font>
             </Button>
-            <Label layoutX="38.0" layoutY="202.0" text="账号：" textFill="WHITE" AnchorPane.topAnchor="202.0">
+            <Label layoutX="45.0" layoutY="130.0" text="账号：" textFill="WHITE" AnchorPane.topAnchor="130.0">
                <font>
                   <Font name="Microsoft YaHei UI Light" size="16.0" />
                </font>
@@ -41,7 +42,7 @@
                   <Bloom threshold="0.89" />
                </effect>
             </Label>
-            <Label layoutX="38.0" layoutY="278.0" text="密码：" textFill="WHITE" AnchorPane.topAnchor="278.0">
+            <Label layoutX="45.0" layoutY="210.0" text="密码：" textFill="WHITE" AnchorPane.rightAnchor="357.0" AnchorPane.topAnchor="210.0">
                <font>
                   <Font name="Microsoft YaHei UI Light" size="16.0" />
                </font>
@@ -49,7 +50,7 @@
                   <Bloom threshold="0.89" />
                </effect>
             </Label>
-            <Label layoutX="22.0" layoutY="355.0" text="确认密码：" textFill="WHITE" AnchorPane.topAnchor="355.0">
+            <Label layoutX="13.0" layoutY="290.0" text="确认密码：" textFill="WHITE" AnchorPane.rightAnchor="357.0" AnchorPane.topAnchor="290.0">
                <font>
                   <Font name="Microsoft YaHei UI Light" size="16.0" />
                </font>
@@ -57,8 +58,44 @@
                   <Bloom threshold="0.89" />
                </effect>
             </Label>
-            <PasswordField fx:id="passwordField" layoutX="86.0" layoutY="287.0" prefHeight="61.0" prefWidth="318.0" promptText="长度大于6位的数字字母组合" style="-fx-background-color: rgba(0,0,0,0.7);" AnchorPane.leftAnchor="98.0" AnchorPane.topAnchor="258.0" />
-            <PasswordField fx:id="passwordField2" layoutX="96.0" layoutY="297.0" prefHeight="61.0" prefWidth="318.0" promptText="请再输入你的密码" style="-fx-background-color: rgba(0,0,0,0.7);" AnchorPane.leftAnchor="98.0" AnchorPane.topAnchor="335.0" />
+            <PasswordField fx:id="passwordField" layoutX="98.0" layoutY="189.0" prefHeight="61.0" prefWidth="318.0" promptText="长度大于6位的数字字母组合" style="-fx-background-color: rgba(0,0,0,0.7);" AnchorPane.leftAnchor="105.0" AnchorPane.topAnchor="190.0" />
+            <PasswordField fx:id="passwordField2" layoutX="98.0" layoutY="266.0" prefHeight="61.0" prefWidth="318.0" promptText="请再输入你的密码" style="-fx-background-color: rgba(0,0,0,0.7);" AnchorPane.leftAnchor="105.0" AnchorPane.topAnchor="270.0" />
+            <Label layoutX="15.0" layoutY="429.0" text="账号类型 : " textFill="WHITE" AnchorPane.rightAnchor="357.0" AnchorPane.topAnchor="429.0">
+               <font>
+                  <Font name="Microsoft YaHei UI Light" size="16.0" />
+               </font>
+               <effect>
+                  <Bloom threshold="0.89" />
+               </effect>
+            </Label>
+            <Label layoutX="13.0" layoutY="495.0" text="联系方式：" textFill="WHITE" AnchorPane.rightAnchor="357.0" AnchorPane.topAnchor="495.0">
+               <font>
+                  <Font name="Microsoft YaHei UI Light" size="16.0" />
+               </font>
+               <effect>
+                  <Bloom threshold="0.89" />
+               </effect>
+            </Label>
+            <Label fx:id="birthLabel" layoutX="45.0" layoutY="575.0" text="生日：" textFill="WHITE" AnchorPane.rightAnchor="357.0" AnchorPane.topAnchor="575.0">
+               <font>
+                  <Font name="Microsoft YaHei UI Light" size="16.0" />
+               </font>
+               <effect>
+                  <Bloom threshold="0.89" />
+               </effect>
+            </Label>
+            <ChoiceBox fx:id="typeChoiceBox" layoutX="105.0" layoutY="428.0" prefWidth="150.0" style="-fx-background-color: rgba(0,0,0,0.7);" AnchorPane.leftAnchor="105.0" />
+            <TextField fx:id="phoneTextField" layoutX="105.0" layoutY="475.0" prefHeight="61.0" prefWidth="318.0" promptText="输入11位手机号" style="-fx-background-color: rgba(0,0,0,0.7);" AnchorPane.leftAnchor="105.0" AnchorPane.topAnchor="475.0" />
+            <TextField fx:id="birthTextField" layoutX="105.0" layoutY="555.0" prefHeight="61.0" prefWidth="318.0" style="-fx-background-color: rgba(0,0,0,0.7);" AnchorPane.leftAnchor="105.0" AnchorPane.topAnchor="555.0" />
+            <Label fx:id="birthLabel1" layoutX="45.0" layoutY="367.0" text="姓名：" textFill="WHITE" AnchorPane.topAnchor="370.0">
+               <font>
+                  <Font name="Microsoft YaHei UI Light" size="16.0" />
+               </font>
+               <effect>
+                  <Bloom threshold="0.89" />
+               </effect>
+            </Label>
+            <TextField fx:id="nameTextField" layoutX="105.0" layoutY="347.0" prefHeight="61.0" prefWidth="318.0" style="-fx-background-color: rgba(0,0,0,0.7);" AnchorPane.topAnchor="350.0" />
          </children>
       </AnchorPane>
    </children>
