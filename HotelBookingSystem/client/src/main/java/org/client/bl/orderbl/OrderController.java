@@ -83,7 +83,7 @@ public class OrderController implements Orderblservice {
 	@Override
 	public ResultMessage checkOut(String ID) {
 		// TODO Auto-generated method stub
-		return null;
+		return orderutil.checkOut(ID);
 	}
 
 	
