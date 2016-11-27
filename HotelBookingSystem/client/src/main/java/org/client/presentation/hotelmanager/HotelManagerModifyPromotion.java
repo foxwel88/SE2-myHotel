@@ -9,11 +9,18 @@ import java.io.IOException;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 import org.client.vo.PromotionVO;
+import org.common.utility.ResultMessage;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,6 +31,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -48,10 +56,10 @@ public class HotelManagerModifyPromotion {
     private TextField discountLabel;
 
 	@FXML
-    private TextField startTimeLabel;
+	private DatePicker startTimePicker;
 
 	@FXML
-    private TextField endTimeLabel;
+	private DatePicker endTimePicker;
 
 	@FXML
     private ChoiceBox<Integer> levelBox;
@@ -62,13 +70,52 @@ public class HotelManagerModifyPromotion {
 	@FXML
 	private Label resultLabel;
 	
-	private DateFormat dateFormat;
-	
 	private PromotionVO vo;
+	
+	private boolean modifyMode;
 
 	@FXML
     void save(ActionEvent event) {
+		if (!modifyMode) {
+			vo = new PromotionVO();
+		}
+		vo.discount = Double.parseDouble(discountLabel.getText());
+		vo.name = nameLabel.getText();
 		
+		//startTime, at the start of the day
+		LocalDate startDate = startTimePicker.getValue();
+		
+		ZonedDateTime startZonedTime = startDate.atStartOfDay(ZoneId.systemDefault());
+		Instant startInstant = Instant.from(startZonedTime);
+		vo.startTime = Date.from(startInstant);
+		
+		//endTime, at the start of the day
+		LocalDate endDate = endTimePicker.getValue();
+		
+		ZonedDateTime endZonedTime = endDate.atStartOfDay(ZoneId.systemDefault());
+		Instant endInstant = Instant.from(endZonedTime);
+		vo.endTime = Date.from(endInstant);
+				
+		vo.level = levelBox.getValue();
+		vo.type = typeBox.getValue();
+		
+		ResultMessage result = null;
+		if (modifyMode) {
+			result = HotelManagerController.getInstance().modifyPromotion(vo);
+		} else {
+			result = HotelManagerController.getInstance().addPromotion(vo);
+		}
+		switch(result) {
+			case SUCCESS:
+				resultLabel.setText("编辑成功");
+				break;
+			case WRONG_FORMAT:
+				resultLabel.setText("输入信息格式有误");
+				break;
+			default:
+				resultLabel.setText("错误");
+				break;
+		}
 	}
 
 	@FXML
@@ -76,13 +123,11 @@ public class HotelManagerModifyPromotion {
 		assert saveButton != null : "fx:id=\"saveButton\" was not injected: check your FXML file '修改酒店促销策略界面.fxml'.";
 		assert nameLabel != null : "fx:id=\"nameLabel\" was not injected: check your FXML file '修改酒店促销策略界面.fxml'.";
 		assert discountLabel != null : "fx:id=\"discountLabel\" was not injected: check your FXML file '修改酒店促销策略界面.fxml'.";
-		assert startTimeLabel != null : "fx:id=\"startTimeLabel\" was not injected: check your FXML file '修改酒店促销策略界面.fxml'.";
-		assert endTimeLabel != null : "fx:id=\"endTimeLabel\" was not injected: check your FXML file '修改酒店促销策略界面.fxml'.";
+		assert startTimePicker != null : "fx:id=\"startTimePicker\" was not injected: check your FXML file '修改酒店促销策略界面.fxml'.";
+		assert endTimePicker != null : "fx:id=\"endTimePicker\" was not injected: check your FXML file '修改酒店促销策略界面.fxml'.";
 		assert levelBox != null : "fx:id=\"levelBox\" was not injected: check your FXML file '修改酒店促销策略界面.fxml'.";
 		assert typeBox != null : "fx:id=\"typeBox\" was not injected: check your FXML file '修改酒店促销策略界面.fxml'.";
 		assert resultLabel != null : "fx:id=\"resultLabel\" was not injected: check your FXML file '修改酒店促销策略界面.fxml'.";
-        
-		dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		
 		ObservableList<Integer> levelList = FXCollections.observableArrayList((new ArrayList<Integer>(Arrays.asList(new Integer[]{1,2,3,4,5}))));
 		levelBox.setItems(levelList);
@@ -102,19 +147,13 @@ public class HotelManagerModifyPromotion {
 		discountLabel.setFont(Font.font("Microsoft YaHei", 15));
 		discountLabel.setStyle("-fx-text-fill: white;-fx-background-color: rgba(255,255,255,0.1)");
 		
-		startTimeLabel.setText(dateFormat.format(vo.startTime));
-		startTimeLabel.setFont(Font.font("Microsoft YaHei", 15));
-		startTimeLabel.setStyle("-fx-text-fill: white;-fx-background-color: rgba(255,255,255,0.1)");
-		
-		endTimeLabel.setText(dateFormat.format(vo.endTime));
-		endTimeLabel.setFont(Font.font("Microsoft YaHei", 15));
-		endTimeLabel.setStyle("-fx-text-fill: white;-fx-background-color: rgba(255,255,255,0.1)");
-		
 		levelBox.setValue(vo.level);
 		levelBox.setStyle("-fx-text-fill: white");
 
 		typeBox.setValue(vo.type);
 		typeBox.setStyle("-fx-text-fill: white");
+		
+		modifyMode = true;
 	}
 }
 

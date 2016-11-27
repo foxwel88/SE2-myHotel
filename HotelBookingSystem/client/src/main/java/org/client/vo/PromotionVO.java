@@ -45,6 +45,10 @@ public class PromotionVO implements Serializable {
 		resultMessage = ResultMessage.SUCCESS;
 	}
 	
+	public PromotionVO() {
+		
+	}
+	
 	public PromotionVO(ResultMessage resultMessage) {
 		this.resultMessage = resultMessage;
 	}

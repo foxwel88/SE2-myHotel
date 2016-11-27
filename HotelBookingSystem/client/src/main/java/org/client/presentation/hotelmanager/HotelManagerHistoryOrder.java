@@ -19,7 +19,8 @@ import javafx.scene.layout.Pane;
 /**
  * FXML Controller
  * 酒店工作人员-浏览酒店历史订单
- *
+ * @author Hirico
+ * @version 2016/11/27 Hirico
  */
 public class HotelManagerHistoryOrder {
 	static final int FIRST_PAGE_NUM = 1;
