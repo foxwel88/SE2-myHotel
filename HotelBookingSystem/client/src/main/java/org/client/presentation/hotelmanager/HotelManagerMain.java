@@ -24,7 +24,8 @@ import javafx.util.Duration;
 /**
  * FXML Controller
  * 酒店工作人员-主界面
- *
+ * @author Hirico
+ * @version 2016/11/27 Hirico
  */
 public class HotelManagerMain {
 

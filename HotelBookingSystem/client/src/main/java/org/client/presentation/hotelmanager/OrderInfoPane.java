@@ -13,6 +13,11 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 
+/** 
+ * 在浏览订单列表时用到的单条订单的pane，包含了客户姓名、订单ID的label和详情button
+ * @author Hirico
+ * @version 2016/11/27 Hirico
+ */
 public class OrderInfoPane extends Pane {
 	Label customerNameLabel;
 	

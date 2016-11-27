@@ -22,7 +22,7 @@ import org.common.utility.RoomType;
 /**
  * 酒店工作人员界面的总Controller，负责调用Logic层的方法
  * @author Hirico
- *
+ * @version 2016/11/27 Hirico
  */
 public class HotelManagerController {
 	
@@ -46,7 +46,7 @@ public class HotelManagerController {
 		this.hotelAddress = hotelAddress;
 	}
 	
-	/*should be called right after login */
+	/** 登录之后就要马上调用这个方法 */
 	public static void init(String hotelAddress) {
 		controller = new HotelManagerController(hotelAddress);
 	}
@@ -112,11 +112,10 @@ public class HotelManagerController {
 		return promotionbl.modify(vo);
 	}
 	
-	//Need orderbl's modify method 
-	public ResultMessage checkout(Date checkoutDate) {
-		currentOrder.actTo = checkoutDate;
-		hotelbl.decreaseAvailableRoom(RoomType.getType(currentOrder.roomType), hotelAddress);
-		return ResultMessage.SUCCESS;
+	/**酒店可用房间数量增加，增加订单退房时间 */
+	public ResultMessage checkOut() {
+		hotelbl.increaseAvailableRoom(RoomType.getType(currentOrder.roomType), hotelAddress);
+		return orderbl.checkOut(currentOrder.orderID);
 	}
 	
 	

@@ -12,6 +12,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
+/**
+ * FXML Controller
+ * 酒店工作人员-导航界面
+ * @author Hirico
+ * @version 2016/11/27 Hirico
+ */
 public class HotelManagerGuide {
 
 	@FXML

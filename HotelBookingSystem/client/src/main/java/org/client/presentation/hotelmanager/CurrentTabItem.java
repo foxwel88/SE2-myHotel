@@ -6,7 +6,7 @@ import javafx.scene.layout.Pane;
 /**
  * 浏览历史订单界面中当前所选的tab(订单类型)
  * @author Hirico
- *
+ * @version 2016/11/27 Hirico
  */
 public class CurrentTabItem {
 	Pane pane;

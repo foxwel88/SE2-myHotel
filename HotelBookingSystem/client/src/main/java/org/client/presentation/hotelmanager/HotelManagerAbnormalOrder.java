@@ -14,7 +14,8 @@ import javafx.scene.control.Label;
 /**
  * FXML Controller
  * 酒店工作人员-异常订单详细界面
- *
+ * @author Hirico
+ * @version 2016/11/27 Hirico
  */
 public class HotelManagerAbnormalOrder {
 

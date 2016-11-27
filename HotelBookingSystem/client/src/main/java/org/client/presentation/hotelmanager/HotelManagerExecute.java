@@ -18,7 +18,8 @@ import javafx.scene.layout.GridPane;
 /**
  * FXML Controller
  * 酒店工作人员-执行订单界面
- *
+ * @author Hirico
+ * @version 2016/11/27 Hirico
  */
 public class HotelManagerExecute {
 	static final int FIRST_PAGE_NUM = 1;

@@ -7,7 +7,7 @@ import javafx.scene.layout.AnchorPane;
 /**
  * 导航栏中当前选择的项，用于修改跳转时的视觉变化
  * @author Hirico
- *
+ * @version 2016/11/27 Hirico
  */
 public class CurrentItem {
 	public Label label;

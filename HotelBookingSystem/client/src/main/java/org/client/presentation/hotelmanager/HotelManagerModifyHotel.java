@@ -25,7 +25,8 @@ import javafx.scene.control.TextField;
 /**
  * FXML Controller
  * 酒店工作人员-维护酒店信息
- *
+ * @author Hirico
+ * @version 2016/11/27 Hirico
  */
 public class HotelManagerModifyHotel {
 
