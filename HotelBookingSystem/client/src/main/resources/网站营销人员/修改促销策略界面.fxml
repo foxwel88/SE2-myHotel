@@ -108,7 +108,7 @@
                         <Font name="Microsoft YaHei UI Light" size="18.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="fromDate" layoutX="33.0" layoutY="3.0" prefHeight="30.0" prefWidth="120.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.leftAnchor="31.0" />
+                  <TextField fx:id="fromDateLabel" layoutX="33.0" layoutY="3.0" prefHeight="30.0" prefWidth="120.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.leftAnchor="31.0" />
                   <Text layoutX="161.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="起">
                      <font>
                         <Font name="Microsoft YaHei" size="20.0" />
