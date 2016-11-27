@@ -3,6 +3,15 @@ package org.client.presentation.webmanager;
 import javafx.scene.Parent;
 import javafx.scene.layout.GridPane;
 
+/**
+ * 
+ * webmanage.ChangePane类负责网站管理人员的界面跳转
+ * 提供界面跳转的方法
+ * @author Foxwel
+ * @version 2016/11/27 Foxwel
+ *
+ */
+
 public class ChangePane {
 	private static ChangePane changepane;
 	

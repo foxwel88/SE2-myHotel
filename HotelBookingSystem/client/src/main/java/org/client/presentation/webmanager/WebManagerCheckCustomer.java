@@ -16,6 +16,8 @@ import javafx.scene.input.MouseEvent;
 /**
  * 
  * 网站工作人员-浏览客户信息
+ * @author Foxwel
+ * @version 2016/11/27 Foxwel
  *
  */
 public class WebManagerCheckCustomer {

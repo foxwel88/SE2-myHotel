@@ -7,6 +7,14 @@ import org.client.vo.OrderVO;
 import org.common.po.OrderPO;
 import org.common.utility.ResultMessage;
 
+/**
+ * 
+ * bl层order模块的order列表类，用于存放一个list的order
+ * @author Foxwel
+ * @version 2016/11/27 Foxwel
+ * 
+ */
+
 public class OrderList {
 	
 	private ArrayList<Order> list;

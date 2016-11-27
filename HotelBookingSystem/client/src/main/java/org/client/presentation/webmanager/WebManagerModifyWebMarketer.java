@@ -14,8 +14,11 @@ import javafx.scene.input.MouseEvent;
 /**
  * 
  * 网站工作人员-修改网站营销人员
- *
+ * @author Foxwel
+ * @version 2016/11/27 Foxwel
+ * 
  */
+
 public class WebManagerModifyWebMarketer {
 	private UserVO nowvo;
 	

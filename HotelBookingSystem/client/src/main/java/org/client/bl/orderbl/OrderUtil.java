@@ -20,6 +20,15 @@ import org.common.utility.ResultMessage;
 import org.common.utility.RoomType;
 import org.common.utility.TimeService;
 
+
+/**
+ * 
+ * bl层order模块的工具类
+ * @author Foxwel
+ * @version 2016/11/27 Foxwel
+ * 
+ */
+
 public class OrderUtil {
 	
 	private static OrderUtil util;

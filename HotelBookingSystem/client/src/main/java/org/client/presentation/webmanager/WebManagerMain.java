@@ -16,8 +16,11 @@ import javafx.util.Duration;
 /**
  * 
  * 网站管理人员-主界面
- *
+ * @author Foxwel
+ * @version 2016/11/27 Foxwel
+ * 
  */
+
 public class WebManagerMain {
 	
 	@FXML

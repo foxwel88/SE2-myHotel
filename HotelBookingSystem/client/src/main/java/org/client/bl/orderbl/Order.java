@@ -10,6 +10,15 @@ import org.common.utility.OrderType;
 import org.common.utility.ResultMessage;
 import org.common.utility.RoomType;
 
+/**
+ * 
+ * bl层order模块的order类
+ * 用于存放一个order 并在vo po之间转化
+ * @author Foxwel
+ * @version 2016/11/27 Foxwel
+ * 
+ */
+
 public class Order {
 	
 	public Userblservice userController;

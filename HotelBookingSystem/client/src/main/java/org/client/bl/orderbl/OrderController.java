@@ -9,6 +9,14 @@ import org.client.vo.OrderVO;
 import org.common.utility.OrderType;
 import org.common.utility.ResultMessage;
 
+/**
+ * 
+ * bl层Order模块的接口分发
+ * @author Foxwel
+ * @version 2016/11/27 Foxwel
+ * 
+ */
+
 public class OrderController implements Orderblservice {
 
 	private static OrderController controller;

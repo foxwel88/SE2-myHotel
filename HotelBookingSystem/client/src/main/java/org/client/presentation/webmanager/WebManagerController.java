@@ -14,6 +14,14 @@ import org.client.vo.UserLevelVO;
 import org.client.vo.UserVO;
 import org.common.utility.ResultMessage;
 
+/**
+ * 
+ * 负责WebManager对应逻辑的方法接口
+ * @author Foxwel
+ * @version 2016/11/27 Foxwel
+ *
+ */
+
 public class WebManagerController {
 	
 	private Hotelblservice hotelbl;
