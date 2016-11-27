@@ -389,6 +389,12 @@ public class Order_stub implements Orderblservice {
 		return list;
 	}
 
+	@Override
+	public ResultMessage checkOut(String ID) {
+		// TODO Auto-generated method stub
+		return ResultMessage.SUCCESS;
+	}
+
 	
 
 }
