@@ -11,8 +11,9 @@ import javafx.scene.layout.GridPane;
 
 /**
  * 
- * 客户-酒店详细信息
- *
+ * 客户-酒店详细信息-第一页
+ * @author fraliphsoft
+ * @version fraliphsoft 11/27
  */
 
 public class CustomerCheckHotel {

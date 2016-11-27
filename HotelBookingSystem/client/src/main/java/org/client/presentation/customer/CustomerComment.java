@@ -13,7 +13,8 @@ import javafx.scene.layout.GridPane;
 /**
  * 
  * 客户-评价订单
- *
+ * @author fraliphsoft
+ * @version fraliphsoft 11/27
  */
 
 public class CustomerComment {

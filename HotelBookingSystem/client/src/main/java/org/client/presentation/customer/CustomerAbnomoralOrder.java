@@ -10,7 +10,8 @@ import javafx.scene.layout.AnchorPane;
 /**
  * 
  * 客户-异常订单详细信息
- *
+ * @author fraliphsoft
+ * @version fraliphsoft 11/27
  */
 public class CustomerAbnomoralOrder {
 	@FXML

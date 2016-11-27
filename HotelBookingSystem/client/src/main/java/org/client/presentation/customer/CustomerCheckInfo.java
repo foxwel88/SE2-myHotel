@@ -10,7 +10,8 @@ import javafx.scene.layout.GridPane;
 /**
  * 
  * 客户-查看客户信息
- *
+ * @author fraliphsoft
+ * @version fraliphsoft 11/27 
  */
 
 public class CustomerCheckInfo {

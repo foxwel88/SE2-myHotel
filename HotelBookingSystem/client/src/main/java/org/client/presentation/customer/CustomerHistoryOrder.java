@@ -19,7 +19,8 @@ import javafx.scene.layout.Pane;
 /**
  * 
  * 客户-浏览客户历史订单
- *
+ * @author fraliphsoft
+ * @version fraliphsoft 11/27
  */
 public class CustomerHistoryOrder {
 	@FXML

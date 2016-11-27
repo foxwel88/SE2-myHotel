@@ -5,6 +5,11 @@ import org.client.blservice.commentblservice.Commentblservice;
 import org.client.vo.CommentVO;
 import org.common.utility.ResultMessage;
 
+/**
+ * bl层comment模块的控制器类
+ * @author fraliphsoft
+ * @version fraliphsoft 11/27
+ */
 public class CommentController implements Commentblservice {
 	
 	private static CommentController commentController;

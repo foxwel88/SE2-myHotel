@@ -19,7 +19,8 @@ import javafx.scene.layout.GridPane;
 /**
  * 
  * 客户-生成订单
- *
+ * @author fraliphsoft
+ * @version fraliphsoft 11/27
  */
 public class CustomerGenerateOrder {
 	@FXML
@@ -124,9 +125,9 @@ public class CustomerGenerateOrder {
 	void commitOrder() {
 		// TODO 检查订单格式
 		// TODO 现在的生成的OrderVO的和日期有关的东西都是假的
-		OrderVO newOrder = new OrderVO(user.ID, user.type, new Date(10000000), new Date(10000000), new Date(10000000),
+		OrderVO newOrder = new OrderVO(user.ID, user.type, null, new Date(10000000), new Date(10000000),
 				null, null, new Date(10000000), null, hotel.address, 
-				user.ID, hotel.hotelName, roomType.getValue(), Double.parseDouble(totalPrice.getText().replaceAll("元", "")), Integer.parseInt(roomNum.getText()), Integer.parseInt(residentNum.getText()),
+				 null, hotel.hotelName, roomType.getValue(), Double.parseDouble(totalPrice.getText().replaceAll("元", "")), Integer.parseInt(roomNum.getText()), Integer.parseInt(residentNum.getText()),
 				hasChildren.isSelected(), user.name, phoneNumber.getText());
 		SwitchSceneUtil.turnToConfirmOrderScene((GridPane)root.getParent(), newOrder);
 	}

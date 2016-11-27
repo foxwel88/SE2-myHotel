@@ -27,7 +27,8 @@ import javafx.scene.layout.VBox;
 /**
  * 
  * 客户-浏览酒店
- *
+ * @author fraliphsoft
+ * @version fraliphsoft 11/27
  */
 
 public class CustomerCheckHotelList {

@@ -22,6 +22,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+/**
+ * 
+ * 客户-工具类
+ * @author fraliphsoft
+ * @version fraliphsoft 11/27
+ */
 public class SwitchSceneUtil {
 	static Stage stage = null;
 	

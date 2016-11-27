@@ -10,6 +10,11 @@ import org.common.dataservice.CommentDataService.CommentDataService;
 import org.common.po.CommentPO;
 import org.common.utility.ResultMessage;
 
+/**
+ * bl层comment模块的工具类，实现comment模块的逻辑
+ * @author fraliphsoft
+ * @version fraliphsoft 11/27
+ */
 public class CommentUtil {
 	
 	public static List<CommentVO> getComment(String hotelAddress) {

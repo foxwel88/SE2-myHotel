@@ -11,7 +11,8 @@ import javafx.scene.layout.GridPane;
 /**
  * 
  * 客户-生成订单确认界面
- *
+ * @author fraliphsoft
+ * @version fraliphsoft 11/27
  */
 public class CustomerConfirmOrder {
 	@FXML

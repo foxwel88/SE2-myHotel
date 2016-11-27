@@ -10,6 +10,11 @@ import org.common.po.PromotionPO;
 import org.common.utility.PromotionType;
 import org.common.utility.ResultMessage;
 
+/**
+ * 实现了修改促销策略的逻辑
+ * @author fraliphsoft
+ * @version fraliphsoft 11/27
+ */
 public class Promotion {
 	String type; 
 	

@@ -17,8 +17,9 @@ import javafx.scene.layout.HBox;
 
 /**
  * 
- * 客户-浏览客户未执行订单
- *
+ * 客户-未执行订单列表
+ * @author fraliphsoft
+ * @version fraliphsoft 11/27
  */
 public class CustomerUnexcutedOrderList {
 	@FXML

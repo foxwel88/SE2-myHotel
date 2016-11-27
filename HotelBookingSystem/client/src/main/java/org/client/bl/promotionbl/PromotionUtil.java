@@ -11,6 +11,11 @@ import org.common.po.PromotionPO;
 import org.common.utility.PromotionType;
 import org.common.utility.ResultMessage;
 
+/**
+ * Promotion模块的工具类，实现了大部分逻辑
+ * @author fraliphsoft
+ * @version fraliphsoft 11/27
+ */
 public class PromotionUtil {
 	
 	private static PromotionDataService promotionDataService = null;
