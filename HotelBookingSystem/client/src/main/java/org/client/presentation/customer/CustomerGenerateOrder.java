@@ -1,5 +1,7 @@
 package org.client.presentation.customer;
 
+import java.util.Date;
+
 import org.client.vo.HotelVO;
 import org.client.vo.OrderVO;
 import org.client.vo.UserVO;
@@ -121,11 +123,11 @@ public class CustomerGenerateOrder {
 	@FXML
 	void commitOrder() {
 		// TODO 检查订单格式
-//		OrderVO newOrder = new OrderVO(user.ID, user.type, generatedDate, schFrom, schTo,
-//				actFrom, actTo, latestTime, cancelTime, hotelAddress, 
-//				orderID, hotelName, roomType, totalPrice, roomNum, numOfPeople,
-//				existsChild, customerName, phoneNumber);
-		OrderVO newOrder = new OrderVO(ResultMessage.SUCCESS);
+		// TODO 现在的生成的OrderVO的和日期有关的东西都是假的
+		OrderVO newOrder = new OrderVO(user.ID, user.type, new Date(10000000), new Date(10000000), new Date(10000000),
+				null, null, new Date(10000000), null, hotel.address, 
+				user.ID, hotel.hotelName, roomType.getValue(), Double.parseDouble(totalPrice.getText().replaceAll("元", "")), Integer.parseInt(roomNum.getText()), Integer.parseInt(residentNum.getText()),
+				hasChildren.isSelected(), user.name, phoneNumber.getText());
 		SwitchSceneUtil.turnToConfirmOrderScene((GridPane)root.getParent(), newOrder);
 	}
 	

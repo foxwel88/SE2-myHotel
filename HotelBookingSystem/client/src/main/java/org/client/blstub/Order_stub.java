@@ -129,17 +129,17 @@ public class Order_stub implements Orderblservice {
 			"ahotel5","230000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, null,"13671717171");
 	
 	OrderVO avo6 = new OrderVO("i'm a userid",OrderType.ABNORMAL.getString(),
-			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
+			new Date(100000000),new Date(10),new Date(100000000),new Date(10)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
 			"ahotel6","240000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, null,"13671717171");
 	
 	OrderVO avo7 = new OrderVO("i'm a userid",OrderType.ABNORMAL.getString(),
-			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
+			new Date(100000000),new Date(10),new Date(100000000),new Date(10)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
 			"ahotel7","250000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, null,"13671717171");
 	
 	OrderVO avo8 = new OrderVO("i'm a userid",OrderType.ABNORMAL.getString(),
-			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
+			new Date(100000000),new Date(10),new Date(100000000),new Date(10)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
 			"ahotel8","260000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, null,"13671717171");
 	
@@ -256,6 +256,7 @@ public class Order_stub implements Orderblservice {
 		vo.add(uvo9);
 		vo.add(uvo10);
 		vo.add(uvo11);
+		vo.add(uvo12);
 		
 		for (int i = 0; i < vo.size(); i++) {
 			if (vo.get(i).orderID == ID) {
