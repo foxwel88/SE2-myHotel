@@ -53,12 +53,12 @@ public class Promotion_stub implements Promotionblservice {
 
 	public LevelVO showLevel() {
 		// TODO Auto-generated method stub
-		ArrayList<Integer> level = new ArrayList<Integer>();
-		level.add(100);
-		level.add(200);
-		level.add(300);
-		level.add(400);
-		level.add(500);
+		ArrayList<Double> level = new ArrayList<>();
+		level.add(100.0);
+		level.add(200.0);
+		level.add(300.0);
+		level.add(400.0);
+		level.add(500.0);
 		return new LevelVO(5,level);
 	}
 

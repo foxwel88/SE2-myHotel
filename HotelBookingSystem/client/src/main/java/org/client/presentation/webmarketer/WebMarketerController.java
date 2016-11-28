@@ -119,7 +119,7 @@ public class WebMarketerController {
 		String[] levels = new String[]{" --- ", " --- ", " --- ", " --- ", " --- "};
 		LevelVO levelVO = promotionbl.showLevel();
 		int levelNum = levelVO.levelNum;
-		ArrayList<Integer> credits = levelVO.credits; 
+		ArrayList<Double> credits = levelVO.credits; 
 		for (int i = 0; i < levelNum; i++) {
 			levels[i] = credits.get(i).toString();
 		}

@@ -47,16 +47,15 @@ public class PromotionDataServiceImpl extends UnicastRemoteObject implements Pro
 	}
 
 	public LevelPO showLevel() throws RemoteException {
-		// TODO ?????? why still int.............................................it should be double
 		communicator = DatabaseCommunicator.getInstance();
 		ArrayList<Integer> levelNumList = new ArrayList<>(communicator.getLevel_LevelNum());
 		ArrayList<Double> creditsList = new ArrayList<>(communicator.getLevel_Credits());
-		ArrayList<Integer> badList = new ArrayList<>();
+		ArrayList<Double> badList = new ArrayList<>();
 		for (double sadNum:creditsList) {
-			badList.add((int)sadNum);
+			badList.add(sadNum);
 		}
 		LevelPO levelPO = new LevelPO(levelNumList.size(), badList);
-//		LevelPO levelPO = new LevelPO(levelNumList.size(), creditsList);			// TODO double
+//		LevelPO levelPO = new LevelPO(levelNumList.size(), creditsList);
 		return levelPO;
 	}
 

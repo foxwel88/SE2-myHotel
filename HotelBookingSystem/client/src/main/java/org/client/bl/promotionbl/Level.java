@@ -17,11 +17,11 @@ import org.common.utility.ResultMessage;
 public class Level {
 	private int levelNum;
 	
-	private ArrayList<Integer> credits;
+	private ArrayList<Double> credits;
 	
 	private static Level level;
 	
-	private Level(int levelNum, ArrayList<Integer> credits) {
+	private Level(int levelNum, ArrayList<Double> credits) {
 		this.levelNum = levelNum;
 		
 		this.credits = credits;

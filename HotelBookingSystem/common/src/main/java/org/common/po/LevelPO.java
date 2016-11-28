@@ -18,9 +18,9 @@ public class LevelPO implements Serializable {
 	/**
 	 * 每一等级需要的信用值
 	 */
-	public ArrayList<Integer> credits;
+	public ArrayList<Double> credits;
 	
-	public LevelPO(int levelNum, ArrayList<Integer> credits) {
+	public LevelPO(int levelNum, ArrayList<Double> credits) {
 		this.levelNum = levelNum;
 		this.credits = credits;
 	}

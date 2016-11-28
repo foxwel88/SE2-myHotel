@@ -171,36 +171,36 @@ public class PromotionControllerTest extends EasyMockSupport {
 	
 	@Test(timeout = 1000)
 	public void testmodifyLevel() {
-		ArrayList<Integer> credits = new ArrayList<Integer>();
-		credits.add(10);
-		credits.add(10);
-		credits.add(10);
+		ArrayList<Double> credits = new ArrayList<>();
+		credits.add(10.0);
+		credits.add(10.0);
+		credits.add(10.0);
 		LevelVO vo = new LevelVO(3, credits);
 		assertEquals(ResultMessage.SUCCESS, promotionController.modifyLevel(vo));
 	}
 	
 	@Test(timeout = 1000)
 	public void testmodifyLevel2() {
-		ArrayList<Integer> credits = new ArrayList<Integer>();
-		credits.add(10);
-		credits.add(10);
-		credits.add(10);
+		ArrayList<Double> credits = new ArrayList<>();
+		credits.add(10.0);
+		credits.add(10.0);
+		credits.add(10.0);
 		LevelVO vo = new LevelVO(5, credits);
 		assertEquals(ResultMessage.WRONG_FORMAT, promotionController.modifyLevel(vo));
 	}
 	
 	@Test(timeout = 1000)
 	public void testmodifyLevel3() {
-		LevelVO vo = new LevelVO(5, new ArrayList<Integer>());
+		LevelVO vo = new LevelVO(5, new ArrayList<>());
 		assertEquals(ResultMessage.WRONG_FORMAT, promotionController.modifyLevel(vo));
 	}
 	
 	@Test(timeout = 1000)
 	public void testmodifyLevel4() {
-		ArrayList<Integer> credits = new ArrayList<Integer>();
-		credits.add(10);
-		credits.add(10);
-		credits.add(10);
+		ArrayList<Double> credits = new ArrayList<>();
+		credits.add(10.0);
+		credits.add(10.0);
+		credits.add(10.0);
 		LevelVO vo = new LevelVO(0, credits);
 		assertEquals(ResultMessage.WRONG_FORMAT, promotionController.modifyLevel(vo));
 	}

@@ -17,11 +17,11 @@ public class LevelVO implements Serializable {
 	/**
 	 * 每一等级需要的信用值
 	 */
-	public ArrayList<Integer> credits;
+	public ArrayList<Double> credits;
 	
 	public ResultMessage resultMessage;
 	
-	public LevelVO(int levelNum, ArrayList<Integer> credits) {
+	public LevelVO(int levelNum, ArrayList<Double> credits) {
 		this.levelNum = levelNum;
 		this.credits = credits;
 		resultMessage = ResultMessage.SUCCESS;

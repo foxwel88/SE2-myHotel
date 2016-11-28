@@ -114,9 +114,9 @@ public class WebMarketerModifyLevel {
 		while ((levelNums[levelNum] != -1) && (levelNum <= 5)) {
 			levelNum++;
 		}
-		ArrayList<Integer> credits = new ArrayList<>();
+		ArrayList<Double> credits = new ArrayList<>();
 		for (int i = 0; i < levelNum; i++) {
-			credits.add(levelNums[i]);
+			credits.add((double) levelNums[i]);
 		}
 		LevelVO levelVO = new LevelVO(levelNum, credits);
 		ResultMessage info = controller.modifyLevel(levelVO);
