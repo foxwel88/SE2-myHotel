@@ -2,6 +2,7 @@ package org.server.data.PromotionData;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.common.dataservice.PromotionDataService.PromotionDataService;
@@ -9,12 +10,16 @@ import org.common.po.LevelPO;
 import org.common.po.PromotionPO;
 import org.common.utility.ResultMessage;
 
+import mySQL.DatabaseCommunicator;
+
 public class PromotionDataServiceImpl extends UnicastRemoteObject implements PromotionDataService {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -8003664894492865142L;
+	
+	private DatabaseCommunicator communicator;
 
 	public PromotionDataServiceImpl() throws RemoteException {
 		System.out.println("promotion start");
@@ -42,8 +47,17 @@ public class PromotionDataServiceImpl extends UnicastRemoteObject implements Pro
 	}
 
 	public LevelPO showLevel() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		// TODO ?????? why still int.............................................it should be double
+		communicator = DatabaseCommunicator.getInstance();
+		ArrayList<Integer> levelNumList = new ArrayList<>(communicator.getLevel_LevelNum());
+		ArrayList<Double> creditsList = new ArrayList<>(communicator.getLevel_Credits());
+		ArrayList<Integer> badList = new ArrayList<>();
+		for (double sadNum:creditsList) {
+			badList.add((int)sadNum);
+		}
+		LevelPO levelPO = new LevelPO(levelNumList.size(), badList);
+//		LevelPO levelPO = new LevelPO(levelNumList.size(), creditsList);			// TODO double
+		return levelPO;
 	}
 
 	public ResultMessage modifyLevel(LevelPO po) throws RemoteException {
