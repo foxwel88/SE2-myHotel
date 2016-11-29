@@ -116,14 +116,33 @@ public class HotelManagerModifyHotel {
 	
 	@FXML
 	void addCooperator(ActionEvent event) {
-		currentCooperators.add(cooperatorField.getText().trim());
+		
+		//检查是否已经存在
+		String newCooperator = cooperatorField.getText().trim();
+		for (String c: currentCooperators) {
+			if (c.equals(newCooperator)) {
+				return;
+			}
+		}
+		
+		currentCooperators.add(newCooperator);
 	}
 
 	@FXML
     void changeCooperator(ActionEvent event) {
+		
+		//检查是否已经存在
+		String editedCooperator = cooperatorField.getText().trim();
+		for (String c: currentCooperators) {
+			if (c.equals(editedCooperator)) {
+				return;
+			}
+		}
+		
 		int index = currentCooperators.indexOf(cooperatorBox.getValue());
-		currentCooperators.set(index, cooperatorField.getText().trim());
-		cooperatorBox.setValue(cooperatorField.getText().trim());
+		
+		currentCooperators.set(index, editedCooperator);
+		cooperatorBox.setValue(editedCooperator);
 	}
 
 	@FXML

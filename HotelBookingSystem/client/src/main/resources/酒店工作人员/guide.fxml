@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.Blend?>
 <?import javafx.scene.effect.ColorAdjust?>
@@ -11,7 +12,6 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <Pane prefHeight="680.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.presentation.hotelmanager.HotelManagerGuide">
@@ -103,26 +103,17 @@
                   </GridPane>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="60.0" prefWidth="1118.0" style="-fx-background-color: rgba(0,0,0,0.4);">
+            <AnchorPane prefHeight="60.0" prefWidth="1108.0" style="-fx-background-color: rgba(0,0,0,0.4);">
                <effect>
                   <DropShadow />
                </effect>
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" blendMode="SOFT_LIGHT" fill="#0000000d" height="65.0" stroke="BLACK" strokeType="INSIDE" width="110.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="990.0" AnchorPane.topAnchor="0.0" />
-                  <Label layoutX="38.0" layoutY="8.0" text="&lt;" textFill="#868686">
-                     <font>
-                        <Font size="39.0" />
-                     </font>
-                     <effect>
-                        <Blend mode="LIGHTEN" />
-                     </effect>
-                  </Label>
-                  <Label layoutX="850.0" layoutY="16.0" prefHeight="34.0" prefWidth="188.0" text="Welcome, 李华！" textFill="WHITE" textOverrun="LEADING_ELLIPSIS">
+                  <Label fx:id="welcomeLabel" layoutX="850.0" layoutY="18.0" prefHeight="34.0" prefWidth="188.0" text="Welcome, 李华！" textFill="WHITE" textOverrun="LEADING_ELLIPSIS">
                      <font>
                         <Font name="Microsoft YaHei UI Light" size="24.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="60.0" fitWidth="48.0" layoutX="1038.0" layoutY="9.0" preserveRatio="true">
+                  <ImageView fx:id="avatar" fitHeight="60.0" fitWidth="48.0" layoutX="1038.0" layoutY="11.0" preserveRatio="true">
                      <image>
                         <Image url="@../profile.png" />
                      </image>
@@ -130,7 +121,22 @@
                         <ColorAdjust brightness="0.63" />
                      </effect>
                   </ImageView>
+                  <Pane fx:id="backPane" layoutY="2.0" prefHeight="65.0" prefWidth="110.0" style="-fx-background-color: rgba(0,0,0,0.5);">
+                     <children>
+                        <Label fx:id="backArrow" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="38.0" layoutY="2.0" prefHeight="48.0" prefWidth="35.0" text="&lt;" textFill="#bcb8b8">
+                           <font>
+                              <Font name="Symbol" size="39.0" />
+                           </font>
+                           <effect>
+                              <Blend mode="LIGHTEN" />
+                           </effect>
+                        </Label>
+                     </children>
+                  </Pane>
                </children>
+               <GridPane.margin>
+                  <Insets left="-3.0" right="-1.0" />
+               </GridPane.margin>
             </AnchorPane>
          </children>
       </GridPane>
