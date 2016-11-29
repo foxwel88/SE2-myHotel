@@ -36,19 +36,22 @@ public class HotelManagerController {
 	
 	private String hotelAddress;
 	
+	public String managerName;
+	
 	public OrderVO currentOrder;
 	
 	//stub version
-	private HotelManagerController(String hotelAddress) { 
+	private HotelManagerController(String hotelAddress, String managerName) { 
 		hotelbl = new Hotel_stub();
 		promotionbl = new Promotion_stub();
 		orderbl = new Order_stub();
 		this.hotelAddress = hotelAddress;
+		this.managerName = managerName;
 	}
 	
 	/** 登录之后就要马上调用这个方法 */
-	public static void init(String hotelAddress) {
-		controller = new HotelManagerController(hotelAddress);
+	public static void init(String hotelAddress, String managerName) {
+		controller = new HotelManagerController(hotelAddress, managerName);
 	}
 	
 	public static HotelManagerController getInstance() throws NullPointerException {

@@ -121,7 +121,7 @@
                         <ColorAdjust brightness="0.63" />
                      </effect>
                   </ImageView>
-                  <Pane fx:id="backPane" layoutY="2.0" prefHeight="65.0" prefWidth="110.0" style="-fx-background-color: rgba(0,0,0,0.5);">
+                  <Pane fx:id="backPane" layoutY="2.0" onMouseClicked="#goBack" prefHeight="65.0" prefWidth="110.0" style="-fx-background-color: rgba(0,0,0,0.5);">
                      <children>
                         <Label fx:id="backArrow" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="38.0" layoutY="2.0" prefHeight="48.0" prefWidth="35.0" text="&lt;" textFill="#bcb8b8">
                            <font>

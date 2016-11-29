@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="567.0" prefWidth="920.0" style="-fx-background-color: rgba(255,255,255,0.4);" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.presentation.hotelmanager.HotelManagerMain">
+<AnchorPane fx:id="main" prefHeight="567.0" prefWidth="920.0" style="-fx-background-color: rgba(255,255,255,0.4);" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.presentation.hotelmanager.HotelManagerMain">
    <effect>
       <DropShadow />
    </effect>

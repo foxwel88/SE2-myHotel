@@ -8,9 +8,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 
 /**
  * FXML Controller
@@ -58,7 +60,25 @@ public class HotelManagerGuide {
 
 	@FXML
     private Label promotionLabel;
+	
+	@FXML
+	private Label welcomeLabel;
 
+	@FXML
+	private ImageView avatar;
+
+	@FXML
+	private Pane backPane;
+
+	@FXML
+	private Label backArrow;
+		
+
+	/**
+	 * 监听并实现在导航界面完成的跳转
+	 * @param event
+	 */
+	
 	@FXML
     void handleSwitch(MouseEvent event) {
 		
@@ -160,11 +180,40 @@ public class HotelManagerGuide {
 		assert historyLabel != null : "fx:id=\"historyLabel\" was not injected: check your FXML file 'guide.fxml'.";
 		assert promotionLabelPane != null : "fx:id=\"promotionLabelPane\" was not injected: check your FXML file 'guide.fxml'.";
 		assert promotionLabel != null : "fx:id=\"promotionLabel\" was not injected: check your FXML file 'guide.fxml'.";
+		assert welcomeLabel != null : "fx:id=\"welcomeLabel\" was not injected: check your FXML file 'guide.fxml'.";
+		assert avatar != null : "fx:id=\"avatar\" was not injected: check your FXML file 'guide.fxml'.";
+		assert backPane != null : "fx:id=\"backPane\" was not injected: check your FXML file 'guide.fxml'.";
+		assert backArrow != null : "fx:id=\"backArrow\" was not injected: check your FXML file 'guide.fxml'.";
+				
+		//默认显示主界面
 		try {
 			belowGridPane.add((Node) FXMLLoader.load(getClass().getResource("/酒店工作人员/酒店工作人员主界面.fxml")), 1, 0);
 			CurrentItem.setInstance(mainLabel, mainLabelPane, GuideLabelType.MAIN);
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+		
+		welcomeLabel.setText("Welcome, " + HotelManagerController.getInstance().managerName);
+	}
+	
+	@FXML
+	void goBack(MouseEvent event) {
+		String currentId = belowGridPane.getChildren().get(1).getId();
+		if (currentId == null) {
+			return;
+		}
+		switch (currentId) {
+			case "executed":
+			case "abnormal":
+			case "cancelled":
+				changeContent(GuideLabelType.HISTORY);
+				break;
+			case "unexecuted":
+				changeContent(GuideLabelType.EXECUTE);
+				break;
+			case "promotion":
+				changeContent(GuideLabelType.PROMOTION);
+				break;				
 		}
 	}
 }
