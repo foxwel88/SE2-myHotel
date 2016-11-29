@@ -27,7 +27,7 @@ import javax.crypto.spec.SecretKeySpec;
  * @version 2016/11/29 Hirico
  */
 public class EncryptUtil {
-	private static final String KEY_LOCATION = "D://hotelSystemKey.txt";
+	private static final String KEY_LOCATION = "../../../../hotelSystemKey.txt";
 	
 	private static final String IV_STRING = "Secure37Enough16";
 	
