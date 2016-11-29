@@ -2,6 +2,8 @@ package org.server.data.PromotionData;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,17 +48,24 @@ public class PromotionDataServiceImpl extends UnicastRemoteObject implements Pro
 		return null;
 	}
 
+	/**
+	 * 获得等级制度信息
+	 * 注意，此方法如果没有成功，可能返回null
+	 */
 	public LevelPO showLevel() throws RemoteException {
-//		communicator = DatabaseCommunicator.getInstance();
-//		ArrayList<Integer> levelNumList = new ArrayList<>(communicator.getLevel_LevelNum());
-//		ArrayList<Double> creditsList = new ArrayList<>(communicator.getLevel_Credits());
-//		ArrayList<Double> badList = new ArrayList<>();
-//		for (double sadNum:creditsList) {
-//			badList.add(sadNum);
-//		}
-//		LevelPO levelPO = new LevelPO(levelNumList.size(), badList);
-//		LevelPO levelPO = new LevelPO(levelNumList.size(), creditsList);
-		return null;
+		ArrayList<Double> creditsList = new ArrayList<>();
+		LevelPO levelPO = null;
+		try {
+			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("select Credits from Level");
+			ResultSet creditsSet = DatabaseCommunicator.excute(preparedStatement);
+			while (creditsSet.next()) {
+				creditsList.add(creditsSet.getDouble("Credits"));
+			}
+			levelPO = new LevelPO(creditsList.size(), creditsList);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return levelPO;
 	}
 
 	public ResultMessage modifyLevel(LevelPO po) throws RemoteException {
