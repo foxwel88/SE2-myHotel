@@ -8,6 +8,11 @@ import java.util.Date;
 
 import org.common.utility.TimeService;
 
+/**
+ * Time服务类实现，可返回服务器端时间
+ * @author Hirico
+ * @version 2016/11/29 Hirico
+ */
 public class TimeServiceImpl extends UnicastRemoteObject implements TimeService {
 
 	/**
@@ -30,6 +35,7 @@ public class TimeServiceImpl extends UnicastRemoteObject implements TimeService 
 		return currentTime;
 	}
 
+	/** 获得服务器端当前Date */
 	public Date getDate() throws RemoteException {
 		return Calendar.getInstance().getTime();
 	}

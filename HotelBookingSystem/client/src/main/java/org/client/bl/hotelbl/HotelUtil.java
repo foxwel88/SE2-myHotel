@@ -12,6 +12,11 @@ import org.common.po.RoomPO;
 import org.common.utility.HotelFilter;
 import org.common.utility.ResultMessage;
 
+/**
+ * Hotel模块的工具类，用于协作HotelController转发
+ * @author Hirico
+ * @version 2016/11/29 Hirico
+ */
 public class HotelUtil {
 	
 	private HotelList hotelList;
@@ -23,7 +28,7 @@ public class HotelUtil {
 	public ResultMessage addHotel(HotelVO vo) {
 		HotelDataService dao = RMIHelper.getInstance().getHotelDataServiceImpl();
 		Hotel h = new Hotel();
-		HotelPO po = h.modify(vo);
+		HotelPO po = h.modifyAndReturnPO((vo));
 		try {
 			return dao.addHotelInfo(po);
 		} catch (RemoteException e) {
@@ -59,28 +64,32 @@ public class HotelUtil {
 	 * @return ResultMessage
 	 */
 	public ResultMessage modify(HotelVO vo) {
+		
+		//准备好HotelPO和RoomPO
 		Hotel h = new Hotel();
-		HotelPO hotelPO = h.modify(vo);
+		HotelPO hotelPO = h.modifyAndReturnPO(vo);
+		
 		List<RoomPO> rooms = new ArrayList<RoomPO>();
 		for (int i = 0; i < vo.roomNum.size(); i++) {
 			rooms.add(new RoomPO(vo.roomType.get(i), vo.roomNum.get(i), vo.roomPrice.get(i)));
 		}
 		
+		//调用数据层的modify方法
 		HotelDataService dao = RMIHelper.getInstance().getHotelDataServiceImpl();
-		ResultMessage hotelRe;
-		ResultMessage roomRe;
+		ResultMessage hotelResult;
+		ResultMessage roomResult;
 		try {
-			hotelRe = dao.modifyHotelInfo(hotelPO);
-			roomRe = dao.modifyRooms(vo.address, rooms);
+			hotelResult = dao.modifyHotelInfo(hotelPO);
+			roomResult = dao.modifyRooms(vo.address, rooms);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			return ResultMessage.CONNECTION_FAIL;
 		}
-		if (hotelRe != ResultMessage.SUCCESS) {
-			return hotelRe;
+		if (hotelResult != ResultMessage.SUCCESS) {
+			return hotelResult;
 		}
-		if (roomRe != ResultMessage.SUCCESS) {
-			return roomRe;
+		if (roomResult != ResultMessage.SUCCESS) {
+			return roomResult;
 		}
 		return ResultMessage.SUCCESS;
 	}
