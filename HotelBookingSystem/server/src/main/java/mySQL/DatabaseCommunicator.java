@@ -36,7 +36,7 @@ public class DatabaseCommunicator {
 		return connection;
 	}
 	
-	public static ResultSet excute(PreparedStatement command) {
+	public static ResultSet execute(PreparedStatement command) {
 		try {
 			return command.executeQuery();
 		} catch (Exception ex) {

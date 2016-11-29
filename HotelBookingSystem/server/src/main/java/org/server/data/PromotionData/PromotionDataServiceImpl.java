@@ -57,7 +57,7 @@ public class PromotionDataServiceImpl extends UnicastRemoteObject implements Pro
 		LevelPO levelPO = null;
 		try {
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("select Credits from Level");
-			ResultSet creditsSet = DatabaseCommunicator.excute(preparedStatement);
+			ResultSet creditsSet = DatabaseCommunicator.execute(preparedStatement);
 			while (creditsSet.next()) {
 				creditsList.add(creditsSet.getDouble("Credits"));
 			}
