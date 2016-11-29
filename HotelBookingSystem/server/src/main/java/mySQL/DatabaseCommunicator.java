@@ -21,13 +21,9 @@ public class DatabaseCommunicator {
 
 	private static final String PASSWORD = "123";
 	
-	private static DatabaseCommunicator communicator = null;
+	private static Connection connection;
 	
-	private Connection connection;
-	
-	private PreparedStatement preparedStatement;
-	
-	private DatabaseCommunicator() {
+	public static void databaseInit() {
 		try {
 			Class.forName(driver);
 			connection = DriverManager.getConnection(url, USERNAME, PASSWORD);
@@ -36,54 +32,63 @@ public class DatabaseCommunicator {
 		}
 	}
 	
-	public static DatabaseCommunicator getInstance() {
-		if (communicator == null) {
-			communicator = new DatabaseCommunicator();
-		}
-		return communicator;
+	public static Connection getConnectionInstance() {
+		return connection;
 	}
 	
-	/*
-	 * 下面的方法能够分别获得所有数据库表的所有列
-	 */
-	
-	/**
-	 * 此方法获得Level表的LevelNum属性字段
-	 * @return Integer List
-	 */
-	public List<Integer> getLevel_LevelNum() {
-		ArrayList<Integer> levelNumList = new ArrayList<>();
+	public static ResultSet excute(PreparedStatement command) {
 		try {
-			preparedStatement = connection.prepareStatement("select LevelNum from Level");
-			ResultSet levelNumSet = preparedStatement.executeQuery();
-			while (levelNumSet.next()) {
-				levelNumList.add(levelNumSet.getInt(1));
-			}
+			ResultSet result = command.executeQuery();
+			return result;
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			System.out.println("Statement excute error!!!");
 		}
-		return levelNumList;
+		return null;
 	}
 	
-	/*
-	 * 下面的方法能够分别获得所有数据库表的所有列
-	 */
-	
-	/**
-	 * 此方法获得Level表的LevelNum属性字段
-	 * @return Double List
-	 */
-	public List<Double> getLevel_Credits() {
-		ArrayList<Double> creditsList = new ArrayList<>();
-		try {
-			preparedStatement = connection.prepareStatement("select Credits from Level");
-			ResultSet creditsSet = preparedStatement.executeQuery();
-			while (creditsSet.next()) {
-				creditsList.add(creditsSet.getDouble(1));
-			}
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
-		return creditsList;
-	}
+//	/*
+//	 * 我过会还要把下面的东西抄到promotiondata里，所以过一阵子再删。。。
+//	 */
+//	
+//	/**
+//	 * 此方法获得Level表的LevelNum属性字段
+//	 * @return Integer List
+//	 */
+//	public List<Integer> getLevel_LevelNum() {
+//		ArrayList<Integer> levelNumList = new ArrayList<>();
+//		try {
+//			preparedStatement = connection.prepareStatement("select LevelNum from Level");
+//			ResultSet levelNumSet = preparedStatement.executeQuery();
+//			while (levelNumSet.next()) {
+//				levelNumList.add(levelNumSet.getInt(1));
+//			}
+//			preparedStatement.close();
+//		} catch (Exception ex) {
+//			ex.printStackTrace();
+//		}
+//		return levelNumList;
+//	}
+//	
+//	/*
+//	 * 下面的方法能够分别获得所有数据库表的所有列
+//	 */
+//	
+//	/**
+//	 * 此方法获得Level表的LevelNum属性字段
+//	 * @return Double List
+//	 */
+//	public List<Double> getLevel_Credits() {
+//		ArrayList<Double> creditsList = new ArrayList<>();
+//		try {
+//			preparedStatement = connection.prepareStatement("select Credits from Level");
+//			ResultSet creditsSet = preparedStatement.executeQuery();
+//			while (creditsSet.next()) {
+//				creditsList.add(creditsSet.getDouble(1));
+//			}
+//			preparedStatement.close();
+//		} catch (Exception ex) {
+//			ex.printStackTrace();
+//		}
+//		return creditsList;
+//	}
 }
