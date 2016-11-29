@@ -10,6 +10,11 @@ import org.common.utility.HotelFilter;
 import org.common.utility.ResultMessage;
 import org.common.utility.RoomType;
 
+/**
+ * Hotel模块的logic层接口
+ * @author Hirico
+ * @version 2016/11/29 Hirico
+ */
 public interface Hotelblservice {
 	public List<HotelVO> findHotels(HotelFilter filter, String userId, boolean historyOnly);
 	

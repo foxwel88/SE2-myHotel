@@ -10,6 +10,12 @@ import org.common.dataservice.HotelDataService.HotelDataService;
 import org.common.po.HotelPO;
 import org.common.utility.HotelFilter;
 
+/**
+ * 持有根据HotelFilter选出的Hotel列表
+ * 通过调用dao的findHotel()方法
+ * @author Hirico
+ * @version 2016/11/29 Hirico
+ */
 public class HotelList {
 	public List<Hotel> list;
 	
@@ -46,7 +52,7 @@ public class HotelList {
 			}
 			return voList;
 		} else {
-			return null; // initList() not called yet
+			return null; // initList() 还没有被正确调用
 		}
 	}
 }

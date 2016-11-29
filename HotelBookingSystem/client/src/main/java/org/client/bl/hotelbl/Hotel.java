@@ -7,6 +7,11 @@ import org.client.vo.CityVO;
 import org.client.vo.HotelVO;
 import org.common.po.HotelPO;
 
+/**
+ * Hotel的领域对象实体类，持有hotel的基本信息，拥有po和vo的转换方法
+ * @author Hirico
+ * @version 2016/11/29 Hirico
+ */
 public class Hotel {
 	public String hotelName;
 
@@ -68,7 +73,7 @@ public class Hotel {
 	 * @param hotelVO
 	 * @return 对应的hotelPO
 	 */
-	public HotelPO modify(HotelVO vo) {
+	public HotelPO modifyAndReturnPO(HotelVO vo) {
 		this.hotelName = vo.hotelName;
 		this.address = vo.address;
 		this.city = vo.city.cityName;
@@ -83,12 +88,12 @@ public class Hotel {
 		this.roomPrice = vo.roomPrice;
 		this.cooperators = vo.cooperators;
 		
-		//deformat the cooperators'info
-		if (cooperators != null) {       // in the add hotel case this is null
+		//将vo中合作企业列表合并成存在po中的单条字符串
+		if (cooperators != null) {       // 添加新酒店时，该条件为false
 			StringBuilder sb = new StringBuilder();
 			for (String s: cooperators) {
 				sb.append(s);
-				sb.append(","); // english
+				sb.append(","); // 英文逗号
 			}
 			this.cooperators_po = sb.toString();
 		}

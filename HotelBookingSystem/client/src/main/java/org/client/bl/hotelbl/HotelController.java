@@ -18,6 +18,11 @@ import org.common.utility.HotelFilter;
 import org.common.utility.ResultMessage;
 import org.common.utility.RoomType;
 
+/**
+ * Hotel模块逻辑层接口的实现类
+ * @author Hirico
+ * @version 2016/11/29 Hirico
+ */
 public class HotelController implements Hotelblservice {
 	private static HotelController controller;
 	
