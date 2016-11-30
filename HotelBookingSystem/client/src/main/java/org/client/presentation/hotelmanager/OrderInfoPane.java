@@ -2,10 +2,10 @@ package org.client.presentation.hotelmanager;
 
 import java.io.IOException;
 
+import org.client.launcher.Resources;
 import org.client.vo.OrderVO;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -73,20 +73,21 @@ public class OrderInfoPane extends Pane {
 	/*根据orderVO中orderType的不同跳转到不同类型的详情页面 */
 	void switchToSpec() {
 		Parent modifyRoot = null;
+		Resources resources = Resources.getInstance();
 		try {
 			HotelManagerController.getInstance().currentOrder = vo;			
 			switch(vo.type) {
 				case "未执行订单":
-					modifyRoot = FXMLLoader.load(getClass().getResource("/酒店工作人员/未执行订单详细信息界面.fxml"));
+					modifyRoot = resources.load(resources.hotelManagerUnexecutedOrder);
 					break;
 				case "已执行订单":
-					modifyRoot = FXMLLoader.load(getClass().getResource("/酒店工作人员/已执行订单详细信息界面.fxml"));
+					modifyRoot = resources.load(resources.hotelManagerExecutedOrder);
 					break;
 				case "已撤销订单":
-					modifyRoot = FXMLLoader.load(getClass().getResource("/酒店工作人员/已撤销订单详细信息界面.fxml"));
+					modifyRoot = resources.load(resources.hotelManagerCancelledOrder);
 					break;
 				case "异常订单":
-					modifyRoot = FXMLLoader.load(getClass().getResource("/酒店工作人员/异常订单详细信息界面.fxml"));
+					modifyRoot = resources.load(resources.hotelManagerAbnormalOrder);
 					break;					
 			}
 		} catch (IOException e) {

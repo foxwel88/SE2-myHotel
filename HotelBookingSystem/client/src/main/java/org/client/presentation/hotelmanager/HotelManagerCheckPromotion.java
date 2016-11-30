@@ -6,12 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import org.client.launcher.Resources;
 import org.client.vo.PromotionVO;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -92,9 +92,9 @@ public class HotelManagerCheckPromotion {
 	@FXML
 	void addPromotion(ActionEvent event) {
 		Parent modifyRoot = null;
-		FXMLLoader loader = new FXMLLoader();
+		Resources resources = Resources.getInstance();
 		try {
-			modifyRoot = loader.load(getClass().getResource("/酒店工作人员/修改酒店促销策略界面.fxml").openStream());
+			modifyRoot = resources.load(resources.hotelManagerModifyPromotion);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -104,16 +104,16 @@ public class HotelManagerCheckPromotion {
 	
 	void modifyPromotion(PromotionVO vo) {
 		Parent modifyRoot = null;
-		FXMLLoader loader = new FXMLLoader();
+		Resources resources = Resources.getInstance();
 		try {
-			modifyRoot = loader.load(getClass().getResource("/酒店工作人员/修改酒店促销策略界面.fxml").openStream());
+			modifyRoot = resources.load(resources.hotelManagerModifyPromotion);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		parentPane.getChildren().set(1, modifyRoot);
 		GridPane.setConstraints(modifyRoot, 1, 0);
 		
-		((HotelManagerModifyPromotion)loader.getController()).setPromotionVO(vo);
+		((HotelManagerModifyPromotion)resources.getCurrentController()).setPromotionVO(vo);
 	}
 	
 	@FXML

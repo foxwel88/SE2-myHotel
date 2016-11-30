@@ -3,6 +3,9 @@ package org.client.presentation.hotelmanager;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import org.client.launcher.Resources;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -137,26 +140,26 @@ public class HotelManagerGuide {
 	/*change the content of the gridpane */
 	void changeContent(GuideLabelType to) {
 		Parent root = null;
-		FXMLLoader loader = new FXMLLoader();
+		Resources resources = Resources.getInstance();
 		try {
 			switch(to) {
 				case MAIN:
-					root = loader.load(getClass().getResource("/酒店工作人员/酒店工作人员主界面.fxml").openStream());
+					root = resources.load(resources.hotelManagerMain);
 					break;
 				case INFO:
-					root = loader.load(getClass().getResource("/酒店工作人员/维护酒店信息界面.fxml").openStream());
+					root = resources.load(resources.hotelManagerModifyHotel);
 					break;
 				case EXECUTE:
-					root = loader.load(getClass().getResource("/酒店工作人员/执行订单界面.fxml").openStream());
-					((HotelManagerExecute)loader.getController()).setParentGridPane(belowGridPane);
+					root = resources.load(resources.hotelManagerExecute);
+					((HotelManagerExecute)resources.getCurrentController()).setParentGridPane(belowGridPane);
 					break;
 				case HISTORY:
-					root = loader.load(getClass().getResource("/酒店工作人员/浏览酒店历史订单界面.fxml").openStream());
-					((HotelManagerHistoryOrder)loader.getController()).setParentGridPane(belowGridPane);
+					root = resources.load(resources.hotelManagerHistoryOrder);
+					((HotelManagerHistoryOrder)resources.getCurrentController()).setParentGridPane(belowGridPane);
 					break;
 				case PROMOTION:
-					root = loader.load(getClass().getResource("/酒店工作人员/管理酒店促销策略界面.fxml").openStream());
-					((HotelManagerCheckPromotion)loader.getController()).setParentGridPane(belowGridPane);
+					root = resources.load(resources.hotelManagerCheckPromotion);
+					((HotelManagerCheckPromotion)resources.getCurrentController()).setParentGridPane(belowGridPane);
 					break;
 			}
 		} catch (IOException e) {

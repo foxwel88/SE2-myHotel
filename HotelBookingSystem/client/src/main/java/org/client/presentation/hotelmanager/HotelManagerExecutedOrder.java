@@ -1,6 +1,5 @@
 package org.client.presentation.hotelmanager;
 
-import java.io.IOException;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -9,19 +8,12 @@ import java.util.ResourceBundle;
 import org.client.vo.OrderVO;
 import org.common.utility.ResultMessage;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
-import javafx.stage.Stage;
 
 /**
  * FXML Controller
