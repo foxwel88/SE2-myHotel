@@ -101,6 +101,8 @@ public class CustomerCheckHotel {
 	
 	@FXML
 	void turnToCustomerGenerateOrder() {
+		SwitchSceneUtil.isBackToDetail = true;
+		SwitchSceneUtil.currentScene = CustomerBackableScene.GENERATE_ORDER_SCENE;
 		SwitchSceneUtil.turnToGenerateOrderScene((GridPane)root.getParent(), hotel.address);
 	}
 }

@@ -62,7 +62,7 @@
             </Label>
             <TextField fx:id="roomNum" layoutX="759.0" layoutY="99.0" prefHeight="23.0" prefWidth="150.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.leftAnchor="759.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="99.0" />
             <Separator layoutY="50.0" prefHeight="0.0" prefWidth="808.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-            <Button fx:id="searchButton" layoutX="802.0" layoutY="16.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="70.0" style="-fx-background-color: rgba(0,0,0,0.4);" text="搜索" textFill="WHITE" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="16.0">
+            <Button fx:id="searchButton" layoutX="802.0" layoutY="16.0" mnemonicParsing="false" onMouseClicked="#search" prefHeight="15.0" prefWidth="70.0" style="-fx-background-color: rgba(0,0,0,0.4);" text="搜索" textFill="WHITE" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="16.0">
                <font>
                   <Font name="Microsoft JhengHei" size="15.0" />
                </font>

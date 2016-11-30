@@ -101,22 +101,45 @@ public class CustomerController_Main {
 				turnToCusController_CusInfo();
 				break;
 			case HOTEL_INFO_SCENE:
-				
+				SwitchSceneUtil.isBack = true;
+				turnToCusController_HotelList();
+				SwitchSceneUtil.isBack = false;
 				break;
 			case EXECUTED_ORDER_SCENE:
-				
+				SwitchSceneUtil.isBack = true;
+				turnToCusController_HistoryOrderList();
+				SwitchSceneUtil.isBack = false;
 				break;
 			case CANCELED_ORDER_SCENE:
-				
+				SwitchSceneUtil.isBack = true;
+				turnToCusController_HistoryOrderList();
+				SwitchSceneUtil.isBack = false;
 				break;
 			case ABNORMAL_ORDER_SCENE:
-				
+				SwitchSceneUtil.isBack = true;
+				turnToCusController_HistoryOrderList();
+				SwitchSceneUtil.isBack = false;
 				break;
 			case UNEXECUTED_ORDER_SCENE:
-				
+				SwitchSceneUtil.isBack = true;
+				turnToCusController_UnexcutedOrderList();
+				SwitchSceneUtil.isBack = false;
 				break;
 			case MAKE_COMMENT_SCENE:
-				
+				SwitchSceneUtil.isBack = true;
+				SwitchSceneUtil.turnToDetailedOrderScene(gridpane, Resources.getInstance().customerCheckExecutedOrder, SwitchSceneUtil.orderID);
+				SwitchSceneUtil.currentScene = CustomerBackableScene.EXECUTED_ORDER_SCENE;
+				SwitchSceneUtil.isBack = false;
+				break;
+			case GENERATE_ORDER_SCENE:
+				SwitchSceneUtil.isBack = true;
+				if (SwitchSceneUtil.isBackToDetail) {
+					SwitchSceneUtil.currentScene = CustomerBackableScene.HOTEL_INFO_SCENE;
+					SwitchSceneUtil.turnToDetailedHotelScene(gridpane, SwitchSceneUtil.hotelAddress);
+				} else {
+					turnToCusController_HistoryOrderList();
+				}
+				SwitchSceneUtil.isBack = false;
 				break;
 		}
 	}

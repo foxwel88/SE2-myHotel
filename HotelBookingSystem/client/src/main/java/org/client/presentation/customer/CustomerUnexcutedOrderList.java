@@ -98,6 +98,12 @@ public class CustomerUnexcutedOrderList {
 		boxList.add(order10);
 		boxList.add(order11);
 		showUnExcutedOrderList();
+		
+		if (SwitchSceneUtil.isBack) {
+			int goalPage = checkGoalPage(SwitchSceneUtil.previousOrderSceneInfo.currentPage);
+			currentPage.setText(String.valueOf(goalPage));
+			showUnExcutedOrderList();
+		}
 	}
 	
 	@FXML
@@ -119,7 +125,13 @@ public class CustomerUnexcutedOrderList {
 	@FXML
 	void turnToSpecialPage(KeyEvent event) {
 		if (event.getCode() == KeyCode.ENTER) {
-			int goalPage = checkGoalPage();
+			int goalPage;
+			try {
+				goalPage = Integer.parseInt(toPage.getText());
+			} catch (NumberFormatException numFormex) {
+				goalPage = (int)Double.parseDouble(toPage.getText());
+			}
+			goalPage = checkGoalPage(goalPage);
 			currentPage.setText(String.valueOf(goalPage));
 			showUnExcutedOrderList();
 		}
@@ -136,6 +148,8 @@ public class CustomerUnexcutedOrderList {
 			for (int i = 0; i < MAX_ORDER_ONE_OAGE; i++) {
 				if (((HBox)(event.getSource())).equals(boxList.get(i))) {
 					orderID = unExcutedOrderList.get((page - 1) * MAX_ORDER_ONE_OAGE + i).orderID;
+					SwitchSceneUtil.currentScene = CustomerBackableScene.UNEXECUTED_ORDER_SCENE;
+					SwitchSceneUtil.previousOrderSceneInfo = new PreviousOrderSceneInfo(Integer.parseInt(currentPage.getText()));
 					SwitchSceneUtil.turnToDetailedOrderScene((GridPane)root.getParent(), resources.customerCheckUnexecutedOrder, orderID);
 					break;
 				}
@@ -176,13 +190,8 @@ public class CustomerUnexcutedOrderList {
 	 * 此方法在用户敲击回车确认输入时被调用
 	 * 此方法被调用之后会把文本框中的内容变为合法值
 	 */
-	int checkGoalPage() {
-		int goalPage;
-		try {
-			goalPage = Integer.parseInt(toPage.getText());
-		} catch (NumberFormatException numFormex) {
-			goalPage = (int)Double.parseDouble(toPage.getText());
-		}
+	int checkGoalPage(int inputPage) {
+		int goalPage = inputPage;
 		if (goalPage < 1) {
 			goalPage = 1;
 		}

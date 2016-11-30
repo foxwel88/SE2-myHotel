@@ -78,6 +78,7 @@ public class CustomerExecutedOrder {
 	
 	@FXML
 	void makeComment() {
+		SwitchSceneUtil.currentScene = CustomerBackableScene.MAKE_COMMENT_SCENE;
 		SwitchSceneUtil.turnToAnotherScene((GridPane)(root.getParent()), resources.customerMakeComments);
 	}
 }
