@@ -141,32 +141,33 @@
                   </Pane>
                </children>
             </AnchorPane>
-            <Label fx:id="prevPage" layoutX="228.0" layoutY="377.0" onMouseClicked="#toPrevPage" text="&lt;上一页" textFill="WHITE">
+            <Label fx:id="prevPage" layoutX="392.0" layoutY="377.0" onMouseClicked="#toPrevPage" text="&lt;上一页" textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
             </Label>
-            <Label fx:id="nextPage" layoutX="352.0" layoutY="377.0" onMouseClicked="#toNextPage" text="下一页&gt;" textFill="WHITE">
+            <Label fx:id="nextPage" layoutX="516.0" layoutY="377.0" onMouseClicked="#toNextPage" text="下一页&gt;" textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="467.0" layoutY="377.0" text="跳转至第" textFill="WHITE">
+            <Label layoutX="631.0" layoutY="377.0" text="跳转至第" textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="jumpField" layoutX="531.0" layoutY="374.0" onAction="#jump" prefHeight="20.0" prefWidth="30.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-text-inner-color: white;" />
-            <Label fx:id="pageNumLabel" layoutX="313.0" layoutY="377.0" text="1" textFill="WHITE">
+            <TextField fx:id="jumpField" layoutX="695.0" layoutY="374.0" onAction="#jump" prefHeight="20.0" prefWidth="30.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-text-inner-color: white;" />
+            <Label fx:id="pageNumLabel" layoutX="477.0" layoutY="377.0" text="1" textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="564.0" layoutY="377.0" text="页" textFill="WHITE">
+            <Label layoutX="728.0" layoutY="377.0" text="页" textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
             </Label>
+            <TextField fx:id="searchField" layoutX="23.0" layoutY="372.0" onAction="#searchByName" promptText="按姓名搜索" style="-fx-background-color: rgba(255,255,255,0.1); -fx-text-inner-color: white;" />
          </children>
       </Pane>
    </children>

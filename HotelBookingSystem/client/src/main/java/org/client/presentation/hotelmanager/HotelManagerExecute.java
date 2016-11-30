@@ -2,6 +2,7 @@ package org.client.presentation.hotelmanager;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -49,6 +50,9 @@ public class HotelManagerExecute {
 	@FXML
 	private AnchorPane contentPane;
 	
+	@FXML
+	private TextField searchField;
+	
 	//导航界面的GridPane
 	private GridPane parentPane;
 	
@@ -63,6 +67,8 @@ public class HotelManagerExecute {
 		assert jumpField != null : "fx:id=\"jumpField\" was not injected: check your FXML file '执行订单界面.fxml'.";
 		assert pageNumLabel != null : "fx:id=\"pageNumLabel\" was not injected: check your FXML file '执行订单界面.fxml'.";
 		assert contentPane != null : "fx:id=\"contentPane\" was not injected: check your FXML file '执行订单界面.fxml'.";
+		assert searchField != null : "fx:id=\"searchField\" was not injected: check your FXML file '执行订单界面.fxml'.";
+
 		
 		unexecutedOrders = HotelManagerController.getInstance().getUnexecutedOrders();
 		
@@ -96,10 +102,10 @@ public class HotelManagerExecute {
 		}
 	}
 	
-	/** 替换promotionPanes的内容，将其设为contentPane的子女显示,并更改pageNumLabel和pageNum */
+	/** 替换currentOrderPanes的内容，将其设为contentPane的子女显示,并更改pageNumLabel和pageNum */
 	void switchCurrentPage(int toPageNum) {
 		
-		//修改currentPromotionPanes
+		//修改currentOrderPanes
 		currentOrderPanes = new ArrayList<OrderInfoPane>();
 		for (int i = (toPageNum - 1) * NUM_OF_ORDER_PER_PAGE; i < (toPageNum - 1) * NUM_OF_ORDER_PER_PAGE + 
 				Math.min(NUM_OF_ORDER_PER_PAGE, unexecutedOrders.size() - NUM_OF_ORDER_PER_PAGE * (toPageNum - 1)); i++) {
@@ -109,14 +115,27 @@ public class HotelManagerExecute {
 		//修改contentPane
 		contentPane.getChildren().clear();
 		for (int i = 0; i < currentOrderPanes.size(); i++) {
-			OrderInfoPane tempPromotionPane = currentOrderPanes.get(i);
-			contentPane.getChildren().add(tempPromotionPane);
-			tempPromotionPane.setLayoutY(73 * i);
+			OrderInfoPane tempOrderPane = currentOrderPanes.get(i);
+			contentPane.getChildren().add(tempOrderPane);
+			tempOrderPane.setLayoutY(73 * i);
 		}
 		
 		//修改pageNum
 		pageNum = toPageNum;
 		pageNumLabel.setText(String.valueOf(pageNum));
+	}
+	
+	
+	@FXML
+	void searchByName(ActionEvent event) {
+		String name = searchField.getText().trim();
+		Iterator<OrderVO> iter = unexecutedOrders.iterator();
+		while (iter.hasNext()) {
+			if (!iter.next().customerName.equals(name)) {
+				iter.remove();
+			}
+		}
+		switchCurrentPage(FIRST_PAGE_NUM);
 	}
 	
 }

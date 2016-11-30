@@ -46,8 +46,9 @@ public class RegisterController {
     private TextField birthTextField;
 	
 	@FXML
-	void handleSignUpAction(MouseEvent event) throws IOException {
+	void handleSignUpAction(MouseEvent event) {
 		Userblservice userBl = new User_stub();
+		Resources resources = Resources.getInstance();
 		if (passwordField.getText().equals(passwordField2.getText())) {
 			UserVO vo = new UserVO(UserType.PERSONALCUSTOMER.getString(), userNameTextField.getText(), nameTextField.getText(), userBl.getNewID(),
 					passwordField.getText(), phoneTextField.getText(), 200, new Date(), null, null);
@@ -55,11 +56,32 @@ public class RegisterController {
 			ResultMessage message = userBl.add(vo);
 			if (message == ResultMessage.SUCCESS) {
 				Stage stage = (Stage)userNameTextField.getScene().getWindow();
-				Parent root = FXMLLoader.load(getClass().getResource("/登录界面.fxml"));
-				Scene scene = new Scene(root);
-				stage.setScene(scene);
+				Parent root;
+				try {
+					root = resources.load(resources.register);
+				
+					Scene scene = new Scene(root);
+					stage.setScene(scene);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 	
+	}
+	
+	/**返回到登录界面 */
+	@FXML
+	void goBack(MouseEvent event) {
+		Stage stage = (Stage)userNameTextField.getScene().getWindow();
+		Resources resources = Resources.getInstance();
+		try {
+			Parent root = resources.load(resources.login);
+			
+			Scene scene = new Scene(root);
+			stage.setScene(scene);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

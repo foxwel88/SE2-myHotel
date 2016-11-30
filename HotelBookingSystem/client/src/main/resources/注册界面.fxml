@@ -9,9 +9,10 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.launcher.RegisterController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.launcher.RegisterController">
    <children>
       <ImageView fitHeight="700.0" fitWidth="450.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
@@ -96,6 +97,16 @@
                </effect>
             </Label>
             <TextField fx:id="nameTextField" layoutX="105.0" layoutY="347.0" prefHeight="61.0" prefWidth="318.0" style="-fx-background-color: rgba(0,0,0,0.7);" AnchorPane.topAnchor="350.0" />
+            <Circle blendMode="SOFT_LIGHT" fill="#adadad43" layoutX="60.0" layoutY="657.0" onMouseClicked="#goBack" radius="24.5" stroke="BLACK" strokeMiterLimit="1.0" strokeType="INSIDE">
+               <effect>
+                  <Bloom />
+               </effect>
+            </Circle>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="43.0" layoutY="631.0" onMouseClicked="#goBack" prefHeight="30.0" prefWidth="32.0" text="&lt;" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft YaHei" size="35.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

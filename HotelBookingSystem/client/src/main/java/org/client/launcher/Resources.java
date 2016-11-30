@@ -13,6 +13,11 @@ import javafx.scene.Parent;
  */
 public class Resources {
 	private static Resources instance;
+
+	//Launcher UI
+	public URL login = getClass().getResource("/登录界面.fxml");
+	
+	public URL register = getClass().getResource("/注册界面.fxml");
 	
 	//HotelManager UI
 	public URL hotelManagerGuide = getClass().getResource("/酒店工作人员/guide.fxml");
@@ -36,7 +41,8 @@ public class Resources {
 	public URL hotelManagerAbnormalOrder = getClass().getResource("/酒店工作人员/异常订单详细信息界面.fxml");
 	
 	public URL hotelManagerModifyPromotion = getClass().getResource("/酒店工作人员/修改酒店促销策略界面.fxml");
-	
+		
+	//Customer UI
 	public URL customerGuide = getClass().getResource("/客户/导航_主界面.fxml");
 	
 	public URL customerMain = getClass().getResource("/客户/主界面.fxml");
