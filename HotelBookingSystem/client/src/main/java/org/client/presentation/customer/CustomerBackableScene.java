@@ -13,5 +13,6 @@ public enum CustomerBackableScene {
 	CANCELED_ORDER_SCENE,		// 已撤销订单详细信息界面
 	ABNORMAL_ORDER_SCENE,		// 异常订单详细信息界面
 	UNEXECUTED_ORDER_SCENE,		// 未执行订单详细信息界面
-	MAKE_COMMENT_SCENE			// 评价酒店界面
+	MAKE_COMMENT_SCENE,			// 评价酒店界面
+	GENERATE_ORDER_SCENE		// 生成订单界面
 }

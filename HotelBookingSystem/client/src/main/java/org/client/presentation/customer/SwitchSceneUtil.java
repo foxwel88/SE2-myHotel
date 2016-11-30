@@ -48,8 +48,11 @@ public class SwitchSceneUtil {
 	// 临时保存即将生成的订单的vo，用于把订单信息从生成订单界面传递到确认订单界面
 	static OrderVO toBeGeneratedOrder;
 	
-	// 在即将返回前一界面的时候此字段被临时置为true，表示新生成的界面需要额外的初始化信息
+	// 调用返回方法的时候此字段被临时置为true，接下来跳转到的界面会访问这个属性，发现此属性为true则说明此界面是被返回回来的，则执行额外的初始化操作
 	static boolean isBack = false;
+	
+	// 生成订单界面可能返回酒店列表界面，也可能返回酒店详细信息界面，因此需要这个字段进行记录
+	static boolean isBackToDetail = false;
 	
 	/*
 	 * 下面三条属性用于记录返回上一界面所需要的信息
@@ -184,7 +187,6 @@ public class SwitchSceneUtil {
 	public static void turnToAnotherScene(GridPane gridpane, URL resource) {
 		try {
 			Resources resources = Resources.getInstance();
-//			AnchorPane root = FXMLLoader.load(SwitchSceneUtil.class.getResource(resource));
 			AnchorPane root = (AnchorPane)resources.load(resource);
 			GridPane.setConstraints(root, 1, 0);
 			if (gridpane.getChildren().size() > 1) {

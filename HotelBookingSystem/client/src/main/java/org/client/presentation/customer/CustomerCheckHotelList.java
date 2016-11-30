@@ -136,6 +136,44 @@ public class CustomerCheckHotelList {
 		setRoomType();
 		LiveDatePicker.initDatePicker(null, fromDate);
 		LiveDatePicker.initDatePicker(fromDate, toDate);
+		
+		SwitchSceneUtil.isBackToDetail = false;
+		if (SwitchSceneUtil.isBack) {
+			HotelFilter previousFilter = SwitchSceneUtil.previousHotelSceneInfo.hotelFilter;
+			currentPage.setText(String.valueOf(SwitchSceneUtil.previousHotelSceneInfo.currentPage));
+			showHotelList();
+			if (previousFilter.city != null) {
+				city.setValue(previousFilter.city);
+			}
+			if (previousFilter.area != null) {
+				area.setValue(previousFilter.area);
+			}
+			if (previousFilter.minStar != -1) {
+				lowerStar.setValue(previousFilter.minStar);
+			}
+			if (previousFilter.maxStar != -1) {
+				upperStar.setValue(previousFilter.maxStar);
+			}
+			if (previousFilter.minRank != -1) {
+				lowerScore.setValue(previousFilter.minRank);
+			}
+			if (previousFilter.maxRank != -1) {
+				upperScore.setValue(previousFilter.maxRank);
+			}
+			if (previousFilter.minPrice != -1) {
+				fromPrice.setText(String.valueOf(previousFilter.minPrice));
+			}
+			if (previousFilter.maxPrice != -1) {
+				toPrice.setText(String.valueOf(previousFilter.maxPrice));
+			}
+			if (previousFilter.roomType != null) {
+				roomType.setValue(previousFilter.roomType.getString());
+			}
+			if (previousFilter.roomNum != -1) {
+				roomNum.setText(String.valueOf(previousFilter.roomNum));
+			}
+//			fromDate.setValue(previousFilter.);
+		}
 	}
 	
 	@FXML
@@ -175,6 +213,8 @@ public class CustomerCheckHotelList {
 				Label clickedLabel = (Label)(event.getSource());
 				if (clickedLabel.equals(getNameLabel(i))) {
 					hotelAddress = hotelList.get((page - 1) * MAX_HOTEL_ONE_OAGE + i).address;
+					SwitchSceneUtil.currentScene = CustomerBackableScene.HOTEL_INFO_SCENE;
+					SwitchSceneUtil.previousHotelSceneInfo = new PreviousHotelSceneInfo(getCurrentFilter(), everOrdered.isSelected(), Integer.parseInt(currentPage.getText()));
 					SwitchSceneUtil.turnToDetailedHotelScene((GridPane)root.getParent(), hotelAddress);
 					break;
 				}
@@ -196,11 +236,19 @@ public class CustomerCheckHotelList {
 			if (clickedLabel.equals(getMakeOrderLabel(i))) {
 				if (clickedLabel.getText() != null) {
 					hotelAddress = hotelList.get((page - 1) * MAX_HOTEL_ONE_OAGE + i).address;
+					SwitchSceneUtil.previousHotelSceneInfo = new PreviousHotelSceneInfo(getCurrentFilter(), everOrdered.isSelected(), Integer.parseInt(currentPage.getText()));
+					SwitchSceneUtil.isBackToDetail = false;
+					SwitchSceneUtil.currentScene = CustomerBackableScene.GENERATE_ORDER_SCENE;
 					SwitchSceneUtil.turnToGenerateOrderScene((GridPane)root.getParent(), hotelAddress);
 					break;
 				}
 			}
 		}
+	}
+	
+	@FXML
+	void search() {
+		// TODO
 	}
 	
 	private void showHotelList() {
@@ -296,65 +344,44 @@ public class CustomerCheckHotelList {
 	 */
 	private HotelFilter getCurrentFilter() {
 		HotelFilter filter = new HotelFilter();
-//		
-//		filter.setLocation(city.getValue(), area.getValue());
-//		
-//		// 设置星级
-//		if (String.valueOf(lowerStar.getValue()) == null) {
-//			if (String.valueOf(upperStar.getValue()) == null) {
-//				filter.setStar(-1, -1);
-//			} else {
-//				filter.setStar(-1, Integer.parseInt(String.valueOf(upperStar.getValue())));
-//			}
-//		} else {
-//			if (String.valueOf(upperStar.getValue()) == null) {
-//				filter.setStar(Integer.parseInt(String.valueOf(lowerStar.getValue())), -1);
-//			} else {
-//				filter.setStar(Integer.parseInt(String.valueOf(lowerStar.getValue())), Integer.parseInt(String.valueOf(upperStar.getValue())));
-//			}
-//		}
-//		
-//		// 设置评分
-//		if (String.valueOf(lowerScore.getValue()) == null) {
-//			if (String.valueOf(upperScore.getValue()) == null) {
-//				filter.setRank(-1, -1);
-//			} else {
-//				filter.setRank(-1, Double.parseDouble(String.valueOf(upperStar.getValue())));
-//			}
-//		} else {
-//			if (String.valueOf(upperScore.getValue()) == null) {
-//				filter.setRank(Double.parseDouble(String.valueOf(lowerStar.getValue())), -1);
-//			} else {
-//				filter.setRank(Double.parseDouble(String.valueOf(lowerScore.getValue())), Double.parseDouble(String.valueOf(upperScore.getValue())));
-//			}
-//		}
-//		
-//		// 设置价格
-//		if (fromPrice.getText() == null) {
-//			if (toPrice.getText() == null) {
-//				filter.setPrice(-1, -1);
-//			} else {
-//				filter.setPrice(-1, Double.parseDouble(toPrice.getText()));
-//			}
-//		} else {
-//			if (toPrice.getText() == null) {
-//				filter.setPrice(Double.parseDouble(fromPrice.getText()), -1);
-//			} else {
-//				filter.setPrice(Double.parseDouble(fromPrice.getText()), Double.parseDouble(toPrice.getText()));
-//			}
-//		}
-//		
-//		if (String.valueOf(roomType.getValue()) != null) {
-//			filter.setRoomType(RoomType.getType(String.valueOf(roomType.getValue())));
-//		}
-//		
-//		if (roomNum.getText() != null) {
-//			filter.setRoomNum(Integer.parseInt(roomNum.getText()));
-//		}
-//		
-//		// TODO 酒店地址有问题，应该是根据酒店名称包含的关键字搜索
-//		// TODO 没有办法根据入住日期区间搜索
-//		// TODO try-catch没有写（格式检查）
+		
+		filter.setLocation(city.getValue(), area.getValue());
+		
+		// 设置星级
+		if (lowerStar.getValue() != null) {
+			filter.setLowerStar(lowerStar.getValue());
+		}
+		if (upperStar.getValue() != null) {
+			filter.setUpperStar(upperStar.getValue());
+		}
+		
+		// 设置评分
+		if (lowerScore.getValue() != null) {
+			filter.setLowerRank(lowerScore.getValue());
+		}
+		if (upperScore.getValue() != null) {
+			filter.setUpperRank(upperScore.getValue());
+		}
+		
+		// 设置价格
+		try {
+			filter.setLowerPrice(Double.parseDouble(fromPrice.getText()));
+		} catch (NumberFormatException numberFormatException) { }
+		try {
+			filter.setUpperPrice(Double.parseDouble(toPrice.getText()));
+		} catch (NumberFormatException numberFormatException) { }
+		
+		if (roomType.getValue() != null) {
+			filter.setRoomType(RoomType.getType(String.valueOf(roomType.getValue())));
+		}
+		
+		try {
+			filter.setRoomNum(Integer.parseInt(roomNum.getText()));
+		} catch (NumberFormatException numberFormatException) { }
+		
+		// TODO 酒店地址有问题，应该是根据酒店名称包含的关键字搜索
+		// TODO 没有办法根据入住日期区间搜索
+		// TODO try-catch没有写（格式检查）
 		return filter;
 	}
 	

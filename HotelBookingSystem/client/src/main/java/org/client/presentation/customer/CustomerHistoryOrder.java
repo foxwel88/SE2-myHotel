@@ -28,22 +28,22 @@ public class CustomerHistoryOrder {
 	AnchorPane root;
 	
 	@FXML
-	Pane finishedOrder;
+	Pane executedOrder;
 	
 	@FXML
 	Pane canceledOrder;
 	
 	@FXML
-	Pane exceptionOrder;
+	Pane abnormalOrder;
 	
 	@FXML
-	Label finishedOrderText;
+	Label executedOrderText;
 	
 	@FXML
 	Label canceledOrderText;
 	
 	@FXML
-	Label exceptionOrderText;
+	Label abnormalOrderText;
 	
 	@FXML
 	TextField toPage;
@@ -82,7 +82,7 @@ public class CustomerHistoryOrder {
 	// 0表示当前显示的是已执行订单界面，1表示是已撤销订单界面，2表示异常订单界面
 	private int currentLabel = 0;
 	
-	private ArrayList<OrderVO> finishedOrderList;
+	private ArrayList<OrderVO> executedOrderList;
 	
 	private ArrayList<OrderVO> canceledOrderList;
 	
@@ -105,49 +105,74 @@ public class CustomerHistoryOrder {
 		boxList.add(order4);
 		boxList.add(order5);
 		boxList.add(order6);
-		showFinishedOrderList();
+		showExecutedOrderList();
+		if (SwitchSceneUtil.isBack) {
+			switch (SwitchSceneUtil.currentScene) {
+				case EXECUTED_ORDER_SCENE:
+					switchToExecutedOrder();
+					break;
+				case CANCELED_ORDER_SCENE:
+					switchToCanceledOrder();
+					break;
+				case ABNORMAL_ORDER_SCENE:
+					switchToAbnormalOrder();
+					break;
+			}
+			currentPage.setText(String.valueOf(SwitchSceneUtil.previousOrderSceneInfo.currentPage));
+			switch (SwitchSceneUtil.currentScene) {
+				case EXECUTED_ORDER_SCENE:
+					showExecutedOrderList();
+					break;
+				case CANCELED_ORDER_SCENE:
+					showCanceledOrderList();
+					break;
+				case ABNORMAL_ORDER_SCENE:
+					showAbnormalOrderList();
+					break;
+			}
+		}
 	}
 	
 	/*
 	 * 以下三种方法用于切换三种订单列表
 	 */
 	@FXML
-	void switchToFinishedOrder() {
-		finishedOrder.setStyle("-fx-background-color:  rgba(0,0,0,0.3)");
+	void switchToExecutedOrder() {
+		executedOrder.setStyle("-fx-background-color:  rgba(0,0,0,0.3)");
 		canceledOrder.setStyle("-fx-background-color:  rgba(255,255,255,0.2)");
-		exceptionOrder.setStyle("-fx-background-color:  rgba(255,255,255,0.2)");
-		finishedOrderText.setStyle("-fx-text-fill: white");
+		abnormalOrder.setStyle("-fx-background-color:  rgba(255,255,255,0.2)");
+		executedOrderText.setStyle("-fx-text-fill: white");
 		canceledOrderText.setStyle("-fx-text-fill: black");
-		exceptionOrderText.setStyle("-fx-text-fill: black");
+		abnormalOrderText.setStyle("-fx-text-fill: black");
 		currentLabel = 0;
 		currentPage.setText(String.valueOf(1));
-		showFinishedOrderList();
+		showExecutedOrderList();
 	}
 	
 	@FXML
 	void switchToCanceledOrder() {
-		finishedOrder.setStyle("-fx-background-color:  rgba(255,255,255,0.2)");
+		executedOrder.setStyle("-fx-background-color:  rgba(255,255,255,0.2)");
 		canceledOrder.setStyle("-fx-background-color:  rgba(0,0,0,0.3)");
-		exceptionOrder.setStyle("-fx-background-color:  rgba(255,255,255,0.2)");
-		finishedOrderText.setStyle("-fx-text-fill: black");
+		abnormalOrder.setStyle("-fx-background-color:  rgba(255,255,255,0.2)");
+		executedOrderText.setStyle("-fx-text-fill: black");
 		canceledOrderText.setStyle("-fx-text-fill: white");
-		exceptionOrderText.setStyle("-fx-text-fill: black");
+		abnormalOrderText.setStyle("-fx-text-fill: black");
 		currentLabel = 1;
 		currentPage.setText(String.valueOf(1));
 		showCanceledOrderList();
 	}
 	
 	@FXML
-	void switchToExceptionOrder() {
-		finishedOrder.setStyle("-fx-background-color:  rgba(255,255,255,0.2)");
+	void switchToAbnormalOrder() {
+		executedOrder.setStyle("-fx-background-color:  rgba(255,255,255,0.2)");
 		canceledOrder.setStyle("-fx-background-color:  rgba(255,255,255,0.2)");
-		exceptionOrder.setStyle("-fx-background-color:  rgba(0,0,0,0.3)");
-		finishedOrderText.setStyle("-fx-text-fill: black");
+		abnormalOrder.setStyle("-fx-background-color:  rgba(0,0,0,0.3)");
+		executedOrderText.setStyle("-fx-text-fill: black");
 		canceledOrderText.setStyle("-fx-text-fill: black");
-		exceptionOrderText.setStyle("-fx-text-fill: white");
+		abnormalOrderText.setStyle("-fx-text-fill: white");
 		currentLabel = 2;
 		currentPage.setText(String.valueOf(1));
-		showExceptionOrderList();
+		showAbnormalOrderList();
 	}
 	/************************************************************************************/
 	
@@ -155,21 +180,21 @@ public class CustomerHistoryOrder {
 	void turnToNextPage() {
 		switch (currentLabel) {
 			case 0:
-				if (Integer.parseInt(currentPage.getText()) < calMaxPage(finishedOrderList)) {
+				if (Integer.parseInt(currentPage.getText()) < calMaxPage(executedOrderList)) {
 					currentPage.setText(String.valueOf(Integer.parseInt(currentPage.getText()) + 1));
-					showFinishedOrderList();
+					showExecutedOrderList();
 				}
 				break;
 			case 1:
 				if (Integer.parseInt(currentPage.getText()) < calMaxPage(canceledOrderList)) {
 					currentPage.setText(String.valueOf(Integer.parseInt(currentPage.getText()) + 1));
-					showFinishedOrderList();
+					showExecutedOrderList();
 				}
 				break;
 			case 2:
 				if (Integer.parseInt(currentPage.getText()) < calMaxPage(abnormalOrderList)) {
 					currentPage.setText(String.valueOf(Integer.parseInt(currentPage.getText()) + 1));
-					showFinishedOrderList();
+					showExecutedOrderList();
 				}
 				break;
 		}
@@ -181,7 +206,7 @@ public class CustomerHistoryOrder {
 			case 0:
 				if (Integer.parseInt(currentPage.getText()) > 1) {
 					currentPage.setText(String.valueOf(Integer.parseInt(currentPage.getText()) - 1));
-					showFinishedOrderList();
+					showExecutedOrderList();
 				}
 				break;
 			case 1:
@@ -193,7 +218,7 @@ public class CustomerHistoryOrder {
 			case 2:
 				if (Integer.parseInt(currentPage.getText()) > 1) {
 					currentPage.setText(String.valueOf(Integer.parseInt(currentPage.getText()) - 1));
-					showExceptionOrderList();
+					showAbnormalOrderList();
 				}
 				break;
 		}
@@ -206,13 +231,13 @@ public class CustomerHistoryOrder {
 			currentPage.setText(String.valueOf(goalPage));
 			switch (currentLabel) {
 				case 0:
-					showFinishedOrderList();
+					showExecutedOrderList();
 					break;
 				case 1:
 					showCanceledOrderList();
 					break;
 				case 2:
-					showExceptionOrderList();
+					showAbnormalOrderList();
 					break;
 			}
 		}
@@ -229,17 +254,21 @@ public class CustomerHistoryOrder {
 			for (int i = 0; i < MAX_ORDER_ONE_OAGE; i++) {
 				HBox clickedBox = (HBox)(event.getSource());
 				if (clickedBox.equals(boxList.get(i))) {
+					SwitchSceneUtil.previousOrderSceneInfo = new PreviousOrderSceneInfo(Integer.parseInt(currentPage.getText()));
 					switch (currentLabel) {
 						case 0:
-							orderID = finishedOrderList.get((page - 1) * MAX_ORDER_ONE_OAGE + i).orderID;
+							orderID = executedOrderList.get((page - 1) * MAX_ORDER_ONE_OAGE + i).orderID;
+							SwitchSceneUtil.currentScene = CustomerBackableScene.EXECUTED_ORDER_SCENE;
 							SwitchSceneUtil.turnToDetailedOrderScene((GridPane)root.getParent(), resources.customerCheckExecutedOrder, orderID);
 							break;
 						case 1:
 							orderID = canceledOrderList.get((page - 1) * MAX_ORDER_ONE_OAGE + i).orderID;
+							SwitchSceneUtil.currentScene = CustomerBackableScene.CANCELED_ORDER_SCENE;
 							SwitchSceneUtil.turnToDetailedOrderScene((GridPane)root.getParent(), resources.customerCheckCanceledOrder, orderID);
 							break;
 						case 2:
 							orderID = abnormalOrderList.get((page - 1) * MAX_ORDER_ONE_OAGE + i).orderID;
+							SwitchSceneUtil.currentScene = CustomerBackableScene.ABNORMAL_ORDER_SCENE;
 							SwitchSceneUtil.turnToDetailedOrderScene((GridPane)root.getParent(), resources.customerCheckAbnormalOrder, orderID);
 							break;
 					}
@@ -268,8 +297,8 @@ public class CustomerHistoryOrder {
 		}
 		switch (currentLabel) {
 			case 0:
-				if (goalPage > calMaxPage(finishedOrderList)) {
-					goalPage = calMaxPage(finishedOrderList);
+				if (goalPage > calMaxPage(executedOrderList)) {
+					goalPage = calMaxPage(executedOrderList);
 				}
 				break;
 			case 1:
@@ -287,8 +316,8 @@ public class CustomerHistoryOrder {
 		return goalPage;
 	}
 	
-	void showFinishedOrderList() {
-		finishedOrderList = new ArrayList<>(SwitchSceneUtil.getFinishedOrderList());
+	void showExecutedOrderList() {
+		executedOrderList = new ArrayList<>(SwitchSceneUtil.getFinishedOrderList());
 		setContent();
 	}
 	
@@ -297,7 +326,7 @@ public class CustomerHistoryOrder {
 		setContent();
 	}
 	
-	void showExceptionOrderList() {
+	void showAbnormalOrderList() {
 		abnormalOrderList = new ArrayList<>(SwitchSceneUtil.getAbnormalOrderList());
 		setContent();
 	}
@@ -357,7 +386,7 @@ public class CustomerHistoryOrder {
 		Date tempDate;
 		try {
 			if (currentLabel == 0) {
-				tempDate = finishedOrderList.get(seq).generatedDate;
+				tempDate = executedOrderList.get(seq).generatedDate;
 			} else if (currentLabel == 1) {
 				tempDate = canceledOrderList.get(seq).generatedDate;
 			} else {
@@ -373,7 +402,7 @@ public class CustomerHistoryOrder {
 		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_ORDER_ONE_OAGE + i;
 		try {
 			if (currentLabel == 0) {
-				return finishedOrderList.get(seq).hotelAddress;
+				return executedOrderList.get(seq).hotelAddress;
 			} else if (currentLabel == 1) {
 				return canceledOrderList.get(seq).hotelAddress;
 			} else {
@@ -388,7 +417,7 @@ public class CustomerHistoryOrder {
 		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_ORDER_ONE_OAGE + i;
 		try {
 			if (currentLabel == 0) {
-				return finishedOrderList.get(seq).roomType;
+				return executedOrderList.get(seq).roomType;
 			} else if (currentLabel == 1) {
 				return canceledOrderList.get(seq).roomType;
 			} else {
@@ -403,7 +432,7 @@ public class CustomerHistoryOrder {
 		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_ORDER_ONE_OAGE + i;
 		try {
 			if (currentLabel == 0) {
-				return finishedOrderList.get(seq).roomNum;
+				return executedOrderList.get(seq).roomNum;
 			} else if (currentLabel == 1) {
 				return canceledOrderList.get(seq).roomNum;
 			} else {

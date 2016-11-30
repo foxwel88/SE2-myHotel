@@ -14,9 +14,9 @@
       <DropShadow />
    </effect>
    <children>
-      <Pane fx:id="finishedOrder" layoutX="63.0" layoutY="62.0" onMouseClicked="#switchToFinishedOrder" prefHeight="55.0" prefWidth="175.0" style="-fx-background-color: rgba(0,0,0,0.3);">
+      <Pane fx:id="executedOrder" layoutX="63.0" layoutY="62.0" onMouseClicked="#switchToExecutedOrder" prefHeight="55.0" prefWidth="175.0" style="-fx-background-color: rgba(0,0,0,0.3);">
          <children>
-            <Label fx:id="finishedOrderText" alignment="CENTER" layoutX="32.0" layoutY="16.0" prefHeight="24.0" prefWidth="101.0" text="已执行订单" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="executedOrderText" alignment="CENTER" layoutX="32.0" layoutY="16.0" prefHeight="24.0" prefWidth="101.0" text="已执行订单" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei" size="18.0" />
                </font>
@@ -32,9 +32,9 @@
             </Label>
          </children>
       </Pane>
-      <Pane fx:id="exceptionOrder" layoutX="419.0" layoutY="62.0" onMouseClicked="#switchToExceptionOrder" prefHeight="55.0" prefWidth="175.0" style="-fx-background-color: rgba(255,255,255,0.2);">
+      <Pane fx:id="abnormalOrder" layoutX="419.0" layoutY="62.0" onMouseClicked="#switchToAbnormalOrder" prefHeight="55.0" prefWidth="175.0" style="-fx-background-color: rgba(255,255,255,0.2);">
          <children>
-            <Label fx:id="exceptionOrderText" layoutX="52.0" layoutY="16.0" text="异常订单">
+            <Label fx:id="abnormalOrderText" layoutX="52.0" layoutY="16.0" text="异常订单">
                <font>
                   <Font name="Microsoft YaHei" size="18.0" />
                </font>
