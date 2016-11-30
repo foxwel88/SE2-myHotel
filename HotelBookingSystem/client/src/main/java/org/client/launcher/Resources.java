@@ -37,6 +37,40 @@ public class Resources {
 	
 	public URL hotelManagerModifyPromotion = getClass().getResource("/酒店工作人员/修改酒店促销策略界面.fxml");
 	
+	public URL customerGuide = getClass().getResource("/客户/导航_主界面.fxml");
+	
+	public URL customerMain = getClass().getResource("/客户/主界面.fxml");
+	
+	public URL customerCheckInfo = getClass().getResource("/客户/查看客户信息界面.fxml");
+	
+	public URL customerModifyInfo = getClass().getResource("/客户/修改客户信息界面.fxml");
+	
+	public URL customerCheckCredits = getClass().getResource("/客户/查看信用记录界面.fxml");
+	
+	public URL customerCheckHotel = getClass().getResource("/客户/酒店详细信息界面-1.fxml");
+	
+	public URL customerCheckHotelComment = getClass().getResource("/客户/酒店详细信息界面-2.fxml");
+	
+	public URL customerCheckHotelList = getClass().getResource("/客户/浏览酒店界面.fxml");
+	
+	public URL customerCheckHistoryOrderList = getClass().getResource("/客户/浏览客户历史订单界面.fxml");
+	
+	public URL customerCheckUnexecutedOrderList = getClass().getResource("/客户/浏览客户未执行订单界面.fxml");
+	
+	public URL customerMakeComments = getClass().getResource("/客户/评价订单.fxml");
+	
+	public URL customerGenerateOrder = getClass().getResource("/客户/生成订单界面.fxml");
+	
+	public URL customerConfirmGenerateOrder = getClass().getResource("/客户/生成订单确认界面.fxml");
+	
+	public URL customerCheckUnexecutedOrder = getClass().getResource("/客户/未执行订单详细信息界面.fxml");
+	
+	public URL customerCheckCanceledOrder = getClass().getResource("/客户/已撤销订单详细信息界面.fxml");
+	
+	public URL customerCheckExecutedOrder = getClass().getResource("/客户/已执行订单详细信息界面.fxml");
+	
+	public URL customerCheckAbnormalOrder = getClass().getResource("/客户/异常订单详细信息界面.fxml");
+	
 	private FXMLLoader loader;
 	
 	private Resources() {

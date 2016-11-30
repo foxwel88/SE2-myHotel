@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -20,7 +21,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
@@ -28,7 +28,7 @@ import javafx.scene.layout.VBox;
  * 
  * 客户-浏览酒店
  * @author fraliphsoft
- * @version fraliphsoft 11/27
+ * @version fraliphsoft 11/30
  */
 
 public class CustomerCheckHotelList {
@@ -54,10 +54,10 @@ public class CustomerCheckHotelList {
 	ChoiceBox<Double> upperScore;
 	
 	@FXML
-	ChoiceBox<String> fromDate;
+	DatePicker fromDate;
 	
 	@FXML
-	ChoiceBox<String> toDate;
+	DatePicker toDate;
 	
 	@FXML
 	ChoiceBox<String> roomType;
@@ -134,6 +134,8 @@ public class CustomerCheckHotelList {
 		setStartDate();
 		setEndDate();
 		setRoomType();
+		LiveDatePicker.initDatePicker(null, fromDate);
+		LiveDatePicker.initDatePicker(fromDate, toDate);
 	}
 	
 	@FXML

@@ -1,6 +1,7 @@
 package org.client.presentation.customer;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +10,7 @@ import org.client.bl.userbl.UserController;
 import org.client.blstub.Hotel_stub;
 import org.client.blstub.Order_stub;
 import org.client.blstub.User_stub;
+import org.client.launcher.Resources;
 import org.client.vo.AreaVO;
 import org.client.vo.CityVO;
 import org.client.vo.HotelVO;
@@ -17,7 +19,6 @@ import org.client.vo.UserVO;
 import org.common.utility.HotelFilter;
 import org.common.utility.OrderType;
 
-import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -46,6 +47,20 @@ public class SwitchSceneUtil {
 	
 	// 临时保存即将生成的订单的vo，用于把订单信息从生成订单界面传递到确认订单界面
 	static OrderVO toBeGeneratedOrder;
+	
+	// 在即将返回前一界面的时候此字段被临时置为true，表示新生成的界面需要额外的初始化信息
+	static boolean isBack = false;
+	
+	/*
+	 * 下面三条属性用于记录返回上一界面所需要的信息
+	 */
+	// 记录当前显示的界面，便于返回方法（CustomerController_Main::goBack()）使用
+	static CustomerBackableScene currentScene;
+	
+	static PreviousHotelSceneInfo previousHotelSceneInfo;
+	
+	static PreviousOrderSceneInfo previousOrderSceneInfo;
+	/********************************************/
 	
 	private static void setStage(Stage stage) {
 		SwitchSceneUtil.stage = stage;
@@ -134,13 +149,43 @@ public class SwitchSceneUtil {
 	}
 	
 	/**
+	 * 跳转到可能执行返回上一界面的操作的界面时被调用，记录目标界面的名称
+	 * @param currentScene
+	 */
+	public static void savePreviousScene(CustomerBackableScene currentScene) {
+		SwitchSceneUtil.currentScene = currentScene;
+	}
+	
+	/**
+	 * 跳转到可能执行返回上一界面的操作的界面时被调用，记录目标界面的名称和前一界面的信息
+	 * @param currentScene
+	 * @param previousHotelSceneInfo
+	 */
+	public static void savePreviousScene(CustomerBackableScene currentScene, PreviousHotelSceneInfo previousHotelSceneInfo) {
+		SwitchSceneUtil.currentScene = currentScene;
+		SwitchSceneUtil.previousHotelSceneInfo = previousHotelSceneInfo;
+	}
+	
+	/**
+	 * 跳转到可能执行返回上一界面的操作的界面时被调用，记录目标界面的名称和前一界面的信息
+	 * @param currentScene
+	 * @param previousOrderSceneInfo
+	 */
+	public static void savePreviousScene(CustomerBackableScene currentScene, PreviousOrderSceneInfo previousOrderSceneInfo) {
+		SwitchSceneUtil.currentScene = currentScene;
+		SwitchSceneUtil.previousOrderSceneInfo = previousOrderSceneInfo;
+	}
+	
+	/**
 	 * 此方法用于实现不同FXML文件所描述的界面之间的界面跳转
 	 * @param gridpane
 	 * @param resource
 	 */
-	public static void turnToAnotherScene(GridPane gridpane, String resource) {
+	public static void turnToAnotherScene(GridPane gridpane, URL resource) {
 		try {
-			AnchorPane root = FXMLLoader.load(SwitchSceneUtil.class.getResource(resource));
+			Resources resources = Resources.getInstance();
+//			AnchorPane root = FXMLLoader.load(SwitchSceneUtil.class.getResource(resource));
+			AnchorPane root = (AnchorPane)resources.load(resource);
 			GridPane.setConstraints(root, 1, 0);
 			if (gridpane.getChildren().size() > 1) {
 				gridpane.getChildren().set(1, root);
@@ -161,7 +206,7 @@ public class SwitchSceneUtil {
 	 * @param resource 被加载的界面样式，由订单类型决定
 	 * @param orderID 某条订单的订单号
 	 */
-	public static void turnToDetailedOrderScene(GridPane gridpane, String resource, String orderID) {
+	public static void turnToDetailedOrderScene(GridPane gridpane, URL resource, String orderID) {
 		SwitchSceneUtil.orderID = orderID;
 		turnToAnotherScene(gridpane, resource);
 	}
@@ -172,8 +217,9 @@ public class SwitchSceneUtil {
 	 * @param hotelAddress 期望观看酒店的地址
 	 */
 	public static void turnToDetailedHotelScene(GridPane gridpane, String hotelAddress) {
+		Resources resources = Resources.getInstance();
 		SwitchSceneUtil.hotelAddress = hotelAddress;
-		turnToAnotherScene(gridpane, "/客户/酒店详细信息界面-1.fxml");
+		turnToAnotherScene(gridpane, resources.customerCheckHotel);
 	}
 	
 	/**
@@ -182,8 +228,9 @@ public class SwitchSceneUtil {
 	 * @param hotelAddress 期望观看酒店的地址
 	 */
 	public static void turnToGenerateOrderScene(GridPane gridpane, String hotelAddress) {
+		Resources resources = Resources.getInstance();
 		SwitchSceneUtil.hotelAddress = hotelAddress;
-		turnToAnotherScene(gridpane, "/客户/生成订单界面.fxml");
+		turnToAnotherScene(gridpane, resources.customerGenerateOrder);
 	}
 	
 	/**
@@ -192,8 +239,9 @@ public class SwitchSceneUtil {
 	 * @param orderVO
 	 */
 	public static void turnToConfirmOrderScene(GridPane gridpane, OrderVO orderVO) {
+		Resources resources = Resources.getInstance();
 		SwitchSceneUtil.toBeGeneratedOrder = orderVO;
-		turnToAnotherScene(gridpane, "/客户/生成订单确认界面.fxml");
+		turnToAnotherScene(gridpane, resources.customerConfirmGenerateOrder);
 	}
 	
 	/**
@@ -201,6 +249,7 @@ public class SwitchSceneUtil {
 	 * @param gridpane
 	 */
 	public static void returnToGenerateOrderScene(GridPane gridpane) {
-		turnToAnotherScene(gridpane, "/客户/生成订单界面.fxml");
+		Resources resources = Resources.getInstance();
+		turnToAnotherScene(gridpane, resources.customerGenerateOrder);
 	}
 }

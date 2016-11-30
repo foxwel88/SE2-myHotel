@@ -1,8 +1,8 @@
 package org.client.presentation.customer;
 
 import java.util.ArrayList;
-import java.util.Date;
 
+import org.client.launcher.Resources;
 import org.client.vo.OrderVO;
 
 import javafx.fxml.FXML;
@@ -19,7 +19,7 @@ import javafx.scene.layout.HBox;
  * 
  * 客户-未执行订单列表
  * @author fraliphsoft
- * @version fraliphsoft 11/27
+ * @version fraliphsoft 11/30
  */
 public class CustomerUnexcutedOrderList {
 	@FXML
@@ -77,11 +77,14 @@ public class CustomerUnexcutedOrderList {
 	
 	private ArrayList<OrderVO> unExcutedOrderList;
 	
+	private Resources resources;
+	
 	// 该字段表示同时显示的最大订单的数量
 	private static final int MAX_ORDER_ONE_OAGE = 11;
 	
 	@FXML
 	void initialize() {
+		resources = Resources.getInstance();
 		boxList = new ArrayList<>();
 		boxList.add(order1);
 		boxList.add(order2);
@@ -133,7 +136,7 @@ public class CustomerUnexcutedOrderList {
 			for (int i = 0; i < MAX_ORDER_ONE_OAGE; i++) {
 				if (((HBox)(event.getSource())).equals(boxList.get(i))) {
 					orderID = unExcutedOrderList.get((page - 1) * MAX_ORDER_ONE_OAGE + i).orderID;
-					SwitchSceneUtil.turnToDetailedOrderScene((GridPane)root.getParent(), "/客户/未执行订单详细信息界面.fxml", orderID);
+					SwitchSceneUtil.turnToDetailedOrderScene((GridPane)root.getParent(), resources.customerCheckUnexecutedOrder, orderID);
 					break;
 				}
 			}
@@ -227,12 +230,8 @@ public class CustomerUnexcutedOrderList {
 	 */
 	private String date(int i) {
 		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_ORDER_ONE_OAGE + i;	// 计算当前页面第i个信息字段在arraylist中的实际位置；
-		Date tempDate;
-		StringBuilder sb = new StringBuilder();
 		try {
-			tempDate = unExcutedOrderList.get(seq).generatedDate;
-			sb.append(tempDate.getYear() + "/" + (tempDate.getMonth() + 1) + "/" + tempDate.getDate());
-			return sb.toString();
+			return LiveDatePicker.dateToCoarseString(unExcutedOrderList.get(seq).generatedDate);
 		} catch (IndexOutOfBoundsException nullex) {
 			return null;
 		}
@@ -267,12 +266,8 @@ public class CustomerUnexcutedOrderList {
 	
 	private String latestDate(int i) {
 		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_ORDER_ONE_OAGE + 1;
-		Date tempDate;
-		StringBuilder sb = new StringBuilder();
 		try {
-			tempDate = unExcutedOrderList.get(seq).latestTime;
-			sb.append(tempDate.getYear() + "/" + (tempDate.getMonth() + 1) + "/" + tempDate.getDate());
-			return sb.toString();
+			return LiveDatePicker.dateToCoarseString(unExcutedOrderList.get(seq).latestTime);
 		} catch (IndexOutOfBoundsException nullex) {
 			return null;
 		}

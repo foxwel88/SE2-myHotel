@@ -1,5 +1,6 @@
 package org.client.presentation.customer;
 
+import org.client.launcher.Resources;
 import org.client.vo.OrderVO;
 
 import javafx.fxml.FXML;
@@ -14,7 +15,7 @@ import javafx.scene.layout.GridPane;
  * 
  * 客户-评价订单
  * @author fraliphsoft
- * @version fraliphsoft 11/27
+ * @version fraliphsoft 11/30
  */
 
 public class CustomerComment {
@@ -22,7 +23,7 @@ public class CustomerComment {
 	AnchorPane root;
 	
 	@FXML
-	ChoiceBox score;
+	ChoiceBox<Double> score;
 	
 	@FXML
 	TextArea comment;
@@ -45,8 +46,11 @@ public class CustomerComment {
 	@FXML
 	Label totalPrice;
 	
+	private Resources resources;
+	
 	@FXML
 	void initialize() {
+		resources = Resources.getInstance();
 		OrderVO vo = SwitchSceneUtil.getCurrentOrder();
 		orderID.setText(vo.orderID);
 		hotelAddress.setText(vo.hotelAddress);
@@ -57,6 +61,6 @@ public class CustomerComment {
 	
 	@FXML
 	void commitComment() {
-		SwitchSceneUtil.turnToAnotherScene((GridPane)root.getParent(), "/客户/已执行订单详细信息界面.fxml");
+		SwitchSceneUtil.turnToAnotherScene((GridPane)root.getParent(), resources.customerCheckExecutedOrder);
 	}
 }

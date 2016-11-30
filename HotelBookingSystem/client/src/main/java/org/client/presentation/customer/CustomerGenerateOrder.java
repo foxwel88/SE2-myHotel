@@ -5,12 +5,12 @@ import java.util.Date;
 import org.client.vo.HotelVO;
 import org.client.vo.OrderVO;
 import org.client.vo.UserVO;
-import org.common.utility.ResultMessage;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -20,7 +20,7 @@ import javafx.scene.layout.GridPane;
  * 
  * 客户-生成订单
  * @author fraliphsoft
- * @version fraliphsoft 11/27
+ * @version fraliphsoft 11/30
  */
 public class CustomerGenerateOrder {
 	@FXML
@@ -66,16 +66,10 @@ public class CustomerGenerateOrder {
 	ChoiceBox<String> roomType;
 	
 	@FXML
-	ChoiceBox<Integer> startMonth;
+	DatePicker schFromDate;
 	
 	@FXML
-	ChoiceBox<Integer> startDay;
-	
-	@FXML
-	ChoiceBox<Integer> endMonth;
-	
-	@FXML
-	ChoiceBox<Integer> endDay;
+	DatePicker schToDate;
 	
 	@FXML
 	TextField phoneNumber;
@@ -108,6 +102,8 @@ public class CustomerGenerateOrder {
 		city.setText(hotel.city.cityName);
 		area.setText(hotel.area.address);
 //		hotelPhoneNumber.setText(hotel.);			// TODO 酒店联系方式
+		LiveDatePicker.initDatePicker(null, schFromDate);
+		LiveDatePicker.initDatePicker(schFromDate, schToDate);
 		// TODO 最晚入住时间
 		if (user.type == "个人客户") {
 			customerName.setText(user.name);

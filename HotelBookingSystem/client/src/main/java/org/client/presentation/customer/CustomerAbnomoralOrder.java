@@ -3,7 +3,6 @@ package org.client.presentation.customer;
 import org.client.vo.OrderVO;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
@@ -11,7 +10,7 @@ import javafx.scene.layout.AnchorPane;
  * 
  * 客户-异常订单详细信息
  * @author fraliphsoft
- * @version fraliphsoft 11/27
+ * @version fraliphsoft 11/30
  */
 public class CustomerAbnomoralOrder {
 	@FXML
@@ -59,11 +58,11 @@ public class CustomerAbnomoralOrder {
 		hotelAddress.setText(vo.hotelAddress);
 		roomType.setText(vo.roomType);
 		roomNum.setText(String.valueOf(vo.roomNum));
-		appointedArrivalTime.setText(vo.schFrom.toString());
-		appointedLivingTime.setText(vo.schFrom.toString() + "-" + vo.schTo.toString());
+		appointedArrivalTime.setText(LiveDatePicker.dateToCoarseString(vo.schFrom));
+		appointedLivingTime.setText(LiveDatePicker.dateToCoarseString(vo.schFrom) + " - " + LiveDatePicker.dateToCoarseString(vo.schTo));
 		resident.setText(vo.customerName);
 		totalPrice.setText(String.valueOf(vo.totalPrice));
-		generatedTime.setText(vo.generatedDate.toString());
+		generatedTime.setText(LiveDatePicker.dateToCoarseString(vo.generatedDate));
 		orderState.setText(vo.type);
 		lostCredit.setText("-" + String.valueOf(vo.totalPrice));
 	}

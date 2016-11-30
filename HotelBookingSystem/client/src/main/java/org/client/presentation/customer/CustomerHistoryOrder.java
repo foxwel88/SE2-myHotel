@@ -3,6 +3,7 @@ package org.client.presentation.customer;
 import java.util.ArrayList;
 import java.util.Date;
 
+import org.client.launcher.Resources;
 import org.client.vo.OrderVO;
 
 import javafx.fxml.FXML;
@@ -20,7 +21,7 @@ import javafx.scene.layout.Pane;
  * 
  * 客户-浏览客户历史订单
  * @author fraliphsoft
- * @version fraliphsoft 11/27
+ * @version fraliphsoft 11/30
  */
 public class CustomerHistoryOrder {
 	@FXML
@@ -89,11 +90,14 @@ public class CustomerHistoryOrder {
 	
 	private ArrayList<HBox> boxList;
 	
+	private Resources resources;
+	
 	// 该字段表示同时显示的最大订单的数量
 	private static final int MAX_ORDER_ONE_OAGE = 6;
 	
 	@FXML
 	void initialize() {
+		resources = Resources.getInstance();
 		boxList = new ArrayList<>();
 		boxList.add(order1);
 		boxList.add(order2);
@@ -228,15 +232,15 @@ public class CustomerHistoryOrder {
 					switch (currentLabel) {
 						case 0:
 							orderID = finishedOrderList.get((page - 1) * MAX_ORDER_ONE_OAGE + i).orderID;
-							SwitchSceneUtil.turnToDetailedOrderScene((GridPane)root.getParent(), "/客户/已执行订单详细信息界面.fxml", orderID);
+							SwitchSceneUtil.turnToDetailedOrderScene((GridPane)root.getParent(), resources.customerCheckExecutedOrder, orderID);
 							break;
 						case 1:
 							orderID = canceledOrderList.get((page - 1) * MAX_ORDER_ONE_OAGE + i).orderID;
-							SwitchSceneUtil.turnToDetailedOrderScene((GridPane)root.getParent(), "/客户/已撤销订单详细信息界面.fxml", orderID);
+							SwitchSceneUtil.turnToDetailedOrderScene((GridPane)root.getParent(), resources.customerCheckCanceledOrder, orderID);
 							break;
 						case 2:
 							orderID = abnormalOrderList.get((page - 1) * MAX_ORDER_ONE_OAGE + i).orderID;
-							SwitchSceneUtil.turnToDetailedOrderScene((GridPane)root.getParent(), "/客户/异常订单详细信息界面.fxml", orderID);
+							SwitchSceneUtil.turnToDetailedOrderScene((GridPane)root.getParent(), resources.customerCheckAbnormalOrder, orderID);
 							break;
 					}
 					break;
@@ -351,7 +355,6 @@ public class CustomerHistoryOrder {
 	private String date(int i) {
 		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_ORDER_ONE_OAGE + i;	// 计算当前页面第i个信息字段在arraylist中的实际位置；
 		Date tempDate;
-		StringBuilder sb = new StringBuilder();
 		try {
 			if (currentLabel == 0) {
 				tempDate = finishedOrderList.get(seq).generatedDate;
@@ -360,8 +363,7 @@ public class CustomerHistoryOrder {
 			} else {
 				tempDate = abnormalOrderList.get(seq).generatedDate;
 			}
-			sb.append(tempDate.getYear() + "/" + (tempDate.getMonth() + 1) + "/" + tempDate.getDate());
-			return sb.toString();
+			return LiveDatePicker.dateToCoarseString(tempDate);
 		} catch (IndexOutOfBoundsException nullex) {
 			return null;
 		}

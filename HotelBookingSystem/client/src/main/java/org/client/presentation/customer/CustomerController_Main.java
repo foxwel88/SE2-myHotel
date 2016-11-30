@@ -1,5 +1,7 @@
 package org.client.presentation.customer;
 
+import org.client.launcher.Resources;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
@@ -10,7 +12,7 @@ import javafx.scene.layout.GridPane;
  * 
  * 客户-主界面
  * @author fraliphsoft
- * @version fraliphsoft 11/27
+ * @version fraliphsoft 11/30
  */
 public class CustomerController_Main {
 	@FXML
@@ -34,11 +36,17 @@ public class CustomerController_Main {
 	@FXML
 	Label welcomeLabel;
 	
+	@FXML
+	Label backArrow;
+	
 	private int presentGuide = 0;
+	
+	private Resources resources;
 	
 	@FXML
 	void initialize() {
 		welcomeLabel.setText("Welcome," + SwitchSceneUtil.getUserVO().name + "!");
+		resources = Resources.getInstance();
 	}
 	
 	/*
@@ -48,37 +56,70 @@ public class CustomerController_Main {
 	void turnToCusController_Main() {
 		initGuideTab();
 		changeGuideTab(0);
-		SwitchSceneUtil.turnToAnotherScene(gridpane, "/客户/主界面.fxml");
+		SwitchSceneUtil.turnToAnotherScene(gridpane, resources.customerMain);
 	}
 	
 	@FXML
 	void turnToCusController_CusInfo() {
 		initGuideTab();
 		changeGuideTab(1);
-		SwitchSceneUtil.turnToAnotherScene(gridpane, "/客户/查看客户信息界面.fxml");
+		SwitchSceneUtil.turnToAnotherScene(gridpane, resources.customerCheckInfo);
 	}
 	
 	@FXML
 	void turnToCusController_HotelList() {
 		initGuideTab();
 		changeGuideTab(2);
-		SwitchSceneUtil.turnToAnotherScene(gridpane, "/客户/浏览酒店界面.fxml");
+		SwitchSceneUtil.turnToAnotherScene(gridpane, resources.customerCheckHotelList);
 	}
 	
 	@FXML
 	void turnToCusController_HistoryOrderList() {
 		initGuideTab();
 		changeGuideTab(3);
-		SwitchSceneUtil.turnToAnotherScene(gridpane, "/客户/浏览客户历史订单界面.fxml");
+		SwitchSceneUtil.turnToAnotherScene(gridpane, resources.customerCheckHistoryOrderList);
 	}
 	
 	@FXML
 	void turnToCusController_UnexcutedOrderList() {
 		initGuideTab();
 		changeGuideTab(4);
-		SwitchSceneUtil.turnToAnotherScene(gridpane, "/客户/浏览客户未执行订单界面.fxml");
+		SwitchSceneUtil.turnToAnotherScene(gridpane, resources.customerCheckUnexecutedOrderList);
 	}
 	/*************************************************************/
+	
+	/**
+	 * 控制返回按钮的方法
+	 */
+	@FXML
+	void goBack() {
+		switch (SwitchSceneUtil.currentScene) {
+			case CREDITS_RECORD_SCENE:
+				turnToCusController_CusInfo();
+				break;
+			case MODIFY_INFO_SCENE:
+				turnToCusController_CusInfo();
+				break;
+			case HOTEL_INFO_SCENE:
+				
+				break;
+			case EXECUTED_ORDER_SCENE:
+				
+				break;
+			case CANCELED_ORDER_SCENE:
+				
+				break;
+			case ABNORMAL_ORDER_SCENE:
+				
+				break;
+			case UNEXECUTED_ORDER_SCENE:
+				
+				break;
+			case MAKE_COMMENT_SCENE:
+				
+				break;
+		}
+	}
 	
 	/*
 	 * 此方法用于改变被选中的导航栏样式

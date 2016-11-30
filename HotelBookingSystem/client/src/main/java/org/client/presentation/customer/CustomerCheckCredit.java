@@ -1,11 +1,9 @@
 package org.client.presentation.customer;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 import org.client.blstub.User_stub;
 import org.client.vo.CreditRecordVO;
-import org.client.vo.OrderVO;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -19,7 +17,7 @@ import javafx.scene.layout.HBox;
  * 
  * 客户-查看信用记录
  * @author fraliphsoft
- * @version fraliphsoft 11/27
+ * @version fraliphsoft 11/30
  */
 
 public class CustomerCheckCredit {
@@ -63,7 +61,7 @@ public class CustomerCheckCredit {
 	
 	private ArrayList<CreditRecordVO> recordList;
 	
-	private static final int MAX_ORDER_ONE_OAGE = 7;
+	private static final int MAX_CREDITRECORD_ONE_OAGE = 7;
 	
 	@FXML
 	void initialize() {
@@ -84,7 +82,7 @@ public class CustomerCheckCredit {
 	 * 这个方法的作用是设置单页被显示的信用记录
 	 */
 	private void showRecord() {
-		for (int i = 0; i < MAX_ORDER_ONE_OAGE; i++) {
+		for (int i = 0; i < MAX_CREDITRECORD_ONE_OAGE; i++) {
 			if (time(i) != null) {
 				getOrderID(boxList.get(i)).setText(orderID(i));
 				getTime(boxList.get(i)).setText(time(i));
@@ -149,10 +147,10 @@ public class CustomerCheckCredit {
 	}
 	
 	/*
-	 * 此方法用于计算订单列表能够展开的最大页数
+	 * 此方法用于计算信用记录列表能够展开的最大页数
 	 */
 	private int calMaxPage(ArrayList<CreditRecordVO> voList) {
-		return (voList.size() / MAX_ORDER_ONE_OAGE) + 1;
+		return (voList.size() / MAX_CREDITRECORD_ONE_OAGE) + 1;
 	}
 	
 	/*
@@ -180,11 +178,11 @@ public class CustomerCheckCredit {
 	/********************************************************/
 	
 	/**
-	 * 下面五种方法分别用来获得某个订单的订单时间、酒店地址、房间类型、房间数量、最晚执行时间的信息
+	 * 下面五种方法分别用来获得某个信用记录的订单号、信用变化时间、操作类型、信用变化值、信用变化结果
 	 * @param i 范围是 0 到 MAX_ORDER_ONE_OAGE - 1
 	 */
 	private String orderID(int i) {
-		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_ORDER_ONE_OAGE + i;	// 计算当前页面第i个信息字段在arraylist中的实际位置；
+		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_CREDITRECORD_ONE_OAGE + i;	// 计算当前页面第i个信息字段在arraylist中的实际位置；
 		try {
 			return recordList.get(seq).orderID;
 		} catch (IndexOutOfBoundsException nullex) {
@@ -193,20 +191,16 @@ public class CustomerCheckCredit {
 	}
 	
 	private String time(int i) {
-		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_ORDER_ONE_OAGE + i;
-		Date tempDate;
-		StringBuilder sb = new StringBuilder();
+		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_CREDITRECORD_ONE_OAGE + i;
 		try {
-			tempDate = recordList.get(seq).date;
-			sb.append(tempDate.getYear() + "/" + (tempDate.getMonth() + 1) + "/" + tempDate.getDate());
-			return sb.toString();
+			return LiveDatePicker.dateToCoarseString(recordList.get(seq).date);
 		} catch (IndexOutOfBoundsException nullex) {
 			return null;
 		}
 	}
 	
 	private String opType(int i) {
-		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_ORDER_ONE_OAGE + i;
+		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_CREDITRECORD_ONE_OAGE + i;
 		try {
 			return recordList.get(seq).op;
 		} catch (IndexOutOfBoundsException nullex) {
@@ -215,7 +209,7 @@ public class CustomerCheckCredit {
 	}
 	
 	private String creditChangedValue(int i) {
-		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_ORDER_ONE_OAGE + i;
+		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_CREDITRECORD_ONE_OAGE + i;
 		try {
 			return String.valueOf(recordList.get(seq).change);
 		} catch (IndexOutOfBoundsException nullex) {
@@ -224,7 +218,7 @@ public class CustomerCheckCredit {
 	}
 	
 	private String resultCredit(int i) {
-		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_ORDER_ONE_OAGE + 1;
+		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_CREDITRECORD_ONE_OAGE + 1;
 		try {
 			return String.valueOf(recordList.get(seq).result);
 		} catch (IndexOutOfBoundsException nullex) {
