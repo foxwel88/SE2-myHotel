@@ -15,7 +15,7 @@
    <children>
       <Pane fx:id="executedPane" layoutX="64.0" layoutY="62.0" onMouseClicked="#toExecutedOrders" prefHeight="55.0" prefWidth="175.0" style="-fx-background-color: rgba(0,0,0,0.4);">
          <children>
-            <Label fx:id="executedLabel" alignment="CENTER" layoutX="46.0" layoutY="18.0" prefHeight="20.0" prefWidth="84.0" text="已执行订单" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="executedLabel" alignment="CENTER" layoutX="46.0" layoutY="18.0" prefHeight="20.0" prefWidth="84.0" style="-fx-text-fill: white;" text="已执行订单" textAlignment="CENTER">
                <font>
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>

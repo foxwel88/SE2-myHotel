@@ -6,16 +6,22 @@ import java.util.ResourceBundle;
 
 import org.client.launcher.Resources;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller
@@ -24,6 +30,8 @@ import javafx.scene.layout.Pane;
  * @version 2016/11/27 Hirico
  */
 public class HotelManagerGuide {
+	
+	private static final int AVATAR_SIZE = 48;
 
 	@FXML
     private ResourceBundle resources;
@@ -68,7 +76,10 @@ public class HotelManagerGuide {
 	private Label welcomeLabel;
 
 	@FXML
-	private ImageView avatar;
+	private Menu avatar;
+	
+	@FXML
+	private MenuBar avatarBar;
 
 	@FXML
 	private Pane backPane;
@@ -184,6 +195,7 @@ public class HotelManagerGuide {
 		assert promotionLabelPane != null : "fx:id=\"promotionLabelPane\" was not injected: check your FXML file 'guide.fxml'.";
 		assert promotionLabel != null : "fx:id=\"promotionLabel\" was not injected: check your FXML file 'guide.fxml'.";
 		assert welcomeLabel != null : "fx:id=\"welcomeLabel\" was not injected: check your FXML file 'guide.fxml'.";
+        assert avatarBar != null : "fx:id=\"avatarBar\" was not injected: check your FXML file 'guide.fxml'.";
 		assert avatar != null : "fx:id=\"avatar\" was not injected: check your FXML file 'guide.fxml'.";
 		assert backPane != null : "fx:id=\"backPane\" was not injected: check your FXML file 'guide.fxml'.";
 		assert backArrow != null : "fx:id=\"backArrow\" was not injected: check your FXML file 'guide.fxml'.";
@@ -197,6 +209,14 @@ public class HotelManagerGuide {
 		}
 		
 		welcomeLabel.setText("Welcome, " + HotelManagerController.getInstance().managerName);
+		
+		Image avatarImg = new Image(getClass().getResource("/profile.png").toString());
+		ImageView avatarImgView = new ImageView();
+
+		avatarImgView.setImage(avatarImg);
+		avatarImgView.setFitHeight(AVATAR_SIZE);
+		avatarImgView.setFitWidth(AVATAR_SIZE);
+		avatar.setGraphic(avatarImgView);
 	}
 	
 	@FXML
@@ -217,6 +237,20 @@ public class HotelManagerGuide {
 			case "promotion":
 				changeContent(GuideLabelType.PROMOTION);
 				break;				
+		}
+	}
+	
+	@FXML
+	void logOut(ActionEvent event) {
+		Stage stage = (Stage)mainLabel.getScene().getWindow();
+		Resources resources = Resources.getInstance();
+		try {
+			Parent root = resources.load(resources.login);
+			
+			Scene scene = new Scene(root);
+			stage.setScene(scene);
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 }
