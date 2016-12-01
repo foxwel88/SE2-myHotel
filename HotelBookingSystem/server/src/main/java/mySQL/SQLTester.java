@@ -26,6 +26,7 @@ public class SQLTester {
 //		}
 		
 		try {
+			DatabaseCommunicator.databaseInit();
 			PromotionDataService promotionTest = new PromotionDataServiceImpl();
 			LevelPO po = promotionTest.showLevel();
 			System.out.println(po.levelNum);

@@ -29,6 +29,7 @@ public class DatabaseCommunicator {
 			connection = DriverManager.getConnection(url, USERNAME, PASSWORD);
 		} catch (Exception ex) {
 			// ? I don't know and don't care and don't have to care how to deal relative Exception......
+			ex.printStackTrace();
 		}
 	}
 	
