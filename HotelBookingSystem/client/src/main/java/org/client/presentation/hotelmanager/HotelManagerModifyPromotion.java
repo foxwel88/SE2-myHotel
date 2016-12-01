@@ -76,7 +76,7 @@ public class HotelManagerModifyPromotion {
 		}
 		//界面先自己检查
 		if (!isFormatCorrect()) {
-			resultLabel.setText("输入信息格式有误");
+			ResultInfoHelper.setResultLabel(resultLabel, ResultMessage.WRONG_FORMAT);
 			return;
 		} 
 		
@@ -171,10 +171,14 @@ public class HotelManagerModifyPromotion {
 		}
 		
 		//discount range
-		if (Double.parseDouble(discountLabel.getText()) <= 0 || Double.parseDouble(discountLabel.getText()) >= 10) {
+		try {
+			if (Double.parseDouble(discountLabel.getText()) <= 0 || Double.parseDouble(discountLabel.getText()) >= 10) {
+				return false;
+			}
+		} catch (NumberFormatException e) {
 			return false;
 		}
-		
+
 		return true;
 	}
 }

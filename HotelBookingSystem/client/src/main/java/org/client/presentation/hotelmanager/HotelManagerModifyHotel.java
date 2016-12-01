@@ -176,8 +176,13 @@ public class HotelManagerModifyHotel {
 	@FXML
     void saveRoom(ActionEvent event) {
 		int index = roomTypes.indexOf(roomType.getValue());
-		roomNums.set(index, Integer.parseInt(roomNum.getText().trim()));
-		roomPrices.set(index, Double.parseDouble(roomPrice.getText().trim()));
+		try {
+			roomNums.set(index, Integer.parseInt(roomNum.getText().trim()));
+			roomPrices.set(index, Double.parseDouble(roomPrice.getText().trim()));
+		} catch (NumberFormatException e) {
+			ResultInfoHelper.setResultLabel(resultLabel, ResultMessage.WRONG_FORMAT);
+		}
+
 	}
 	
 	/**保存（添加）当前输入的入住信息 */
@@ -238,8 +243,6 @@ public class HotelManagerModifyHotel {
 		//address
 		address.setText(vo.address);
 		
-		//checkInInfos (no need)
-		
 		//cooperators		
 		currentCooperators = FXCollections.observableArrayList(vo.cooperators);
 		cooperatorBox.setItems(currentCooperators);
@@ -259,7 +262,8 @@ public class HotelManagerModifyHotel {
 		
 		roomNums = new ArrayList<Integer>(vo.roomNum);
 		roomPrices = new ArrayList<Double>(vo.roomPrice);
-		
+
+		//房间数量和房间价格的编辑与当前所选房间类型绑定
 		roomType.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
 			@Override
 			public void changed(ObservableValue< ? extends Number> observableValue, Number oldIndex, Number newIndex) {
@@ -268,7 +272,7 @@ public class HotelManagerModifyHotel {
 			}
 		});
 		
-		//star
+		//设置可选星级
 		ObservableList<Integer> stars = FXCollections.observableArrayList(1,2,3,4,5);
 		star.setItems(stars);
 		star.setValue(vo.star);
