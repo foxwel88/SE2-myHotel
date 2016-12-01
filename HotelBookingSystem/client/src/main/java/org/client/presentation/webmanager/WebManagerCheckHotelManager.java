@@ -50,13 +50,16 @@ public class WebManagerCheckHotelManager {
 	
 	void changeContent(UserVO vo) {
 		nowvo = vo;
-		nameLabel.setText(vo.name);
-		phoneLabel.setText(vo.phoneNumber);
-		userNameLabel.setText(vo.userName);
-		hotelLabel.setText(vo.hotelAddress);
+		if (vo != null) {
+			nameLabel.setText(vo.name);
+			phoneLabel.setText(vo.phoneNumber);
+			userNameLabel.setText(vo.userName);
+			hotelLabel.setText(vo.hotelAddress);
+		}
 	}
 	
 	void clear() {
+		nowvo = null;
 		nameLabel.setText("");
 		phoneLabel.setText("");
 		userNameLabel.setText("");
@@ -76,6 +79,7 @@ public class WebManagerCheckHotelManager {
 			Parent mypane = fxmlLoader.load(getClass().getResource("/网站管理人员/修改酒店工作人员界面.fxml").openStream());
 			WebManagerModifyHotelManager webController = (WebManagerModifyHotelManager) fxmlLoader.getController();
 			webController.changeContent(nowvo);
+			WebManagerController.getInstance().nowvo = nowvo;
 			ChangePane.getInstance().turn(mypane);
 		}
 	}

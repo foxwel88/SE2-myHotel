@@ -67,22 +67,25 @@ public class WebManagerCheckCustomer {
 		creditLabel.setText("");
 		levelLabel.setText("");
 		birthLabel.setText("");
+		nowvo = null;
 	}
 	
 	void changeContent(UserVO vo) {
 		nowvo = vo;
-		nameLabel.setText(vo.name);
-		phoneLabel.setText(vo.phoneNumber);
-		userNameLabel.setText(vo.userName);
-		creditLabel.setText(Double.toString(vo.credit));
-		typeLabel.setText(vo.type);
-		levelLabel.setText(Integer.toString(controller.getLevel(vo.ID).level));
-		if (vo.type.equals("个人客户")) {
-			PorCLabel.setText("生日");
-			birthLabel.setText(vo.birthday.toString());
-		} else {
-			PorCLabel.setText("企业名称");
-			birthLabel.setText(vo.companyName);
+		if (vo != null) {
+			nameLabel.setText(vo.name);
+			phoneLabel.setText(vo.phoneNumber);
+			userNameLabel.setText(vo.userName);
+			creditLabel.setText(Double.toString(vo.credit));
+			typeLabel.setText(vo.type);
+			levelLabel.setText(Integer.toString(controller.getLevel(vo.ID).level));
+			if (vo.type.equals("个人客户")) {
+				PorCLabel.setText("生日");
+				birthLabel.setText(vo.birthday.toString());
+			} else {
+				PorCLabel.setText("企业名称");
+				birthLabel.setText(vo.companyName);
+			}
 		}
 	}
 	
@@ -99,6 +102,7 @@ public class WebManagerCheckCustomer {
 			Parent mypane = fxmlLoader.load(getClass().getResource("/网站管理人员/修改客户信息界面.fxml").openStream());
 			WebManagerModifyCustomer webController = (WebManagerModifyCustomer) fxmlLoader.getController();
 			webController.changeContent(nowvo);
+			WebManagerController.getInstance().nowvo = nowvo;
 			ChangePane.getInstance().turn(mypane);
 		}
 	}

@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.effect.Blend?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -28,6 +32,42 @@
             <RowConstraints maxHeight="662.7235107421875" minHeight="10.0" prefHeight="626.7660484313965" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
+            <AnchorPane prefHeight="60.0" prefWidth="1108.0" style="-fx-background-color: rgba(0,0,0,0.4);">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <children>
+                  <Label fx:id="welcomeLabel" layoutX="850.0" layoutY="18.0" prefHeight="34.0" prefWidth="188.0" text="Welcome, 李华！" textFill="WHITE" textOverrun="LEADING_ELLIPSIS">
+                     <font>
+                        <Font name="Microsoft YaHei UI Light" size="24.0" />
+                     </font>
+                  </Label>
+                  <Pane fx:id="backPane" layoutY="2.0" onMouseClicked="#handleBackAction" prefHeight="65.0" prefWidth="110.0" style="-fx-background-color: rgba(0,0,0,0.5);">
+                     <children>
+                        <Label fx:id="backArrow" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="38.0" layoutY="2.0" prefHeight="48.0" prefWidth="35.0" text="&lt;" textFill="#bcb8b8">
+                           <font>
+                              <Font name="Symbol" size="39.0" />
+                           </font>
+                           <effect>
+                              <Blend mode="LIGHTEN" />
+                           </effect>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <MenuBar fx:id="avatarBar" layoutX="1021.0" layoutY="5.0" prefHeight="60.0" prefWidth="48.0" style="-fx-background-color: rgba(0,0,0,0);">
+                     <menus>
+                        <Menu fx:id="avatar" mnemonicParsing="false">
+                           <items>
+                              <MenuItem mnemonicParsing="false" onAction="#logOut" text="注销" />
+                           </items>
+                        </Menu>
+                     </menus>
+                  </MenuBar>
+               </children>
+               <GridPane.margin>
+                  <Insets left="-3.0" right="-1.0" />
+               </GridPane.margin>
+            </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                <children>
                   <GridPane fx:id="mainPane" layoutX="482.0" layoutY="300.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="30.0">
@@ -102,26 +142,6 @@
                         </GridPane>
                      </children>
                   </GridPane>
-               </children>
-            </AnchorPane>
-            <AnchorPane prefHeight="60.0" prefWidth="1118.0" style="-fx-background-color: rgba(0,0,0,0.4);">
-               <effect>
-                  <DropShadow />
-               </effect>
-               <children>
-                  <Label layoutX="850.0" layoutY="16.0" prefHeight="34.0" prefWidth="188.0" text="Welcome, 李华！" textFill="WHITE" textOverrun="LEADING_ELLIPSIS">
-                     <font>
-                        <Font name="Microsoft YaHei UI Light" size="24.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="60.0" fitWidth="48.0" layoutX="1038.0" layoutY="9.0" preserveRatio="true">
-                     <image>
-                        <Image url="@../profile.png" />
-                     </image>
-                     <effect>
-                        <ColorAdjust brightness="0.63" />
-                     </effect>
-                  </ImageView>
                </children>
             </AnchorPane>
          </children>

@@ -24,6 +24,8 @@ import org.common.utility.ResultMessage;
 
 public class WebManagerController {
 	
+	UserVO nowvo;
+	
 	private Hotelblservice hotelbl;
 	
 	private Userblservice userbl;

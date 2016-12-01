@@ -2,13 +2,17 @@ package org.client.presentation.webmanager;
 
 import java.io.IOException;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 
 
 /**
@@ -20,6 +24,17 @@ import javafx.scene.layout.GridPane;
  */
 
 public class WebManagerGuide {
+	
+	private Parent nowPane;
+	
+	@FXML
+    private Label welcomeLabel;
+
+	@FXML
+	private MenuBar avatarBar;
+
+	@FXML
+	private Menu avatar;
 	
 	@FXML
 	private GridPane mainPane;
@@ -53,6 +68,12 @@ public class WebManagerGuide {
 
 	@FXML
 	private Label toWebLabel;
+	
+	@FXML
+	private Pane backPane;
+
+	@FXML
+	private Label backArrow;
 
 	@FXML
 	void handleSwitch(MouseEvent event) {
@@ -144,11 +165,47 @@ public class WebManagerGuide {
 		}
 	}
 	
+	@FXML
+	void handleBackAction(MouseEvent event) throws IOException {
+		String currentId = mainPane.getChildren().get(1).getId();
+		if (currentId == null) {
+			return;
+		}
+		switch (currentId) {
+			case "modifyCustomer":
+				FXMLLoader fxmlLoader1 = new FXMLLoader();
+				fxmlLoader1.load(getClass().getResource("/网站管理人员/修改客户信息界面.fxml").openStream());
+				WebManagerModifyCustomer webController1 = (WebManagerModifyCustomer) fxmlLoader1.getController();
+				webController1.returnPane(WebManagerController.getInstance().nowvo);
+				break;
+			case "modifyWebMarketer":
+				FXMLLoader fxmlLoader2 = new FXMLLoader();
+				fxmlLoader2.load(getClass().getResource("/网站管理人员/修改网站营销人员界面.fxml").openStream());
+				WebManagerModifyWebMarketer webController2 = (WebManagerModifyWebMarketer) fxmlLoader2.getController();
+				webController2.returnPane(WebManagerController.getInstance().nowvo);
+				
+				break;
+			case "addWebMarketer":
+				FXMLLoader fxmlLoader3 = new FXMLLoader();
+				fxmlLoader3.load(getClass().getResource("/网站管理人员/新增网站营销人员界面.fxml").openStream());
+				WebManagerAddWebMarketer webController3 = (WebManagerAddWebMarketer) fxmlLoader3.getController();
+				webController3.returnPane(WebManagerController.getInstance().nowvo);
+				break;
+			case "modifyHotelManager":
+				FXMLLoader fxmlLoader4 = new FXMLLoader();
+				fxmlLoader4.load(getClass().getResource("/网站管理人员/修改酒店工作人员界面.fxml").openStream());
+				WebManagerModifyHotelManager webController4 = (WebManagerModifyHotelManager) fxmlLoader4.getController();
+				webController4.returnPane(WebManagerController.getInstance().nowvo);
+				break;			
+		}
+	}
+	
 	void changePane(Parent pane) {
 		/*
 		mainPane.getChildren().set(1, pane);
 		GridPane.setConstraints(pane, 1, 0);
 		*/
+		nowPane = pane;
 		ChangePane.getInstance().turn(pane);
 	}
 
@@ -158,9 +215,14 @@ public class WebManagerGuide {
 		try {
 			AnchorPane mypane = FXMLLoader.load(getClass().getResource("/网站管理人员/网站管理人员主界面.fxml"));
 			mainPane.add(mypane, 1, 0);
+			nowPane = (Parent) mypane;
 			CurrentItem.setInstance(toHomeLabel, toHomePane, GuideLabelType.HOME);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	@FXML
+	void logOut(ActionEvent event) {
 	}
 }
