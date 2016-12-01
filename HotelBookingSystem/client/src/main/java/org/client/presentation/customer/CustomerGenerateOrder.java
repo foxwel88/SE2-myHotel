@@ -1,6 +1,7 @@
 package org.client.presentation.customer;
 
 import java.util.Date;
+import java.util.Objects;
 
 import org.client.vo.HotelVO;
 import org.client.vo.OrderVO;
@@ -105,7 +106,7 @@ public class CustomerGenerateOrder {
 		LiveDatePicker.initDatePicker(null, schFromDate);
 		LiveDatePicker.initDatePicker(schFromDate, schToDate);
 		// TODO 最晚入住时间
-		if (user.type == "个人客户") {
+		if (Objects.equals(user.type, "个人客户")) {
 			customerName.setText(user.name);
 		} else {
 			customerName.setText(user.companyName);

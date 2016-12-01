@@ -2,6 +2,7 @@ package org.client.bl.promotionbl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import org.client.blservice.promotionblservice.Promotionblservice;
 import org.client.vo.LevelVO;
@@ -24,9 +25,9 @@ public class PromotionController implements Promotionblservice {
 	private Level level;
 	
 	private PromotionController() {
-		hotelPromotionList = new ArrayList<Promotion>();
+		hotelPromotionList = new ArrayList<>();
 		
-		websitePromotionList = new ArrayList<Promotion>();
+		websitePromotionList = new ArrayList<>();
 		
 		level = Level.getInstance();
 	}
@@ -49,7 +50,7 @@ public class PromotionController implements Promotionblservice {
 	public List<PromotionVO> showHotelPromotion(String hotelAddress) {
 		hotelPromotionList = PromotionUtil.showHotelPromotion(hotelAddress);
 		
-		List<PromotionVO> tempVOList = new ArrayList<PromotionVO>();
+		List<PromotionVO> tempVOList = new ArrayList<>();
 		
 		for (int i = 0; i < hotelPromotionList.size(); i++) {
 			tempVOList.add(hotelPromotionList.get(i).toVO());
@@ -61,7 +62,7 @@ public class PromotionController implements Promotionblservice {
 	public List<PromotionVO> showWebsitePromotion() {
 		websitePromotionList = PromotionUtil.showWebsitePromotion();
 		
-		List<PromotionVO> tempVOList = new ArrayList<PromotionVO>();
+		List<PromotionVO> tempVOList = new ArrayList<>();
 		
 		for (int i = 0; i < websitePromotionList.size(); i++) {
 			tempVOList.add(websitePromotionList.get(i).toVO());
@@ -74,12 +75,12 @@ public class PromotionController implements Promotionblservice {
 		Promotion promotion = null;
 		
 		for (int i = 0; i < hotelPromotionList.size(); i++) {
-			if (vo.name == hotelPromotionList.get(i).name) {
+			if (Objects.equals(vo.name, hotelPromotionList.get(i).name)) {
 				promotion = hotelPromotionList.get(i);
 			}
 		}
 		for (int i = 0; i < websitePromotionList.size(); i++) {
-			if (vo.name == websitePromotionList.get(i).name) {
+			if (Objects.equals(vo.name, websitePromotionList.get(i).name)) {
 				promotion = websitePromotionList.get(i);
 			}
 		}

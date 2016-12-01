@@ -54,7 +54,7 @@ public class LiveDatePicker {
 	 */
 	public static String dateToDetaildString(Date date) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-		return new String(dateFormat.format(date));
+		return dateFormat.format(date);
 	}
 	
 	/**

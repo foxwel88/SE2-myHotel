@@ -57,22 +57,22 @@ public class HotelVO implements Serializable {
 		if (roomType == null) {
 			this.roomType = null;
 		} else {
-			this.roomType = new ArrayList<String>(roomType);
+			this.roomType = new ArrayList<>(roomType);
 		}
 		if (roomNum == null) {
 			this.roomNum = null;
 		} else {
-			this.roomNum = new ArrayList<Integer>(roomNum);
+			this.roomNum = new ArrayList<>(roomNum);
 		}
 		if (roomPrice == null) {
 			this.roomPrice = null;
 		} else {
-			this.roomPrice = new ArrayList<Double>(roomPrice);
+			this.roomPrice = new ArrayList<>(roomPrice);
 		}
 		if (cooperators == null) {
 			this.cooperators = null;
 		} else {
-			this.cooperators = new ArrayList<String>(cooperators);
+			this.cooperators = new ArrayList<>(cooperators);
 		}
 	}
 	

@@ -28,17 +28,17 @@ public class Hotel_stub implements Hotelblservice {
 	
 	String checkInInfo = "";
 	
-	List<String> cooperators = new ArrayList<String>(Arrays.asList
-			(new String[]{"这是一家公司的名字","这也是一家公司的名字"}));
+	List<String> cooperators = new ArrayList<>(Arrays.asList
+			(new String[]{"这是一家公司的名字", "这也是一家公司的名字"}));
 	
-	List<String> roomTypes = new ArrayList<String>(Arrays.asList
-			(new String[]{"单人间","双人间"}));
+	List<String> roomTypes = new ArrayList<>(Arrays.asList
+			(new String[]{"单人间", "双人间"}));
 	
-	List<Integer> roomNums = new ArrayList<Integer>(Arrays.asList
-			(new Integer[]{30,20}));
+	List<Integer> roomNums = new ArrayList<>(Arrays.asList
+			(new Integer[]{30, 20}));
 	
-	List<Double> roomPrices = new ArrayList<Double>(Arrays.asList
-			(new Double[]{198.0,298.0}));
+	List<Double> roomPrices = new ArrayList<>(Arrays.asList
+			(new Double[]{198.0, 298.0}));
 
 	HotelVO hotelvo1 = new HotelVO("goodhotel","XianLin Campus"
 			,city1,area1,"a good hotel",4,3,"good",
@@ -49,7 +49,7 @@ public class Hotel_stub implements Hotelblservice {
 			checkInInfo, roomTypes, roomNums, roomPrices, cooperators);
 
 	public ArrayList<HotelVO> findHotels(HotelFilter filter, String id, boolean historyOnly) {
-		ArrayList<HotelVO> vo = new ArrayList<HotelVO>();
+		ArrayList<HotelVO> vo = new ArrayList<>();
 		vo.add(hotelvo1);
 		vo.add(hotelvo2);
 		return vo;
@@ -76,14 +76,14 @@ public class Hotel_stub implements Hotelblservice {
 	}
 
 	public List<CityVO> getCitys() {
-		ArrayList<CityVO> vo = new ArrayList<CityVO>();
+		ArrayList<CityVO> vo = new ArrayList<>();
 		vo.add(city1);
 		vo.add(city2);
 		return vo;
 	}
 
 	public List<AreaVO> getAreas(CityVO vo) {
-		ArrayList<AreaVO> vo3 = new ArrayList<AreaVO>();
+		ArrayList<AreaVO> vo3 = new ArrayList<>();
 		if (vo.cityName.equals("南京")) {
 			vo3.add(area1);
 			vo3.add(area2);

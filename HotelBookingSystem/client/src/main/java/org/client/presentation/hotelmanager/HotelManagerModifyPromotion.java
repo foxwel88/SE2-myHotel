@@ -121,10 +121,10 @@ public class HotelManagerModifyPromotion {
 		assert typeBox != null : "fx:id=\"typeBox\" was not injected: check your FXML file '修改酒店促销策略界面.fxml'.";
 		assert resultLabel != null : "fx:id=\"resultLabel\" was not injected: check your FXML file '修改酒店促销策略界面.fxml'.";
 		
-		ObservableList<Integer> levelList = FXCollections.observableArrayList((new ArrayList<Integer>(Arrays.asList(new Integer[]{1,2,3,4,5}))));
+		ObservableList<Integer> levelList = FXCollections.observableArrayList((new ArrayList<>(Arrays.asList(new Integer[]{1, 2, 3, 4, 5}))));
 		levelBox.setItems(levelList);
 		
-		ObservableList<String> typeList = FXCollections.observableArrayList((new ArrayList<String>(Arrays.asList(new String[]{"生日促销","企业促销","三间以上促销","特定日期促销"}))));
+		ObservableList<String> typeList = FXCollections.observableArrayList((new ArrayList<>(Arrays.asList(new String[]{"生日促销", "企业促销", "三间以上促销", "特定日期促销"}))));
 		typeBox.setItems(typeList);
 
 		//起始时间必须先于结束时间

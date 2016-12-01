@@ -117,11 +117,11 @@ public class WebMarketerModifyPromotion {
 		dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
 		ObservableList<Integer> levelList = FXCollections
-				.observableArrayList((new ArrayList<Integer>(Arrays.asList(new Integer[] { 1, 2, 3, 4, 5 }))));
+				.observableArrayList((new ArrayList<>(Arrays.asList(new Integer[]{1, 2, 3, 4, 5}))));
 		levelBox.setItems(levelList);
 
 		ObservableList<String> typeList = FXCollections.observableArrayList(
-				(new ArrayList<String>(Arrays.asList(new String[] { "特定日期促销", "VIP促销", "商圈促销" }))));
+				(new ArrayList<>(Arrays.asList(new String[]{"特定日期促销", "VIP促销", "商圈促销"}))));
 		typeBox.setItems(typeList);
 
 	}

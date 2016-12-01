@@ -32,13 +32,13 @@ public class PromotionDataServiceImpl_stub extends UnicastRemoteObject implement
 	}
 
 	public ArrayList<PromotionPO> showHotelPromotion(String hotelAddress) throws RemoteException {
-		ArrayList<PromotionPO> promotions = new ArrayList<PromotionPO>();
+		ArrayList<PromotionPO> promotions = new ArrayList<>();
 		promotions.add(new PromotionPO(PromotionType.SPECIALDATE, new Date(100000), new Date(1000000), hotelAddress, hotelAddress, 3, hotelAddress, 5, hotelAddress));
 		return promotions;
 	}
 
 	public ArrayList<PromotionPO> showWebsitePromotion() throws RemoteException {
-		ArrayList<PromotionPO> promotions = new ArrayList<PromotionPO>();
+		ArrayList<PromotionPO> promotions = new ArrayList<>();
 		promotions.add(new PromotionPO(PromotionType.BIRTHDAYBONUS, new Date(100000), new Date(1000000), "add", "add", 3, "add", 5, "add"));
 		return promotions;
 	}

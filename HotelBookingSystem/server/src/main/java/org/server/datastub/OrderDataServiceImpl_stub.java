@@ -64,7 +64,7 @@ public class OrderDataServiceImpl_stub extends UnicastRemoteObject implements Or
 	}
 
 	public ArrayList<OrderPO> getUserOrderPO(String userID, OrderType type) throws RemoteException {
-		ArrayList<OrderPO> pos = new ArrayList<OrderPO>();
+		ArrayList<OrderPO> pos = new ArrayList<>();
 		
 		if (userID.equals("0000000001")) {
 			pos.add(po1);
@@ -80,7 +80,7 @@ public class OrderDataServiceImpl_stub extends UnicastRemoteObject implements Or
 	}
 
 	public ArrayList<OrderPO> getHotelOrderPO(String hotelID, OrderType type) throws RemoteException {
-		ArrayList<OrderPO> pos = new ArrayList<OrderPO>();
+		ArrayList<OrderPO> pos = new ArrayList<>();
 		
 		if (hotelID.equals("南京市仙林大道168号栖霞大酒店")) {
 			pos.add(po1);
@@ -96,7 +96,7 @@ public class OrderDataServiceImpl_stub extends UnicastRemoteObject implements Or
 	}
 
 	public ArrayList<OrderPO> getAbnormalOrderPO() throws RemoteException {
-		ArrayList<OrderPO> pos = new ArrayList<OrderPO>();
+		ArrayList<OrderPO> pos = new ArrayList<>();
 		pos.add(po4);
 		return pos;
 	}

@@ -63,11 +63,7 @@ public class OrderInfoPane extends Pane {
 		specButton.setLayoutX(648);
 		specButton.setLayoutY(13);
 		
-		specButton.setOnAction(new EventHandler<ActionEvent>() {
-			@Override public void handle(ActionEvent e) {
-				switchToSpec();
-			}
-		});
+		specButton.setOnAction(e -> switchToSpec());
 	}
 	
 	/*根据orderVO中orderType的不同跳转到不同类型的详情页面 */

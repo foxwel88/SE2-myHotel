@@ -22,9 +22,9 @@ public class Promotion_stub implements Promotionblservice {
 	PromotionVO vo3 = new PromotionVO(PromotionType.BIRTHDAYBONUS.getString()
 			, new Date(), new Date(), "goodhotel","address",1 , "", 8, "生日特惠");
 	
-	ArrayList<PromotionVO> generalVOs = new ArrayList<PromotionVO>(Arrays.asList(new PromotionVO[]{vo1, vo2, vo3}));
+	ArrayList<PromotionVO> generalVOs = new ArrayList<>(Arrays.asList(new PromotionVO[]{vo1, vo2, vo3}));
 	
-	ArrayList<PromotionVO> hotelVOs = new ArrayList<PromotionVO>(Arrays.asList(new PromotionVO[]{vo1, vo3}));
+	ArrayList<PromotionVO> hotelVOs = new ArrayList<>(Arrays.asList(new PromotionVO[]{vo1, vo3}));
 
 	public ResultMessage add(PromotionVO vo) {
 		// TODO Auto-generated method stub

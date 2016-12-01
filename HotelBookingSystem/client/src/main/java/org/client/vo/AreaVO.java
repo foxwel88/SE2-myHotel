@@ -23,7 +23,7 @@ public class AreaVO implements Serializable {
 	}
 	
 	public static List<AreaVO> generateVOList(List<AreaPO> pos) {
-		List<AreaVO> vos = new ArrayList<AreaVO>();
+		List<AreaVO> vos = new ArrayList<>();
 		for (AreaPO p: pos) {
 			AreaVO vo = new AreaVO(p.address);
 			vos.add(vo);

@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 import org.client.blservice.orderblservice.Orderblservice;
 import org.client.blservice.promotionblservice.Promotionblservice;
@@ -55,7 +56,7 @@ public class WebMarketerController {
 	
 	public ResultMessage setUserVO(String userName) {
 		userVO = userbl.findbyUserName(userName);
-		if ((userVO.type != "个人客户") && (userVO.type != "企业客户")) {
+		if ((!Objects.equals(userVO.type, "个人客户")) && (!Objects.equals(userVO.type, "企业客户"))) {
 			return ResultMessage.NOT_EXIST;
 		}
 		return userVO.resultMessage;

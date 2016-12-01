@@ -134,7 +134,7 @@ public class HotelManagerCheckPromotion {
 	void switchCurrentPage(int toPageNum) {
 		
 		//修改currentPromotionPanes
-		currentPromotionPanes = new ArrayList<PromotionPane>();
+		currentPromotionPanes = new ArrayList<>();
 		for (int i = (toPageNum - 1) * NUM_OF_PROMOTION_PER_PAGE; i < (toPageNum - 1) * NUM_OF_PROMOTION_PER_PAGE + 
 				Math.min(NUM_OF_PROMOTION_PER_PAGE, promotionList.size() - NUM_OF_PROMOTION_PER_PAGE * (toPageNum - 1)); i++) {
 			currentPromotionPanes.add(new PromotionPane(promotionList.get(i)));
@@ -185,11 +185,7 @@ public class HotelManagerCheckPromotion {
 			this.getChildren().add(discount);
 			this.getChildren().add(edit);
 			
-			edit.setOnAction(new EventHandler<ActionEvent>() {
-				@Override public void handle(ActionEvent e) {
-					modifyPromotion(promotionVO);
-				}
-			});
+			edit.setOnAction(e -> modifyPromotion(promotionVO));
 			
 			this.setPrefSize(PROMOTIONPANE_WIDTH, PROMOTIONPANE_HEIGHT);
 			name.setPrefSize(241, 28);

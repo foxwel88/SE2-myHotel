@@ -20,7 +20,7 @@ public class Comment_stub implements Commentblservice {
 				"Jack","和园10号XX酒店",
 				new Date(2016 - 10 - 1),5,
 				"我觉得这一家店的服务一般,我不是很喜欢，下次不来了");
-		ArrayList<CommentVO> vo = new ArrayList<CommentVO>();
+		ArrayList<CommentVO> vo = new ArrayList<>();
 		vo.add(vo1);
 		vo.add(vo2);
 		vo.add(vo3);

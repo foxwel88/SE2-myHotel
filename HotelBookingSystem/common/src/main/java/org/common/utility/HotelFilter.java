@@ -84,7 +84,7 @@ public class HotelFilter implements Serializable {
 	}
 	
 	public void setHistory(List<String> addresses) {
-		this.livedAddresses = new ArrayList<String>(addresses);
+		this.livedAddresses = new ArrayList<>(addresses);
 	}
 	
 	public void setLocation(String city, String area) {

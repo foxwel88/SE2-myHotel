@@ -160,7 +160,7 @@ public class HotelManagerHistoryOrder {
 	void switchCurrentPage(int toPageNum) {
 		
 		//修改currentOrderPanes
-		currentOrderPanes = new ArrayList<OrderInfoPane>();
+		currentOrderPanes = new ArrayList<>();
 		for (int i = (toPageNum - 1) * NUM_OF_ORDER_PER_PAGE; i < (toPageNum - 1) * NUM_OF_ORDER_PER_PAGE + 
 				Math.min(NUM_OF_ORDER_PER_PAGE, currentOrders.size() - NUM_OF_ORDER_PER_PAGE * (toPageNum - 1)); i++) {
 			currentOrderPanes.add(new OrderInfoPane(currentOrders.get(i), parentPane));
@@ -182,12 +182,7 @@ public class HotelManagerHistoryOrder {
 	@FXML
 	void searchByName(ActionEvent event) {
 		String name = searchField.getText().trim();
-		Iterator<OrderVO> iter = currentOrders.iterator();
-		while (iter.hasNext()) {
-			if (!iter.next().customerName.equals(name)) {
-				iter.remove();
-			}
-		}
+		currentOrders.removeIf(orderVO -> !orderVO.customerName.equals(name));
 		switchCurrentPage(FIRST_PAGE_NUM);
 	}
 	

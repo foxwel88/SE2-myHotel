@@ -26,7 +26,7 @@ public class HotelList {
 	}
 	
 	public HotelList initList(HotelFilter filter) {
-		list = new ArrayList<Hotel>();
+		list = new ArrayList<>();
 		if (dao == null) {
 			dao = RMIHelper.getInstance().getHotelDataServiceImpl();
 		}
@@ -46,7 +46,7 @@ public class HotelList {
 	
 	public List<HotelVO> getVOs() {
 		if (list != null) {
-			List<HotelVO> voList = new ArrayList<HotelVO>();
+			List<HotelVO> voList = new ArrayList<>();
 			for (Hotel h: list) {
 				voList.add(h.generateVO());
 			}

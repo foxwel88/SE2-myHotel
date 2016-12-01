@@ -95,7 +95,7 @@ public class HotelManagerController {
 	/**把从logic层拿上来的vo换成string */
 	public List<String> getAreas(String cityName) {
 		List<AreaVO> voList = hotelbl.getAreas(new CityVO(cityName));
-		List<String> result = new ArrayList<String>();
+		List<String> result = new ArrayList<>();
 		for (AreaVO v: voList) {
 			result.add(v.address);
 		}

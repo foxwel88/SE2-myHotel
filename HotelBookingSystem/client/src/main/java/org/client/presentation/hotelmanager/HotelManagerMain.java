@@ -39,16 +39,14 @@ public class HotelManagerMain {
 		//clock
 		Timeline timeline = new Timeline(
 				new KeyFrame(Duration.seconds(0),
-						new EventHandler<ActionEvent>() {
-							@Override public void handle(ActionEvent actionEvent) {
-								try {
-									timeLabel.setText("当前时间：" + RMIHelper.getInstance().getTimeServiceImpl().getCurrentTime());
-								} catch (RemoteException e) {
-									e.printStackTrace();
-								}
+						actionEvent -> {
+							try {
+								timeLabel.setText("当前时间：" + RMIHelper.getInstance().getTimeServiceImpl().getCurrentTime());
+							} catch (RemoteException e) {
+								e.printStackTrace();
 							}
 						}
-			    ),
+				),
 			    new KeyFrame(Duration.seconds(1))
 			  );
 		timeline.setCycleCount(Animation.INDEFINITE);

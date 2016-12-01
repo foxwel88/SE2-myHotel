@@ -3,6 +3,7 @@ package org.client.blstub;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 import org.client.blservice.orderblservice.Orderblservice;
 import org.client.vo.OrderVO;
@@ -259,7 +260,7 @@ public class Order_stub implements Orderblservice {
 		vo.add(uvo12);
 		
 		for (int i = 0; i < vo.size(); i++) {
-			if (vo.get(i).orderID == ID) {
+			if (Objects.equals(vo.get(i).orderID, ID)) {
 				return vo.get(i);
 			}
 		}
@@ -384,7 +385,7 @@ public class Order_stub implements Orderblservice {
 
 	public List<String> getHistoryHotels(String userId) {
 		// TODO Auto-generated method stub
-		List<String> list = new ArrayList<String>();
+		List<String> list = new ArrayList<>();
 		list.add("1号酒店");
 		list.add("2号酒店");
 		return list;

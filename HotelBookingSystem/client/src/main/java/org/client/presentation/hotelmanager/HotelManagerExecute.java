@@ -2,7 +2,6 @@ package org.client.presentation.hotelmanager;
 
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -106,7 +105,7 @@ public class HotelManagerExecute {
 	void switchCurrentPage(int toPageNum) {
 		
 		//修改currentOrderPanes
-		currentOrderPanes = new ArrayList<OrderInfoPane>();
+		currentOrderPanes = new ArrayList<>();
 		for (int i = (toPageNum - 1) * NUM_OF_ORDER_PER_PAGE; i < (toPageNum - 1) * NUM_OF_ORDER_PER_PAGE + 
 				Math.min(NUM_OF_ORDER_PER_PAGE, unexecutedOrders.size() - NUM_OF_ORDER_PER_PAGE * (toPageNum - 1)); i++) {
 			currentOrderPanes.add(new OrderInfoPane(unexecutedOrders.get(i), parentPane));
@@ -129,12 +128,7 @@ public class HotelManagerExecute {
 	@FXML
 	void searchByName(ActionEvent event) {
 		String name = searchField.getText().trim();
-		Iterator<OrderVO> iter = unexecutedOrders.iterator();
-		while (iter.hasNext()) {
-			if (!iter.next().customerName.equals(name)) {
-				iter.remove();
-			}
-		}
+		unexecutedOrders.removeIf(orderVO -> !orderVO.customerName.equals(name));
 		switchCurrentPage(FIRST_PAGE_NUM);
 	}
 	

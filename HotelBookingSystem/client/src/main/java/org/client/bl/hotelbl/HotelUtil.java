@@ -69,7 +69,7 @@ public class HotelUtil {
 		Hotel h = new Hotel();
 		HotelPO hotelPO = h.modifyAndReturnPO(vo);
 		
-		List<RoomPO> rooms = new ArrayList<RoomPO>();
+		List<RoomPO> rooms = new ArrayList<>();
 		for (int i = 0; i < vo.roomNum.size(); i++) {
 			rooms.add(new RoomPO(vo.roomType.get(i), vo.roomNum.get(i), vo.roomPrice.get(i)));
 		}

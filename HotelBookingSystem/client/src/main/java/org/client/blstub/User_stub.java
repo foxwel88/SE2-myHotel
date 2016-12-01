@@ -116,7 +116,7 @@ public class User_stub implements Userblservice {
 		CreditRecordVO vo2 = new CreditRecordVO(new Date(),
 				"13232323232323232323", "1234567890", 100, 200, 
 				CreditOperation.RECHARGE.getString()); 
-		ArrayList<CreditRecordVO> vo = new ArrayList<CreditRecordVO>();
+		ArrayList<CreditRecordVO> vo = new ArrayList<>();
 		vo.add(vo1);
 		vo.add(vo2);
 		return vo;

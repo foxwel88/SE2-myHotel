@@ -2,6 +2,7 @@ package org.client.presentation.webmarketer;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 import org.client.vo.LevelVO;
@@ -85,7 +86,7 @@ public class WebMarketerModifyLevel {
 		// change string to integer
 		int[] levelNums = new int[]{-1, -1, -1, -1, -1};
 		for (int i = 0; i < MAX_LEVEL_NUM; i++) {
-			if ((levels[i] != "") && (levels[i] != " --- ")) {
+			if ((!Objects.equals(levels[i], "")) && (!Objects.equals(levels[i], " --- "))) {
 				try {
 					levelNums[i] = Integer.parseInt(levels[i]);
 				} catch (RuntimeException e) {

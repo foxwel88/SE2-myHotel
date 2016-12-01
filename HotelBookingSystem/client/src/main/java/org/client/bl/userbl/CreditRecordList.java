@@ -25,11 +25,11 @@ public class CreditRecordList {
 	}
 	
 	public CreditRecordList initList(String ID) {
-		list = new ArrayList<CreditRecord>();
+		list = new ArrayList<>();
 		if (dao == null) {
 			dao = RMIHelper.getInstance().getUserDataServiceImpl();
 		}
-		List<CreditRecordPO> poList = new ArrayList<CreditRecordPO>();
+		List<CreditRecordPO> poList = new ArrayList<>();
 		try {
 			poList = dao.findCreditRecords(ID);
 		} catch (RemoteException e) {
@@ -45,7 +45,7 @@ public class CreditRecordList {
 	
 	public List<CreditRecordVO> getVOs() {
 		if (list != null) {
-			List<CreditRecordVO> voList = new ArrayList<CreditRecordVO>();
+			List<CreditRecordVO> voList = new ArrayList<>();
 			for (CreditRecord c: list) {
 				voList.add(c.getCreditRecordVO());
 			}

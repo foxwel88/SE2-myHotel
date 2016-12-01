@@ -67,7 +67,7 @@ public class UserDataServiceImpl_stub extends UnicastRemoteObject implements Use
 	}
 
 	public List<CreditRecordPO> findCreditRecords(String ID) throws RemoteException {
-		List<CreditRecordPO> list = new ArrayList<CreditRecordPO>();
+		List<CreditRecordPO> list = new ArrayList<>();
 		list.add(new CreditRecordPO(null, ID, 0, 0, CreditOperation.RECHARGE, ID));
 		return list;
 	}

@@ -49,7 +49,7 @@ public class PromotionUtil {
 		
 		System.out.println(okPromotion.size());
 		
-		List<PromotionVO> okPromotionVO = new ArrayList<PromotionVO>();
+		List<PromotionVO> okPromotionVO = new ArrayList<>();
 		
 		for (int i = 0; i < okPromotion.size(); i++) {
 			okPromotionVO.add(okPromotion.get(i).toVO());
@@ -65,7 +65,7 @@ public class PromotionUtil {
 			setDAO(rmihelper.getPromotionDataServiceImpl());
 		}
 		
-		ArrayList<Promotion> promotionList = new ArrayList<Promotion>();
+		ArrayList<Promotion> promotionList = new ArrayList<>();
 		
 		try {
 			List<PromotionPO> promotionPOList = promotionDataService.showHotelPromotion(hotelAddress);
@@ -93,7 +93,7 @@ public class PromotionUtil {
 			setDAO(rmihelper.getPromotionDataServiceImpl());
 		}
 		
-		ArrayList<Promotion> promotionList = new ArrayList<Promotion>();
+		ArrayList<Promotion> promotionList = new ArrayList<>();
 		
 		try {
 			List<PromotionPO> promotionPOList = promotionDataService.showWebsitePromotion();
@@ -173,7 +173,7 @@ public class PromotionUtil {
 	private static List<Promotion> getCanBeUsedHotelPromotion(String hotelAddress, String userID) {
 		List<Promotion> hotelPromotionList = showHotelPromotion(hotelAddress);
 		
-		ArrayList<Promotion> canBeUsedHotelPromotion = new ArrayList<Promotion>();
+		ArrayList<Promotion> canBeUsedHotelPromotion = new ArrayList<>();
 		
 		for (int i = 0; i < hotelPromotionList.size(); i++) {
 			if (checkCanBeUse(hotelPromotionList.get(i), hotelAddress, userID)) {
@@ -187,7 +187,7 @@ public class PromotionUtil {
 	private static List<Promotion> getCanBeUsedWebsitePromotion(String hotelAddress, String userID) {
 		List<Promotion> websitePromotionList = showWebsitePromotion();
 		
-		ArrayList<Promotion> canBeUsedWebsitePromotion = new ArrayList<Promotion>();
+		ArrayList<Promotion> canBeUsedWebsitePromotion = new ArrayList<>();
 		
 		for (int i = 0; i < websitePromotionList.size(); i++) {
 			if (checkCanBeUse(websitePromotionList.get(i), hotelAddress, userID)) {

@@ -158,13 +158,13 @@ public class HotelManagerModifyHotel {
 		vo.area = new AreaVO(area.getValue());
 		vo.checkInInfos += newCheckInInfos;
 		vo.city = new CityVO(city.getValue());
-		vo.cooperators = new ArrayList<String>(currentCooperators);
+		vo.cooperators = new ArrayList<>(currentCooperators);
 		vo.facility = facility.getText().trim();
 		vo.hotelName = name.getText().trim();
 		vo.introduce = intro.getText().trim();
 		
-		vo.roomNum = new ArrayList<Integer>(roomNums);
-		vo.roomPrice = new ArrayList<Double>(roomPrices);
+		vo.roomNum = new ArrayList<>(roomNums);
+		vo.roomPrice = new ArrayList<>(roomPrices);
 		
 		vo.star = star.getValue();
 		
@@ -223,7 +223,7 @@ public class HotelManagerModifyHotel {
 				
 		//city
 		List<CityVO> cityVOs = HotelManagerController.getInstance().getCitys();
-		ArrayList<String> cityList = new ArrayList<String>();
+		ArrayList<String> cityList = new ArrayList<>();
 		for (CityVO v: cityVOs) {
 			cityList.add(v.cityName);
 		}
@@ -260,16 +260,13 @@ public class HotelManagerModifyHotel {
 		roomTypes = FXCollections.observableArrayList(vo.roomType);
 		roomType.setItems(roomTypes);
 		
-		roomNums = new ArrayList<Integer>(vo.roomNum);
-		roomPrices = new ArrayList<Double>(vo.roomPrice);
+		roomNums = new ArrayList<>(vo.roomNum);
+		roomPrices = new ArrayList<>(vo.roomPrice);
 
 		//房间数量和房间价格的编辑与当前所选房间类型绑定
-		roomType.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
-			@Override
-			public void changed(ObservableValue< ? extends Number> observableValue, Number oldIndex, Number newIndex) {
-				roomNum.setText(roomNums.get((Integer)newIndex).toString());
-				roomPrice.setText(roomPrices.get((Integer)newIndex).toString());
-			}
+		roomType.getSelectionModel().selectedIndexProperty().addListener((observableValue, oldIndex, newIndex) -> {
+			roomNum.setText(roomNums.get((Integer)newIndex).toString());
+			roomPrice.setText(roomPrices.get((Integer)newIndex).toString());
 		});
 		
 		//设置可选星级

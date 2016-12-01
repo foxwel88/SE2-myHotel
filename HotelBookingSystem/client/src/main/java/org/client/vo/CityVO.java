@@ -25,7 +25,7 @@ public class CityVO implements Serializable {
 	
 	/*For fast transfer from data to view, called from hotelLogic*/
 	public static List<CityVO> generateVOList(List<CityPO> pos) {
-		List<CityVO> vos = new ArrayList<CityVO>();
+		List<CityVO> vos = new ArrayList<>();
 		for (CityPO p: pos) {
 			CityVO vo = new CityVO(p.cityName);
 			vos.add(vo);
