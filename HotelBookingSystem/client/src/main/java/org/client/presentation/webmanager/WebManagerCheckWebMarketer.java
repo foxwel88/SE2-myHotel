@@ -49,9 +49,11 @@ public class WebManagerCheckWebMarketer {
 
 	void changeContent(UserVO vo) {
 		nowvo = vo;
-		nameLabel.setText(vo.name);
-		phoneLabel.setText(vo.phoneNumber);
-		userNameLabel.setText(vo.userName);
+		if (vo != null) {
+			nameLabel.setText(vo.name);
+			phoneLabel.setText(vo.phoneNumber);
+			userNameLabel.setText(vo.userName);
+		}
 	}
 	
 	@FXML
@@ -60,6 +62,7 @@ public class WebManagerCheckWebMarketer {
 		Parent mypane = fxmlLoader.load(getClass().getResource("/网站管理人员/新增网站营销人员界面.fxml").openStream());
 		WebManagerAddWebMarketer webController = (WebManagerAddWebMarketer) fxmlLoader.getController();
 		webController.changeContent(nowvo);
+		WebManagerController.getInstance().nowvo = nowvo;
 		ChangePane.getInstance().turn(mypane);
 	}
 
@@ -67,6 +70,7 @@ public class WebManagerCheckWebMarketer {
 		nameLabel.setText("");
 		phoneLabel.setText("");
 		userNameLabel.setText("");
+		nowvo = null;
 	}
 	
 	@FXML
@@ -82,6 +86,7 @@ public class WebManagerCheckWebMarketer {
 			Parent mypane = fxmlLoader.load(getClass().getResource("/网站管理人员/修改网站营销人员界面.fxml").openStream());
 			WebManagerModifyWebMarketer webController = (WebManagerModifyWebMarketer) fxmlLoader.getController();
 			webController.changeContent(nowvo);
+			WebManagerController.getInstance().nowvo = nowvo;
 			ChangePane.getInstance().turn(mypane);
 		}
 	}

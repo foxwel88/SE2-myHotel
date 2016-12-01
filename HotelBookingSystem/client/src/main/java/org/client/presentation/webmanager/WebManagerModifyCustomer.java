@@ -61,13 +61,17 @@ public class WebManagerModifyCustomer {
 		typeChoiceBox.setValue(nowvo.type);
 	}
 	
-	@FXML
-	void handleCancelAction(MouseEvent event) throws IOException {
+	public void returnPane(UserVO vo) throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader();
 		Parent mypane = fxmlLoader.load(getClass().getResource("/网站管理人员/浏览客户信息界面.fxml").openStream());
 		WebManagerCheckCustomer webController = (WebManagerCheckCustomer) fxmlLoader.getController();
-		webController.changeContent(nowvo);
+		webController.changeContent(vo);
 		ChangePane.getInstance().turn(mypane);
+	}
+	
+	@FXML
+	void handleCancelAction(MouseEvent event) throws IOException {
+		returnPane(nowvo);
 	}
 
 	@FXML
