@@ -101,23 +101,13 @@ public class HotelManagerModifyPromotion {
 		vo.level = levelBox.getValue();
 		vo.type = typeBox.getValue();
 		
-		ResultMessage result = null;
+		ResultMessage result;
 		if (modifyMode) {
 			result = HotelManagerController.getInstance().modifyPromotion(vo);
 		} else {
 			result = HotelManagerController.getInstance().addPromotion(vo);
 		}
-		switch(result) {
-			case SUCCESS:
-				resultLabel.setText("编辑成功");
-				break;
-			case WRONG_FORMAT:
-				resultLabel.setText("输入信息格式有误");
-				break;
-			default:
-				resultLabel.setText("错误");
-				break;
-		}
+		ResultInfoHelper.setResultLabel(resultLabel, result);
 	}
 
 	@FXML

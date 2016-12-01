@@ -65,12 +65,13 @@ public class LoginController {
 		ResultMessage result = userBl.login(account, passWord);
 		Stage stage = (Stage)accountField.getScene().getWindow();
 		Parent root = null;
+		Resources resources = Resources.getInstance();
 		if (result == ResultMessage.SUCCESS) {
 			UserVO uservo = userBl.findbyUserName(account);
 			switch(uservo.type) {
 				case "酒店工作人员":
 					HotelManagerController.init(uservo.hotelAddress, uservo.name);
-					root = FXMLLoader.load(getClass().getResource("/酒店工作人员/guide.fxml"));
+					root = resources.load(resources.hotelManagerGuide);
 					break;
 				case "网站管理人员":
 					root = FXMLLoader.load(getClass().getResource("/网站管理人员/导航.fxml"));

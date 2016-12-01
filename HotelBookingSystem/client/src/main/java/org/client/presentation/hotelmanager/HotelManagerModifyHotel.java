@@ -169,17 +169,7 @@ public class HotelManagerModifyHotel {
 		vo.star = star.getValue();
 		
 		ResultMessage result = HotelManagerController.getInstance().modifyHotel(vo);
-		switch(result) {
-			case SUCCESS:
-				resultLabel.setText("编辑成功");
-				break;
-			case WRONG_FORMAT:
-				resultLabel.setText("输入信息格式有误");
-				break;
-			default:
-				resultLabel.setText("错误");
-				break;
-		}
+		ResultInfoHelper.setResultLabel(resultLabel, result);
 	}
 
 	/**保存当前选择的房间信息 */

@@ -116,7 +116,7 @@ public class HotelManagerGuide {
 		}
 		
 	}
-	
+
 	/*Visually change active guideLabel(and its pane) */
 	void changeActive(GuideLabelType to) {
 		switch(to) {
@@ -209,8 +209,9 @@ public class HotelManagerGuide {
 		}
 		
 		welcomeLabel.setText("Welcome, " + HotelManagerController.getInstance().managerName);
-		
-		Image avatarImg = new Image(getClass().getResource("/profile.png").toString());
+
+		Resources resources = Resources.getInstance();
+		Image avatarImg = new Image(resources.avatar.toString());
 		ImageView avatarImgView = new ImageView();
 
 		avatarImgView.setImage(avatarImg);

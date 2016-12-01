@@ -60,7 +60,7 @@ public class HotelUtil {
 
 	/**
 	 * 用于工作人员维护酒店信息，更新酒店和房间的持久化对象
-	 * @param HotelVO
+	 * @param vo
 	 * @return ResultMessage
 	 */
 	public ResultMessage modify(HotelVO vo) {

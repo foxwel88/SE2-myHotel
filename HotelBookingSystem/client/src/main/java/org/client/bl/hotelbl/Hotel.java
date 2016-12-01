@@ -70,7 +70,7 @@ public class Hotel {
 	
 	/**
 	 * 用vo中的信息修改自己的保存值，并返回一个相应的po
-	 * @param hotelVO
+	 * @param vo
 	 * @return 对应的hotelPO
 	 */
 	public HotelPO modifyAndReturnPO(HotelVO vo) {

@@ -18,6 +18,9 @@ public class Resources {
 	public URL login = getClass().getResource("/登录界面.fxml");
 	
 	public URL register = getClass().getResource("/注册界面.fxml");
+
+	//Images
+	public URL avatar = getClass().getResource("/profile.png");
 	
 	//HotelManager UI
 	public URL hotelManagerGuide = getClass().getResource("/酒店工作人员/guide.fxml");
