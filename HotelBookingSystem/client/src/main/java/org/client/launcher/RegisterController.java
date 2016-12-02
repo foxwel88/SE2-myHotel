@@ -10,7 +10,6 @@ import org.common.utility.ResultMessage;
 import org.common.utility.UserType;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;

@@ -3,6 +3,7 @@ package org.client.bl.hotelbl;
 import java.rmi.RemoteException;
 import java.util.List;
 
+import org.client.bl.orderbl.HotelHelper;
 import org.client.bl.orderbl.OrderController;
 import org.client.bl.userbl.UserController;
 import org.client.blservice.hotelblservice.Hotelblservice;
@@ -23,7 +24,7 @@ import org.common.utility.RoomType;
  * @author Hirico
  * @version 2016/11/29 Hirico
  */
-public class HotelController implements Hotelblservice {
+public class HotelController implements Hotelblservice, HotelHelper {
 	private static HotelController controller;
 	
 	private Userblservice userBl;

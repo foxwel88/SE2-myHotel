@@ -9,7 +9,6 @@ import org.client.launcher.Resources;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -202,7 +201,7 @@ public class HotelManagerGuide {
 				
 		//默认显示主界面
 		try {
-			belowGridPane.add((Node) FXMLLoader.load(getClass().getResource("/酒店工作人员/酒店工作人员主界面.fxml")), 1, 0);
+			belowGridPane.add(FXMLLoader.load(getClass().getResource("/酒店工作人员/酒店工作人员主界面.fxml")), 1, 0);
 			CurrentItem.setInstance(mainLabel, mainLabelPane, GuideLabelType.MAIN);
 		} catch (IOException e) {
 			e.printStackTrace();

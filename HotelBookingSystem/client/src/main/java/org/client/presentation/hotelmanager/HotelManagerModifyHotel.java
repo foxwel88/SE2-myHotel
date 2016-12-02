@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import org.client.presentation.util.ResultInfoHelper;
 import org.client.vo.AreaVO;
 import org.client.vo.CityVO;
 import org.client.vo.HotelVO;
 import org.common.utility.ResultMessage;
 
-import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

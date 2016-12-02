@@ -10,7 +10,6 @@ import org.client.launcher.Resources;
 import org.client.vo.PromotionVO;
 
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
@@ -115,6 +114,10 @@ public class HotelManagerCheckPromotion {
 		
 		((HotelManagerModifyPromotion)resources.getCurrentController()).setPromotionVO(vo);
 	}
+
+	void delete(String promotionID) {
+		HotelManagerController.getInstance().deletePromotion(promotionID);
+	}
 	
 	@FXML
 	void toNextPage(MouseEvent event) {		
@@ -169,6 +172,8 @@ public class HotelManagerCheckPromotion {
 		Label discount;
 		
 		Button edit;
+
+		Button delete;
 		
 		PromotionVO promotionVO;
 		
@@ -178,14 +183,17 @@ public class HotelManagerCheckPromotion {
 			type = new Label(vo.type);
 			discount = new Label(String.valueOf(vo.discount) + "折");
 			edit = new Button("编辑");
+			delete = new Button("删除");
 			promotionVO = vo;
 			
 			this.getChildren().add(name);
 			this.getChildren().add(type);
 			this.getChildren().add(discount);
 			this.getChildren().add(edit);
+			this.getChildren().add(delete);
 			
 			edit.setOnAction(e -> modifyPromotion(promotionVO));
+			delete.setOnAction(e -> delete(promotionVO.promotionID));
 			
 			this.setPrefSize(PROMOTIONPANE_WIDTH, PROMOTIONPANE_HEIGHT);
 			name.setPrefSize(241, 28);
@@ -209,7 +217,13 @@ public class HotelManagerCheckPromotion {
 			discount.setLayoutY(11);
 			discount.setAlignment(Pos.CENTER);
 			
-			edit.setLayoutX(648);
+			edit.setLayoutX(600);
+			edit.setLayoutY(11);
+			edit.setAlignment(Pos.CENTER);
+			edit.setFont(Font.font("Microsoft YaHei", 15));
+			edit.setStyle("-fx-background-color:rgba(255,255,255,0.2); -fx-text-fill: white");
+
+			edit.setLayoutX(700);
 			edit.setLayoutY(11);
 			edit.setAlignment(Pos.CENTER);
 			edit.setFont(Font.font("Microsoft YaHei", 15));
