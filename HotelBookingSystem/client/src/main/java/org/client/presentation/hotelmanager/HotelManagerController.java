@@ -3,6 +3,7 @@ package org.client.presentation.hotelmanager;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.client.bl.promotionbl.PromotionController;
 import org.client.blservice.hotelblservice.Hotelblservice;
 import org.client.blservice.orderblservice.Orderblservice;
 import org.client.blservice.promotionblservice.Promotionblservice;
@@ -119,6 +120,9 @@ public class HotelManagerController {
 		hotelbl.increaseAvailableRoom(RoomType.getType(currentOrder.roomType), hotelAddress);
 		return orderbl.checkOut(currentOrder.orderID);
 	}
-	
-	
+
+
+	public void deletePromotion(String promotionID) {
+
+	}
 }

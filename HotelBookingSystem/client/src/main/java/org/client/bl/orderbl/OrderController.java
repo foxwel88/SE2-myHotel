@@ -38,8 +38,8 @@ public class OrderController implements Orderblservice {
 		this.orderutil.setUserblservice(userController);
 	}
 	
-	public void setHotelblservice(Hotelblservice hotelController) {
-		this.orderutil.setHotelblservice(hotelController);
+	public void setHotelHelper(HotelHelper hotelHelper) {
+		this.orderutil.setHotelHelper(hotelHelper);
 	}
 	
 	

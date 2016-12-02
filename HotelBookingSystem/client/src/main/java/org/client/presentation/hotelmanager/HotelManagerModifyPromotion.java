@@ -16,6 +16,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.ResourceBundle;
 
+import org.client.presentation.util.ResultInfoHelper;
 import org.client.vo.PromotionVO;
 import org.common.utility.ResultMessage;
 

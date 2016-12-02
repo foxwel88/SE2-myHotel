@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.client.bl.hotelbl.HotelController;
 import org.client.bl.userbl.UserController;
-import org.client.blservice.hotelblservice.Hotelblservice;
 import org.client.blservice.userblservice.Userblservice;
 import org.client.rmi.RMIHelper;
 import org.client.vo.CreditRecordVO;
@@ -40,13 +39,13 @@ public class OrderUtil {
 	
 	protected Userblservice userController;
 	
-	protected Hotelblservice hotelController;
+	protected HotelHelper hotelHelper;
 	
 	
 	private OrderUtil() {
 		dao = RMIHelper.getInstance().getOrderDataServiceImpl();
 		userController = UserController.getInstance();
-		hotelController = HotelController.getInstance();
+		hotelHelper = HotelController.getInstance();
 		timedao = RMIHelper.getInstance().getTimeServiceImpl();
 	}
 	
@@ -61,8 +60,8 @@ public class OrderUtil {
 		this.userController = userController;
 	}
 	
-	public void setHotelblservice(Hotelblservice hotelController) {
-		this.hotelController = hotelController;
+	public void setHotelHelper(HotelHelper hotelHelper) {
+		this.hotelHelper = hotelHelper;
 	}
 	
 	private String getOrderID(String userID) {
@@ -117,7 +116,7 @@ public class OrderUtil {
 			return ResultMessage.WRONG_FORMAT;
 		}
 		
-		HotelVO hotelvo = hotelController.getHotelVO(vo.hotelAddress);
+		HotelVO hotelvo = hotelHelper.getHotelVO(vo.hotelAddress);
 		
 		if (hotelvo.roomType != null) {
 			/*
@@ -126,14 +125,14 @@ public class OrderUtil {
 					if (roomnum.get(i) < vo.roomNum) {
 						return ResultMessage.ROOM_NOT_ENOUGH;
 					} else {
-						hotelController.changeRoom(RoomType.getType(vo.roomType), roomnum.get(i) - vo.roomNum, vo.hotelAddress);
+						hotelHelper.changeRoom(RoomType.getType(vo.roomType), roomnum.get(i) - vo.roomNum, vo.hotelAddress);
 					}
 					break;
 					
 				}
 			}
 			*/
-			ResultMessage message = hotelController.decreaseAvailableRoom(RoomType.getType(vo.roomType), vo.hotelAddress);
+			ResultMessage message = hotelHelper.decreaseAvailableRoom(RoomType.getType(vo.roomType), vo.hotelAddress);
 			if (message != ResultMessage.SUCCESS) {
 				return message;
 			}
@@ -401,7 +400,7 @@ public class OrderUtil {
 				return ResultMessage.CONNECTION_FAIL;
 			}
 		
-			hotelController.increaseAvailableRoom(myorder.roomType, myorder.hotelAddress);
+			hotelHelper.increaseAvailableRoom(myorder.roomType, myorder.hotelAddress);
 			return ResultMessage.SUCCESS;
 		} else {
 			return ResultMessage.WRONG_ORDER_TYPE;

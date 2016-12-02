@@ -1,4 +1,4 @@
-package org.client.presentation.hotelmanager;
+package org.client.presentation.util;
 
 import javafx.scene.control.Label;
 import org.common.utility.ResultMessage;
