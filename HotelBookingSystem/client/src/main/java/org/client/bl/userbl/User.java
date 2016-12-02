@@ -31,6 +31,8 @@ public class User {
 	
 	public String companyName;
 	
+	public String hotelID;
+
 	public String hotelAddress;
 	
 	/**
@@ -57,6 +59,7 @@ public class User {
 		this.birthday = vo.birthday;
 		this.companyName = vo.companyName;
 		this.credit = vo.credit;
+		this.hotelID = vo.hotelID;
 		this.hotelAddress = vo.hotelAddress;
 		this.ID = vo.ID;
 		this.name = vo.name;
@@ -76,6 +79,7 @@ public class User {
 		this.birthday = po.birthday;
 		this.companyName = po.companyName;
 		this.credit = po.credit;
+		this.hotelID = po.hotelID;
 		this.hotelAddress = po.hotelAddress;
 		this.ID = po.ID;
 		this.name = po.name;
@@ -95,6 +99,7 @@ public class User {
 		this.birthday = vo.birthday;
 		this.companyName = vo.companyName;
 		this.credit = vo.credit;
+		this.hotelID = vo.hotelID;
 		this.hotelAddress = vo.hotelAddress;
 		this.ID = vo.ID;
 		this.name = vo.name;
@@ -110,7 +115,7 @@ public class User {
 	 * @return
 	 */
 	public UserVO getUserVO() {
-		return new UserVO(type, userName, name, ID, passWord,phoneNumber, credit, birthday, companyName, hotelAddress);
+		return new UserVO(type, userName, name, ID, passWord,phoneNumber, credit, birthday, companyName, hotelID, hotelAddress);
 	}
 
 	/**
@@ -118,7 +123,7 @@ public class User {
 	 * @return
 	 */
 	public UserPO getUserPO() {
-		return new UserPO(UserType.getType(type), userName, name, ID, passWord,phoneNumber, credit, birthday, companyName, hotelAddress);
+		return new UserPO(UserType.getType(type), userName, name, ID, passWord,phoneNumber, credit, birthday, companyName, hotelID, hotelAddress);
 	}
 	
 }

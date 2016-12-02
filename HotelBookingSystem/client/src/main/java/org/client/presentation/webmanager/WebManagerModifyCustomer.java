@@ -78,7 +78,7 @@ public class WebManagerModifyCustomer {
 	void handleConfirmAction(MouseEvent event) throws IOException {
 		@SuppressWarnings("deprecation")
 		UserVO newvo = new UserVO(typeChoiceBox.getValue(),userNameTextField.getText(),nameTextField.getText(),nowvo.ID,nowvo.passWord,
-				phoneTextField.getText(),nowvo.credit,new Date(birthTextField.getText()),companyTextField.getText(),null);
+				phoneTextField.getText(),nowvo.credit,new Date(birthTextField.getText()),companyTextField.getText(),nowvo.hotelID,nowvo.hotelAddress);
 		
 		ResultMessage message = WebManagerController.getInstance().modify(newvo);
 		if (message == ResultMessage.SUCCESS) {

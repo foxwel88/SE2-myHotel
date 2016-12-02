@@ -41,11 +41,11 @@ public class Order {
 	
 	public Date cancelTime;
 	
-	public String hotelAddress;
+	public String hotelID;
 	
 	public String orderID;
 	
-	public String hotelName;
+	public String hotelAddress;
 	
 	public RoomType roomType;
 	
@@ -79,9 +79,9 @@ public class Order {
 		this.actTo = vo.actTo;
 		this.latestTime = vo.latestTime;
 		this.cancelTime = vo.cancelTime;
-		this.hotelAddress = vo.hotelAddress;
+		this.hotelID = vo.hotelID;
 		this.orderID = vo.orderID;
-		this.hotelName = vo.hotelName;
+		this.hotelAddress = vo.hotelAddress;
 		this.roomType = RoomType.getType(vo.roomType);
 		this.totalPrice = vo.totalPrice;
 		this.roomNum = vo.roomNum;
@@ -105,9 +105,9 @@ public class Order {
 		this.actTo = po.actTo;
 		this.latestTime = po.latestTime;
 		this.cancelTime = po.cancelTime;
-		this.hotelAddress = po.hotelAddress;
+		this.hotelID = po.hotelID;
 		this.orderID = po.orderID;
-		this.hotelName = po.hotelName;
+		this.hotelAddress = po.hotelAddress;
 		this.roomType = po.roomType;
 		this.totalPrice = po.totalPrice;
 		this.roomNum = po.roomNum;
@@ -120,12 +120,12 @@ public class Order {
 	}
 	
 	public OrderVO getOrderVO () {
-		OrderVO vo = new OrderVO("i'm a userid",type.getString(),generatedDate,schFrom,schTo,actFrom,actTo,latestTime,cancelTime,hotelAddress,orderID,hotelName,roomType.getString(),totalPrice,roomNum,numOfPeople,existsChild,customerName,phoneNumber);
+		OrderVO vo = new OrderVO("i'm a userid",type.getString(),generatedDate,schFrom,schTo,actFrom,actTo,latestTime,cancelTime,hotelID,orderID,hotelAddress,roomType.getString(),totalPrice,roomNum,numOfPeople,existsChild,customerName,phoneNumber);
 		return vo;
 	}
 	
 	public OrderPO getOrderPO () {
-		OrderPO po = new OrderPO(type,generatedDate,schFrom,schTo,actFrom,actTo,latestTime,cancelTime,hotelAddress,orderID,hotelName,roomType,totalPrice,roomNum,numOfPeople,existsChild,customerName,userID,phoneNumber);
+		OrderPO po = new OrderPO(type,generatedDate,schFrom,schTo,actFrom,actTo,latestTime,cancelTime,hotelID,orderID,hotelAddress,roomType,totalPrice,roomNum,numOfPeople,existsChild,customerName,userID,phoneNumber);
 		return po;
 	}
 

@@ -30,10 +30,12 @@ public class UserPO implements Serializable {
 	
 	public String companyName;
 	
+	public String hotelID;
+
 	public String hotelAddress;
 	
 	public UserPO(UserType type, String userName, String name, String ID, String passWord,
-			String phoneNumber, double credit, Date birthday, String companyName, String hotelAddress) {
+			String phoneNumber, double credit, Date birthday, String companyName, String hotelID, String hotelAddress) {
 		this.type = type;
 		this.userName = userName;
 		this.name = name;
@@ -43,6 +45,7 @@ public class UserPO implements Serializable {
 		this.credit = credit;
 		this.birthday = birthday;
 		this.companyName = companyName;
+		this.hotelID = hotelID;
 		this.hotelAddress = hotelAddress;
 	}
 

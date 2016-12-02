@@ -30,11 +30,13 @@ public class UserVO implements Serializable {
 	public String companyName;
 	
 	public String hotelAddress;
+
+	public String hotelID;
 	
 	public ResultMessage resultMessage;
 	
 	public UserVO(String type, String userName, String name, String ID, String passWord,
-			String phoneNumber, double credit, Date birthday, String companyName, String hotelAddress) {
+			String phoneNumber, double credit, Date birthday, String companyName, String hotelID, String hotelAddress) {
 		this.type = type;
 		this.userName = userName;
 		this.name = name;
@@ -45,6 +47,7 @@ public class UserVO implements Serializable {
 		this.birthday = birthday;
 		this.companyName = companyName;
 		this.hotelAddress = hotelAddress;
+		this.hotelID = hotelID;
 		resultMessage = ResultMessage.SUCCESS;
 	}
 	

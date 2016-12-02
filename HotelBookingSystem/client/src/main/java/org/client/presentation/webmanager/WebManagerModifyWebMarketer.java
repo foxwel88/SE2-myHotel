@@ -54,7 +54,7 @@ public class WebManagerModifyWebMarketer {
 	@FXML
     void handleModifyAction(MouseEvent event) throws IOException {
 		UserVO newvo = new UserVO(nowvo.type,userNameTextField.getText(),nameTextField.getText(),nowvo.ID,nowvo.passWord,
-				phoneTextField.getText(),nowvo.credit,nowvo.birthday,nowvo.companyName,nowvo.hotelAddress);
+				phoneTextField.getText(),nowvo.credit,nowvo.birthday,nowvo.companyName,nowvo.hotelID, nowvo.hotelAddress);
 		
 		ResultMessage message = WebManagerController.getInstance().modify(newvo);
 		if (message == ResultMessage.SUCCESS) {

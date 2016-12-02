@@ -91,7 +91,7 @@ public class WebManagerAddHotel {
 		if (passwordField.getText().equals(passwordField2.getText())) {
 			UserVO newvo = new UserVO(UserType.HOTELMANAGER.getString(), userNameTextField.getText(), nameTextField.getText(), 
 					WebManagerController.getInstance().getNewID(), passwordField.getText(), 
-					phoneTextField.getText(), 0, null, null, hotelAddressTextField.getText());
+					phoneTextField.getText(), 0, null, null, null, hotelAddressTextField.getText());
 			
 			return newvo;
 		} else {
@@ -104,7 +104,7 @@ public class WebManagerAddHotel {
 	void handleConfirmAction(MouseEvent event) {
 		UserVO hotelManagervo = addUser();
 		if (hotelManagervo != null) {
-			HotelVO hotelvo = new HotelVO(hotelNameTextField.getText(), hotelAddressTextField.getText(), new CityVO(cityChoiceBox.getValue()), 
+			HotelVO hotelvo = new HotelVO(null, hotelNameTextField.getText(), hotelAddressTextField.getText(), new CityVO(cityChoiceBox.getValue()),
 						new AreaVO(areaChoiceBox.getValue()), introduceTextArea.getText(), 0, StarChoiceBox.getValue(), serverTextArea.getText(),
 						null,null, null, null, null);
 			ResultMessage message = WebManagerController.getInstance().addHotel(hotelvo, hotelManagervo);

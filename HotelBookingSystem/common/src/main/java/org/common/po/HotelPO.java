@@ -9,6 +9,8 @@ public class HotelPO implements Serializable {
 	 */
 	private static final long serialVersionUID = 3937802063959755822L;
 
+	public String id;
+
 	public String hotelName;
 
 	public String address;
@@ -29,8 +31,9 @@ public class HotelPO implements Serializable {
 	
 	public String cooperators;
 	
-	public HotelPO(String hotelName, String address, String city, String area, String introduce,
+	public HotelPO(String id, String hotelName, String address, String city, String area, String introduce,
 			double rank, int star, String facility, String checkInInfos, String cooperators) {
+		this.id = id;
 		this.hotelName = hotelName;
 		this.address = address;
 		this.city = city;

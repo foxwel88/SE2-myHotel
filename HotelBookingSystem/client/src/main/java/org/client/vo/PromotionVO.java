@@ -21,7 +21,7 @@ public class PromotionVO implements Serializable {
 	
 	public String hotelName;
 	
-	public String hotelAddress;
+	public String hotelID;
 	
 	public int level;
 	
@@ -33,14 +33,14 @@ public class PromotionVO implements Serializable {
 	
 	public ResultMessage resultMessage;
 	
-	public PromotionVO(String promotionID, String type, Date startTime, Date endTime, String hotelName, String hotelAddress,
+	public PromotionVO(String promotionID, String type, Date startTime, Date endTime, String hotelName, String hotelID,
 			int level, String area, double discount, String name) {
 		this.promotionID = promotionID;
 		this.type = type;
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.hotelName = hotelName;
-		this.hotelAddress = hotelAddress;
+		this.hotelID = hotelID;
 		this.level = level;
 		this.area = area;
 		this.discount = discount;

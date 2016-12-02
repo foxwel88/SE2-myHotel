@@ -24,16 +24,16 @@ public interface HotelDataService extends Remote {
 	public ResultMessage modifyHotelInfo(HotelPO po) throws RemoteException;
 
 	//返回一个酒店po
-	public HotelPO getHotelInfo(String hotelAddress) throws RemoteException;
+	public HotelPO getHotelInfo(String hotelID) throws RemoteException;
 	
 	//返回房间信息
-	public List<RoomPO> getRooms(String hotelAddress) throws RemoteException;
+	public List<RoomPO> getRooms(String hotelID) throws RemoteException;
 
 	//在数据库中更新房间po
-	public ResultMessage modifyRooms(String hotelAddress, List<RoomPO> po) throws RemoteException;
+	public ResultMessage modifyRooms(String hotelID, List<RoomPO> po) throws RemoteException;
 
 	//在数据库中更新房间po
-	public ResultMessage changeRoom(RoomType type, int num, String hotelAddress) throws RemoteException;
+	public ResultMessage changeRoom(RoomType type, int num, String hotelID) throws RemoteException;
 
 	//返回多个酒店po
 	public List<HotelPO> findHotels(HotelFilter filter) throws RemoteException;
@@ -48,9 +48,9 @@ public interface HotelDataService extends Remote {
 	public void finish() throws RemoteException;
 
 	//增加一个某类型可用房间
-	public ResultMessage increaseAvailableRoom(RoomType type, String hotelAddress) throws RemoteException;
+	public ResultMessage increaseAvailableRoom(RoomType type, String hotelID) throws RemoteException;
 
 	//减少一个某类型可用房间
-	public ResultMessage decreaseAvailableRoom(RoomType type, String hotelAddress) throws RemoteException;
+	public ResultMessage decreaseAvailableRoom(RoomType type, String hotelID) throws RemoteException;
 
 }

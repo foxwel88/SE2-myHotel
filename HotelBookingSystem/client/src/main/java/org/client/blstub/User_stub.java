@@ -17,23 +17,23 @@ public class User_stub implements Userblservice {
 	
 	UserVO personalCustomer = new UserVO(UserType.PERSONALCUSTOMER.getString(),
 			"Tom","汤姆","0000000001","456","132323232323",
-			100,date,null,null);
+			100,date,null,null,null);
 	
 	UserVO companyCustomer = new UserVO(UserType.COMPANYCUSTOMER.getString(),
 			"Tony","托尼","0000000011","456","13989829292",
-			500,date,"南京大学",null);
+			500,date,"南京大学",null, null);
 	
 	UserVO webMarketer = new UserVO(UserType.WEBMARKETER.getString(),
 			"Bob","鲍勃","0000000021","456","132323232323",
-			100,new Date(),null,null);
+			100,new Date(),null,null, null);
 	
 	UserVO webManager = new UserVO(UserType.WEBMANAGER.getString(),
 			"Sam","山姆","0000000111","456","132323232323",
-			100,new Date(),null,null);
+			100,new Date(),null,null, null);
 	
 	UserVO hotelManager = new UserVO(UserType.HOTELMANAGER.getString(),
 			"Mac","苹果","0000012345","456","13515571828",
-			100,new Date(),null,"南京大学大酒店");
+			100,new Date(),null, "123", "南京大学大酒店");
 	
 	public ResultMessage login(String userName, String password) {
 		// TODO Auto-generated method stub

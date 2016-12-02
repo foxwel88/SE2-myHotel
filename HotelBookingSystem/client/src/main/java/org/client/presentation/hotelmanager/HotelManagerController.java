@@ -34,24 +34,24 @@ public class HotelManagerController {
 	
 	private static HotelManagerController controller;
 	
-	private String hotelAddress;
+	private String hotelID;
 	
 	public String managerName;
 	
 	public OrderVO currentOrder;
 	
 	//stub version
-	private HotelManagerController(String hotelAddress, String managerName) { 
+	private HotelManagerController(String hotelID, String managerName) {
 		hotelbl = new Hotel_stub();
 		promotionbl = new Promotion_stub();
 		orderbl = new Order_stub();
-		this.hotelAddress = hotelAddress;
+		this.hotelID = hotelID;
 		this.managerName = managerName;
 	}
 	
 	/** 登录之后就要马上调用这个方法 */
-	public static void init(String hotelAddress, String managerName) {
-		controller = new HotelManagerController(hotelAddress, managerName);
+	public static void init(String hotelID, String managerName) {
+		controller = new HotelManagerController(hotelID, managerName);
 	}
 	
 	public static HotelManagerController getInstance() throws NullPointerException {
@@ -62,27 +62,27 @@ public class HotelManagerController {
 	}
 	
 	public List<OrderVO> getUnexecutedOrders() {
-		return orderbl.getHotelOrderList(hotelAddress, OrderType.UNEXECUTED);
+		return orderbl.getHotelOrderList(hotelID, OrderType.UNEXECUTED);
 	}
 	
 	public List<OrderVO> getExecutedOrders() {
-		return orderbl.getHotelOrderList(hotelAddress, OrderType.EXECUTED);
+		return orderbl.getHotelOrderList(hotelID, OrderType.EXECUTED);
 	}
 	
 	public List<OrderVO> getCancelledOrders() {
-		return orderbl.getHotelOrderList(hotelAddress, OrderType.CANCELED);
+		return orderbl.getHotelOrderList(hotelID, OrderType.CANCELED);
 	}
 	
 	public List<OrderVO> getAbnormalOrders() {
-		return orderbl.getHotelOrderList(hotelAddress, OrderType.ABNORMAL);
+		return orderbl.getHotelOrderList(hotelID, OrderType.ABNORMAL);
 	}
 	
 	public List<PromotionVO> getPromotions() {
-		return promotionbl.showHotelPromotion(hotelAddress);
+		return promotionbl.showHotelPromotion(hotelID);
 	}
 	
 	public HotelVO getHotelInfo() {
-		return hotelbl.getHotelVO(hotelAddress);
+		return hotelbl.getHotelVO(hotelID);
 	}
 	
 	public ResultMessage modifyHotel(HotelVO vo) {
@@ -117,7 +117,7 @@ public class HotelManagerController {
 	
 	/**酒店可用房间数量增加，增加订单退房时间 */
 	public ResultMessage checkOut() {
-		hotelbl.increaseAvailableRoom(RoomType.getType(currentOrder.roomType), hotelAddress);
+		hotelbl.increaseAvailableRoom(RoomType.getType(currentOrder.roomType), hotelID);
 		return orderbl.checkOut(currentOrder.orderID);
 	}
 

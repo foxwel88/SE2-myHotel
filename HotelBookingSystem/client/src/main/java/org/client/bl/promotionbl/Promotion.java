@@ -26,7 +26,7 @@ public class Promotion {
 	
 	String hotelName;
 	
-	String hotelAddress;
+	String hotelID;
 	
 	int level;
 	
@@ -47,7 +47,7 @@ public class Promotion {
 		
 		hotelName = vo.hotelName;
 		
-		hotelAddress = vo.hotelAddress;
+		hotelID = vo.hotelID;
 		
 		level = vo.level;
 		
@@ -79,11 +79,11 @@ public class Promotion {
 	}
 	
 	PromotionVO toVO() {
-		return new PromotionVO(promotionID, type, startTime, endTime, hotelName, hotelAddress, level, area, discount, hotelName);
+		return new PromotionVO(promotionID, type, startTime, endTime, hotelName, hotelID, level, area, discount, hotelName);
 	}
 	
 	PromotionPO toPO() {
-		return new PromotionPO(promotionID, PromotionType.getType(type), startTime, endTime, hotelName, hotelAddress, level, area, discount, hotelName);
+		return new PromotionPO(promotionID, PromotionType.getType(type), startTime, endTime, hotelName, hotelID, level, area, discount, hotelName);
 	}
 	
 	ResultMessage modify (PromotionVO vo) {
@@ -110,7 +110,7 @@ public class Promotion {
 			
 			name = vo.name;
 			
-			PromotionPO po = new PromotionPO(promotionID, PromotionType.getType(type), startTime, endTime, hotelName, hotelAddress, level, area, discount, name);
+			PromotionPO po = new PromotionPO(promotionID, PromotionType.getType(type), startTime, endTime, hotelName, hotelID, level, area, discount, name);
 			
 			try {
 				promotionDataService.modify(po);

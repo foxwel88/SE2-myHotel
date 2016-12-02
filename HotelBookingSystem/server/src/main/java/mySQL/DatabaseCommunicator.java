@@ -41,7 +41,7 @@ public class DatabaseCommunicator {
 		try {
 			return command.executeQuery();
 		} catch (Exception ex) {
-			System.out.println("Statement excute error!!!");
+			System.out.println("Statement execute error!!!");
 			ex.printStackTrace();
 		}
 		return null;

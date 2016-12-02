@@ -51,23 +51,23 @@ public class HotelDataServiceImpl_stub extends UnicastRemoteObject implements Ho
 		return ResultMessage.SUCCESS;
 	}
 
-	public HotelPO getHotelInfo(String hotelAddress) throws RemoteException {
-		return new HotelPO(hotelAddress, hotelAddress, hotelAddress, hotelAddress, hotelAddress, 0, 0, hotelAddress, hotelAddress, hotelAddress);
+	public HotelPO getHotelInfo(String hotelID) throws RemoteException {
+		return new HotelPO(hotelID, hotelID, hotelID, hotelID, hotelID, hotelID, 0, 0, hotelID, hotelID, hotelID);
 	}
 
-	public List<RoomPO> getRooms(String hotelAddress) throws RemoteException {
+	public List<RoomPO> getRooms(String hotelID) throws RemoteException {
 		List<RoomPO> list = new ArrayList<>();
 		list.add(new RoomPO("small",0,0));
 		return list;
 	}
 
-	public ResultMessage modifyRooms(String hotelAddress, List<RoomPO> po) throws RemoteException {
+	public ResultMessage modifyRooms(String hotelID, List<RoomPO> po) throws RemoteException {
 		return ResultMessage.SUCCESS;
 	}
 
 	public ArrayList<HotelPO> findHotels(HotelFilter filter) throws RemoteException {
 		ArrayList<HotelPO> hotels = new ArrayList<>();
-		hotels.add(new HotelPO("n", "a", "c", "a", "i", 1, 1, "f", "c", "com"));
+		hotels.add(new HotelPO("123", "n", "a", "c", "a", "i", 1, 1, "f", "c", "com"));
 		return hotels;
 	}
 
@@ -87,7 +87,7 @@ public class HotelDataServiceImpl_stub extends UnicastRemoteObject implements Ho
 		System.out.println("finish");
 	}
 
-	public ResultMessage changeRoom(RoomType type, int num, String hotelAddress) throws RemoteException {
+	public ResultMessage changeRoom(RoomType type, int num, String hotelID) throws RemoteException {
 		if (num < 0) {
 			return ResultMessage.WRONG_FORMAT;
 		}
@@ -95,12 +95,12 @@ public class HotelDataServiceImpl_stub extends UnicastRemoteObject implements Ho
 	}
 
 	@Override
-	public ResultMessage increaseAvailableRoom(RoomType type, String hotelAddress) throws RemoteException {
+	public ResultMessage increaseAvailableRoom(RoomType type, String hotelID) throws RemoteException {
 		return ResultMessage.SUCCESS;
 	}
 
 	@Override
-	public ResultMessage decreaseAvailableRoom(RoomType type, String hotelAddress) throws RemoteException {
+	public ResultMessage decreaseAvailableRoom(RoomType type, String hotelID) throws RemoteException {
 		return ResultMessage.SUCCESS;
 	}
 

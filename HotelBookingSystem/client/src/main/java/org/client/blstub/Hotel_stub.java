@@ -41,11 +41,11 @@ public class Hotel_stub implements Hotelblservice, HotelHelper {
 	List<Double> roomPrices = new ArrayList<>(Arrays.asList
 			(new Double[]{198.0, 298.0}));
 
-	HotelVO hotelvo1 = new HotelVO("goodhotel","XianLin Campus"
+	HotelVO hotelvo1 = new HotelVO("123","goodhotel","XianLin Campus"
 			,city1,area1,"a good hotel",4,3,"good",
 			checkInInfo, roomTypes, roomNums, roomPrices, cooperators);
 	
-	HotelVO hotelvo2 = new HotelVO("goodhotel","aaa"
+	HotelVO hotelvo2 = new HotelVO("123","goodhotel","aaa"
 			,city1,area2,"xxxxx",4,3,"good",
 			checkInInfo, roomTypes, roomNums, roomPrices, cooperators);
 
@@ -56,7 +56,7 @@ public class Hotel_stub implements Hotelblservice, HotelHelper {
 		return vo;
 	}
 
-	public HotelVO getHotel(String hotelAddress) {
+	public HotelVO getHotel(String hotelID) {
 		return hotelvo1;
 	}
 
@@ -68,11 +68,11 @@ public class Hotel_stub implements Hotelblservice, HotelHelper {
 		return ResultMessage.SUCCESS;
 	}
 
-	public ResultMessage changeRoom(RoomType type, int num, String hotelAddress) {
+	public ResultMessage changeRoom(RoomType type, int num, String hotelID) {
 		return ResultMessage.SUCCESS;
 	}
 
-	public HotelVO getHotelVO(String hotelAddress) {
+	public HotelVO getHotelVO(String hotelID) {
 		return hotelvo1;
 	}
 
@@ -97,12 +97,12 @@ public class Hotel_stub implements Hotelblservice, HotelHelper {
 	}
 
 	@Override
-	public ResultMessage increaseAvailableRoom(RoomType type, String hotelAddress) {
+	public ResultMessage increaseAvailableRoom(RoomType type, String hotelID) {
 		return ResultMessage.SUCCESS;
 	}
 
 	@Override
-	public ResultMessage decreaseAvailableRoom(RoomType type, String hotelAddress) {
+	public ResultMessage decreaseAvailableRoom(RoomType type, String hotelID) {
 		return ResultMessage.SUCCESS;
 	}
 

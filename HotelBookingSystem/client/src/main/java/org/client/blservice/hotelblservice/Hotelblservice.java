@@ -22,13 +22,13 @@ public interface Hotelblservice {
 	
 	public ResultMessage modifyHotel(HotelVO vo);
 	
-	public ResultMessage changeRoom(RoomType type, int num, String hotelAddress);
+	public ResultMessage changeRoom(RoomType type, int num, String hotelID);
 	
-	public ResultMessage increaseAvailableRoom(RoomType type, String hotelAddress);
+	public ResultMessage increaseAvailableRoom(RoomType type, String hotelID);
 	
-	public ResultMessage decreaseAvailableRoom(RoomType type, String hotelAddress);
+	public ResultMessage decreaseAvailableRoom(RoomType type, String hotelID);
 	
-	public HotelVO getHotelVO(String hotelAddress);
+	public HotelVO getHotelVO(String hotelID);
 	
 	public List<CityVO> getCitys();
 	

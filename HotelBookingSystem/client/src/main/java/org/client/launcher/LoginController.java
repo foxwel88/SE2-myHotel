@@ -70,7 +70,7 @@ public class LoginController {
 			UserVO uservo = userBl.findbyUserName(account);
 			switch(uservo.type) {
 				case "酒店工作人员":
-					HotelManagerController.init(uservo.hotelAddress, uservo.name);
+					HotelManagerController.init(uservo.hotelID, uservo.name);
 					root = resources.load(resources.hotelManagerGuide);
 					break;
 				case "网站管理人员":

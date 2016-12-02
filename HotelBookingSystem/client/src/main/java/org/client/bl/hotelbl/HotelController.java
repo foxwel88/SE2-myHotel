@@ -90,10 +90,10 @@ public class HotelController implements Hotelblservice, HotelHelper {
 	/**
 	 * 修改可用房间信息，供非酒店工作人员使用
 	 */
-	public ResultMessage changeRoom(RoomType type, int num, String hotelAddress) {
+	public ResultMessage changeRoom(RoomType type, int num, String hotelID) {
 		HotelDataService dao = RMIHelper.getInstance().getHotelDataServiceImpl();
 		try {
-			dao.changeRoom(type, num, hotelAddress);
+			dao.changeRoom(type, num, hotelID);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			return ResultMessage.CONNECTION_FAIL;
@@ -101,8 +101,8 @@ public class HotelController implements Hotelblservice, HotelHelper {
 		return ResultMessage.SUCCESS;
 	}
 
-	public HotelVO getHotelVO(String hotelAddress) {
-		return util.getHotel(hotelAddress);
+	public HotelVO getHotelVO(String hotelID) {
+		return util.getHotel(hotelID);
 	}
 
 	public List<AreaVO> getAreas(CityVO vo) {
@@ -123,10 +123,10 @@ public class HotelController implements Hotelblservice, HotelHelper {
 		return null;
 	}
 
-	public ResultMessage increaseAvailableRoom(RoomType type, String hotelAddress) {
+	public ResultMessage increaseAvailableRoom(RoomType type, String hotelID) {
 		HotelDataService dao = RMIHelper.getInstance().getHotelDataServiceImpl();
 		try {
-			dao.increaseAvailableRoom(type, hotelAddress);
+			dao.increaseAvailableRoom(type, hotelID);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			return ResultMessage.CONNECTION_FAIL;
@@ -134,10 +134,10 @@ public class HotelController implements Hotelblservice, HotelHelper {
 		return ResultMessage.SUCCESS;
 	}
 
-	public ResultMessage decreaseAvailableRoom(RoomType type, String hotelAddress) {
+	public ResultMessage decreaseAvailableRoom(RoomType type, String hotelID) {
 		HotelDataService dao = RMIHelper.getInstance().getHotelDataServiceImpl();
 		try {
-			dao.decreaseAvailableRoom(type, hotelAddress);
+			dao.decreaseAvailableRoom(type, hotelID);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			return ResultMessage.CONNECTION_FAIL;

@@ -50,7 +50,7 @@ public class RegisterController {
 		Resources resources = Resources.getInstance();
 		if (passwordField.getText().equals(passwordField2.getText())) {
 			UserVO vo = new UserVO(UserType.PERSONALCUSTOMER.getString(), userNameTextField.getText(), nameTextField.getText(), userBl.getNewID(),
-					passwordField.getText(), phoneTextField.getText(), 200, new Date(), null, null);
+					passwordField.getText(), phoneTextField.getText(), 200, new Date(), null, null, null);
 			
 			ResultMessage message = userBl.add(vo);
 			if (message == ResultMessage.SUCCESS) {

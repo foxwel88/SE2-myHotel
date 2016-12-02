@@ -13,6 +13,8 @@ import org.common.po.HotelPO;
  * @version 2016/11/29 Hirico
  */
 public class Hotel {
+	public String id;
+
 	public String hotelName;
 
 	public String address;
@@ -46,7 +48,7 @@ public class Hotel {
 	 * @return hotelVO
 	 */
 	public HotelVO generateVO() {
-		return new HotelVO(hotelName, address, new CityVO(city), new AreaVO(area), introduce, rank, star, facility, checkInInfos, roomType, roomNum, roomPrice, cooperators);
+		return new HotelVO(id, hotelName, address, new CityVO(city), new AreaVO(area), introduce, rank, star, facility, checkInInfos, roomType, roomNum, roomPrice, cooperators);
 	}
 	
 	/**
@@ -55,6 +57,7 @@ public class Hotel {
 	 * @return this
 	 */
 	public Hotel initByPO(HotelPO po) {
+		this.id = po.id;
 		this.hotelName = po.hotelName;
 		this.address = po.address;
 		this.city = po.city;
@@ -74,6 +77,7 @@ public class Hotel {
 	 * @return 对应的hotelPO
 	 */
 	public HotelPO modifyAndReturnPO(HotelVO vo) {
+		this.id = vo.id;
 		this.hotelName = vo.hotelName;
 		this.address = vo.address;
 		this.city = vo.city.cityName;
@@ -98,7 +102,7 @@ public class Hotel {
 			this.cooperators_po = sb.toString();
 		}
 		
-		return new HotelPO(hotelName, address, city, area, introduce, rank, star, facility, checkInInfos, cooperators_po);
+		return new HotelPO(id, hotelName, address, city, area, introduce, rank, star, facility, checkInInfos, cooperators_po);
 	}
 	
 }

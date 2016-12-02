@@ -59,7 +59,7 @@ public class HotelListTest extends EasyMockSupport {
 	public void test() {
 		HotelFilter filter = new HotelFilter();
 		filter.setPrice(0, 5000);
-		HotelPO fake = new HotelPO("123", "123", "x", "y", "z", 1, 2, "good", "", "");
+		HotelPO fake = new HotelPO("id", "123", "123", "x", "y", "z", 1, 2, "good", "", "");
 		List<HotelPO> fakeReturn = new ArrayList<HotelPO>();
 		fakeReturn.add(fake);
 		
@@ -70,7 +70,7 @@ public class HotelListTest extends EasyMockSupport {
 			e.printStackTrace();
 		}
 		expect(h.initByPO(fake)).andReturn(h);
-		expect(h.generateVO()).andReturn(new HotelVO("123", "123", new CityVO("x"), new AreaVO("y"), "z", 1, 2, "good", "", null, null, null, null));
+		expect(h.generateVO()).andReturn(new HotelVO("id", "123", "123", new CityVO("x"), new AreaVO("y"), "z", 1, 2, "good", "", null, null, null, null));
 		replayAll();
 		
 		//verify
