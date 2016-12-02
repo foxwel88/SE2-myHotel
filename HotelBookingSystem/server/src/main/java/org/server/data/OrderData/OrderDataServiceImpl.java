@@ -5,7 +5,9 @@ import java.rmi.server.UnicastRemoteObject;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -28,6 +30,11 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 	public OrderDataServiceImpl() throws RemoteException {
 		System.out.println("order start");
 		// TODO Auto-generated constructor stub
+	}
+	
+	String transtime(Date date) {
+		SimpleDateFormat timeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		return timeFormat.format(date);
 	}
 	
 	OrderPO getPOfromSet(ResultSet resultSet) {
@@ -135,13 +142,42 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 	}
 
 	public ResultMessage add(OrderPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("select * from `Order` where OrderID=" + po.orderID);
+			ResultSet resultSet = DatabaseCommunicator.execute(preparedStatement);
+			if (!resultSet.next()) {
+				preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("insert into `Order`(type,userId,generatedDate,"
+							+ "schFrom,schTo,actFrom,actTo,latestTime,cancelTime,hotelAddress,orderID,hotelName,roomType,totalPrice,roomNum,numOfPeople,"
+							+ "existsChild,customerName,phoneNumber) values(" + po.type.getString() + "," + po.userId + "," + transtime(po.generatedDate)
+							+ "," + transtime(po.schFrom) + "," + transtime(po.schTo) + "," + transtime(po.actFrom) + "," + transtime(po.actTo)
+							+ "," + transtime(po.latestTime) + "," + transtime(po.cancelTime) + "," + po.hotelAddress + "," + po.orderID + "," + po.hotelName
+							+ "," + po.roomType.getString() + "," + po.roomNum + "," + po.numOfPeople + "," + po.existsChild + "," + po.customerName
+							+ "," + po.customerName + "," + po.phoneNumber + ")");
+				DatabaseCommunicator.execute(preparedStatement);
+				return ResultMessage.SUCCESS;
+			} else {
+				return ResultMessage.EXIST;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ResultMessage.SUCCESS;
 	}
 
 	public ResultMessage modify(OrderPO po) throws RemoteException {
+		try {
+			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(
+					"delete from `Order` where orderID=" + po.orderID);
+			DatabaseCommunicator.execute(preparedStatement);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		add(po);
 		// TODO Auto-generated method stub
-		return null;
+		return ResultMessage.SUCCESS;
 	}
 
 	public void init() throws RemoteException {
