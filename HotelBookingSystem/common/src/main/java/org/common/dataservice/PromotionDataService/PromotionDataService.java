@@ -9,6 +9,9 @@ import org.common.po.PromotionPO;
 import org.common.utility.ResultMessage;
 
 public interface PromotionDataService extends Remote {
+	public String getNewID() throws RemoteException;
+	//从数据库获得一个新的promotionID
+	
 	public ResultMessage add(PromotionPO po) throws RemoteException;
 	//在数据库中增加一个PromotionPO记录
 	

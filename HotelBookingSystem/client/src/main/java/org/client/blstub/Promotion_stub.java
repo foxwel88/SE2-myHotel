@@ -25,7 +25,7 @@ public class Promotion_stub implements Promotionblservice {
 	ArrayList<PromotionVO> generalVOs = new ArrayList<>(Arrays.asList(new PromotionVO[]{vo1, vo2, vo3}));
 	
 	ArrayList<PromotionVO> hotelVOs = new ArrayList<>(Arrays.asList(new PromotionVO[]{vo1, vo3}));
-
+	
 	public ResultMessage add(PromotionVO vo) {
 		// TODO Auto-generated method stub
 		return ResultMessage.SUCCESS;

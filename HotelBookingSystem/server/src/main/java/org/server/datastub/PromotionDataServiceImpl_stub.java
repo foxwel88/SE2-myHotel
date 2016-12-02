@@ -22,6 +22,10 @@ public class PromotionDataServiceImpl_stub extends UnicastRemoteObject implement
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public String getNewID() throws RemoteException {
+		return "000000000000";
+	}
 
 	public ResultMessage add(PromotionPO po) throws RemoteException {
 		return ResultMessage.SUCCESS;

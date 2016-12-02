@@ -85,7 +85,7 @@ public class WebMarketerModifyPromotion {
 		if (vo == null) {
 			isAdd = true;
 		}
-		vo = new PromotionVO(type, fromDate, toDate, null, null, level, area, discount, name);
+		vo = new PromotionVO(null, type, fromDate, toDate, null, null, level, area, discount, name);
 		
 		if (isAdd) {
 			ResultMessage info = controller.addPromotion(vo);

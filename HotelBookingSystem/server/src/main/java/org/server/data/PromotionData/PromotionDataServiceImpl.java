@@ -27,6 +27,11 @@ public class PromotionDataServiceImpl extends UnicastRemoteObject implements Pro
 		System.out.println("promotion start");
 		// TODO Auto-generated constructor stub
 	}
+	
+	public String getNewID() throws RemoteException {
+		// TODO
+		return null;
+	}
 
 	public ResultMessage add(PromotionPO po) throws RemoteException {
 		// TODO Auto-generated method stub

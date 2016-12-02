@@ -24,11 +24,6 @@ public class PromotionUtil {
 		promotionDataService = promotionDAO;
 	}
 	
-	static String getNewID() {
-		// TODO what's the id scheme
-		return null;
-	}
-	
 	static ResultMessage add(PromotionVO vo) {
 		if (promotionDataService == null) {
 			RMIHelper rmihelper = RMIHelper.getInstance();
