@@ -18,6 +18,9 @@ public interface PromotionDataService extends Remote {
 	public ResultMessage modify(PromotionPO po) throws RemoteException;
 	//更新一个PO
 	
+	public ResultMessage delete(String promotionID) throws RemoteException;
+	//删除一条促销策略
+	
 	public List<PromotionPO> showHotelPromotion(String hotelAddress) throws RemoteException;
 	//按hotelAddress进行查找返回该酒店的PromotionPO记录
 	

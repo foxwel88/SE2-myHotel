@@ -50,6 +50,11 @@ public class Promotion_stub implements Promotionblservice {
 		// TODO Auto-generated method stub
 		return ResultMessage.SUCCESS;
 	}
+	
+	public ResultMessage delete(String PromotionID) {
+		// TODO
+		return ResultMessage.SUCCESS;
+	}
 
 	public LevelVO showLevel() {
 		// TODO Auto-generated method stub

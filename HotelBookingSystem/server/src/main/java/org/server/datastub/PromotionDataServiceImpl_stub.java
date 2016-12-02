@@ -34,6 +34,10 @@ public class PromotionDataServiceImpl_stub extends UnicastRemoteObject implement
 	public ResultMessage modify(PromotionPO po) throws RemoteException {
 		return ResultMessage.SUCCESS;
 	}
+	
+	public ResultMessage delete(String promotionID) throws RemoteException {
+		return ResultMessage.SUCCESS;
+	}
 
 	public ArrayList<PromotionPO> showHotelPromotion(String hotelAddress) throws RemoteException {
 		ArrayList<PromotionPO> promotions = new ArrayList<>();

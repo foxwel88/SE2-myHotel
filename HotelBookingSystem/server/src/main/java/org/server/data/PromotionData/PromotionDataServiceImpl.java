@@ -20,8 +20,6 @@ public class PromotionDataServiceImpl extends UnicastRemoteObject implements Pro
 	 * 
 	 */
 	private static final long serialVersionUID = -8003664894492865142L;
-	
-	private DatabaseCommunicator communicator;
 
 	public PromotionDataServiceImpl() throws RemoteException {
 		System.out.println("promotion start");
@@ -40,6 +38,11 @@ public class PromotionDataServiceImpl extends UnicastRemoteObject implements Pro
 
 	public ResultMessage modify(PromotionPO po) throws RemoteException {
 		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	public ResultMessage delete(String promotionID) throws RemoteException {
+		// TODO
 		return null;
 	}
 

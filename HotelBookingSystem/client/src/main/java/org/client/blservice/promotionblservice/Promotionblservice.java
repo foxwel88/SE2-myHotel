@@ -18,6 +18,8 @@ public interface Promotionblservice {
 	
 	public ResultMessage modify(PromotionVO vo);
 	
+	public ResultMessage delete(String promotionID);
+	
 	public LevelVO showLevel();
 	
 	public ResultMessage modifyLevel(LevelVO vo);

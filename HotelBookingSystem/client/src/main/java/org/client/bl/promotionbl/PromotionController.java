@@ -90,6 +90,10 @@ public class PromotionController implements Promotionblservice {
 			return promotion.modify(vo);
 		}
 	}
+	
+	public ResultMessage delete(String promotionID) {
+		return PromotionUtil.delete(promotionID);
+	}
 
 	public LevelVO showLevel() {
 		return level.showLevel();
