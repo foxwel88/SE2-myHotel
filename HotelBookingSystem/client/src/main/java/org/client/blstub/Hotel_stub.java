@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.client.bl.orderbl.HotelHelper;
 import org.client.blservice.hotelblservice.Hotelblservice;
 import org.client.vo.AreaVO;
 import org.client.vo.CityVO;
@@ -13,7 +14,7 @@ import org.common.utility.HotelFilter;
 import org.common.utility.ResultMessage;
 import org.common.utility.RoomType;
 
-public class Hotel_stub implements Hotelblservice {	
+public class Hotel_stub implements Hotelblservice, HotelHelper {
 	CityVO city1 = new CityVO("南京");
 	
 	CityVO city2 = new CityVO("北京");

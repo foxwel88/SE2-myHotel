@@ -29,7 +29,7 @@ public class OrderControllerTest {
 		org.client.rmi.RMIHelper.getInstance().init();
 		controller = OrderController.getInstance();
 		controller.setUserblservice(new User_stub());
-		controller.setHotelblservice(new Hotel_stub());
+		controller.setHotelHelper(new Hotel_stub());
 	}
 
 	@Test
