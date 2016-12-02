@@ -80,7 +80,6 @@ public class HotelManagerCheckPromotion {
 		
 		//显示第一页
 		switchCurrentPage(FIRST_PAGE_NUM);
-		
 	}
 	
 	/** 持有导航界面GridPane的引用，为了完成从浏览到编辑界面的跳转 */
@@ -100,7 +99,8 @@ public class HotelManagerCheckPromotion {
 		parentPane.getChildren().set(1, modifyRoot);
 		GridPane.setConstraints(modifyRoot, 1, 0);
 	}
-	
+
+	/**进入选定策略的详情编辑界面 */
 	void modifyPromotion(PromotionVO vo) {
 		Parent modifyRoot = null;
 		Resources resources = Resources.getInstance();
@@ -115,8 +115,13 @@ public class HotelManagerCheckPromotion {
 		((HotelManagerModifyPromotion)resources.getCurrentController()).setPromotionVO(vo);
 	}
 
+	/**删除一条促销策略 */
 	void delete(String promotionID) {
 		HotelManagerController.getInstance().deletePromotion(promotionID);
+
+		//刷新当前策略列表，切换到第一页
+		promotionList = HotelManagerController.getInstance().getPromotions();
+		switchCurrentPage(FIRST_PAGE_NUM);
 	}
 	
 	@FXML
@@ -223,11 +228,11 @@ public class HotelManagerCheckPromotion {
 			edit.setFont(Font.font("Microsoft YaHei", 15));
 			edit.setStyle("-fx-background-color:rgba(255,255,255,0.2); -fx-text-fill: white");
 
-			edit.setLayoutX(700);
-			edit.setLayoutY(11);
-			edit.setAlignment(Pos.CENTER);
-			edit.setFont(Font.font("Microsoft YaHei", 15));
-			edit.setStyle("-fx-background-color:rgba(255,255,255,0.2); -fx-text-fill: white");
+			delete.setLayoutX(660);
+			delete.setLayoutY(11);
+			delete.setAlignment(Pos.CENTER);
+			delete.setFont(Font.font("Microsoft YaHei", 15));
+			delete.setStyle("-fx-background-color:rgba(255,255,255,0.2); -fx-text-fill: white");
 			
 			this.setStyle("-fx-background-color:rgba(0,0,0,0.3)");
 		}

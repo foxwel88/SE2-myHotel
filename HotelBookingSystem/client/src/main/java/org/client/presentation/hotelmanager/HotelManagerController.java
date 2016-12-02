@@ -121,8 +121,7 @@ public class HotelManagerController {
 		return orderbl.checkOut(currentOrder.orderID);
 	}
 
-
 	public void deletePromotion(String promotionID) {
-
+		promotionbl.delete(promotionID);
 	}
 }
