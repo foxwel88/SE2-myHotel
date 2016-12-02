@@ -198,7 +198,8 @@ public class HotelManagerCheckPromotion {
 			this.getChildren().add(delete);
 			
 			edit.setOnAction(e -> modifyPromotion(promotionVO));
-			delete.setOnAction(e -> delete(promotionVO.promotionID));
+			delete.setOnAction(
+					e -> delete(promotionVO.promotionID));
 			
 			this.setPrefSize(PROMOTIONPANE_WIDTH, PROMOTIONPANE_HEIGHT);
 			name.setPrefSize(241, 28);
