@@ -41,22 +41,22 @@ public class PromotionControllerTest extends EasyMockSupport {
 	// TODO 商圈和酒店名显然不符合规范。。。等数据库建起来了再改
 	@Test(timeout = 1000)
 	public void testadd() {
-		assertEquals(ResultMessage.SUCCESS, promotionController.add(new PromotionVO("生日促销", new Date(100000), new Date(1000000), "!什么东西", "我是地址", 1, "我不信还有", 9.9, "醉了")));
+		assertEquals(ResultMessage.SUCCESS, promotionController.add(new PromotionVO("i'm an id", "生日促销", new Date(100000), new Date(1000000), "!什么东西", "我是地址", 1, "我不信还有", 9.9, "醉了")));
 	}
 	
 	@Test(timeout = 1000)
 	public void testadd2() {
-		assertEquals(ResultMessage.WRONG_FORMAT, promotionController.add(new PromotionVO("生日促销", new Date(1000000), new Date(1000000), "!什么东西", "我是地址", 1, "我不信还有", 9.9, "醉了")));
+		assertEquals(ResultMessage.WRONG_FORMAT, promotionController.add(new PromotionVO("i'm an id", "生日促销", new Date(1000000), new Date(1000000), "!什么东西", "我是地址", 1, "我不信还有", 9.9, "醉了")));
 	}
 	
 	@Test(timeout = 1000)
 	public void testadd3() {
-		assertEquals(ResultMessage.WRONG_FORMAT, promotionController.add(new PromotionVO("生日促销", new Date(100000), new Date(1000000), "!什么东西", "我是地址", 1, "我不信还有", 10, "醉了")));
+		assertEquals(ResultMessage.WRONG_FORMAT, promotionController.add(new PromotionVO("i'm an id", "生日促销", new Date(100000), new Date(1000000), "!什么东西", "我是地址", 1, "我不信还有", 10, "醉了")));
 	}
 	
 	@Test(timeout = 1000)
 	public void testadd4() {
-		assertEquals(ResultMessage.WRONG_FORMAT, promotionController.add(new PromotionVO("节日促销", new Date(100000), new Date(1000000), "!什么东西", "我是地址", 1, "我不信还有", 9.9, "醉了")));
+		assertEquals(ResultMessage.WRONG_FORMAT, promotionController.add(new PromotionVO("i'm an id", "节日促销", new Date(100000), new Date(1000000), "!什么东西", "我是地址", 1, "我不信还有", 9.9, "醉了")));
 	}
 	
 	@Test(timeout = 1000)
@@ -81,7 +81,7 @@ public class PromotionControllerTest extends EasyMockSupport {
 			
 			ArrayList<PromotionPO> promotionPO = new ArrayList<PromotionPO>();
 			
-			promotionPO.add(new PromotionPO(PromotionType.BIRTHDAYBONUS, new Date(100000), new Date(1000000), "hotelName", "hotelAddress", 2, "area", 3, "name"));
+			promotionPO.add(new PromotionPO("i'm an id", PromotionType.BIRTHDAYBONUS, new Date(100000), new Date(1000000), "hotelName", "hotelAddress", 2, "area", 3, "name"));
 			
 			expect(promotionDataService.showWebsitePromotion()).andReturn(promotionPO);
 			
@@ -93,7 +93,7 @@ public class PromotionControllerTest extends EasyMockSupport {
 		}
 		promotionController.showHotelPromotion("hotelAddress");
 		promotionController.showWebsitePromotion();
-		PromotionVO vo = new PromotionVO("生日促销", new Date(100000), new Date(1000000), "酒店名字", "hotelAddress", 2, "area", 5, "name");
+		PromotionVO vo = new PromotionVO("i'm an id", "生日促销", new Date(100000), new Date(1000000), "酒店名字", "hotelAddress", 2, "area", 5, "name");
 		assertEquals(ResultMessage.SUCCESS, promotionController.modify(vo));
 	}
 	
@@ -104,7 +104,7 @@ public class PromotionControllerTest extends EasyMockSupport {
 			
 			ArrayList<PromotionPO> promotionPO = new ArrayList<PromotionPO>();
 			
-			promotionPO.add(new PromotionPO(PromotionType.BIRTHDAYBONUS, new Date(100000), new Date(1000000), "hotelName", "hotelAddress", 2, "area", 3, "name"));
+			promotionPO.add(new PromotionPO("i'm an id", PromotionType.BIRTHDAYBONUS, new Date(100000), new Date(1000000), "hotelName", "hotelAddress", 2, "area", 3, "name"));
 			
 			expect(promotionDataService.showWebsitePromotion()).andReturn(promotionPO);
 			
@@ -116,7 +116,7 @@ public class PromotionControllerTest extends EasyMockSupport {
 		}
 		promotionController.showHotelPromotion("hotelAddress");
 		promotionController.showWebsitePromotion();
-		PromotionVO vo = new PromotionVO("节日促销", new Date(100000), new Date(1000000), "酒店名字", "hotelAddress", 2, "area", 5, "name");
+		PromotionVO vo = new PromotionVO("i'm an id", "节日促销", new Date(100000), new Date(1000000), "酒店名字", "hotelAddress", 2, "area", 5, "name");
 		assertEquals(ResultMessage.WRONG_FORMAT, promotionController.modify(vo));
 	}
 	
@@ -127,7 +127,7 @@ public class PromotionControllerTest extends EasyMockSupport {
 			
 			ArrayList<PromotionPO> promotionPO = new ArrayList<PromotionPO>();
 			
-			promotionPO.add(new PromotionPO(PromotionType.BIRTHDAYBONUS, new Date(10000000), new Date(1000000), "hotelName", "hotelAddress", 2, "area", 3, "name"));
+			promotionPO.add(new PromotionPO("i'm an id", PromotionType.BIRTHDAYBONUS, new Date(10000000), new Date(1000000), "hotelName", "hotelAddress", 2, "area", 3, "name"));
 			
 			expect(promotionDataService.showWebsitePromotion()).andReturn(promotionPO);
 			
@@ -139,7 +139,7 @@ public class PromotionControllerTest extends EasyMockSupport {
 		}
 		promotionController.showHotelPromotion("hotelAddress");
 		promotionController.showWebsitePromotion();
-		PromotionVO vo = new PromotionVO("节日促销", new Date(100000), new Date(1000000), "酒店名字", "hotelAddress", 2, "area", 5, "name");
+		PromotionVO vo = new PromotionVO("i'm an id", "节日促销", new Date(100000), new Date(1000000), "酒店名字", "hotelAddress", 2, "area", 5, "name");
 		assertEquals(ResultMessage.WRONG_FORMAT, promotionController.modify(vo));
 	}
 	
@@ -150,7 +150,7 @@ public class PromotionControllerTest extends EasyMockSupport {
 			
 			ArrayList<PromotionPO> promotionPO = new ArrayList<PromotionPO>();
 			
-			promotionPO.add(new PromotionPO(PromotionType.BIRTHDAYBONUS, new Date(100000), new Date(1000000), "hotelName", "hotelAddress", 2, "area", 3, "name"));
+			promotionPO.add(new PromotionPO("i'm an id", PromotionType.BIRTHDAYBONUS, new Date(100000), new Date(1000000), "hotelName", "hotelAddress", 2, "area", 3, "name"));
 			
 			expect(promotionDataService.showWebsitePromotion()).andReturn(promotionPO);
 			
@@ -160,7 +160,7 @@ public class PromotionControllerTest extends EasyMockSupport {
 		} catch (RemoteException rex) {
 			rex.printStackTrace();
 		}
-		PromotionVO vo = new PromotionVO("节日促销", new Date(100000), new Date(1000000), "酒店名字", "hotelAddress", 2, "area", 5, "一个不存在的name");
+		PromotionVO vo = new PromotionVO("i'm an id", "节日促销", new Date(100000), new Date(1000000), "酒店名字", "hotelAddress", 2, "area", 5, "一个不存在的name");
 		assertEquals(ResultMessage.NOT_EXIST, promotionController.modify(vo));
 	}
 	

@@ -16,6 +16,8 @@ import org.common.utility.ResultMessage;
  * @version fraliphsoft 11/27
  */
 public class Promotion {
+	String promotionID;
+	
 	String type; 
 	
 	Date startTime;
@@ -35,6 +37,8 @@ public class Promotion {
 	String name;
 	
 	Promotion(PromotionVO vo) {
+		promotionID = vo.promotionID;
+		
 		type = vo.type;
 		
 		startTime = vo.startTime;
@@ -55,6 +59,8 @@ public class Promotion {
 	}
 	
 	Promotion(PromotionPO po) {
+		promotionID = po.promotionID;
+		
 		type = po.type.getString();
 		
 		startTime = po.startTime;
@@ -73,11 +79,11 @@ public class Promotion {
 	}
 	
 	PromotionVO toVO() {
-		return new PromotionVO(type, startTime, endTime, hotelName, hotelAddress, level, area, discount, hotelName);
+		return new PromotionVO(promotionID, type, startTime, endTime, hotelName, hotelAddress, level, area, discount, hotelName);
 	}
 	
 	PromotionPO toPO() {
-		return new PromotionPO(PromotionType.getType(type), startTime, endTime, hotelName, hotelAddress, level, area, discount, hotelName);
+		return new PromotionPO(promotionID, PromotionType.getType(type), startTime, endTime, hotelName, hotelAddress, level, area, discount, hotelName);
 	}
 	
 	ResultMessage modify (PromotionVO vo) {
@@ -85,6 +91,8 @@ public class Promotion {
 			RMIHelper rmihelper = RMIHelper.getInstance();
 			
 			PromotionDataService promotionDataService = rmihelper.getPromotionDataServiceImpl();
+			
+			promotionID = vo.promotionID;
 			
 			type = vo.type;
 			
@@ -102,7 +110,7 @@ public class Promotion {
 			
 			name = vo.name;
 			
-			PromotionPO po = new PromotionPO(PromotionType.getType(type), startTime, endTime, hotelName, hotelAddress, level, area, discount, name);
+			PromotionPO po = new PromotionPO(promotionID, PromotionType.getType(type), startTime, endTime, hotelName, hotelAddress, level, area, discount, name);
 			
 			try {
 				promotionDataService.modify(po);

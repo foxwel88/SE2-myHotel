@@ -39,6 +39,10 @@ public class PromotionController implements Promotionblservice {
 		return promotionController;
 	}
 
+	public String getNewID() {
+		return PromotionUtil.getNewID();
+	}
+	
 	public ResultMessage add(PromotionVO vo) {
 		return PromotionUtil.add(vo);
 	}
