@@ -5,6 +5,7 @@ import java.rmi.server.UnicastRemoteObject;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import mySQL.DatabaseCommunicator;
@@ -27,17 +28,39 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 
 	public void init() throws RemoteException {
 		// TODO Auto-generated method stub
-		
 	}
 
 	public ResultMessage addHotelInfo(HotelPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("select * from Hotel where HotelID=" + po.id);
+			ResultSet resultSet = DatabaseCommunicator.execute(preparedStatement);
+			if (!resultSet.next()) {
+				preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("insert into Hotel(hotelID,hotelName,address,area,"
+						+ "city,introduce,rank,star,facility,cooperators,checkInInfos)"
+						+ " values(" + po.id + "," + po.hotelName + "," + po.address + "," + po.area
+						+ "," + po.city + "," + po.introduce + "," + po.rank + "," + po.star
+						+ "," + po.facility + "," + po.cooperators + "," + po.checkInInfos + ")");
+				DatabaseCommunicator.execute(preparedStatement);
+				return ResultMessage.SUCCESS;
+			} else {
+				return ResultMessage.EXIST;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return ResultMessage.SUCCESS;
 	}
 
 	public ResultMessage modifyHotelInfo(HotelPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(
+					"delete from Hotel where HotelID=" + po.id);
+			DatabaseCommunicator.execute(preparedStatement);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		addHotelInfo(po);
+		return ResultMessage.SUCCESS;
 	}
 
 	HotelPO getHotelFromSet(ResultSet set) {
@@ -62,7 +85,16 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 	}
 
 	RoomPO getRoomFromSet(ResultSet set) {
-		return null;
+		RoomPO po = null;
+		try {
+			String type = set.getString("roomType");
+			Integer num = set.getInt("roomNum");
+			Double price = set.getDouble("roomPrice");
+			po = new RoomPO(RoomType.getType(type), num, price);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return po;
 	}
 
 	public HotelPO getHotelInfo(String hotelID) throws RemoteException {
@@ -70,7 +102,7 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 		PreparedStatement preparedStatement;
 		try {
 			preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("select id, hotelName,address,area,"
-					+ "city,introduce,rank,star,facility,cooperators,checkInInfos from `Hotel` where Address=" + hotelID);
+					+ "city,introduce,rank,star,facility,cooperators,checkInInfos from Hotel where Address=" + hotelID);
 
 			ResultSet resultSet = DatabaseCommunicator.execute(preparedStatement);
 			while (resultSet.next()) {
@@ -88,45 +120,138 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 	}
 
 	public List<CityPO> getCitys() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		List<CityPO> list = new ArrayList<>();
+		PreparedStatement preparedStatement;
+		try {
+			preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("select CityName"
+					+ " from CityAndArea");
+
+			ResultSet resultSet = DatabaseCommunicator.execute(preparedStatement);
+			while (resultSet.next()) {
+				String name = resultSet.getString("CityName");
+				if (!name.equals(list.get(list.size() - 1))) {
+					list.add(new CityPO(name));
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 
 	public List<AreaPO> getAreas(CityPO po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		List<AreaPO> list = new ArrayList<>();
+		PreparedStatement preparedStatement;
+		try {
+			preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("select TradeArea"
+					+ " from CityAndArea" + " WHERE CityName=" + po.cityName);
+
+			ResultSet resultSet = DatabaseCommunicator.execute(preparedStatement);
+			while (resultSet.next()) {
+				list.add(new AreaPO(resultSet.getString("TradeArea")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 
 	public void finish() throws RemoteException {
-		// TODO Auto-generated method stub
 		
 	}
 
 	public List<RoomPO> getRooms(String hotelID) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		List<RoomPO> list = new ArrayList<>();
+		PreparedStatement preparedStatement;
+		try {
+			preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("select roomType, roomNum, roomPrice"
+					+ " from " + hotelID);
+
+			ResultSet resultSet = DatabaseCommunicator.execute(preparedStatement);
+			while (resultSet.next()) {
+				list.add(getRoomFromSet(resultSet));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 
 	public ResultMessage modifyRooms(String hotelID, List<RoomPO> po) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	public ResultMessage changeRoom(RoomType type, int num, String hotelID) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(
+					"DELETE FROM " + hotelID);
+			DatabaseCommunicator.execute(preparedStatement);
+
+			for (RoomPO p: po) {
+				preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("insert into " + hotelID + "(roomType,roomNum,roomPrice)"
+						+ " values(" + p.roomType.getString() + "," + p.roomNum + "," + p.roomPrice + ")");
+				DatabaseCommunicator.execute(preparedStatement);
+			}
+
+			return ResultMessage.SUCCESS;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return ResultMessage.SUCCESS;
 	}
 
 	@Override
 	public ResultMessage increaseAvailableRoom(RoomType type, String hotelID) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+
+		try {
+			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(
+					"SELECT roomNum FROM " + hotelID + " WHERE roomType=" + type.getString());
+			ResultSet resultSet = DatabaseCommunicator.execute(preparedStatement);
+			if (resultSet.next()) {
+				int roomNum = resultSet.getInt("roomNum");
+				roomNum += 1;
+				String update = "UPDATE " + hotelID +
+						" SET roomNum = " + String.valueOf(roomNum) +
+						" WHERE roomType = " + type.getString();
+				preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(update);
+				DatabaseCommunicator.execute(preparedStatement);
+			} else {
+				return ResultMessage.NOT_EXIST;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return ResultMessage.SUCCESS;
 	}
 
 	@Override
 	public ResultMessage decreaseAvailableRoom(RoomType type, String hotelID) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+
+		try {
+			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(
+					"SELECT roomNum FROM " + hotelID + " WHERE roomType=" + type.getString());
+			ResultSet resultSet = DatabaseCommunicator.execute(preparedStatement);
+			if (resultSet.next()) {
+				int roomNum = resultSet.getInt("roomNum");
+				roomNum -= 1;
+
+				//房间不够时，返回ROOM_NOT_ENOUGH
+				if (roomNum < 0) {
+					return ResultMessage.ROOM_NOT_ENOUGH;
+				}
+
+				String update = "UPDATE " + hotelID +
+						" SET roomNum = " + String.valueOf(roomNum) +
+						" WHERE roomType = " + type.getString();
+				preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(update);
+				DatabaseCommunicator.execute(preparedStatement);
+			} else {
+				return ResultMessage.NOT_EXIST;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return ResultMessage.SUCCESS;
 	}
 	
 	

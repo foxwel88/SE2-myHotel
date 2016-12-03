@@ -87,20 +87,6 @@ public class HotelController implements Hotelblservice, HotelHelper {
 		return util.modify(vo);
 	}
 
-	/**
-	 * 修改可用房间信息，供非酒店工作人员使用
-	 */
-	public ResultMessage changeRoom(RoomType type, int num, String hotelID) {
-		HotelDataService dao = RMIHelper.getInstance().getHotelDataServiceImpl();
-		try {
-			dao.changeRoom(type, num, hotelID);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-			return ResultMessage.CONNECTION_FAIL;
-		}
-		return ResultMessage.SUCCESS;
-	}
-
 	public HotelVO getHotelVO(String hotelID) {
 		return util.getHotel(hotelID);
 	}

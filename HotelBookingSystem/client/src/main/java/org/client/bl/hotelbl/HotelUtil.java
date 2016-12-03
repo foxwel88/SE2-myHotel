@@ -37,11 +37,11 @@ public class HotelUtil {
 		}
 	}
 	
-	public HotelVO getHotel(String hotelAddress) {
+	public HotelVO getHotel(String hotelID) {
 		HotelDataService dao = RMIHelper.getInstance().getHotelDataServiceImpl();
 		HotelPO po;
 		try {
-			po = dao.getHotelInfo(hotelAddress);
+			po = dao.getHotelInfo(hotelID);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			return null;

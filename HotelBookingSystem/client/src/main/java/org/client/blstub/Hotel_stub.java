@@ -68,10 +68,6 @@ public class Hotel_stub implements Hotelblservice, HotelHelper {
 		return ResultMessage.SUCCESS;
 	}
 
-	public ResultMessage changeRoom(RoomType type, int num, String hotelID) {
-		return ResultMessage.SUCCESS;
-	}
-
 	public HotelVO getHotelVO(String hotelID) {
 		return hotelvo1;
 	}

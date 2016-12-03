@@ -22,8 +22,6 @@ public interface Hotelblservice {
 	
 	public ResultMessage modifyHotel(HotelVO vo);
 	
-	public ResultMessage changeRoom(RoomType type, int num, String hotelID);
-	
 	public ResultMessage increaseAvailableRoom(RoomType type, String hotelID);
 	
 	public ResultMessage decreaseAvailableRoom(RoomType type, String hotelID);

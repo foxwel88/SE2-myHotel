@@ -125,7 +125,7 @@ public class OrderUtil {
 					if (roomnum.get(i) < vo.roomNum) {
 						return ResultMessage.ROOM_NOT_ENOUGH;
 					} else {
-						hotelHelper.changeRoom(RoomType.getType(vo.roomType), roomnum.get(i) - vo.roomNum, vo.hotelAddress);
+						hotelHelper.changeRoomNum(RoomType.getType(vo.roomType), roomnum.get(i) - vo.roomNum, vo.hotelAddress);
 					}
 					break;
 					

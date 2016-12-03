@@ -147,10 +147,10 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 			ResultSet resultSet = DatabaseCommunicator.execute(preparedStatement);
 			if (!resultSet.next()) {
 				preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("insert into `Order`(type,userId,generatedDate,"
-							+ "schFrom,schTo,actFrom,actTo,latestTime,cancelTime,hotelAddress,orderID,hotelName,roomType,totalPrice,roomNum,numOfPeople,"
+							+ "schFrom,schTo,actFrom,actTo,latestTime,cancelTime,hotelAddress,orderID,hotelID,roomType,totalPrice,roomNum,numOfPeople,"
 							+ "existsChild,customerName,phoneNumber) values(" + po.type.getString() + "," + po.userId + "," + transtime(po.generatedDate)
 							+ "," + transtime(po.schFrom) + "," + transtime(po.schTo) + "," + transtime(po.actFrom) + "," + transtime(po.actTo)
-							+ "," + transtime(po.latestTime) + "," + transtime(po.cancelTime) + "," + po.hotelAddress + "," + po.orderID + "," + po.hotelName
+							+ "," + transtime(po.latestTime) + "," + transtime(po.cancelTime) + "," + po.hotelAddress + "," + po.orderID + "," + po.hotelID
 							+ "," + po.roomType.getString() + "," + po.roomNum + "," + po.numOfPeople + "," + po.existsChild + "," + po.customerName
 							+ "," + po.customerName + "," + po.phoneNumber + ")");
 				DatabaseCommunicator.execute(preparedStatement);

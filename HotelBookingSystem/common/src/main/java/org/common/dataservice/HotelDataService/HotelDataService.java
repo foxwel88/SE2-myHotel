@@ -32,9 +32,6 @@ public interface HotelDataService extends Remote {
 	//在数据库中更新房间po
 	public ResultMessage modifyRooms(String hotelID, List<RoomPO> po) throws RemoteException;
 
-	//在数据库中更新房间po
-	public ResultMessage changeRoom(RoomType type, int num, String hotelID) throws RemoteException;
-
 	//返回多个酒店po
 	public List<HotelPO> findHotels(HotelFilter filter) throws RemoteException;
 

@@ -87,7 +87,7 @@ public class HotelDataServiceImpl_stub extends UnicastRemoteObject implements Ho
 		System.out.println("finish");
 	}
 
-	public ResultMessage changeRoom(RoomType type, int num, String hotelID) throws RemoteException {
+	public ResultMessage changeRoomNum(RoomType type, int num, String hotelID) throws RemoteException {
 		if (num < 0) {
 			return ResultMessage.WRONG_FORMAT;
 		}
