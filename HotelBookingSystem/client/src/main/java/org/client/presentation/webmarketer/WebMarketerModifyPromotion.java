@@ -19,6 +19,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
 
 /**
@@ -30,34 +31,37 @@ import javafx.scene.text.Font;
 public class WebMarketerModifyPromotion {
 
 	@FXML
-    private ResourceBundle resources;
+	private ResourceBundle resources;
 
 	@FXML
-    private URL location;
+	private URL location;
 
 	@FXML
-    private TextField nameLabel;
+	private AnchorPane modifyPromotion;
 
 	@FXML
-    private ComboBox<String> typeBox;
+	private TextField nameLabel;
 
 	@FXML
-    private TextField fromDateLabel;
+	private ComboBox<String> typeBox;
 
 	@FXML
-    private TextField toDateLabel;
+	private TextField fromDateLabel;
 
 	@FXML
-    private ComboBox<Integer> levelBox;
+	private TextField toDateLabel;
 
 	@FXML
-    private TextField areaLabel;
+	private ComboBox<Integer> levelBox;
 
 	@FXML
-    private TextField discountLabel;
+	private TextField areaLabel;
 
 	@FXML
-    private Button confirmButton;
+	private TextField discountLabel;
+
+	@FXML
+	private Button confirmButton;
 	
 	private DateFormat dateFormat;
 	
@@ -104,14 +108,15 @@ public class WebMarketerModifyPromotion {
 
 	@FXML
 	void initialize() {
-		assert nameLabel != null : "fx:id=\"nameLabel\" was not injected: check your FXML file '修改促销策略界面.fxml'.";
-		assert typeBox != null : "fx:id=\"typeBox\" was not injected: check your FXML file '修改促销策略界面.fxml'.";
-		assert fromDateLabel != null : "fx:id=\"fromDateLabel\" was not injected: check your FXML file '修改促销策略界面.fxml'.";
-		assert toDateLabel != null : "fx:id=\"toDateLabel\" was not injected: check your FXML file '修改促销策略界面.fxml'.";
-		assert levelBox != null : "fx:id=\"levelBox\" was not injected: check your FXML file '修改促销策略界面.fxml'.";
-		assert areaLabel != null : "fx:id=\"areaLabel\" was not injected: check your FXML file '修改促销策略界面.fxml'.";
-		assert discountLabel != null : "fx:id=\"discountLabel\" was not injected: check your FXML file '修改促销策略界面.fxml'.";
-		assert confirmButton != null : "fx:id=\"confirmButton\" was not injected: check your FXML file '修改促销策略界面.fxml'.";
+        assert modifyPromotion != null : "fx:id=\"modifyPromotion\" was not injected: check your FXML file '修改促销策略界面.fxml'.";
+        assert nameLabel != null : "fx:id=\"nameLabel\" was not injected: check your FXML file '修改促销策略界面.fxml'.";
+        assert typeBox != null : "fx:id=\"typeBox\" was not injected: check your FXML file '修改促销策略界面.fxml'.";
+        assert fromDateLabel != null : "fx:id=\"fromDateLabel\" was not injected: check your FXML file '修改促销策略界面.fxml'.";
+        assert toDateLabel != null : "fx:id=\"toDateLabel\" was not injected: check your FXML file '修改促销策略界面.fxml'.";
+        assert levelBox != null : "fx:id=\"levelBox\" was not injected: check your FXML file '修改促销策略界面.fxml'.";
+        assert areaLabel != null : "fx:id=\"areaLabel\" was not injected: check your FXML file '修改促销策略界面.fxml'.";
+        assert discountLabel != null : "fx:id=\"discountLabel\" was not injected: check your FXML file '修改促销策略界面.fxml'.";
+        assert confirmButton != null : "fx:id=\"confirmButton\" was not injected: check your FXML file '修改促销策略界面.fxml'.";
 
 		controller = WebMarketerController.getInstance();
 		dateFormat = new SimpleDateFormat("yyyy-MM-dd");

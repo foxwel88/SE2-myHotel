@@ -1,7 +1,6 @@
 package org.client.presentation.webmarketer;
 
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -36,6 +35,8 @@ public class WebMarketerController {
 	
 	private Orderblservice orderbl;
 	
+	private String userName;
+	
 	private UserVO userVO;
 	
 	/**
@@ -52,6 +53,18 @@ public class WebMarketerController {
 			controller = new WebMarketerController();
 		}
 		return controller;
+	}
+	
+	/**
+	 * should be called right after login
+	 * @param vo
+	 */
+	public void init(UserVO vo) {
+		this.userName = vo.name;
+	}
+	
+	public String getUser() {
+		return userName;
 	}
 	
 	public ResultMessage setUserVO(String userName) {
@@ -113,18 +126,11 @@ public class WebMarketerController {
 	}
 	
 	/**
-	 * 获得现在的等级制度
-	 * @return 等级制度的string数组
+	 * 获得现在的等级制度所需信用值
+	 * @return 等级制度的list
 	 */
-	public String[] getCurrentLevel() {
-		String[] levels = new String[]{" --- ", " --- ", " --- ", " --- ", " --- "};
-		LevelVO levelVO = promotionbl.showLevel();
-		int levelNum = levelVO.levelNum;
-		ArrayList<Double> credits = levelVO.credits; 
-		for (int i = 0; i < levelNum; i++) {
-			levels[i] = credits.get(i).toString();
-		}
-		return levels;
+	public List<Double> getCurrentLevel() {
+		return promotionbl.showLevel().credits;
 	}
 	
 	/**

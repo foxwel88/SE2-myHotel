@@ -4,14 +4,24 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import org.client.launcher.Resources;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller
@@ -21,65 +31,98 @@ import javafx.scene.layout.GridPane;
  * 
  */
 public class WebMarketerGuide {
-
-	@FXML
-    private ResourceBundle resources;
-
-	@FXML
-    private URL location;
 	
-	@FXML
-    private GridPane belowGridPane;
-	
-	@FXML
-    private AnchorPane orderPane;
+	private static final int AVATAR_SIZE = 48;
 
 	@FXML
-    private Label orderLabel;
+	private ResourceBundle resources;
 
 	@FXML
-    private AnchorPane levelPane;
+	private URL location;
 
 	@FXML
-    private Label levelLabel;
+	private GridPane belowGridPane;
 
 	@FXML
-    private AnchorPane promotionPane;
+	private AnchorPane orderPane;
 
 	@FXML
-    private Label promotionLabel;
+	private Label orderLabel;
 
 	@FXML
-    private AnchorPane creditPane;
+	private AnchorPane levelPane;
 
 	@FXML
-    private Label creditLabel;
+	private Label levelLabel;
 
 	@FXML
-    private AnchorPane mainPane;
+	private AnchorPane promotionPane;
 
 	@FXML
-    private Label mainLabel;
+	private Label promotionLabel;
+
+	@FXML
+	private AnchorPane creditPane;
+
+	@FXML
+	private Label creditLabel;
+
+	@FXML
+	private AnchorPane mainPane;
+
+	@FXML
+	private Label mainLabel;
+
+	@FXML
+	private Label welcomeLabel;
+
+	@FXML
+	private Pane backPane;
+
+	@FXML
+	private Label backArrow;
+
+	@FXML
+	private MenuBar avatarBar;
+
+	@FXML
+	private Menu avatar;
 	
 	@FXML
 	void initialize() {
 		assert belowGridPane != null : "fx:id=\"belowGridPane\" was not injected: check your FXML file 'guide.fxml'.";
-		assert mainPane != null : "fx:id=\"mainPane\" was not injected: check your FXML file 'guide.fxml'.";
-		assert mainLabel != null : "fx:id=\"mainLabel\" was not injected: check your FXML file 'guide.fxml'.";
-		assert creditPane != null : "fx:id=\"creditPane\" was not injected: check your FXML file 'guide.fxml'.";
-		assert creditLabel != null : "fx:id=\"creditLabel\" was not injected: check your FXML file 'guide.fxml'.";
+		assert orderPane != null : "fx:id=\"orderPane\" was not injected: check your FXML file 'guide.fxml'.";
+		assert orderLabel != null : "fx:id=\"orderLabel\" was not injected: check your FXML file 'guide.fxml'.";
 		assert levelPane != null : "fx:id=\"levelPane\" was not injected: check your FXML file 'guide.fxml'.";
 		assert levelLabel != null : "fx:id=\"levelLabel\" was not injected: check your FXML file 'guide.fxml'.";
 		assert promotionPane != null : "fx:id=\"promotionPane\" was not injected: check your FXML file 'guide.fxml'.";
 		assert promotionLabel != null : "fx:id=\"promotionLabel\" was not injected: check your FXML file 'guide.fxml'.";
-		assert orderPane != null : "fx:id=\"orderPane\" was not injected: check your FXML file 'guide.fxml'.";
-		assert orderLabel != null : "fx:id=\"orderLabel\" was not injected: check your FXML file 'guide.fxml'.";
+		assert creditPane != null : "fx:id=\"creditPane\" was not injected: check your FXML file 'guide.fxml'.";
+		assert creditLabel != null : "fx:id=\"creditLabel\" was not injected: check your FXML file 'guide.fxml'.";
+		assert mainPane != null : "fx:id=\"mainPane\" was not injected: check your FXML file 'guide.fxml'.";
+		assert mainLabel != null : "fx:id=\"mainLabel\" was not injected: check your FXML file 'guide.fxml'.";
+		assert welcomeLabel != null : "fx:id=\"welcomeLabel\" was not injected: check your FXML file 'guide.fxml'.";
+		assert backPane != null : "fx:id=\"backPane\" was not injected: check your FXML file 'guide.fxml'.";
+		assert backArrow != null : "fx:id=\"backArrow\" was not injected: check your FXML file 'guide.fxml'.";
+		assert avatarBar != null : "fx:id=\"avatarBar\" was not injected: check your FXML file 'guide.fxml'.";
+		assert avatar != null : "fx:id=\"avatar\" was not injected: check your FXML file 'guide.fxml'.";
 		try {
 			belowGridPane.add((Node) FXMLLoader.load(getClass().getResource("/网站营销人员/网站营销人员主界面.fxml")), 1, 0);
 			CurrentItem.setInstance(mainLabel, mainPane, GuideLabelType.MAIN);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		welcomeLabel.setText("Welcome, " + WebMarketerController.getInstance().getUser());
+
+		Resources resources = Resources.getInstance();
+		Image avatarImg = new Image(resources.avatar.toString());
+		ImageView avatarImgView = new ImageView();
+
+		avatarImgView.setImage(avatarImg);
+		avatarImgView.setFitHeight(AVATAR_SIZE);
+		avatarImgView.setFitWidth(AVATAR_SIZE);
+		avatar.setGraphic(avatarImgView);
 	}
 
 	@FXML
@@ -103,6 +146,22 @@ public class WebMarketerGuide {
 			changeContent(GuideLabelType.ORDER);
 		}
 		
+	}
+	
+	@FXML
+	void goBack(MouseEvent event) {
+		String currentId = belowGridPane.getChildren().get(1).getId();
+		if (currentId == null) {
+			return;
+		}
+		switch (currentId) {
+			case "orderDetail":
+				changeContent(GuideLabelType.ORDER);
+				break;
+			case "modifyPromotion":
+				changeContent(GuideLabelType.PROMOTION);
+				break;
+		}
 	}
 	
 	void changeActive(GuideLabelType to) {
@@ -162,13 +221,22 @@ public class WebMarketerGuide {
 			e.printStackTrace();
 		}
 		
-		if (root == null) {
-			System.out.println("find!");
-		}
 		belowGridPane.getChildren().set(1, root);
 		GridPane.setConstraints(root, 1, 0);
 	}
-
 	
+	@FXML
+	void logOut(ActionEvent event) {
+		Stage stage = (Stage)mainLabel.getScene().getWindow();
+		Resources resources = Resources.getInstance();
+		try {
+			Parent root = resources.load(resources.login);
+			
+			Scene scene = new Scene(root);
+			stage.setScene(scene);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 	
 }

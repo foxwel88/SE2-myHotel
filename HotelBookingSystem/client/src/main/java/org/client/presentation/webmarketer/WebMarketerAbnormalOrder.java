@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
 /**
@@ -21,12 +22,14 @@ import javafx.scene.text.Text;
  * @version 2016/11/27 gyue
  */
 public class WebMarketerAbnormalOrder {
-
 	@FXML
 	private ResourceBundle resources;
 
 	@FXML
 	private URL location;
+
+	@FXML
+	private AnchorPane orderDetail;
 
 	@FXML
 	private Button cancelButton;
@@ -93,9 +96,10 @@ public class WebMarketerAbnormalOrder {
 
 	@FXML
 	void initialize() {
+		assert orderDetail != null : "fx:id=\"orderDetail\" was not injected: check your FXML file '异常订单详细信息界面.fxml'.";
 		assert cancelButton != null : "fx:id=\"cancelButton\" was not injected: check your FXML file '异常订单详细信息界面.fxml'.";
 		assert orderIdLabel != null : "fx:id=\"orderIdLabel\" was not injected: check your FXML file '异常订单详细信息界面.fxml'.";
-		assert hotelAdressLabel != null : "fx:id=\"hotelAressLabel\" was not injected: check your FXML file '异常订单详细信息界面.fxml'.";
+		assert hotelAdressLabel != null : "fx:id=\"hotelAdressLabel\" was not injected: check your FXML file '异常订单详细信息界面.fxml'.";
 		assert typeLabel != null : "fx:id=\"typeLabel\" was not injected: check your FXML file '异常订单详细信息界面.fxml'.";
 		assert numLabel != null : "fx:id=\"numLabel\" was not injected: check your FXML file '异常订单详细信息界面.fxml'.";
 		assert arriveTimeLabel != null : "fx:id=\"arriveTimeLabel\" was not injected: check your FXML file '异常订单详细信息界面.fxml'.";
@@ -105,7 +109,7 @@ public class WebMarketerAbnormalOrder {
 		assert bookTimeLabel != null : "fx:id=\"bookTimeLabel\" was not injected: check your FXML file '异常订单详细信息界面.fxml'.";
 		assert allRecBox != null : "fx:id=\"allRecBox\" was not injected: check your FXML file '异常订单详细信息界面.fxml'.";
 		assert halfRecBox != null : "fx:id=\"halfRecBox\" was not injected: check your FXML file '异常订单详细信息界面.fxml'.";
-
+		
 		controller = WebMarketerController.getInstance();
 		dateFormat = new SimpleDateFormat("yyyy-MM-dd"); //设置日期格式
 		

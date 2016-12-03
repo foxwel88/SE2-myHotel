@@ -8,6 +8,7 @@ import org.client.blservice.userblservice.Userblservice;
 import org.client.blstub.User_stub;
 import org.client.presentation.customer.SwitchSceneUtil;
 import org.client.presentation.hotelmanager.HotelManagerController;
+import org.client.presentation.webmarketer.WebMarketerController;
 import org.client.vo.UserVO;
 import org.common.utility.ResultMessage;
 
@@ -74,6 +75,7 @@ public class LoginController {
 					root = resources.load(resources.hotelManagerGuide);
 					break;
 				case "网站管理人员":
+					WebMarketerController.getInstance().init(uservo);
 					root = FXMLLoader.load(getClass().getResource("/网站管理人员/导航.fxml"));
 					break;
 				case "网站营销人员":

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -16,153 +17,163 @@
       <DropShadow />
    </effect>
    <children>
-      <Line endX="640.0" layoutX="101.0" layoutY="114.0" startX="-80.0" />
-      <Line endY="420.0" layoutX="224.0" layoutY="86.0" startY="-30.0" AnchorPane.leftAnchor="205.0" />
-      <GridPane layoutX="33.0" layoutY="41.0" prefHeight="458.0" prefWidth="668.0">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="356.0" minWidth="10.0" prefWidth="172.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="550.0" minWidth="10.0" prefWidth="495.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="72.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         </rowConstraints>
+      <Line endX="740.0" layoutX="101.0" layoutY="114.0" startX="-10.0" />
+      <Button fx:id="cancelButton" layoutX="609.0" layoutY="507.0" mnemonicParsing="false" onMouseClicked="#handleCancel" prefHeight="36.0" prefWidth="100.0" style="-fx-background-color: rgba(0,0,0,0.4);" text="取消变更" textFill="WHITE">
+         <font>
+            <Font name="Microsoft YaHei" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="confirmButton" layoutX="742.0" layoutY="507.0" mnemonicParsing="false" onMouseClicked="#handleConfirm" prefHeight="36.0" prefWidth="100.0" style="-fx-background-color: rgba(0,0,0,0.4);" text="确定" textFill="WHITE">
+         <font>
+            <Font name="Microsoft YaHei" size="18.0" />
+         </font>
+      </Button>
+      <Label fx:id="prevPage" layoutX="215.0" layoutY="519.0" onMouseClicked="#toPrevPage" text="&lt;上一页">
+         <font>
+            <Font name="Microsoft YaHei" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="pageNumLabel" layoutX="300.0" layoutY="519.0" text="1">
+         <font>
+            <Font name="Microsoft YaHei" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="nextPage" layoutX="340.0" layoutY="519.0" onMouseClicked="#toNextPage" text="下一页&gt;">
+         <font>
+            <Font name="Microsoft YaHei" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="423.0" layoutY="519.0" text="跳转至第">
+         <font>
+            <Font name="Microsoft YaHei" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="jumpField" layoutX="490.0" layoutY="514.0" onAction="#jumpPage" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: rgba(0,0,0,0.1);">
+         <font>
+            <Font name="Microsoft YaHei" size="15.0" />
+         </font>
+      </TextField>
+      <Label layoutX="530.0" layoutY="519.0" text="页">
+         <font>
+            <Font name="Microsoft YaHei" size="15.0" />
+         </font>
+      </Label>
+      <GridPane layoutX="100.0" layoutY="62.0" prefHeight="437.0" prefWidth="721.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="221.0" minHeight="10.0" prefHeight="66.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="386.0" minHeight="10.0" prefHeight="371.0" vgrow="SOMETIMES" />
+        </rowConstraints>
          <children>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+            <GridPane fx:id="contentGridPane" GridPane.rowIndex="1">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
                <children>
-                  <Text layoutX="47.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="会员等级">
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0,0,0,0.3);">
+                     <children>
+                        <Text layoutX="37.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="等级1" wrappingWidth="100.00001239776611" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="37.0" AnchorPane.topAnchor="7.0">
+                           <font>
+                              <Font name="Microsoft YaHei Light" size="20.0" />
+                           </font>
+                        </Text>
+                        <TextField layoutX="280.0" layoutY="5.0" style="-fx-background-color: rgba(255,255,255,0.4);" text="124.5" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="280.0" AnchorPane.rightAnchor="225.0" AnchorPane.topAnchor="4.0">
+                           <font>
+                              <Font name="Microsoft YaHei" size="16.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0,0,0,0.3);" GridPane.rowIndex="2">
+                     <children>
+                        <Text layoutX="43.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="等级2" wrappingWidth="100.00001239776611" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="37.0" AnchorPane.topAnchor="7.0">
+                           <font>
+                              <Font name="Microsoft YaHei Light" size="20.0" />
+                           </font>
+                        </Text>
+                        <TextField layoutX="300.0" layoutY="8.0" style="-fx-background-color: rgba(255,255,255,0.4);" text="124.5" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="280.0" AnchorPane.rightAnchor="225.0" AnchorPane.topAnchor="4.0">
+                           <font>
+                              <Font name="Microsoft YaHei" size="16.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3" />
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0,0,0,0.3);" GridPane.rowIndex="4">
+                     <children>
+                        <Text layoutX="26.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="等级3" wrappingWidth="100.00001239776611" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="37.0" AnchorPane.topAnchor="7.0">
+                           <font>
+                              <Font name="Microsoft YaHei Light" size="20.0" />
+                           </font>
+                        </Text>
+                        <TextField layoutX="292.0" style="-fx-background-color: rgba(255,255,255,0.4);" text="124.5" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="280.0" AnchorPane.rightAnchor="225.0" AnchorPane.topAnchor="4.0">
+                           <font>
+                              <Font name="Microsoft YaHei" size="16.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5" />
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0,0,0,0.3);" GridPane.rowIndex="6">
+                     <children>
+                        <Text layoutX="19.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="等级4" wrappingWidth="100.00001239776611" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="37.0" AnchorPane.topAnchor="7.0">
+                           <font>
+                              <Font name="Microsoft YaHei Light" size="20.0" />
+                           </font>
+                        </Text>
+                        <TextField layoutX="280.0" layoutY="-10.0" style="-fx-background-color: rgba(255,255,255,0.4);" text="124.5" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="280.0" AnchorPane.rightAnchor="225.0" AnchorPane.topAnchor="4.0">
+                           <font>
+                              <Font name="Microsoft YaHei" size="16.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="7" />
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0,0,0,0.3);" GridPane.rowIndex="8">
+                     <children>
+                        <Text layoutX="39.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="等级5" wrappingWidth="100.00001239776611" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="37.0" AnchorPane.topAnchor="7.0">
+                           <font>
+                              <Font name="Microsoft YaHei Light" size="20.0" />
+                           </font>
+                        </Text>
+                        <TextField layoutX="286.0" layoutY="-5.0" style="-fx-background-color: rgba(255,255,255,0.4);" text="124.5" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="280.0" AnchorPane.rightAnchor="225.0" AnchorPane.topAnchor="4.0">
+                           <font>
+                              <Font name="Microsoft YaHei" size="16.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </GridPane>
+            <AnchorPane prefHeight="43.0" prefWidth="721.0">
+               <children>
+                  <Text layoutX="37.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="会员等级" wrappingWidth="100.00001239776611">
                      <font>
-                        <Font name="Microsoft YaHei" size="20.0" />
+                        <Font name="Microsoft YaHei Light" size="24.0" />
                      </font>
                   </Text>
-               </children>
-            </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
-               <children>
-                  <Text layoutX="63.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="等级1">
+                  <Text layoutX="294.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="所需信用值" wrappingWidth="132.0000123977661">
                      <font>
-                        <Font name="Microsoft YaHei" size="20.0" />
+                        <Font name="Microsoft YaHei Light" size="24.0" />
                      </font>
                   </Text>
-               </children>
-            </AnchorPane>
-            <AnchorPane opacity="0.4" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #555555;" GridPane.rowIndex="2" />
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
-               <children>
-                  <Text layoutX="61.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="等级2">
-                     <font>
-                        <Font name="Microsoft YaHei" size="20.0" />
-                     </font>
-                  </Text>
-               </children>
-            </AnchorPane>
-            <AnchorPane opacity="0.4" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #555555;" GridPane.rowIndex="4" />
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5">
-               <children>
-                  <Text layoutX="61.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="等级3">
-                     <font>
-                        <Font name="Microsoft YaHei" size="20.0" />
-                     </font>
-                  </Text>
-               </children>
-            </AnchorPane>
-            <AnchorPane opacity="0.4" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #555555;" GridPane.rowIndex="6" />
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="7">
-               <children>
-                  <Text layoutX="61.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="等级4">
-                     <font>
-                        <Font name="Microsoft YaHei" size="20.0" />
-                     </font>
-                  </Text>
-               </children>
-            </AnchorPane>
-            <AnchorPane opacity="0.4" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #555555;" GridPane.rowIndex="8" />
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
-               <children>
-                  <Text layoutX="77.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="信用额度" AnchorPane.leftAnchor="77.0">
-                     <font>
-                        <Font name="Microsoft YaHei" size="20.0" />
-                     </font>
-                  </Text>
-               </children>
-            </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <children>
-                  <TextField fx:id="levelOneTextField" layoutX="41.0" layoutY="5.0" style="-fx-background-color: rgba(255,255,255,0.4);" text="124.5" AnchorPane.leftAnchor="41.0">
-                     <font>
-                        <Font name="Microsoft YaHei" size="16.0" />
-                     </font>
-                  </TextField>
-               </children>
-            </AnchorPane>
-            <AnchorPane opacity="0.4" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #555555;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <children>
-                  <TextField fx:id="levelTwoTextField" layoutX="44.0" layoutY="5.0" style="-fx-background-color: rgba(255,255,255,0.4);" text="1245" AnchorPane.leftAnchor="41.0">
-                     <font>
-                        <Font name="Microsoft YaHei" size="16.0" />
-                     </font>
-                  </TextField>
-               </children>
-            </AnchorPane>
-            <AnchorPane opacity="0.4" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #555555;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
-               <children>
-                  <TextField fx:id="levelThreeTextField" layoutX="41.0" layoutY="5.0" style="-fx-background-color: rgba(255,255,255,0.4);" text="12450" AnchorPane.leftAnchor="41.0">
-                     <font>
-                        <Font name="Microsoft YaHei" size="16.0" />
-                     </font>
-                  </TextField>
-               </children>
-            </AnchorPane>
-            <AnchorPane opacity="0.4" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #555555;" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
-               <children>
-                  <TextField fx:id="levelFourTextField" layoutX="38.0" layoutY="5.0" style="-fx-background-color: rgba(255,255,255,0.4);" text="124500" AnchorPane.leftAnchor="41.0">
-                     <font>
-                        <Font name="Microsoft YaHei" size="16.0" />
-                     </font>
-                  </TextField>
-               </children>
-            </AnchorPane>
-            <AnchorPane opacity="0.4" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #555555;" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="9">
-               <children>
-                  <Text layoutX="61.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="等级5">
-                     <font>
-                        <Font name="Microsoft YaHei" size="20.0" />
-                     </font>
-                  </Text>
-               </children>
-            </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
-               <children>
-                  <TextField fx:id="levelFiveTextField" layoutX="51.0" layoutY="4.0" style="-fx-background-color: rgba(255,255,255,0.4);" text="1245000" AnchorPane.leftAnchor="41.0">
-                     <font>
-                        <Font name="Microsoft YaHei" size="16.0" />
-                     </font>
-                  </TextField>
                </children>
             </AnchorPane>
          </children>
       </GridPane>
-      <Button fx:id="cancelButton" layoutX="644.0" layoutY="507.0" mnemonicParsing="false" onMouseClicked="#cancelButtom" prefHeight="36.0" prefWidth="100.0" style="-fx-background-color: rgba(0,0,0,0.4);" text="取消变更" textFill="WHITE">
-         <font>
-            <Font name="Microsoft YaHei" size="18.0" />
-         </font>
-      </Button>
-      <Button fx:id="confirmButton" layoutX="789.0" layoutY="507.0" mnemonicParsing="false" onMouseClicked="#handleConfirm" prefHeight="36.0" prefWidth="100.0" style="-fx-background-color: rgba(0,0,0,0.4);" text="确定" textFill="WHITE">
-         <font>
-            <Font name="Microsoft YaHei" size="18.0" />
-         </font>
-      </Button>
    </children>
 </AnchorPane>
