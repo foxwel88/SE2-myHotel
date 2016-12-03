@@ -41,7 +41,7 @@ public class OrderList {
 	public List<String> getHotelList() {
 		List<String> reslist = new ArrayList<>();
 		for (int i = 0;i < list.size(); ++i) {
-			reslist.add(list.get(i).hotelAddress);
+			reslist.add(list.get(i).hotelID);
 		}
 		return reslist;
 	}

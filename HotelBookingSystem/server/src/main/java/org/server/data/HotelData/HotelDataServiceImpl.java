@@ -32,29 +32,38 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 
 	public ResultMessage addHotelInfo(HotelPO po) throws RemoteException {
 		try {
-			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("select * from Hotel where HotelID=" + po.id);
+			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("SELECT * FROM Hotel WHERE HotelID=" + po.id);
 			ResultSet resultSet = DatabaseCommunicator.execute(preparedStatement);
 			if (!resultSet.next()) {
-				preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("insert into Hotel(hotelID,hotelName,address,area,"
+
+				//在Hotel Table中添加酒店
+				preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("INSERT INTO Hotel(hotelID,hotelName,address,area,"
 						+ "city,introduce,rank,star,facility,cooperators,checkInInfos)"
-						+ " values(" + po.id + "," + po.hotelName + "," + po.address + "," + po.area
+						+ " VALUES (" + po.id + "," + po.hotelName + "," + po.address + "," + po.area
 						+ "," + po.city + "," + po.introduce + "," + po.rank + "," + po.star
 						+ "," + po.facility + "," + po.cooperators + "," + po.checkInInfos + ")");
 				DatabaseCommunicator.execute(preparedStatement);
+
+				//Create新Table存储该酒店的房间信息
+				String create = "CREATE TABLE " + po.id + "(roomType VARCHAR(100), roomNum INT, roomPrice DOUBLE)";
+				preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(create);
+				DatabaseCommunicator.execute(preparedStatement);
+
 				return ResultMessage.SUCCESS;
 			} else {
 				return ResultMessage.EXIST;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return ResultMessage.CONNECTION_FAIL;
 		}
-		return ResultMessage.SUCCESS;
+
 	}
 
 	public ResultMessage modifyHotelInfo(HotelPO po) throws RemoteException {
 		try {
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(
-					"delete from Hotel where HotelID=" + po.id);
+					"DELETE FROM Hotel WHERE HotelID=" + po.id);
 			DatabaseCommunicator.execute(preparedStatement);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -66,7 +75,7 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 	HotelPO getHotelFromSet(ResultSet set) {
 		HotelPO po = null;
 		try {
-			String id = set.getString("id");
+			String id = set.getString("hotelId");
 			String hotelName = set.getString("hotelName");
 			String address = set.getString("address");
 			String area = set.getString("area");
@@ -101,11 +110,10 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 		HotelPO po = null;
 		PreparedStatement preparedStatement;
 		try {
-			preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("select id, hotelName,address,area,"
-					+ "city,introduce,rank,star,facility,cooperators,checkInInfos from Hotel where Address=" + hotelID);
+			preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("SELECT * FROM Hotel WHERE Address=" + hotelID);
 
 			ResultSet resultSet = DatabaseCommunicator.execute(preparedStatement);
-			while (resultSet.next()) {
+			if (resultSet.next()) {
 				po = getHotelFromSet(resultSet);
 			}
 		} catch (SQLException e) {
@@ -115,16 +123,71 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 	}
 
 	public List<HotelPO> findHotels(HotelFilter filter) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		List<HotelPO> list = new ArrayList<>();
+		try {
+			//首先根据星级、评分、地区选择一个范围
+			String query = "SELECT * FROM Hotel WHERE star >= " + filter.minStar + " AND star <= " + filter.maxStar
+					+ " AND rank >= " + filter.minRank + " AND rank <= " + filter.maxRank
+					+ " AND city = " + filter.city + " AND area = " + filter.area;
+			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(query);
+			ResultSet resultSet = DatabaseCommunicator.execute(preparedStatement);
+
+			//再根据酒店地址,房间信息进一步筛选
+			while(resultSet.next()) {
+				HotelPO po = getHotelFromSet(resultSet);
+				if (filter.livedHotelIDs != null) {
+					if (!filter.livedHotelIDs.contains(po.id)) {
+						continue;
+					} else {
+						if (isRoomInfoMatched(getRooms(po.id), filter)) {
+							list.add(po);
+						}
+					}
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	/**
+	 * 满足条件要求：若filter中指定房间类型，该类型的价格和数量满足要求
+	 *               若filter没有指定房间类型，则只要同时有房间满足价格要求且房间总数满足数量要求即可
+	 * */
+	private boolean isRoomInfoMatched(List<RoomPO> rooms, HotelFilter filter) {
+
+		if (filter.roomType != null) {
+			for (RoomPO r : rooms) {
+				if (r.roomType.getString().equals(filter.roomType)) {
+					if (r.roomPrice >= filter.minPrice && r.roomPrice <= filter.maxPrice
+							&& r.roomNum >= filter.roomNum) {
+						return true;
+					}
+				}
+			}
+		} else {
+			int requiredNum = filter.roomNum;
+			for (RoomPO r : rooms) {
+				if (r.roomPrice >= filter.minPrice && r.roomPrice <= filter.maxPrice
+						&& r.roomNum >= requiredNum) {
+					requiredNum -= r.roomNum;
+					if (requiredNum <= 0) {
+						return true;
+					}
+				}
+			}
+		}
+
+		return false;
 	}
 
 	public List<CityPO> getCitys() throws RemoteException {
 		List<CityPO> list = new ArrayList<>();
 		PreparedStatement preparedStatement;
 		try {
-			preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("select CityName"
-					+ " from CityAndArea");
+			preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("SELECT CityName"
+					+ " FROM CityAndArea");
 
 			ResultSet resultSet = DatabaseCommunicator.execute(preparedStatement);
 			while (resultSet.next()) {
@@ -143,8 +206,8 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 		List<AreaPO> list = new ArrayList<>();
 		PreparedStatement preparedStatement;
 		try {
-			preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("select TradeArea"
-					+ " from CityAndArea" + " WHERE CityName=" + po.cityName);
+			preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("SELECT TradeArea"
+					+ " FROM CityAndArea" + " WHERE CityName=" + po.cityName);
 
 			ResultSet resultSet = DatabaseCommunicator.execute(preparedStatement);
 			while (resultSet.next()) {
@@ -164,8 +227,8 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 		List<RoomPO> list = new ArrayList<>();
 		PreparedStatement preparedStatement;
 		try {
-			preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("select roomType, roomNum, roomPrice"
-					+ " from " + hotelID);
+			preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("SELECT *"
+					+ " FROM " + hotelID);
 
 			ResultSet resultSet = DatabaseCommunicator.execute(preparedStatement);
 			while (resultSet.next()) {
@@ -185,8 +248,8 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 			DatabaseCommunicator.execute(preparedStatement);
 
 			for (RoomPO p: po) {
-				preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("insert into " + hotelID + "(roomType,roomNum,roomPrice)"
-						+ " values(" + p.roomType.getString() + "," + p.roomNum + "," + p.roomPrice + ")");
+				preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("INSERT INTO " + hotelID + "(roomType,roomNum,roomPrice)"
+						+ " VALUES (" + p.roomType.getString() + "," + p.roomNum + "," + p.roomPrice + ")");
 				DatabaseCommunicator.execute(preparedStatement);
 			}
 

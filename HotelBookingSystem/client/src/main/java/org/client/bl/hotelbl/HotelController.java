@@ -57,8 +57,8 @@ public class HotelController implements Hotelblservice, HotelHelper {
 			if (orderBl == null) { // when orderBl is not set by external driver
 				orderBl = OrderController.getInstance(); // use true logic code
 			}
-			List<String> addresses = orderBl.getHistoryHotels(userId);
-			filter.setHistory(addresses);
+			List<String> hotelIDs = orderBl.getHistoryHotels(userId);
+			filter.setHistory(hotelIDs);
 		}
 		List<HotelVO> list = util.getHotelList(filter);
 		return list;

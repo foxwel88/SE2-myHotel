@@ -11,19 +11,19 @@ public class HotelFilter implements Serializable {
 	 */
 	private static final long serialVersionUID = -421561104499778313L;
 	
-	public List<String> livedAddresses;
+	public List<String> livedHotelIDs;
 	
-	public int minStar = -1;
+	public int minStar = 0;
 	
-	public int maxStar = -1;
+	public int maxStar = 5;
 	
-	public double minRank = -1;
+	public double minRank = 0.0;
 	
-	public double maxRank = -1;
+	public double maxRank = 5.0;
 	
-	public double minPrice = -1;
+	public double minPrice = 0.0;
 	
-	public double maxPrice = -1;
+	public double maxPrice = Double.MAX_VALUE;
 	
 	public String city;
 	
@@ -31,7 +31,7 @@ public class HotelFilter implements Serializable {
 	
 	public RoomType roomType;
 	
-	public int roomNum = -1;
+	public int roomNum = 1;
 	
 	@Deprecated
 	public void setRank(double min, double max) {
@@ -83,8 +83,8 @@ public class HotelFilter implements Serializable {
 		roomNum = num;
 	}
 	
-	public void setHistory(List<String> addresses) {
-		this.livedAddresses = new ArrayList<>(addresses);
+	public void setHistory(List<String> livedHotelIDs) {
+		this.livedHotelIDs = new ArrayList<>(livedHotelIDs);
 	}
 	
 	public void setLocation(String city, String area) {
