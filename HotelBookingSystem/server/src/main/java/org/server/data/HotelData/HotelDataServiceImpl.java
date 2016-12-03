@@ -133,7 +133,7 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 			ResultSet resultSet = DatabaseCommunicator.execute(preparedStatement);
 
 			//再根据酒店地址,房间信息进一步筛选
-			while(resultSet.next()) {
+			while (resultSet.next()) {
 				HotelPO po = getHotelFromSet(resultSet);
 				if (filter.livedHotelIDs != null) {
 					if (!filter.livedHotelIDs.contains(po.id)) {
