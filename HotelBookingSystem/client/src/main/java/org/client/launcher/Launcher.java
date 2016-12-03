@@ -1,6 +1,7 @@
 package org.client.launcher;
 
 
+import javafx.scene.image.Image;
 import org.client.rmi.RMIHelper;
 
 import javafx.application.Application;
@@ -24,6 +25,7 @@ public class Launcher extends Application {
 			AnchorPane root = loader.load();
 			Scene scene = new Scene(root,450,550);
 			primaryStage.setTitle("酒店预订管理系统");
+			primaryStage.getIcons().add(new Image(Resources.getInstance().icon.toString()));
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch (Exception e) {

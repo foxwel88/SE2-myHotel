@@ -21,6 +21,8 @@ public class Resources {
 
 	//Images
 	public URL avatar = getClass().getResource("/profile.png");
+
+	public URL icon = getClass().getResource("/icon.png");
 	
 	//HotelManager UI
 	public URL hotelManagerGuide = getClass().getResource("/酒店工作人员/guide.fxml");
