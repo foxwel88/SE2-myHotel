@@ -36,7 +36,7 @@ public class OrderControllerTest {
 	public void testCreateOrder1() {
 		
 		OrderVO vo = new OrderVO("i'm a userid",OrderType.UNEXECUTED.getString(),new Date(),new Date(),new Date(),new Date(),new Date(),
-				new Date(),new Date(),"南京市仙林大道168号栖霞大酒店","000000000120161122112233","栖霞大酒店",RoomType.BIG.toString(),100,1,2,false, "Tom","13919191919");
+				new Date(),new Date(),"00001","000000000120161122112233","南京市仙林大道168号栖霞大酒店",RoomType.BIG.toString(),100,1,2,false, "Tom","13919191919");
 
 		ResultMessage result = null;
 		
@@ -55,7 +55,7 @@ public class OrderControllerTest {
 	public void testCreateOrder2() {
 		
 		OrderVO vo = new OrderVO("i'm a userid",OrderType.UNEXECUTED.getString(),new Date(),new Date(),new Date(),new Date(),new Date(),
-				new Date(),new Date(),"南京市仙林大道168号栖霞大酒店","000000000120161122112233","栖霞大酒店",RoomType.BIG.toString(),100,1,2,false, "Tom","139191919");
+				new Date(),new Date(),"00002","000000000120161122112233","南京市仙林大道168号栖霞大酒店",RoomType.BIG.toString(),100,1,2,false, "Tom","139191919");
 
 		ResultMessage result = null;
 		
@@ -160,18 +160,18 @@ public class OrderControllerTest {
 	public void testGetHotelOrderList1() {
 		
 		List<OrderVO> hotellist = null;
-		String hotelAdress = null;
+		String hotelAddress = null;
 		
 		try {
-			hotellist = controller.getHotelOrderList("南京市仙林大道168号栖霞大酒店", OrderType.UNEXECUTED);
-			hotelAdress = hotellist.get(0).hotelAddress;
+			hotellist = controller.getHotelOrderList("00001", OrderType.UNEXECUTED);
+			hotelAddress = hotellist.get(0).hotelAddress;
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 		}
 		
 		//assert
 		assertEquals(false, hotellist.isEmpty());
-		assertEquals("南京市仙林大道168号栖霞大酒店", hotelAdress);
+		assertEquals("南京市仙林大道168号栖霞大酒店", hotelAddress);
 	}
 	
 	@Test
@@ -191,17 +191,17 @@ public class OrderControllerTest {
 	@Test
 	public void testGetHistoryHotels1() {
 		List<String> hotellist = null;
-		String hoteladdress = null;
+		String hotelID = null;
 		try {
 			hotellist = controller.getHistoryHotels("0000000001");
-			hoteladdress = hotellist.get(0);
+			hotelID = hotellist.get(0);
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 		}
 		
 		//assert
 		assertEquals(false, hotellist.isEmpty());
-		assertEquals("南京市仙林大道168号栖霞大酒店",hoteladdress);
+		assertEquals("00001",hotelID);
 	}
 	
 	

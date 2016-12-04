@@ -77,7 +77,7 @@ public class UserControllerTest {
 	}
 	
 	@Test
-	public void testFIndbyUserName() {
+	public void testFindbyUserName() {
 		String user1 = "gz";
 		String user2 = "Saber";
 		UserVO vo1 = controller.findbyUserName(user1);
@@ -85,7 +85,7 @@ public class UserControllerTest {
 		
 		// verify
 		boolean result1 = (vo1 == null);
-		boolean result2 = (vo2 == null);
+		boolean result2 = (vo2.resultMessage == ResultMessage.NOT_EXIST);
 		
 		// assert
 		assertEquals(false, result1);

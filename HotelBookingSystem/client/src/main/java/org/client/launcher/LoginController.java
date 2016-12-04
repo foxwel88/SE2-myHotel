@@ -75,10 +75,10 @@ public class LoginController {
 					root = resources.load(resources.hotelManagerGuide);
 					break;
 				case "网站管理人员":
-					WebMarketerController.getInstance().init(uservo);
 					root = FXMLLoader.load(getClass().getResource("/网站管理人员/导航.fxml"));
 					break;
 				case "网站营销人员":
+					WebMarketerController.getInstance().init(uservo);
 					root = FXMLLoader.load(getClass().getResource("/网站营销人员/guide.fxml"));
 					break;
 				case "个人客户":

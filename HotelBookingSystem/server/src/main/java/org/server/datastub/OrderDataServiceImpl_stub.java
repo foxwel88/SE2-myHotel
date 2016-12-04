@@ -29,16 +29,16 @@ public class OrderDataServiceImpl_stub extends UnicastRemoteObject implements Or
 	protected OrderDataServiceImpl_stub() throws RemoteException {
 		super();
 		po1 = new OrderPO(OrderType.UNEXECUTED,new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),
-					"南京市仙林大道168号栖霞大酒店","000000000120161122112233","栖霞大酒店",RoomType.BIG,100,1,2,false, "foxwel","0000000001","13919191919");
+					"00001","000000000120161122112233","南京市仙林大道168号栖霞大酒店",RoomType.BIG,100,1,2,false, "foxwel","0000000001","13919191919");
 		
 		po2 = new OrderPO(OrderType.CANCELED,new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),
-				"南京市中山路222号七天连锁酒店","000000000120161122112244","栖霞大酒店",RoomType.BIG,120,1,2,false, "foxwel","0000000001","13919191919");
+				"00002","000000000120161122112244","南京市仙林大道168号栖霞大酒店",RoomType.BIG,120,1,2,false, "foxwel","0000000001","13919191919");
 	
 		po3 = new OrderPO(OrderType.UNEXECUTED,new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),
-				"南京市中山路222号七天连锁酒店","000001234520161122112255","栖七天连锁酒店大酒店",RoomType.SINGLE,150,1,2,false, "ct","0000012345","13645454545");
+				"00002","000001234520161122112255","栖七天连锁酒店大酒店",RoomType.SINGLE,150,1,2,false, "ct","0000012345","13645454545");
 		
 		po4 = new OrderPO(OrderType.ABNORMAL,new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),
-				"南京市仙林大道168号栖霞大酒店","000001234520161122112266","栖七天连锁酒店大酒店",RoomType.SINGLE,350,1,2,false, "ct","0000012345","13645454545");
+				"00001","000001234520161122112266","栖七天连锁酒店大酒店",RoomType.SINGLE,350,1,2,false, "ct","0000012345","13645454545");
 	
 		// TODO Auto-generated constructor stub
 	}
@@ -82,12 +82,12 @@ public class OrderDataServiceImpl_stub extends UnicastRemoteObject implements Or
 	public ArrayList<OrderPO> getHotelOrderPO(String hotelID, OrderType type) throws RemoteException {
 		ArrayList<OrderPO> pos = new ArrayList<>();
 		
-		if (hotelID.equals("南京市仙林大道168号栖霞大酒店")) {
+		if (hotelID.equals("00001")) {
 			pos.add(po1);
 			pos.add(po4);
 		}
 		
-		if (hotelID.equals("南京市中山路222号七天连锁酒店")) {
+		if (hotelID.equals("00002")) {
 			pos.add(po2);
 			pos.add(po3);
 		}
