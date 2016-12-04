@@ -124,7 +124,7 @@ public class CustomerGenerateOrder {
 		// TODO 现在的生成的OrderVO的和日期有关的东西都是假的
 		OrderVO newOrder = new OrderVO(user.ID, user.type, null, new Date(10000000), new Date(10000000),
 				null, null, new Date(10000000), null, hotel.address, 
-				 null, hotel.hotelName, roomType.getValue(), Double.parseDouble(totalPrice.getText().replaceAll("元", "")), Integer.parseInt(roomNum.getText()), Integer.parseInt(residentNum.getText()),
+				 null, hotel.id, hotel.hotelName, roomType.getValue(), Double.parseDouble(totalPrice.getText().replaceAll("元", "")), Integer.parseInt(roomNum.getText()), Integer.parseInt(residentNum.getText()),
 				hasChildren.isSelected(), user.name, phoneNumber.getText());
 		SwitchSceneUtil.turnToConfirmOrderScene((GridPane)root.getParent(), newOrder);
 	}

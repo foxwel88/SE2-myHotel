@@ -36,7 +36,7 @@ public class OrderControllerTest {
 	public void testCreateOrder1() {
 		
 		OrderVO vo = new OrderVO("i'm a userid",OrderType.UNEXECUTED.getString(),new Date(),new Date(),new Date(),new Date(),new Date(),
-				new Date(),new Date(),"00001","000000000120161122112233","南京市仙林大道168号栖霞大酒店",RoomType.BIG.toString(),100,1,2,false, "Tom","13919191919");
+				new Date(),new Date(),"00001","南京某酒店","000000000120161122112233","南京市仙林大道168号栖霞大酒店",RoomType.BIG.toString(),100,1,2,false, "Tom","13919191919");
 
 		ResultMessage result = null;
 		
@@ -55,7 +55,7 @@ public class OrderControllerTest {
 	public void testCreateOrder2() {
 		
 		OrderVO vo = new OrderVO("i'm a userid",OrderType.UNEXECUTED.getString(),new Date(),new Date(),new Date(),new Date(),new Date(),
-				new Date(),new Date(),"00002","000000000120161122112233","南京市仙林大道168号栖霞大酒店",RoomType.BIG.toString(),100,1,2,false, "Tom","139191919");
+				new Date(),new Date(),"00002","南京某酒店","000000000120161122112233","南京市仙林大道168号栖霞大酒店",RoomType.BIG.toString(),100,1,2,false, "Tom","139191919");
 
 		ResultMessage result = null;
 		
@@ -80,6 +80,7 @@ public class OrderControllerTest {
 			e.printStackTrace();
 		}
 		//assert
+		System.out.println(vo.orderID);
 		assertEquals("000000000120161122112233", vo.orderID);
 	}
 	

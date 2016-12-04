@@ -170,13 +170,12 @@ public class OrderUtil {
 		try {
 			OrderPO respo = dao.getOrderPO(orderID);
 			
+			
 			if (respo == null) {
 				OrderVO vo = new OrderVO(ResultMessage.NOT_EXIST);
 				return vo;
 			}
-			
 			myorder.setOrder(respo);
-			
 			
 			return myorder.getOrderVO();
 		} catch (RemoteException e) {

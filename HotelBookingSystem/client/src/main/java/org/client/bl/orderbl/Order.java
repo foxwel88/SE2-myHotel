@@ -43,6 +43,8 @@ public class Order {
 	
 	public String hotelID;
 	
+	public String hotelName;
+	
 	public String orderID;
 	
 	public String hotelAddress;
@@ -80,6 +82,7 @@ public class Order {
 		this.latestTime = vo.latestTime;
 		this.cancelTime = vo.cancelTime;
 		this.hotelID = vo.hotelID;
+		this.hotelName = vo.hotelName;
 		this.orderID = vo.orderID;
 		this.hotelAddress = vo.hotelAddress;
 		this.roomType = RoomType.getType(vo.roomType);
@@ -106,6 +109,7 @@ public class Order {
 		this.latestTime = po.latestTime;
 		this.cancelTime = po.cancelTime;
 		this.hotelID = po.hotelID;
+		this.hotelName = po.hotelName;
 		this.orderID = po.orderID;
 		this.hotelAddress = po.hotelAddress;
 		this.roomType = po.roomType;
@@ -120,12 +124,12 @@ public class Order {
 	}
 	
 	public OrderVO getOrderVO () {
-		OrderVO vo = new OrderVO("i'm a userid",type.getString(),generatedDate,schFrom,schTo,actFrom,actTo,latestTime,cancelTime,hotelID,orderID,hotelAddress,roomType.getString(),totalPrice,roomNum,numOfPeople,existsChild,customerName,phoneNumber);
+		OrderVO vo = new OrderVO("i'm a userid",type.getString(),generatedDate,schFrom,schTo,actFrom,actTo,latestTime,cancelTime,hotelID,hotelName,orderID,hotelAddress,roomType.getString(),totalPrice,roomNum,numOfPeople,existsChild,customerName,phoneNumber);
 		return vo;
 	}
 	
 	public OrderPO getOrderPO () {
-		OrderPO po = new OrderPO(type,generatedDate,schFrom,schTo,actFrom,actTo,latestTime,cancelTime,hotelID,orderID,hotelAddress,roomType,totalPrice,roomNum,numOfPeople,existsChild,customerName,userID,phoneNumber);
+		OrderPO po = new OrderPO(type,generatedDate,schFrom,schTo,actFrom,actTo,latestTime,cancelTime,hotelID,hotelName,orderID,hotelAddress,roomType,totalPrice,roomNum,numOfPeople,existsChild,customerName,userID,phoneNumber);
 		return po;
 	}
 

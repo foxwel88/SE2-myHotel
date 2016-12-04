@@ -2,7 +2,6 @@ package org.client.bl.orderbl;
 
 import java.util.List;
 
-import org.client.blservice.hotelblservice.Hotelblservice;
 import org.client.blservice.orderblservice.Orderblservice;
 import org.client.blservice.userblservice.Userblservice;
 import org.client.vo.OrderVO;

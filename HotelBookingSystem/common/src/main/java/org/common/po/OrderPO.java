@@ -33,6 +33,8 @@ public class OrderPO implements Serializable {
 	
 	public String hotelID;
 	
+	public String hotelName;
+	
 	public String orderID;
 
 	public String hotelAddress;
@@ -52,7 +54,7 @@ public class OrderPO implements Serializable {
 	public String phoneNumber;
 	
 	public OrderPO(OrderType type, Date generatedDate, Date schFrom, Date schTo, Date actFrom, Date actTo,
-			Date latestTime, Date cancelTime, String hotelID, String orderID,
+			Date latestTime, Date cancelTime, String hotelID, String hotelName, String orderID,
 			String hotelAddress, RoomType roomType, double totalPrice, int roomNum, int numOfPeople, boolean existsChild, String customerName,
 			String userId, String phoneNumber) {
 		this.type = type;
@@ -64,6 +66,7 @@ public class OrderPO implements Serializable {
 		this.latestTime = latestTime;
 		this.cancelTime = cancelTime;
 		this.hotelID = hotelID;
+		this.hotelName = hotelName;
 		this.orderID = orderID;
 		this.hotelAddress = hotelAddress;
 		this.roomType = roomType;
