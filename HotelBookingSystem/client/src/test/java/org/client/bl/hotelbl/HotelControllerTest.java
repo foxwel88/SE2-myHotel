@@ -99,8 +99,8 @@ public class HotelControllerTest {
 		List<Integer> roomNum = new ArrayList<Integer>(Arrays.asList(new Integer[]{1}));
 		List<Double> roomPrice = new ArrayList<Double>(Arrays.asList(new Double[]{21.21}));
 		List<String> cooperators = new ArrayList<String>(Arrays.asList(new String[]{"μ's"}));
-		HotelVO vo = new HotelVO("id","lovelive", "unknown", city, area, "niconiconi", 5, 5, "", "", roomType, roomNum, roomPrice, cooperators);
-		HotelVO vo2 = new HotelVO("id", "123", "unknown", new CityVO(""), area, "niconiconi", 5, 5, "", "", roomType, roomNum, roomPrice, cooperators);
+		HotelVO vo = new HotelVO("00001","lovelive", "unknown", city, area, "niconiconi", 5, 5, "", "", roomType, roomNum, roomPrice, cooperators);
+		HotelVO vo2 = new HotelVO("00002", "123", "unknown", new CityVO(""), area, "niconiconi", 5, 5, "", "", roomType, roomNum, roomPrice, cooperators);
 		
 		//verify and assert
 		ResultMessage result = controller.modifyHotel(vo);	
@@ -111,14 +111,14 @@ public class HotelControllerTest {
 	
 	@Test
 	public void testChangeRoom() {
-		ResultMessage result = controller.decreaseAvailableRoom(RoomType.DOUBLE, "123");
+		ResultMessage result = controller.decreaseAvailableRoom(RoomType.DOUBLE, "00001");
 		assertEquals(ResultMessage.SUCCESS, result);
 	}
 	
 	@Test
 	public void testGetVO() {		
 		//verify and assert
-		HotelVO vo = controller.getHotelVO("123");
+		HotelVO vo = controller.getHotelVO("00001");
 		assertEquals(false, vo.city.cityName.isEmpty());
 	}
 	
