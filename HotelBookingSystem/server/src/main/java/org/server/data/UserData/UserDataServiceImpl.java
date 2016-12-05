@@ -171,7 +171,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance()
 					.prepareStatement("INSERT INTO creditrecord(orderid,userid,changeddate,changedvalue,result,op)"
 							+ " VALUES ('" + po.orderID + "','" + po.userId + "','" + transTime(po.date) + "','" + po.change
-							+ "','" + po.result + "','" + po.op.toString() + "')");
+							+ "','" + po.result + "','" + po.op.getString() + "')");
 			DatabaseCommunicator.execute(preparedStatement);
 			return ResultMessage.SUCCESS;
 		} catch (SQLException e) {
