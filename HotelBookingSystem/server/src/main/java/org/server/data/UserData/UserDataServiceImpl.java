@@ -94,7 +94,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 	public ResultMessage add(UserPO po) throws RemoteException {
 		try {
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance()
-					.prepareStatement("SELECT * FROM User WHERE ID='" + po.ID + "'");
+					.prepareStatement("SELECT * FROM User WHERE userName='" + po.userName + "'");
 			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
 			if (!resultSet.next()) {
 				preparedStatement = DatabaseCommunicator.getConnectionInstance()

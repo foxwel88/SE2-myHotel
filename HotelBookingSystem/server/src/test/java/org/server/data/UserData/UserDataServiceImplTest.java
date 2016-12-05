@@ -34,7 +34,7 @@ public class UserDataServiceImplTest {
 
 	@Test
 	public void testAdd1() throws RemoteException {
-		UserPO po = new UserPO(UserType.PERSONALCUSTOMER, "Foxwel_Stub", "王小二", "1234567890", "password", "11122233333",
+		UserPO po = new UserPO(UserType.PERSONALCUSTOMER, "imindividual", "王小二", "1234567890", "password", "11122233333",
 				1500, new Date(1000000), "无", null, "无");
 
 		ResultMessage info = dao.add(po);
@@ -44,7 +44,7 @@ public class UserDataServiceImplTest {
 
 	@Test
 	public void testAdd2() throws RemoteException {
-		UserPO po = new UserPO(UserType.PERSONALCUSTOMER, "Foxwel_Stub", "王小二", "2222222222", "password", "11122233333",
+		UserPO po = new UserPO(UserType.PERSONALCUSTOMER, "ahh", "王小二", "2222222222", "password", "11122233333",
 				1500, new Date(1000000), "无", null, "无");
 
 		ResultMessage info = dao.add(po);
