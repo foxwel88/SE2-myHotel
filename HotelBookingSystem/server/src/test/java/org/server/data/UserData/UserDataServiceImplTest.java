@@ -18,6 +18,11 @@ import org.server.data.datafactory.DataFactory;
 
 import mySQL.DatabaseCommunicator;
 
+/**
+ * UserDataServiceImpl的测试类
+ * @author gyue
+ * @version gyue 2016/12/5
+ */
 public class UserDataServiceImplTest {
 	UserDataService dao;
 

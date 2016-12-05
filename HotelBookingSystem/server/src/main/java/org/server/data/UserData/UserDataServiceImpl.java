@@ -18,6 +18,11 @@ import org.common.utility.UserType;
 
 import mySQL.DatabaseCommunicator;
 
+/**
+ * user模块数据层
+ * @author gyue
+ * @version gyue 2016/12/5
+ */
 public class UserDataServiceImpl extends UnicastRemoteObject implements UserDataService {
 
 	/**
@@ -29,11 +34,21 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 		System.out.println("user start");
 	}
 	
+	/**
+	 * 将date对象贵转换成特定格式的字符串
+	 * @param date
+	 * @return
+	 */
 	private String transTime(Date date) {
 		SimpleDateFormat timeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		return timeFormat.format(date);
 	}
 	
+	/**
+	 * 将User表的resultSet转换成PO
+	 * @param resultSet
+	 * @return
+	 */
 	private UserPO getUserPOfromSet(ResultSet resultSet) {
 		UserPO po = null;
 		try {
@@ -55,6 +70,11 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 		return po;
 	}
 	
+	/**
+	 * 将creditRecord表的resultSet转换成PO
+	 * @param resultSet
+	 * @return
+	 */
 	private CreditRecordPO getCreditRecordPOfromSet(ResultSet resultSet) {
 		CreditRecordPO po = null;
 		try {
