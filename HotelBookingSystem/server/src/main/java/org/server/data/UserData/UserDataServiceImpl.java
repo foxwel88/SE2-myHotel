@@ -9,8 +9,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Random;
-
 import org.common.dataservice.UserDataService.UserDataService;
 import org.common.po.CreditRecordPO;
 import org.common.po.UserPO;
@@ -48,7 +46,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 			double credit = resultSet.getDouble("Credit");
 			Date birthday = resultSet.getDate("Birthday");
 			String companyName = resultSet.getString("companyName");
-			String hotelAdress = resultSet.getString("HotelAdress");
+			String hotelAdress = resultSet.getString("HotelAddress");
 			String hotelID = resultSet.getString("HotelID");
 			po = new UserPO(type, userName, name, id, passWord, phoneNumber, credit, birthday, companyName, hotelID, hotelAdress);
 		} catch (SQLException e) {
@@ -76,15 +74,15 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 	public ResultMessage add(UserPO po) throws RemoteException {
 		try {
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance()
-					.prepareStatement("SELECT * FROM User WHERE ID=" + po.ID);
+					.prepareStatement("SELECT * FROM User WHERE ID='" + po.ID + "'");
 			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
 			if (!resultSet.next()) {
 				preparedStatement = DatabaseCommunicator.getConnectionInstance()
 						.prepareStatement("INSERT INTO User(Type,UserName,Name,ID,"
 								+ "PassWord,PhoneNumber,Credit,Birthday,CompanyName,HotelAddress,HotelID)"
-								+ " VALUES (" + po.type.getString() + "," + po.userName + "," + po.name + "," + po.ID + ","
-								+ po.passWord + "," + po.phoneNumber + "," + po.credit + "," + transTime(po.birthday) + ","
-								+ po.companyName + "," + po.hotelAddress + "," + po.hotelID + ")");
+								+ " VALUES ('" + po.type.getString() + "','" + po.userName + "','" + po.name + "','" + po.ID + "','"
+								+ po.passWord + "','" + po.phoneNumber + "','" + po.credit + "','" + transTime(po.birthday) + "','"
+								+ po.companyName + "','" + po.hotelAddress + "','" + po.hotelID + "')");
 				DatabaseCommunicator.execute(preparedStatement);
 				return ResultMessage.SUCCESS;
 			} else {
@@ -101,8 +99,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 		PreparedStatement preparedStatement;
 		try {
 			preparedStatement = DatabaseCommunicator.getConnectionInstance()
-					.prepareStatement("select * from User where ID="
-							+ ID);
+					.prepareStatement("select * from User where ID='" + ID + "'");
 			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
 			while (resultSet.next()) {
 				po = getUserPOfromSet(resultSet);
@@ -118,7 +115,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 		PreparedStatement preparedStatement;
 		try {
 			preparedStatement = DatabaseCommunicator.getConnectionInstance()
-					.prepareStatement("select * from User where UserName=" + userName);
+					.prepareStatement("select * from User where UserName='" + userName + "'");
 			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
 			while (resultSet.next()) {
 				po = getUserPOfromSet(resultSet);
@@ -131,6 +128,11 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 
 	public ResultMessage modify(UserPO po) throws RemoteException {
 		try {
+			// 检查该用户是否存在
+			UserPO temp = findbyID(po.ID);
+			if (temp == null) {
+				return ResultMessage.NOT_EXIST;
+			}
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(
 					"delete from User where ID=" + po.ID);
 			DatabaseCommunicator.execute(preparedStatement);
@@ -146,7 +148,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 		ResultMessage info = ResultMessage.WRONG_PASSWORD;
 		try {
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance()
-					.prepareStatement("SELECT * FROM User WHERE UserName=" + userName);
+					.prepareStatement("SELECT * FROM User WHERE UserName='" + userName + "'");
 			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
 			String toCheck = new String("");
 			if (resultSet.next()) {
@@ -167,9 +169,9 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 	public ResultMessage addCreditRecord(CreditRecordPO po) throws RemoteException {
 		try {
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance()
-					.prepareStatement("INSERT INTO creditrecord(orderid,userid,changeddate,changedvalue,result,op,)"
-							+ " VALUES (" + po.orderID + "," + po.userId + "," + transTime(po.date) + "," + po.change
-							+ "," + po.result + "," + po.op.toString() + ")");
+					.prepareStatement("INSERT INTO creditrecord(orderid,userid,changeddate,changedvalue,result,op)"
+							+ " VALUES ('" + po.orderID + "','" + po.userId + "','" + transTime(po.date) + "','" + po.change
+							+ "','" + po.result + "','" + po.op.toString() + "')");
 			DatabaseCommunicator.execute(preparedStatement);
 			return ResultMessage.SUCCESS;
 		} catch (SQLException e) {
@@ -191,7 +193,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 		PreparedStatement preparedStatement;
 		try {
 			preparedStatement = DatabaseCommunicator.getConnectionInstance()
-					.prepareStatement("SELECT * FROM CreditRecord WHERE userid=" + ID);
+					.prepareStatement("SELECT * FROM CreditRecord WHERE userid='" + ID + "'");
 			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
 			while (resultSet.next()) {
 				res.add(getCreditRecordPOfromSet(resultSet));
@@ -203,18 +205,16 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 	}
 
 	public String getNewID() throws RemoteException {
-		boolean flag = true;
+		boolean canContinue = true;
 		String id = generateIdRandom();
-		while (flag) {
+		while (canContinue) {
 			PreparedStatement preparedStatement;
 			try {
 				preparedStatement = DatabaseCommunicator.getConnectionInstance()
-						.prepareStatement("select Type,UserName,Name,ID,"
-								+ "PassWord,PhoneNumber,Credit,Birthday,CompanyName,Level,CreditToNext,HotelAddress,HotelID from User where ID="
-								+ id);
+						.prepareStatement("select * from User where ID='" + id + "'");
 				ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
 				if (!resultSet.next()) {
-					flag = false;
+					canContinue = false;
 				} else {
 					id = generateIdRandom();
 				}
