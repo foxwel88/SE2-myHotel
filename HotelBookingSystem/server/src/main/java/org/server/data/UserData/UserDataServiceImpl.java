@@ -77,7 +77,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 		try {
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance()
 					.prepareStatement("SELECT * FROM User WHERE ID=" + po.ID);
-			ResultSet resultSet = DatabaseCommunicator.execute(preparedStatement);
+			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
 			if (!resultSet.next()) {
 				preparedStatement = DatabaseCommunicator.getConnectionInstance()
 						.prepareStatement("INSERT INTO User(Type,UserName,Name,ID,"
@@ -104,7 +104,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 					.prepareStatement("select Type,UserName,Name,ID,"
 							+ "PassWord,PhoneNumber,Credit,Birthday,CompanyName,Level,CreditToNext,HotelAddress,HotelID from User where ID="
 							+ ID);
-			ResultSet resultSet = DatabaseCommunicator.execute(preparedStatement);
+			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
 			while (resultSet.next()) {
 				po = getUserPOfromSet(resultSet);
 			}
@@ -120,7 +120,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 		try {
 			preparedStatement = DatabaseCommunicator.getConnectionInstance()
 					.prepareStatement("select * from User where UserName=" + userName);
-			ResultSet resultSet = DatabaseCommunicator.execute(preparedStatement);
+			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
 			while (resultSet.next()) {
 				po = getUserPOfromSet(resultSet);
 			}
@@ -148,7 +148,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 		try {
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance()
 					.prepareStatement("SELECT * FROM User WHERE UserName=" + userName);
-			ResultSet resultSet = DatabaseCommunicator.execute(preparedStatement);
+			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
 			String toCheck = new String("");
 			if (resultSet.next()) {
 				toCheck = resultSet.getString("PassWord");
@@ -193,7 +193,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 		try {
 			preparedStatement = DatabaseCommunicator.getConnectionInstance()
 					.prepareStatement("SELECT * FROM CreditRecord WHERE userid=" + ID);
-			ResultSet resultSet = DatabaseCommunicator.execute(preparedStatement);
+			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
 			while (resultSet.next()) {
 				res.add(getCreditRecordPOfromSet(resultSet));
 			}
@@ -213,7 +213,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 						.prepareStatement("select Type,UserName,Name,ID,"
 								+ "PassWord,PhoneNumber,Credit,Birthday,CompanyName,Level,CreditToNext,HotelAddress,HotelID from User where ID="
 								+ id);
-				ResultSet resultSet = DatabaseCommunicator.execute(preparedStatement);
+				ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
 				if (!resultSet.next()) {
 					flag = false;
 				} else {

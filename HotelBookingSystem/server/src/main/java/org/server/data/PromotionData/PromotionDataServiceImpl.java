@@ -13,7 +13,6 @@ import org.common.po.LevelPO;
 import org.common.po.PromotionPO;
 import org.common.utility.PromotionType;
 import org.common.utility.ResultMessage;
-
 import mySQL.DatabaseCommunicator;
 
 public class PromotionDataServiceImpl extends UnicastRemoteObject implements PromotionDataService {

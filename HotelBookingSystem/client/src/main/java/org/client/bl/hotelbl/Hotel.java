@@ -23,7 +23,7 @@ public class Hotel {
 	
 	public String area;
 	
-	public String introduce;
+	public String introduction;
 	
 	public double rank;
 	
@@ -48,7 +48,7 @@ public class Hotel {
 	 * @return hotelVO
 	 */
 	public HotelVO generateVO() {
-		return new HotelVO(id, hotelName, address, new CityVO(city), new AreaVO(area), introduce, rank, star, facility, checkInInfos, roomType, roomNum, roomPrice, cooperators);
+		return new HotelVO(id, hotelName, address, new CityVO(city), new AreaVO(area), introduction, rank, star, facility, checkInInfos, roomType, roomNum, roomPrice, cooperators);
 	}
 	
 	/**
@@ -62,7 +62,7 @@ public class Hotel {
 		this.address = po.address;
 		this.city = po.city;
 		this.area = po.area;
-		this.introduce = po.introduce;
+		this.introduction = po.introduction;
 		this.rank = po.rank;
 		this.star = po.star;
 		this.facility = po.facility;
@@ -82,7 +82,7 @@ public class Hotel {
 		this.address = vo.address;
 		this.city = vo.city.cityName;
 		this.area = vo.area.address;
-		this.introduce = vo.introduce;
+		this.introduction = vo.introduction;
 		this.rank = vo.rank;
 		this.star = vo.star;
 		this.facility = vo.facility;
@@ -102,7 +102,7 @@ public class Hotel {
 			this.cooperators_po = sb.toString();
 		}
 		
-		return new HotelPO(id, hotelName, address, city, area, introduce, rank, star, facility, checkInInfos, cooperators_po);
+		return new HotelPO(id, hotelName, address, city, area, introduction, rank, star, facility, checkInInfos, cooperators_po);
 	}
 	
 }

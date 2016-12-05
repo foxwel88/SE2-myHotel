@@ -22,7 +22,7 @@ public class HotelVO implements Serializable {
 	
 	public AreaVO area;
 	
-	public String introduce;
+	public String introduction;
 	
 	public double rank;
 	
@@ -42,7 +42,7 @@ public class HotelVO implements Serializable {
 	
 	public ResultMessage resultMessage;
 	
-	public HotelVO(String id, String hotelName, String address, CityVO city, AreaVO area, String introduce,
+	public HotelVO(String id, String hotelName, String address, CityVO city, AreaVO area, String introduction,
 			double rank, int star, String facility, String checkInInfos, List<String> roomType,
 			List<Integer> roomNum, List<Double> roomPrice, List<String> cooperators) {
 
@@ -51,7 +51,7 @@ public class HotelVO implements Serializable {
 		this.address = address;
 		this.city = city;
 		this.area = area;
-		this.introduce = introduce;
+		this.introduction = introduction;
 		this.rank = rank;
 		this.star = star;
 		this.facility = facility;

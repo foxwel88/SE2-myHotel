@@ -1,9 +1,6 @@
 package mySQL;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +16,7 @@ public class DatabaseCommunicator {
 
 	private static final String USERNAME = "root";
 
-	private static final String PASSWORD = "123";
+	private static final String PASSWORD = "1234";
 	
 	private static Connection connection;
 	
@@ -37,13 +34,24 @@ public class DatabaseCommunicator {
 		return connection;
 	}
 	
-	public static ResultSet execute(PreparedStatement command) {
+	public static ResultSet executeQuery(PreparedStatement command) {
 		try {
 			return command.executeQuery();
-		} catch (Exception ex) {
+		} catch (SQLException ex) {
 			System.out.println("Statement execute error!!!");
 			ex.printStackTrace();
 		}
 		return null;
+	}
+
+	public static boolean execute(PreparedStatement command) {
+		try {
+			return command.execute();
+		} catch (SQLException ex) {
+			System.out.println("Statement execute error!!!");
+			ex.printStackTrace();
+			return false;
+		}
+
 	}
 }

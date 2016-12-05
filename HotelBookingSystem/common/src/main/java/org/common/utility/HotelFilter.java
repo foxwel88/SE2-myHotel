@@ -4,6 +4,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 酒店搜索的过滤器
+ * @author Hirico
+ * @version 2016/12/05 Hirico
+ */
 public class HotelFilter implements Serializable {
 	
 	/**
@@ -32,20 +37,17 @@ public class HotelFilter implements Serializable {
 	public RoomType roomType;
 	
 	public int roomNum = 1;
-	
-	@Deprecated
+
 	public void setRank(double min, double max) {
 		minRank = min;
 		maxRank = max;
 	}
-	
-	@Deprecated
+
 	public void setPrice(double min, double max) {
 		minPrice = min;
 		maxPrice = max;
 	}
-	
-	@Deprecated
+
 	public void setStar(int min, int max) {
 		minStar = min;
 		maxStar = max;

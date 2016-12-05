@@ -161,7 +161,7 @@ public class HotelManagerModifyHotel {
 		vo.cooperators = new ArrayList<>(currentCooperators);
 		vo.facility = facility.getText().trim();
 		vo.hotelName = name.getText().trim();
-		vo.introduce = intro.getText().trim();
+		vo.introduction = intro.getText().trim();
 		
 		vo.roomNum = new ArrayList<>(roomNums);
 		vo.roomPrice = new ArrayList<>(roomPrices);
@@ -253,7 +253,7 @@ public class HotelManagerModifyHotel {
 		facility.setText(vo.facility);
 		facility.setStyle("-fx-text-fill: black;");
 		name.setText(vo.hotelName);
-		intro.setText(vo.introduce);
+		intro.setText(vo.introduction);
 		intro.setStyle("-fx-text-fill: black;");
 		
 		//roomNum roomPrice roomType
