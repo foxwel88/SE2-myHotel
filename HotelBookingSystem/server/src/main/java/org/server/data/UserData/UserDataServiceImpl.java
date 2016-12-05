@@ -101,8 +101,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 		PreparedStatement preparedStatement;
 		try {
 			preparedStatement = DatabaseCommunicator.getConnectionInstance()
-					.prepareStatement("select Type,UserName,Name,ID,"
-							+ "PassWord,PhoneNumber,Credit,Birthday,CompanyName,Level,CreditToNext,HotelAddress,HotelID from User where ID="
+					.prepareStatement("select * from User where ID="
 							+ ID);
 			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
 			while (resultSet.next()) {
