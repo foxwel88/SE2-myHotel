@@ -18,13 +18,13 @@ public class CommentVO implements Serializable {
 	
 	public Date date;
 	
-	public int rank;
+	public double rank;
 	
 	public String comment;
 	
 	public ResultMessage resultMessage;
 	
-	public CommentVO(String UserName, String hotelAdrress, Date date, int rank, String comment) {
+	public CommentVO(String UserName, String hotelAdrress, Date date, double rank, String comment) {
 		this.userName = UserName;
 		this.hotelAdrress = hotelAdrress;
 		this.date = date;

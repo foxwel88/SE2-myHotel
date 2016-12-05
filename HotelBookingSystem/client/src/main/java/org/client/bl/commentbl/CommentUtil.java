@@ -17,7 +17,7 @@ import org.common.utility.ResultMessage;
  */
 public class CommentUtil {
 	
-	public static List<CommentVO> getComment(String hotelAddress) {
+	public static List<CommentVO> getComment(String hotelID) {
 		RMIHelper rmiHelper = RMIHelper.getInstance();
 		
 		CommentDataService commentDataService = rmiHelper.getCommentDataServiceImpl();
@@ -25,7 +25,7 @@ public class CommentUtil {
 		List<CommentVO> commentVOList = new ArrayList<CommentVO>();;
 		
 		try {
-			List<CommentPO> commentPOList = commentDataService.find(hotelAddress);
+			List<CommentPO> commentPOList = commentDataService.find(hotelID);
 			
 			CommentPO po;
 			

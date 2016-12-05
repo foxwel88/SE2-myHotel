@@ -43,12 +43,12 @@ public class PromotionController implements Promotionblservice {
 		return PromotionUtil.add(vo);
 	}
 
-	public List<PromotionVO> getPromotion(String hotelAddress, String userID) {
-		return PromotionUtil.getPromotion(hotelAddress, userID);
+	public List<PromotionVO> getPromotion(String hotelID, String userID) {
+		return PromotionUtil.getPromotion(hotelID, userID);
 	}
 
-	public List<PromotionVO> showHotelPromotion(String hotelAddress) {
-		hotelPromotionList = PromotionUtil.showHotelPromotion(hotelAddress);
+	public List<PromotionVO> showHotelPromotion(String hotelID) {
+		hotelPromotionList = PromotionUtil.showHotelPromotion(hotelID);
 		
 		List<PromotionVO> tempVOList = new ArrayList<>();
 		
@@ -103,8 +103,8 @@ public class PromotionController implements Promotionblservice {
 		return level.modifyLevel(vo);
 	}
 	
-	public double getPrice (String userID, String hotelAddress, double rawPrice) {
-		return PromotionUtil.getPrice(userID, hotelAddress, rawPrice);
+	public double getPrice (String userID, String hotelID, double rawPrice) {
+		return PromotionUtil.getPrice(userID, hotelID, rawPrice);
 	}
 	
 	public int calLevel(double credit) {

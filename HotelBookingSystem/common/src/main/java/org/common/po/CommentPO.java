@@ -16,11 +16,11 @@ public class CommentPO implements Serializable {
 	
 	public Date date;
 	
-	public int rank;
+	public double rank;
 	
 	public String comment;
 	
-	public CommentPO(String UserName, String hotelID, Date date, int rank, String comment) {
+	public CommentPO(String UserName, String hotelID, Date date, double rank, String comment) {
 		this.userName = UserName;
 		this.hotelID = hotelID;
 		this.date = date;

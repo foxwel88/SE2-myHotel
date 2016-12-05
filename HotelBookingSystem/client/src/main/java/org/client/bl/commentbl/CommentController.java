@@ -25,8 +25,8 @@ public class CommentController implements Commentblservice {
 		return commentController;
 	}
 
-	public List<CommentVO> getComment(String hotelAddress) {
-		List<CommentVO> commentVOList = CommentUtil.getComment(hotelAddress);
+	public List<CommentVO> getComment(String hotelID) {
+		List<CommentVO> commentVOList = CommentUtil.getComment(hotelID);
 		return commentVOList;
 	}
 

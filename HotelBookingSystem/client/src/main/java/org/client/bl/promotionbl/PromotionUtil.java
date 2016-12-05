@@ -55,9 +55,9 @@ public class PromotionUtil {
 		return ResultMessage.CONNECTION_FAIL;
 	}
 	
-	static List<PromotionVO> getPromotion (String hotelAddress, String userID) {
-		List<Promotion> okPromotion = getCanBeUsedHotelPromotion(hotelAddress, userID);
-		okPromotion.addAll(getCanBeUsedWebsitePromotion(hotelAddress, userID));
+	static List<PromotionVO> getPromotion (String hotelID, String userID) {
+		List<Promotion> okPromotion = getCanBeUsedHotelPromotion(hotelID, userID);
+		okPromotion.addAll(getCanBeUsedWebsitePromotion(hotelID, userID));
 //		System.out.println(okPromotion.size());
 		List<PromotionVO> okPromotionVO = new ArrayList<>();
 		for (int i = 0; i < okPromotion.size(); i++) {
@@ -66,7 +66,7 @@ public class PromotionUtil {
 		return okPromotionVO;
 	}
 	
-	static List<Promotion> showHotelPromotion (String hotelAddress) {
+	static List<Promotion> showHotelPromotion (String hotelID) {
 		if (promotionDataService == null) {
 			RMIHelper rmihelper = RMIHelper.getInstance();
 			setDAO(rmihelper.getPromotionDataServiceImpl());
@@ -75,7 +75,7 @@ public class PromotionUtil {
 		ArrayList<Promotion> promotionList = new ArrayList<>();
 		
 		try {
-			List<PromotionPO> promotionPOList = promotionDataService.showHotelPromotion(hotelAddress);
+			List<PromotionPO> promotionPOList = promotionDataService.showHotelPromotion(hotelID);
 			
 			if (promotionPOList == null) {
 				promotionList.add(new Promotion(new PromotionVO(ResultMessage.NOT_EXIST)));
@@ -112,9 +112,9 @@ public class PromotionUtil {
 		}
 	}
 	
-	static double getPrice (String userID, String hotelAddress, double rawPrice) {
-		List<Promotion> hotelPromotionList = getCanBeUsedHotelPromotion(hotelAddress, userID);
-		List<Promotion> websitePromotionList = getCanBeUsedWebsitePromotion(hotelAddress, userID);
+	static double getPrice (String userID, String hotelID, double rawPrice) {
+		List<Promotion> hotelPromotionList = getCanBeUsedHotelPromotion(hotelID, userID);
+		List<Promotion> websitePromotionList = getCanBeUsedWebsitePromotion(hotelID, userID);
 		
 		int h = 0, w = 0;
 		for (int i = 0; i < hotelPromotionList.size(); i++) {
@@ -173,12 +173,12 @@ public class PromotionUtil {
 		return isOK;
 	}
 	
-	private static List<Promotion> getCanBeUsedHotelPromotion(String hotelAddress, String userID) {
-		List<Promotion> hotelPromotionList = showHotelPromotion(hotelAddress);
+	private static List<Promotion> getCanBeUsedHotelPromotion(String hotelID, String userID) {
+		List<Promotion> hotelPromotionList = showHotelPromotion(hotelID);
 		ArrayList<Promotion> canBeUsedHotelPromotion = new ArrayList<>();
 		
 		for (int i = 0; i < hotelPromotionList.size(); i++) {
-			if (checkCanBeUse(hotelPromotionList.get(i), hotelAddress, userID)) {
+			if (checkCanBeUse(hotelPromotionList.get(i), hotelID, userID)) {
 				canBeUsedHotelPromotion.add(hotelPromotionList.get(i));
 			}
 		}
@@ -186,12 +186,12 @@ public class PromotionUtil {
 		return canBeUsedHotelPromotion;
 	}
 	
-	private static List<Promotion> getCanBeUsedWebsitePromotion(String hotelAddress, String userID) {
+	private static List<Promotion> getCanBeUsedWebsitePromotion(String hotelID, String userID) {
 		List<Promotion> websitePromotionList = showWebsitePromotion();
 		ArrayList<Promotion> canBeUsedWebsitePromotion = new ArrayList<>();
 		
 		for (int i = 0; i < websitePromotionList.size(); i++) {
-			if (checkCanBeUse(websitePromotionList.get(i), hotelAddress, userID)) {
+			if (checkCanBeUse(websitePromotionList.get(i), hotelID, userID)) {
 				canBeUsedWebsitePromotion.add(websitePromotionList.get(i));
 			}
 		}
@@ -199,7 +199,7 @@ public class PromotionUtil {
 		return canBeUsedWebsitePromotion;
 	}
 	
-	private static boolean checkCanBeUse(Promotion promotion, String hotelAddress, String userID) {
+	private static boolean checkCanBeUse(Promotion promotion, String hotelID, String userID) {
 		boolean isOK = true;
 		// TODO
 		return isOK;
