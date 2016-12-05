@@ -22,6 +22,8 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 	 */
 	private static final long serialVersionUID = 4005413439043494852L;
 
+	private static final int MAX_HOTELID_Length = 5;
+
 	public HotelDataServiceImpl() throws RemoteException {
 		System.out.println("hotel start");
 	}
@@ -30,7 +32,31 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 		// TODO Auto-generated method stub
 	}
 
+	String generateNewHotelID() {
+		try {
+			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("SELECT count(*) FROM Hotel ");
+			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
+			int count = 0;
+			if (resultSet.next()) {
+				count = resultSet.getInt(1);
+			}
+			count += 1;
+			String value = String.valueOf(count);
+			for (int i = value.length(); i < MAX_HOTELID_Length; i++) {
+				value = "0" + value;
+			}
+			return value;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
 	public ResultMessage addHotelInfo(HotelPO po) throws RemoteException {
+
+		//获取新ID
+		po.id = generateNewHotelID();
+
 		try {
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("SELECT * FROM Hotel WHERE HotelID='" + po.id + "'");
 			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
@@ -78,7 +104,6 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 			e.printStackTrace();
 		}
 
-		addHotelInfo(po);
 		return ResultMessage.SUCCESS;
 	}
 
@@ -148,11 +173,10 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 				if (filter.livedHotelIDs != null) {
 					if (!filter.livedHotelIDs.contains(po.id)) {
 						continue;
-					} else {
-						if (isRoomInfoMatched(getRooms(po.id), filter)) {
-							list.add(po);
-						}
 					}
+				}
+				if (isRoomInfoMatched(getRooms(po.id), filter)) {
+					list.add(po);
 				}
 			}
 		} catch (SQLException e) {

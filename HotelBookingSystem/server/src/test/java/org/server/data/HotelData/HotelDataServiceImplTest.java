@@ -7,6 +7,7 @@ import org.common.po.AreaPO;
 import org.common.po.CityPO;
 import org.common.po.HotelPO;
 import org.common.po.RoomPO;
+import org.common.utility.HotelFilter;
 import org.common.utility.ResultMessage;
 import org.common.utility.RoomType;
 import org.junit.After;
@@ -14,7 +15,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.server.data.datafactory.DataFactory;
 
+import javax.xml.crypto.Data;
 import java.rmi.RemoteException;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -31,6 +35,14 @@ public class HotelDataServiceImplTest {
 	public void setUp() throws RemoteException {
 		DatabaseCommunicator.databaseInit();
 		dao = DataFactory.getInstance().getHotelDataServiceImpl();
+
+		try {
+			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("USE test ");
+			DatabaseCommunicator.execute(preparedStatement);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Test
@@ -77,13 +89,51 @@ public class HotelDataServiceImplTest {
 		List<RoomPO> oldPOs = dao.getRooms("00001");
 		assertEquals(true, oldPOs.size() > 0);
 
-		List<RoomPO> newPOs = new ArrayList<>(Arrays.asList(new RoomPO[]{ new RoomPO(RoomType.BIG, 2, 400)}));
+		RoomPO room = new RoomPO(RoomType.BIG, 2, 400);
+		List<RoomPO> newPOs = new ArrayList<>();
+		newPOs.add(room);
 
 		ResultMessage result = dao.modifyRooms("00001", newPOs);
 		assertEquals(ResultMessage.SUCCESS, result);
 
-		result = dao.modifyRooms("00001", oldPOs);
-		assertEquals(ResultMessage.SUCCESS, result);
+		//result = dao.modifyRooms("00001", oldPOs);
+		//assertEquals(ResultMessage.SUCCESS, result);
+	}
+
+	@Test
+	public void testFindHotels() throws RemoteException {
+		HotelFilter filter = new HotelFilter();
+		filter.city = "南京";
+		filter.area = "新街口";
+
+		List<HotelPO> hotelPOS = dao.findHotels(filter);
+		assertEquals(true, hotelPOS.size() > 0);
+	}
+
+	@Test
+	public void testChangeRoomNums() throws RemoteException {
+		List<RoomPO> list = dao.getRooms("00001");
+		RoomType roomType = list.get(0).roomType;
+
+		ResultMessage resultMessageIncrease = dao.increaseAvailableRoom(roomType, "00001");
+		ResultMessage resultMessageDecrease = dao.decreaseAvailableRoom(roomType, "00001");
+
+		assertEquals(ResultMessage.SUCCESS, resultMessageIncrease);
+		assertEquals(ResultMessage.SUCCESS, resultMessageDecrease);
+	}
+
+	@Test
+	public void testAddHotel() throws RemoteException {
+		HotelPO newPO = new HotelPO(null, "love hotel", "学生公寓1组团3栋", "南京", "仙林中心",
+				"Welcome, boys!", 4.5, 4, "不断电不断网，空调四人间，自助售卖机", "B319,20150901,20170901;", "南大物业");
+
+		ResultMessage resultMessage = dao.addHotelInfo(newPO);
+		assertEquals(ResultMessage.SUCCESS, resultMessage);
+	}
+
+	@After
+	public void tearDown() {
+
 	}
 
 

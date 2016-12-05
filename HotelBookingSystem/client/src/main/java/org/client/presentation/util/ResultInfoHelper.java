@@ -19,6 +19,9 @@ public class ResultInfoHelper {
 			case WRONG_FORMAT:
 				label.setText("输入信息格式有误");
 				break;
+			case EXIST:
+				label.setText("该名称已被使用");
+				break;
 			default:
 				label.setText("错误");
 				break;
