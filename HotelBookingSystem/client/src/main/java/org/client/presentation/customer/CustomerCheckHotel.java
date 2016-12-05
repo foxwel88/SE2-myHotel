@@ -76,7 +76,7 @@ public class CustomerCheckHotel {
 	void initialize() {
 		hotel = SwitchSceneUtil.getHotelVO();
 		hotelName.setText(hotel.hotelName);
-		introduce.setText(hotel.introduce);
+		introduce.setText(hotel.introduction);
 		address.setText(hotel.address);
 		for (int i = 0; i < hotel.roomType.size(); i++) {
 			switch (hotel.roomType.get(i)) {

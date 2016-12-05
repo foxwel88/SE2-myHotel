@@ -33,19 +33,19 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 	public ResultMessage addHotelInfo(HotelPO po) throws RemoteException {
 		try {
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("SELECT * FROM Hotel WHERE HotelID='" + po.id + "'");
-			ResultSet resultSet = DatabaseCommunicator.execute(preparedStatement);
+			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
 			if (!resultSet.next()) {
 
 				//在Hotel Table中添加酒店
 				preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("INSERT INTO Hotel(hotelID,hotelName,address,area,"
-						+ "city,introduce,rank,star,facility,cooperators,checkInInfos)"
+						+ "city,introduction,rank,star,facility,cooperators,checkInInfos)"
 						+ " VALUES ('" + po.id + "','" + po.hotelName + "','" + po.address + "','" + po.area
-						+ "','" + po.city + "','" + po.introduce + "','" + po.rank + "','" + po.star
+						+ "','" + po.city + "','" + po.introduction + "','" + po.rank + "','" + po.star
 						+ "','" + po.facility + "','" + po.cooperators + "','" + po.checkInInfos + "')");
 				DatabaseCommunicator.execute(preparedStatement);
 
 				//Create新Table存储该酒店的房间信息
-				String create = "CREATE TABLE " + po.id + "(roomType VARCHAR(100), roomNum INT, roomPrice DOUBLE)";
+				String create = "CREATE TABLE `" + po.id + "`(roomType VARCHAR(100), roomNum INT, roomPrice DOUBLE)";
 				preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(create);
 				DatabaseCommunicator.execute(preparedStatement);
 
@@ -65,9 +65,19 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(
 					"DELETE FROM Hotel WHERE HotelID='" + po.id + "'");
 			DatabaseCommunicator.execute(preparedStatement);
+
+			preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("INSERT INTO Hotel(hotelID,hotelName,address,area,"
+					+ "city,introduction,rank,star,facility,cooperators,checkInInfos)"
+					+ " VALUES ('" + po.id + "','" + po.hotelName + "','" + po.address + "','" + po.area
+					+ "','" + po.city + "','" + po.introduction + "','" + po.rank + "','" + po.star
+					+ "','" + po.facility + "','" + po.cooperators + "','" + po.checkInInfos + "')");
+			DatabaseCommunicator.execute(preparedStatement);
+
+			return ResultMessage.SUCCESS;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+
 		addHotelInfo(po);
 		return ResultMessage.SUCCESS;
 	}
@@ -80,13 +90,13 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 			String address = set.getString("address");
 			String area = set.getString("area");
 			String city = set.getString("city");
-			String introduce = set.getString("introduce");
+			String introduction = set.getString("introduction");
 			Double rank = set.getDouble("rank");
 			Integer star = set.getInt("star");
 			String facility = set.getString("facility");
 			String cooperators = set.getString("cooperators");
 			String checkInInfos = set.getString("checkInInfos");
-			po = new HotelPO(id, hotelName, address, city, area, introduce, rank, star, facility, checkInInfos, cooperators);
+			po = new HotelPO(id, hotelName, address, city, area, introduction, rank, star, facility, checkInInfos, cooperators);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -112,7 +122,7 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 		try {
 			preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("SELECT * FROM Hotel WHERE HotelID='" + hotelID + "'");
 
-			ResultSet resultSet = DatabaseCommunicator.execute(preparedStatement);
+			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
 			if (resultSet.next()) {
 				po = getHotelFromSet(resultSet);
 			}
@@ -130,7 +140,7 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 					+ " AND rank >= " + filter.minRank + " AND rank <= " + filter.maxRank
 					+ " AND city = '" + filter.city + "' AND area = '" + filter.area + "'";
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(query);
-			ResultSet resultSet = DatabaseCommunicator.execute(preparedStatement);
+			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
 
 			//再根据酒店地址,房间信息进一步筛选
 			while (resultSet.next()) {
@@ -189,11 +199,15 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 			preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("SELECT CityName"
 					+ " FROM CityAndArea");
 
-			ResultSet resultSet = DatabaseCommunicator.execute(preparedStatement);
+			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
 			while (resultSet.next()) {
 				String name = resultSet.getString("CityName");
-				if (!name.equals(list.get(list.size() - 1))) {
+				if (list.isEmpty()) {
 					list.add(new CityPO(name));
+				} else {                                                        //剔除重复的城市名称
+					if (!name.equals(list.get(list.size() - 1).cityName)) {
+						list.add(new CityPO(name));
+					}
 				}
 			}
 		} catch (SQLException e) {
@@ -209,7 +223,7 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 			preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("SELECT TradeArea"
 					+ " FROM CityAndArea" + " WHERE CityName='" + po.cityName + "'");
 
-			ResultSet resultSet = DatabaseCommunicator.execute(preparedStatement);
+			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
 			while (resultSet.next()) {
 				list.add(new AreaPO(resultSet.getString("TradeArea")));
 			}
@@ -228,9 +242,9 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 		PreparedStatement preparedStatement;
 		try {
 			preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("SELECT *"
-					+ " FROM " + hotelID);
+					+ " FROM `" + hotelID + "`");
 
-			ResultSet resultSet = DatabaseCommunicator.execute(preparedStatement);
+			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
 			while (resultSet.next()) {
 				list.add(getRoomFromSet(resultSet));
 			}
@@ -244,11 +258,11 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 
 		try {
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(
-					"DELETE FROM " + hotelID);
+					"DELETE FROM `" + hotelID + "`");
 			DatabaseCommunicator.execute(preparedStatement);
 
 			for (RoomPO p: po) {
-				preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("INSERT INTO " + hotelID + "(roomType,roomNum,roomPrice)"
+				preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("INSERT INTO `" + hotelID + "`(roomType,roomNum,roomPrice)"
 						+ " VALUES ('" + p.roomType.getString() + "','" + p.roomNum + "','" + p.roomPrice + "')");
 				DatabaseCommunicator.execute(preparedStatement);
 			}
@@ -266,13 +280,13 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 
 		try {
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(
-					"SELECT roomNum FROM " + hotelID + " WHERE roomType='" + type.getString() + "'");
-			ResultSet resultSet = DatabaseCommunicator.execute(preparedStatement);
+					"SELECT roomNum FROM `" + hotelID + "` WHERE roomType='" + type.getString() + "'");
+			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
 			if (resultSet.next()) {
 				int roomNum = resultSet.getInt("roomNum");
 				roomNum += 1;
-				String update = "UPDATE " + hotelID +
-						" SET roomNum = " + String.valueOf(roomNum) +
+				String update = "UPDATE `" + hotelID +
+						"` SET roomNum = " + String.valueOf(roomNum) +
 						" WHERE roomType = '" + type.getString() + "'";
 				preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(update);
 				DatabaseCommunicator.execute(preparedStatement);
@@ -291,8 +305,8 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 
 		try {
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(
-					"SELECT roomNum FROM " + hotelID + " WHERE roomType='" + type.getString() + "'");
-			ResultSet resultSet = DatabaseCommunicator.execute(preparedStatement);
+					"SELECT roomNum FROM `" + hotelID + "` WHERE roomType='" + type.getString() + "'");
+			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
 			if (resultSet.next()) {
 				int roomNum = resultSet.getInt("roomNum");
 				roomNum -= 1;
@@ -302,8 +316,8 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 					return ResultMessage.ROOM_NOT_ENOUGH;
 				}
 
-				String update = "UPDATE " + hotelID +
-						" SET roomNum = " + String.valueOf(roomNum) +
+				String update = "UPDATE `" + hotelID +
+						"` SET roomNum = " + String.valueOf(roomNum) +
 						" WHERE roomType = '" + type.getString() + "'";
 				preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(update);
 				DatabaseCommunicator.execute(preparedStatement);

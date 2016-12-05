@@ -80,7 +80,7 @@ public class HotelUtil {
 		ResultMessage roomResult;
 		try {
 			hotelResult = dao.modifyHotelInfo(hotelPO);
-			roomResult = dao.modifyRooms(vo.address, rooms);
+			roomResult = dao.modifyRooms(vo.id, rooms);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			return ResultMessage.CONNECTION_FAIL;

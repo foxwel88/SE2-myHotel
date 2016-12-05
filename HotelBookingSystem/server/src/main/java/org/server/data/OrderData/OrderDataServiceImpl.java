@@ -75,7 +75,7 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 					+ "schFrom,schTo,actFrom,actTo,latestTime,cancelTime,hotelid,hotelAddress,orderID,hotelName,roomType,totalPrice,roomNum,numOfPeople,"
 					+ "existsChildren,customerName,phoneNumber from `Order` where orderID=" + orderID);
 			
-			ResultSet resultSet = DatabaseCommunicator.execute(preparedStatement);
+			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
 			while (resultSet.next()) {
 				po = getPOfromSet(resultSet);
 			}
@@ -93,7 +93,7 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 			preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("select type,userId,generatedDate,"
 					+ "schFrom,schTo,actFrom,actTo,latestTime,cancelTime,hotelid,hotelAddress,orderID,hotelName,roomType,totalPrice,roomNum,numOfPeople,"
 					+ "existsChildren,customerName,phoneNumber from `Order` where userId='" + userID + "' and type='" + type.getString() + "'");
-			ResultSet resultSet = DatabaseCommunicator.execute(preparedStatement);
+			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
 			while (resultSet.next()) {
 				res.add(getPOfromSet(resultSet));
 			}
@@ -111,7 +111,7 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 			preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("select type,userId,generatedDate,"
 					+ "schFrom,schTo,actFrom,actTo,latestTime,cancelTime,hotelid,hotelAddress,orderID,hotelName,roomType,totalPrice,roomNum,numOfPeople,"
 					+ "existsChildren,customerName,phoneNumber from `Order` where hotelid='" + hotelID + "' and type='" + type.getString() + "'");
-			ResultSet resultSet = DatabaseCommunicator.execute(preparedStatement);
+			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
 			while (resultSet.next()) {
 				res.add(getPOfromSet(resultSet));
 			}
@@ -129,7 +129,7 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 			preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("select type,userId,generatedDate,"
 					+ "schFrom,schTo,actFrom,actTo,latestTime,cancelTime,hotelid,hotelAddress,orderID,hotelName,roomType,totalPrice,roomNum,numOfPeople,"
 					+ "existsChildren,customerName,phoneNumber from `Order` where type='" + OrderType.ABNORMAL.getString() + "'");
-			ResultSet resultSet = DatabaseCommunicator.execute(preparedStatement);
+			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
 			while (resultSet.next()) {
 				res.add(getPOfromSet(resultSet));
 			}
@@ -143,7 +143,7 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 	public ResultMessage add(OrderPO po) throws RemoteException {
 		try {
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("select * from `Order` where OrderID='" + po.orderID + "'");
-			ResultSet resultSet = DatabaseCommunicator.execute(preparedStatement);
+			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
 			if (!resultSet.next()) {
 				preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("insert into `Order`(type,userId,generatedDate,"
 								+ "schFrom,schTo,actFrom,actTo,latestTime,cancelTime,hotelAddress,hotelname,orderID,hotelID,roomType,totalPrice,roomNum,numOfPeople,"
