@@ -50,7 +50,7 @@ public class HotelTest {
 		Orderblservice orderController = OrderController.getInstance();
 		controller.setOrderblservice(orderController);
 
-		List<HotelVO> hotels  = null;
+		List<HotelVO> hotels = null;
 		try {
 			hotels = controller.findHotels(filter, null, false);
 			assertEquals(false, hotels.isEmpty());
