@@ -66,8 +66,8 @@ public class HotelTest {
 	public void testAddHotel() {
 		CityVO city = new CityVO("南京");
 		AreaVO area = new AreaVO("仙林中心");
-		HotelVO vo = new HotelVO(null, IDGenerator.generateNewHotelID(), "unknown", city, area, "niconiconi", 5, 5, "", "", null, null, null, null);
-		UserVO uvo = new UserVO("客户", "X", "Y", "1234567890", "first0xaa55", "12233345678", 21.21, new Date(19890604), "μ's", "", "unknown");
+		HotelVO vo = new HotelVO(null, "love love", IDGenerator.generateNewHotelID(), city, area, "niconiconi", 5, 5, "", "", null, null, null, null);
+		UserVO uvo = new UserVO("客户", "X", "Y", null, "first0xaa55", "12233345678", 21.21, new Date(19890604), "μ's", null, "unknown");
 		Userblservice userController = UserController.getInstance();
 		controller.setUserblservice(userController);
 

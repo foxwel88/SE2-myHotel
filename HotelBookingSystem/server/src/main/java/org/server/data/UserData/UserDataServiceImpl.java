@@ -101,8 +101,8 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
 			if (!resultSet.next()) {
 				preparedStatement = DatabaseCommunicator.getConnectionInstance()
-						.prepareStatement("INSERT INTO User(Type,UserName,Name,ID,"
-								+ "PassWord,PhoneNumber,Credit,Birthday,CompanyName,HotelAddress,HotelID)"
+						.prepareStatement("INSERT INTO User(Type,UserName,'Name',ID,"
+								+ "'PassWord',PhoneNumber,Credit,Birthday,CompanyName,HotelAddress,HotelID)"
 								+ " VALUES ('" + po.type.getString() + "','" + po.userName + "','" + po.name + "','" + po.ID + "','"
 								+ po.passWord + "','" + po.phoneNumber + "','" + po.credit + "','" + transTime(po.birthday) + "','"
 								+ po.companyName + "','" + po.hotelAddress + "','" + po.hotelID + "')");
