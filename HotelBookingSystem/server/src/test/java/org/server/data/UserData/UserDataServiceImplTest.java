@@ -18,7 +18,7 @@ import mySQL.DatabaseCommunicator;
 /**
  * UserDataServiceImpl的测试类
  * @author gyue
- * @version gyue 2016/12/5
+ * @version gyue 2016/12/6
  */
 public class UserDataServiceImplTest {
 	UserDataService dao;
