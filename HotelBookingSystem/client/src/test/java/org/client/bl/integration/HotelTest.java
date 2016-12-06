@@ -39,14 +39,7 @@ public class HotelTest {
 		RMIHelper.getinstance().buildConnection();
 		org.client.rmi.RMIHelper.getInstance().init();
 
-		DatabaseCommunicator.databaseInit();
-		try {
-			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("USE test ");
-			DatabaseCommunicator.execute(preparedStatement);
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		DatabaseCommunicator.setTestConnection();
 		controller = HotelController.getInstance();
 	}
 

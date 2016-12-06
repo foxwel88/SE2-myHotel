@@ -33,16 +33,9 @@ public class HotelDataServiceImplTest {
 
 	@Before
 	public void setUp() throws RemoteException {
-		DatabaseCommunicator.databaseInit();
+		DatabaseCommunicator.setTestConnection();
 		dao = DataFactory.getInstance().getHotelDataServiceImpl();
 
-		try {
-			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("USE test ");
-			DatabaseCommunicator.execute(preparedStatement);
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
 	}
 
 	@Test
