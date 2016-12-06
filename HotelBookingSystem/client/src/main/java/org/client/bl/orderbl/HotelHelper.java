@@ -11,12 +11,7 @@ import org.common.utility.RoomType;
  */
 public interface HotelHelper {
 	HotelVO getHotelVO(String hotelAddress);
-
-<<<<<<< HEAD
 	ResultMessage increaseAvailableRoom(RoomType type, String hotelID);
-=======
-	void increaseAvailableRoom(RoomType type, String hotelAddress);
->>>>>>> origin/master
 
 	ResultMessage decreaseAvailableRoom(RoomType type, String hotelID);
 }

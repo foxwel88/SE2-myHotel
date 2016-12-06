@@ -221,17 +221,6 @@ public class OrderUtil {
 		if (checkOutMessage != ResultMessage.SUCCESS) {
 			return checkOutMessage;
 		}
-<<<<<<< HEAD
-		
-=======
-		try {
-			myorder.actTo = timedao.getDate();
-			dao.modify(myorder.getOrderPO());
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			return ResultMessage.CONNECTION_FAIL;
-		}
->>>>>>> origin/master
 		hotelHelper.increaseAvailableRoom(myorder.roomType, myorder.hotelAddress);
 		return ResultMessage.SUCCESS;
 	}
