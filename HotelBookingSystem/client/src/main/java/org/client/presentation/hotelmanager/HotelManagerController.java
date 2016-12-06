@@ -3,6 +3,8 @@ package org.client.presentation.hotelmanager;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.client.bl.hotelbl.HotelController;
+import org.client.bl.orderbl.OrderController;
 import org.client.bl.promotionbl.PromotionController;
 import org.client.blservice.hotelblservice.Hotelblservice;
 import org.client.blservice.orderblservice.Orderblservice;
@@ -42,9 +44,9 @@ public class HotelManagerController {
 	
 	//stub version
 	private HotelManagerController(String hotelID, String managerName) {
-		hotelbl = new Hotel_stub();
-		promotionbl = new Promotion_stub();
-		orderbl = new Order_stub();
+		hotelbl = HotelController.getInstance();
+		promotionbl = PromotionController.getInstance();
+		orderbl = OrderController.getInstance();
 		this.hotelID = hotelID;
 		this.managerName = managerName;
 	}
@@ -54,10 +56,7 @@ public class HotelManagerController {
 		controller = new HotelManagerController(hotelID, managerName);
 	}
 	
-	public static HotelManagerController getInstance() throws NullPointerException {
-		if (controller == null) {
-			throw new NullPointerException();
-		}
+	public static HotelManagerController getInstance() {
 		return controller;
 	}
 	
@@ -88,11 +87,17 @@ public class HotelManagerController {
 	public ResultMessage modifyHotel(HotelVO vo) {
 		return hotelbl.modifyHotel(vo);
 	}
-	
-	public List<CityVO> getCitys() {
-		return hotelbl.getCitys();
+
+	/**把从logic层拿上来的vo换成string */
+	public List<String> getCitys() {
+		List<CityVO> voList = hotelbl.getCitys();
+		List<String> result = new ArrayList<>();
+		for (CityVO v: voList) {
+			result.add(v.cityName);
+		}
+		return result;
 	}
-	
+
 	/**把从logic层拿上来的vo换成string */
 	public List<String> getAreas(String cityName) {
 		List<AreaVO> voList = hotelbl.getAreas(new CityVO(cityName));

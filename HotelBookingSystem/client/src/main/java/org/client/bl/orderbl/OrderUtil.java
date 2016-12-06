@@ -305,6 +305,7 @@ public class OrderUtil {
 			// TODO Auto-generated catch block
 			return ResultMessage.CONNECTION_FAIL;
 		}
-		return hotelHelper.increaseAvailableRoom(myorder.roomType, myorder.hotelAddress);
+		hotelHelper.increaseAvailableRoom(myorder.roomType, myorder.hotelAddress);
+		return ResultMessage.SUCCESS;
 	}
 }

@@ -89,8 +89,8 @@ public class HotelDataServiceImplTest {
 		ResultMessage result = dao.modifyRooms("00001", newPOs);
 		assertEquals(ResultMessage.SUCCESS, result);
 
-		//result = dao.modifyRooms("00001", oldPOs);
-		//assertEquals(ResultMessage.SUCCESS, result);
+		result = dao.modifyRooms("00001", oldPOs);
+		assertEquals(ResultMessage.SUCCESS, result);
 	}
 
 	@Test
@@ -108,11 +108,10 @@ public class HotelDataServiceImplTest {
 		List<RoomPO> list = dao.getRooms("00001");
 		RoomType roomType = list.get(0).roomType;
 
-		ResultMessage resultMessageIncrease = dao.increaseAvailableRoom(roomType, "00001");
-		ResultMessage resultMessageDecrease = dao.decreaseAvailableRoom(roomType, "00001");
+		dao.increaseAvailableRoom(roomType, "00001");
+		ResultMessage resultMessage = dao.decreaseAvailableRoom(roomType, "00001");
 
-		assertEquals(ResultMessage.SUCCESS, resultMessageIncrease);
-		assertEquals(ResultMessage.SUCCESS, resultMessageDecrease);
+		assertEquals(ResultMessage.SUCCESS, resultMessage);
 	}
 
 	@Test

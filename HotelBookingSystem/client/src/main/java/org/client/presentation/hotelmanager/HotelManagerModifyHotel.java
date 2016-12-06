@@ -216,17 +216,12 @@ public class HotelManagerModifyHotel {
 		assert resultLabel != null : "fx:id=\"resultLabel\" was not injected: check your FXML file '维护酒店信息界面.fxml'.";
 		assert roomSaveButton != null : "fx:id=\"roomSaveButton\" was not injected: check your FXML file '维护酒店信息界面.fxml'.";
 
-		
 		vo = HotelManagerController.getInstance().getHotelInfo();
 		
 		//set values
 				
 		//city
-		List<CityVO> cityVOs = HotelManagerController.getInstance().getCitys();
-		ArrayList<String> cityList = new ArrayList<>();
-		for (CityVO v: cityVOs) {
-			cityList.add(v.cityName);
-		}
+		List<String> cityList = HotelManagerController.getInstance().getCitys();
 		ObservableList<String> citys = FXCollections.observableArrayList(cityList);
 		city.setItems(citys);
 		city.setValue(vo.city.cityName);
