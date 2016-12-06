@@ -100,6 +100,13 @@ public class Hotel {
 				sb.append(","); // 英文逗号
 			}
 			this.cooperators_po = sb.toString();
+		} else {
+			this.cooperators_po = "";
+		}
+
+		//新增酒店时，填补入住信息字段使其不为null
+		if (checkInInfos == null) {
+			checkInInfos = "";
 		}
 		
 		return new HotelPO(id, hotelName, address, city, area, introduction, rank, star, facility, checkInInfos, cooperators_po);

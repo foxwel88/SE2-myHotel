@@ -43,7 +43,8 @@ public class HotelList {
 		}
 		return this;
 	}
-	
+
+	/**获得当前hotel列表的VO列表 */
 	public List<HotelVO> getVOs() {
 		if (list != null) {
 			List<HotelVO> voList = new ArrayList<>();

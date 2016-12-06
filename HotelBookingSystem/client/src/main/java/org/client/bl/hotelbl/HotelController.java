@@ -69,11 +69,11 @@ public class HotelController implements Hotelblservice, HotelHelper {
 			userBl = UserController.getInstance(); // use true logic code
 		} 
 		ResultMessage userRe = userBl.add(userVO);
-		
-		ResultMessage hotelRe = util.addHotel(hotelVO);
 		if (userRe != ResultMessage.SUCCESS) {
 			return userRe;
 		}
+
+		ResultMessage hotelRe = util.addHotel(hotelVO);
 		if (hotelRe != ResultMessage.SUCCESS) {
 			return hotelRe;
 		}
