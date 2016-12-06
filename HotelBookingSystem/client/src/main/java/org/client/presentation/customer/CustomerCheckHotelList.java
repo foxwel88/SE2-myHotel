@@ -206,16 +206,16 @@ public class CustomerCheckHotelList {
 	 */
 	@FXML
 	void checkDetailedHotel(MouseEvent event) {
-		String hotelAddress;
+		String hotelID;
 		int page = Integer.parseInt(currentPage.getText());
 		try {
 			for (int i = 0; i < MAX_HOTEL_ONE_OAGE; i++) {
 				Label clickedLabel = (Label)(event.getSource());
 				if (clickedLabel.equals(getNameLabel(i))) {
-					hotelAddress = hotelList.get((page - 1) * MAX_HOTEL_ONE_OAGE + i).address;
+					hotelID = hotelList.get((page - 1) * MAX_HOTEL_ONE_OAGE + i).id;
 					SwitchSceneUtil.currentScene = CustomerBackableScene.HOTEL_INFO_SCENE;
 					SwitchSceneUtil.previousHotelSceneInfo = new PreviousHotelSceneInfo(getCurrentFilter(), everOrdered.isSelected(), Integer.parseInt(currentPage.getText()));
-					SwitchSceneUtil.turnToDetailedHotelScene((GridPane)root.getParent(), hotelAddress);
+					SwitchSceneUtil.turnToDetailedHotelScene((GridPane)root.getParent(), hotelID);
 					break;
 				}
 			}
@@ -229,17 +229,17 @@ public class CustomerCheckHotelList {
 	 */
 	@FXML
 	void turnToGenerateOrderScene(MouseEvent event) {
-		String hotelAddress;
+		String hotelID;
 		int page = Integer.parseInt(currentPage.getText());
 		for (int i = 0; i < MAX_HOTEL_ONE_OAGE; i++) {
 			Label clickedLabel = (Label)(event.getSource());
 			if (clickedLabel.equals(getMakeOrderLabel(i))) {
 				if (clickedLabel.getText() != null) {
-					hotelAddress = hotelList.get((page - 1) * MAX_HOTEL_ONE_OAGE + i).address;
+					hotelID = hotelList.get((page - 1) * MAX_HOTEL_ONE_OAGE + i).id;
 					SwitchSceneUtil.previousHotelSceneInfo = new PreviousHotelSceneInfo(getCurrentFilter(), everOrdered.isSelected(), Integer.parseInt(currentPage.getText()));
 					SwitchSceneUtil.isBackToDetail = false;
 					SwitchSceneUtil.currentScene = CustomerBackableScene.GENERATE_ORDER_SCENE;
-					SwitchSceneUtil.turnToGenerateOrderScene((GridPane)root.getParent(), hotelAddress);
+					SwitchSceneUtil.turnToGenerateOrderScene((GridPane)root.getParent(), hotelID);
 					break;
 				}
 			}
@@ -448,7 +448,7 @@ public class CustomerCheckHotelList {
 	/********************************************************/
 	
 	/**
-	 * 下面六种方法分别用来获得某个酒店的酒店名称、星级、评分、酒店地址、最低价格、剩余房间数量
+	 * 下面6种方法分别用来获得某个酒店的酒店名称、星级、评分、酒店地址、最低价格、剩余房间数量
 	 * @param i 范围是 0 到 MAX_HOTEL_ONE_OAGE - 1
 	 */
 	private String getName(int i) {

@@ -131,6 +131,6 @@ public class CustomerGenerateOrder {
 	
 	@FXML
 	void cancel() {
-		SwitchSceneUtil.turnToDetailedHotelScene((GridPane)root.getParent(), SwitchSceneUtil.hotelAddress);
+		SwitchSceneUtil.turnToDetailedHotelScene((GridPane)root.getParent(), SwitchSceneUtil.hotelID);
 	}
 }

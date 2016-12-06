@@ -12,7 +12,9 @@ import java.util.List;
 public class DatabaseCommunicator {
 	private static final String driver = "com.mysql.jdbc.Driver";
 	
-	private static final String url = "jdbc:MySQL://localhost/HotelBookingSystemDataBase?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false";
+	private static final String URL = "jdbc:MySQL://localhost/HotelBookingSystemDataBase?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false";
+
+	private static final String TEST_DATABASE_URL = "jdbc:MySQL://localhost/HotelBookingSystemForTest?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false";
 
 	private static final String USERNAME = "root";
 
@@ -23,7 +25,20 @@ public class DatabaseCommunicator {
 	public static void databaseInit() {
 		try {
 			Class.forName(driver);
-			connection = DriverManager.getConnection(url, USERNAME, PASSWORD);
+			connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+		} catch (Exception ex) {
+			// ? I don't know and don't care and don't have to care how to deal relative Exception......
+			ex.printStackTrace();
+		}
+	}
+	
+	/**
+	 * 切换至测试用的connection，在测试类启动时可以调用此方法
+	 */
+	public static void setTestConnection() {
+		try {
+			Class.forName(driver);
+			connection = DriverManager.getConnection(TEST_DATABASE_URL, USERNAME, PASSWORD);
 		} catch (Exception ex) {
 			// ? I don't know and don't care and don't have to care how to deal relative Exception......
 			ex.printStackTrace();

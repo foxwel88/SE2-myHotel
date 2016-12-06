@@ -15,7 +15,7 @@
    <children>
       <ImageView fitHeight="568.0" fitWidth="450.0" preserveRatio="true">
          <image>
-            <Image url="@1.jpg" />
+            <Image url="@/1.jpg" />
          </image>
       </ImageView>
       <AnchorPane prefHeight="550.0" prefWidth="450.0" style="-fx-background-color: rgba(0,0,0,0.5);">

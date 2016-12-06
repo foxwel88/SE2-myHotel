@@ -13,7 +13,7 @@ import org.common.utility.ResultMessage;
 /**
  * 实现了修改促销策略的逻辑
  * @author fraliphsoft
- * @version fraliphsoft 11/27
+ * @version fraliphsoft 12/5
  */
 public class Promotion {
 	String promotionID;
@@ -87,40 +87,25 @@ public class Promotion {
 	}
 	
 	ResultMessage modify (PromotionVO vo) {
-		if (PromotionUtil.checkPromotionFormat(vo, false)) {
-			RMIHelper rmihelper = RMIHelper.getInstance();
-			
-			PromotionDataService promotionDataService = rmihelper.getPromotionDataServiceImpl();
-			
-			promotionID = vo.promotionID;
-			
-			type = vo.type;
-			
-			startTime = vo.startTime;
-			
-			endTime = vo.endTime;
-			
-			hotelName = vo.hotelName;
-			
-			level = vo.level;
-			
-			area = vo.area;
-			
-			discount = vo.discount;
-			
-			name = vo.name;
-			
-			PromotionPO po = new PromotionPO(promotionID, PromotionType.getType(type), startTime, endTime, hotelName, hotelID, level, area, discount, name);
-			
-			try {
-				promotionDataService.modify(po);
-				
-				return ResultMessage.SUCCESS;
-			} catch (RemoteException rex) {
-				return ResultMessage.CONNECTION_FAIL;
-			}
-		} else {
-			return ResultMessage.WRONG_FORMAT;
+		RMIHelper rmihelper = RMIHelper.getInstance();
+		PromotionDataService promotionDataService = rmihelper.getPromotionDataServiceImpl();
+		
+		promotionID = vo.promotionID;
+		type = vo.type;
+		startTime = vo.startTime;
+		endTime = vo.endTime;
+		hotelName = vo.hotelName;
+		level = vo.level;
+		area = vo.area;
+		discount = vo.discount;
+		name = vo.name;
+		
+		PromotionPO po = new PromotionPO(promotionID, PromotionType.getType(type), startTime, endTime, hotelName, hotelID, level, area, discount, name);
+		try {
+			promotionDataService.modify(po);
+			return ResultMessage.SUCCESS;
+		} catch (RemoteException rex) {
+			return ResultMessage.CONNECTION_FAIL;
 		}
 	}
 }

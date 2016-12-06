@@ -4,17 +4,17 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.client.bl.userbl.UserController;
 import org.client.rmi.RMIHelper;
 import org.client.vo.PromotionVO;
 import org.common.dataservice.PromotionDataService.PromotionDataService;
 import org.common.po.PromotionPO;
-import org.common.utility.PromotionType;
 import org.common.utility.ResultMessage;
 
 /**
  * Promotion模块的工具类，实现了大部分逻辑
  * @author fraliphsoft
- * @version fraliphsoft 11/27
+ * @version fraliphsoft 12/5
  */
 public class PromotionUtil {
 	
@@ -31,11 +31,7 @@ public class PromotionUtil {
 		}
 		
 		try {
-			if (checkPromotionFormat(vo, true)) {
-				return promotionDataService.add(new Promotion(vo).toPO());
-			} else {
-				return ResultMessage.WRONG_FORMAT;
-			}
+			return promotionDataService.add(new Promotion(vo).toPO());
 		} catch (RemoteException rex) {
 			return ResultMessage.CONNECTION_FAIL;
 		}
@@ -131,47 +127,48 @@ public class PromotionUtil {
 		return (rawPrice * discount) / 100;
 	}
 	
-	/**
-	 * 添加新的促销策略或者修改已有促销策略时，以下情况返回格式错误的ResultMessage：
-	 * 		Promotion类型不存在
-	 * 		Promotion的开始时间早于服务器系统时间	//TODO
-	 * 		Promotion结束时间早于开始时间
-	 * 		添加时已有同名Promotion存在或者修改时无此Promotion存在		//TODO
-	 * 		折扣范围小于等于0或者大于等于10
-	 * 		商圈不存在	//TODO
-	 * 		最低适用等级不在Level规定的范围内	//TODO
-	 */
-	static boolean checkPromotionFormat(PromotionVO vo, boolean isNew) {
-		boolean isOK = true;
-		if (PromotionType.getType(vo.type) == null) {
-			isOK = false;
-		}
-//		if (promotion的结束时间早于服务器系统时间) {
+	// TODO 放到界面层检查
+//	/**
+//	 * 添加新的促销策略或者修改已有促销策略时，以下情况返回格式错误的ResultMessage：
+//	 * 		Promotion类型不存在
+//	 * 		Promotion的开始时间早于服务器系统时间
+//	 * 		Promotion结束时间早于开始时间
+//	 * 		添加时已有同名Promotion存在或者修改时无此Promotion存在
+//	 * 		折扣范围小于等于0或者大于等于10
+//	 * 		商圈不存在
+//	 * 		最低适用等级不在Level规定的范围内
+//	 */
+//	static boolean checkPromotionFormat(PromotionVO vo, boolean isNew) {
+//		boolean isOK = true;
+//		if (PromotionType.getType(vo.type) == null) {
 //			isOK = false;
 //		}
-		if (!vo.startTime.before(vo.endTime)) {
-			isOK = false;
-		}
-//		if (isNew) {
-//			if (同名) {
-//				isOK = false;
-//			}
-//		} else {
-//			if(不同名) {
-//				isOK = false;
-//			}
-//		}
-		if (vo.discount <= 0 || vo.discount >= 10) {
-			isOK = false;
-		}
-//		if (商圈不存在) {
+////		if (promotion的结束时间早于服务器系统时间) {
+////			isOK = false;
+////		}
+//		if (!vo.startTime.before(vo.endTime)) {
 //			isOK = false;
 //		}
-//		if (等级范围) {
+////		if (isNew) {
+////			if (同名) {
+////				isOK = false;
+////			}
+////		} else {
+////			if(不同名) {
+////				isOK = false;
+////			}
+////		}
+//		if (vo.discount <= 0 || vo.discount >= 10) {
 //			isOK = false;
 //		}
-		return isOK;
-	}
+////		if (商圈不存在) {
+////			isOK = false;
+////		}
+////		if (等级范围) {
+////			isOK = false;
+////		}
+//		return isOK;
+//	}
 	
 	private static List<Promotion> getCanBeUsedHotelPromotion(String hotelID, String userID) {
 		List<Promotion> hotelPromotionList = showHotelPromotion(hotelID);
@@ -199,10 +196,31 @@ public class PromotionUtil {
 		return canBeUsedWebsitePromotion;
 	}
 	
+	/**
+	 * 检查某个酒店的促销策略或者网站促销策略是否适用于某人
+	 * @param promotion
+	 * @param hotelID
+	 * @param userID
+	 * @return
+	 */
 	private static boolean checkCanBeUse(Promotion promotion, String hotelID, String userID) {
-		boolean isOK = true;
-		// TODO
-		return isOK;
+		UserController userController = UserController.getInstance();
+		PromotionController promotionController = PromotionController.getInstance();
+		int userLevel = promotionController.calLevel(userController.findbyID(userID).credit);	// 计算客户的等级
+		try {
+			if (promotion.startTime.after(RMIHelper.getInstance().getTimeServiceImpl().getDate())) {
+				return false;
+			}
+			if (promotion.endTime.before(RMIHelper.getInstance().getTimeServiceImpl().getDate())) {
+				return false;
+			}
+		} catch (RemoteException remoteException) {
+			remoteException.printStackTrace();
+		}
+		if (promotion.level > userLevel) {
+			return false;
+		}
+		return true;
 	}
 	
 }

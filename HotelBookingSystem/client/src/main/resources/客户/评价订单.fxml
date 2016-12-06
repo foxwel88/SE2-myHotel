@@ -94,5 +94,15 @@
             <Font name="Microsoft YaHei" size="18.0" />
          </font>
       </Button>
+      <Label fx:id="commentTip" layoutX="58.0" layoutY="504.0" prefHeight="20.0" prefWidth="165.0" textFill="RED">
+         <font>
+            <Font name="Microsoft YaHei" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="scoreTip" layoutX="256.0" layoutY="504.0" prefHeight="20.0" prefWidth="165.0" textFill="RED">
+         <font>
+            <Font name="Microsoft YaHei" size="15.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

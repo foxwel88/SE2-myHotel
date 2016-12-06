@@ -5,11 +5,10 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.client.bl.hotelbl.HotelController;
+import org.client.bl.orderbl.OrderController;
 import org.client.bl.promotionbl.PromotionController;
 import org.client.bl.userbl.UserController;
-import org.client.blstub.Hotel_stub;
-import org.client.blstub.Order_stub;
-import org.client.blstub.User_stub;
 import org.client.launcher.Resources;
 import org.client.vo.AreaVO;
 import org.client.vo.CityVO;
@@ -34,6 +33,10 @@ public class SwitchSceneUtil {
 	
 	static UserController userController;
 	
+	static OrderController orderController;
+	
+	static HotelController hotelController;
+	
 	static PromotionController promotionController;
 	
 	// 记录当前登录客户的客户ID
@@ -42,8 +45,8 @@ public class SwitchSceneUtil {
 	// 记录客户最近一次浏览（可能正在浏览）的详细订单的订单号
 	static String orderID;
 	
-	// 记录客户最近一次浏览（可能正在浏览）的酒店的地址
-	static String hotelAddress;
+	// 记录客户最近一次浏览（可能正在浏览）的酒店的ID
+	static String hotelID;
 	
 	// 临时保存即将生成的订单的vo，用于把订单信息从生成订单界面传递到确认订单界面
 	static OrderVO toBeGeneratedOrder;
@@ -81,74 +84,57 @@ public class SwitchSceneUtil {
 	public static void init(Stage stage, String userID) {
 		userController = UserController.getInstance();
 		promotionController = PromotionController.getInstance();
+		orderController = OrderController.getInstance();
+		hotelController = HotelController.getInstance();
 		setStage(stage);
 		setUser(userID);
 	}
 	
-	// TODO 现在用的还是User_Stub
 	public static UserVO getUserVO() {
-		User_stub stub = new User_stub();
-		return stub.findbyID(userID);
+		// TODO ...还是假的
 //		return userController.findbyID(userID);
+		return userController.findbyID("1234567890");
 	}
 	
-	// TODO 现在用的还是Order_Stub
 	public static List<OrderVO> getFinishedOrderList() {
-		Order_stub stub = new Order_stub();
-		return stub.getUserOrderList(userID, OrderType.EXECUTED);
+		return orderController.getUserOrderList(userID, OrderType.EXECUTED);
 	}
 	
-	// TODO 现在用的还是Order_Stub
 	public static List<OrderVO> getCanceledOrderList() {
-		Order_stub stub = new Order_stub();
-		return stub.getUserOrderList(userID, OrderType.CANCELED);
+		return orderController.getUserOrderList(userID, OrderType.CANCELED);
 	}
 	
-	// TODO 现在用的还是Order_Stub
 	public static List<OrderVO> getAbnormalOrderList() {
-		Order_stub stub = new Order_stub();
-		return stub.getUserOrderList(userID, OrderType.ABNORMAL);
+		return orderController.getUserOrderList(userID, OrderType.ABNORMAL);
 	}
 	
-	// TODO 现在用的还是Order_Stub
 	public static List<OrderVO> getUnExcutedOrderList() {
-		Order_stub stub = new Order_stub();
-		return stub.getUserOrderList(userID, OrderType.UNEXECUTED);
+		return orderController.getUserOrderList(userID, OrderType.UNEXECUTED);
 	}
 	
-	// TODO 现在用的还是Order_stub
 	public static OrderVO getCurrentOrder() {
-		Order_stub stub = new Order_stub();
-		return stub.getOrder(orderID);
+		return orderController.getOrder(orderID);
 	}
 	
-	// TODO 现在用的还是Hotel_stub
 	public static ArrayList<HotelVO> getFilteredHotels(HotelFilter filter, boolean historyOnly) {
-		Hotel_stub stub = new Hotel_stub();
-		return stub.findHotels(filter, userID, historyOnly);
+		return (ArrayList<HotelVO>)hotelController.findHotels(filter, userID, historyOnly);
 	}
 	
-	// TODO 现在用的还是Hotel_stub
 	public static ArrayList<CityVO> getCities() {
-		Hotel_stub stub = new Hotel_stub();
-		return new ArrayList<>(stub.getCitys());
+		return new ArrayList<>(hotelController.getCitys());
 	}
 	
-	// TODO 现在用的还是Hotel_stub
 	public static ArrayList<AreaVO> getAreas() {
-		Hotel_stub stub = new Hotel_stub();
 		ArrayList<AreaVO> allAreas = new ArrayList<>();
 		ArrayList<CityVO> allCities = getCities();
 		for (CityVO vo : allCities) {
-			allAreas.addAll(stub.getAreas(vo));
+			allAreas.addAll(hotelController.getAreas(vo));
 		}
 		return allAreas;
 	}
 	
-	// TODO 现在用的还是Hotel_stub
 	public static HotelVO getHotelVO() {
-		Hotel_stub stub = new Hotel_stub();
-		return stub.getHotel(hotelAddress);
+		return hotelController.getHotelVO(hotelID);
 	}
 	
 	/**
@@ -216,22 +202,22 @@ public class SwitchSceneUtil {
 	/**
 	 * 此方法用于跳转到详细酒店信息界面
 	 * @param gridpane
-	 * @param hotelAddress 期望观看酒店的地址
+	 * @param hotelID 期望观看酒店的ID
 	 */
-	public static void turnToDetailedHotelScene(GridPane gridpane, String hotelAddress) {
+	public static void turnToDetailedHotelScene(GridPane gridpane, String hotelID) {
 		Resources resources = Resources.getInstance();
-		SwitchSceneUtil.hotelAddress = hotelAddress;
+		SwitchSceneUtil.hotelID = hotelID;
 		turnToAnotherScene(gridpane, resources.customerCheckHotel);
 	}
 	
 	/**
 	 * 此方法用于跳转到生成订单界面
 	 * @param gridpane
-	 * @param hotelAddress 期望观看酒店的地址
+	 * @param hotelID 期望观看酒店的ID
 	 */
-	public static void turnToGenerateOrderScene(GridPane gridpane, String hotelAddress) {
+	public static void turnToGenerateOrderScene(GridPane gridpane, String hotelID) {
 		Resources resources = Resources.getInstance();
-		SwitchSceneUtil.hotelAddress = hotelAddress;
+		SwitchSceneUtil.hotelID = hotelID;
 		turnToAnotherScene(gridpane, resources.customerGenerateOrder);
 	}
 	

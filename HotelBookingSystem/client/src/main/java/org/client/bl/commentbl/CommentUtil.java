@@ -45,23 +45,10 @@ public class CommentUtil {
 		CommentDataService commentDataService = rmiHelper.getCommentDataServiceImpl();
 		
 		try {
-			if (checkFormat(vo)) {
-				CommentPO po = new CommentPO(vo.userName, vo.hotelAdrress, vo.date, vo.rank, vo.comment);
-				
-				return commentDataService.insert(po);
-			} else {
-				return ResultMessage.WRONG_FORMAT;
-			}
+			CommentPO po = new CommentPO(vo.userName, vo.hotelAdrress, vo.date, vo.rank, vo.comment);
+			return commentDataService.insert(po);
 		} catch (RemoteException rex) {
 			return ResultMessage.CONNECTION_FAIL;
-		}
-	}
-	
-	private static boolean checkFormat(CommentVO vo) {
-		if (vo.comment.length() >= 15) {
-			return true;
-		} else {
-			return false;
 		}
 	}
 }

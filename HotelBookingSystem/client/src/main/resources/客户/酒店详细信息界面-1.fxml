@@ -34,7 +34,7 @@
                      <graphic>
                         <ImageView fx:id="picture" fitHeight="142.0" fitWidth="200.0">
                            <image>
-                              <Image url="@pic.jpg" />
+                              <Image url="@/客户/pic.jpg" />
                            </image>
                         </ImageView>
                      </graphic>
