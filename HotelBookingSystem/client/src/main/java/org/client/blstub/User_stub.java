@@ -129,10 +129,4 @@ public class User_stub implements Userblservice {
 		return levelvo;
 	}
 
-	@Override
-	public String getNewID() {
-		// TODO Auto-generated method stub
-		return "0000012314";
-	}
-
 }

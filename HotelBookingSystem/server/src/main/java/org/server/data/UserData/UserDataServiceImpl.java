@@ -93,6 +93,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 
 	public ResultMessage add(UserPO po) throws RemoteException {
 		try {
+			po.ID = getNewID();
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance()
 					.prepareStatement("SELECT * FROM User WHERE userName='" + po.userName + "'");
 			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
@@ -224,7 +225,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 		return res;
 	}
 
-	public String getNewID() throws RemoteException {
+	private String getNewID() throws RemoteException {
 		boolean canContinue = true;
 		String id = generateIdRandom();
 		while (canContinue) {
@@ -255,6 +256,24 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 			res += (int)Math.random() * 10;
 		}
 		return res;
+	}
+
+	@Override
+	public ResultMessage deleteUser(String userName) throws RemoteException {
+		UserPO po = findbyUserName(userName);
+		if (po == null) {
+			return ResultMessage.NOT_EXIST;
+		}
+		PreparedStatement preparedStatement;
+		try {
+			preparedStatement = DatabaseCommunicator.getConnectionInstance()
+					.prepareStatement("delete * from User where ID='" + userName + "'");
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return ResultMessage.CONNECTION_FAIL;
+		}
+		ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
+		return null;
 	}
 
 }

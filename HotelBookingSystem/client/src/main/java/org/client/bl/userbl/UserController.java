@@ -101,12 +101,5 @@ public class UserController implements Userblservice {
 	public UserLevelVO getLevel(String userName) {
 		return UserUtil.getInstance().getLevel(userName);
 	}
-
-	/**
-	 * 为新的用户获取一个ID
-	 */
-	public String getNewID() {
-		return UserUtil.getInstance().getNewID();
-	}
 	
 }

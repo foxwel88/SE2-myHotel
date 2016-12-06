@@ -29,6 +29,4 @@ public interface Userblservice {
 	
 	public UserLevelVO getLevel(String ID);
 	
-	public String getNewID();
-	
 }

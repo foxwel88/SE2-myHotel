@@ -136,11 +136,4 @@ public class UserDataServiceImplTest {
 		assertEquals(list.size(), 0);
 	}
 	
-	@Test
-	public void testGetNewID() throws RemoteException {
-		String id = dao.getNewID();
-		UserPO po = dao.findbyID(id);
-		assertEquals(po == null, true);
-		assertEquals(10, id.length());
-	}
 }
