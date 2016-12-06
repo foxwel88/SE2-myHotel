@@ -16,6 +16,7 @@ import org.common.utility.RoomType;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.server.id.IDGenerator;
 import org.server.rmi.RMIHelper;
 
 import java.sql.PreparedStatement;
@@ -58,7 +59,6 @@ public class HotelTest {
 			e.printStackTrace();
 		}
 
-		//assert
 		assertEquals(false, hotels.isEmpty());
 	}
 
@@ -66,33 +66,18 @@ public class HotelTest {
 	public void testAddHotel() {
 		CityVO city = new CityVO("南京");
 		AreaVO area = new AreaVO("仙林中心");
-		HotelVO vo = new HotelVO(null,"lovelive", "unknown", city, area, "niconiconi", 5, 5, "", "", null, null, null, null);
+		HotelVO vo = new HotelVO(null, IDGenerator.generateNewHotelID(), "unknown", city, area, "niconiconi", 5, 5, "", "", null, null, null, null);
 		UserVO uvo = new UserVO("客户", "X", "Y", "1234567890", "first0xaa55", "12233345678", 21.21, new Date(19890604), "μ's", "", "unknown");
 		Userblservice userController = UserController.getInstance();
 		controller.setUserblservice(userController);
 
-		//verify
 		ResultMessage result = controller.addHotel(vo, uvo);
-
-		//assert
 		assertEquals(ResultMessage.SUCCESS, result);
-	}
 
-	@Test
-	public void testAddHotel2() {
-		CityVO city = new CityVO("南京");
-		AreaVO area = new AreaVO("仙林中心");
-		HotelVO vo = new HotelVO(null,"blabla", "unknown", city, area, "niconiconi", 5, 5, "", "", null, null, null, null);
-		UserVO uvo = new UserVO("客户", "X", "Y", "1234567890", "first0xaa55", "12233345678", 21.21, new Date(19890604), "μ's", null, "unknown");
-		Userblservice userController = UserController.getInstance();
-		controller.setUserblservice(userController);
-
-		//verify
-		ResultMessage result = controller.addHotel(vo, uvo);
-
-		//assert
+		result = controller.addHotel(vo, uvo);
 		assertEquals(ResultMessage.EXIST, result);
 	}
+
 
 	@Test
 	public void testChangeRoom() {
@@ -103,7 +88,6 @@ public class HotelTest {
 
 	@Test
 	public void testGetVO() {
-		//verify and assert
 		HotelVO vo = controller.getHotelVO("00001");
 		assertEquals(false, vo.city.cityName.isEmpty());
 	}

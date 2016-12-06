@@ -14,6 +14,7 @@ import org.common.po.*;
 import org.common.utility.HotelFilter;
 import org.common.utility.ResultMessage;
 import org.common.utility.RoomType;
+import org.server.id.IDGenerator;
 
 public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDataService {
 
@@ -21,8 +22,6 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 	 * 
 	 */
 	private static final long serialVersionUID = 4005413439043494852L;
-
-	private static final int MAX_HOTELID_Length = 5;
 
 	public HotelDataServiceImpl() throws RemoteException {
 		System.out.println("hotel start");
@@ -32,33 +31,13 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 		// TODO Auto-generated method stub
 	}
 
-	String generateNewHotelID() {
-		try {
-			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("SELECT count(*) FROM Hotel ");
-			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
-			int count = 0;
-			if (resultSet.next()) {
-				count = resultSet.getInt(1);
-			}
-			count += 1;
-			String value = String.valueOf(count);
-			for (int i = value.length(); i < MAX_HOTELID_Length; i++) {
-				value = "0" + value;
-			}
-			return value;
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-
 	public ResultMessage addHotelInfo(HotelPO po) throws RemoteException {
 
 		//获取新ID
-		po.id = generateNewHotelID();
+		po.id = IDGenerator.generateNewHotelID();
 
 		try {
-			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("SELECT * FROM Hotel WHERE HotelID='" + po.id + "'");
+			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("SELECT * FROM Hotel WHERE address='" + po.address + "'");
 			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
 			if (!resultSet.next()) {
 
