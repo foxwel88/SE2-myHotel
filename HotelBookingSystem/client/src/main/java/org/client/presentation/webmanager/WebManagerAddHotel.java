@@ -90,9 +90,7 @@ public class WebManagerAddHotel {
 	UserVO addUser() {
 		if (passwordField.getText().equals(passwordField2.getText())) {
 			UserVO newvo = new UserVO(UserType.HOTELMANAGER.getString(), userNameTextField.getText(), nameTextField.getText(), 
-					WebManagerController.getInstance().getNewID(), passwordField.getText(), 
-					phoneTextField.getText(), 0, null, null, null, hotelAddressTextField.getText());
-			
+					null, passwordField.getText(), phoneTextField.getText(), 0, null, null, null, hotelAddressTextField.getText());
 			return newvo;
 		} else {
 			return null;

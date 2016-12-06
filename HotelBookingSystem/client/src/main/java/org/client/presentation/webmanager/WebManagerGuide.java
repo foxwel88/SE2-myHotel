@@ -25,7 +25,6 @@ import javafx.scene.layout.Pane;
 
 public class WebManagerGuide {
 	
-	private Parent nowPane;
 	
 	@FXML
     private Label welcomeLabel;
@@ -205,7 +204,6 @@ public class WebManagerGuide {
 		mainPane.getChildren().set(1, pane);
 		GridPane.setConstraints(pane, 1, 0);
 		*/
-		nowPane = pane;
 		ChangePane.getInstance().turn(pane);
 	}
 
@@ -215,7 +213,6 @@ public class WebManagerGuide {
 		try {
 			AnchorPane mypane = FXMLLoader.load(getClass().getResource("/网站管理人员/网站管理人员主界面.fxml"));
 			mainPane.add(mypane, 1, 0);
-			nowPane = (Parent) mypane;
 			CurrentItem.setInstance(toHomeLabel, toHomePane, GuideLabelType.HOME);
 		} catch (IOException e) {
 			e.printStackTrace();

@@ -33,9 +33,9 @@ public class OrderUtil {
 	
 	private static OrderUtil util;
 	
-	private OrderDataService dao;
+	protected OrderDataService dao;
 	
-	private TimeService timedao;
+	protected TimeService timedao;
 	
 	protected Userblservice userController;
 	
@@ -62,17 +62,6 @@ public class OrderUtil {
 	
 	public void setHotelHelper(HotelHelper hotelHelper) {
 		this.hotelHelper = hotelHelper;
-	}
-	
-	private String getOrderID(String userID) {
-		SimpleDateFormat timeFormat = new SimpleDateFormat("yyyyMMddHHmmss");
-		try {
-			return userID + timeFormat.format(timedao.getDate());
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
 	}
 	
 	private boolean check(OrderVO vo) {
@@ -119,19 +108,6 @@ public class OrderUtil {
 		HotelVO hotelvo = hotelHelper.getHotelVO(vo.hotelAddress);
 		
 		if (hotelvo.roomType != null) {
-			/*
-			for (int i = 0; i < roomtype.size(); ++i) {
-				if (roomtype.get(i) == vo.roomType) {
-					if (roomnum.get(i) < vo.roomNum) {
-						return ResultMessage.ROOM_NOT_ENOUGH;
-					} else {
-						hotelHelper.changeRoomNum(RoomType.getType(vo.roomType), roomnum.get(i) - vo.roomNum, vo.hotelAddress);
-					}
-					break;
-					
-				}
-			}
-			*/
 			ResultMessage message = hotelHelper.decreaseAvailableRoom(RoomType.getType(vo.roomType), vo.hotelAddress);
 			if (message != ResultMessage.SUCCESS) {
 				return message;
@@ -141,22 +117,7 @@ public class OrderUtil {
 		}
 		
 		myorder.setOrder(vo);
-		try {
-			myorder.generatedDate = timedao.getDate();
-		} catch (RemoteException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-			return ResultMessage.CONNECTION_FAIL;
-		}
-		myorder.orderID = getOrderID(myorder.userID);
-		
-		OrderPO po = myorder.getOrderPO();
-		try {
-			return dao.add(po);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-			return ResultMessage.CONNECTION_FAIL;
-		}
+		return myorder.create();
 	}
 	
 	public OrderVO getOrder (String orderID) {
@@ -231,34 +192,12 @@ public class OrderUtil {
 		OrderPO orderpo = null;
 		try {
 			orderpo = dao.getOrderPO(orderID);
-			myorder.setOrder(orderpo);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			return ResultMessage.CONNECTION_FAIL;
 		}
-		
-		if (myorder.type != OrderType.UNEXECUTED) {
-			return ResultMessage.NOT_EXIST;
-		}
-		
-		myorder.type = OrderType.CANCELED;
-		try {
-			myorder.cancelTime = timedao.getDate();
-		} catch (RemoteException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		
-		orderpo = myorder.getOrderPO();
-		try {
-			dao.modify(orderpo);
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return ResultMessage.CONNECTION_FAIL;
-		}
-		
-		return ResultMessage.SUCCESS;
+		myorder.setOrder(orderpo);
+		return myorder.cancel();
 	}
 	
 	public ResultMessage executeOrder (String orderID) {
@@ -268,9 +207,7 @@ public class OrderUtil {
 		}
 		
 		Order myorder = new Order();
-		
 		OrderPO orderpo = null;
-		
 		try {
 			orderpo = dao.getOrderPO(orderID);
 		} catch (RemoteException e) {
@@ -279,40 +216,21 @@ public class OrderUtil {
 		}
 		
 		myorder.setOrder(orderpo);
-		
-		if ((myorder.type != OrderType.UNEXECUTED) && (myorder.type != OrderType.ABNORMAL)) {
-			return ResultMessage.NOT_EXIST;
-		}
-		
-		myorder.type = OrderType.EXECUTED;
-		try {
-			myorder.actFrom = timedao.getDate();
-		} catch (RemoteException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-			return ResultMessage.CONNECTION_FAIL;
-		}
-		
-		orderpo = myorder.getOrderPO();
-		try {
-			dao.modify(orderpo);
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return ResultMessage.CONNECTION_FAIL;
+		ResultMessage excuteMessage = myorder.execute();
+		if (excuteMessage != ResultMessage.SUCCESS) {
+			return excuteMessage;
 		}
 
 		UserVO uservo = userController.findbyID(myorder.userID);
 		CreditRecordVO creditrecordvo = null;
 		try {
-			creditrecordvo = new CreditRecordVO(timedao.getDate(), myorder.orderID, uservo.ID, myorder.totalPrice, uservo.credit + (myorder.totalPrice), CreditOperation.FINISHORDER.toString());
+			creditrecordvo = new CreditRecordVO(timedao.getDate(), myorder.orderID, myorder.userID, myorder.totalPrice, uservo.credit + (myorder.totalPrice), CreditOperation.FINISHORDER.toString());
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return ResultMessage.CONNECTION_FAIL;
 		}
-		userController.addCreditRecord(creditrecordvo);
-
-		return ResultMessage.SUCCESS;
+		return userController.addCreditRecord(creditrecordvo);
 	}
 	
 	public ResultMessage cancelAbnormalOrder (String orderID,Boolean isHalf) {
@@ -331,23 +249,11 @@ public class OrderUtil {
 		}
 		
 		myorder.setOrder(orderpo);
-		
-		if (myorder.type != OrderType.ABNORMAL) {
-			return ResultMessage.NOT_EXIST;
+		ResultMessage cancelMessage = myorder.cancelAbnormal();
+		if (cancelMessage != ResultMessage.SUCCESS) {
+			return cancelMessage;
 		}
 		
-		myorder.type = OrderType.UNEXECUTED;
-		
-		orderpo = myorder.getOrderPO();
-		try {
-			dao.modify(orderpo);
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return ResultMessage.CONNECTION_FAIL;
-		}
-		
-
 		UserVO uservo = userController.findbyID(myorder.userID);
 		
 		double temp = myorder.totalPrice / 2.0;
@@ -363,9 +269,8 @@ public class OrderUtil {
 			e.printStackTrace();
 			return ResultMessage.CONNECTION_FAIL;
 		}
-		userController.addCreditRecord(creditrecordvo);
 
-		return ResultMessage.SUCCESS;
+		return userController.addCreditRecord(creditrecordvo);
 	}
 
 	public List<String> getHistoryHotels(String userId) {
@@ -390,19 +295,16 @@ public class OrderUtil {
 		}
 		Order myorder = new Order();
 		myorder.setOrder(po);
-		if (myorder.type == OrderType.EXECUTED) {
-			try {
-				myorder.actTo = timedao.getDate();
-				dao.modify(myorder.getOrderPO());
-			} catch (RemoteException e) {
-				// TODO Auto-generated catch block
-				return ResultMessage.CONNECTION_FAIL;
-			}
-		
-			hotelHelper.increaseAvailableRoom(myorder.roomType, myorder.hotelAddress);
-			return ResultMessage.SUCCESS;
-		} else {
+		if (myorder.type != OrderType.EXECUTED) {
 			return ResultMessage.WRONG_ORDER_TYPE;
 		}
+		try {
+			myorder.actTo = timedao.getDate();
+			dao.modify(myorder.getOrderPO());
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			return ResultMessage.CONNECTION_FAIL;
+		}
+		return hotelHelper.increaseAvailableRoom(myorder.roomType, myorder.hotelAddress);
 	}
 }

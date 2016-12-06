@@ -66,7 +66,7 @@ public class WebManagerAddWebMarketer {
 	void handleConfirmAction(MouseEvent event) throws IOException {
 		if (passwordField.getText().equals(passwordField2.getText())) {
 			UserVO newvo = new UserVO(UserType.WEBMARKETER.getString(), userNameTextField.getText(), nameTextField.getText(), 
-					WebManagerController.getInstance().getNewID(), passwordField.getText(), 
+					null, passwordField.getText(), 
 					phoneTextField.getText(), 0, nowvo.birthday, nowvo.companyName, nowvo.hotelID, nowvo.hotelAddress);
 			ResultMessage message = WebManagerController.getInstance().add(newvo);
 			if (message == ResultMessage.SUCCESS) {
