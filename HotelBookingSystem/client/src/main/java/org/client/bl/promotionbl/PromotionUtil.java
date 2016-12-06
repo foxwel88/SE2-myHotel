@@ -123,8 +123,14 @@ public class PromotionUtil {
 				w = i;
 			}
 		}
-		double discount = hotelPromotionList.get(h).discount * websitePromotionList.get(w).discount;
-		return (rawPrice * discount) / 100;
+		double discount = 10;
+		if (hotelPromotionList.size() > 0) {
+			discount = hotelPromotionList.get(h).discount;
+		}
+		if (websitePromotionList.size() > 0) {
+			discount = discount * websitePromotionList.get(w).discount;
+		}
+		return (rawPrice * discount) / 10;
 	}
 	
 	// TODO 放到界面层检查

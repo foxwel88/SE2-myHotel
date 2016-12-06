@@ -45,6 +45,10 @@ public class Promotion_stub implements Promotionblservice {
 		// TODO Auto-generated method stub
 		return generalVOs;
 	}
+	
+	public double getPrice (String userID, String hotelID, double rawPrice) {
+		return 25;
+	}
 
 	public ResultMessage modify(PromotionVO vo) {
 		// TODO Auto-generated method stub

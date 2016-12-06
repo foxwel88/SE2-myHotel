@@ -42,42 +42,42 @@ public class PromotionDataServiceImplTest {
 
 	@Test
 	public void testAdd1() {
-//		try {
-//			PromotionPO po = new PromotionPO(promotionDAO.getNewID(), PromotionType., new Date("100000"), new Date("10000000"), "南京1号大酒店", "00001", 2, "新街口", 5, "大促销");
-//			assertEquals(ResultMessage.SUCCESS, promotionDAO.add(po));
-//		} catch (RemoteException remoteException) {
-//			remoteException.printStackTrace();
-//		}
+		try {
+			PromotionPO po = new PromotionPO(promotionDAO.getNewID(), "hotel", PromotionType.BIRTHDAYBONUS, new Date("100000"), new Date("10000000"), "南京1号大酒店", "00001", 2, "新街口", 5, "大促销");
+			assertEquals(ResultMessage.SUCCESS, promotionDAO.add(po));
+		} catch (RemoteException remoteException) {
+			remoteException.printStackTrace();
+		}
 	}
 	
 	@Test
 	public void testAdd2() {
-//		try {
-//			PromotionPO po = new PromotionPO(promotionDAO.getNewID(), PromotionType.BIRTHDAYBONUS, new Date("100000"), new Date("10000000"), "南京1号大酒店", "00001", 2, "老街", 5, "大促销");
-//			assertEquals(ResultMessage.WRONG_VALUE, promotionDAO.add(po));
-//		} catch (RemoteException remoteException) {
-//			remoteException.printStackTrace();
-//		}
+		try {
+			PromotionPO po = new PromotionPO(promotionDAO.getNewID(), "hotel", PromotionType.BIRTHDAYBONUS, new Date("100000"), new Date("10000000"), "南京1号大酒店", "00001", 2, "新街口", 5, "双十一促销");
+			assertEquals(ResultMessage.WRONG_VALUE, promotionDAO.add(po));
+		} catch (RemoteException remoteException) {
+			remoteException.printStackTrace();
+		}
 	}
 	
 	@Test
 	public void testAdd3() {
-//		try {
-//			PromotionPO po = new PromotionPO(promotionDAO.getNewID(), PromotionType.BIRTHDAYBONUS, new Date("100000"), new Date("10000000"), "南京1号大酒店", "09900", 2, "新街口", 5, "大促销");
-//			assertEquals(ResultMessage.WRONG_VALUE, promotionDAO.add(po));
-//		} catch (RemoteException remoteException) {
-//			remoteException.printStackTrace();
-//		}
+		try {
+			PromotionPO po = new PromotionPO(promotionDAO.getNewID(), "hotel", PromotionType.BIRTHDAYBONUS, new Date("100000"), new Date("10000000"), "南京1号大酒店", "07777", 2, "新街口", 5, "大促销");
+			assertEquals(ResultMessage.NOT_EXIST, promotionDAO.add(po));
+		} catch (RemoteException remoteException) {
+			remoteException.printStackTrace();
+		}
 	}
 
 	@Test
 	public void testModify() {
-//		PromotionPO po = new PromotionPO("00001", PromotionType.BIRTHDAYBONUS, new Date("100000"), new Date("10000000"), "南京1号大酒店", "09900", 2, "新街口", 5, "大促销");
-//		try {
-//			assertEquals("0000000003", promotionDAO.modify(po));
-//		} catch (RemoteException remoteException) {
-//			remoteException.printStackTrace();
-//		}
+		try {
+			PromotionPO po = new PromotionPO(promotionDAO.getNewID(), "hotel", PromotionType.BIRTHDAYBONUS, new Date("100000"), new Date("10000000"), "南京1号大酒店", "00001", 2, "新街口", 8, "大促销");
+			assertEquals(ResultMessage.SUCCESS, promotionDAO.modify(po));
+		} catch (RemoteException remoteException) {
+			remoteException.printStackTrace();
+		}
 	}
 
 	@Test
