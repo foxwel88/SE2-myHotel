@@ -13,6 +13,8 @@ public class PromotionPO implements Serializable {
 	private static final long serialVersionUID = 6351683109312938710L;
 	
 	public String promotionID;
+	
+	public String provider;
 
 	public PromotionType type; 
 	
@@ -32,8 +34,9 @@ public class PromotionPO implements Serializable {
 	
 	public String name;
 	
-	public PromotionPO(String promotionID, PromotionType type, Date startTime, Date endTime, String hotelName, String hotelID, int level, String area, double discount, String name) {
+	public PromotionPO(String promotionID, String provider, PromotionType type, Date startTime, Date endTime, String hotelName, String hotelID, int level, String area, double discount, String name) {
 		this.promotionID = promotionID;
+		this.provider = provider;
 		this.type = type;
 		this.startTime = startTime;
 		this.endTime = endTime;

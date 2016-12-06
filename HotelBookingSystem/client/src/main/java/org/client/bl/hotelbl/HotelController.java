@@ -109,26 +109,25 @@ public class HotelController implements Hotelblservice, HotelHelper {
 		return null;
 	}
 
-	public ResultMessage increaseAvailableRoom(RoomType type, String hotelID) {
+	public void increaseAvailableRoom(RoomType type, String hotelID) {
 		HotelDataService dao = RMIHelper.getInstance().getHotelDataServiceImpl();
 		try {
 			dao.increaseAvailableRoom(type, hotelID);
 		} catch (RemoteException e) {
 			e.printStackTrace();
-			return ResultMessage.CONNECTION_FAIL;
 		}
-		return ResultMessage.SUCCESS;
 	}
 
 	public ResultMessage decreaseAvailableRoom(RoomType type, String hotelID) {
 		HotelDataService dao = RMIHelper.getInstance().getHotelDataServiceImpl();
 		try {
-			dao.decreaseAvailableRoom(type, hotelID);
+			ResultMessage result = dao.decreaseAvailableRoom(type, hotelID);
+			return result;
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			return ResultMessage.CONNECTION_FAIL;
 		}
-		return ResultMessage.SUCCESS;
+
 	}
 
 

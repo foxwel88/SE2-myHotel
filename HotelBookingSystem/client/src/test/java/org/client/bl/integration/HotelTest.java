@@ -96,9 +96,8 @@ public class HotelTest {
 
 	@Test
 	public void testChangeRoom() {
-		ResultMessage resultIncrease = controller.increaseAvailableRoom(RoomType.DOUBLE, "00001");
+		controller.increaseAvailableRoom(RoomType.DOUBLE, "00001");
 		ResultMessage resultDecrease = controller.decreaseAvailableRoom(RoomType.DOUBLE, "00001");
-		assertEquals(ResultMessage.SUCCESS, resultIncrease);
 		assertEquals(ResultMessage.SUCCESS, resultDecrease);
 	}
 

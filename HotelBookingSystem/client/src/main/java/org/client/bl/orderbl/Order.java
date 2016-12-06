@@ -5,8 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.client.blservice.userblservice.Userblservice;
+import org.client.vo.CreditRecordVO;
 import org.client.vo.OrderVO;
-import org.client.vo.UserVO;
 import org.common.dataservice.OrderDataService.OrderDataService;
 import org.common.po.OrderPO;
 import org.common.utility.OrderType;
@@ -19,7 +19,7 @@ import org.common.utility.TimeService;
  * bl层order模块的order类
  * 用于存放一个order 并在vo po之间转化
  * @author Foxwel
- * @version 2016/11/27 Foxwel
+ * @version 2016/12/5 Foxwel
  * 
  */
 
@@ -28,6 +28,8 @@ public class Order {
 	private OrderDataService dao;
 	
 	private TimeService timedao;
+	
+	private Userblservice userbl;
 	
 	public OrderType type;
 	
@@ -72,6 +74,7 @@ public class Order {
 	public Order() {
 		this.dao = OrderUtil.getInstance().dao;
 		this.timedao = OrderUtil.getInstance().timedao;
+		this.userbl = OrderUtil.getInstance().userController;
 	}
 	
 	public ResultMessage setOrder (OrderVO vo) {
@@ -170,6 +173,19 @@ public class Order {
 		return modify();
 	}
 	
+	public ResultMessage checkOut() {
+		if (type != OrderType.EXECUTED) {
+			return ResultMessage.WRONG_ORDER_TYPE;
+		}
+		try {
+			actTo = timedao.getDate();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			return ResultMessage.CONNECTION_FAIL;
+		}
+		return modify();
+	}
+	
 	public ResultMessage cancel() {
 		if (type != OrderType.UNEXECUTED) {
 			return ResultMessage.NOT_EXIST;
@@ -191,6 +207,19 @@ public class Order {
 		}
 		type = OrderType.UNEXECUTED;
 		return modify();
+	}
+	
+	public ResultMessage addCreditRecord(Double value, String type) {
+		CreditRecordVO creditrecordvo;
+		try {
+			creditrecordvo = new CreditRecordVO(timedao.getDate(), orderID, userID, value, userbl.findbyID(userID).credit + value, type);
+			userbl.addCreditRecord(creditrecordvo);
+			return ResultMessage.SUCCESS;
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return ResultMessage.CONNECTION_FAIL;
+		}
 	}
 	
 	public OrderVO getOrderVO () {

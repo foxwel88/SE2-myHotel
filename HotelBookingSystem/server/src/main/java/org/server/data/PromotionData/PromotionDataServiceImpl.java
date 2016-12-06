@@ -89,7 +89,7 @@ public class PromotionDataServiceImpl extends UnicastRemoteObject implements Pro
 	public List<PromotionPO> showWebsitePromotion() throws RemoteException {
 		try {
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(
-					"select * from promotion where type='网站促销策略'");
+					"select * from promotion where provider='web'");
 			ResultSet resultSet = preparedStatement.executeQuery();
 			return getPromotionPOList(resultSet);
 		} catch (SQLException e) {
@@ -154,7 +154,7 @@ public class PromotionDataServiceImpl extends UnicastRemoteObject implements Pro
 		ArrayList<PromotionPO> poList = new ArrayList<>();
 		try {
 			while (resultSet.next()) {
-				poList.add(new PromotionPO(resultSet.getString("promotionID"), 
+				poList.add(new PromotionPO(resultSet.getString("promotionID"), resultSet.getString("provider"), 
 						PromotionType.getType(resultSet.getString("type")), resultSet.getDate("startTime"), 
 						resultSet.getDate("endTime"), resultSet.getString("hotelName"), 
 						resultSet.getString("hotelID"), resultSet.getInt("level"), resultSet.getString("area"), 

@@ -19,7 +19,6 @@ public class OrderList {
 	
 	private ArrayList<Order> list;
 	
-	
 	public ResultMessage setOrderList (List<OrderPO> polist) {
 		list = new ArrayList<>();
 		for (int i = 0;i < polist.size(); ++i) {

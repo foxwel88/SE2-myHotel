@@ -49,7 +49,7 @@ public class RegisterController {
 		Userblservice userBl = new User_stub();
 		Resources resources = Resources.getInstance();
 		if (passwordField.getText().equals(passwordField2.getText())) {
-			UserVO vo = new UserVO(UserType.PERSONALCUSTOMER.getString(), userNameTextField.getText(), nameTextField.getText(), userBl.getNewID(),
+			UserVO vo = new UserVO(UserType.PERSONALCUSTOMER.getString(), userNameTextField.getText(), nameTextField.getText(), null,
 					passwordField.getText(), phoneTextField.getText(), 200, new Date(), null, null, null);
 			
 			ResultMessage message = userBl.add(vo);

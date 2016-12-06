@@ -13,10 +13,12 @@ import org.common.utility.ResultMessage;
 /**
  * 实现了修改促销策略的逻辑
  * @author fraliphsoft
- * @version fraliphsoft 12/5
+ * @version fraliphsoft 12/6
  */
 public class Promotion {
 	String promotionID;
+	
+	String provider;
 	
 	String type; 
 	
@@ -38,6 +40,8 @@ public class Promotion {
 	
 	Promotion(PromotionVO vo) {
 		promotionID = vo.promotionID;
+		
+		provider = vo.provider;
 		
 		type = vo.type;
 		
@@ -61,6 +65,8 @@ public class Promotion {
 	Promotion(PromotionPO po) {
 		promotionID = po.promotionID;
 		
+		provider = po.provider;
+		
 		type = po.type.getString();
 		
 		startTime = po.startTime;
@@ -79,11 +85,11 @@ public class Promotion {
 	}
 	
 	PromotionVO toVO() {
-		return new PromotionVO(promotionID, type, startTime, endTime, hotelName, hotelID, level, area, discount, hotelName);
+		return new PromotionVO(promotionID, provider, type, startTime, endTime, hotelName, hotelID, level, area, discount, hotelName);
 	}
 	
 	PromotionPO toPO() {
-		return new PromotionPO(promotionID, PromotionType.getType(type), startTime, endTime, hotelName, hotelID, level, area, discount, hotelName);
+		return new PromotionPO(promotionID, provider, PromotionType.getType(type), startTime, endTime, hotelName, hotelID, level, area, discount, hotelName);
 	}
 	
 	ResultMessage modify (PromotionVO vo) {
@@ -91,6 +97,7 @@ public class Promotion {
 		PromotionDataService promotionDataService = rmihelper.getPromotionDataServiceImpl();
 		
 		promotionID = vo.promotionID;
+		provider = vo.provider;
 		type = vo.type;
 		startTime = vo.startTime;
 		endTime = vo.endTime;
@@ -100,7 +107,7 @@ public class Promotion {
 		discount = vo.discount;
 		name = vo.name;
 		
-		PromotionPO po = new PromotionPO(promotionID, PromotionType.getType(type), startTime, endTime, hotelName, hotelID, level, area, discount, name);
+		PromotionPO po = new PromotionPO(promotionID, provider, PromotionType.getType(type), startTime, endTime, hotelName, hotelID, level, area, discount, name);
 		try {
 			promotionDataService.modify(po);
 			return ResultMessage.SUCCESS;

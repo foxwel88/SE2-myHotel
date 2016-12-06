@@ -9,6 +9,9 @@ import org.client.bl.hotelbl.HotelController;
 import org.client.bl.orderbl.OrderController;
 import org.client.bl.promotionbl.PromotionController;
 import org.client.bl.userbl.UserController;
+import org.client.blstub.Hotel_stub;
+import org.client.blstub.Order_stub;
+import org.client.blstub.User_stub;
 import org.client.launcher.Resources;
 import org.client.vo.AreaVO;
 import org.client.vo.CityVO;
@@ -90,51 +93,69 @@ public class SwitchSceneUtil {
 		setUser(userID);
 	}
 	
+	// TODO ...还是假的
 	public static UserVO getUserVO() {
-		// TODO ...还是假的
 //		return userController.findbyID(userID);
-		return userController.findbyID("1234567890");
+		User_stub stub = new User_stub();
+		return stub.findbyID(userID);
 	}
 	
 	public static List<OrderVO> getFinishedOrderList() {
-		return orderController.getUserOrderList(userID, OrderType.EXECUTED);
+		Order_stub stub = new Order_stub();
+		return stub.getUserOrderList(userID, OrderType.EXECUTED);
+//		return orderController.getUserOrderList(userID, OrderType.EXECUTED);
 	}
 	
 	public static List<OrderVO> getCanceledOrderList() {
-		return orderController.getUserOrderList(userID, OrderType.CANCELED);
+		Order_stub stub = new Order_stub();
+		return stub.getUserOrderList(userID, OrderType.CANCELED);
+//		return orderController.getUserOrderList(userID, OrderType.CANCELED);
 	}
 	
 	public static List<OrderVO> getAbnormalOrderList() {
-		return orderController.getUserOrderList(userID, OrderType.ABNORMAL);
+		Order_stub stub = new Order_stub();
+		return stub.getUserOrderList(userID, OrderType.ABNORMAL);
+//		return orderController.getUserOrderList(userID, OrderType.ABNORMAL);
 	}
 	
 	public static List<OrderVO> getUnExcutedOrderList() {
-		return orderController.getUserOrderList(userID, OrderType.UNEXECUTED);
+		Order_stub stub = new Order_stub();
+		return stub.getUserOrderList(userID, OrderType.UNEXECUTED);
+//		return orderController.getUserOrderList(userID, OrderType.UNEXECUTED);
 	}
 	
 	public static OrderVO getCurrentOrder() {
-		return orderController.getOrder(orderID);
+		Order_stub stub = new Order_stub();
+		return stub.getOrder(orderID);
+//		return orderController.getOrder(orderID);
 	}
 	
 	public static ArrayList<HotelVO> getFilteredHotels(HotelFilter filter, boolean historyOnly) {
-		return (ArrayList<HotelVO>)hotelController.findHotels(filter, userID, historyOnly);
+		Hotel_stub stub = new Hotel_stub();
+		return (ArrayList<HotelVO>)stub.findHotels(filter, userID, historyOnly);
+//		return (ArrayList<HotelVO>)hotelController.findHotels(filter, userID, historyOnly);
 	}
 	
 	public static ArrayList<CityVO> getCities() {
-		return new ArrayList<>(hotelController.getCitys());
+		Hotel_stub stub = new Hotel_stub();
+		return new ArrayList<>(stub.getCitys());
+//		return new ArrayList<>(hotelController.getCitys());
 	}
 	
 	public static ArrayList<AreaVO> getAreas() {
+		Hotel_stub stub = new Hotel_stub();
 		ArrayList<AreaVO> allAreas = new ArrayList<>();
 		ArrayList<CityVO> allCities = getCities();
 		for (CityVO vo : allCities) {
-			allAreas.addAll(hotelController.getAreas(vo));
+			allAreas.addAll(stub.getAreas(vo));
 		}
 		return allAreas;
 	}
 	
 	public static HotelVO getHotelVO() {
-		return hotelController.getHotelVO(hotelID);
+		Hotel_stub stub = new Hotel_stub();
+		return stub.getHotelVO(hotelID);
+//		return hotelController.getHotelVO(hotelID);
 	}
 	
 	/**

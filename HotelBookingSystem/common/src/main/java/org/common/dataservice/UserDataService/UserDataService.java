@@ -36,7 +36,7 @@ public interface UserDataService extends Remote {
 	public void finish() throws RemoteException;
 	//结束持久化数据库的使用
 	
-	public String getNewID() throws RemoteException;
-	//获得下一个新用户的id
+	public ResultMessage deleteUser(String userName) throws RemoteException;
+	//删除用户
 
 }

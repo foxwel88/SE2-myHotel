@@ -40,8 +40,6 @@ public class HotelVO implements Serializable {
 	
 	public List<String> cooperators;
 	
-	public ResultMessage resultMessage;
-	
 	public HotelVO(String id, String hotelName, String address, CityVO city, AreaVO area, String introduction,
 			double rank, int star, String facility, String checkInInfos, List<String> roomType,
 			List<Integer> roomNum, List<Double> roomPrice, List<String> cooperators) {
@@ -56,7 +54,6 @@ public class HotelVO implements Serializable {
 		this.star = star;
 		this.facility = facility;
 		this.checkInInfos = checkInInfos;
-		resultMessage = ResultMessage.SUCCESS;
 		if (roomType == null) {
 			this.roomType = null;
 		} else {
@@ -78,9 +75,6 @@ public class HotelVO implements Serializable {
 			this.cooperators = new ArrayList<>(cooperators);
 		}
 	}
-	
-	public HotelVO(ResultMessage resultMessage) {
-		this.resultMessage = resultMessage;
-	}
+
 	
 }
