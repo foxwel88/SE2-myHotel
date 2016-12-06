@@ -68,10 +68,6 @@ public class WebManagerController {
 		return userbl.getLevel(ID);
 	}
 	
-	public String getNewID() {
-		return userbl.getNewID();
-	}
-	
 	public List<CityVO> getCitys() {
 		return hotelbl.getCitys();
 	}

@@ -104,9 +104,12 @@ public class Hotel {
 			this.cooperators_po = "";
 		}
 
-		//新增酒店时，填补入住信息字段使其不为null
+		//新增酒店时，填补入住信息字段、简介字段
 		if (checkInInfos == null) {
 			checkInInfos = "";
+		}
+		if (introduction.length() <= 0) {
+			introduction = "暂无";
 		}
 		
 		return new HotelPO(id, hotelName, address, city, area, introduction, rank, star, facility, checkInInfos, cooperators_po);

@@ -39,14 +39,7 @@ public class HotelTest {
 		RMIHelper.getinstance().buildConnection();
 		org.client.rmi.RMIHelper.getInstance().init();
 
-		DatabaseCommunicator.databaseInit();
-		try {
-			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("USE test ");
-			DatabaseCommunicator.execute(preparedStatement);
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		DatabaseCommunicator.setTestConnection();
 		controller = HotelController.getInstance();
 	}
 
@@ -57,7 +50,7 @@ public class HotelTest {
 		Orderblservice orderController = OrderController.getInstance();
 		controller.setOrderblservice(orderController);
 
-		List<HotelVO> hotels  = null;
+		List<HotelVO> hotels = null;
 		try {
 			hotels = controller.findHotels(filter, null, false);
 			assertEquals(false, hotels.isEmpty());
@@ -103,9 +96,8 @@ public class HotelTest {
 
 	@Test
 	public void testChangeRoom() {
-		ResultMessage resultIncrease = controller.increaseAvailableRoom(RoomType.DOUBLE, "00001");
+		controller.increaseAvailableRoom(RoomType.DOUBLE, "00001");
 		ResultMessage resultDecrease = controller.decreaseAvailableRoom(RoomType.DOUBLE, "00001");
-		assertEquals(ResultMessage.SUCCESS, resultIncrease);
 		assertEquals(ResultMessage.SUCCESS, resultDecrease);
 	}
 

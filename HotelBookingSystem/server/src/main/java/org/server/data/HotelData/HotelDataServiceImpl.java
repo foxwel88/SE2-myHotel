@@ -300,7 +300,7 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 	}
 
 	@Override
-	public ResultMessage increaseAvailableRoom(RoomType type, String hotelID) throws RemoteException {
+	public void increaseAvailableRoom(RoomType type, String hotelID) throws RemoteException {
 
 		try {
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(
@@ -314,14 +314,11 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 						" WHERE roomType = '" + type.getString() + "'";
 				preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(update);
 				DatabaseCommunicator.execute(preparedStatement);
-			} else {
-				return ResultMessage.NOT_EXIST;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
-		return ResultMessage.SUCCESS;
 	}
 
 	@Override
@@ -354,7 +351,6 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 
 		return ResultMessage.SUCCESS;
 	}
-	
 	
 
 }

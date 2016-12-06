@@ -1,14 +1,18 @@
 package org.client.bl.orderbl;
 
+import java.rmi.RemoteException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.client.blservice.userblservice.Userblservice;
 import org.client.vo.OrderVO;
 import org.client.vo.UserVO;
+import org.common.dataservice.OrderDataService.OrderDataService;
 import org.common.po.OrderPO;
 import org.common.utility.OrderType;
 import org.common.utility.ResultMessage;
 import org.common.utility.RoomType;
+import org.common.utility.TimeService;
 
 /**
  * 
@@ -21,7 +25,9 @@ import org.common.utility.RoomType;
 
 public class Order {
 	
-	public Userblservice userController;
+	private OrderDataService dao;
+	
+	private TimeService timedao;
 	
 	public OrderType type;
 	
@@ -64,16 +70,14 @@ public class Order {
 	public String phoneNumber;
 	
 	public Order() {
-		this.userController = OrderUtil.getInstance().userController;
+		this.dao = OrderUtil.getInstance().dao;
+		this.timedao = OrderUtil.getInstance().timedao;
 	}
 	
 	public ResultMessage setOrder (OrderVO vo) {
-		this.userID = vo.userID;
-		this.customerName = vo.customerName;
-		UserVO uservo = userController.findbyUserName(customerName);
-		this.userID = uservo.ID;
-		
+		this.orderID = vo.orderID;
 		this.type = OrderType.getType(vo.type);
+		
 		this.generatedDate = vo.generatedDate;
 		this.schFrom = vo.schFrom;
 		this.schTo = vo.schTo;
@@ -81,26 +85,28 @@ public class Order {
 		this.actTo = vo.actTo;
 		this.latestTime = vo.latestTime;
 		this.cancelTime = vo.cancelTime;
+		
+		this.userID = vo.userID;
+		this.customerName = vo.customerName;
+		
 		this.hotelID = vo.hotelID;
 		this.hotelName = vo.hotelName;
-		this.orderID = vo.orderID;
 		this.hotelAddress = vo.hotelAddress;
 		this.roomType = RoomType.getType(vo.roomType);
-		this.totalPrice = vo.totalPrice;
 		this.roomNum = vo.roomNum;
+		this.totalPrice = vo.totalPrice;
+		
 		this.numOfPeople = vo.numOfPeople;
 		this.existsChild = vo.existsChild;
-		
 		this.phoneNumber = vo.phoneNumber;
 		
 		return ResultMessage.SUCCESS;
 	}
 	
 	public ResultMessage setOrder (OrderPO po) {
-		this.userID = po.userId;
-		this.customerName = po.customerName;
-		
+		this.orderID = po.orderID;
 		this.type = po.type;
+		
 		this.generatedDate = po.generatedDate;
 		this.schFrom = po.schFrom;
 		this.schTo = po.schTo;
@@ -108,23 +114,87 @@ public class Order {
 		this.actTo = po.actTo;
 		this.latestTime = po.latestTime;
 		this.cancelTime = po.cancelTime;
+		
+		this.userID = po.userId;
+		this.customerName = po.customerName;
+		
 		this.hotelID = po.hotelID;
 		this.hotelName = po.hotelName;
-		this.orderID = po.orderID;
 		this.hotelAddress = po.hotelAddress;
 		this.roomType = po.roomType;
-		this.totalPrice = po.totalPrice;
 		this.roomNum = po.roomNum;
+		this.totalPrice = po.totalPrice;
+		
 		this.numOfPeople = po.numOfPeople;
 		this.existsChild = po.existsChild;
-		
 		this.phoneNumber = po.phoneNumber;
 		
 		return ResultMessage.SUCCESS;
 	}
 	
+	public ResultMessage modify() {
+		try {
+			return dao.modify(getOrderPO());
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return ResultMessage.CONNECTION_FAIL;
+		}
+	}
+	
+	public ResultMessage create() {
+		try {
+			generatedDate = timedao.getDate();
+			SimpleDateFormat timeFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+			orderID = userID + timeFormat.format(generatedDate);
+			return dao.add(getOrderPO());
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return ResultMessage.CONNECTION_FAIL;
+		}
+	}
+	
+	public ResultMessage execute() {
+		if ((type != OrderType.UNEXECUTED) && (type != OrderType.ABNORMAL)) {
+			return ResultMessage.NOT_EXIST;
+		}
+		type = OrderType.EXECUTED;
+		try {
+			actFrom = timedao.getDate();
+		} catch (RemoteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+			return ResultMessage.CONNECTION_FAIL;
+		}
+		return modify();
+	}
+	
+	public ResultMessage cancel() {
+		if (type != OrderType.UNEXECUTED) {
+			return ResultMessage.NOT_EXIST;
+		}
+		type = OrderType.CANCELED;
+		try {
+			cancelTime = timedao.getDate();
+		} catch (RemoteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+			return ResultMessage.CONNECTION_FAIL;
+		}
+		return modify();
+	}
+	
+	public ResultMessage cancelAbnormal() {
+		if (type != OrderType.ABNORMAL) {
+			return ResultMessage.NOT_EXIST;
+		}
+		type = OrderType.UNEXECUTED;
+		return modify();
+	}
+	
 	public OrderVO getOrderVO () {
-		OrderVO vo = new OrderVO("i'm a userid",type.getString(),generatedDate,schFrom,schTo,actFrom,actTo,latestTime,cancelTime,hotelID,hotelName,orderID,hotelAddress,roomType.getString(),totalPrice,roomNum,numOfPeople,existsChild,customerName,phoneNumber);
+		OrderVO vo = new OrderVO(userID,type.getString(),generatedDate,schFrom,schTo,actFrom,actTo,latestTime,cancelTime,hotelID,hotelName,orderID,hotelAddress,roomType.getString(),totalPrice,roomNum,numOfPeople,existsChild,customerName,phoneNumber);
 		return vo;
 	}
 	
