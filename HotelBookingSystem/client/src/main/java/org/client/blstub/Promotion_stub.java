@@ -13,13 +13,13 @@ import org.common.utility.ResultMessage;
 
 public class Promotion_stub implements Promotionblservice {
 	
-	PromotionVO vo1 = new PromotionVO("i'm an id", PromotionType.SPECIALDATE.getString()
+	PromotionVO vo1 = new PromotionVO("i'm an id", "hotel", PromotionType.SPECIALDATE.getString()
 			, Calendar.getInstance().getTime(), Calendar.getInstance().getTime(), "goodhotel","address",2 , "", 7.5, "期末特惠");
 	
-	PromotionVO vo2 = new PromotionVO("i'm an id", PromotionType.SPECIALAREA.getString()
+	PromotionVO vo2 = new PromotionVO("i'm an id", "web", PromotionType.SPECIALAREA.getString()
 			, Calendar.getInstance().getTime(), Calendar.getInstance().getTime(), "","",2 , "仙林中心", 7.8, "仙林中心地区促销活动");
 	
-	PromotionVO vo3 = new PromotionVO("i'm an id", PromotionType.BIRTHDAYBONUS.getString()
+	PromotionVO vo3 = new PromotionVO("i'm an id", "hotel", PromotionType.BIRTHDAYBONUS.getString()
 			, new Date(), new Date(), "goodhotel","address",1 , "", 8, "生日特惠");
 	
 	ArrayList<PromotionVO> generalVOs = new ArrayList<>(Arrays.asList(new PromotionVO[]{vo1, vo2, vo3}));
