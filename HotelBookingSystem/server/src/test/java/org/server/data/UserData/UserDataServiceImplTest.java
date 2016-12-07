@@ -12,6 +12,7 @@ import org.common.utility.ResultMessage;
 import org.junit.Before;
 import org.junit.Test;
 import org.server.data.datafactory.DataFactory;
+import org.server.security.EncryptUtil;
 
 import mySQL.DatabaseCommunicator;
 
@@ -34,7 +35,7 @@ public class UserDataServiceImplTest {
 		UserPO po = dao.findbyUserName("imindividual");
 
 		ResultMessage info = dao.add(po);
-
+		
 		assertEquals(ResultMessage.EXIST, info);
 	}
 
@@ -135,7 +136,7 @@ public class UserDataServiceImplTest {
 		ResultMessage res1 = dao.add(oldpo);
 		UserPO po1 = dao.findbyUserName("temp");
 		ResultMessage res2 = dao.deleteUser("temp");
-		UserPO po2 = dao.findbyUserName("imhotelmanager");
+		UserPO po2 = dao.findbyUserName("temp");
 		
 		assertEquals("temp", po1.userName);
 		assertEquals(true, po2 == null);

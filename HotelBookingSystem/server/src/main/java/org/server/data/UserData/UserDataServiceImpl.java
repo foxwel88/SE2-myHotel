@@ -16,6 +16,7 @@ import org.common.po.UserPO;
 import org.common.utility.CreditOperation;
 import org.common.utility.ResultMessage;
 import org.common.utility.UserType;
+import org.server.id.IDGenerator;
 import org.server.security.EncryptUtil;
 
 import mySQL.DatabaseCommunicator;
@@ -96,10 +97,10 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 	public ResultMessage add(UserPO po) throws RemoteException {
 		try {
 			if (po.ID == null) {
-				po.ID = getNewID();
+				po.ID = IDGenerator.generateNewUserID();
 			}
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance()
-					.prepareStatement("SELECT * FROM User WHERE userName='" + po.userName + "'");
+					.prepareStatement("SELECT * FROM User WHERE userName='" + EncryptUtil.encrypt(po.userName) + "'");
 			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
 			if (!resultSet.next()) {
 				preparedStatement = DatabaseCommunicator.getConnectionInstance()
@@ -227,39 +228,6 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		return res;
-	}
-
-	private String getNewID() throws RemoteException {
-		boolean canContinue = true;
-		String id = generateIdRandom();
-		while (canContinue) {
-			PreparedStatement preparedStatement;
-			try {
-				preparedStatement = DatabaseCommunicator.getConnectionInstance()
-						.prepareStatement("select * from User where ID='" + id + "'");
-				ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
-				if (!resultSet.next()) {
-					canContinue = false;
-				} else {
-					id = generateIdRandom();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return id;
-	}
-	
-	/**
-	 * 随机产生一个10位的字符串
-	 * @return
-	 */
-	private String generateIdRandom() {
-		String res = "";
-		for (int i = 0; i < 10; i ++) {
-			res += (int)(Math.random() * 10);
 		}
 		return res;
 	}
