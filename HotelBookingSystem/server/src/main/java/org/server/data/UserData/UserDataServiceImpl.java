@@ -9,12 +9,14 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
 import org.common.dataservice.UserDataService.UserDataService;
 import org.common.po.CreditRecordPO;
 import org.common.po.UserPO;
 import org.common.utility.CreditOperation;
 import org.common.utility.ResultMessage;
 import org.common.utility.UserType;
+import org.server.security.EncryptUtil;
 
 import mySQL.DatabaseCommunicator;
 
@@ -29,7 +31,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 	 * 
 	 */
 	private static final long serialVersionUID = 2823256785769392090L;
-
+	
 	public UserDataServiceImpl() throws RemoteException {
 		System.out.println("user start");
 	}
@@ -53,11 +55,11 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 		UserPO po = null;
 		try {
 			UserType type = UserType.getType(resultSet.getString("Type"));
-			String userName = resultSet.getString("UserName");
-			String name = resultSet.getString("Name");
+			String userName = EncryptUtil.decrypt(resultSet.getString("UserName"));
+			String name = EncryptUtil.decrypt(resultSet.getString("Name"));
 			String id = resultSet.getString("ID");
-			String passWord = resultSet.getString("PassWord");
-			String phoneNumber = resultSet.getString("PhoneNumber");
+			String passWord = EncryptUtil.decrypt(resultSet.getString("PassWord"));
+			String phoneNumber = EncryptUtil.decrypt(resultSet.getString("PhoneNumber"));
 			double credit = resultSet.getDouble("Credit");
 			Date birthday = resultSet.getDate("Birthday");
 			String companyName = resultSet.getString("companyName");
@@ -101,11 +103,13 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
 			if (!resultSet.next()) {
 				preparedStatement = DatabaseCommunicator.getConnectionInstance()
-						.prepareStatement("INSERT INTO User(Type,UserName,'Name',ID,"
-								+ "'PassWord',PhoneNumber,Credit,Birthday,CompanyName,HotelAddress,HotelID)"
-								+ " VALUES ('" + po.type.getString() + "','" + po.userName + "','" + po.name + "','" + po.ID + "','"
-								+ po.passWord + "','" + po.phoneNumber + "','" + po.credit + "','" + transTime(po.birthday) + "','"
-								+ po.companyName + "','" + po.hotelAddress + "','" + po.hotelID + "')");
+						.prepareStatement("INSERT INTO User(Type,UserName,Name,ID,"
+								+ "PassWord,PhoneNumber,Credit,Birthday,CompanyName,HotelAddress,HotelID)"
+								+ " VALUES ('" + po.type.getString() + "','" + EncryptUtil.encrypt(po.userName) + "','"
+								+ EncryptUtil.encrypt(po.name) + "','" + po.ID + "','"
+								+ EncryptUtil.encrypt(po.passWord) + "','" + EncryptUtil.encrypt(po.phoneNumber) + "','"
+								+ po.credit + "','" + transTime(po.birthday) + "','" + po.companyName + "','"
+								+ po.hotelAddress + "','" + po.hotelID + "')");
 				DatabaseCommunicator.execute(preparedStatement);
 				return ResultMessage.SUCCESS;
 			} else {
@@ -138,7 +142,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 		PreparedStatement preparedStatement;
 		try {
 			preparedStatement = DatabaseCommunicator.getConnectionInstance()
-					.prepareStatement("select * from User where UserName='" + userName + "'");
+					.prepareStatement("select * from User where UserName='" + EncryptUtil.encrypt(userName) + "'");
 			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
 			while (resultSet.next()) {
 				po = getUserPOfromSet(resultSet);
@@ -171,11 +175,11 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 		ResultMessage info = ResultMessage.WRONG_PASSWORD;
 		try {
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance()
-					.prepareStatement("SELECT * FROM User WHERE UserName='" + userName + "'");
+					.prepareStatement("SELECT * FROM User WHERE UserName='" + EncryptUtil.encrypt(userName) + "'");
 			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
 			String toCheck = new String("");
 			if (resultSet.next()) {
-				toCheck = resultSet.getString("PassWord");
+				toCheck = EncryptUtil.decrypt(resultSet.getString("PassWord"));
 			} else {
 				info = ResultMessage.WRONG_USERNAME;
 			}
@@ -269,7 +273,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 		PreparedStatement preparedStatement;
 		try {
 			preparedStatement = DatabaseCommunicator.getConnectionInstance()
-					.prepareStatement("delete from User where userName='" + userName + "'");
+					.prepareStatement("delete from User where userName='" + EncryptUtil.encrypt(userName) + "'");
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return ResultMessage.CONNECTION_FAIL;
