@@ -1,8 +1,6 @@
 package mySQL;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 这个类用于实现和数据库的connection，理论上是唯一能够理解sql语句的类

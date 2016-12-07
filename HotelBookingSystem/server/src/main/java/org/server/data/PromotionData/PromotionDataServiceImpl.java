@@ -2,6 +2,7 @@ package org.server.data.PromotionData;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,6 +14,7 @@ import org.common.po.LevelPO;
 import org.common.po.PromotionPO;
 import org.common.utility.PromotionType;
 import org.common.utility.ResultMessage;
+
 import mySQL.DatabaseCommunicator;
 
 public class PromotionDataServiceImpl extends UnicastRemoteObject implements PromotionDataService {
@@ -35,7 +37,7 @@ public class PromotionDataServiceImpl extends UnicastRemoteObject implements Pro
 			// 获得当前表中最大的PromotionID
 			String largestID = resultSet.getString("promotionid");
 			// 因为目前的PromotionID是十位数字，因此此处直接转为int，如果PromotionID加长，则需要实现String加法器
-			return String.valueOf(Integer.parseInt(largestID) + 1);
+			return String.format("%010d", (Integer.parseInt(largestID) + 1));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -43,17 +45,24 @@ public class PromotionDataServiceImpl extends UnicastRemoteObject implements Pro
 	}
 
 	public ResultMessage add(PromotionPO po) throws RemoteException {
+		ResultMessage styleMessage = checkNewPromotionStyle(po);
+		if (!styleMessage.equals(ResultMessage.SUCCESS)) {
+			return styleMessage;
+		}
+		if (po.promotionID == null) {
+			po.promotionID = getNewID();
+		}
 		try {
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(
 					"insert into promotion(type, promotionid, starttime, endtime, hotelname, hotelid, level, area, discount, name)"
-					+ " values ('" + po.type.getString() + "','" + po.promotionID + "','" + po.startTime + "','" + po.endTime + "','" + po.hotelName
+					+ " values ('" + po.type.getString() + "','" + po.promotionID + "','" + getSQLDate(po.startTime) + "','" + getSQLDate(po.endTime) + "','" + po.hotelName
 					+ "','" + po.hotelID + "','" + po.level + "','" + po.area + "','" + po.discount + "','" + po.name + "')");
 			preparedStatement.executeUpdate();
 			return ResultMessage.SUCCESS;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return ResultMessage.WRONG_VALUE;
+		return ResultMessage.CONNECTION_FAIL;
 	}
 
 	public ResultMessage modify(PromotionPO po) throws RemoteException {
@@ -164,6 +173,57 @@ public class PromotionDataServiceImpl extends UnicastRemoteObject implements Pro
 			ex.printStackTrace();
 		}
 		return poList;
+	}
+	
+	private Date getSQLDate(java.util.Date rawDate) {
+		return new Date(rawDate.getTime());
+	}
+	
+	/**
+	 * 酒店促销策略检查项：是否重名、酒店是否存在
+	 * 网站促销策略检查项：是否重名
+	 * @param po
+	 * @return
+	 */
+	private ResultMessage checkNewPromotionStyle(PromotionPO po) {
+		ArrayList<PromotionPO> promotionPO;
+		ArrayList<String> hotelIDList;
+		try {
+			if (po.provider.equals("web")) {
+				promotionPO = (ArrayList<PromotionPO>)showWebsitePromotion();
+			} else {
+				promotionPO = (ArrayList<PromotionPO>)showHotelPromotion(po.hotelID);
+			}
+			for (int i = 0; i < promotionPO.size(); i++) {
+				if (promotionPO.get(i).name.equals(po.name)) {
+					return ResultMessage.WRONG_VALUE;
+				}
+			}
+			// TODO 这里需要访问hotel表，获得所有的hotelID，总觉得让promotionDAO做这种事不太好。。。。。。
+			if (po.hotelID != null) {
+				hotelIDList = new ArrayList<>();
+				PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("select hotelid from hotel");
+				ResultSet resultSet = preparedStatement.executeQuery();
+				boolean isExsit = false;
+				while (resultSet.next()) {
+					String hotelID = resultSet.getString("hotelid");
+					if (hotelID.equals(po.hotelID)) {
+						isExsit = true;
+						break;
+					}
+				}
+				if (!isExsit) {
+					return ResultMessage.NOT_EXIST;
+				}
+			}
+		} catch (RemoteException remoteException) {
+			remoteException.printStackTrace();
+			return ResultMessage.CONNECTION_FAIL;
+		} catch (SQLException sqlException) {
+			sqlException.printStackTrace();
+			return ResultMessage.CONNECTION_FAIL;
+		}
+		return ResultMessage.SUCCESS;
 	}
 	
 }

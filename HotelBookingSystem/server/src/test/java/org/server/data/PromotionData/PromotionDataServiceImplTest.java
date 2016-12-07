@@ -1,16 +1,22 @@
 package org.server.data.PromotionData;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.URL;
 import java.rmi.RemoteException;
-import java.util.Date;
+import java.sql.Date;
+import java.util.ArrayList;
 
 import org.common.dataservice.PromotionDataService.PromotionDataService;
+import org.common.po.LevelPO;
 import org.common.po.PromotionPO;
 import org.common.utility.PromotionType;
 import org.common.utility.ResultMessage;
-import org.junit.After;
-import org.junit.Before;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.server.data.datafactory.DataFactory;
 
@@ -18,17 +24,32 @@ import mySQL.DatabaseCommunicator;
 
 public class PromotionDataServiceImplTest {
 
-	PromotionDataService promotionDAO;
+	static PromotionDataService promotionDAO;
 	
-	@Before
-	public void setUp() throws RemoteException {
+	@BeforeClass
+	public static void setUpBeforeClass() throws RemoteException {
 		DatabaseCommunicator.setTestConnection();
 		promotionDAO = DataFactory.getInstance().getPromotionDataServiceImpl();
 	}
-
-	@After
-	public void tearDown() throws Exception {
+	
+	/**
+	 * 自动还原测试用数据库，然而因为数据库也不算小，还原起来比较慢，需要大概半分钟吧
+	 * （不过因为是子线程在重新导入数据库，所以不会影响测试速度，但不建议快速连续测试）
+	 */
+	@AfterClass
+	public static void tearDown() throws Exception {
+		URL testDataBaseURL = PromotionDataServiceImplTest.class.getResource("/org/server/data/PromotionData/hotelbookingsystemfortest.sql");
+		String testDataBasePath = testDataBaseURL.getPath().toString();
+		testDataBasePath = new String(testDataBasePath.substring(1));
 		
+		Runtime runtime = Runtime.getRuntime();
+		Process process = runtime.exec("mysql -uroot -p1234");
+		OutputStream outputStream = process.getOutputStream();
+		OutputStreamWriter writer = new OutputStreamWriter(outputStream);
+		writer.write("use hotelbookingsystemfortest" + "\r\n" + "source " + testDataBasePath);
+		writer.flush();
+		writer.close();
+		outputStream.close();
 	}
 
 	@Test
@@ -43,7 +64,7 @@ public class PromotionDataServiceImplTest {
 	@Test
 	public void testAdd1() {
 		try {
-			PromotionPO po = new PromotionPO(promotionDAO.getNewID(), "hotel", PromotionType.BIRTHDAYBONUS, new Date("100000"), new Date("10000000"), "南京1号大酒店", "00001", 2, "新街口", 5, "大促销");
+			PromotionPO po = new PromotionPO(promotionDAO.getNewID(), "hotel", PromotionType.BIRTHDAYBONUS, new Date(1999, 9, 9), new Date(1999, 9, 9), "南京1号大酒店", "00001", 2, "新街口", 5, "新的大促销1");
 			assertEquals(ResultMessage.SUCCESS, promotionDAO.add(po));
 		} catch (RemoteException remoteException) {
 			remoteException.printStackTrace();
@@ -53,7 +74,7 @@ public class PromotionDataServiceImplTest {
 	@Test
 	public void testAdd2() {
 		try {
-			PromotionPO po = new PromotionPO(promotionDAO.getNewID(), "hotel", PromotionType.BIRTHDAYBONUS, new Date("100000"), new Date("10000000"), "南京1号大酒店", "00001", 2, "新街口", 5, "双十一促销");
+			PromotionPO po = new PromotionPO(promotionDAO.getNewID(), "hotel", PromotionType.BIRTHDAYBONUS, new Date(1999, 9, 9), new Date(1999, 9, 9), "南京1号大酒店", "00001", 2, "新街口", 5, "双十一促销");
 			assertEquals(ResultMessage.WRONG_VALUE, promotionDAO.add(po));
 		} catch (RemoteException remoteException) {
 			remoteException.printStackTrace();
@@ -63,7 +84,7 @@ public class PromotionDataServiceImplTest {
 	@Test
 	public void testAdd3() {
 		try {
-			PromotionPO po = new PromotionPO(promotionDAO.getNewID(), "hotel", PromotionType.BIRTHDAYBONUS, new Date("100000"), new Date("10000000"), "南京1号大酒店", "07777", 2, "新街口", 5, "大促销");
+			PromotionPO po = new PromotionPO(promotionDAO.getNewID(), "hotel", PromotionType.BIRTHDAYBONUS, new Date(1999, 9, 9), new Date(1999, 9, 9), "南京1号大酒店", "07777", 2, "新街口", 5, "新的大促销3");
 			assertEquals(ResultMessage.NOT_EXIST, promotionDAO.add(po));
 		} catch (RemoteException remoteException) {
 			remoteException.printStackTrace();
@@ -73,7 +94,7 @@ public class PromotionDataServiceImplTest {
 	@Test
 	public void testModify() {
 		try {
-			PromotionPO po = new PromotionPO(promotionDAO.getNewID(), "hotel", PromotionType.BIRTHDAYBONUS, new Date("100000"), new Date("10000000"), "南京1号大酒店", "00001", 2, "新街口", 8, "大促销");
+			PromotionPO po = new PromotionPO("0000000001", "hotel", PromotionType.BIRTHDAYBONUS, new Date(1999, 9, 9), new Date(1999, 9, 9), "南京1号大酒店", "00001", 2, "新街口", 8, "修改的三间以上促销");
 			assertEquals(ResultMessage.SUCCESS, promotionDAO.modify(po));
 		} catch (RemoteException remoteException) {
 			remoteException.printStackTrace();
@@ -83,7 +104,7 @@ public class PromotionDataServiceImplTest {
 	@Test
 	public void testDelete() {
 		try {
-			assertEquals("0000000003", promotionDAO.getNewID());
+			assertEquals(ResultMessage.SUCCESS, promotionDAO.delete("0000000002"));
 		} catch (RemoteException remoteException) {
 			remoteException.printStackTrace();
 		}
@@ -92,7 +113,15 @@ public class PromotionDataServiceImplTest {
 	@Test
 	public void testShowHotelPromotion() {
 		try {
-			assertEquals("0000000003", promotionDAO.getNewID());
+			boolean isThatHotel = true;
+			ArrayList<PromotionPO> hotelPromotionList = (ArrayList<PromotionPO>)promotionDAO.showHotelPromotion("00001");
+			for (int i = 0; i < hotelPromotionList.size(); i++) {
+				if (!hotelPromotionList.get(i).hotelID.equals("00001")) {
+					isThatHotel = false;
+					break;
+				}
+			}
+			assertTrue(isThatHotel);
 		} catch (RemoteException remoteException) {
 			remoteException.printStackTrace();
 		}
@@ -101,7 +130,15 @@ public class PromotionDataServiceImplTest {
 	@Test
 	public void testShowWebsitePromotion() {
 		try {
-			assertEquals("0000000003", promotionDAO.getNewID());
+			boolean isWebPromotion = true;
+			ArrayList<PromotionPO> webPromotionList = (ArrayList<PromotionPO>)promotionDAO.showWebsitePromotion();
+			for (int i = 0; i < webPromotionList.size(); i++) {
+				if (!webPromotionList.get(i).provider.equals("web")) {
+					isWebPromotion = false;
+					break;
+				}
+			}
+			assertTrue(isWebPromotion);
 		} catch (RemoteException remoteException) {
 			remoteException.printStackTrace();
 		}
@@ -110,7 +147,7 @@ public class PromotionDataServiceImplTest {
 	@Test
 	public void testShowLevel() {
 		try {
-			assertEquals("0000000003", promotionDAO.getNewID());
+			assertEquals(20, promotionDAO.showLevel().levelNum);
 		} catch (RemoteException remoteException) {
 			remoteException.printStackTrace();
 		}
@@ -119,7 +156,12 @@ public class PromotionDataServiceImplTest {
 	@Test
 	public void testModifyLevel() {
 		try {
-			assertEquals("0000000003", promotionDAO.getNewID());
+			ArrayList<Double> creditList = new ArrayList<>();
+			for (int i = 0; i < 20; i++) {
+				creditList.add((double)((i + 1) * 300));
+			}
+			LevelPO po = new LevelPO(20, creditList);
+			assertEquals(ResultMessage.SUCCESS, promotionDAO.modifyLevel(po));
 		} catch (RemoteException remoteException) {
 			remoteException.printStackTrace();
 		}

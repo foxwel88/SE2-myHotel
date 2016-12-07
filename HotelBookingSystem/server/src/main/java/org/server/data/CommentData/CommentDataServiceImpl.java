@@ -56,7 +56,7 @@ public class CommentDataServiceImpl extends UnicastRemoteObject implements Comme
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return ResultMessage.WRONG_VALUE;
+		return ResultMessage.CONNECTION_FAIL;
 	}
 	
 	/**
