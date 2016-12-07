@@ -78,4 +78,22 @@ public class UserDataServiceImpl_stub extends UnicastRemoteObject implements Use
 		return null;
 	}
 
+	@Override
+	public void addNowUser(String userName) throws RemoteException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public ResultMessage userIsExist(String userName) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResultMessage deleteNowUser(String userName) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

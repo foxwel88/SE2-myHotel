@@ -24,7 +24,7 @@ import mySQL.DatabaseCommunicator;
 /**
  * user模块数据层
  * @author gyue
- * @version gyue 2016/12/5
+ * @version gyue 2016/12/7
  */
 public class UserDataServiceImpl extends UnicastRemoteObject implements UserDataService {
 
@@ -33,7 +33,10 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 	 */
 	private static final long serialVersionUID = 2823256785769392090L;
 	
+	private static List<String> nowUsers;
+	
 	public UserDataServiceImpl() throws RemoteException {
+		nowUsers = new ArrayList<>();
 		System.out.println("user start");
 	}
 	
@@ -94,6 +97,25 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 		return po;
 	}
 
+	public void addNowUser(String userName) {
+		nowUsers.add(userName);
+	}
+	
+	public ResultMessage userIsExist(String userName) {
+		if (nowUsers.indexOf(userName) != -1) {
+			return ResultMessage.EXIST;
+		}
+		return ResultMessage.NOT_EXIST;
+	}
+	
+	public ResultMessage deleteNowUser(String userName) {
+		if (userIsExist(userName) == ResultMessage.NOT_EXIST) {
+			return ResultMessage.NOT_EXIST;
+		}
+		nowUsers.remove(userName);
+		return ResultMessage.SUCCESS;
+	} 
+	
 	public ResultMessage add(UserPO po) throws RemoteException {
 		try {
 			if (po.ID == null) {

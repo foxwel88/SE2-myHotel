@@ -10,7 +10,7 @@ import org.common.utility.ResultMessage;
 public interface Userblservice {
 	public ResultMessage login(String userName, String password);
 	
-	public ResultMessage logout(String ID);
+	public ResultMessage logout(String userName);
 	
 	public ResultMessage add(UserVO vo);
 	

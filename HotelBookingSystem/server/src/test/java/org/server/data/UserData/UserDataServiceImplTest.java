@@ -12,14 +12,12 @@ import org.common.utility.ResultMessage;
 import org.junit.Before;
 import org.junit.Test;
 import org.server.data.datafactory.DataFactory;
-import org.server.security.EncryptUtil;
-
 import mySQL.DatabaseCommunicator;
 
 /**
  * UserDataServiceImpl的测试类
  * @author gyue
- * @version gyue 2016/12/6
+ * @version gyue 2016/12/7
  */
 public class UserDataServiceImplTest {
 	UserDataService dao;
@@ -142,5 +140,20 @@ public class UserDataServiceImplTest {
 		assertEquals(true, po2 == null);
 		assertEquals(ResultMessage.SUCCESS, res1);
 		assertEquals(ResultMessage.SUCCESS, res2);
+	}
+	
+	@Test
+	public void testDeleteNowUser() throws RemoteException {
+		String userName = "test";
+		dao.addNowUser(userName);
+		ResultMessage info1 = dao.userIsExist(userName);
+		ResultMessage info2 = dao.userIsExist("awrongname");
+		ResultMessage info3 = dao.deleteNowUser(userName);
+		ResultMessage info4 = dao.deleteNowUser(userName);
+		
+		assertEquals(ResultMessage.EXIST, info1);
+		assertEquals(ResultMessage.NOT_EXIST, info2);
+		assertEquals(ResultMessage.SUCCESS, info3);
+		assertEquals(ResultMessage.NOT_EXIST, info4);
 	}
 }

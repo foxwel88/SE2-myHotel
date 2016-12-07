@@ -29,15 +29,56 @@ public class Account {
 	public ResultMessage login(String userName, String password) {
 		UserDataService dao = RMIHelper.getInstance().getUserDataServiceImpl();
 		ResultMessage message = null;
+		// 检查用户名/密码是否正确
 		try {
 			message = dao.Check(userName, password);
 		} catch (RemoteException e) {
 			e.printStackTrace();
+			return ResultMessage.CONNECTION_FAIL;
+		}
+		if (message != ResultMessage.SUCCESS) {
+			return message;
+		}
+		//检查该用户是否已登陆
+		try {
+			message = dao.userIsExist(userName);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return ResultMessage.CONNECTION_FAIL;
+		}
+		if (message == ResultMessage.EXIST) {
+			return message;
+		}
+		//告诉服务器该用户已登陆
+		try {
+			dao.addNowUser(userName);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return ResultMessage.CONNECTION_FAIL;
 		}
 		return message;
 	}
 	
-	public ResultMessage logout(String ID) {
-		return ResultMessage.SUCCESS;
+	public ResultMessage logout(String userName) {
+		//检查该用户是否已登陆
+		UserDataService dao = RMIHelper.getInstance().getUserDataServiceImpl();
+		ResultMessage info = null;
+		try {
+			info = dao.userIsExist(userName);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return ResultMessage.CONNECTION_FAIL;
+		}
+		if (info != ResultMessage.EXIST) {
+			return info;
+		}
+		//告诉服务器该用户登出
+		try {
+			info = dao.deleteNowUser(userName);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return ResultMessage.CONNECTION_FAIL;
+		}
+		return info;
 	}
 }
