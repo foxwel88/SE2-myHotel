@@ -45,26 +45,6 @@ public class PromotionControllerTest extends EasyMockSupport {
 	}
 	
 	@Test(timeout = 1000)
-	public void testadd2() {
-		assertEquals(ResultMessage.WRONG_FORMAT, promotionController.add(new PromotionVO("i'm an id", "hotel", "生日促销", new Date(1000000), new Date(1000000), "!什么东西", "我是地址", 1, "我不信还有", 9.9, "醉了")));
-	}
-	
-	@Test(timeout = 1000)
-	public void testadd3() {
-		assertEquals(ResultMessage.WRONG_FORMAT, promotionController.add(new PromotionVO("i'm an id", "hotel", "生日促销", new Date(100000), new Date(1000000), "!什么东西", "我是地址", 1, "我不信还有", 10, "醉了")));
-	}
-	
-	@Test(timeout = 1000)
-	public void testadd4() {
-		assertEquals(ResultMessage.WRONG_FORMAT, promotionController.add(new PromotionVO("i'm an id", "hotel", "节日促销", new Date(100000), new Date(1000000), "!什么东西", "我是地址", 1, "我不信还有", 9.9, "醉了")));
-	}
-	
-	@Test(timeout = 1000)
-	public void testgetPromotion() {
-		assertEquals(false, promotionController.getPromotion("酒店地址", "用户ID").isEmpty());
-	}
-	
-	@Test(timeout = 1000)
 	public void testshowHotelPromotion() {
 		assertEquals(false, promotionController.showHotelPromotion("酒店地址").isEmpty());
 	}
@@ -99,52 +79,6 @@ public class PromotionControllerTest extends EasyMockSupport {
 	
 	@Test(timeout = 1000)
 	public void testmodify2() {
-		try {
-			PromotionUtil.setDAO(promotionDataService);
-			
-			ArrayList<PromotionPO> promotionPO = new ArrayList<PromotionPO>();
-			
-			promotionPO.add(new PromotionPO("i'm an id", "hotel", PromotionType.BIRTHDAYBONUS, new Date(100000), new Date(1000000), "hotelName", "hotelAddress", 2, "area", 3, "name"));
-			
-			expect(promotionDataService.showWebsitePromotion()).andReturn(promotionPO);
-			
-			expect(promotionDataService.showHotelPromotion("hotelAddress")).andReturn(promotionPO);
-			
-			replayAll();
-		} catch (RemoteException rex) {
-			rex.printStackTrace();
-		}
-		promotionController.showHotelPromotion("hotelAddress");
-		promotionController.showWebsitePromotion();
-		PromotionVO vo = new PromotionVO("i'm an id", "hotel", "节日促销", new Date(100000), new Date(1000000), "酒店名字", "hotelAddress", 2, "area", 5, "name");
-		assertEquals(ResultMessage.WRONG_FORMAT, promotionController.modify(vo));
-	}
-	
-	@Test(timeout = 1000)
-	public void testmodify3() {
-		try {
-			PromotionUtil.setDAO(promotionDataService);
-			
-			ArrayList<PromotionPO> promotionPO = new ArrayList<PromotionPO>();
-			
-			promotionPO.add(new PromotionPO("i'm an id", "hotel", PromotionType.BIRTHDAYBONUS, new Date(10000000), new Date(1000000), "hotelName", "hotelAddress", 2, "area", 3, "name"));
-			
-			expect(promotionDataService.showWebsitePromotion()).andReturn(promotionPO);
-			
-			expect(promotionDataService.showHotelPromotion("hotelAddress")).andReturn(promotionPO);
-			
-			replayAll();
-		} catch (RemoteException rex) {
-			rex.printStackTrace();
-		}
-		promotionController.showHotelPromotion("hotelAddress");
-		promotionController.showWebsitePromotion();
-		PromotionVO vo = new PromotionVO("i'm an id", "hotel", "节日促销", new Date(100000), new Date(1000000), "酒店名字", "hotelAddress", 2, "area", 5, "name");
-		assertEquals(ResultMessage.WRONG_FORMAT, promotionController.modify(vo));
-	}
-	
-	@Test(timeout = 1000)
-	public void testmodify4() {
 		try {
 			PromotionUtil.setDAO(promotionDataService);
 			
@@ -207,7 +141,7 @@ public class PromotionControllerTest extends EasyMockSupport {
 	
 	@Test(timeout = 1000)
 	public void testgetPrice() {
-		assertEquals(true, (promotionController.getPrice("userID", "hotelAddress", 100)) == 25);
+		assertEquals(true, (promotionController.getPrice("userID", "hotelAddress", 120)) == 120);
 	}
 	
 	@After
