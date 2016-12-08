@@ -12,7 +12,7 @@ import org.common.utility.ResultMessage;
 /**
  * bl层promotion模块的控制器类
  * @author fraliphsoft
- * @version fraliphsoft 11/27
+ * @version fraliphsoft 12/7
  */
 public class PromotionController implements Promotionblservice {
 	

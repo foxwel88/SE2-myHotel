@@ -14,7 +14,7 @@ import org.common.utility.ResultMessage;
 /**
  * Promotion模块的工具类，实现了大部分逻辑
  * @author fraliphsoft
- * @version fraliphsoft 12/5
+ * @version fraliphsoft 12/7
  */
 public class PromotionUtil {
 	
@@ -108,29 +108,19 @@ public class PromotionUtil {
 		}
 	}
 	
+	/**
+	 * 这个方法会分别找到适用于某人的酒店促销策略和网站促销策略，然后交给PromotionPriceCalculater计算价格
+	 * @param userID
+	 * @param hotelID
+	 * @param rawPrice
+	 * @return
+	 */
 	static double getPrice (String userID, String hotelID, double rawPrice) {
-		List<Promotion> hotelPromotionList = getCanBeUsedHotelPromotion(hotelID, userID);
-		List<Promotion> websitePromotionList = getCanBeUsedWebsitePromotion(hotelID, userID);
+		ArrayList<Promotion> hotelPromotionList = getCanBeUsedHotelPromotion(hotelID, userID);
+		ArrayList<Promotion> websitePromotionList = getCanBeUsedWebsitePromotion(hotelID, userID);
 		
-		int h = 0, w = 0;
-		for (int i = 0; i < hotelPromotionList.size(); i++) {
-			if (hotelPromotionList.get(i).discount < hotelPromotionList.get(h).discount) {
-				h = i;
-			}
-		}
-		for (int i = 0; i < hotelPromotionList.size(); i++) {
-			if (websitePromotionList.get(i).discount < websitePromotionList.get(w).discount) {
-				w = i;
-			}
-		}
-		double discount = 10;
-		if (hotelPromotionList.size() > 0) {
-			discount = hotelPromotionList.get(h).discount;
-		}
-		if (websitePromotionList.size() > 0) {
-			discount = discount * websitePromotionList.get(w).discount;
-		}
-		return (rawPrice * discount) / 10;
+		PromotionPriceCalculator priceCalculator = new PromotionPriceCalculator(hotelPromotionList, websitePromotionList);
+		return priceCalculator.getPrice(rawPrice);
 	}
 	
 	// TODO 放到界面层检查
@@ -176,7 +166,7 @@ public class PromotionUtil {
 //		return isOK;
 //	}
 	
-	private static List<Promotion> getCanBeUsedHotelPromotion(String hotelID, String userID) {
+	private static ArrayList<Promotion> getCanBeUsedHotelPromotion(String hotelID, String userID) {
 		List<Promotion> hotelPromotionList = showHotelPromotion(hotelID);
 		ArrayList<Promotion> canBeUsedHotelPromotion = new ArrayList<>();
 		
@@ -189,7 +179,7 @@ public class PromotionUtil {
 		return canBeUsedHotelPromotion;
 	}
 	
-	private static List<Promotion> getCanBeUsedWebsitePromotion(String hotelID, String userID) {
+	private static ArrayList<Promotion> getCanBeUsedWebsitePromotion(String hotelID, String userID) {
 		List<Promotion> websitePromotionList = showWebsitePromotion();
 		ArrayList<Promotion> canBeUsedWebsitePromotion = new ArrayList<>();
 		
@@ -228,5 +218,4 @@ public class PromotionUtil {
 		}
 		return true;
 	}
-	
 }

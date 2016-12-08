@@ -33,9 +33,9 @@ public class HotelControllerTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		RMIHelper.getinstance().buildStubConnection();	
+		RMIHelper.getinstance().buildStubConnection();
 		org.client.rmi.RMIHelper.getInstance().init();
-		controller = new HotelController();
+		controller = HotelController.getInstance();
 	}
 
 	@Test
@@ -64,7 +64,7 @@ public class HotelControllerTest {
 		CityVO city = new CityVO("南京");
 		AreaVO area = new AreaVO("仙林中心");
 		HotelVO vo = new HotelVO("123","lovelive", "unknown", city, area, "niconiconi", 5, 5, "", "", null, null, null, null);
-		UserVO uvo = new UserVO("客户", "X", "Y", "1234567890", "first0xaa55", "12233345678", 21.21, new Date(19890604), "μ's", null, null);
+		UserVO uvo = new UserVO("酒店工作人员", "X", "Y", "1234567890", "first0xaa55", "12233345678", 21.21, new Date(19890604), "μs", null, null);
 		Userblservice userstub = new User_stub();
 		controller.setUserblservice(userstub);
 		
@@ -80,7 +80,7 @@ public class HotelControllerTest {
 		CityVO city = new CityVO("南京");
 		AreaVO area = new AreaVO("仙林中心");
 		HotelVO vo = new HotelVO("","", "unknown", city, area, "niconiconi", 5, 5, "", "", null, null, null, null);
-		UserVO uvo = new UserVO("客户", "X", "Y", "1234567890", "first0xaa55", "12233345678", 21.21, new Date(19890604), "μ's", null, null);
+		UserVO uvo = new UserVO("酒店工作人员", "X", "Y", "1234567890", "first0xaa55", "12233345678", 21.21, new Date(19890604), "μs", null, null);
 		Userblservice userstub = new User_stub();
 		controller.setUserblservice(userstub);
 				
@@ -95,7 +95,7 @@ public class HotelControllerTest {
 	public void testModifyHotel() {	
 		CityVO city = new CityVO("南京");
 		AreaVO area = new AreaVO("仙林中心");
-		List<String> roomType = new ArrayList<String>(Arrays.asList(new String[]{"九人房"}));
+		List<String> roomType = new ArrayList<String>(Arrays.asList(new String[]{"单人间"}));
 		List<Integer> roomNum = new ArrayList<Integer>(Arrays.asList(new Integer[]{1}));
 		List<Double> roomPrice = new ArrayList<Double>(Arrays.asList(new Double[]{21.21}));
 		List<String> cooperators = new ArrayList<String>(Arrays.asList(new String[]{"μ's"}));

@@ -18,6 +18,7 @@ import org.common.dataservice.HotelDataService.HotelDataService;
 import org.common.utility.HotelFilter;
 import org.common.utility.ResultMessage;
 import org.common.utility.RoomType;
+import org.server.id.IDUtil;
 
 /**
  * Hotel模块逻辑层接口的实现类
@@ -33,7 +34,7 @@ public class HotelController implements Hotelblservice, HotelHelper {
 	
 	public HotelUtil util;
 	
-	public HotelController() {
+	private HotelController() {
 		util = new HotelUtil();
 	}
 	
@@ -67,7 +68,11 @@ public class HotelController implements Hotelblservice, HotelHelper {
 	public ResultMessage addHotel(HotelVO hotelVO, UserVO userVO) {
 		if (userBl == null) { // when userBl is not set by external driver
 			userBl = UserController.getInstance(); // use true logic code
-		} 
+		}
+
+		String newHotelID = IDUtil.generateNewHotelID();
+		userVO.hotelID = newHotelID;
+
 		ResultMessage userRe = userBl.add(userVO);
 		if (userRe != ResultMessage.SUCCESS) {
 			return userRe;
@@ -75,8 +80,10 @@ public class HotelController implements Hotelblservice, HotelHelper {
 
 		ResultMessage hotelRe = util.addHotel(hotelVO);
 		if (hotelRe != ResultMessage.SUCCESS) {
+			userBl.deleteUser(userVO.userName);
 			return hotelRe;
 		}
+
 		return userRe;
 	}
 

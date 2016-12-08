@@ -65,6 +65,15 @@ public class DatabaseCommunicator {
 			ex.printStackTrace();
 			return false;
 		}
-
+	}
+	
+	public static String getStorableQuote(String rawS) {
+		String storableString = rawS.replaceAll("'", "@");
+		return storableString;
+	}
+	
+	public static String getReadableQuete(String rawS) {
+		String readableString = rawS.replaceAll("@", "'");
+		return readableString;
 	}
 }

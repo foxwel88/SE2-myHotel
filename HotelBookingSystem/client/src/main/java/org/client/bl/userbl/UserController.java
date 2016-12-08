@@ -101,5 +101,12 @@ public class UserController implements Userblservice {
 	public UserLevelVO getLevel(String userName) {
 		return UserUtil.getInstance().getLevel(userName);
 	}
-	
+
+	/**
+	 * 删除用户
+	 */
+	public ResultMessage deleteUser(String userName) {
+		return UserUtil.getInstance().deleteUser(userName);
+	}
+
 }

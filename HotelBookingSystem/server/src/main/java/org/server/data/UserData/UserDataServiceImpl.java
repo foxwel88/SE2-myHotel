@@ -16,7 +16,7 @@ import org.common.po.UserPO;
 import org.common.utility.CreditOperation;
 import org.common.utility.ResultMessage;
 import org.common.utility.UserType;
-import org.server.id.IDGenerator;
+import org.server.id.IDUtil;
 import org.server.security.EncryptUtil;
 
 import mySQL.DatabaseCommunicator;
@@ -119,7 +119,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 	public ResultMessage add(UserPO po) throws RemoteException {
 		try {
 			if (po.ID == null) {
-				po.ID = IDGenerator.generateNewUserID();
+				po.ID = IDUtil.generateNewUserID();
 			}
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance()
 					.prepareStatement("SELECT * FROM User WHERE userName='" + EncryptUtil.encrypt(po.userName) + "'");

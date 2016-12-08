@@ -1,5 +1,6 @@
 package org.client.blservice.userblservice;
 
+import java.rmi.RemoteException;
 import java.util.List;
 
 import org.client.vo.CreditRecordVO;
@@ -28,5 +29,7 @@ public interface Userblservice {
 	public List<CreditRecordVO> findCreditRecord(String ID);
 	
 	public UserLevelVO getLevel(String ID);
-	
+
+	public ResultMessage deleteUser(String userName);
+
 }
