@@ -16,18 +16,16 @@ import org.common.utility.RoomType;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.server.id.IDGenerator;
+import org.server.id.IDUtil;
 import org.server.rmi.RMIHelper;
 
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
 /**
- * 调用酒店模块bl接口的集成测试，所用类均为真实类
+ * 调用酒店模块bl接口的系统集成测试，所用类均为真实类
  * @author Hirico
  * @version 2016/12/06 Hirico
  */
@@ -66,8 +64,8 @@ public class HotelTest {
 	public void testAddHotel() {
 		CityVO city = new CityVO("南京");
 		AreaVO area = new AreaVO("仙林中心");
-		HotelVO vo = new HotelVO(null, "love love", IDGenerator.generateNewHotelID(), city, area, "niconiconi", 5, 5, "", "", null, null, null, null);
-		UserVO uvo = new UserVO("客户", "X", "Y", null, "first0xaa55", "12233345678", 21.21, new Date(19890604), "μ's", null, "unknown");
+		HotelVO vo = new HotelVO(null, "love love", IDUtil.generateNewHotelID(), city, area, "niconiconi", 5, 5, "", "", null, null, null, null);
+		UserVO uvo = new UserVO("客户", "X", "Y", null, "first0xaa55", "12233345678", 21.21, new Date(19890604), "μs", null, "unknown");
 		Userblservice userController = UserController.getInstance();
 		controller.setUserblservice(userController);
 
@@ -81,8 +79,8 @@ public class HotelTest {
 
 	@Test
 	public void testChangeRoom() {
-		controller.increaseAvailableRoom(RoomType.DOUBLE, "00001");
-		ResultMessage resultDecrease = controller.decreaseAvailableRoom(RoomType.DOUBLE, "00001");
+		controller.increaseAvailableRoom(RoomType.SINGLE, "00001");
+		ResultMessage resultDecrease = controller.decreaseAvailableRoom(RoomType.SINGLE, "00001");
 		assertEquals(ResultMessage.SUCCESS, resultDecrease);
 	}
 

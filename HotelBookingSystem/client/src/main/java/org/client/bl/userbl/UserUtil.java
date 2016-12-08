@@ -15,6 +15,8 @@ import org.common.po.CreditRecordPO;
 import org.common.po.UserPO;
 import org.common.utility.ResultMessage;
 
+import javax.xml.transform.Result;
+
 /**
  * userbl模块的工具类
  * @author gyue
@@ -192,5 +194,15 @@ public class UserUtil {
 			}
 		}
 		return true;
+	}
+
+	public ResultMessage deleteUser(String userName) {
+		UserDataService dao = RMIHelper.getInstance().getUserDataServiceImpl();
+		try {
+			return dao.deleteUser(userName);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return ResultMessage.CONNECTION_FAIL;
+		}
 	}
 }

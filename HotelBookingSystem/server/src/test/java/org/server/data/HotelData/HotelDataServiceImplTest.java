@@ -14,14 +14,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.server.data.datafactory.DataFactory;
-import org.server.id.IDGenerator;
+import org.server.id.IDUtil;
 
-import javax.xml.crypto.Data;
 import java.rmi.RemoteException;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -117,7 +113,7 @@ public class HotelDataServiceImplTest {
 
 	@Test
 	public void testAddHotel() throws RemoteException {
-		HotelPO newPO = new HotelPO(null, "love love", IDGenerator.generateNewHotelID(), "南京", "仙林中心",
+		HotelPO newPO = new HotelPO(null, "love love", IDUtil.generateNewHotelID(), "南京", "仙林中心",
 				"Welcome, boys!", 4.5, 4, "不断电不断网，空调四人间，自助售卖机", "B319,20150901,20170901;", "南大物业");
 
 		ResultMessage resultMessage = dao.addHotelInfo(newPO);

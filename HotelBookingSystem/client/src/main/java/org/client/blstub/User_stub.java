@@ -129,4 +129,9 @@ public class User_stub implements Userblservice {
 		return levelvo;
 	}
 
+	@Override
+	public ResultMessage deleteUser(String userName) {
+		return ResultMessage.SUCCESS;
+	}
+
 }

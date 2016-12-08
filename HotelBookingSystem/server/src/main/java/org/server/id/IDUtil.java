@@ -11,11 +11,11 @@ import java.sql.SQLException;
  * @author Hirico
  * @version 2016/12/06 Hirico
  */
-public class IDGenerator {
+public class IDUtil {
 
 	private static final int MAX_HOTELID_Length = 5;
 
-	public static String generateNewHotelID() {
+	public static String getLastHotelID() {
 		try {
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("SELECT count(*) FROM Hotel ");
 			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
@@ -23,7 +23,6 @@ public class IDGenerator {
 			if (resultSet.next()) {
 				count = resultSet.getInt(1);
 			}
-			count += 1;
 			String value = String.valueOf(count);
 			for (int i = value.length(); i < MAX_HOTELID_Length; i++) {
 				value = "0" + value;
@@ -34,4 +33,15 @@ public class IDGenerator {
 			return null;
 		}
 	}
-}
+
+	public static String generateNewHotelID() {
+			String lastID = getLastHotelID();
+			int count = Integer.parseInt(lastID);
+			count += 1;
+			String value = String.valueOf(count);
+			for (int i = value.length(); i < MAX_HOTELID_Length; i++) {
+				value = "0" + value;
+			}
+			return value;
+		}
+	}
