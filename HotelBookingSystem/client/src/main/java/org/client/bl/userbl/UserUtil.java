@@ -51,6 +51,7 @@ public class UserUtil {
 			message = dao.add(po);
 		} catch (RemoteException e) {
 			e.printStackTrace();
+			return ResultMessage.CONNECTION_FAIL;
 		}
 		return message;
 	}
@@ -62,9 +63,10 @@ public class UserUtil {
 			po = dao.findbyID(ID);
 		} catch (RemoteException e) {
 			e.printStackTrace();
+			return new UserVO(ResultMessage.CONNECTION_FAIL);
 		}
 		if (po == null) {
-			return null;
+			return new UserVO(ResultMessage.NOT_EXIST);
 		}
 		user = user.initbyPO(po);
 		return user.getUserVO();
@@ -77,6 +79,7 @@ public class UserUtil {
 			po = dao.findbyUserName(userName);
 		} catch (RemoteException e) {
 			e.printStackTrace();
+			return new UserVO(ResultMessage.CONNECTION_FAIL);
 		}
 		if (po == null) {
 			return new UserVO(ResultMessage.NOT_EXIST);
@@ -98,6 +101,7 @@ public class UserUtil {
 			message = dao.modify(userPO);
 		} catch (RemoteException e1) {
 			e1.printStackTrace();
+			return ResultMessage.CONNECTION_FAIL;
 		}
 		if (message != ResultMessage.SUCCESS) {
 			return message;
@@ -110,6 +114,22 @@ public class UserUtil {
 			message = dao.addCreditRecord(po);
 		} catch (RemoteException e) {
 			e.printStackTrace();
+			return ResultMessage.CONNECTION_FAIL;
+		}
+		
+		//如果增加信用记录失败，删除刚刚增加的用户的信用值
+		if (message != ResultMessage.SUCCESS) {
+			userPO = user.changeCredit(-2 * vo.change);
+			try {
+				message = dao.modify(userPO);
+			} catch (RemoteException e1) {
+				e1.printStackTrace();
+				return ResultMessage.CONNECTION_FAIL;
+			}
+			if (message != ResultMessage.SUCCESS) {
+				return message;
+			}
+			return ResultMessage.WRONG_VALUE;
 		}
 		
 		return message;
@@ -126,18 +146,15 @@ public class UserUtil {
 		ResultMessage message = null;
 		UserVO vo = null;
 		UserPO po = null;
-		//检查密码是否正确
+		//检查旧密码是否正确
 		try {
 			message = dao.Check(userName, oldPassword);
 		} catch (RemoteException e) {
 			e.printStackTrace();
+			return ResultMessage.CONNECTION_FAIL;
 		}
 		if (message != ResultMessage.SUCCESS) {
 			return message;
-		}
-		//检查新密码格式
-		if (!checkPasswordFormat(newPassword)) {
-			return ResultMessage.WRONG_FORMAT;
 		}
 		//修改密码
 		vo = findbyUserName(userName);
@@ -147,6 +164,7 @@ public class UserUtil {
 			message = dao.modify(po);
 		} catch (RemoteException e) {
 			e.printStackTrace();
+			return ResultMessage.CONNECTION_FAIL;
 		}
 		return message;
 	}
@@ -161,6 +179,7 @@ public class UserUtil {
 			message = dao.modify(po);
 		} catch (RemoteException e) {
 			e.printStackTrace();
+			return ResultMessage.CONNECTION_FAIL;
 		}
 		return message;
 	}
@@ -181,16 +200,4 @@ public class UserUtil {
 		return new UserLevelVO(credit, level);
 	}
 	
-	private boolean checkPasswordFormat(String password) {
-		if (password.length() <= 6) {
-			return false;
-		}
-		for (int i = 0; i < password.length(); ++i) {
-			char ch = password.charAt(i);
-			if (!(('0' <= ch && ch <= '9') || ('a' <= ch && ch <= 'z') || ('A' <= ch && ch <= 'Z'))) {
-				return false;
-			}
-		}
-		return true;
-	}
 }
