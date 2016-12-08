@@ -57,13 +57,13 @@ public class IDUtil {
 	}
 
 	public static String generateNewHotelID() {
-			String lastID = getLastHotelID();
-			int count = Integer.parseInt(lastID);
-			count += 1;
-			String value = String.valueOf(count);
-			for (int i = value.length(); i < MAX_HOTELID_LENGTH; i++) {
-				value = "0" + value;
-			}
-			return value;
+		String lastID = getLastHotelID();
+		int count = Integer.parseInt(lastID);
+		count += 1;
+		String value = String.valueOf(count);
+		for (int i = value.length(); i < MAX_HOTELID_LENGTH; i++) {
+			value = "0" + value;
 		}
+		return value;
 	}
+}
