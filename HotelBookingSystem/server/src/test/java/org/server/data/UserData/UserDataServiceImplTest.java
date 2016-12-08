@@ -12,13 +12,12 @@ import org.common.utility.ResultMessage;
 import org.junit.Before;
 import org.junit.Test;
 import org.server.data.datafactory.DataFactory;
-
 import mySQL.DatabaseCommunicator;
 
 /**
  * UserDataServiceImpl的测试类
  * @author gyue
- * @version gyue 2016/12/6
+ * @version gyue 2016/12/7
  */
 public class UserDataServiceImplTest {
 	UserDataService dao;
@@ -34,7 +33,7 @@ public class UserDataServiceImplTest {
 		UserPO po = dao.findbyUserName("imindividual");
 
 		ResultMessage info = dao.add(po);
-
+		
 		assertEquals(ResultMessage.EXIST, info);
 	}
 
@@ -135,11 +134,26 @@ public class UserDataServiceImplTest {
 		ResultMessage res1 = dao.add(oldpo);
 		UserPO po1 = dao.findbyUserName("temp");
 		ResultMessage res2 = dao.deleteUser("temp");
-		UserPO po2 = dao.findbyUserName("imhotelmanager");
+		UserPO po2 = dao.findbyUserName("temp");
 		
 		assertEquals("temp", po1.userName);
 		assertEquals(true, po2 == null);
 		assertEquals(ResultMessage.SUCCESS, res1);
 		assertEquals(ResultMessage.SUCCESS, res2);
+	}
+	
+	@Test
+	public void testDeleteNowUser() throws RemoteException {
+		String userName = "test";
+		dao.addNowUser(userName);
+		ResultMessage info1 = dao.userIsExist(userName);
+		ResultMessage info2 = dao.userIsExist("awrongname");
+		ResultMessage info3 = dao.deleteNowUser(userName);
+		ResultMessage info4 = dao.deleteNowUser(userName);
+		
+		assertEquals(ResultMessage.EXIST, info1);
+		assertEquals(ResultMessage.NOT_EXIST, info2);
+		assertEquals(ResultMessage.SUCCESS, info3);
+		assertEquals(ResultMessage.NOT_EXIST, info4);
 	}
 }

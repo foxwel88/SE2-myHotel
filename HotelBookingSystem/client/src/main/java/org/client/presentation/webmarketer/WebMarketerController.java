@@ -60,10 +60,10 @@ public class WebMarketerController {
 	 * @param vo
 	 */
 	public void init(UserVO vo) {
-		this.userName = vo.name;
+		this.userName = vo.userName;
 	}
 	
-	public String getUser() {
+	public String getUserName() {
 		return userName;
 	}
 	
@@ -195,5 +195,9 @@ public class WebMarketerController {
 	 */
 	public ResultMessage addPromotion(PromotionVO vo) {
 		return promotionbl.add(vo);
+	}
+	
+	public ResultMessage logout() {
+		return userbl.logout(userName);
 	}
 }

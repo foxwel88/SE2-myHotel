@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import org.client.launcher.Resources;
+import org.common.utility.ResultMessage;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -113,7 +114,7 @@ public class WebMarketerGuide {
 			e.printStackTrace();
 		}
 		
-		welcomeLabel.setText("Welcome, " + WebMarketerController.getInstance().getUser());
+		welcomeLabel.setText("Welcome, " + WebMarketerController.getInstance().getUserName());
 
 		Resources resources = Resources.getInstance();
 		Image avatarImg = new Image(resources.avatar.toString());
@@ -227,6 +228,12 @@ public class WebMarketerGuide {
 	
 	@FXML
 	void logOut(ActionEvent event) {
+		ResultMessage info = WebMarketerController.getInstance().logout();
+		if (info != ResultMessage.SUCCESS) {
+			// TODO warning window
+			return;
+		}
+		
 		Stage stage = (Stage)mainLabel.getScene().getWindow();
 		Resources resources = Resources.getInstance();
 		try {

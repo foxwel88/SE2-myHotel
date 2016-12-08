@@ -13,7 +13,9 @@ import java.sql.SQLException;
  */
 public class IDUtil {
 
-	private static final int MAX_HOTELID_Length = 5;
+	private static final int MAX_HOTELID_LENGTH = 5;
+	
+	private static final int MAX_USERID_LENGTH = 10;
 
 	public static String getLastHotelID() {
 		try {
@@ -24,7 +26,27 @@ public class IDUtil {
 				count = resultSet.getInt(1);
 			}
 			String value = String.valueOf(count);
-			for (int i = value.length(); i < MAX_HOTELID_Length; i++) {
+			for (int i = value.length(); i < MAX_HOTELID_LENGTH; i++) {
+				value = "0" + value;
+			}
+			return value;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public static String generateNewUserID() {
+		try {
+			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("SELECT count(*) FROM User ");
+			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
+			int count = 0;
+			if (resultSet.next()) {
+				count = resultSet.getInt(1);
+			}
+			count += 1;
+			String value = String.valueOf(count);
+			for (int i = value.length(); i < MAX_USERID_LENGTH; i++) {
 				value = "0" + value;
 			}
 			return value;

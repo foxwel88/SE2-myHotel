@@ -39,4 +39,12 @@ public interface UserDataService extends Remote {
 	public ResultMessage deleteUser(String userName) throws RemoteException;
 	//删除用户
 
+	public void addNowUser(String userName) throws RemoteException;
+	//增加已登录用户的信息
+	
+	public ResultMessage userIsExist(String userName) throws RemoteException;
+	//判断用户是否已登陆
+	
+	public ResultMessage deleteNowUser(String userName) throws RemoteException;
+	//删除已登陆用户的信息
 }

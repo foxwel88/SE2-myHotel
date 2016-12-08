@@ -1,10 +1,13 @@
 package org.client.presentation.customer;
 
+import java.time.LocalDate;
+
 import org.client.blstub.User_stub;
 import org.client.launcher.Resources;
 import org.client.vo.UserVO;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -31,7 +34,7 @@ public class CustomerModifyInfo {
 	TextField phoneNumber;
 	
 	@FXML
-	TextField birthday;
+	DatePicker birthday;
 	
 	@FXML
 	TextField company;
@@ -54,12 +57,20 @@ public class CustomerModifyInfo {
 		name.setText(vo.name);
 		phoneNumber.setText(vo.phoneNumber);
 		company.setText(vo.companyName);
-		birthday.setText(LiveDatePicker.dateToCoarseString(vo.birthday));
+		LiveDatePicker.initDatePicker(null, birthday);
+		String[] dateStringArray = LiveDatePicker.dateToCoarseString(vo.birthday).split("/");
+		birthday.setValue(LocalDate.of(Integer.parseInt(dateStringArray[0]), Integer.parseInt(dateStringArray[1]), Integer.parseInt(dateStringArray[2])));
 	}
 	
 	@FXML
 	void confirmChangeInfo() {
-		SwitchSceneUtil.turnToAnotherScene((GridPane)root.getParent(), resources.customerCheckInfo);
+		boolean isFormatRight = true;
+		if (!checkPhoneNumberFormat()) {
+			isFormatRight = false;
+		}
+		if (isFormatRight) {
+			SwitchSceneUtil.turnToAnotherScene((GridPane)root.getParent(), resources.customerCheckInfo);
+		}
 	}
 	
 	@FXML
@@ -80,5 +91,25 @@ public class CustomerModifyInfo {
 			System.out.println("ok2");
 		}
 		System.out.println("no");
+	}
+	
+	private boolean checkPhoneNumberFormat() {
+		String phoneString = phoneNumber.getText();
+		if (phoneString.length() != 11) {
+			return false;
+		}
+		for (int i = 0; i < 11; i++) {
+			if (!isNumeric(phoneString.charAt(i))) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	private boolean isNumeric(char c) {
+		if (c >= 48 && c <= 57) {
+			return true;
+		}
+		return false;
 	}
 }

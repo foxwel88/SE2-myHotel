@@ -15,7 +15,7 @@ import org.common.utility.ResultMessage;
  * @author fraliphsoft
  * @version fraliphsoft 12/6
  */
-public class Promotion {
+public class Promotion implements Comparable<Promotion> {
 	String promotionID;
 	
 	String provider;
@@ -37,6 +37,8 @@ public class Promotion {
 	double discount;
 	
 	String name;
+	
+	PromotionStrategy promotionStrategy;
 	
 	Promotion(PromotionVO vo) {
 		promotionID = vo.promotionID;
@@ -60,6 +62,8 @@ public class Promotion {
 		discount = vo.discount;
 		
 		name = vo.name;
+		
+		promotionStrategy = PromotionStrategyFactory.getSuitableStrategy(type, discount);
 	}
 	
 	Promotion(PromotionPO po) {
@@ -82,6 +86,15 @@ public class Promotion {
 		discount = po.discount;
 		
 		name = po.name;
+		
+		promotionStrategy = PromotionStrategyFactory.getSuitableStrategy(type, discount);
+	}
+	
+	// 默认构造方法，用于构建空的促销策略
+	Promotion() {
+		discount = 10;		// 我认为应该把discount去掉了.............
+		
+		promotionStrategy = PromotionStrategyFactory.getSuitableStrategy(type, discount);
 	}
 	
 	PromotionVO toVO() {
@@ -114,5 +127,18 @@ public class Promotion {
 		} catch (RemoteException rex) {
 			return ResultMessage.CONNECTION_FAIL;
 		}
+	}
+	
+	/**
+	 * 现在的promotion均为折扣类型，因此目前只考虑discount的比较
+	 */
+	@Override
+	public int compareTo(Promotion anotherPromotion) {
+		if (this.discount > anotherPromotion.discount) {
+			return -1;
+		} else if (this.discount < anotherPromotion.discount) {
+			return 1;
+		}
+		return 0;
 	}
 }
