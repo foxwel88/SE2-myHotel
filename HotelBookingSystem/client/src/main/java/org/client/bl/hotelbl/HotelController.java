@@ -19,7 +19,6 @@ import org.common.utility.HotelFilter;
 import org.common.utility.ResultMessage;
 import org.common.utility.RoomType;
 import org.server.id.IDUtil;
-import org.springframework.util.IdGenerator;
 
 /**
  * Hotel模块逻辑层接口的实现类

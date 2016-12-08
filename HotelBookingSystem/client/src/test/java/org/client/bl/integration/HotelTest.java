@@ -65,7 +65,7 @@ public class HotelTest {
 		CityVO city = new CityVO("南京");
 		AreaVO area = new AreaVO("仙林中心");
 		HotelVO vo = new HotelVO(null, "love love", IDUtil.generateNewHotelID(), city, area, "niconiconi", 5, 5, "", "", null, null, null, null);
-		UserVO uvo = new UserVO("客户", "X", "Y", null, "first0xaa55", "12233345678", 21.21, new Date(19890604), "μs", null, "unknown");
+		UserVO uvo = new UserVO("酒店工作人员", "X", "Y", null, "first0xaa55", "12233345678", 21.21, new Date(19890604), "μs", null, "unknown");
 		Userblservice userController = UserController.getInstance();
 		controller.setUserblservice(userController);
 

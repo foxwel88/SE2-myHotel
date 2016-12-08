@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import java.util.Date;
 import java.util.List;
 
+import mySQL.DatabaseCommunicator;
 import org.client.vo.CreditRecordVO;
 import org.client.vo.UserVO;
 import org.common.utility.ResultMessage;
@@ -26,6 +27,8 @@ public class UserControllerTest {
 	public void setUp() throws Exception {
 		org.server.rmi.RMIHelper.getinstance().buildStubConnection();
 		org.client.rmi.RMIHelper.getInstance().init();
+
+		DatabaseCommunicator.setTestConnection();
 		controller = UserController.getInstance();
 	}
 	
@@ -52,8 +55,8 @@ public class UserControllerTest {
 	
 	@Test
 	public void testAdd() {
-		UserVO vo1 = new UserVO("客户", "Saber", "Y", "1234567890", "first0xaa55", "12233345678", 21.21, new Date(19890604), "μ's", null, null);
-		UserVO vo2 = new UserVO("客户", "gz", "Y", "1234567890", "first0xaa55", "12233345678", 21.21, new Date(19890604), "μ's", null, null);
+		UserVO vo1 = new UserVO("个人客户", "Saber", "Y", "1234567890", "first0xaa55", "12233345678", 21.21, new Date(19890604), "μ's", null, null);
+		UserVO vo2 = new UserVO("个人客户", "gz", "Y", "1234567890", "first0xaa55", "12233345678", 21.21, new Date(19890604), "μ's", null, null);
 		
 		// verify
 		ResultMessage message1 = controller.add(vo1);
@@ -115,7 +118,7 @@ public class UserControllerTest {
 	
 	@Test
 	public void testModify() {
-		UserVO vo = new UserVO("客户", "Saber", "Y", "1234567890", "first0xaa55", "12233345678", 21.21, new Date(19890604), "μ's", null, null);
+		UserVO vo = new UserVO("个人客户", "Saber", "Y", "1234567890", "first0xaa55", "12233345678", 21.21, new Date(19890604), "μ's", null, null);
 		
 		// verify
 		ResultMessage message = controller.modify(vo);
