@@ -16,6 +16,7 @@ import org.client.vo.HotelVO;
 import org.client.vo.UserVO;
 import org.common.dataservice.HotelDataService.HotelDataService;
 import org.common.utility.HotelFilter;
+import org.common.utility.IDService;
 import org.common.utility.ResultMessage;
 import org.common.utility.RoomType;
 import org.server.id.IDUtil;
@@ -70,7 +71,12 @@ public class HotelController implements Hotelblservice, HotelHelper {
 			userBl = UserController.getInstance(); // use true logic code
 		}
 
-		String newHotelID = IDUtil.generateNewHotelID();
+		String newHotelID = null;
+		try {
+			newHotelID = RMIHelper.getInstance().getIDUtil().generateNewHotelID();
+		} catch (RemoteException e) {
+			return ResultMessage.CONNECTION_FAIL;
+		}
 		userVO.hotelID = newHotelID;
 
 		ResultMessage userRe = userBl.add(userVO);

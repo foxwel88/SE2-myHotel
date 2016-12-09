@@ -19,6 +19,7 @@ import org.junit.Test;
 import org.server.id.IDUtil;
 import org.server.rmi.RMIHelper;
 
+import java.rmi.RemoteException;
 import java.util.Date;
 import java.util.List;
 
@@ -61,10 +62,10 @@ public class HotelTest {
 	}
 
 	@Test
-	public void testAddHotel() {
+	public void testAddHotel() throws RemoteException {
 		CityVO city = new CityVO("南京");
 		AreaVO area = new AreaVO("仙林中心");
-		HotelVO vo = new HotelVO(null, "love love", IDUtil.generateNewHotelID(), city, area, "niconiconi", 5, 5, "", "", null, null, null, null);
+		HotelVO vo = new HotelVO(null, "love love", org.client.rmi.RMIHelper.getInstance().getIDUtil().generateNewHotelID(), city, area, "niconiconi", 5, 5, "", "", null, null, null, null);
 		UserVO uvo = new UserVO("酒店工作人员", "X", "Y", null, "first0xaa55", "12233345678", 21.21, new Date(19890604), "μs", null, "unknown");
 		Userblservice userController = UserController.getInstance();
 		controller.setUserblservice(userController);
