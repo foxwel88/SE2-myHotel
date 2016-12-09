@@ -175,8 +175,9 @@ public class HotelManagerGuide {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		belowGridPane.getChildren().set(1, root);
+
 		GridPane.setConstraints(root, 1, 0);
 	}
 

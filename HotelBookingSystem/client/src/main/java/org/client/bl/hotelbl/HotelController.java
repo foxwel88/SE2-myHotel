@@ -71,6 +71,7 @@ public class HotelController implements Hotelblservice, HotelHelper {
 			userBl = UserController.getInstance(); // use true logic code
 		}
 
+		//预填补酒店工作人员的HotelID
 		String newHotelID = null;
 		try {
 			newHotelID = RMIHelper.getInstance().getIDUtil().generateNewHotelID();
