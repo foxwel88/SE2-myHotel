@@ -32,6 +32,8 @@ public class Promotion implements Comparable<Promotion> {
 	
 	int level;
 	
+	String city;
+	
 	String area;
 	
 	double discount;
@@ -98,11 +100,11 @@ public class Promotion implements Comparable<Promotion> {
 	}
 	
 	PromotionVO toVO() {
-		return new PromotionVO(promotionID, provider, type, startTime, endTime, hotelName, hotelID, level, area, discount, hotelName);
+		return new PromotionVO(promotionID, provider, type, startTime, endTime, hotelName, hotelID, level, city, area, discount, hotelName);
 	}
 	
 	PromotionPO toPO() {
-		return new PromotionPO(promotionID, provider, PromotionType.getType(type), startTime, endTime, hotelName, hotelID, level, area, discount, hotelName);
+		return new PromotionPO(promotionID, provider, PromotionType.getType(type), startTime, endTime, hotelName, hotelID, level, city, area, discount, hotelName);
 	}
 	
 	ResultMessage modify (PromotionVO vo) {
@@ -120,7 +122,7 @@ public class Promotion implements Comparable<Promotion> {
 		discount = vo.discount;
 		name = vo.name;
 		
-		PromotionPO po = new PromotionPO(promotionID, provider, PromotionType.getType(type), startTime, endTime, hotelName, hotelID, level, area, discount, name);
+		PromotionPO po = new PromotionPO(promotionID, provider, PromotionType.getType(type), startTime, endTime, hotelName, hotelID, level, city, area, discount, name);
 		try {
 			promotionDataService.modify(po);
 			return ResultMessage.SUCCESS;

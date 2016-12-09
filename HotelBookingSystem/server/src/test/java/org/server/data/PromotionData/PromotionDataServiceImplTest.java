@@ -55,7 +55,7 @@ public class PromotionDataServiceImplTest {
 	@Test
 	public void testAdd1() {
 		try {
-			PromotionPO po = new PromotionPO("0000000004", "hotel", PromotionType.BIRTHDAYBONUS, new Date(1999, 9, 9), new Date(1999, 9, 9), DatabaseCommunicator.getStorableQuote("南京1号'大酒店"), "00001", 2, "新街口", 5, "新的大促销1");
+			PromotionPO po = new PromotionPO("0000000004", "hotel", PromotionType.BIRTHDAYBONUS, new Date(1999, 9, 9), new Date(1999, 9, 9), DatabaseCommunicator.getStorableQuote("南京1号'大酒店"), "00001", 2, "南京", "新街口", 5, "新的大促销1");
 			assertEquals(ResultMessage.SUCCESS, promotionDAO.add(po));
 		} catch (RemoteException remoteException) {
 			remoteException.printStackTrace();
@@ -65,7 +65,7 @@ public class PromotionDataServiceImplTest {
 	@Test
 	public void testAdd2() {
 		try {
-			PromotionPO po = new PromotionPO("0000000005", "hotel", PromotionType.BIRTHDAYBONUS, new Date(1999, 9, 9), new Date(1999, 9, 9), "南京1号大酒店", "00001", 2, "新街口", 5, "双十一促销");
+			PromotionPO po = new PromotionPO("0000000005", "hotel", PromotionType.BIRTHDAYBONUS, new Date(1999, 9, 9), new Date(1999, 9, 9), "南京1号大酒店", "00001", 2, "南京", "新街口", 5, "双十一促销");
 			assertEquals(ResultMessage.WRONG_VALUE, promotionDAO.add(po));
 		} catch (RemoteException remoteException) {
 			remoteException.printStackTrace();
@@ -75,7 +75,7 @@ public class PromotionDataServiceImplTest {
 	@Test
 	public void testAdd3() {
 		try {
-			PromotionPO po = new PromotionPO("0000000006", "hotel", PromotionType.BIRTHDAYBONUS, new Date(1999, 9, 9), new Date(1999, 9, 9), "南京1号大酒店", "07777", 2, "新街口", 5, "新的大促销3");
+			PromotionPO po = new PromotionPO("0000000006", "hotel", PromotionType.BIRTHDAYBONUS, new Date(1999, 9, 9), new Date(1999, 9, 9), "南京1号大酒店", "07777", 2, "南京", "新街口", 5, "新的大促销3");
 			assertEquals(ResultMessage.NOT_EXIST, promotionDAO.add(po));
 		} catch (RemoteException remoteException) {
 			remoteException.printStackTrace();
@@ -85,7 +85,7 @@ public class PromotionDataServiceImplTest {
 	@Test
 	public void testModify() {
 		try {
-			PromotionPO po = new PromotionPO("0000000001", "hotel", PromotionType.BIRTHDAYBONUS, new Date(1999, 9, 9), new Date(1999, 9, 9), "南京1号大酒店", "00001", 2, "新街口", 8, "修改的三间以上促销");
+			PromotionPO po = new PromotionPO("0000000001", "hotel", PromotionType.BIRTHDAYBONUS, new Date(1999, 9, 9), new Date(1999, 9, 9), "南京1号大酒店", "00001", 2, "南京", "新街口", 8, "修改的三间以上促销");
 			assertEquals(ResultMessage.SUCCESS, promotionDAO.modify(po));
 		} catch (RemoteException remoteException) {
 			remoteException.printStackTrace();

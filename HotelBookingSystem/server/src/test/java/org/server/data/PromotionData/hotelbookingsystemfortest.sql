@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50715
 File Encoding         : 65001
 
-Date: 2016-12-06 19:42:59
+Date: 2016-12-09 19:37:07
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -762,6 +762,7 @@ CREATE TABLE `promotion` (
   `HotelName` text,
   `HotelID` text,
   `Level` int(11) DEFAULT NULL,
+  `City` text,
   `Area` text,
   `Discount` double DEFAULT NULL,
   `Name` text
@@ -770,8 +771,8 @@ CREATE TABLE `promotion` (
 -- ----------------------------
 -- Records of promotion
 -- ----------------------------
-INSERT INTO `promotion` VALUES ('hotel', '特定日期促销', '0000000001', '2010-11-11 00:00:00', '2010-11-12 00:00:00', '南京1号大酒店', '00001', '3', '新街口', '6', '双十一促销');
-INSERT INTO `promotion` VALUES ('hotel', '三间以上促销', '0000000002', '1990-01-01 00:00:00', '2016-12-12 00:00:00', '南京1号大酒店', '00001', '3', '新街口', '8', '三间以上折扣');
+INSERT INTO `promotion` VALUES ('hotel', '特定日期促销', '0000000001', '2010-11-11 00:00:00', '2010-11-12 00:00:00', '南京1号大酒店', '00001', '3', '南京', '新街口', '6', '双十一促销');
+INSERT INTO `promotion` VALUES ('hotel', '三间以上促销', '0000000002', '1990-01-01 00:00:00', '2016-12-12 00:00:00', '南京1号大酒店', '00001', '3', '南京', '新街口', '8', '三间以上折扣');
 
 -- ----------------------------
 -- Table structure for user

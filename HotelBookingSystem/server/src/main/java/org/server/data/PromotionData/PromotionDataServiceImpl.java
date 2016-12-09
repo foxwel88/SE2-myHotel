@@ -166,7 +166,7 @@ public class PromotionDataServiceImpl extends UnicastRemoteObject implements Pro
 				poList.add(new PromotionPO(resultSet.getString("promotionID"), resultSet.getString("provider"), 
 						PromotionType.getType(resultSet.getString("type")), resultSet.getDate("startTime"), 
 						resultSet.getDate("endTime"), resultSet.getString("hotelName"), 
-						resultSet.getString("hotelID"), resultSet.getInt("level"), resultSet.getString("area"), 
+						resultSet.getString("hotelID"), resultSet.getInt("level"), resultSet.getString("city"), resultSet.getString("area"), 
 						resultSet.getDouble("discount"), resultSet.getString("name")));
 			}
 		} catch (SQLException ex) {
@@ -187,7 +187,6 @@ public class PromotionDataServiceImpl extends UnicastRemoteObject implements Pro
 	 */
 	private ResultMessage checkNewPromotionStyle(PromotionPO po) {
 		ArrayList<PromotionPO> promotionPO;
-		ArrayList<String> hotelIDList;
 		try {
 			if (po.provider.equals("web")) {
 				promotionPO = (ArrayList<PromotionPO>)showWebsitePromotion();
@@ -199,9 +198,9 @@ public class PromotionDataServiceImpl extends UnicastRemoteObject implements Pro
 					return ResultMessage.WRONG_VALUE;
 				}
 			}
+			
 			// TODO 这里需要访问hotel表，获得所有的hotelID，总觉得让promotionDAO做这种事不太好。。。。。。
 			if (po.hotelID != null) {
-				hotelIDList = new ArrayList<>();
 				PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("select hotelid from hotel");
 				ResultSet resultSet = preparedStatement.executeQuery();
 				boolean isExsit = false;
