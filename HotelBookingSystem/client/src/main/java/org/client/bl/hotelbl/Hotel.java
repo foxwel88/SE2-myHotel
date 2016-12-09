@@ -1,5 +1,6 @@
 package org.client.bl.hotelbl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.client.vo.AreaVO;
@@ -68,6 +69,19 @@ public class Hotel {
 		this.facility = po.facility;
 		this.checkInInfos = po.checkInInfos;
 		this.cooperators_po = po.cooperators;
+
+		//将PO中的合作企业字符串转化成列表
+		cooperators = new ArrayList<>();
+		char[] chars = cooperators_po.toCharArray();
+		StringBuilder stringBuilder = new StringBuilder();
+		for (char c: chars) {
+			if (c != ',') {
+				stringBuilder.append(c);
+			} else {
+				cooperators.add(stringBuilder.toString());
+				stringBuilder = new StringBuilder();
+			}
+		}
 		return this;
 	}
 	
