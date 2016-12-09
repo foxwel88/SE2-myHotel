@@ -1,13 +1,17 @@
 package org.client.presentation.webmarketer;
 
 import java.net.URL;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import org.client.presentation.hotelmanager.HotelManagerController;
 import org.client.vo.AreaVO;
 import org.client.vo.CityVO;
 import org.client.vo.PromotionVO;
@@ -114,7 +118,36 @@ public class WebMarketerModifyPromotion {
 			return;
 		}
 		//赋值
-		
+		vo.type = typeBox.getValue();
+		vo.discount = Double.parseDouble(discountLabel.getText());
+		vo.name = nameLabel.getText();
+		if (!areaBox.isDisable()) {
+			vo.area = areaBox.getValue();
+		}
+		if (!startTimePicker.isDisable()) {
+			//startTime, at the start of the day
+			LocalDate startDate = startTimePicker.getValue();
+			
+			ZonedDateTime startZonedTime = startDate.atStartOfDay(ZoneId.systemDefault());
+			Instant startInstant = Instant.from(startZonedTime);
+			vo.startTime = Date.from(startInstant);
+			
+			//endTime, at the start of the day
+			LocalDate endDate = endTimePicker.getValue();
+			
+			ZonedDateTime endZonedTime = endDate.atStartOfDay(ZoneId.systemDefault());
+			Instant endInstant = Instant.from(endZonedTime);
+			vo.endTime = Date.from(endInstant);
+		}
+		if (!levelBox.isDisable()) {
+			vo.level = levelBox.getValue();
+		}
+		ResultMessage result;
+		if (isModify) {
+			result = HotelManagerController.getInstance().modifyPromotion(vo);
+		} else {
+			result = HotelManagerController.getInstance().addPromotion(vo);
+		}
 	}
 
 	@FXML
@@ -176,7 +209,7 @@ public class WebMarketerModifyPromotion {
 		this.vo = vo;
 		
 		// show info
-		// first show type,name and discount
+		// firstly show type,name and discount
 		typeBox.setValue(vo.type);
 		nameLabel.setText(vo.name);
 		nameLabel.setFont(Font.font("Microsoft YaHei", 15));
@@ -184,7 +217,7 @@ public class WebMarketerModifyPromotion {
 		discountLabel.setFont(Font.font("Microsoft YaHei", 15));
 		// define which part is disable
 		setVisible();
-		// then show other part 
+		// then show other parts 
 		if (!startTimePicker.isDisable()) {
 			startTimePicker.setValue(vo.startTime.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
 			endTimePicker.setValue(vo.startTime.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
@@ -193,6 +226,8 @@ public class WebMarketerModifyPromotion {
 			levelBox.setValue(vo.level);
 		}
 		if (!cityBox.isDisable()) {
+			cityBox.setValue(vo.city);
+			areaBox.setValue(vo.area);
 		}
 		
 		typeBox.setValue(vo.type);
@@ -251,14 +286,14 @@ public class WebMarketerModifyPromotion {
 		
 		//select level
 		if (levelBox.isEditable()) {
-			if (levelBox.getValue() == null) {
+			if (levelBox.getValue() == null || levelBox.getValue().equals("")) {
 				return false;
 			}
 		}
 		
 		//select area
 		if (areaBox.isEditable()) {
-			if (areaBox.getValue() == null) {
+			if (areaBox.getValue() == null || areaBox.getValue().equals("")) {
 				return false;
 			}
 		}

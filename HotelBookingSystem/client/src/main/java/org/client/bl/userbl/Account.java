@@ -56,7 +56,7 @@ public class Account {
 			e.printStackTrace();
 			return ResultMessage.CONNECTION_FAIL;
 		}
-		return message;
+		return ResultMessage.SUCCESS;
 	}
 	
 	public ResultMessage logout(String userName) {
