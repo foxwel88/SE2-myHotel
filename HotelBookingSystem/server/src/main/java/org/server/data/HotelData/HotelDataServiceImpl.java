@@ -14,6 +14,7 @@ import org.common.po.*;
 import org.common.utility.HotelFilter;
 import org.common.utility.ResultMessage;
 import org.common.utility.RoomType;
+import org.server.data.datafactory.DataFactory;
 import org.server.id.IDUtil;
 
 public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDataService {
@@ -34,7 +35,7 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 	public ResultMessage addHotelInfo(HotelPO po) throws RemoteException {
 
 		//获取新ID
-		po.id = IDUtil.generateNewHotelID();
+		po.id = DataFactory.getInstance().getIDUtil().generateNewHotelID();
 
 		try {
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("SELECT * FROM Hotel WHERE address='" + po.address + "'");

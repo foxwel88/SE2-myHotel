@@ -2,22 +2,37 @@ package org.server.id;
 
 import mySQL.DatabaseCommunicator;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.common.utility.IDService;
+
 /**
  * 用来生成新的ID
  * @author Hirico
- * @version 2016/12/06 Hirico
+ * @version 2016/12/09 Foxwel
  */
-public class IDUtil {
+public class IDUtil extends UnicastRemoteObject implements IDService {
 
-	private static final int MAX_HOTELID_LENGTH = 5;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4877647629896169296L;
+
+
+	public IDUtil() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	private final int MAX_HOTELID_LENGTH = 5;
 	
-	private static final int MAX_USERID_LENGTH = 10;
+	private final int MAX_USERID_LENGTH = 10;
 
-	public static String getLastHotelID() {
+	public String getLastHotelID() {
 		try {
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("SELECT count(*) FROM Hotel ");
 			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
@@ -36,7 +51,7 @@ public class IDUtil {
 		}
 	}
 	
-	public static String generateNewUserID() {
+	public String generateNewUserID() {
 		try {
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("SELECT count(*) FROM User ");
 			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
@@ -56,7 +71,7 @@ public class IDUtil {
 		}
 	}
 
-	public static String generateNewHotelID() {
+	public String generateNewHotelID() {
 		String lastID = getLastHotelID();
 		int count = Integer.parseInt(lastID);
 		count += 1;
@@ -66,4 +81,5 @@ public class IDUtil {
 		}
 		return value;
 	}
+
 }

@@ -7,10 +7,15 @@ import org.server.data.HotelData.HotelDataServiceImpl;
 import org.server.data.OrderData.OrderDataServiceImpl;
 import org.server.data.PromotionData.PromotionDataServiceImpl;
 import org.server.data.UserData.UserDataServiceImpl;
+import org.server.id.IDUtil;
 import org.server.time.TimeServiceImpl;
 
 public class DataFactory {
 	private static DataFactory datafactory;
+	
+	private static TimeServiceImpl timeServiceImpl;
+	
+	private static IDUtil idUtil;
 	
 	public static DataFactory getInstance() {
 		if (datafactory == null) {
@@ -41,6 +46,16 @@ public class DataFactory {
 	}
 
 	public TimeServiceImpl getTimeServiceImpl() throws RemoteException {
-		return new TimeServiceImpl();
+		if (timeServiceImpl == null) {
+			timeServiceImpl = new TimeServiceImpl();
+		}
+		return timeServiceImpl;
+	}
+	
+	public IDUtil getIDUtil() throws RemoteException {
+		if (idUtil == null) {
+			idUtil = new IDUtil();
+		}
+		return idUtil;
 	}
 }

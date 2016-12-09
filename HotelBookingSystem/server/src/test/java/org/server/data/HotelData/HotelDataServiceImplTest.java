@@ -113,7 +113,7 @@ public class HotelDataServiceImplTest {
 
 	@Test
 	public void testAddHotel() throws RemoteException {
-		HotelPO newPO = new HotelPO(null, "love love", IDUtil.generateNewHotelID(), "南京", "仙林中心",
+		HotelPO newPO = new HotelPO(null, "love love", DataFactory.getInstance().getIDUtil().generateNewHotelID(), "南京", "仙林中心",
 				"Welcome, boys!", 4.5, 4, "不断电不断网，空调四人间，自助售卖机", "B319,20150901,20170901;", "南大物业");
 
 		ResultMessage resultMessage = dao.addHotelInfo(newPO);

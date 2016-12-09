@@ -10,6 +10,7 @@ import org.common.dataservice.HotelDataService.HotelDataService;
 import org.common.dataservice.OrderDataService.OrderDataService;
 import org.common.dataservice.PromotionDataService.PromotionDataService;
 import org.common.dataservice.UserDataService.UserDataService;
+import org.common.utility.IDService;
 import org.common.utility.TimeService;
 
 public class RMIHelper {
@@ -39,6 +40,7 @@ public class RMIHelper {
 	
 	private static TimeService timeServiceImpl;
 	
+	private static IDService IDServiceImpl;
 	
 	public void init() {
 		try {
@@ -54,6 +56,7 @@ public class RMIHelper {
 			//System.out.println("user succeed");
 			//System.out.println("Connect successfully");
 			timeServiceImpl = (TimeService)Naming.lookup("rmi://localhost:8888/TimeServiceObject");
+			IDServiceImpl = (IDService)Naming.lookup("rmi://localhost:8888/IDServiceObject");
 		}
 		catch (MalformedURLException e) {
 			e.printStackTrace();
@@ -86,5 +89,9 @@ public class RMIHelper {
 	
 	public TimeService getTimeServiceImpl() {
 		return timeServiceImpl;
+	}
+
+	public IDService getIDServiceImpl() {
+		return IDServiceImpl;
 	}
 }
