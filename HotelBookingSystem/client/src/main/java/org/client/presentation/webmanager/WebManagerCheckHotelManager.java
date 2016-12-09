@@ -88,6 +88,7 @@ public class WebManagerCheckHotelManager {
 	void handleSearchAction(MouseEvent event) {
 		clear();
 		UserVO vo = controller.findbyUserName(userNameTextField.getText());
+		vo = controller.findbyID(userNameTextField.getText());
 		if (vo.resultMessage == ResultMessage.SUCCESS) {
 			if (vo.type.equals("酒店工作人员")) {
 				changeContent(vo);

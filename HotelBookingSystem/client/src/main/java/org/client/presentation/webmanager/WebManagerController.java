@@ -3,6 +3,8 @@ package org.client.presentation.webmanager;
 
 import java.util.List;
 
+import org.client.bl.hotelbl.HotelController;
+import org.client.bl.userbl.UserController;
 import org.client.blservice.hotelblservice.Hotelblservice;
 import org.client.blservice.userblservice.Userblservice;
 import org.client.blstub.Hotel_stub;
@@ -33,8 +35,8 @@ public class WebManagerController {
 	private static WebManagerController controller;
 	
 	private WebManagerController() {
-		hotelbl = new Hotel_stub();
-		userbl = new User_stub();
+		hotelbl = HotelController.getInstance();
+		userbl = UserController.getInstance();
 	}
 	
 	public static WebManagerController getInstance() {
