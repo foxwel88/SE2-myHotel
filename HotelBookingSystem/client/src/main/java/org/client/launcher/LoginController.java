@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import org.client.bl.userbl.UserController;
 import org.client.blservice.userblservice.Userblservice;
 import org.client.blstub.User_stub;
 import org.client.presentation.customer.SwitchSceneUtil;
@@ -62,7 +63,7 @@ public class LoginController {
 	private void handleLoginAction(ActionEvent event) throws IOException {
 		String account = accountField.getText().trim();
 		String passWord = pwField.getText().trim();
-		Userblservice userBl = new User_stub();
+		Userblservice userBl = UserController.getInstance();
 		ResultMessage result = userBl.login(account, passWord);
 		Stage stage = (Stage)accountField.getScene().getWindow();
 		Parent root = null;
