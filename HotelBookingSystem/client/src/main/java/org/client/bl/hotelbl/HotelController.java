@@ -73,7 +73,7 @@ public class HotelController implements Hotelblservice, HotelHelper {
 
 		String newHotelID = null;
 		try {
-			newHotelID = RMIHelper.getInstance().getIDServiceImpl().generateNewHotelID();
+			newHotelID = RMIHelper.getInstance().getIDUtil().generateNewHotelID();
 		} catch (RemoteException e) {
 			return ResultMessage.CONNECTION_FAIL;
 		}
