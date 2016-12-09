@@ -64,7 +64,7 @@ public class PromotionDataServiceImplTest {
 	@Test
 	public void testAdd1() {
 		try {
-			PromotionPO po = new PromotionPO(promotionDAO.getNewID(), "hotel", PromotionType.BIRTHDAYBONUS, new Date(1999, 9, 9), new Date(1999, 9, 9), "南京1号大酒店", "00001", 2, "新街口", 5, "新的大促销1");
+			PromotionPO po = new PromotionPO(promotionDAO.getNewID(), "hotel", PromotionType.BIRTHDAYBONUS, new Date(1999, 9, 9), new Date(1999, 9, 9), DatabaseCommunicator.getStorableQuote("南京1号'大酒店"), "00001", 2, "新街口", 5, "新的大促销1");
 			assertEquals(ResultMessage.SUCCESS, promotionDAO.add(po));
 		} catch (RemoteException remoteException) {
 			remoteException.printStackTrace();

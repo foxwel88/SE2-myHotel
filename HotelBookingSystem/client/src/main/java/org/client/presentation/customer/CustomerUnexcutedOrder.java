@@ -1,7 +1,9 @@
 package org.client.presentation.customer;
 
+import org.client.bl.orderbl.OrderController;
 import org.client.launcher.Resources;
 import org.client.vo.OrderVO;
+import org.common.utility.ResultMessage;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -51,6 +53,8 @@ public class CustomerUnexcutedOrder {
 	
 	private OrderVO vo;
 	
+	private OrderController orderController;
+	
 	private Resources resources;
 	
 	@FXML
@@ -70,6 +74,16 @@ public class CustomerUnexcutedOrder {
 	
 	@FXML
 	void cancelOrder() {
-		SwitchSceneUtil.turnToAnotherScene((GridPane)(root.getParent()), resources.customerCheckUnexecutedOrderList);
+		ResultMessage resultMessage = cancel();
+		if (ResultMessage.SUCCESS == resultMessage) {
+			SwitchSceneUtil.turnToAnotherScene((GridPane)(root.getParent()), resources.customerCheckUnexecutedOrderList);
+		} else {
+			// TODO
+		}
+	}
+	
+	private ResultMessage cancel() {
+		orderController = OrderController.getInstance();
+		return orderController.cancelOrder(vo.orderID);
 	}
 }
