@@ -82,7 +82,7 @@ public class RMIHelper {
 			System.out.println("user succeeed");
 			Naming.rebind("rmi://localhost:8888/TimeServiceObject",DataFactory.getInstance().getTimeServiceImpl());
 
-			Naming.rebind("rmi://localhost:8888/TimeServiceObject",DataFactory.getInstance().getIDUtil());
+			Naming.rebind("rmi://localhost:8888/IDServiceObject",DataFactory.getInstance().getIDUtil());
 			System.out.println("Connect successfully");
 			System.out.println();
 		} catch (RemoteException e) {
