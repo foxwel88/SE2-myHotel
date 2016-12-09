@@ -1,6 +1,8 @@
 package org.client.presentation.webmanager;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.client.vo.UserVO;
@@ -76,9 +78,17 @@ public class WebManagerModifyCustomer {
 
 	@FXML
 	void handleConfirmAction(MouseEvent event) throws IOException {
-		@SuppressWarnings("deprecation")
+
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		Date DateObj = null;
+		try {
+			DateObj = dateFormat.parse(birthTextField.getText());
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		UserVO newvo = new UserVO(typeChoiceBox.getValue(),userNameTextField.getText(),nameTextField.getText(),nowvo.ID,nowvo.passWord,
-				phoneTextField.getText(),nowvo.credit,new Date(birthTextField.getText()),companyTextField.getText(),nowvo.hotelID,nowvo.hotelAddress);
+				phoneTextField.getText(),nowvo.credit,DateObj,companyTextField.getText(),nowvo.hotelID,nowvo.hotelAddress);
 		
 		ResultMessage message = WebManagerController.getInstance().modify(newvo);
 		if (message == ResultMessage.SUCCESS) {
