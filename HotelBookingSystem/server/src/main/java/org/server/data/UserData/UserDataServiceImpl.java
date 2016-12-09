@@ -17,7 +17,6 @@ import org.common.utility.CreditOperation;
 import org.common.utility.ResultMessage;
 import org.common.utility.UserType;
 import org.server.data.datafactory.DataFactory;
-import org.server.id.IDUtil;
 import org.server.security.EncryptUtil;
 
 import mySQL.DatabaseCommunicator;
@@ -47,6 +46,9 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 	 * @return
 	 */
 	private String transTime(Date date) {
+		if (date == null) {
+			return null;
+		}
 		SimpleDateFormat timeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		return timeFormat.format(date);
 	}
