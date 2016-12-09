@@ -15,12 +15,10 @@ import org.common.po.CreditRecordPO;
 import org.common.po.UserPO;
 import org.common.utility.ResultMessage;
 
-import javax.xml.transform.Result;
-
 /**
  * userbl模块的工具类
  * @author gyue
- * @version 2016/11/12 gyue
+ * @version 2016/12/8 gyue
  *
  */
 public class UserUtil {
