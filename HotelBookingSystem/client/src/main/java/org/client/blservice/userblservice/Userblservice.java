@@ -1,6 +1,5 @@
 package org.client.blservice.userblservice;
 
-import java.rmi.RemoteException;
 import java.util.List;
 
 import org.client.vo.CreditRecordVO;

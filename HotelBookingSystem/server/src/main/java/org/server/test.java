@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import mySQL.DatabaseCommunicator;
 import org.server.rmi.RMIHelper;
 
 
@@ -43,6 +44,7 @@ public class test extends JFrame {
 		startbutton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				RMIHelper.getinstance().buildConnection();
+				DatabaseCommunicator.databaseInit();
 				stopbutton.setEnabled(true);
 				startbutton.setEnabled(false);
 				btnStartstub.setEnabled(false);

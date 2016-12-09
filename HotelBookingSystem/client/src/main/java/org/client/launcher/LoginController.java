@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import org.client.bl.userbl.UserController;
 import org.client.blservice.userblservice.Userblservice;
 import org.client.blstub.User_stub;
 import org.client.presentation.customer.SwitchSceneUtil;
@@ -62,7 +63,7 @@ public class LoginController {
 	private void handleLoginAction(ActionEvent event) throws IOException {
 		String account = accountField.getText().trim();
 		String passWord = pwField.getText().trim();
-		Userblservice userBl = new User_stub();
+		Userblservice userBl = UserController.getInstance();
 		ResultMessage result = userBl.login(account, passWord);
 		Stage stage = (Stage)accountField.getScene().getWindow();
 		Parent root = null;
@@ -89,18 +90,31 @@ public class LoginController {
 			
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
-		}	
-		else if (result == ResultMessage.CONNECTION_FAIL) {
-			
-		}
-		else if (result == ResultMessage.WRONG_USERNAME || result == ResultMessage.WRONG_PASSWORD) {
+		} else if (result == ResultMessage.CONNECTION_FAIL) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Error Dialog");
+			alert.setHeaderText(null);
+			alert.setContentText("连接失败");
+
+			alert.showAndWait();
+		} else if (result == ResultMessage.WRONG_USERNAME || result == ResultMessage.WRONG_PASSWORD) {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Error Dialog");
 			alert.setHeaderText(null);
 			alert.setContentText("用户名或密码错误");
 
 			alert.showAndWait();
+		} else if (result == ResultMessage.EXIST) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Error Dialog");
+			alert.setHeaderText(null);
+			alert.setContentText("该用户已登录");
+
+			alert.showAndWait();
 		}
+
+
+
 		
 	}
 	

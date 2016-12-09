@@ -5,13 +5,17 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
+import org.client.blservice.hotelblservice.Hotelblservice;
 import org.client.blservice.orderblservice.Orderblservice;
 import org.client.blservice.promotionblservice.Promotionblservice;
 import org.client.blservice.userblservice.Userblservice;
+import org.client.blstub.Hotel_stub;
 import org.client.blstub.Order_stub;
 import org.client.blstub.Promotion_stub;
 import org.client.blstub.User_stub;
 import org.client.rmi.RMIHelper;
+import org.client.vo.AreaVO;
+import org.client.vo.CityVO;
 import org.client.vo.CreditRecordVO;
 import org.client.vo.LevelVO;
 import org.client.vo.OrderVO;
@@ -35,6 +39,8 @@ public class WebMarketerController {
 	
 	private Orderblservice orderbl;
 	
+	private Hotelblservice hotelbl;
+	
 	private String userName;
 	
 	private UserVO userVO;
@@ -46,6 +52,7 @@ public class WebMarketerController {
 		userbl = new User_stub();
 		promotionbl = new Promotion_stub();
 		orderbl = new Order_stub();
+		hotelbl = new Hotel_stub();
 	}
 	
 	public static WebMarketerController getInstance() {
@@ -199,5 +206,13 @@ public class WebMarketerController {
 	
 	public ResultMessage logout() {
 		return userbl.logout(userName);
+	}
+	
+	public List<CityVO> getCitys() {
+		return hotelbl.getCitys();
+	}
+	
+	public List<AreaVO> getAreas(CityVO vo) {
+		return hotelbl.getAreas(vo);
 	}
 }
