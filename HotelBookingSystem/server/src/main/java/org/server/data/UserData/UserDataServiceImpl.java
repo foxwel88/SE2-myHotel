@@ -47,7 +47,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 	 */
 	private String transTime(Date date) {
 		if (date == null) {
-			return "0000-00-00 00:00:00";
+			return "1970-01-01 00:00:00";
 		}
 		SimpleDateFormat timeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		return timeFormat.format(date);
@@ -75,6 +75,8 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 			po = new UserPO(type, userName, name, id, passWord, phoneNumber, credit, birthday, companyName, hotelID, hotelAdress);
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}
+		if (po == null) {
 		}
 		return po;
 	}
@@ -165,16 +167,17 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 
 	public UserPO findbyUserName(String userName) throws RemoteException {
 		UserPO po = null;
-		PreparedStatement preparedStatement;
 		try {
-			preparedStatement = DatabaseCommunicator.getConnectionInstance()
-					.prepareStatement("select * from User where UserName='" + EncryptUtil.encrypt(userName) + "'");
+			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance()
+					.prepareStatement("SELECT * FROM User WHERE UserName='" + EncryptUtil.encrypt(userName) + "'");
 			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
-			while (resultSet.next()) {
+			if (resultSet.next()) {
 				po = getUserPOfromSet(resultSet);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}
+		if (po != null) {
 		}
 		return po;
 	}
@@ -214,8 +217,10 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			System.out.println("wrong");
 			return ResultMessage.CONNECTION_FAIL;
 		}
+		System.out.println(info.toString());
 		return info;
 	}
 
