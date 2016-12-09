@@ -46,7 +46,6 @@ public class OrderListTest extends EasyMockSupport {
 		PowerMockito.whenNew(Order.class).withNoArguments().thenReturn(myorder);
 	}
 
-	@SuppressWarnings("deprecation")
 	@Test
 	public void test() {
 		HotelFilter filter = new HotelFilter();
