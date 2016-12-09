@@ -111,6 +111,13 @@ public class LoginController {
 			alert.setContentText("该用户已登录");
 
 			alert.showAndWait();
+		} else {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Error Dialog");
+			alert.setHeaderText(null);
+			alert.setContentText(result.toString());
+
+			alert.showAndWait();
 		}
 
 
