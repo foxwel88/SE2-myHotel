@@ -40,13 +40,13 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 		try {
 			OrderType type = OrderType.getType((resultSet.getString("type")));
 			String userId = resultSet.getString("userId");
-			Date generatedDate = resultSet.getDate("generatedDate");
+			Date generatedDate = resultSet.getTimestamp("generatedDate");
 			Date schFrom = resultSet.getDate("schFrom");
 			Date schTo = resultSet.getDate("schTo");
-			Date actFrom = resultSet.getDate("actFrom");
-			Date actTo = resultSet.getDate("actTo");
-			Date latestTime = resultSet.getDate("latestTime");
-			Date cancelTime = resultSet.getDate("cancelTime");
+			Date actFrom = resultSet.getTimestamp("actFrom");
+			Date actTo = resultSet.getTimestamp("actTo");
+			Date latestTime = resultSet.getTimestamp("latestTime");
+			Date cancelTime = resultSet.getTimestamp("cancelTime");
 			String hotelAddress = resultSet.getString("hotelAddress");
 			String hotelID = resultSet.getString("hotelID");
 			String hotelName = resultSet.getString("hotelName");
@@ -73,7 +73,7 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 		try {
 			preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("select type,userId,generatedDate,"
 					+ "schFrom,schTo,actFrom,actTo,latestTime,cancelTime,hotelid,hotelAddress,orderID,hotelName,roomType,totalPrice,roomNum,numOfPeople,"
-					+ "existsChildren,customerName,phoneNumber from `Order` where orderID=" + orderID);
+					+ "existsChildren,customerName,phoneNumber from `Order` where orderID='" + orderID + "'");
 			
 			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
 			while (resultSet.next()) {
@@ -202,18 +202,19 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 		}
 	}
 	
-	/*
+	
 	public static void main(String[] args) throws RemoteException {
 		OrderDataServiceImpl mywork = new OrderDataServiceImpl();
 		DatabaseCommunicator.databaseInit();
-		System.out.println("aaaaa");
-		OrderPO po1 = new OrderPO(OrderType.UNEXECUTED,new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),
-				"00001","aaaaa某某某大酒店","000000000120161122112209","111111仙林大道168号栖霞大酒店",RoomType.BIG,100,1,2,false, "foxwel","0000000001","13919191919");
+		//System.out.println("aaaaa");
+		//OrderPO po1 = new OrderPO(OrderType.UNEXECUTED,new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),
+		//	"00001","aaaaa某某某大酒店","000000000120161122112209","111111仙林大道168号栖霞大酒店",RoomType.BIG,100,1,2,false, "foxwel","0000000001","13919191919");
 		//mywork.modify(po1);
 		
-		mywork.print(mywork.getAbnormalOrderPO());
-		System.out.println("aaaaa");
+		//mywork.print(mywork.getAbnormalOrderPO());
+		//System.out.println("aaaaa");
 		//mywork.getOrderPO("123456789020080606143055");
+		System.out.println(mywork.getOrderPO("123456789020080606143055").orderID);
 	}
-	*/
+	
 }
