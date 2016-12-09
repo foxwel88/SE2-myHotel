@@ -47,7 +47,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 	 */
 	private String transTime(Date date) {
 		if (date == null) {
-			return null;
+			return "0000-00-00 00:00:00";
 		}
 		SimpleDateFormat timeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		return timeFormat.format(date);
