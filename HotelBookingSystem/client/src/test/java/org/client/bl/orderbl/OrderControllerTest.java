@@ -52,25 +52,6 @@ public class OrderControllerTest {
 	}
 	
 	@Test
-	public void testCreateOrder2() {
-		
-		OrderVO vo = new OrderVO("i'm a userid",OrderType.UNEXECUTED.getString(),new Date(),new Date(),new Date(),new Date(),new Date(),
-				new Date(),new Date(),"00002","南京某酒店","000000000120161122112233","南京市仙林大道168号栖霞大酒店",RoomType.BIG.toString(),100,1,2,false, "Tom","139191919");
-
-		ResultMessage result = null;
-		
-		try {
-			result = controller.createOrder(vo);
-
-		} catch (NullPointerException e) {
-			e.printStackTrace();
-		}
-		
-		//assert
-		assertEquals(ResultMessage.WRONG_FORMAT, result);
-	}
-	
-	@Test
 	public void testgetOrder1() {
 		
 		OrderVO vo = null;
@@ -82,21 +63,6 @@ public class OrderControllerTest {
 		//assert
 		System.out.println(vo.orderID);
 		assertEquals("000000000120161122112233", vo.orderID);
-	}
-	
-	@Test
-	public void testgetOrder2() {
-		
-		OrderVO vo = null;
-		
-		try {
-			vo = controller.getOrder("9999");
-		} catch (NullPointerException e) {
-			e.printStackTrace();
-		}
-		
-		//assert
-		assertEquals(ResultMessage.WRONG_FORMAT, vo.resultMessage);
 	}
 	
 	@Test

@@ -29,21 +29,6 @@ public class PromotionDataServiceImpl extends UnicastRemoteObject implements Pro
 		// TODO Auto-generated constructor stub
 	}
 	
-	public String getNewID() throws RemoteException {
-		try {
-			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("select promotionid from promotion", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-			ResultSet resultSet = preparedStatement.executeQuery();
-			resultSet.last();
-			// 获得当前表中最大的PromotionID
-			String largestID = resultSet.getString("promotionid");
-			// 因为目前的PromotionID是十位数字，因此此处直接转为int，如果PromotionID加长，则需要实现String加法器
-			return String.format("%010d", (Integer.parseInt(largestID) + 1));
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
 	public ResultMessage add(PromotionPO po) throws RemoteException {
 		ResultMessage styleMessage = checkNewPromotionStyle(po);
 		if (!styleMessage.equals(ResultMessage.SUCCESS)) {
@@ -152,6 +137,21 @@ public class PromotionDataServiceImpl extends UnicastRemoteObject implements Pro
 	public void finish() throws RemoteException {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	private String getNewID() throws RemoteException {
+		try {
+			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("select promotionid from promotion", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			resultSet.last();
+			// 获得当前表中最大的PromotionID
+			String largestID = resultSet.getString("promotionid");
+			// 因为目前的PromotionID是十位数字，因此此处直接转为int，如果PromotionID加长，则需要实现String加法器
+			return String.format("%010d", (Integer.parseInt(largestID) + 1));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 	/**

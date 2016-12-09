@@ -50,7 +50,7 @@ public class CommentDataServiceImpl extends UnicastRemoteObject implements Comme
 		try {
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(
 					"insert into comment(username, hotelid, commentdate, rank, comment) values ('" + po.userName +
-					"','" + po.hotelID + "','" + po.date + "','" + po.rank + "','" + po.comment + "')");
+					"','" + po.hotelID + "','" + po.date + "','" + po.rank + "','" + DatabaseCommunicator.getStorableQuote(po.comment) + "')");
 			preparedStatement.executeUpdate();
 			return ResultMessage.SUCCESS;
 		} catch (SQLException e) {
@@ -67,7 +67,7 @@ public class CommentDataServiceImpl extends UnicastRemoteObject implements Comme
 		ArrayList<CommentPO> poList = new ArrayList<>();
 		try {
 			while (resultSet.next()) {
-				CommentPO commentPO = new CommentPO(resultSet.getString("username"), resultSet.getString("hotelid"), resultSet.getDate("commentdate"), resultSet.getDouble("rank"), resultSet.getString("comment"));
+				CommentPO commentPO = new CommentPO(resultSet.getString("username"), resultSet.getString("hotelid"), resultSet.getDate("commentdate"), resultSet.getDouble("rank"), DatabaseCommunicator.getReadableQuete(resultSet.getString("comment")));
 				poList.add(commentPO);
 			}
 		} catch (SQLException e) {

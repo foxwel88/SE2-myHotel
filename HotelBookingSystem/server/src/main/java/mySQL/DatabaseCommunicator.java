@@ -68,12 +68,16 @@ public class DatabaseCommunicator {
 	}
 	
 	public static String getStorableQuote(String rawS) {
-		String storableString = rawS.replaceAll("'", "@");
+		char tempChar = 7;
+		String specialString = String.valueOf(tempChar);
+		String storableString = rawS.replaceAll("'", specialString);
 		return storableString;
 	}
 	
 	public static String getReadableQuete(String rawS) {
-		String readableString = rawS.replaceAll("@", "'");
+		char tempChar = 7;
+		String specialString = String.valueOf(tempChar);
+		String readableString = rawS.replaceAll(specialString, "'");
 		return readableString;
 	}
 }

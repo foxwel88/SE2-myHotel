@@ -137,6 +137,7 @@ public class Order {
 	
 	public ResultMessage modify() {
 		try {
+			//System.out.println(getOrderPO().generatedDate);
 			return dao.modify(getOrderPO());
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
@@ -150,6 +151,7 @@ public class Order {
 			generatedDate = timedao.getDate();
 			SimpleDateFormat timeFormat = new SimpleDateFormat("yyyyMMddHHmmss");
 			orderID = userID + timeFormat.format(generatedDate);
+			//System.out.println(getOrderPO().generatedDate);
 			return dao.add(getOrderPO());
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block

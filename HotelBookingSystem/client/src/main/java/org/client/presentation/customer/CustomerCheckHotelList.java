@@ -124,7 +124,6 @@ public class CustomerCheckHotelList {
 	
 	@FXML
 	void initialize() {
-		showHotelList();
 		setCity();
 		setArea();
 		setLowerStar();
@@ -141,7 +140,6 @@ public class CustomerCheckHotelList {
 		if (SwitchSceneUtil.isBack) {
 			HotelFilter previousFilter = SwitchSceneUtil.previousHotelSceneInfo.hotelFilter;
 			currentPage.setText(String.valueOf(SwitchSceneUtil.previousHotelSceneInfo.currentPage));
-			showHotelList();
 			if (previousFilter.city != null) {
 				city.setValue(previousFilter.city);
 			}
@@ -174,6 +172,7 @@ public class CustomerCheckHotelList {
 			}
 //			fromDate.setValue(previousFilter.);
 		}
+		showHotelList();
 	}
 	
 	@FXML
@@ -248,7 +247,7 @@ public class CustomerCheckHotelList {
 	
 	@FXML
 	void search() {
-		// TODO
+		showHotelList();
 	}
 	
 	private void showHotelList() {
@@ -347,7 +346,6 @@ public class CustomerCheckHotelList {
 		
 		filter.setLocation(city.getValue(), area.getValue());
 		
-		// 设置星级
 		if (lowerStar.getValue() != null) {
 			filter.setLowerStar(lowerStar.getValue());
 		}
@@ -355,7 +353,6 @@ public class CustomerCheckHotelList {
 			filter.setUpperStar(upperStar.getValue());
 		}
 		
-		// 设置评分
 		if (lowerScore.getValue() != null) {
 			filter.setLowerRank(lowerScore.getValue());
 		}
@@ -363,7 +360,6 @@ public class CustomerCheckHotelList {
 			filter.setUpperRank(upperScore.getValue());
 		}
 		
-		// 设置价格
 		try {
 			filter.setLowerPrice(Double.parseDouble(fromPrice.getText()));
 		} catch (NumberFormatException numberFormatException) { }
@@ -379,6 +375,12 @@ public class CustomerCheckHotelList {
 			filter.setRoomNum(Integer.parseInt(roomNum.getText()));
 		} catch (NumberFormatException numberFormatException) { }
 		
+//		try {
+//			filter.set
+//			System.out.println(fromDate.getValue());
+//		} catch (NullPointerException nullPointerException) {
+//			nullPointerException.printStackTrace();
+//		}
 		// TODO 酒店地址有问题，应该是根据酒店名称包含的关键字搜索
 		// TODO 没有办法根据入住日期区间搜索
 		// TODO try-catch没有写（格式检查）
