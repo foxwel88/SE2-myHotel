@@ -17,7 +17,6 @@ import org.common.utility.ResultMessage;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
-import org.server.data.PromotionData.PromotionDataServiceImplTest;
 import org.server.rmi.RMIHelper;
 
 import mySQL.DatabaseCommunicator;
@@ -37,8 +36,7 @@ public class PromotionTest {
 	
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
-		// TODO Attention！！！！！！这是个服务器的测试类。。。我只是懒得把测试的sql再在client拷一份了。。。。
-		URL testDataBaseURL = PromotionDataServiceImplTest.class.getResource("/org/server/data/PromotionData/hotelbookingsystemfortest.sql");
+		URL testDataBaseURL = PromotionTest.class.getResource("/org/client/bl/integration/hotelbookingsystemfortest.sql");
 		String testDataBasePath = testDataBaseURL.getPath().toString();
 		testDataBasePath = new String(testDataBasePath.substring(1));
 		
