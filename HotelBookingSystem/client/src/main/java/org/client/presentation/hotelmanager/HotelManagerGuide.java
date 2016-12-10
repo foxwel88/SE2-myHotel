@@ -253,6 +253,7 @@ public class HotelManagerGuide {
 			
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
+			HotelManagerController.getInstance().logOut();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

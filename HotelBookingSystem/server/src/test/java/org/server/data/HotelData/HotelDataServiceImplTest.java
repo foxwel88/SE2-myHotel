@@ -32,7 +32,7 @@ public class HotelDataServiceImplTest {
 
 	@Before
 	public void setUp() throws RemoteException {
-		DatabaseCommunicator.databaseInit();
+		DatabaseCommunicator.setTestConnection();
 		dao = DataFactory.getInstance().getHotelDataServiceImpl();
 
 	}

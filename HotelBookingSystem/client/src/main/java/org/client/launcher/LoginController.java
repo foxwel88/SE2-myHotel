@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.event.EventHandler;
+import javafx.stage.WindowEvent;
 import org.client.bl.userbl.UserController;
 import org.client.blservice.userblservice.Userblservice;
 import org.client.presentation.customer.SwitchSceneUtil;
@@ -72,7 +74,7 @@ public class LoginController {
 			UserVO uservo = userBl.findbyUserName(account);
 			switch(uservo.type) {
 				case "酒店工作人员":
-					HotelManagerController.init(uservo.hotelID, uservo.name);
+					HotelManagerController.init(uservo.hotelID, uservo.name, uservo.userName);
 					root = resources.load(resources.hotelManagerGuide);
 					break;
 				case "网站管理人员":
@@ -92,7 +94,13 @@ public class LoginController {
 					root = FXMLLoader.load(getClass().getResource("/客户/导航_主界面.fxml"));
 					break;
 			}
-			
+
+			stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+				public void handle(WindowEvent we) {
+					userBl.logout(account);
+				}
+			});
+
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
 		} else if (result == ResultMessage.CONNECTION_FAIL) {

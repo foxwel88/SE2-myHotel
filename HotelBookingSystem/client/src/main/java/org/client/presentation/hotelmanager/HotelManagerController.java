@@ -6,12 +6,11 @@ import java.util.List;
 import org.client.bl.hotelbl.HotelController;
 import org.client.bl.orderbl.OrderController;
 import org.client.bl.promotionbl.PromotionController;
+import org.client.bl.userbl.UserController;
 import org.client.blservice.hotelblservice.Hotelblservice;
 import org.client.blservice.orderblservice.Orderblservice;
 import org.client.blservice.promotionblservice.Promotionblservice;
-import org.client.blstub.Hotel_stub;
-import org.client.blstub.Order_stub;
-import org.client.blstub.Promotion_stub;
+import org.client.blservice.userblservice.Userblservice;
 import org.client.vo.AreaVO;
 import org.client.vo.CityVO;
 import org.client.vo.HotelVO;
@@ -33,31 +32,41 @@ public class HotelManagerController {
 	private Promotionblservice promotionbl;
 	
 	private Orderblservice orderbl;
+
+	private Userblservice userbl;
 	
 	private static HotelManagerController controller;
 	
 	private String hotelID;
+
+	public String managerUserName;
 	
 	public String managerName;
 	
 	public OrderVO currentOrder;
 	
 	//stub version
-	private HotelManagerController(String hotelID, String managerName) {
+	private HotelManagerController(String hotelID, String managerName, String managerUserName) {
 		hotelbl = HotelController.getInstance();
 		promotionbl = PromotionController.getInstance();
 		orderbl = OrderController.getInstance();
+		userbl = UserController.getInstance();
 		this.hotelID = hotelID;
 		this.managerName = managerName;
+		this.managerUserName = managerUserName;
 	}
 	
 	/** 登录之后就要马上调用这个方法 */
-	public static void init(String hotelID, String managerName) {
-		controller = new HotelManagerController(hotelID, managerName);
+	public static void init(String hotelID, String managerName, String managerUserName) {
+		controller = new HotelManagerController(hotelID, managerName, managerUserName);
 	}
 	
 	public static HotelManagerController getInstance() {
 		return controller;
+	}
+
+	public void logOut() {
+		userbl.logout(managerUserName);
 	}
 	
 	public List<OrderVO> getUnexecutedOrders() {
