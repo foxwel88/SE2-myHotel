@@ -15,7 +15,7 @@ import org.client.vo.PromotionVO;
 import org.common.utility.PromotionType;
 import org.common.utility.ResultMessage;
 import org.junit.AfterClass;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.server.rmi.RMIHelper;
 
@@ -23,14 +23,14 @@ import mySQL.DatabaseCommunicator;
 
 public class PromotionTest {
 
-	PromotionController controller;
+	static PromotionController controller;
 
-	@Before
-	public void setUp() throws Exception {
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
 		RMIHelper.getinstance().buildConnection();
 		org.client.rmi.RMIHelper.getInstance().init();
 
-		DatabaseCommunicator.databaseInit();
+		DatabaseCommunicator.setTestConnection();
 		controller = PromotionController.getInstance();
 	}
 	
@@ -48,6 +48,7 @@ public class PromotionTest {
 		writer.flush();
 		writer.close();
 		outputStream.close();
+		RMIHelper.getinstance().releaseConnection();
 	}
 	
 	@Test
