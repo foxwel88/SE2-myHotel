@@ -1,6 +1,7 @@
 package org.client.vo;
 
 import java.io.Serializable;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,6 +50,8 @@ public class HotelVO implements Serializable {
 		this.city = city;
 		this.area = area;
 		this.introduction = introduction;
+		DecimalFormat df = new DecimalFormat("#.00");
+		df.format(rank);
 		this.rank = rank;
 		this.star = star;
 		this.facility = facility;
