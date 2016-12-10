@@ -1,12 +1,16 @@
 package org.client.presentation.customer;
 
 import java.time.LocalDate;
+import java.util.Date;
 
-import org.client.blstub.User_stub;
 import org.client.launcher.Resources;
 import org.client.vo.UserVO;
+import org.common.utility.ResultMessage;
+import org.common.utility.UserType;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -68,9 +72,30 @@ public class CustomerModifyInfo {
 		if (!checkPhoneNumberFormat()) {
 			isFormatRight = false;
 		}
+		Alert alert;
 		if (isFormatRight) {
-			SwitchSceneUtil.turnToAnotherScene((GridPane)root.getParent(), resources.customerCheckInfo);
+			UserVO userVO = SwitchSceneUtil.getUserVO();
+			getModifiedUserVO(userVO);
+			ResultMessage modifyInfoResult = SwitchSceneUtil.modifyInfo(userVO);
+			if (modifyInfoResult.equals(ResultMessage.SUCCESS)) {
+				alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("OK");
+				alert.setHeaderText(null);
+				alert.setContentText("修改成功");
+				SwitchSceneUtil.turnToAnotherScene((GridPane)root.getParent(), resources.customerCheckInfo);
+			} else {
+				alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Error Dialog");
+				alert.setHeaderText(null);
+				alert.setContentText(modifyInfoResult.toString());
+			}
+		} else {
+			alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Error Dialog");
+			alert.setHeaderText(null);
+			alert.setContentText("电话格式不正确(应为11位中国区号码)");
 		}
+		alert.showAndWait();
 	}
 	
 	@FXML
@@ -80,17 +105,44 @@ public class CustomerModifyInfo {
 	
 	@FXML
 	void confirmChangePassword() {
-		User_stub stub = new User_stub();
 		// 检查两次输入的新密码是否一致
 		String newPassword1 = newPassword.getText();
 		String newPassword2 = newPasswordAgain.getText();
+		Alert alert;
 		if (newPassword1.equals(newPassword2)) {
-			stub.modifyPassword(SwitchSceneUtil.getUserVO().userName, originPassword.getText(), newPassword1);
-			System.out.println("ok");
-			SwitchSceneUtil.turnToAnotherScene((GridPane)root.getParent(), resources.customerModifyInfo);
-			System.out.println("ok2");
+			ResultMessage resultMessage = SwitchSceneUtil.modifyPassword(originPassword.getText(), newPassword1);
+			if (!resultMessage.equals(ResultMessage.SUCCESS)) {
+				alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Error Dialog");
+				alert.setHeaderText(null);
+				alert.setContentText("原密码错误");
+			} else {
+				alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("OK");
+				alert.setHeaderText(null);
+				alert.setContentText("修改成功");
+				SwitchSceneUtil.turnToAnotherScene((GridPane)root.getParent(), resources.customerModifyInfo);
+			}
+		} else {
+			alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Error Dialog");
+			alert.setHeaderText(null);
+			alert.setContentText("两次输入的密码不一致");
 		}
-		System.out.println("no");
+		alert.showAndWait();
+	}
+	
+	private UserVO getModifiedUserVO(UserVO vo) {
+		vo.name = name.getText();
+		vo.phoneNumber = phoneNumber.getText();
+		if (UserType.getType(vo.type) == UserType.PERSONALCUSTOMER) {
+			Date newBirthday = LiveDatePicker.toDate(birthday.getValue());			
+			vo.birthday = newBirthday;
+		} else {
+			vo.companyName = company.getText();
+		}
+		return vo;
+		
 	}
 	
 	private boolean checkPhoneNumberFormat() {

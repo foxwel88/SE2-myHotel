@@ -2,7 +2,6 @@ package org.client.presentation.customer;
 
 import java.util.ArrayList;
 
-import org.client.blstub.User_stub;
 import org.client.vo.CreditRecordVO;
 
 import javafx.fxml.FXML;
@@ -73,8 +72,7 @@ public class CustomerCheckCredit {
 		boxList.add(record5);
 		boxList.add(record6);
 		boxList.add(record7);
-		User_stub stub = new User_stub();
-		recordList = new ArrayList<>(stub.findCreditRecord(SwitchSceneUtil.userID));
+		recordList = SwitchSceneUtil.getRecordList();
 		showRecord();
 	}
 	

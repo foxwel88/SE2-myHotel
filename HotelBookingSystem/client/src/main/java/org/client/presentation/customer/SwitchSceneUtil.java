@@ -9,17 +9,16 @@ import org.client.bl.hotelbl.HotelController;
 import org.client.bl.orderbl.OrderController;
 import org.client.bl.promotionbl.PromotionController;
 import org.client.bl.userbl.UserController;
-import org.client.blstub.Hotel_stub;
-import org.client.blstub.Order_stub;
-import org.client.blstub.User_stub;
 import org.client.launcher.Resources;
 import org.client.vo.AreaVO;
 import org.client.vo.CityVO;
+import org.client.vo.CreditRecordVO;
 import org.client.vo.HotelVO;
 import org.client.vo.OrderVO;
 import org.client.vo.UserVO;
 import org.common.utility.HotelFilter;
 import org.common.utility.OrderType;
+import org.common.utility.ResultMessage;
 
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -93,69 +92,61 @@ public class SwitchSceneUtil {
 		setUser(userID);
 	}
 	
-	// TODO ...还是假的
 	public static UserVO getUserVO() {
-//		return userController.findbyID(userID);
-		User_stub stub = new User_stub();
-		return stub.findbyID(userID);
+		return userController.findbyID(userID);
+	}
+	
+	public static ArrayList<CreditRecordVO> getRecordList() {
+		return (ArrayList<CreditRecordVO>)userController.findCreditRecord(userID);
+	}
+	
+	public static ResultMessage modifyPassword(String oldPassword, String newPassword) {
+		return userController.modifyPassword(getUserVO().userName, oldPassword, newPassword);
+	}
+	
+	public static ResultMessage modifyInfo(UserVO vo) {
+		return userController.modify(vo);
 	}
 	
 	public static List<OrderVO> getFinishedOrderList() {
-		Order_stub stub = new Order_stub();
-		return stub.getUserOrderList(userID, OrderType.EXECUTED);
-//		return orderController.getUserOrderList(userID, OrderType.EXECUTED);
+		return orderController.getUserOrderList(userID, OrderType.EXECUTED);
 	}
 	
 	public static List<OrderVO> getCanceledOrderList() {
-		Order_stub stub = new Order_stub();
-		return stub.getUserOrderList(userID, OrderType.CANCELED);
-//		return orderController.getUserOrderList(userID, OrderType.CANCELED);
+		return orderController.getUserOrderList(userID, OrderType.CANCELED);
 	}
 	
 	public static List<OrderVO> getAbnormalOrderList() {
-		Order_stub stub = new Order_stub();
-		return stub.getUserOrderList(userID, OrderType.ABNORMAL);
-//		return orderController.getUserOrderList(userID, OrderType.ABNORMAL);
+		return orderController.getUserOrderList(userID, OrderType.ABNORMAL);
 	}
 	
 	public static List<OrderVO> getUnExcutedOrderList() {
-		Order_stub stub = new Order_stub();
-		return stub.getUserOrderList(userID, OrderType.UNEXECUTED);
-//		return orderController.getUserOrderList(userID, OrderType.UNEXECUTED);
+		return orderController.getUserOrderList(userID, OrderType.UNEXECUTED);
 	}
 	
 	public static OrderVO getCurrentOrder() {
-		Order_stub stub = new Order_stub();
-		return stub.getOrder(orderID);
-//		return orderController.getOrder(orderID);
+		return orderController.getOrder(orderID);
 	}
 	
 	public static ArrayList<HotelVO> getFilteredHotels(HotelFilter filter, boolean historyOnly) {
-		Hotel_stub stub = new Hotel_stub();
-		return (ArrayList<HotelVO>)stub.findHotels(filter, userID, historyOnly);
-//		return (ArrayList<HotelVO>)hotelController.findHotels(filter, userID, historyOnly);
+		return (ArrayList<HotelVO>)hotelController.findHotels(filter, userID, historyOnly);
 	}
 	
 	public static ArrayList<CityVO> getCities() {
-		Hotel_stub stub = new Hotel_stub();
-		return new ArrayList<>(stub.getCitys());
-//		return new ArrayList<>(hotelController.getCitys());
+		return new ArrayList<>(hotelController.getCitys());
 	}
 	
 	public static ArrayList<AreaVO> getAreas() {
-		Hotel_stub stub = new Hotel_stub();
 		ArrayList<AreaVO> allAreas = new ArrayList<>();
 		ArrayList<CityVO> allCities = getCities();
 		for (CityVO vo : allCities) {
-			allAreas.addAll(stub.getAreas(vo));
+			allAreas.addAll(hotelController.getAreas(vo));
 		}
 		return allAreas;
 	}
 	
 	public static HotelVO getHotelVO() {
-		Hotel_stub stub = new Hotel_stub();
-		return stub.getHotelVO(hotelID);
-//		return hotelController.getHotelVO(hotelID);
+		return hotelController.getHotelVO(hotelID);
 	}
 	
 	/**

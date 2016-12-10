@@ -2,6 +2,8 @@ package org.client.presentation.customer;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
 
 import javafx.scene.control.DateCell;
@@ -64,5 +66,13 @@ public class LiveDatePicker {
 	 */
 	public static String dateToCoarseString(Date date) {
 		return (dateToDetaildString(date).split(" "))[0];
+	}
+	
+	public static Date toDate(LocalDate localDate) {
+		return Date.from(localDate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+	}
+	
+	public static LocalDate toLocalDate(Date date) {
+		return LocalDateTime.ofInstant(date.toInstant(), ZoneId.systemDefault()).toLocalDate();
 	}
 }
