@@ -48,6 +48,9 @@ public class RegisterController {
 	private DatePicker birthDatePicker;
 	
 	@FXML
+	private TextField companyTextField;
+	
+	@FXML
 	void initialize() {
 		
 		//设置客户类型的choiceBox
@@ -59,9 +62,13 @@ public class RegisterController {
 		
 		typeChoiceBox.getSelectionModel().selectedIndexProperty().addListener((observableValue, oldIndex, newIndex) -> {
 			if (userTypes.get((Integer)newIndex).equals(UserType.PERSONALCUSTOMER.getString())) {
-				birthDatePicker.setDisable(false);
+				birthLabel.setText("生日：");
+				birthDatePicker.setVisible(true);
+				companyTextField.setVisible(false);
 			} else {
-				birthDatePicker.setDisable(true);
+				birthLabel.setText("企业名称：");
+				companyTextField.setVisible(true);
+				birthDatePicker.setVisible(false);
 			}
 		});
 	}
@@ -71,22 +78,30 @@ public class RegisterController {
 		Userblservice userBl = UserController.getInstance();
 		if (passwordField.getText().equals(passwordField2.getText())) {
 
-			//记录生日
-			Date birthDate = null;
-			
-			if (!birthDatePicker.isDisabled()) {
+			if (typeChoiceBox.getValue() == UserType.PERSONALCUSTOMER.getString()) {
+				//记录生日
+				Date birthDate = null;
+				
 				LocalDate localBirthDate = birthDatePicker.getValue();
 				ZonedDateTime endZonedTime = localBirthDate.atStartOfDay(ZoneId.systemDefault());
 				Instant endInstant = Instant.from(endZonedTime);
 				birthDate = Date.from(endInstant);
-			}
-
-			UserVO vo = new UserVO(typeChoiceBox.getValue(), userNameTextField.getText(), nameTextField.getText(), null,
-					passwordField.getText(), phoneTextField.getText(), 200, birthDate, null, null, null);
-			
-			ResultMessage message = userBl.add(vo);
-			if (message == ResultMessage.SUCCESS) {
-				backToLogin();
+				
+				UserVO vo = new UserVO(typeChoiceBox.getValue(), userNameTextField.getText(), nameTextField.getText(), null,
+						passwordField.getText(), phoneTextField.getText(), 200, birthDate, null, null, null);
+				
+				ResultMessage message = userBl.add(vo);
+				if (message == ResultMessage.SUCCESS) {
+					backToLogin();
+				}
+			} else {
+				UserVO vo = new UserVO(typeChoiceBox.getValue(), userNameTextField.getText(), nameTextField.getText(), null,
+						passwordField.getText(), phoneTextField.getText(), 200, null, companyTextField.getText(), null, null);
+				
+				ResultMessage message = userBl.add(vo);
+				if (message == ResultMessage.SUCCESS) {
+					backToLogin();
+				}
 			}
 		}
 	

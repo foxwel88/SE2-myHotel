@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.common.utility.ResultMessage;
 
 public class HotelVO implements Serializable {
 	/**
