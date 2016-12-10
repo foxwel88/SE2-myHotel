@@ -115,7 +115,7 @@ public class WebMarketerModifyLevel {
 		// 检查格式
 		boolean flag = false;
 		for (int i = 1; i < allLevelPanes.size(); i++) {
-			if (allLevelPanes.get(i).getCredit() <= allLevelPanes.get(i).getCredit()) {
+			if (allLevelPanes.get(i).getCredit() <= allLevelPanes.get(i - 1).getCredit()) {
 				flag = true;
 				break;
 			}

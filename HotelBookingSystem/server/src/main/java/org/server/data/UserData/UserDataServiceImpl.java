@@ -177,8 +177,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		if (po != null) {
-		}
+
 		return po;
 	}
 
