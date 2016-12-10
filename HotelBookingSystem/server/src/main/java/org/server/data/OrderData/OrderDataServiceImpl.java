@@ -53,7 +53,7 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 			RoomType roomType = RoomType.getType(resultSet.getString("roomType"));
 			String orderID = resultSet.getString("orderID");
 			double totalPrice = resultSet.getDouble("totalPrice");
-			int roomNum = resultSet.getInt("totalPrice");
+			int roomNum = resultSet.getInt("roomnum");
 			int numOfPeople = resultSet.getInt("numOfPeople");
 			boolean existsChild = resultSet.getBoolean("existsChildren");
 			String customerName = resultSet.getString("customerName");
