@@ -2,8 +2,10 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.effect.Blend?>
-<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -134,14 +136,6 @@
                         <Font name="Microsoft YaHei UI Light" size="24.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="60.0" fitWidth="48.0" layoutX="1038.0" layoutY="9.0" preserveRatio="true">
-                     <image>
-                        <Image url="@../profile.png" />
-                     </image>
-                     <effect>
-                        <ColorAdjust brightness="0.63" />
-                     </effect>
-                  </ImageView>
                   <Pane prefHeight="65.0" prefWidth="110.0" style="-fx-background-color: rgba(0,0,0,0.5);">
                      <children>
                         <Label fx:id="backArrow" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="38.0" layoutY="2.0" onMouseClicked="#goBack" prefHeight="48.0" prefWidth="35.0" text="&lt;" textFill="#bcb8b8">
@@ -154,6 +148,15 @@
                         </Label>
                      </children>
                   </Pane>
+                  <MenuBar fx:id="avatarBar" layoutX="1021.0" layoutY="5.0" prefHeight="60.0" prefWidth="48.0" style="-fx-background-color: rgba(0,0,0,0);">
+                     <menus>
+                        <Menu fx:id="avatar" mnemonicParsing="false">
+                           <items>
+                              <MenuItem mnemonicParsing="false" onAction="#logOut" text="注销" />
+                           </items>
+                        </Menu>
+                     </menus>
+                  </MenuBar>
                </children>
                <GridPane.margin>
                   <Insets left="-2.0" right="-2.0" />

@@ -1,12 +1,22 @@
 package org.client.presentation.customer;
 
+import java.io.IOException;
+
+import org.client.bl.userbl.UserController;
 import org.client.launcher.Resources;
 
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
 /**
  * 
@@ -39,6 +49,14 @@ public class CustomerController_Main {
 	@FXML
 	Label backArrow;
 	
+	@FXML
+	MenuBar avatarBar;
+
+	@FXML
+	Menu avatar;
+	
+	private static final int AVATAR_SIZE = 48;
+	
 	private int presentGuide = 0;
 	
 	private Resources resources;
@@ -47,6 +65,26 @@ public class CustomerController_Main {
 	void initialize() {
 		welcomeLabel.setText("Welcome," + SwitchSceneUtil.getUserVO().name + "!");
 		resources = Resources.getInstance();
+		
+		ImageView avatarImgView = new ImageView();
+		avatarImgView.setImage(new Image(resources.avatar.toString()));
+		avatarImgView.setFitHeight(AVATAR_SIZE);
+		avatarImgView.setFitWidth(AVATAR_SIZE);
+		avatar.setGraphic(avatarImgView);
+	}
+	
+	@FXML
+	void logOut() {
+		UserController.getInstance().logout(SwitchSceneUtil.getUserVO().userName);
+		Stage stage = (Stage)welcomeLabel.getScene().getWindow();
+		Resources resources = Resources.getInstance();
+		try {
+			Parent root = resources.load(resources.login);
+			Scene scene = new Scene(root);
+			stage.setScene(scene);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	/*
