@@ -9,6 +9,7 @@ import org.client.vo.CreditRecordVO;
 import org.client.vo.UserLevelVO;
 import org.client.vo.UserVO;
 import org.common.utility.ResultMessage;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.server.rmi.RMIHelper;
@@ -184,5 +185,10 @@ public class UserTest {
 		
 		assertEquals(ResultMessage.SUCCESS, vo1.resultMessage);
 		assertEquals(ResultMessage.NOT_EXIST, vo2.resultMessage);
+	}
+	
+	@After
+	public void finish() {
+		RMIHelper.getinstance().releaseConnection();
 	}
 }
