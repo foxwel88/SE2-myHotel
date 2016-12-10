@@ -187,7 +187,7 @@
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
                      <children>
-                        <Label layoutX="29.0" layoutY="26.0" onMouseClicked="#checkDetailedHotel" text="杜厦大酒店" textFill="#00fff6" underline="true">
+                        <Label alignment="CENTER" layoutX="1.0" layoutY="26.0" onMouseClicked="#checkDetailedHotel" prefHeight="22.0" prefWidth="137.0" text="杜厦大酒店" textFill="#00fff6" underline="true">
                            <font>
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>
@@ -199,7 +199,7 @@
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
                      <children>
-                        <Label layoutX="29.0" layoutY="26.0" onMouseClicked="#checkDetailedHotel" text="杜厦大酒店" textFill="#00fff6" underline="true">
+                        <Label alignment="CENTER" layoutX="1.0" layoutY="26.0" onMouseClicked="#checkDetailedHotel" prefHeight="22.0" prefWidth="137.0" text="杜厦大酒店" textFill="#00fff6" underline="true">
                            <font>
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>
@@ -211,7 +211,7 @@
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
                      <children>
-                        <Label layoutX="29.0" layoutY="26.0" onMouseClicked="#checkDetailedHotel" text="杜厦大酒店" textFill="#00fff6" underline="true">
+                        <Label alignment="CENTER" layoutX="1.0" layoutY="26.0" onMouseClicked="#checkDetailedHotel" prefWidth="137.0" text="杜厦大酒店" textFill="#00fff6" underline="true">
                            <font>
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>
@@ -223,7 +223,7 @@
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
                      <children>
-                        <Label layoutX="29.0" layoutY="26.0" onMouseClicked="#checkDetailedHotel" text="杜厦大酒店" textFill="#00fff6" underline="true">
+                        <Label alignment="CENTER" layoutX="1.0" layoutY="26.0" onMouseClicked="#checkDetailedHotel" prefWidth="137.0" text="杜厦大酒店" textFill="#00fff6" underline="true">
                            <font>
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>
@@ -235,7 +235,7 @@
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
                      <children>
-                        <Label layoutX="29.0" layoutY="26.0" onMouseClicked="#checkDetailedHotel" text="杜厦大酒店" textFill="#00fff6" underline="true">
+                        <Label alignment="CENTER" layoutX="1.0" layoutY="26.0" onMouseClicked="#checkDetailedHotel" prefWidth="137.0" text="杜厦大酒店" textFill="#00fff6" underline="true">
                            <font>
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>
@@ -346,7 +346,7 @@
                         <Font name="Microsoft JhengHei" size="16.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="73.0" prefWidth="175.0" style="-fx-border-style: solid;" text="XX圈南京市仙林大道163号南京大学仙林校区" wrapText="true">
+                  <Label alignment="CENTER" prefHeight="73.0" prefWidth="175.0" style="-fx-border-style: solid;" text="XX圈南京市仙林大道163号南京大学仙林校区" textAlignment="CENTER" wrapText="true">
                      <VBox.margin>
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
@@ -354,7 +354,7 @@
                         <Font name="Microsoft JhengHei" size="16.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="34.0" prefHeight="73.0" prefWidth="175.0" style="-fx-border-style: solid;" text="XX圈南京市仙林大道163号南京大学仙林校区" wrapText="true">
+                  <Label alignment="CENTER" layoutX="10.0" layoutY="34.0" prefHeight="73.0" prefWidth="175.0" style="-fx-border-style: solid;" text="XX圈南京市仙林大道163号南京大学仙林校区" textAlignment="CENTER" wrapText="true">
                      <font>
                         <Font name="Microsoft JhengHei" size="16.0" />
                      </font>
@@ -362,7 +362,7 @@
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
                   </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="106.0" prefHeight="73.0" prefWidth="175.0" style="-fx-border-style: solid;" text="XX圈南京市仙林大道163号南京大学仙林校区" wrapText="true">
+                  <Label alignment="CENTER" layoutX="10.0" layoutY="106.0" prefHeight="73.0" prefWidth="175.0" style="-fx-border-style: solid;" text="XX圈南京市仙林大道163号南京大学仙林校区" textAlignment="CENTER" wrapText="true">
                      <font>
                         <Font name="Microsoft JhengHei" size="16.0" />
                      </font>
@@ -370,7 +370,7 @@
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
                   </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="179.0" prefHeight="73.0" prefWidth="175.0" style="-fx-border-style: solid;" text="XX圈南京市仙林大道163号南京大学仙林校区" wrapText="true">
+                  <Label alignment="CENTER" layoutX="10.0" layoutY="179.0" prefHeight="73.0" prefWidth="175.0" style="-fx-border-style: solid;" text="XX圈南京市仙林大道163号南京大学仙林校区" textAlignment="CENTER" wrapText="true">
                      <font>
                         <Font name="Microsoft JhengHei" size="16.0" />
                      </font>
@@ -378,7 +378,7 @@
                         <Insets bottom="-1.0" right="-1.0" />
                      </VBox.margin>
                   </Label>
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="252.0" prefHeight="73.0" prefWidth="175.0" style="-fx-border-style: solid;" text="XX圈南京市仙林大道163号南京大学仙林校区" wrapText="true">
+                  <Label alignment="CENTER" layoutX="10.0" layoutY="252.0" prefHeight="73.0" prefWidth="175.0" style="-fx-border-style: solid;" text="XX圈南京市仙林大道163号南京大学仙林校区" textAlignment="CENTER" wrapText="true">
                      <font>
                         <Font name="Microsoft JhengHei" size="16.0" />
                      </font>
