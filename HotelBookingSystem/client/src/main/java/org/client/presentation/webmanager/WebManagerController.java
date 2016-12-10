@@ -30,7 +30,7 @@ public class WebManagerController {
 	
 	private Userblservice userbl;
 	
-	private String userID;
+	String userID;
 	
 	private static WebManagerController controller;
 	
