@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import org.client.presentation.util.ResultInfoHelper;
 import org.client.vo.LevelVO;
 import org.common.utility.ResultMessage;
 
@@ -65,6 +66,9 @@ public class WebMarketerModifyLevel {
 	@FXML
 	private GridPane contentGridPane;
 	
+	@FXML
+	private Label resultLabel;
+	
 	/**
 	 * 当前页码
 	 */
@@ -117,7 +121,7 @@ public class WebMarketerModifyLevel {
 			}
 		}
 		if (flag) {
-			// TODO warning window
+			ResultInfoHelper.setResultLabel(resultLabel, ResultMessage.WRONG_FORMAT);
 			return;
 		}
 		// 获得levelVO
@@ -134,10 +138,11 @@ public class WebMarketerModifyLevel {
 		LevelVO levelvo = new LevelVO(levelNum, credits);
 		ResultMessage info = controller.modifyLevel(levelvo);
 		if (info != ResultMessage.SUCCESS) {
-			// TODO warning window
+			ResultInfoHelper.setResultLabel(resultLabel, info);
 			return;
 		}
 		// 如果修改促销策略成功，将copyList改为修改之后的，即无法取消
+		ResultInfoHelper.setResultLabel(resultLabel, info);
 		allLevelPanesCopy.clear();
 		for (int i = 0; i < allLevelPanes.size(); i++) {
 			LevelPane before = allLevelPanes.get(i);
@@ -209,6 +214,7 @@ public class WebMarketerModifyLevel {
 		assert nextPage != null : "fx:id=\"nextPage\" was not injected: check your FXML file '修改会员等级制度界面.fxml'.";
 		assert jumpField != null : "fx:id=\"jumpField\" was not injected: check your FXML file '修改会员等级制度界面.fxml'.";
 		assert contentGridPane != null : "fx:id=\"contentGridPane\" was not injected: check your FXML file '修改会员等级制度界面.fxml'.";
+		assert resultLabel != null : "fx:id=\"resultLabel\" was not injected: check your FXML file '修改会员等级制度界面.fxml'.";
 		
 		controller = WebMarketerController.getInstance();
 		allLevelPanes = new ArrayList<>();

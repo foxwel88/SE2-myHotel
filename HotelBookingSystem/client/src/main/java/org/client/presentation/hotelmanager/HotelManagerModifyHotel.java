@@ -75,13 +75,13 @@ public class HotelManagerModifyHotel {
 	@FXML
     private ChoiceBox<String> roomType;
 
+	private ObservableList<String> roomTypes;
+
 	@FXML
 	private TextField roomNum;
 
 	@FXML
     private TextField roomPrice;
-	
-	private ObservableList<String> roomTypes;
 	
 	private ArrayList<Integer> roomNums;
 	

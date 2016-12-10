@@ -40,14 +40,16 @@ public class HotelUtil {
 	public HotelVO getHotel(String hotelID) {
 		HotelDataService dao = RMIHelper.getInstance().getHotelDataServiceImpl();
 		HotelPO po;
+		List<RoomPO> rooms;
 		try {
 			po = dao.getHotelInfo(hotelID);
+			rooms = dao.getRooms(hotelID);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			return null;
 		}
 		Hotel h = new Hotel();
-		h.initByPO(po);
+		h.initByPO(po, rooms);
 		return h.generateVO();
 	}
 	

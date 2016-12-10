@@ -5,14 +5,14 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
+import org.client.bl.hotelbl.HotelController;
+import org.client.bl.orderbl.OrderController;
+import org.client.bl.promotionbl.PromotionController;
+import org.client.bl.userbl.UserController;
 import org.client.blservice.hotelblservice.Hotelblservice;
 import org.client.blservice.orderblservice.Orderblservice;
 import org.client.blservice.promotionblservice.Promotionblservice;
 import org.client.blservice.userblservice.Userblservice;
-import org.client.blstub.Hotel_stub;
-import org.client.blstub.Order_stub;
-import org.client.blstub.Promotion_stub;
-import org.client.blstub.User_stub;
 import org.client.rmi.RMIHelper;
 import org.client.vo.AreaVO;
 import org.client.vo.CityVO;
@@ -43,20 +43,19 @@ public class WebMarketerController {
 	
 	private String userName;
 	
+	private String name;
+	
 	private UserVO userVO;
 	
-	/**
-	 * stub version
-	 */
 	private WebMarketerController() {
-//		userbl = UserController.getInstance();
-//		promotionbl = PromotionController.getInstance();
-//		orderbl = OrderController.getInstance();
-//		hotelbl = HotelController.getInstance();
-		userbl = new User_stub();
-		promotionbl = new Promotion_stub();
-		orderbl = new Order_stub();
-		hotelbl = new Hotel_stub();
+		userbl = UserController.getInstance();
+		promotionbl = PromotionController.getInstance();
+		orderbl = OrderController.getInstance();
+		hotelbl = HotelController.getInstance();
+//		userbl = new User_stub();
+//		promotionbl = new Promotion_stub();
+//		orderbl = new Order_stub();
+//		hotelbl = new Hotel_stub();
 	}
 	
 	public static WebMarketerController getInstance() {
@@ -72,10 +71,11 @@ public class WebMarketerController {
 	 */
 	public void init(UserVO vo) {
 		this.userName = vo.userName;
+		this.name = vo.name;
 	}
 	
 	public String getUserName() {
-		return userName;
+		return name;
 	}
 	
 	public ResultMessage setUserVO(String userName) {

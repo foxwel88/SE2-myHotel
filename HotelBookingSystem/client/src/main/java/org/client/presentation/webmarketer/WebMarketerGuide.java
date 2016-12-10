@@ -13,9 +13,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -230,7 +232,12 @@ public class WebMarketerGuide {
 	void logOut(ActionEvent event) {
 		ResultMessage info = WebMarketerController.getInstance().logout();
 		if (info != ResultMessage.SUCCESS) {
-			// TODO warning window
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Error Dialog");
+			alert.setHeaderText(null);
+			alert.setContentText(info.toString());
+
+			alert.showAndWait();
 			return;
 		}
 		

@@ -20,7 +20,7 @@
             <Font name="Microsoft YaHei UI Light" size="28.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="373.0" layoutY="216.0" prefHeight="105.0" prefWidth="164.0" text="网站管理端">
+      <Label alignment="CENTER" layoutX="373.0" layoutY="216.0" prefHeight="105.0" prefWidth="164.0" text="网站营销端">
          <font>
             <Font name="Microsoft YaHei UI Light" size="28.0" />
          </font>

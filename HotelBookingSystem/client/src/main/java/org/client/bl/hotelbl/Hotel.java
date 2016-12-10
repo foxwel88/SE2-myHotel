@@ -7,6 +7,8 @@ import org.client.vo.AreaVO;
 import org.client.vo.CityVO;
 import org.client.vo.HotelVO;
 import org.common.po.HotelPO;
+import org.common.po.RoomPO;
+import org.common.utility.RoomType;
 
 /**
  * Hotel的领域对象实体类，持有hotel的基本信息，拥有po和vo的转换方法
@@ -57,7 +59,7 @@ public class Hotel {
 	 * @param po
 	 * @return this
 	 */
-	public Hotel initByPO(HotelPO po) {
+	public Hotel initByPO(HotelPO po, List<RoomPO> rooms) {
 		this.id = po.id;
 		this.hotelName = po.hotelName;
 		this.address = po.address;
@@ -82,6 +84,17 @@ public class Hotel {
 				stringBuilder = new StringBuilder();
 			}
 		}
+
+		//room
+		roomType = new ArrayList<>();
+		roomNum = new ArrayList<>();
+		roomPrice = new ArrayList<>();
+		for (RoomPO t: rooms) {
+			roomType.add(t.roomType.getString());
+			roomNum.add(t.roomNum);
+			roomPrice.add(t.roomPrice);
+		}
+
 		return this;
 	}
 	
