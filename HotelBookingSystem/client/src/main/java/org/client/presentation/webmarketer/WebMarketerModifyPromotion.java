@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import org.client.presentation.hotelmanager.HotelManagerController;
+import org.client.presentation.util.ResultInfoHelper;
 import org.client.vo.AreaVO;
 import org.client.vo.CityVO;
 import org.client.vo.PromotionVO;
@@ -26,6 +27,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -76,6 +78,9 @@ public class WebMarketerModifyPromotion {
 	@FXML
 	private Button confirmButton;
 	
+	@FXML
+	private Label resultLabel;
+	
 	private PromotionVO vo;
 	
 	private WebMarketerController controller;
@@ -112,9 +117,10 @@ public class WebMarketerModifyPromotion {
 		}
 		if (!isModify) {
 			vo = new PromotionVO();
+			vo.provider = "web";
 		}
 		if (!isFormatCorrect()) {
-			// TODO
+			ResultInfoHelper.setResultLabel(resultLabel, ResultMessage.WRONG_FORMAT);
 			return;
 		}
 		//赋值
@@ -144,10 +150,11 @@ public class WebMarketerModifyPromotion {
 		}
 		ResultMessage result;
 		if (isModify) {
-			result = HotelManagerController.getInstance().modifyPromotion(vo);
+			result = WebMarketerController.getInstance().modifyPromotion(vo);
 		} else {
-			result = HotelManagerController.getInstance().addPromotion(vo);
+			result = WebMarketerController.getInstance().addPromotion(vo);
 		}
+		ResultInfoHelper.setResultLabel(resultLabel, result);
 	}
 
 	@FXML
@@ -162,6 +169,7 @@ public class WebMarketerModifyPromotion {
         assert areaBox != null : "fx:id=\"areaBox\" was not injected: check your FXML file '修改促销策略界面.fxml'.";
         assert discountLabel != null : "fx:id=\"discountLabel\" was not injected: check your FXML file '修改促销策略界面.fxml'.";
         assert confirmButton != null : "fx:id=\"confirmButton\" was not injected: check your FXML file '修改促销策略界面.fxml'.";
+        assert resultLabel != null : "fx:id=\"resultLabel\" was not injected: check your FXML file '修改促销策略界面.fxml'.";
         
         // 初始化controller
 		controller = WebMarketerController.getInstance();
@@ -278,21 +286,21 @@ public class WebMarketerModifyPromotion {
 	 */
 	boolean isFormatCorrect() {
 		//time order
-		if (startTimePicker.isEditable()) {
+		if (!startTimePicker.isDisable()) {
 			if (startTimePicker.getValue().isAfter(endTimePicker.getValue()) || startTimePicker.getValue().isEqual(endTimePicker.getValue())) {
 				return false;
 			}
 		}
 		
 		//select level
-		if (levelBox.isEditable()) {
+		if (!levelBox.isDisable()) {
 			if (levelBox.getValue() == null || levelBox.getValue().equals("")) {
 				return false;
 			}
 		}
 		
 		//select area
-		if (areaBox.isEditable()) {
+		if (!areaBox.isDisable()) {
 			if (areaBox.getValue() == null || areaBox.getValue().equals("")) {
 				return false;
 			}

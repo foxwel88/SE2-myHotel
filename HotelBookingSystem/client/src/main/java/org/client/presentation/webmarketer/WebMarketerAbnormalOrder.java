@@ -5,12 +5,14 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
 
+import org.client.presentation.util.ResultInfoHelper;
 import org.client.vo.OrderVO;
 import org.common.utility.ResultMessage;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
@@ -67,6 +69,9 @@ public class WebMarketerAbnormalOrder {
 	@FXML
 	private CheckBox halfRecBox;
 	
+	@FXML
+	private Label resultLabel;
+	
 	private OrderVO vo;
 	
 	private DateFormat dateFormat;
@@ -78,7 +83,7 @@ public class WebMarketerAbnormalOrder {
 		boolean isAll = allRecBox.isSelected();
 		boolean isHalf = halfRecBox.isSelected();
 		if (!(isAll ^ isHalf)) { // both selected or neither selected
-			// TODO warning window
+			ResultInfoHelper.setResultLabel(resultLabel, ResultMessage.WRONG_FORMAT);
 			allRecBox.setSelected(false);
 			halfRecBox.setSelected(false);
 			return;
@@ -87,11 +92,12 @@ public class WebMarketerAbnormalOrder {
 		ResultMessage info = controller.cancelOrder(vo.orderID, isHalf == true);
 		
 		if (info != ResultMessage.SUCCESS) { // check
-			//TODO warning window
+			ResultInfoHelper.setResultLabel(resultLabel, info);
 			allRecBox.setSelected(false);
 			halfRecBox.setSelected(false);
 			return;
 		}
+		ResultInfoHelper.setResultLabel(resultLabel, ResultMessage.WRONG_FORMAT);
 	}
 
 	@FXML
@@ -109,6 +115,7 @@ public class WebMarketerAbnormalOrder {
 		assert bookTimeLabel != null : "fx:id=\"bookTimeLabel\" was not injected: check your FXML file '异常订单详细信息界面.fxml'.";
 		assert allRecBox != null : "fx:id=\"allRecBox\" was not injected: check your FXML file '异常订单详细信息界面.fxml'.";
 		assert halfRecBox != null : "fx:id=\"halfRecBox\" was not injected: check your FXML file '异常订单详细信息界面.fxml'.";
+		assert resultLabel != null : "fx:id=\"resultLabel\" was not injected: check your FXML file '异常订单详细信息界面.fxml'.";
 		
 		controller = WebMarketerController.getInstance();
 		dateFormat = new SimpleDateFormat("yyyy-MM-dd"); //设置日期格式

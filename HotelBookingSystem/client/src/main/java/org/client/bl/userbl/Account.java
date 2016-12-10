@@ -60,19 +60,9 @@ public class Account {
 	}
 	
 	public ResultMessage logout(String userName) {
-		//检查该用户是否已登陆
 		UserDataService dao = RMIHelper.getInstance().getUserDataServiceImpl();
-		ResultMessage info = null;
-		try {
-			info = dao.userIsExist(userName);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-			return ResultMessage.CONNECTION_FAIL;
-		}
-		if (info != ResultMessage.EXIST) {
-			return info;
-		}
 		//告诉服务器该用户登出
+		ResultMessage info;
 		try {
 			info = dao.deleteNowUser(userName);
 		} catch (RemoteException e) {

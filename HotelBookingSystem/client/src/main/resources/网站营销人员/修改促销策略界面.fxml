@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -173,10 +174,15 @@
             </AnchorPane>
          </children>
       </GridPane>
-      <Button fx:id="confirmButton" layoutX="746.0" layoutY="507.0" mnemonicParsing="false" onMouseClicked="#handleConfirm" prefHeight="30.0" prefWidth="85.0" style="-fx-background-color: rgba(0,0,0,0.4);" text="确认" textFill="WHITE">
+      <Button fx:id="confirmButton" layoutX="745.0" layoutY="497.0" mnemonicParsing="false" onMouseClicked="#handleConfirm" prefHeight="30.0" prefWidth="85.0" style="-fx-background-color: rgba(0,0,0,0.4);" text="确认" textFill="WHITE">
          <font>
             <Font name="Microsoft YaHei" size="15.0" />
          </font>
       </Button>
+      <Label fx:id="resultLabel" layoutX="742.0" layoutY="533.0">
+         <font>
+            <Font name="Microsoft YaHei" size="15.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
