@@ -141,28 +141,6 @@ public class HotelDataServiceImplTest {
 		assertTrue(!pos.get(0).roomType.getString().isEmpty());
 	}
 
-	@Test
-	public void testAddHotel3() throws RemoteException {
-		String create = "CREATE TABLE `00115`(roomType VARCHAR(100), roomNum INT, roomPrice DOUBLE)";
-		PreparedStatement preparedStatement = null;
-		try {
-			preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(create);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		for (RoomType t: RoomType.values()) {
-			try {
-				preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("INSERT INTO `00115`(roomType,roomNum,roomPrice)"
-						+ " VALUES ('" + t.getString() + "','0','0')");
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-			DatabaseCommunicator.execute(preparedStatement);
-		}
-		DatabaseCommunicator.execute(preparedStatement);
-	}
-
 	@After
 	public void tearDown() {
 
