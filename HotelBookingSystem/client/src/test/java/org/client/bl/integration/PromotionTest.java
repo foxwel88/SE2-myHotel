@@ -44,7 +44,7 @@ public class PromotionTest {
 		Process process = runtime.exec("mysql -uroot -p1234");
 		OutputStream outputStream = process.getOutputStream();
 		OutputStreamWriter writer = new OutputStreamWriter(outputStream);
-		writer.write("use hotelbookingsystemdatabase" + "\r\n" + "source " + testDataBasePath);
+		writer.write("use hotelbookingsystemfortest" + "\r\n" + "source " + testDataBasePath);
 		writer.flush();
 		writer.close();
 		outputStream.close();
