@@ -59,6 +59,9 @@ public class SwitchSceneUtil {
 	// 生成订单界面可能返回酒店列表界面，也可能返回酒店详细信息界面，因此需要这个字段进行记录
 	static boolean isBackToDetail = false;
 	
+	// 当此属性为true时，goBack操作才会被允许
+	static boolean canBack = false;
+	
 	/*
 	 * 下面三条属性用于记录返回上一界面所需要的信息
 	 */
@@ -154,6 +157,7 @@ public class SwitchSceneUtil {
 	 * @param currentScene
 	 */
 	public static void savePreviousScene(CustomerBackableScene currentScene) {
+		canBack = true;
 		SwitchSceneUtil.currentScene = currentScene;
 	}
 	
@@ -163,6 +167,7 @@ public class SwitchSceneUtil {
 	 * @param previousHotelSceneInfo
 	 */
 	public static void savePreviousScene(CustomerBackableScene currentScene, PreviousHotelSceneInfo previousHotelSceneInfo) {
+		canBack = true;
 		SwitchSceneUtil.currentScene = currentScene;
 		SwitchSceneUtil.previousHotelSceneInfo = previousHotelSceneInfo;
 	}
@@ -173,6 +178,7 @@ public class SwitchSceneUtil {
 	 * @param previousOrderSceneInfo
 	 */
 	public static void savePreviousScene(CustomerBackableScene currentScene, PreviousOrderSceneInfo previousOrderSceneInfo) {
+		canBack = true;
 		SwitchSceneUtil.currentScene = currentScene;
 		SwitchSceneUtil.previousOrderSceneInfo = previousOrderSceneInfo;
 	}
@@ -207,6 +213,7 @@ public class SwitchSceneUtil {
 	 * @param orderID 某条订单的订单号
 	 */
 	public static void turnToDetailedOrderScene(GridPane gridpane, URL resource, String orderID) {
+		canBack = true;
 		SwitchSceneUtil.orderID = orderID;
 		turnToAnotherScene(gridpane, resource);
 	}
@@ -217,6 +224,7 @@ public class SwitchSceneUtil {
 	 * @param hotelID 期望观看酒店的ID
 	 */
 	public static void turnToDetailedHotelScene(GridPane gridpane, String hotelID) {
+		canBack = true;
 		Resources resources = Resources.getInstance();
 		SwitchSceneUtil.hotelID = hotelID;
 		turnToAnotherScene(gridpane, resources.customerCheckHotel);
@@ -228,6 +236,7 @@ public class SwitchSceneUtil {
 	 * @param hotelID 期望观看酒店的ID
 	 */
 	public static void turnToGenerateOrderScene(GridPane gridpane, String hotelID) {
+		canBack = true;
 		Resources resources = Resources.getInstance();
 		SwitchSceneUtil.hotelID = hotelID;
 		turnToAnotherScene(gridpane, resources.customerGenerateOrder);
@@ -239,6 +248,7 @@ public class SwitchSceneUtil {
 	 * @param orderVO
 	 */
 	public static void turnToConfirmOrderScene(GridPane gridpane, OrderVO orderVO) {
+		canBack = true;
 		Resources resources = Resources.getInstance();
 		SwitchSceneUtil.toBeGeneratedOrder = orderVO;
 		turnToAnotherScene(gridpane, resources.customerConfirmGenerateOrder);

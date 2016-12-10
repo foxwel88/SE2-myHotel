@@ -2,8 +2,10 @@ package org.client.presentation.customer;
 
 import java.util.ArrayList;
 
+import org.client.bl.orderbl.OrderController;
 import org.client.launcher.Resources;
 import org.client.vo.OrderVO;
+import org.common.utility.OrderType;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -84,6 +86,7 @@ public class CustomerUnexcutedOrderList {
 	
 	@FXML
 	void initialize() {
+		SwitchSceneUtil.canBack = false;
 		resources = Resources.getInstance();
 		boxList = new ArrayList<>();
 		boxList.add(order1);
@@ -104,6 +107,9 @@ public class CustomerUnexcutedOrderList {
 			currentPage.setText(String.valueOf(goalPage));
 			showUnExcutedOrderList();
 		}
+		
+		ArrayList<OrderVO> volist = (ArrayList<OrderVO>)OrderController.getInstance().getUserOrderList(SwitchSceneUtil.userID, OrderType.EXECUTED);
+		System.out.println(volist.get(0).roomNum);
 	}
 	
 	@FXML

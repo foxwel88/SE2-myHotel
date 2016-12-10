@@ -216,7 +216,7 @@ public class CustomerCheckCredit {
 	}
 	
 	private String resultCredit(int i) {
-		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_CREDITRECORD_ONE_OAGE + 1;
+		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_CREDITRECORD_ONE_OAGE + i;
 		try {
 			return String.valueOf(recordList.get(seq).result);
 		} catch (IndexOutOfBoundsException nullex) {

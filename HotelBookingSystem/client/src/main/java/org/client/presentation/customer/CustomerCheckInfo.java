@@ -44,6 +44,7 @@ public class CustomerCheckInfo {
 	
 	@FXML
 	void initialize() {
+		SwitchSceneUtil.canBack = false;
 		resources = Resources.getInstance();
 		UserVO vo = SwitchSceneUtil.getUserVO();
 		account.setText(vo.userName);

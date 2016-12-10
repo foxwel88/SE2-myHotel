@@ -124,6 +124,7 @@ public class CustomerCheckHotelList {
 	
 	@FXML
 	void initialize() {
+		SwitchSceneUtil.canBack = false;
 		setCity();
 		setArea();
 		setLowerStar();
@@ -146,28 +147,28 @@ public class CustomerCheckHotelList {
 			if (previousFilter.area != null) {
 				area.setValue(previousFilter.area);
 			}
-			if (previousFilter.minStar != -1) {
+			if (previousFilter.minStar != 0) {
 				lowerStar.setValue(previousFilter.minStar);
 			}
-			if (previousFilter.maxStar != -1) {
+			if (previousFilter.maxStar != 5) {
 				upperStar.setValue(previousFilter.maxStar);
 			}
-			if (previousFilter.minRank != -1) {
+			if (previousFilter.minRank != 0) {
 				lowerScore.setValue(previousFilter.minRank);
 			}
-			if (previousFilter.maxRank != -1) {
+			if (previousFilter.maxRank != 5) {
 				upperScore.setValue(previousFilter.maxRank);
 			}
-			if (previousFilter.minPrice != -1) {
+			if (previousFilter.minPrice != 0) {
 				fromPrice.setText(String.valueOf(previousFilter.minPrice));
 			}
-			if (previousFilter.maxPrice != -1) {
+			if (previousFilter.maxPrice != Double.MAX_VALUE) {
 				toPrice.setText(String.valueOf(previousFilter.maxPrice));
 			}
 			if (previousFilter.roomType != null) {
 				roomType.setValue(previousFilter.roomType.getString());
 			}
-			if (previousFilter.roomNum != -1) {
+			if (previousFilter.roomNum != 1) {
 				roomNum.setText(String.valueOf(previousFilter.roomNum));
 			}
 //			fromDate.setValue(previousFilter.);
@@ -296,10 +297,12 @@ public class CustomerCheckHotelList {
 	
 	private void setLowerStar() {
 		lowerStar.setItems(FXCollections.observableArrayList(1,2,3,4,5));
+		lowerStar.setValue(1);
 	}
 	
 	private void setUpperStar() {
 		upperStar.setItems(FXCollections.observableArrayList(1,2,3,4,5));
+		upperStar.setValue(5);
 	}
 	
 	private void setLowerScore() {
@@ -308,6 +311,7 @@ public class CustomerCheckHotelList {
 			scores.add(i);
 		}
 		lowerScore.setItems(FXCollections.observableArrayList(scores));
+		lowerScore.setValue(0.0);
 	}
 	
 	private void setUpperScore() {
@@ -316,6 +320,7 @@ public class CustomerCheckHotelList {
 			scores.add(i);
 		}
 		upperScore.setItems(FXCollections.observableArrayList(scores));
+		upperScore.setValue(5.0);
 	}
 	
 	private void setStartDate() {
@@ -335,12 +340,6 @@ public class CustomerCheckHotelList {
 		roomType.setItems(FXCollections.observableArrayList(roomTypeList));
 	}
 	
-	/**
-	 * city和area可能为null，需要filter查找的时候自行判断
-	 * 星级的上下界值均可能为-1，表示无上下界
-	 * 评分的上下界值均可能为-1，表示无上下界
-	 * 价格的上下界值均可能为-1，表示无上下界
-	 */
 	private HotelFilter getCurrentFilter() {
 		HotelFilter filter = new HotelFilter();
 		
@@ -490,7 +489,7 @@ public class CustomerCheckHotelList {
 	}
 	
 	private double getPrice(int i) {
-		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_HOTEL_ONE_OAGE + 1;
+		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_HOTEL_ONE_OAGE + i;
 		try {
 			ArrayList<Double> priceList = new ArrayList<>(hotelList.get(seq).roomPrice);
 			double minPrice = priceList.get(0);
