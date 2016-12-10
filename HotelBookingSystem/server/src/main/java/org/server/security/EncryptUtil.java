@@ -140,11 +140,11 @@ public class EncryptUtil {
 	
 	// 用于获得数据库的原始加密数据
 	public static void main(String[] args) {
-		String username1 = "imindividual";
-		String username2 = "imcompany";
-		String username3 = "imhotelmanager";
-		String username4 = "imwebmarketer";
-		String username5 = "imwebmanager";
+		String username1 = "tom";
+		String username2 = "cat";
+		String username3 = "mac";
+		String username4 = "bob";
+		String username5 = "root";
 		
 		String name1 = "张客户";
 		String name2 = "李公司";
@@ -152,11 +152,11 @@ public class EncryptUtil {
 		String name4 = "刘营销";
 		String name5 = "白网管";
 		
-		String password1 = "person";
-		String password2 = "manype";
-		String password3 = "hotman";
-		String password4 = "webmark";
-		String password5 = "webman";
+		String password1 = "123456";
+		String password2 = "123456";
+		String password3 = "123456";
+		String password4 = "123456";
+		String password5 = "123456";
 		
 		String phone1 = "13301112944";
 		String phone2 = "13824810394";
@@ -169,7 +169,8 @@ public class EncryptUtil {
 		System.out.println(encrypt(username3));	
 		System.out.println(encrypt(username4));	
 		System.out.println(encrypt(username5));	
-		
+	
+		System.out.println("----");
 		System.out.println(encrypt(name1));
 		System.out.println(encrypt(name2));
 		System.out.println(encrypt(name3));
