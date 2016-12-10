@@ -7,8 +7,6 @@ import org.client.bl.hotelbl.HotelController;
 import org.client.bl.userbl.UserController;
 import org.client.blservice.hotelblservice.Hotelblservice;
 import org.client.blservice.userblservice.Userblservice;
-import org.client.blstub.Hotel_stub;
-import org.client.blstub.User_stub;
 import org.client.vo.AreaVO;
 import org.client.vo.CityVO;
 import org.client.vo.HotelVO;
@@ -32,6 +30,8 @@ public class WebManagerController {
 	
 	private Userblservice userbl;
 	
+	private String userID;
+	
 	private static WebManagerController controller;
 	
 	private WebManagerController() {
@@ -44,6 +44,10 @@ public class WebManagerController {
 			controller = new WebManagerController();
 		}
 		return controller;
+	}
+	
+	public void init(String userID) {
+		this.userID = userID;
 	}
 	
 	public ResultMessage addHotel(HotelVO hotelVO, UserVO userVO) {
@@ -76,5 +80,9 @@ public class WebManagerController {
 	
 	public List<AreaVO> getAreas(CityVO vo) {
 		return hotelbl.getAreas(vo);
+	}
+	
+	public ResultMessage logOut() {
+		return userbl.logout(userbl.findbyID(userID).userName);
 	}
 }

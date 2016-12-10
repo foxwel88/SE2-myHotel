@@ -3,8 +3,10 @@ package org.client.presentation.webmanager;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 
+import org.client.presentation.customer.LiveDatePicker;
 import org.client.vo.UserVO;
 import org.common.utility.ResultMessage;
 
@@ -14,6 +16,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
@@ -39,9 +42,6 @@ public class WebManagerModifyCustomer {
 	private ChoiceBox< String > typeChoiceBox;
 
 	@FXML
-	private TextField birthTextField;
-
-	@FXML
 	private TextField companyTextField;
 
 	@FXML
@@ -49,6 +49,9 @@ public class WebManagerModifyCustomer {
 
 	@FXML
 	private Button cancelButton;
+	
+	@FXML
+    private DatePicker birthDatePicker;
 
 	private UserVO nowvo;
 	
@@ -57,7 +60,8 @@ public class WebManagerModifyCustomer {
 		userNameTextField.setText(nowvo.userName);
 		nameTextField.setText(nowvo.name);
 		phoneTextField.setText(nowvo.phoneNumber);
-		birthTextField.setText(nowvo.birthday.toString());
+		String[] dateStringArray = LiveDatePicker.dateToCoarseString(vo.birthday).split("/");
+		birthDatePicker.setValue(LocalDate.of(Integer.parseInt(dateStringArray[0]), Integer.parseInt(dateStringArray[1]), Integer.parseInt(dateStringArray[2])));
 		companyTextField.setText(nowvo.companyName);
 		typeChoiceBox.setItems(FXCollections.observableArrayList("个人客户","企业客户"));
 		typeChoiceBox.setValue(nowvo.type);
@@ -82,7 +86,7 @@ public class WebManagerModifyCustomer {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date DateObj = null;
 		try {
-			DateObj = dateFormat.parse(birthTextField.getText());
+			DateObj = dateFormat.parse(birthDatePicker.getValue().toString());
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

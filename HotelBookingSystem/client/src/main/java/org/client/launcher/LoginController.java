@@ -6,9 +6,9 @@ import java.util.ResourceBundle;
 
 import org.client.bl.userbl.UserController;
 import org.client.blservice.userblservice.Userblservice;
-import org.client.blstub.User_stub;
 import org.client.presentation.customer.SwitchSceneUtil;
 import org.client.presentation.hotelmanager.HotelManagerController;
+import org.client.presentation.webmanager.WebManagerController;
 import org.client.presentation.webmarketer.WebMarketerController;
 import org.client.vo.UserVO;
 import org.common.utility.ResultMessage;
@@ -76,6 +76,7 @@ public class LoginController {
 					root = resources.load(resources.hotelManagerGuide);
 					break;
 				case "网站管理人员":
+					WebManagerController.getInstance().init(uservo.ID);
 					root = FXMLLoader.load(getClass().getResource("/网站管理人员/导航.fxml"));
 					break;
 				case "网站营销人员":
@@ -83,6 +84,10 @@ public class LoginController {
 					root = FXMLLoader.load(getClass().getResource("/网站营销人员/guide.fxml"));
 					break;
 				case "个人客户":
+					SwitchSceneUtil.init(stage, uservo.ID);
+					root = FXMLLoader.load(getClass().getResource("/客户/导航_主界面.fxml"));
+					break;
+				case "企业客户":
 					SwitchSceneUtil.init(stage, uservo.ID);
 					root = FXMLLoader.load(getClass().getResource("/客户/导航_主界面.fxml"));
 					break;

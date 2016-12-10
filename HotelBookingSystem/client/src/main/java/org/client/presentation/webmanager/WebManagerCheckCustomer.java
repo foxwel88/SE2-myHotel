@@ -1,6 +1,7 @@
 package org.client.presentation.webmanager;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 
 import org.client.vo.UserVO;
 import org.common.utility.ResultMessage;
@@ -81,7 +82,8 @@ public class WebManagerCheckCustomer {
 			levelLabel.setText(Integer.toString(controller.getLevel(vo.ID).level));
 			if (vo.type.equals("个人客户")) {
 				PorCLabel.setText("生日");
-				birthLabel.setText(vo.birthday.toString());
+				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy年MM月dd日");
+				birthLabel.setText(dateFormat.format(vo.birthday));
 			} else {
 				PorCLabel.setText("企业名称");
 				birthLabel.setText(vo.companyName);
