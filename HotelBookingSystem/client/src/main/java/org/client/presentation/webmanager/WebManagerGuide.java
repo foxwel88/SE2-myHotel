@@ -231,6 +231,10 @@ public class WebManagerGuide {
 		avatarImgView.setFitHeight(AVATAR_SIZE);
 		avatarImgView.setFitWidth(AVATAR_SIZE);
 		avatar.setGraphic(avatarImgView);
+		
+		String userID = WebManagerController.getInstance().userID;
+		String name = WebManagerController.getInstance().findbyID(userID).name;
+		welcomeLabel.setText("Welcome, " + name + "!");
 	}
 	
 	@FXML
