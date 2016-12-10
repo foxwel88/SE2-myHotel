@@ -59,6 +59,8 @@ public class Promotion implements Comparable<Promotion> {
 		
 		level = vo.level;
 		
+		city = vo.city;
+		
 		area = vo.area;
 		
 		discount = vo.discount;
@@ -81,7 +83,11 @@ public class Promotion implements Comparable<Promotion> {
 		
 		hotelName = po.hotelName;
 		
+		hotelID = po.hotelID;
+		
 		level = po.level;
+		
+		city = po.city;
 		
 		area = po.area;
 		
@@ -117,7 +123,9 @@ public class Promotion implements Comparable<Promotion> {
 		startTime = vo.startTime;
 		endTime = vo.endTime;
 		hotelName = vo.hotelName;
+		hotelID = vo.hotelID;
 		level = vo.level;
+		city = vo.city;
 		area = vo.area;
 		discount = vo.discount;
 		name = vo.name;

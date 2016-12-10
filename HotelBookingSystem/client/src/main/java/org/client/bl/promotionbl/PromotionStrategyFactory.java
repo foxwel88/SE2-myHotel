@@ -16,22 +16,23 @@ public class PromotionStrategyFactory {
 	 * @return
 	 */
 	static PromotionStrategy getSuitableStrategy(String type, double value) {
-		switch (PromotionType.getType(type)) {
-			case BIRTHDAYBONUS:
-				return new BirthdayBonusStrategy(value);
-			case COMPANYBONUS:
-				return new CompanyBonusStrategy(value);
-			case TRIPLEROOMBONUS:
-				return new TripleRoomBonusStrategy(value);
-			case SPECIALDATE:
-				return new SpecialDateStrategy(value);
-			case VIPLEVEL:
-				return new VIPLevelStrategy(value);
-			case SPECIALAREA:
-				return new SpecialAreaStrategy(value);
-			default:
-				return new EmptyPromotionStrategy();
-		}
+		try {
+			switch (PromotionType.getType(type)) {
+				case BIRTHDAYBONUS:
+					return new BirthdayBonusStrategy(value);
+				case COMPANYBONUS:
+					return new CompanyBonusStrategy(value);
+				case TRIPLEROOMBONUS:
+					return new TripleRoomBonusStrategy(value);
+				case SPECIALDATE:
+					return new SpecialDateStrategy(value);
+				case VIPLEVEL:
+					return new VIPLevelStrategy(value);
+				case SPECIALAREA:
+					return new SpecialAreaStrategy(value);
+			}
+		} catch (NullPointerException nullPointerException) { }
+		return new EmptyPromotionStrategy();
 	}
 	
 }

@@ -68,16 +68,24 @@ public class DatabaseCommunicator {
 	}
 	
 	public static String getStorableQuote(String rawS) {
-		char tempChar = 7;
-		String specialString = String.valueOf(tempChar);
-		String storableString = rawS.replaceAll("'", specialString);
-		return storableString;
+		try {
+			char tempChar = 7;
+			String specialString = String.valueOf(tempChar);
+			String storableString = rawS.replaceAll("'", specialString);
+			return storableString;
+		} catch (NullPointerException nullPointerException) {
+			return null;
+		}
 	}
 	
 	public static String getReadableQuete(String rawS) {
-		char tempChar = 7;
-		String specialString = String.valueOf(tempChar);
-		String readableString = rawS.replaceAll(specialString, "'");
-		return readableString;
+		try {
+			char tempChar = 7;
+			String specialString = String.valueOf(tempChar);
+			String readableString = rawS.replaceAll(specialString, "'");
+			return readableString;
+		} catch (NullPointerException nullPointerException) {
+			return null;
+		}
 	}
 }

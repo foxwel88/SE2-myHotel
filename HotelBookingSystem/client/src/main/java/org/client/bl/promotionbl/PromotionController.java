@@ -2,7 +2,6 @@ package org.client.bl.promotionbl;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import org.client.blservice.promotionblservice.Promotionblservice;
 import org.client.vo.LevelVO;
@@ -72,23 +71,7 @@ public class PromotionController implements Promotionblservice {
 	}
 
 	public ResultMessage modify(PromotionVO vo) {
-		Promotion promotion = null;
-		
-		for (int i = 0; i < hotelPromotionList.size(); i++) {
-			if (Objects.equals(vo.name, hotelPromotionList.get(i).name)) {
-				promotion = hotelPromotionList.get(i);
-			}
-		}
-		for (int i = 0; i < websitePromotionList.size(); i++) {
-			if (Objects.equals(vo.name, websitePromotionList.get(i).name)) {
-				promotion = websitePromotionList.get(i);
-			}
-		}
-		if (promotion == null) {
-			return ResultMessage.NOT_EXIST;
-		} else {
-			return promotion.modify(vo);
-		}
+		return new Promotion().modify(vo);
 	}
 	
 	public ResultMessage delete(String promotionID) {

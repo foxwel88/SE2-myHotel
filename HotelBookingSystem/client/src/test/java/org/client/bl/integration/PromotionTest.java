@@ -30,7 +30,7 @@ public class PromotionTest {
 		RMIHelper.getinstance().buildConnection();
 		org.client.rmi.RMIHelper.getInstance().init();
 
-		DatabaseCommunicator.setTestConnection();
+		DatabaseCommunicator.databaseInit();
 		controller = PromotionController.getInstance();
 	}
 	
@@ -44,7 +44,7 @@ public class PromotionTest {
 		Process process = runtime.exec("mysql -uroot -p1234");
 		OutputStream outputStream = process.getOutputStream();
 		OutputStreamWriter writer = new OutputStreamWriter(outputStream);
-		writer.write("use hotelbookingsystemfortest" + "\r\n" + "source " + testDataBasePath);
+		writer.write("use hotelbookingsystemdatabase" + "\r\n" + "source " + testDataBasePath);
 		writer.flush();
 		writer.close();
 		outputStream.close();
@@ -89,7 +89,7 @@ public class PromotionTest {
 		assertEquals("查大'酒店", modifiedVO.hotelName);
 		assertEquals("两折大促销", modifiedVO.name);
 		assertEquals("中关村", modifiedVO.area);
-		assertEquals(2, modifiedVO.discount);
+		assertEquals(2, modifiedVO.discount, 0.01);
 	}
 	
 	@Test
@@ -114,7 +114,7 @@ public class PromotionTest {
 	
 	@Test
 	public void testGetPrice() {
-		assertEquals(10, controller.getPrice("1234567890", "00001", 100));
+		assertEquals(30, controller.getPrice("1234567890", "00001", 100), 0.1);
 	}
 	
 	@Test

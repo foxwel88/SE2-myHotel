@@ -54,7 +54,6 @@ public class PromotionUtil {
 	static List<PromotionVO> getPromotion (String hotelID, String userID) {
 		List<Promotion> okPromotion = getCanBeUsedHotelPromotion(hotelID, userID);
 		okPromotion.addAll(getCanBeUsedWebsitePromotion(hotelID, userID));
-//		System.out.println(okPromotion.size());
 		List<PromotionVO> okPromotionVO = new ArrayList<>();
 		for (int i = 0; i < okPromotion.size(); i++) {
 			okPromotionVO.add(okPromotion.get(i).toVO());

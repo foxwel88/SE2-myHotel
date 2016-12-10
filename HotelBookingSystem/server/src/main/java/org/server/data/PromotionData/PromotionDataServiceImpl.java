@@ -40,8 +40,9 @@ public class PromotionDataServiceImpl extends UnicastRemoteObject implements Pro
 		try {
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(
 					"insert into promotion(provider, type, promotionid, starttime, endtime, hotelname, hotelid, level, area, discount, name)"
-					+ " values ('" + po.provider + "','" + po.type.getString() + "','" + po.promotionID + "','" + getSQLDate(po.startTime) + "','" + getSQLDate(po.endTime) + "','" + po.hotelName
-					+ "','" + po.hotelID + "','" + po.level + "','" + po.area + "','" + po.discount + "','" + po.name + "')");
+					+ " values ('" + po.provider + "','" + po.type.getString() + "','" + po.promotionID + "','" + getSQLDate(po.startTime) + "','" + getSQLDate(po.endTime)
+					+ "','" + DatabaseCommunicator.getStorableQuote(po.hotelName) + "','" + po.hotelID + "','" + po.level + "','" + po.area + "','" + po.discount + "','"
+					+ DatabaseCommunicator.getStorableQuote(po.name) + "')");
 			preparedStatement.executeUpdate();
 			return ResultMessage.SUCCESS;
 		} catch (SQLException e) {
@@ -165,9 +166,9 @@ public class PromotionDataServiceImpl extends UnicastRemoteObject implements Pro
 			while (resultSet.next()) {
 				poList.add(new PromotionPO(resultSet.getString("promotionID"), resultSet.getString("provider"), 
 						PromotionType.getType(resultSet.getString("type")), resultSet.getDate("startTime"), 
-						resultSet.getDate("endTime"), resultSet.getString("hotelName"), 
+						resultSet.getDate("endTime"), DatabaseCommunicator.getReadableQuete(resultSet.getString("hotelName")), 
 						resultSet.getString("hotelID"), resultSet.getInt("level"), resultSet.getString("city"), resultSet.getString("area"), 
-						resultSet.getDouble("discount"), resultSet.getString("name")));
+						resultSet.getDouble("discount"), DatabaseCommunicator.getReadableQuete(resultSet.getString("name"))));
 			}
 		} catch (SQLException ex) {
 			ex.printStackTrace();
