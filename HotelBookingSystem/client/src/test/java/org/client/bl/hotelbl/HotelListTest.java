@@ -69,7 +69,7 @@ public class HotelListTest extends EasyMockSupport {
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		expect(h.initByPO(fake)).andReturn(h);
+		expect(h.initByPO(fake, null)).andReturn(h);
 		expect(h.generateVO()).andReturn(new HotelVO("id", "123", "123", new CityVO("x"), new AreaVO("y"), "z", 1, 2, "good", "", null, null, null, null));
 		replayAll();
 		

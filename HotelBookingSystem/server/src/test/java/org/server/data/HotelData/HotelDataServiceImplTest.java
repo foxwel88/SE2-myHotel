@@ -17,6 +17,8 @@ import org.server.data.datafactory.DataFactory;
 import org.server.id.IDUtil;
 
 import java.rmi.RemoteException;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +32,7 @@ public class HotelDataServiceImplTest {
 
 	@Before
 	public void setUp() throws RemoteException {
-		DatabaseCommunicator.setTestConnection();
+		DatabaseCommunicator.databaseInit();
 		dao = DataFactory.getInstance().getHotelDataServiceImpl();
 
 	}
@@ -121,6 +123,44 @@ public class HotelDataServiceImplTest {
 
 		resultMessage = dao.addHotelInfo(newPO);
 		assertEquals(ResultMessage.EXIST, resultMessage);
+	}
+
+	@Test
+	public void testAddHotel2() throws RemoteException {
+		HotelPO newPO = new HotelPO(null, "love love", DataFactory.getInstance().getIDUtil().generateNewHotelID(), "南京", "仙林中心",
+				"Welcome, boys!", 4.5, 4, "不断电不断网，空调四人间，自助售卖机", "B319,20150901,20170901;", "南大物业");
+
+		dao.addHotelInfo(newPO);
+
+		System.out.println(DataFactory.getInstance().getIDUtil().getLastHotelID());
+		List<RoomPO> pos = dao.getRooms(DataFactory.getInstance().getIDUtil().getLastHotelID());
+		assertTrue(!pos.get(0).roomType.getString().isEmpty());
+
+		HotelPO hotelPO = dao.getHotelInfo(newPO.id);
+		pos = dao.getRooms(hotelPO.id);
+		assertTrue(!pos.get(0).roomType.getString().isEmpty());
+	}
+
+	@Test
+	public void testAddHotel3() throws RemoteException {
+		String create = "CREATE TABLE `00115`(roomType VARCHAR(100), roomNum INT, roomPrice DOUBLE)";
+		PreparedStatement preparedStatement = null;
+		try {
+			preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(create);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		for (RoomType t: RoomType.values()) {
+			try {
+				preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("INSERT INTO `00115`(roomType,roomNum,roomPrice)"
+						+ " VALUES ('" + t.getString() + "','0','0')");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			DatabaseCommunicator.execute(preparedStatement);
+		}
+		DatabaseCommunicator.execute(preparedStatement);
 	}
 
 	@After

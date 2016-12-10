@@ -176,9 +176,12 @@ public class HotelManagerGuide {
 			e.printStackTrace();
 		}
 
-		belowGridPane.getChildren().set(1, root);
+		if (root != null) {
+			belowGridPane.getChildren().set(1, root);
+			GridPane.setConstraints(root, 1, 0);
+		}
 
-		GridPane.setConstraints(root, 1, 0);
+
 	}
 
 	@FXML

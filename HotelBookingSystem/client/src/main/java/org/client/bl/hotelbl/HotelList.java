@@ -8,6 +8,7 @@ import org.client.rmi.RMIHelper;
 import org.client.vo.HotelVO;
 import org.common.dataservice.HotelDataService.HotelDataService;
 import org.common.po.HotelPO;
+import org.common.po.RoomPO;
 import org.common.utility.HotelFilter;
 
 /**
@@ -33,13 +34,14 @@ public class HotelList {
 		List<HotelPO> pos = null;
 		try {
 			pos = dao.findHotels(filter);
+			for (HotelPO p : pos) {
+				Hotel h = new Hotel();
+				List<RoomPO> rooms = dao.getRooms(p.id);
+				h.initByPO(p, rooms);
+				list.add(h);
+			}
 		} catch (RemoteException e) {
 			e.printStackTrace();
-		}
-		for (HotelPO p: pos) {
-			Hotel h = new Hotel();
-			h.initByPO(p);
-			list.add(h);
 		}
 		return this;
 	}
