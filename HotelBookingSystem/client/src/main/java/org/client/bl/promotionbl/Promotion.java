@@ -100,11 +100,11 @@ public class Promotion implements Comparable<Promotion> {
 	}
 	
 	PromotionVO toVO() {
-		return new PromotionVO(promotionID, provider, type, startTime, endTime, hotelName, hotelID, level, city, area, discount, hotelName);
+		return new PromotionVO(promotionID, provider, type, startTime, endTime, hotelName, hotelID, level, city, area, discount, name);
 	}
 	
 	PromotionPO toPO() {
-		return new PromotionPO(promotionID, provider, PromotionType.getType(type), startTime, endTime, hotelName, hotelID, level, city, area, discount, hotelName);
+		return new PromotionPO(promotionID, provider, PromotionType.getType(type), startTime, endTime, hotelName, hotelID, level, city, area, discount, name);
 	}
 	
 	ResultMessage modify (PromotionVO vo) {
