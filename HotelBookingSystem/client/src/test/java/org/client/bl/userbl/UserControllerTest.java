@@ -110,7 +110,7 @@ public class UserControllerTest {
 		ResultMessage message3 = controller.modifyPassword(user1, password1, password3);
 		
 		// assert
-		assertEquals(ResultMessage.WRONG_FORMAT, message1);
+		assertEquals(ResultMessage.SUCCESS, message1);
 		assertEquals(ResultMessage.WRONG_VALUE, message2);
 		assertEquals(ResultMessage.SUCCESS, message3);
 		

@@ -93,7 +93,7 @@ public class UserDataServiceImpl_stub extends UnicastRemoteObject implements Use
 	@Override
 	public ResultMessage deleteNowUser(String userName) throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		return ResultMessage.SUCCESS;
 	}
 
 }
