@@ -25,7 +25,7 @@ public class UserTest {
 		RMIHelper.getinstance().buildConnection();
 		org.client.rmi.RMIHelper.getInstance().init();
 		
-		DatabaseCommunicator.databaseInit();
+		DatabaseCommunicator.setTestConnection();
 		controller = UserController.getInstance();
 	}
 	

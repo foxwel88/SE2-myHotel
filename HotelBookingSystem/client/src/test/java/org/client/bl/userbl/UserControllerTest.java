@@ -28,7 +28,6 @@ public class UserControllerTest {
 		org.server.rmi.RMIHelper.getinstance().buildStubConnection();
 		org.client.rmi.RMIHelper.getInstance().init();
 
-		DatabaseCommunicator.setTestConnection();
 		controller = UserController.getInstance();
 	}
 	

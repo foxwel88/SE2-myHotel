@@ -112,7 +112,7 @@ public class UserDataServiceImplTest {
 	@Test
 	public void testFindCreditRecords1() throws RemoteException {
 		List<CreditRecordPO> list = dao.findCreditRecords("1234567890");
-		assertEquals(list.size(), 19);
+		assertEquals(20, list.size());
 	}
 	
 	@Test

@@ -39,7 +39,7 @@ public class OrderTest {
 	public void setUp() throws Exception {
 		RMIHelper.getinstance().buildConnection();
 		org.client.rmi.RMIHelper.getInstance().init();
-		DatabaseCommunicator.databaseInit();
+		DatabaseCommunicator.setTestConnection();
 		controller = OrderController.getInstance();
 		controller.setUserblservice(new User_stub());
 		controller.setHotelHelper(new Hotel_stub());
@@ -269,10 +269,7 @@ public class OrderTest {
 		assertEquals(ResultMessage.SUCCESS, message2);
 		assertEquals("已执行订单", vo.type);
 	}
-	
-	
 
-		
 	@After
 	public void tearDown() throws Exception {
 		RMIHelper.getinstance().releaseConnection();
