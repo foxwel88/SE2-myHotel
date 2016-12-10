@@ -66,6 +66,7 @@ public class HotelListTest extends EasyMockSupport {
 		//record
 		try {
 			expect(dao.findHotels(filter)).andReturn(fakeReturn);
+			expect(dao.getRooms("id")).andReturn(null);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
