@@ -123,7 +123,7 @@ public class User {
 	 * @return
 	 */
 	public UserPO getUserPO() {
-		return new UserPO(UserType.getType(type), userName, name, ID, passWord,phoneNumber, credit, birthday, companyName, hotelID, hotelAddress);
+		return new UserPO(UserType.getType(type), userName, name, ID, passWord, phoneNumber, credit, birthday, companyName, hotelID, hotelAddress);
 	}
 	
 }

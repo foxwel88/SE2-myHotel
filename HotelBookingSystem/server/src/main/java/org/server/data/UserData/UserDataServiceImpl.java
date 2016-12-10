@@ -217,10 +217,8 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			System.out.println("wrong");
 			return ResultMessage.CONNECTION_FAIL;
 		}
-		System.out.println(info.toString());
 		return info;
 	}
 

@@ -42,8 +42,8 @@ public class UserController implements Userblservice {
 	/**
 	 * 登出
 	 */
-	public ResultMessage logout(String ID) {
-		return Account.getInstance().logout(ID);
+	public ResultMessage logout(String userName) {
+		return Account.getInstance().logout(userName);
 	}
 
 	/**
