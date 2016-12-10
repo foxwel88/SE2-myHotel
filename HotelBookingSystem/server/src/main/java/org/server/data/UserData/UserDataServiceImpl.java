@@ -189,6 +189,13 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 			if (temp == null) {
 				return ResultMessage.NOT_EXIST;
 			}
+			// 如果修改了用户名，检查用户名是否重复
+			if (!po.userName.equals(temp.userName)) {
+				temp = findbyUserName(po.userName);
+				if (temp != null) {
+					return ResultMessage.WRONG_USERNAME;
+				}
+			}
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(
 					"delete from User where ID='" + po.ID + "'");
 			DatabaseCommunicator.execute(preparedStatement);
