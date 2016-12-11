@@ -2,7 +2,7 @@ package org.server;
 
 import java.util.Scanner;
 
-import mySQL.DatabaseCommunicator;
+import org.server.mySQL.DatabaseCommunicator;
 
 public class Main {
 	@SuppressWarnings({ "unused", "resource" })

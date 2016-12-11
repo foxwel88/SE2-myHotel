@@ -37,8 +37,5 @@ public class Launcher extends Application {
 		RMIHelper.getInstance().init();
 		launch(args);		
 	}
-	
-	public void exit() {
-		
-	}
+
 }

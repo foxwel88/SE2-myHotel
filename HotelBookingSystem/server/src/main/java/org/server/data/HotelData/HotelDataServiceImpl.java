@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import mySQL.DatabaseCommunicator;
 import org.common.dataservice.HotelDataService.HotelDataService;
 import org.common.po.*;
 import org.common.utility.HotelFilter;
@@ -16,6 +15,7 @@ import org.common.utility.ResultMessage;
 import org.common.utility.RoomType;
 import org.server.data.datafactory.DataFactory;
 import org.server.id.IDUtil;
+import org.server.mySQL.DatabaseCommunicator;
 
 public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDataService {
 

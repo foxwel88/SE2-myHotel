@@ -1,4 +1,4 @@
-package mySQL;
+package org.server.mySQL;
 
 import java.sql.*;
 

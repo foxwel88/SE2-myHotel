@@ -1,7 +1,5 @@
 package org.server.id;
 
-import mySQL.DatabaseCommunicator;
-
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.PreparedStatement;
@@ -9,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.common.utility.IDService;
+import org.server.mySQL.DatabaseCommunicator;
 
 /**
  * 用来生成新的ID
