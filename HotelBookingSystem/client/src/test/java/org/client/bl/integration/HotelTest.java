@@ -1,6 +1,5 @@
 package org.client.bl.integration;
 
-import mySQL.DatabaseCommunicator;
 import org.client.bl.hotelbl.HotelController;
 import org.client.bl.orderbl.OrderController;
 import org.client.bl.userbl.UserController;
@@ -18,6 +17,7 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 import org.server.id.IDUtil;
+import org.server.mySQL.DatabaseCommunicator;
 import org.server.rmi.RMIHelper;
 
 import java.io.OutputStream;

@@ -1,7 +1,6 @@
 package org.server.data.HotelData;
 
 import static org.junit.Assert.*;
-import mySQL.DatabaseCommunicator;
 import org.common.dataservice.HotelDataService.HotelDataService;
 import org.common.po.AreaPO;
 import org.common.po.CityPO;
@@ -15,6 +14,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.server.data.datafactory.DataFactory;
 import org.server.id.IDUtil;
+import org.server.mySQL.DatabaseCommunicator;
 
 import java.rmi.RemoteException;
 import java.sql.PreparedStatement;

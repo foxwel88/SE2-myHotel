@@ -12,9 +12,9 @@ import org.client.vo.PromotionVO;
 import org.common.utility.PromotionType;
 import org.common.utility.ResultMessage;
 import org.junit.*;
+import org.server.mySQL.DatabaseCommunicator;
 import org.server.rmi.RMIHelper;
 
-import mySQL.DatabaseCommunicator;
 
 public class PromotionTest {
 

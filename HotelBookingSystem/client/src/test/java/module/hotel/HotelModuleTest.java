@@ -8,7 +8,6 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-import mySQL.DatabaseCommunicator;
 import org.client.bl.hotelbl.HotelController;
 import org.client.blservice.orderblservice.Orderblservice;
 import org.client.blservice.userblservice.Userblservice;
@@ -25,6 +24,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.server.id.IDUtil;
+import org.server.mySQL.DatabaseCommunicator;
 import org.server.rmi.RMIHelper;
 
 /**

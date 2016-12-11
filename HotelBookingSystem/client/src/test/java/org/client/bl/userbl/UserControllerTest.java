@@ -5,7 +5,6 @@ import static org.junit.Assert.assertEquals;
 import java.util.Date;
 import java.util.List;
 
-import mySQL.DatabaseCommunicator;
 import org.client.vo.CreditRecordVO;
 import org.client.vo.UserVO;
 import org.common.utility.ResultMessage;

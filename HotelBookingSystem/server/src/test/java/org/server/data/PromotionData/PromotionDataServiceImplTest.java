@@ -19,8 +19,8 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.server.data.datafactory.DataFactory;
+import org.server.mySQL.DatabaseCommunicator;
 
-import mySQL.DatabaseCommunicator;
 
 public class PromotionDataServiceImplTest {
 

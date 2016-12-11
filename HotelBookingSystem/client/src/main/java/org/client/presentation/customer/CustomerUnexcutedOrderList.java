@@ -109,7 +109,6 @@ public class CustomerUnexcutedOrderList {
 		}
 		
 		ArrayList<OrderVO> volist = (ArrayList<OrderVO>)OrderController.getInstance().getUserOrderList(SwitchSceneUtil.userID, OrderType.EXECUTED);
-		System.out.println(volist.get(0).roomNum);
 	}
 	
 	@FXML

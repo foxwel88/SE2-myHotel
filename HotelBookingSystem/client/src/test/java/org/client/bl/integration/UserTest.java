@@ -12,9 +12,9 @@ import org.common.utility.ResultMessage;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.server.mySQL.DatabaseCommunicator;
 import org.server.rmi.RMIHelper;
 
-import mySQL.DatabaseCommunicator;
 
 public class UserTest {
 	

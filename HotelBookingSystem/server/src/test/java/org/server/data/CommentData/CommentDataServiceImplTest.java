@@ -16,8 +16,8 @@ import org.common.utility.ResultMessage;
 import org.junit.*;
 import org.server.data.PromotionData.PromotionDataServiceImplTest;
 import org.server.data.datafactory.DataFactory;
+import org.server.mySQL.DatabaseCommunicator;
 
-import mySQL.DatabaseCommunicator;
 
 public class CommentDataServiceImplTest {
 	
