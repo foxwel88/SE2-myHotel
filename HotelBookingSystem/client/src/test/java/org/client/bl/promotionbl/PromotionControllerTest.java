@@ -78,27 +78,6 @@ public class PromotionControllerTest extends EasyMockSupport {
 	}
 	
 	@Test(timeout = 1000)
-	public void testmodify2() {
-		try {
-			PromotionUtil.setDAO(promotionDataService);
-			
-			ArrayList<PromotionPO> promotionPO = new ArrayList<PromotionPO>();
-			
-			promotionPO.add(new PromotionPO("i'm an id", "hotel", PromotionType.BIRTHDAYBONUS, new Date(100000), new Date(1000000), "hotelName", "hotelAddress", 2, "city", "area", 3, "name"));
-			
-			expect(promotionDataService.showWebsitePromotion()).andReturn(promotionPO);
-			
-			expect(promotionDataService.showHotelPromotion("hotelAddress")).andReturn(promotionPO);
-			
-			replayAll();
-		} catch (RemoteException rex) {
-			rex.printStackTrace();
-		}
-		PromotionVO vo = new PromotionVO("i'm an id", "hotel", "节日促销", new Date(100000), new Date(1000000), "酒店名字", "hotelAddress", 2, "city", "area", 5, "一个不存在的name");
-		assertEquals(ResultMessage.NOT_EXIST, promotionController.modify(vo));
-	}
-	
-	@Test(timeout = 1000)
 	public void testshowLevel() {
 		assertEquals(ResultMessage.SUCCESS, promotionController.showLevel().resultMessage);
 	}
