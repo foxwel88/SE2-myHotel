@@ -13,9 +13,7 @@ import java.util.ArrayList;
 import org.common.dataservice.CommentDataService.CommentDataService;
 import org.common.po.CommentPO;
 import org.common.utility.ResultMessage;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 import org.server.data.PromotionData.PromotionDataServiceImplTest;
 import org.server.data.datafactory.DataFactory;
 
@@ -25,30 +23,19 @@ public class CommentDataServiceImplTest {
 	
 	static CommentDataService commentDAO;
 
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
+	@Before
+	public void setUp() throws Exception {
 		commentDAO = DataFactory.getInstance().getCommentDataServiceImpl();
 		DatabaseCommunicator.setTestConnection();
 	}
 
-	/*
+/*	*//*
 	 * 见PromotionDAO的测试类的tearDownAfterClass方法的说明。。
-	 */
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-		URL testDataBaseURL = PromotionDataServiceImplTest.class.getResource("/org/server/data/PromotionData/hotelbookingsystemfortest.sql");
-		String testDataBasePath = testDataBaseURL.getPath().toString();
-		testDataBasePath = new String(testDataBasePath.substring(1));
-		
-		Runtime runtime = Runtime.getRuntime();
-		Process process = runtime.exec("mysql -uroot -p1234");
-		OutputStream outputStream = process.getOutputStream();
-		OutputStreamWriter writer = new OutputStreamWriter(outputStream);
-		writer.write("use hotelbookingsystemfortest" + "\r\n" + "source " + testDataBasePath);
-		writer.flush();
-		writer.close();
-		outputStream.close();
-	}
+	 *//*
+	@After
+	public void tearDown() throws Exception {
+
+	}*/
 
 	@Test
 	public void testFind() {
