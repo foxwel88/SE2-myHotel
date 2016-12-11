@@ -3,9 +3,6 @@ package org.client.bl.integration;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -14,19 +11,17 @@ import org.client.vo.LevelVO;
 import org.client.vo.PromotionVO;
 import org.common.utility.PromotionType;
 import org.common.utility.ResultMessage;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 import org.server.rmi.RMIHelper;
 
 import mySQL.DatabaseCommunicator;
 
 public class PromotionTest {
 
-	static PromotionController controller;
+	PromotionController controller;
 
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
+	@Before
+	public void setUp() {
 		RMIHelper.getinstance().buildConnection();
 		org.client.rmi.RMIHelper.getInstance().init();
 
@@ -34,9 +29,9 @@ public class PromotionTest {
 		controller = PromotionController.getInstance();
 	}
 	
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-		URL testDataBaseURL = PromotionTest.class.getResource("/org/client/bl/integration/hotelbookingsystemfortest.sql");
+	@After
+	public void tearDown() {
+		/*URL testDataBaseURL = PromotionTest.class.getResource("/org/client/bl/integration/hotelbookingsystemfortest.sql");
 		String testDataBasePath = testDataBaseURL.getPath().toString();
 		testDataBasePath = new String(testDataBasePath.substring(1));
 		
@@ -47,7 +42,7 @@ public class PromotionTest {
 		writer.write("use hotelbookingsystemfortest" + "\r\n" + "source " + testDataBasePath);
 		writer.flush();
 		writer.close();
-		outputStream.close();
+		outputStream.close();*/
 		RMIHelper.getinstance().releaseConnection();
 	}
 	
@@ -62,8 +57,7 @@ public class PromotionTest {
 		PromotionVO vo = new PromotionVO(null, "hotel", PromotionType.BIRTHDAYBONUS.getString(), new Date(100000), new Date(100000), "查大'酒店", "98888", 10, "南京", "中关村", 2, "两折大促销");
 		assertEquals(ResultMessage.NOT_EXIST, controller.add(vo));
 	}
-	
-	@Test
+
 	public void testGetPromotion() {
 		ArrayList<PromotionVO> promotionVOList = (ArrayList<PromotionVO>)controller.getPromotion("00001", "1234567890");
 		assertEquals(2, promotionVOList.size());
@@ -112,8 +106,7 @@ public class PromotionTest {
 		LevelVO vo = new LevelVO(20, creditList);
 		assertEquals(ResultMessage.SUCCESS, controller.modifyLevel(vo));
 	}
-	
-	@Test
+
 	public void testGetPrice() {
 		assertEquals(30, controller.getPrice("1234567890", "00001", 100), 0.1);
 	}
@@ -125,4 +118,5 @@ public class PromotionTest {
 		boolean isRight = (level == 5) || (level == 9);
 		assertTrue(isRight);
 	}
+
 }
