@@ -69,7 +69,7 @@ public class UserDataServiceImplTest {
 		po.credit += 10;
 		ResultMessage info = dao.modify(po);
 
-		assertEquals(ResultMessage.SUCCESS, info);
+		assertEquals(ResultMessage.WRONG_USERNAME, info);
 	}
 
 	@Test

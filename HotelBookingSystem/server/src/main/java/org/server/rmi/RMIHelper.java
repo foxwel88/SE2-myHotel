@@ -46,7 +46,7 @@ public class RMIHelper {
 			System.out.println("comment succeed");
 			Naming.rebind("rmi://localhost:8888/HotelDataServiceObject",DataStubFactory.getInstance().getHotelDataServiceImpl());
 			System.out.println("hotel succeed");
-			Naming.rebind("rmi://localhost:8888/OrderDataServiceObject",DataStubFactory.getInstance().getOrderDataServiceImpl());
+			Naming.rebind("rmi://localhost:8888/ChenTong",DataStubFactory.getInstance().getOrderDataServiceImpl());
 			System.out.println("order succeed");
 			Naming.rebind("rmi://localhost:8888/PromotionDataServiceObject",DataStubFactory.getInstance().getPromotionDataServiceImpl());
 			System.out.println("promotion succeed");
@@ -74,7 +74,7 @@ public class RMIHelper {
 			System.out.println("comment succeed");
 			Naming.rebind("rmi://localhost:8888/HotelDataServiceObject",DataFactory.getInstance().getHotelDataServiceImpl());
 			System.out.println("hotel succeed");
-			Naming.rebind("rmi://localhost:8888/OrderDataServiceObject",DataFactory.getInstance().getOrderDataServiceImpl());
+			Naming.rebind("rmi://localhost:8888/ChenTong",DataFactory.getInstance().getOrderDataServiceImpl());
 			System.out.println("order succeed");
 			Naming.rebind("rmi://localhost:8888/PromotionDataServiceObject",DataFactory.getInstance().getPromotionDataServiceImpl());
 			System.out.println("promotion succeed");

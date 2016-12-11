@@ -32,7 +32,7 @@ public class RMIHelper {
 	
 	private static HotelDataService HotelDataServiceImpl;
 	
-	private static OrderDataService OrderDataServiceImpl;
+	private static OrderDataService orderDao;
 	
 	private static PromotionDataService PromotionDataServiceImpl;
 	
@@ -48,7 +48,7 @@ public class RMIHelper {
 			//System.out.println("Comment succed");
 			HotelDataServiceImpl = (HotelDataService)Naming.lookup("rmi://localhost:8888/HotelDataServiceObject");
 			//System.out.println("hotel succed");
-			OrderDataServiceImpl = (OrderDataService)Naming.lookup("rmi://localhost:8888/OrderDataServiceObject");
+			orderDao = (OrderDataService)Naming.lookup("rmi://localhost:8888/ChenTong");
 			//System.out.println("order succed");
 			PromotionDataServiceImpl = (PromotionDataService)Naming.lookup("rmi://localhost:8888/PromotionDataServiceObject");
 			//System.out.println("promotion succed");
@@ -76,7 +76,7 @@ public class RMIHelper {
 	}
 	
 	public OrderDataService getOrderDataServiceImpl() {
-		return OrderDataServiceImpl;
+		return orderDao;
 	}
 	
 	public PromotionDataService getPromotionDataServiceImpl() {

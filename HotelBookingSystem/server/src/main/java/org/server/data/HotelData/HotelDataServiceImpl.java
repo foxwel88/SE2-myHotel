@@ -77,6 +77,7 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 		try {
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(
 					"DELETE FROM Hotel WHERE HotelID='" + po.id + "'");
+			System.out.println("delete " + po.id);
 			DatabaseCommunicator.execute(preparedStatement);
 
 			preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("INSERT INTO Hotel(hotelID,hotelName,address,area,"
@@ -270,6 +271,7 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 		try {
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(
 					"DELETE FROM `" + hotelID + "`");
+			System.out.println("delete " + hotelID);
 			DatabaseCommunicator.execute(preparedStatement);
 
 			for (RoomPO p: po) {

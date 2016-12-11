@@ -14,11 +14,15 @@ import org.common.utility.HotelFilter;
 import org.common.utility.ResultMessage;
 import org.common.utility.RoomType;
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 import org.server.id.IDUtil;
 import org.server.rmi.RMIHelper;
 
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.URL;
 import java.rmi.RemoteException;
 import java.util.Date;
 import java.util.List;
@@ -105,6 +109,23 @@ public class HotelTest {
 
 	@After
 	public void tearDown() throws Exception {
+		RMIHelper.getinstance().releaseConnection();
+	}
+
+	@AfterClass
+	public static void tearDownAfterClass() throws Exception {
+		URL testDataBaseURL = PromotionTest.class.getResource("/org/client/bl/integration/hotelbookingsystemfortest.sql");
+		String testDataBasePath = testDataBaseURL.getPath().toString();
+		testDataBasePath = new String(testDataBasePath.substring(1));
+
+		Runtime runtime = Runtime.getRuntime();
+		Process process = runtime.exec("mysql -uroot -p1234");
+		OutputStream outputStream = process.getOutputStream();
+		OutputStreamWriter writer = new OutputStreamWriter(outputStream);
+		writer.write("use hotelbookingsystemfortest" + "\r\n" + "source " + testDataBasePath);
+		writer.flush();
+		writer.close();
+		outputStream.close();
 		RMIHelper.getinstance().releaseConnection();
 	}
 }

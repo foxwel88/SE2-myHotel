@@ -190,31 +190,6 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 		// TODO Auto-generated method stub
 		
 	}
-	
-	public void print(List<OrderPO> polist) {
-		for (int i = 0; i < polist.size(); ++i) {
-			OrderPO po = polist.get(i);
-			System.out.println("'" + po.type.getString() + "','" + po.userId + "','" + transtime(po.generatedDate)
-								+ "','" + transtime(po.schFrom) + "','" + transtime(po.schTo) + "','" + transtime(po.actFrom) + "','" + transtime(po.actTo)
-								+ "','" + transtime(po.latestTime) + "','" + transtime(po.cancelTime) + "','" + po.hotelID + "','" + po.hotelName + "','" + po.orderID + "','" + po.hotelID
-								+ "','" + po.roomType.getString() + "'," + po.totalPrice + "," + po.roomNum + "," + po.numOfPeople + "," + po.existsChild + ",'" 
-								+ po.customerName + "','" + po.phoneNumber);
-		}
-	}
-	
-	
-	public static void main(String[] args) throws RemoteException {
-		OrderDataServiceImpl mywork = new OrderDataServiceImpl();
-		DatabaseCommunicator.databaseInit();
-		//System.out.println("aaaaa");
-		//OrderPO po1 = new OrderPO(OrderType.UNEXECUTED,new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),
-		//	"00001","aaaaa某某某大酒店","000000000120161122112209","111111仙林大道168号栖霞大酒店",RoomType.BIG,100,1,2,false, "foxwel","0000000001","13919191919");
-		//mywork.modify(po1);
-		
-		//mywork.print(mywork.getAbnormalOrderPO());
-		//System.out.println("aaaaa");
-		//mywork.getOrderPO("123456789020080606143055");
-		System.out.println(mywork.getOrderPO("123456789020080606143055").orderID);
-	}
+
 	
 }
