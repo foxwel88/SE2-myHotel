@@ -112,20 +112,4 @@ public class HotelTest {
 		RMIHelper.getinstance().releaseConnection();
 	}
 
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-		URL testDataBaseURL = PromotionTest.class.getResource("/org/client/bl/integration/hotelbookingsystemfortest.sql");
-		String testDataBasePath = testDataBaseURL.getPath().toString();
-		testDataBasePath = new String(testDataBasePath.substring(1));
-
-		Runtime runtime = Runtime.getRuntime();
-		Process process = runtime.exec("mysql -uroot -p1234");
-		OutputStream outputStream = process.getOutputStream();
-		OutputStreamWriter writer = new OutputStreamWriter(outputStream);
-		writer.write("use hotelbookingsystemfortest" + "\r\n" + "source " + testDataBasePath);
-		writer.flush();
-		writer.close();
-		outputStream.close();
-		RMIHelper.getinstance().releaseConnection();
-	}
 }

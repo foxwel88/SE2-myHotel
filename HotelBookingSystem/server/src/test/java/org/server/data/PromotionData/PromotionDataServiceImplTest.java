@@ -31,17 +31,17 @@ public class PromotionDataServiceImplTest {
 		DatabaseCommunicator.setTestConnection();
 		promotionDAO = DataFactory.getInstance().getPromotionDataServiceImpl();
 	}
-	
-	/**
+
+/*	*//**
 	 * 自动还原测试用数据库，然而因为数据库也不算小，还原起来比较慢，需要大概半分钟吧
 	 * （不过因为是子线程在重新导入数据库，所以不会影响测试速度，但不建议快速连续测试）
-	 */
+	 *//*
 	@AfterClass
 	public static void tearDown() throws Exception {
 		URL testDataBaseURL = PromotionDataServiceImplTest.class.getResource("/org/server/data/PromotionData/hotelbookingsystemfortest.sql");
 		String testDataBasePath = testDataBaseURL.getPath().toString();
 		testDataBasePath = new String(testDataBasePath.substring(1));
-		
+
 		Runtime runtime = Runtime.getRuntime();
 		Process process = runtime.exec("mysql -uroot -p1234");
 		OutputStream outputStream = process.getOutputStream();
@@ -50,7 +50,7 @@ public class PromotionDataServiceImplTest {
 		writer.flush();
 		writer.close();
 		outputStream.close();
-	}
+	}*/
 
 	@Test
 	public void testAdd1() {
