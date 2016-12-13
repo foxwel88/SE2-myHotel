@@ -24,7 +24,7 @@ import javafx.stage.Stage;
  * @author fraliphsoft
  * @version fraliphsoft 11/30
  */
-public class CustomerController_Main {
+public class Customer_Guide {
 	@FXML
 	GridPane gridpane;
 	
@@ -71,6 +71,8 @@ public class CustomerController_Main {
 		avatarImgView.setFitHeight(AVATAR_SIZE);
 		avatarImgView.setFitWidth(AVATAR_SIZE);
 		avatar.setGraphic(avatarImgView);
+		
+		turnToCusController_Main();
 	}
 	
 	@FXML

@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="680.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.presentation.customer.CustomerController_Main">
+<Pane prefHeight="680.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.presentation.customer.Customer_Guide">
    <children>
       <ImageView fitHeight="683.0" fitWidth="1103.0">
          <image>
@@ -100,28 +100,6 @@
                               </AnchorPane>
                            </children>
                         </GridPane>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.4);" GridPane.columnIndex="1">
-                           <effect>
-                              <DropShadow />
-                           </effect>
-                           <children>
-                              <Label layoutX="249.0" layoutY="85.0" prefHeight="133.0" prefWidth="438.0" text="酒店预订管理系统">
-                                 <font>
-                                    <Font name="Microsoft YaHei UI Light" size="45.0" />
-                                 </font>
-                              </Label>
-                              <Label alignment="CENTER" layoutX="346.0" layoutY="166.0" prefHeight="105.0" prefWidth="164.0" text="客户端">
-                                 <font>
-                                    <Font name="Microsoft YaHei UI Light" size="28.0" />
-                                 </font>
-                              </Label>
-                              <Label alignment="CENTER" layoutX="160.0" layoutY="239.0" prefHeight="105.0" prefWidth="540.0" text="当前时间：2016/10/20 08:00:45">
-                                 <font>
-                                    <Font name="Microsoft YaHei UI Light" size="28.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </AnchorPane>
                      </children>
                   </GridPane>
                </children>
