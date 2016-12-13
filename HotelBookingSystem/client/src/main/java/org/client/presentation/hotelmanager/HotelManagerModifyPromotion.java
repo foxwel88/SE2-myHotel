@@ -11,10 +11,7 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.ResourceBundle;
+import java.util.*;
 
 import org.client.presentation.util.ResultInfoHelper;
 import org.client.vo.PromotionVO;
@@ -163,6 +160,14 @@ public class HotelManagerModifyPromotion {
 		typeBox.setStyle("-fx-text-fill: white");
 		
 		modifyMode = true;
+
+		if (vo.startTime != null) {
+			startTimePicker.setValue(LocalDate.of(vo.startTime.getYear() + 1900, vo.startTime.getMonth() + 1, vo.startTime.getDate()));
+		}
+
+		if (vo.endTime != null) {
+			endTimePicker.setValue(LocalDate.of(vo.endTime.getYear() + 1900, vo.endTime.getMonth() + 1, vo.endTime.getDate()));
+		}
 	}
 	
 	boolean isFormatCorrect() {
