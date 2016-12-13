@@ -226,8 +226,10 @@ public class WebMarketerModifyPromotion {
 		setVisible();
 		// then show other parts 
 		if (!startTimePicker.isDisable()) {
-			startTimePicker.setValue(vo.startTime.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-			endTimePicker.setValue(vo.startTime.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+//			startTimePicker.setValue(LocalDate.from(Instant.ofEpochMilli(vo.startTime.getTime())));
+//			endTimePicker.setValue(LocalDate.from(Instant.ofEpochMilli(vo.endTime.getTime())));
+			startTimePicker.setValue(Instant.ofEpochMilli(vo.startTime.getTime()).atZone(ZoneId.systemDefault()).toLocalDate());
+			endTimePicker.setValue(Instant.ofEpochMilli(vo.endTime.getTime()).atZone(ZoneId.systemDefault()).toLocalDate());
 		}
 		if (!levelBox.isDisable()) {
 			levelBox.setValue(vo.level);
