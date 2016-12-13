@@ -19,37 +19,26 @@ public class Level {
 	
 	private ArrayList<Double> credits;
 	
-	private static Level level;
-	
-	private Level(int levelNum, ArrayList<Double> credits) {
+	Level(int levelNum, ArrayList<Double> credits) {
 		this.levelNum = levelNum;
 		
 		this.credits = credits;
 	}
 	
-	static Level getInstance() {
-		if (level == null) {
-			RMIHelper rmihelper = RMIHelper.getInstance();
-			
-			PromotionDataService promotionDataService = rmihelper.getPromotionDataServiceImpl();
-			
-			try {
-				LevelPO levelPO = promotionDataService.showLevel();
-				
-				level = new Level(levelPO.levelNum, levelPO.credits);
-			} catch (RemoteException rex) {
-				System.out.println(ResultMessage.CONNECTION_FAIL);
-			}
+	Level() {
+		RMIHelper rmihelper = RMIHelper.getInstance();
+		PromotionDataService promotionDataService = rmihelper.getPromotionDataServiceImpl();
+		
+		try {
+			LevelPO levelPO = promotionDataService.showLevel();
+			new Level(levelPO.levelNum, levelPO.credits);
+		} catch (RemoteException rex) {
+			System.out.println(ResultMessage.CONNECTION_FAIL);
 		}
-		return level;
 	}
 	
 	LevelVO showLevel() {
-		if (level != null) {
-			return new LevelVO(levelNum, credits);
-		} else {
-			return new LevelVO(ResultMessage.NOT_EXIST);
-		}
+		return new LevelVO(levelNum, credits);
 	}
 	
 	ResultMessage modifyLevel (LevelVO vo) {
