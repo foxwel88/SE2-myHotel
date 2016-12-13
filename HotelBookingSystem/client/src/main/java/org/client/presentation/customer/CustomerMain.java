@@ -18,19 +18,14 @@ public class CustomerMain {
 	void initialize() {
 		assert time != null : "fx:id=\"time\" was not injected: check your FXML file '酒店工作人员主界面.fxml'.";
 
-		//clock
-		Timeline timeline = new Timeline(
-				new KeyFrame(Duration.seconds(0),
-						actionEvent -> {
-							try {
-								time.setText("当前时间：" + RMIHelper.getInstance().getTimeServiceImpl().getCurrentTime());
-							} catch (RemoteException e) {
-								e.printStackTrace();
-							}
-						}
-				),
-				new KeyFrame(Duration.seconds(1))
-		);
+		// clock
+		Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0), actionEvent -> {
+			try {
+				time.setText("当前时间：" + RMIHelper.getInstance().getTimeServiceImpl().getCurrentTime());
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
+		}), new KeyFrame(Duration.seconds(1)));
 		timeline.setCycleCount(Animation.INDEFINITE);
 		timeline.play();
 	}
