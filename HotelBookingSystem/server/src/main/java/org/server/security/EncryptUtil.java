@@ -1,9 +1,6 @@
 package org.server.security;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -25,7 +22,7 @@ import javax.crypto.spec.SecretKeySpec;
  * @version 2016/11/29 Hirico
  */
 public class EncryptUtil {
-	private static final String KEY_LOCATION = "src/hotelSystemKey.txt";
+	private static final String KEY_LOCATION = "/hotelSystemKey.txt";
 	
 	private static final String IV_STRING = "Secure37Enough16";
 	
@@ -37,13 +34,7 @@ public class EncryptUtil {
 	 */
 	private static byte[] getKey() {
 		byte[] key = new byte[KEY_BYTES];
-		FileInputStream sc = null;
-		try {
-			sc = new FileInputStream(KEY_LOCATION);
-		} catch (FileNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		InputStream sc = EncryptUtil.class.getResourceAsStream(KEY_LOCATION);
 		try {
 			sc.read(key);
 		} catch (IOException e) {
