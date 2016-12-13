@@ -345,7 +345,7 @@ public class CustomerCheckHotel {
 	}
 	
 	@FXML
-	void turnToOrderPreviousPage() {
+	void orderTurnToPreviousPage() {
 		switch (currentLabel) {
 			case 0:
 				if (Integer.parseInt(orderCurrentPage.getText()) > 1) {
@@ -369,7 +369,7 @@ public class CustomerCheckHotel {
 	}
 	
 	@FXML
-	void turnToCommentPreviousPage() {
+	void commentTurnToPreviousPage() {
 		if (Integer.parseInt(commentCurrentPage.getText()) > 1) {
 			commentCurrentPage.setText(String.valueOf(Integer.parseInt(commentCurrentPage.getText()) - 1));
 			showExecutedOrderList();
@@ -377,7 +377,7 @@ public class CustomerCheckHotel {
 	}
 	
 	@FXML
-	void turnToOrderSpecialPage(KeyEvent event) {
+	void orderTurnToSpecialPage(KeyEvent event) {
 		if (event.getCode() == KeyCode.ENTER) {
 			int goalPage = checkGoalPage(true);
 			orderCurrentPage.setText(String.valueOf(goalPage));
@@ -396,7 +396,7 @@ public class CustomerCheckHotel {
 	}
 	
 	@FXML
-	void turnToCommentSpecialPage(KeyEvent event) {
+	void commentTurnToSpecialPage(KeyEvent event) {
 		if (event.getCode() == KeyCode.ENTER) {
 			int goalPage = checkGoalPage(false);
 			commentCurrentPage.setText(String.valueOf(goalPage));

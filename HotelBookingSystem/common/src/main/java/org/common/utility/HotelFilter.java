@@ -18,6 +18,8 @@ public class HotelFilter implements Serializable {
 	
 	public List<String> livedHotelIDs;
 	
+	public String hotelName;
+	
 	public int minStar = 0;
 	
 	public int maxStar = 5;

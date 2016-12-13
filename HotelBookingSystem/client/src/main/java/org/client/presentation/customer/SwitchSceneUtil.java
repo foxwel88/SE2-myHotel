@@ -185,13 +185,9 @@ public class SwitchSceneUtil {
 		return new ArrayList<>(hotelController.getCitys());
 	}
 	
-	public static ArrayList<AreaVO> getAreas() {
-		ArrayList<AreaVO> allAreas = new ArrayList<>();
-		ArrayList<CityVO> allCities = getCities();
-		for (CityVO vo : allCities) {
-			allAreas.addAll(hotelController.getAreas(vo));
-		}
-		return allAreas;
+	public static ArrayList<AreaVO> getAreas(String city) {
+		CityVO cityVO = new CityVO(city);
+		return (ArrayList<AreaVO>)hotelController.getAreas(cityVO);
 	}
 	
 	public static HotelVO getHotelVO() {

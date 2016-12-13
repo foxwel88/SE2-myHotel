@@ -177,6 +177,11 @@ public class CustomerCheckHotelList {
 	}
 	
 	@FXML
+	void refreshAreas() {
+		setArea();
+	}
+	
+	@FXML
 	void turnToNextPage() {
 		if (Integer.parseInt(currentPage.getText()) < calMaxPage(hotelList)) {
 			currentPage.setText(String.valueOf(Integer.parseInt(currentPage.getText()) + 1));
@@ -288,11 +293,15 @@ public class CustomerCheckHotelList {
 	
 	private void setArea() {
 		ArrayList<String> areaNameList = new ArrayList<>();
-		ArrayList<AreaVO> areaVOList = SwitchSceneUtil.getAreas();
-		for (AreaVO vo : areaVOList) {
-			areaNameList.add(vo.address);
+		try {
+			ArrayList<AreaVO> areaVOList = SwitchSceneUtil.getAreas(city.getValue());
+			for (AreaVO vo : areaVOList) {
+				areaNameList.add(vo.address);
+			}
+			area.setItems(FXCollections.observableArrayList(areaNameList));
+		} catch (NullPointerException nullPointerException) {
+			area.setItems(null);
 		}
-		area.setItems(FXCollections.observableArrayList(areaNameList));
 	}
 	
 	private void setLowerStar() {
