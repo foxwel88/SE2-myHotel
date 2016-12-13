@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.client.bl.commentbl.CommentController;
 import org.client.bl.hotelbl.HotelController;
 import org.client.bl.orderbl.OrderController;
 import org.client.bl.promotionbl.PromotionController;
@@ -12,6 +13,7 @@ import org.client.bl.userbl.UserController;
 import org.client.launcher.Resources;
 import org.client.vo.AreaVO;
 import org.client.vo.CityVO;
+import org.client.vo.CommentVO;
 import org.client.vo.CreditRecordVO;
 import org.client.vo.HotelVO;
 import org.client.vo.OrderVO;
@@ -40,6 +42,8 @@ public class SwitchSceneUtil {
 	static HotelController hotelController;
 	
 	static PromotionController promotionController;
+	
+	static CommentController commentController;
 	
 	// 记录当前登录客户的客户ID
 	static String userID;
@@ -91,6 +95,7 @@ public class SwitchSceneUtil {
 		promotionController = PromotionController.getInstance();
 		orderController = OrderController.getInstance();
 		hotelController = HotelController.getInstance();
+		commentController = CommentController.getInstance();
 		setStage(stage);
 		setUser(userID);
 	}
@@ -125,6 +130,47 @@ public class SwitchSceneUtil {
 	
 	public static List<OrderVO> getUnExcutedOrderList() {
 		return orderController.getUserOrderList(userID, OrderType.UNEXECUTED);
+	}
+	
+	public static ArrayList<OrderVO> getFinishedOrderListOfCurrentHotel() {
+		ArrayList<OrderVO> allFinishedOrder = (ArrayList<OrderVO>)getFinishedOrderList();
+		ArrayList<OrderVO> hotelFinishedOrder = new ArrayList<>();
+		for (int i = 0; i < allFinishedOrder.size(); i++) {
+			if (allFinishedOrder.get(i).hotelID.equals(hotelID)) {
+				hotelFinishedOrder.add(allFinishedOrder.get(i));
+			}
+		}
+		return hotelFinishedOrder;
+	}
+	
+	public static ArrayList<OrderVO> getCanceledOrderListOfCurrentHotel() {
+		ArrayList<OrderVO> allCanceledOrder = (ArrayList<OrderVO>)getCanceledOrderList();
+		ArrayList<OrderVO> hotelCanceledOrder = new ArrayList<>();
+		for (int i = 0; i < allCanceledOrder.size(); i++) {
+			if (allCanceledOrder.get(i).hotelID.equals(hotelID)) {
+				hotelCanceledOrder.add(allCanceledOrder.get(i));
+			}
+		}
+		return hotelCanceledOrder;
+	}
+	
+	public static ArrayList<OrderVO> getAbnormalOrderListOfCurrentHotel() {
+		ArrayList<OrderVO> allAbnormalOrder = (ArrayList<OrderVO>)getAbnormalOrderList();
+		ArrayList<OrderVO> hotelAbnormalOrder = new ArrayList<>();
+		for (int i = 0; i < allAbnormalOrder.size(); i++) {
+			if (allAbnormalOrder.get(i).hotelID.equals(hotelID)) {
+				hotelAbnormalOrder.add(allAbnormalOrder.get(i));
+			}
+		}
+		return hotelAbnormalOrder;
+	}
+	
+	public static double getCurrentPrice(double rawPrice) {
+		return promotionController.getPrice(userID, hotelID, rawPrice);
+	}
+	
+	public static ArrayList<CommentVO> getComment() {
+		return (ArrayList<CommentVO>)commentController.getComment(hotelID);
 	}
 	
 	public static OrderVO getCurrentOrder() {

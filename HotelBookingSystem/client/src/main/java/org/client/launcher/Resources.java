@@ -58,9 +58,7 @@ public class Resources {
 	
 	public URL customerCheckCredits = getClass().getResource("/客户/查看信用记录界面.fxml");
 	
-	public URL customerCheckHotel = getClass().getResource("/客户/酒店详细信息界面-1.fxml");
-	
-	public URL customerCheckHotelComment = getClass().getResource("/客户/酒店详细信息界面-2.fxml");
+	public URL customerCheckHotel = getClass().getResource("/客户/酒店详细信息界面.fxml");
 	
 	public URL customerCheckHotelList = getClass().getResource("/客户/浏览酒店界面.fxml");
 	

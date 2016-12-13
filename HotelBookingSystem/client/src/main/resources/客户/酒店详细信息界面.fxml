@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="567.0" prefWidth="920.0" style="-fx-background-color: rgba(255,255,255,0.4);" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.presentation.customer.CustomerCheckHotel">
+   <effect>
+      <DropShadow />
+   </effect>
+   <children>
+      <ScrollPane hbarPolicy="NEVER" layoutX="20.0" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <content>
+            <VBox prefHeight="1134.0" prefWidth="909.0">
+               <children>
+                  <AnchorPane>
+                     <children>
+                        <Label fx:id="hotelName" alignment="CENTER" prefHeight="69.0" prefWidth="908.0" text="南京美利坚大酒店" textFill="#da0095">
+                           <font>
+                              <Font name="Microsoft YaHei" size="31.0" />
+                           </font>
+                        </Label>
+                        <HBox layoutY="66.0" prefHeight="140.0" prefWidth="887.0">
+                           <children>
+                              <Label prefHeight="153.0" prefWidth="158.0" style="-fx-border-style: solid;">
+                                 <graphic>
+                                    <ImageView fx:id="picture" fitHeight="142.0" fitWidth="200.0">
+                                       <image>
+                                          <Image url="@/客户/pic.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Label>
+                              <AnchorPane prefHeight="144.0" prefWidth="509.0">
+                                 <children>
+                                    <Label fx:id="introduce" alignment="TOP_LEFT" prefHeight="90.0" prefWidth="675.0" text="       我是被酒店工作人员写出来的简介，虽然看上去好丑。。。下面的字仅仅是凑字数凑到第二行，好看看首行需要多少个空格缩进。怎么还没到第二行。。。而且7个空格也是有点迷" wrapText="true">
+                                       <padding>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </padding>
+                                       <font>
+                                          <Font name="Microsoft YaHei" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Button fx:id="makeOrderButton" alignment="CENTER" layoutX="528.0" layoutY="92.0" mnemonicParsing="false" onMouseClicked="#turnToCustomerGenerateOrder" prefHeight="48.0" prefWidth="120.0" style="-fx-background-color: #ff8c00;" text="立即预定" textFill="WHITE">
+                                       <font>
+                                          <Font name="Microsoft YaHei" size="20.0" />
+                                       </font>
+                                       <effect>
+                                          <DropShadow />
+                                       </effect>
+                                    </Button>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </HBox>
+                        <Separator layoutY="210.0" prefHeight="11.0" prefWidth="906.0" />
+                        <HBox layoutY="218.0">
+                           <children>
+                              <Label prefHeight="22.0" prefWidth="91.0" text="酒店地址：">
+                                 <font>
+                                    <Font name="Microsoft YaHei" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="address" prefHeight="22.0" prefWidth="805.0">
+                                 <font>
+                                    <Font name="Microsoft YaHei" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <Separator layoutY="240.0" prefHeight="11.0" prefWidth="905.0" />
+                        <GridPane layoutY="249.0" prefHeight="197.0" prefWidth="890.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="242.0" minWidth="228.0" prefWidth="242.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="273.0" minWidth="109.0" prefWidth="254.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="363.0" minWidth="95.0" prefWidth="154.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="318.0" minWidth="45.0" prefWidth="163.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="152.0" minWidth="0.0" prefWidth="10.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label text="房型">
+                                 <font>
+                                    <Font name="Microsoft YaHei" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label text="当前剩余数量" GridPane.columnIndex="1">
+                                 <font>
+                                    <Font name="Microsoft YaHei" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label text="原价" GridPane.columnIndex="2">
+                                 <font>
+                                    <Font name="Microsoft YaHei" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label text="现价" GridPane.columnIndex="3">
+                                 <font>
+                                    <Font name="Microsoft YaHei" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label text="单人间" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="Microsoft YaHei" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="leftNum1" text="0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="Microsoft YaHei" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="rawPrice1" text="0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="Microsoft YaHei" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="currentPrice1" text="0" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="Microsoft YaHei" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label text="套间" GridPane.rowIndex="4">
+                                 <font>
+                                    <Font name="Microsoft YaHei" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label text="标间" GridPane.rowIndex="6">
+                                 <font>
+                                    <Font name="Microsoft YaHei" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="leftNum2" text="0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                 <font>
+                                    <Font name="Microsoft YaHei" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="leftNum3" text="0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                 <font>
+                                    <Font name="Microsoft YaHei" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="rawPrice2" text="0" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                                 <font>
+                                    <Font name="Microsoft YaHei" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="rawPrice3" text="0" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                                 <font>
+                                    <Font name="Microsoft YaHei" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="currentPrice2" text="0" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                                 <font>
+                                    <Font name="Microsoft YaHei" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="currentPrice3" text="0" GridPane.columnIndex="3" GridPane.rowIndex="6">
+                                 <font>
+                                    <Font name="Microsoft YaHei" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </GridPane>
+                        <Separator layoutY="444.0" prefHeight="13.0" prefWidth="906.0" />
+                        <Label layoutY="447.0" text="酒店设施服务：">
+                           <font>
+                              <Font name="Microsoft YaHei" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="service" layoutY="469.0" prefHeight="100.0" prefWidth="731.0" text="很多设施服务">
+                           <font>
+                              <Font name="Microsoft YaHei" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="25.0" />
+                     </VBox.margin>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="567.0" prefWidth="920.0">
+                     <children>
+                        <Pane fx:id="executedOrder" layoutX="514.0" layoutY="29.0" prefHeight="45.0" prefWidth="104.0" style="-fx-background-color: rgba(0,0,0,0.3);">
+                           <children>
+                              <Label fx:id="executedOrderText" alignment="CENTER" layoutX="1.0" layoutY="10.0" prefHeight="24.0" prefWidth="101.0" text="已执行订单" textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font name="Microsoft YaHei" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Pane layoutX="49.0" layoutY="74.0" prefHeight="175.0" prefWidth="785.0" style="-fx-border-style: dashed;">
+                           <children>
+                              <Label fx:id="orderPreviousPage" layoutX="180.0" layoutY="152.0" text="&lt;上一页">
+                                 <font>
+                                    <Font name="Microsoft YaHei" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="orderNextPage" layoutX="304.0" layoutY="152.0" text="下一页&gt;">
+                                 <font>
+                                    <Font name="Microsoft YaHei" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="419.0" layoutY="152.0" text="跳转至第">
+                                 <font>
+                                    <Font name="Microsoft YaHei" size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="orderToPage" layoutX="483.0" layoutY="149.0" prefHeight="20.0" prefWidth="30.0" style="-fx-background-color: rgba(255,255,255,0.4);" />
+                              <Label fx:id="orderCurrentPage" layoutX="265.0" layoutY="152.0" text="1">
+                                 <font>
+                                    <Font name="Microsoft YaHei" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="516.0" layoutY="152.0" text="页">
+                                 <font>
+                                    <Font name="Microsoft YaHei" size="15.0" />
+                                 </font>
+                              </Label>
+                              <VBox layoutX="15.0" layoutY="14.0" prefHeight="139.0" prefWidth="135.0">
+                                 <children>
+                                    <Label alignment="CENTER" prefHeight="45.0" prefWidth="135.0" text="时间">
+                                       <font>
+                                          <Font name="Microsoft YaHei" size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="timeLabel1" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="45.0" prefWidth="135.0" text="2009/00/00">
+                                       <font>
+                                          <Font name="Microsoft YaHei" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="timeLabel2" alignment="CENTER" layoutX="10.0" layoutY="55.0" prefHeight="45.0" prefWidth="135.0" text="2222/22/22">
+                                       <font>
+                                          <Font name="Microsoft YaHei" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <VBox layoutX="190.0" layoutY="14.0" prefHeight="139.0" prefWidth="168.0">
+                                 <children>
+                                    <Label alignment="CENTER" prefHeight="45.0" prefWidth="275.0" text="房型">
+                                       <font>
+                                          <Font name="Microsoft YaHei" size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="roomTypeLabel1" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="45.0" prefWidth="275.0" text="单人间">
+                                       <font>
+                                          <Font name="Microsoft YaHei" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="roomTypeLabel2" alignment="CENTER" layoutX="10.0" layoutY="55.0" prefHeight="45.0" prefWidth="275.0" text="八人间">
+                                       <font>
+                                          <Font name="Microsoft YaHei" size="15.0" />
+                                       </font>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <VBox layoutX="400.0" layoutY="14.0" prefHeight="139.0" prefWidth="159.0">
+                                 <children>
+                                    <Label alignment="CENTER" prefHeight="45.0" prefWidth="244.0" text="房间数量">
+                                       <font>
+                                          <Font name="Microsoft YaHei" size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="roomNumLabel1" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="45.0" prefWidth="244.0" text="1">
+                                       <font>
+                                          <Font name="Microsoft YaHei" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="roomNumLabel2" alignment="CENTER" layoutX="10.0" layoutY="55.0" prefHeight="45.0" prefWidth="244.0" text="8">
+                                       <font>
+                                          <Font name="Microsoft YaHei" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <VBox layoutX="602.0" layoutY="18.0" prefHeight="139.0" prefWidth="159.0">
+                                 <children>
+                                    <Label alignment="CENTER" prefHeight="45.0" prefWidth="244.0" text="价格">
+                                       <font>
+                                          <Font name="Microsoft YaHei" size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="priceLabel1" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="45.0" prefWidth="244.0" text="100">
+                                       <font>
+                                          <Font name="Microsoft YaHei" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="priceLabel2" alignment="CENTER" layoutX="10.0" layoutY="55.0" prefHeight="45.0" prefWidth="244.0" text="99">
+                                       <font>
+                                          <Font name="Microsoft YaHei" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </Pane>
+                        <Pane layoutX="254.0" layoutY="8.0" prefHeight="55.0" prefWidth="175.0" />
+                        <ScrollBar fx:id="scrollBar" layoutX="913.0" orientation="VERTICAL" prefHeight="567.0" prefWidth="14.0" style="-fx-background-color: rgba(0,0,0,0.1);" unitIncrement="0.0" value="100.0" visibleAmount="50.0" />
+                        <Pane fx:id="abnormalOrder" layoutX="730.0" layoutY="29.0" prefHeight="45.0" prefWidth="104.0" style="-fx-background-color: rgba(255,255,255,0.2);">
+                           <children>
+                              <Label fx:id="abnormalOrderText" layoutX="16.0" layoutY="11.0" text="异常订单">
+                                 <font>
+                                    <Font name="Microsoft YaHei" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Pane fx:id="canceledOrder" layoutX="622.0" layoutY="29.0" prefHeight="45.0" prefWidth="104.0" style="-fx-background-color: rgba(255,255,255,0.2);">
+                           <children>
+                              <Label fx:id="canceledOrderText" layoutX="8.0" layoutY="13.0" text="已撤销订单">
+                                 <font>
+                                    <Font name="Microsoft YaHei" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Label layoutX="141.0" layoutY="35.0" text="您在该酒店曾经预订过以下订单    ——">
+                           <font>
+                              <Font name="Microsoft YaHei" size="20.0" />
+                           </font>
+                        </Label>
+                        <Pane layoutX="49.0" layoutY="307.0" prefHeight="255.0" prefWidth="785.0" style="-: ;">
+                           <children>
+                              <Label fx:id="commentPreviousPage" layoutX="180.0" layoutY="234.0" text="&lt;上一页">
+                                 <font>
+                                    <Font name="Microsoft YaHei" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="commentNextPage" layoutX="304.0" layoutY="234.0" text="下一页&gt;">
+                                 <font>
+                                    <Font name="Microsoft YaHei" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="419.0" layoutY="234.0" text="跳转至第">
+                                 <font>
+                                    <Font name="Microsoft YaHei" size="15.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="commentToPage" layoutX="483.0" layoutY="231.0" prefHeight="20.0" prefWidth="30.0" style="-fx-background-color: rgba(255,255,255,0.4);" />
+                              <Label fx:id="commentCurrentPage" layoutX="265.0" layoutY="234.0" text="1">
+                                 <font>
+                                    <Font name="Microsoft YaHei" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="516.0" layoutY="234.0" text="页">
+                                 <font>
+                                    <Font name="Microsoft YaHei" size="15.0" />
+                                 </font>
+                              </Label>
+                              <GridPane hgap="5.0" layoutX="2.0" prefHeight="231.0" prefWidth="785.0" vgap="5.0">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="388.0" minWidth="10.0" percentWidth="100.0" prefWidth="180.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <GridPane prefHeight="74.0" prefWidth="452.0" style="-fx-border-style: dashed;">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="388.0" minWidth="10.0" prefWidth="47.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="706.0" minWidth="10.0" prefWidth="47.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="706.0" minWidth="10.0" prefWidth="691.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints maxHeight="56.0" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="31.0" minHeight="10.0" prefHeight="19.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <Label prefHeight="80.0" prefWidth="97.0" text="评分" GridPane.rowSpan="2">
+                                             <font>
+                                                <Font name="Microsoft YaHei" size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="scoreLabel1" prefHeight="80.0" prefWidth="97.0" text="4.8" GridPane.columnIndex="1" GridPane.rowSpan="2">
+                                             <font>
+                                                <Font name="Microsoft YaHei" size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="commentLabel1" alignment="TOP_LEFT" prefHeight="59.0" prefWidth="690.0" text="       这家店真的太棒了太棒了太棒了，重要的话复制粘贴三遍（然后我继续测试一下是不是还是需要7个空格作为缩进。。太棒了太棒了太棒了太棒了太棒了太棒了太棒了太棒了太棒了太棒了）。。还真是" wrapText="true" GridPane.columnIndex="2" />
+                                          <Label fx:id="commenterInfoLabel1" alignment="CENTER_RIGHT" prefHeight="15.0" prefWidth="728.0" text="-1949/10/01          XXX" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                       </children>
+                                    </GridPane>
+                                    <GridPane prefHeight="74.0" prefWidth="452.0" style="-fx-border-style: dashed;" GridPane.rowIndex="1">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="388.0" minWidth="10.0" prefWidth="47.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="706.0" minWidth="10.0" prefWidth="47.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="706.0" minWidth="10.0" prefWidth="691.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints maxHeight="56.0" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="31.0" minHeight="10.0" prefHeight="19.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <Label prefHeight="80.0" prefWidth="97.0" text="评分" GridPane.rowSpan="2">
+                                             <font>
+                                                <Font name="Microsoft YaHei" size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="scoreLabel2" prefHeight="80.0" prefWidth="97.0" text="4.8" GridPane.columnIndex="1" GridPane.rowSpan="2">
+                                             <font>
+                                                <Font name="Microsoft YaHei" size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="commentLabel2" alignment="TOP_LEFT" prefHeight="59.0" prefWidth="690.0" text="       这家店真的太棒了太棒了太棒了，重要的话复制粘贴三遍（然后我继续测试一下是不是还是需要7个空格作为缩进。。太棒了太棒了太棒了太棒了太棒了太棒了太棒了太棒了太棒了太棒了）。。还真是" wrapText="true" GridPane.columnIndex="2" />
+                                          <Label fx:id="commenterInfoLabel2" alignment="CENTER_RIGHT" prefHeight="15.0" prefWidth="728.0" text="-1949/10/01          XXX" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                       </children>
+                                    </GridPane>
+                                    <GridPane prefHeight="74.0" prefWidth="452.0" style="-fx-border-style: dashed;" GridPane.rowIndex="2">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="388.0" minWidth="10.0" prefWidth="47.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="706.0" minWidth="10.0" prefWidth="47.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="706.0" minWidth="10.0" prefWidth="691.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints maxHeight="56.0" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="31.0" minHeight="10.0" prefHeight="19.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <Label prefHeight="80.0" prefWidth="97.0" text="评分" GridPane.rowSpan="2">
+                                             <font>
+                                                <Font name="Microsoft YaHei" size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="scoreLabel3" prefHeight="80.0" prefWidth="97.0" text="4.8" GridPane.columnIndex="1" GridPane.rowSpan="2">
+                                             <font>
+                                                <Font name="Microsoft YaHei" size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="commentLabel3" alignment="TOP_LEFT" prefHeight="59.0" prefWidth="690.0" text="       这家店真的太棒了太棒了太棒了，重要的话复制粘贴三遍（然后我继续测试一下是不是还是需要7个空格作为缩进。。太棒了太棒了太棒了太棒了太棒了太棒了太棒了太棒了太棒了太棒了）。。还真是" wrapText="true" GridPane.columnIndex="2" />
+                                          <Label fx:id="commenterInfoLabel3" alignment="CENTER_RIGHT" prefHeight="15.0" prefWidth="728.0" text="-1949/10/01          XXX" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </GridPane>
+                           </children>
+                        </Pane>
+                        <Label layoutX="141.0" layoutY="278.0" text="店家好评">
+                           <font>
+                              <Font name="Microsoft YaHei" size="20.0" />
+                           </font>
+                        </Label>
+                        <Separator layoutX="15.0" layoutY="260.0" prefHeight="20.0" prefWidth="882.0" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
