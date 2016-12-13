@@ -11,7 +11,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import org.client.presentation.hotelmanager.HotelManagerController;
 import org.client.presentation.util.ResultInfoHelper;
 import org.client.vo.AreaVO;
 import org.client.vo.CityVO;

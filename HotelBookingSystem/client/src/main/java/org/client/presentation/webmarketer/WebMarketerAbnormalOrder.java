@@ -97,7 +97,7 @@ public class WebMarketerAbnormalOrder {
 			halfRecBox.setSelected(false);
 			return;
 		}
-		ResultInfoHelper.setResultLabel(resultLabel, ResultMessage.WRONG_FORMAT);
+		ResultInfoHelper.setResultLabel(resultLabel, ResultMessage.SUCCESS);
 	}
 
 	@FXML
