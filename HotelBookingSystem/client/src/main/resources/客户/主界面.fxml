@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="567.0" prefWidth="920.0" style="-fx-background-color: rgba(255,255,255,0.4);" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="567.0" prefWidth="920.0" style="-fx-background-color: rgba(255,255,255,0.4);" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.presentation.customer.CustomerMain">
    <effect>
       <DropShadow />
    </effect>
@@ -20,7 +20,7 @@
             <Font name="Microsoft YaHei UI Light" size="28.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="160.0" layoutY="239.0" prefHeight="105.0" prefWidth="540.0" text="当前时间：2016/10/20 08:00:45">
+      <Label fx:id="time" alignment="CENTER" layoutX="160.0" layoutY="239.0" prefHeight="105.0" prefWidth="540.0" text="当前时间：2016/10/20 08:00:45">
          <font>
             <Font name="Microsoft YaHei UI Light" size="28.0" />
          </font>

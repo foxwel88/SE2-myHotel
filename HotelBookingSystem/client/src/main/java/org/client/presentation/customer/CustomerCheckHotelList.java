@@ -382,14 +382,15 @@ public class CustomerCheckHotelList {
 		try {
 			filter.setRoomNum(Integer.parseInt(roomNum.getText()));
 		} catch (NumberFormatException numberFormatException) { }
-		
+
+		filter.hotelName = hotelName.getText();
+
 //		try {
 //			filter.set
 //			System.out.println(fromDate.getValue());
 //		} catch (NullPointerException nullPointerException) {
 //			nullPointerException.printStackTrace();
 //		}
-		// TODO 酒店地址有问题，应该是根据酒店名称包含的关键字搜索
 		// TODO 没有办法根据入住日期区间搜索
 		// TODO try-catch没有写（格式检查）
 		return filter;
