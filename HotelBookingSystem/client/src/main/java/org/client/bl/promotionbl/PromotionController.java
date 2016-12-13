@@ -21,14 +21,10 @@ public class PromotionController implements Promotionblservice {
 	
 	private List<Promotion> websitePromotionList;
 	
-	private Level level;
-	
 	private PromotionController() {
 		hotelPromotionList = new ArrayList<>();
 		
 		websitePromotionList = new ArrayList<>();
-		
-		level = Level.getInstance();
 	}
 	
 	public static PromotionController getInstance() {
@@ -79,11 +75,11 @@ public class PromotionController implements Promotionblservice {
 	}
 
 	public LevelVO showLevel() {
-		return level.showLevel();
+		return new Level().showLevel();
 	}
 
 	public ResultMessage modifyLevel(LevelVO vo) {
-		return level.modifyLevel(vo);
+		return new Level().modifyLevel(vo);
 	}
 	
 	public double getPrice (String userID, String hotelID, double rawPrice) {
@@ -91,7 +87,7 @@ public class PromotionController implements Promotionblservice {
 	}
 	
 	public int calLevel(double credit) {
-		return level.calLevel(credit);
+		return new Level().calLevel(credit);
 	}
 
 }

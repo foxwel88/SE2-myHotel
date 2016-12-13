@@ -32,8 +32,8 @@ public class PromotionPriceCalculator {
 	
 	double getPrice(double rawPrice) {
 		setMostSuitableStrategy();
-		// 由于仅有折扣类型的promotion，仅仅用原价格减去两个促销策略分别折扣的价格，没有考虑优先级导致的先后折扣问题
-		return ((hotelPromotionStrategy.getPrice(rawPrice)) + (websitePromotionStrategy.getPrice(rawPrice)) - rawPrice);
+		// 由于仅有折扣类型的promotion，没有考虑优先级导致的先后折扣问题
+		return websitePromotionStrategy.getPrice(hotelPromotionStrategy.getPrice(rawPrice));
 	}
 	
 	// 由于每人最多同时享用1种酒店促销策略和1种网站促销策略，因此需要筛选出最优的促销策略
