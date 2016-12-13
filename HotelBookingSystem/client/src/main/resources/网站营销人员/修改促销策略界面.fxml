@@ -169,7 +169,12 @@
             <AnchorPane opacity="0.4" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #555555;" GridPane.columnIndex="1" GridPane.rowIndex="10" />
             <AnchorPane prefHeight="45.0" prefWidth="626.0" GridPane.columnIndex="1" GridPane.rowIndex="11">
                <children>
-                  <TextField fx:id="discountLabel" layoutX="82.0" layoutY="5.0" prefHeight="30.0" prefWidth="247.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="4.0" />
+                  <TextField fx:id="discountLabel" layoutX="82.0" layoutY="5.0" prefHeight="30.0" prefWidth="46.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="4.0" />
+                  <Text layoutX="87.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="折" textAlignment="CENTER" AnchorPane.bottomAnchor="4.0" AnchorPane.topAnchor="6.0">
+                     <font>
+                        <Font name="Microsoft YaHei" size="20.0" />
+                     </font>
+                  </Text>
                </children>
             </AnchorPane>
          </children>
