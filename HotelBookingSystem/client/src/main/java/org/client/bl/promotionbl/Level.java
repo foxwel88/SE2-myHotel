@@ -19,19 +19,14 @@ public class Level {
 	
 	private ArrayList<Double> credits;
 	
-	Level(int levelNum, ArrayList<Double> credits) {
-		this.levelNum = levelNum;
-		
-		this.credits = credits;
-	}
-	
 	Level() {
 		RMIHelper rmihelper = RMIHelper.getInstance();
 		PromotionDataService promotionDataService = rmihelper.getPromotionDataServiceImpl();
 		
 		try {
 			LevelPO levelPO = promotionDataService.showLevel();
-			new Level(levelPO.levelNum, levelPO.credits);
+			this.levelNum = levelPO.levelNum;
+			this.credits = levelPO.credits;
 		} catch (RemoteException rex) {
 			System.out.println(ResultMessage.CONNECTION_FAIL);
 		}

@@ -107,11 +107,6 @@
                         <Font name="Microsoft YaHei" size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="customerName" layoutX="180.0" layoutY="10.0" text="name" AnchorPane.leftAnchor="180.0">
-                     <font>
-                        <Font name="Microsoft YaHei" size="16.0" />
-                     </font>
-                  </Label>
                   <Label layoutY="38.0" text="会员等级">
                      <font>
                         <Font name="Microsoft YaHei" size="16.0" />
@@ -139,6 +134,7 @@
                      </font>
                   </Label>
                   <TextField fx:id="phoneNumber" layoutX="180.0" layoutY="91.0" style="-fx-background-color: rgba(255,255,255,0.4);" text="153245678974" AnchorPane.leftAnchor="180.0" />
+                  <TextField fx:id="customerName" layoutX="179.0" layoutY="9.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.leftAnchor="180.0" />
                </children>
             </AnchorPane>
             <AnchorPane layoutX="5.0" layoutY="371.0" prefHeight="94.0" prefWidth="806.0">

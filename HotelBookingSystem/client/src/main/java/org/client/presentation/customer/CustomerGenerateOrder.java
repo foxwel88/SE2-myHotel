@@ -1,12 +1,14 @@
 package org.client.presentation.customer;
 
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.Objects;
 
 import org.client.vo.HotelVO;
 import org.client.vo.OrderVO;
 import org.client.vo.UserVO;
+import org.common.utility.RoomType;
 
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -46,9 +48,6 @@ public class CustomerGenerateOrder {
 	Label latestArrivalTime;
 	
 	@FXML
-	Label customerName;
-	
-	@FXML
 	Label level;
 	
 	@FXML
@@ -71,6 +70,9 @@ public class CustomerGenerateOrder {
 	
 	@FXML
 	DatePicker schToDate;
+	
+	@FXML
+	TextField customerName;
 	
 	@FXML
 	TextField phoneNumber;
@@ -102,6 +104,7 @@ public class CustomerGenerateOrder {
 		hotelAddress.setText(hotel.address);
 		city.setText(hotel.city.cityName);
 		area.setText(hotel.area.address);
+		setRoomType();
 //		hotelPhoneNumber.setText(hotel.);			// TODO 酒店联系方式
 		LiveDatePicker.initDatePicker(null, schFromDate);
 		LiveDatePicker.initDatePicker(schFromDate, schToDate);
@@ -122,8 +125,8 @@ public class CustomerGenerateOrder {
 	void commitOrder() {
 		// TODO 检查订单格式
 		// TODO 现在的生成的OrderVO的和日期有关的东西都是假的
-		OrderVO newOrder = new OrderVO(user.ID, user.type, null, new Date(10000000), new Date(10000000),
-				null, null, new Date(10000000), null, hotel.address, 
+		OrderVO newOrder = new OrderVO(user.ID, user.type, null, LiveDatePicker.toDate(schFromDate.getValue()), LiveDatePicker.toDate(schToDate.getValue()),
+				null, null, LiveDatePicker.toDate(schFromDate.getValue().plusDays(1)), null, hotel.address, 
 				 null, hotel.id, hotel.hotelName, roomType.getValue(), Double.parseDouble(totalPrice.getText().replaceAll("元", "")), Integer.parseInt(roomNum.getText()), Integer.parseInt(residentNum.getText()),
 				hasChildren.isSelected(), user.name, phoneNumber.getText());
 		SwitchSceneUtil.turnToConfirmOrderScene((GridPane)root.getParent(), newOrder);
@@ -132,5 +135,14 @@ public class CustomerGenerateOrder {
 	@FXML
 	void cancel() {
 		SwitchSceneUtil.turnToDetailedHotelScene((GridPane)root.getParent(), SwitchSceneUtil.hotelID);
+	}
+	
+	private void setRoomType() {
+		RoomType[] roomTypeArray = RoomType.values();
+		ArrayList<String> roomTypeList = new ArrayList<>();
+		for (int i = 0; i < roomTypeArray.length; i++) {
+			roomTypeList.add(roomTypeArray[i].getString());
+		}
+		roomType.setItems(FXCollections.observableArrayList(roomTypeList));
 	}
 }
