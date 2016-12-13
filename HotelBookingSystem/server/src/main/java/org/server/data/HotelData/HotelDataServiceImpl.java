@@ -152,6 +152,9 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 			String query = "SELECT * FROM Hotel WHERE star >= " + filter.minStar + " AND star <= " + filter.maxStar
 					+ " AND rank >= " + filter.minRank + " AND rank <= " + filter.maxRank
 					+ " AND city = '" + filter.city + "' AND area = '" + filter.area + "'";
+			if (!filter.hotelName.isEmpty()) {
+				query += " AND hotelname LIKE '%" + filter.hotelName + "%'";
+			}
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(query);
 			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
 
@@ -181,7 +184,7 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 
 		if (filter.roomType != null) {
 			for (RoomPO r : rooms) {
-				if (r.roomType.getString().equals(filter.roomType)) {
+				if (r.roomType.equals(filter.roomType)) {
 					if (r.roomPrice >= filter.minPrice && r.roomPrice <= filter.maxPrice
 							&& r.roomNum >= filter.roomNum) {
 						return true;

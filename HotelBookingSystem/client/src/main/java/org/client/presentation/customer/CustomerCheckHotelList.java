@@ -376,7 +376,7 @@ public class CustomerCheckHotelList {
 		} catch (NumberFormatException numberFormatException) { }
 		
 		if (roomType.getValue() != null) {
-			filter.setRoomType(RoomType.getType(String.valueOf(roomType.getValue())));
+			filter.setRoomType(RoomType.getType(roomType.getValue()));
 		}
 		
 		try {
