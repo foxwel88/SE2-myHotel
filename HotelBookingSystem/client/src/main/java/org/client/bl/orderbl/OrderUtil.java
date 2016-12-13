@@ -178,7 +178,7 @@ public class OrderUtil {
 			return excuteMessage;
 		}
 		
-		myorder.addCreditRecord(myorder.totalPrice, CreditOperation.FINISHORDER.toString());
+		myorder.addCreditRecord(myorder.totalPrice, CreditOperation.FINISHORDER.getString());
 		return ResultMessage.SUCCESS;
 	}
 	
@@ -202,7 +202,7 @@ public class OrderUtil {
 		if (isHalf) {
 			temp = temp / 2.0;
 		}
-		myorder.addCreditRecord(temp, CreditOperation.EXCEPTIONORDER.toString());
+		myorder.addCreditRecord(temp, CreditOperation.EXCEPTIONORDER.getString());
 		return ResultMessage.SUCCESS;
 	}
 
