@@ -60,7 +60,7 @@ public class CustomerGenerateOrder {
 	Label totalPrice;
 	
 	@FXML
-	Label currentPrice;
+	Label rawPrice;
 	
 	@FXML
 	ChoiceBox<String> roomType;
@@ -104,7 +104,6 @@ public class CustomerGenerateOrder {
 		hotelAddress.setText(hotel.address);
 		city.setText(hotel.city.cityName);
 		area.setText(hotel.area.address);
-		setRoomType();
 //		hotelPhoneNumber.setText(hotel.);			// TODO 酒店联系方式
 		LiveDatePicker.initDatePicker(null, schFromDate);
 		LiveDatePicker.initDatePicker(schFromDate, schToDate);
@@ -116,6 +115,10 @@ public class CustomerGenerateOrder {
 		}
 		level.setText(String.valueOf(SwitchSceneUtil.promotionController.calLevel(user.credit)));
 		credit.setText(String.valueOf(user.credit));
+		setRoomType();
+		roomType.setValue("单人间");
+		roomNum.setText("1");
+		refreshPrice();
 	}
 	
 	/*
@@ -124,10 +127,9 @@ public class CustomerGenerateOrder {
 	@FXML
 	void commitOrder() {
 		// TODO 检查订单格式
-		// TODO 现在的生成的OrderVO的和日期有关的东西都是假的
 		OrderVO newOrder = new OrderVO(user.ID, user.type, null, LiveDatePicker.toDate(schFromDate.getValue()), LiveDatePicker.toDate(schToDate.getValue()),
 				null, null, LiveDatePicker.toDate(schFromDate.getValue().plusDays(1)), null, hotel.address, 
-				 null, hotel.id, hotel.hotelName, roomType.getValue(), Double.parseDouble(totalPrice.getText().replaceAll("元", "")), Integer.parseInt(roomNum.getText()), Integer.parseInt(residentNum.getText()),
+				 null, hotel.id, hotel.hotelName, roomType.getValue(), getCurrentTotalPrice(), Integer.parseInt(roomNum.getText()), Integer.parseInt(residentNum.getText()),
 				hasChildren.isSelected(), user.name, phoneNumber.getText());
 		SwitchSceneUtil.turnToConfirmOrderScene((GridPane)root.getParent(), newOrder);
 	}
@@ -137,6 +139,13 @@ public class CustomerGenerateOrder {
 		SwitchSceneUtil.turnToDetailedHotelScene((GridPane)root.getParent(), SwitchSceneUtil.hotelID);
 	}
 	
+	@FXML
+	void refreshPrice() {
+		setSingleRoomPrice();
+		setRawPrice();
+		setTotalPrice();
+	}
+	
 	private void setRoomType() {
 		RoomType[] roomTypeArray = RoomType.values();
 		ArrayList<String> roomTypeList = new ArrayList<>();
@@ -144,5 +153,42 @@ public class CustomerGenerateOrder {
 			roomTypeList.add(roomTypeArray[i].getString());
 		}
 		roomType.setItems(FXCollections.observableArrayList(roomTypeList));
+	}
+	
+	private void setSingleRoomPrice() {
+		double price = SwitchSceneUtil.getSingleRoomPrice(RoomType.getType(roomType.getValue()));
+		roomPrice.setText(String.valueOf(price) + "元");
+	}
+	
+	private void setRawPrice() {
+		try {
+			rawPrice.setText(String.valueOf(getCurrentSingleRoomPrice() * Double.parseDouble(roomNum.getText())) + "元");
+		} catch (NullPointerException nullPointerException) {
+			rawPrice.setText("");
+		} catch (NumberFormatException numberFormatException) {
+			rawPrice.setText("");
+		}
+	}
+	
+	private void setTotalPrice() {
+		try {
+			double price = SwitchSceneUtil.getCurrentPrice(getCurrentRawPrice());
+			totalPrice.setText(String.valueOf(price) + "元");
+		} catch (NullPointerException nullPointerException) {
+			totalPrice.setText("");
+		}
+		
+	}
+	
+	private double getCurrentSingleRoomPrice() {
+		return Double.parseDouble(roomPrice.getText().replaceAll("元", ""));
+	}
+	
+	private double getCurrentRawPrice() {
+		return Double.parseDouble(rawPrice.getText().replaceAll("元", ""));
+	}
+	
+	private double getCurrentTotalPrice() {
+		return Double.parseDouble(totalPrice.getText().replaceAll("元", ""));
 	}
 }

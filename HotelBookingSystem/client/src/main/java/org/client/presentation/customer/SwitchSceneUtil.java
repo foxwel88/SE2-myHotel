@@ -21,6 +21,7 @@ import org.client.vo.UserVO;
 import org.common.utility.HotelFilter;
 import org.common.utility.OrderType;
 import org.common.utility.ResultMessage;
+import org.common.utility.RoomType;
 
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -163,6 +164,19 @@ public class SwitchSceneUtil {
 			}
 		}
 		return hotelAbnormalOrder;
+	}
+	
+	public static double getSingleRoomPrice(RoomType roomType) {
+		ArrayList<Double> priceList = (ArrayList<Double>)hotelController.getHotelVO(hotelID).roomPrice;
+		switch (roomType) {
+			case SINGLE:
+				return priceList.get(0);
+			case DOUBLE:
+				return priceList.get(1);
+			case BIG:
+				return priceList.get(2);
+		}
+		return -1;
 	}
 	
 	public static double getCurrentPrice(double rawPrice) {
