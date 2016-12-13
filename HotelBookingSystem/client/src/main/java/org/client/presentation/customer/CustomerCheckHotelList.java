@@ -1,5 +1,6 @@
 package org.client.presentation.customer;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import org.client.vo.AreaVO;
@@ -483,7 +484,8 @@ public class CustomerCheckHotelList {
 	private double getScore(int i) {
 		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_HOTEL_ONE_OAGE + i;
 		try {
-			return hotelList.get(seq).rank;
+			DecimalFormat formator = new DecimalFormat("0.00");
+			return Double.parseDouble(formator.format(hotelList.get(seq).rank));
 		} catch (IndexOutOfBoundsException nullex) {
 			return -1;
 		}

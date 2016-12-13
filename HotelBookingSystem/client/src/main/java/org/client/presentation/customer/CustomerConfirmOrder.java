@@ -1,5 +1,7 @@
 package org.client.presentation.customer;
 
+import java.time.LocalDate;
+
 import org.client.vo.OrderVO;
 
 import javafx.fxml.FXML;
@@ -59,16 +61,16 @@ public class CustomerConfirmOrder {
 	@FXML
 	void initialize() {
 		order = SwitchSceneUtil.toBeGeneratedOrder;
-		orderID.setText(order.orderID);;
-		address.setText(order.hotelAddress);;
-		roomType.setText(order.roomType);;
-		roomNum.setText(String.valueOf(order.roomNum));;
-		appointedArrivalTime.setText(order.schFrom.toString());;
-		appointedLivingTime.setText(order.schFrom.toString() + "到" + order.schTo.toString());;
-		resident.setText(order.customerName);;
-		phoneNumber.setText(order.phoneNumber);;
-		totalPrice.setText(String.valueOf(order.totalPrice));;
-		generatedTime.setText(order.generatedDate.toString());;
+		orderID.setText(order.orderID);
+		address.setText(order.hotelAddress);
+		roomType.setText(order.roomType);
+		roomNum.setText(String.valueOf(order.roomNum));
+		appointedArrivalTime.setText(LiveDatePicker.dateToCoarseString(order.schFrom));
+		appointedLivingTime.setText(LiveDatePicker.dateToCoarseString(order.schFrom) + "到" + LiveDatePicker.dateToCoarseString(order.schTo));
+		resident.setText(order.customerName);
+		phoneNumber.setText(order.phoneNumber);
+		totalPrice.setText(String.valueOf(order.totalPrice));
+		generatedTime.setText(LocalDate.now().toString());
 	}
 	
 	@FXML
