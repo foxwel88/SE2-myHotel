@@ -15,41 +15,53 @@ import javafx.scene.layout.GridPane;
  * 
  * 客户-未执行订单详细信息
  * @author fraliphsoft
- * @version fraliphsoft 11/30
+ * @version Foxwel 12/13
  */
 public class CustomerUnexcutedOrder {
 	@FXML
-	AnchorPane root;
+	private AnchorPane root;
+
+	@FXML
+	private Label orderIDLabel;
+
+	@FXML
+	private Label hotelNameLabel;
+
+	@FXML
+	private Label hotelAddressLabel;
+
+	@FXML
+	private Label roomTypeLabel;
+
+	@FXML
+	private Label roomNumLabel;
+
+	@FXML
+	private Label numOfPeopleLabel;
+
+	@FXML
+	private Label childrenLabel;
+
+	@FXML
+	private Label customerNameLabel;
+
+	@FXML
+ 	private Label phoneLabel;
+
+	@FXML
+	private Label schTimeLabel;
+
+	@FXML
+	private Button cancelButton;
+
+	@FXML
+	private Label latestTimeLabel;
+
+	@FXML
+	private Label priceLabel;
 	
 	@FXML
-	Label orderID;
-	
-	@FXML
-	Label hotelAddress;
-	
-	@FXML
-	Label roomType;
-	
-	@FXML
-	Label roomNum;
-	
-	@FXML
-	Label appointedArrivalTime;
-	
-	@FXML
-	Label appointedLivingTime;
-	
-	@FXML
-	Label resident;
-	
-	@FXML
-	Label totalPrice;
-	
-	@FXML
-	Label generatedTime;
-	
-	@FXML
-	Button cancelButton;
+	private Label generatedTimeLabel;
 	
 	private OrderVO vo;
 	
@@ -61,15 +73,23 @@ public class CustomerUnexcutedOrder {
 	void initialize() {
 		resources = Resources.getInstance();
 		vo = SwitchSceneUtil.getCurrentOrder();
-		orderID.setText(vo.orderID);
-		hotelAddress.setText(vo.hotelAddress);
-		roomType.setText(vo.roomType);
-		roomNum.setText(String.valueOf(vo.roomNum));
-		appointedArrivalTime.setText(LiveDatePicker.dateToCoarseString(vo.schFrom));
-		appointedLivingTime.setText(LiveDatePicker.dateToCoarseString(vo.schFrom) + " - " + LiveDatePicker.dateToCoarseString(vo.schTo));
-		resident.setText(vo.customerName);
-		totalPrice.setText(String.valueOf(vo.totalPrice));
-		generatedTime.setText(LiveDatePicker.dateToCoarseString(vo.generatedDate));
+		orderIDLabel.setText(vo.orderID);
+		hotelAddressLabel.setText(vo.hotelAddress);
+		hotelNameLabel.setText(vo.hotelName);
+		roomTypeLabel.setText(vo.roomType);
+		roomNumLabel.setText(String.valueOf(vo.roomNum));
+		numOfPeopleLabel.setText(String.valueOf(vo.numOfPeople));
+		if (vo.existsChild) {
+			childrenLabel.setText("有");
+		} else {
+			childrenLabel.setText("无");
+		}
+		customerNameLabel.setText(vo.customerName);
+		phoneLabel.setText(vo.phoneNumber);
+		latestTimeLabel.setText(LiveDatePicker.dateToDetaildString(vo.latestTime));
+		schTimeLabel.setText(LiveDatePicker.dateToCoarseString(vo.schFrom) + " - " + LiveDatePicker.dateToCoarseString(vo.schTo));
+		generatedTimeLabel.setText(LiveDatePicker.dateToDetaildString(vo.generatedDate));
+		priceLabel.setText(String.valueOf(vo.totalPrice));
 	}
 	
 	@FXML
