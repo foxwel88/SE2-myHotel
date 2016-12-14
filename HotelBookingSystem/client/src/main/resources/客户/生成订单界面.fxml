@@ -24,7 +24,7 @@
             <Button fx:id="confirmButton" layoutX="680.0" layoutY="528.0" mnemonicParsing="false" onMouseClicked="#commitOrder" prefWidth="70.0" style="-fx-background-color: rgba(0,0,0,0.4);" text="提交订单" textFill="WHITE" AnchorPane.bottomAnchor="12.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="529.0" />
             <AnchorPane layoutX="-8.0" layoutY="2.0" prefHeight="247.0" prefWidth="819.0">
                <children>
-                  <Label layoutX="13.0" layoutY="175.0" prefHeight="27.0" prefWidth="127.0" text="预约入住时间" AnchorPane.leftAnchor="12.0">
+                  <Label layoutX="12.0" layoutY="191.0" prefHeight="27.0" prefWidth="127.0" text="预约入住时间" AnchorPane.leftAnchor="12.0">
                      <font>
                         <Font name="Microsoft YaHei" size="16.0" />
                      </font>
@@ -34,69 +34,49 @@
                         <Font name="Microsoft YaHei" size="16.0" />
                      </font>
                   </Label>
-                  <Label layoutX="457.0" layoutY="113.0" prefHeight="22.0" prefWidth="88.0" text="所属商圈" AnchorPane.leftAnchor="402.0" AnchorPane.topAnchor="109.0">
+                  <Label layoutX="402.0" layoutY="133.0" prefHeight="22.0" prefWidth="88.0" text="所属商圈" AnchorPane.leftAnchor="402.0" AnchorPane.topAnchor="133.0">
                      <font>
                         <Font name="Microsoft YaHei" size="16.0" />
                      </font>
                   </Label>
-                  <Label layoutX="12.0" layoutY="109.0" text="所属城市" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="109.0">
+                  <Label layoutX="12.0" layoutY="133.0" text="所属城市" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="133.0">
                      <font>
                         <Font name="Microsoft YaHei" size="16.0" />
                      </font>
                   </Label>
-                  <Label layoutX="13.0" layoutY="79.0" text="酒店地址" AnchorPane.leftAnchor="12.0">
+                  <Label layoutX="12.0" layoutY="90.0" text="酒店地址" AnchorPane.leftAnchor="12.0">
                      <font>
                         <Font name="Microsoft YaHei" size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="hotelAddress" layoutX="193.0" layoutY="77.0" prefHeight="15.0" prefWidth="357.0" text="仙林大道163号南京大学仙林校区" AnchorPane.leftAnchor="193.0">
+                  <Label fx:id="hotelAddress" layoutX="193.0" layoutY="90.0" prefHeight="15.0" prefWidth="357.0" text="仙林大道163号南京大学仙林校区" AnchorPane.leftAnchor="193.0">
                      <font>
                         <Font name="Microsoft YaHei" size="16.0" />
                      </font>
                   </Label>
                   <Separator layoutX="13.0" layoutY="166.0" prefHeight="11.0" prefWidth="806.0" />
-                  <Label layoutX="12.0" layoutY="208.0" text="最晚入住时间" AnchorPane.leftAnchor="12.0">
-                     <font>
-                        <Font name="Microsoft YaHei" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="13.0" layoutY="141.0" text="酒店联系方式" AnchorPane.leftAnchor="12.0">
-                     <font>
-                        <Font name="Microsoft YaHei" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="hotelPhoneNumber" layoutX="193.0" layoutY="142.0" text="119" AnchorPane.leftAnchor="193.0">
-                     <font>
-                        <Font name="Microsoft YaHei" size="16.0" />
-                     </font>
-                  </Label>
                   <Label fx:id="hotelName" layoutX="193.0" layoutY="46.0" text="你猜我是什么酒店" AnchorPane.leftAnchor="193.0">
                      <font>
                         <Font name="Microsoft YaHei" size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="latestArrivalTime" layoutX="193.0" layoutY="209.0" text="time" AnchorPane.leftAnchor="193.0">
-                     <font>
-                        <Font name="Microsoft YaHei" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="397.0" layoutY="173.0" text="-">
+                  <Label layoutX="397.0" layoutY="189.0" text="-">
                      <font>
                         <Font name="Microsoft JhengHei" size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="city" layoutX="182.0" layoutY="115.0" prefHeight="22.0" prefWidth="70.0" text="南京" AnchorPane.leftAnchor="193.0" AnchorPane.topAnchor="109.0">
+                  <Label fx:id="city" layoutX="193.0" layoutY="133.0" prefHeight="22.0" prefWidth="70.0" text="南京" AnchorPane.leftAnchor="193.0" AnchorPane.topAnchor="133.0">
                      <font>
                         <Font name="Microsoft YaHei" size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="area" layoutX="484.0" layoutY="109.0" prefHeight="22.0" prefWidth="70.0" text="某商圈" AnchorPane.topAnchor="109.0">
+                  <Label fx:id="area" layoutX="484.0" layoutY="133.0" prefHeight="22.0" prefWidth="70.0" text="某商圈" AnchorPane.topAnchor="133.0">
                      <font>
                         <Font name="Microsoft YaHei" size="16.0" />
                      </font>
                   </Label>
-                  <DatePicker fx:id="schFromDate" layoutX="186.0" layoutY="178.0" AnchorPane.leftAnchor="193.0" />
-                  <DatePicker fx:id="schToDate" layoutX="426.0" layoutY="179.0" />
+                  <DatePicker fx:id="schFromDate" layoutX="193.0" layoutY="194.0" AnchorPane.leftAnchor="193.0" />
+                  <DatePicker fx:id="schToDate" layoutX="426.0" layoutY="195.0" />
                </children>
             </AnchorPane>
             <Separator layoutX="5.0" layoutY="236.0" prefHeight="11.0" prefWidth="806.0" AnchorPane.topAnchor="236.0" />

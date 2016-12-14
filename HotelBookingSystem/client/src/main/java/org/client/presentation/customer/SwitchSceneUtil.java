@@ -208,6 +208,10 @@ public class SwitchSceneUtil {
 		return hotelController.getHotelVO(hotelID);
 	}
 	
+	public static ResultMessage commitOrder(OrderVO orderVO) {
+		return orderController.createOrder(orderVO);
+	}
+	
 	/**
 	 * 跳转到可能执行返回上一界面的操作的界面时被调用，记录目标界面的名称
 	 * @param currentScene

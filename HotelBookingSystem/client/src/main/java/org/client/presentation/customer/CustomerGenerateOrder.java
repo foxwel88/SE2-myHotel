@@ -10,6 +10,8 @@ import org.common.utility.RoomType;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
@@ -40,12 +42,6 @@ public class CustomerGenerateOrder {
 	
 	@FXML
 	Label area;
-	
-	@FXML
-	Label hotelPhoneNumber;
-	
-	@FXML
-	Label latestArrivalTime;
 	
 	@FXML
 	Label level;
@@ -104,10 +100,8 @@ public class CustomerGenerateOrder {
 		hotelAddress.setText(hotel.address);
 		city.setText(hotel.city.cityName);
 		area.setText(hotel.area.address);
-//		hotelPhoneNumber.setText(hotel.);			// TODO 酒店联系方式
 		LiveDatePicker.initDatePicker(null, schFromDate);
 		LiveDatePicker.initDatePicker(schFromDate, schToDate);
-		// TODO 最晚入住时间
 		if (Objects.equals(user.type, "个人客户")) {
 			customerName.setText(user.name);
 		} else {
@@ -126,12 +120,27 @@ public class CustomerGenerateOrder {
 	 */
 	@FXML
 	void commitOrder() {
-		// TODO 检查订单格式
-		OrderVO newOrder = new OrderVO(user.ID, user.type, null, LiveDatePicker.toDate(schFromDate.getValue()), LiveDatePicker.toDate(schToDate.getValue()),
-				null, null, LiveDatePicker.toDate(schFromDate.getValue().plusDays(1)), null, hotel.address, 
-				 null, hotel.id, hotel.hotelName, roomType.getValue(), getCurrentTotalPrice(), Integer.parseInt(roomNum.getText()), Integer.parseInt(residentNum.getText()),
-				hasChildren.isSelected(), user.name, phoneNumber.getText());
-		SwitchSceneUtil.turnToConfirmOrderScene((GridPane)root.getParent(), newOrder);
+		if (checkPhoneNumberFormat()) {
+			try {
+				OrderVO newOrder = new OrderVO(user.ID, user.type, null, LiveDatePicker.toDate(schFromDate.getValue()), LiveDatePicker.toDate(schToDate.getValue()),
+						null, null, LiveDatePicker.toDate(schFromDate.getValue().plusDays(1)), null, hotel.address, 
+						null, hotel.id, hotel.hotelName, roomType.getValue(), getCurrentTotalPrice(), Integer.parseInt(roomNum.getText()), Integer.parseInt(residentNum.getText()),
+						hasChildren.isSelected(), user.name, phoneNumber.getText());
+				SwitchSceneUtil.turnToConfirmOrderScene((GridPane)root.getParent(), newOrder);
+			} catch (NumberFormatException numberFormatException) {
+				Alert alert = new Alert(AlertType.WARNING);
+				alert.setTitle("Warning");
+				alert.setHeaderText(null);
+				alert.setContentText("住宿人姓名、房间数量和入住人数均不能为空");
+				alert.showAndWait();
+			}
+		} else {
+			Alert alert = new Alert(AlertType.WARNING);
+			alert.setTitle("Warning");
+			alert.setHeaderText(null);
+			alert.setContentText("电话格式不正确(应为11位中国区号码)");
+			alert.showAndWait();
+		}
 	}
 	
 	@FXML
@@ -164,9 +173,9 @@ public class CustomerGenerateOrder {
 		try {
 			rawPrice.setText(String.valueOf(getCurrentSingleRoomPrice() * Double.parseDouble(roomNum.getText())) + "元");
 		} catch (NullPointerException nullPointerException) {
-			rawPrice.setText("");
+			rawPrice.setText("0.0元");
 		} catch (NumberFormatException numberFormatException) {
-			rawPrice.setText("");
+			rawPrice.setText("0.0元");
 		}
 	}
 	
@@ -175,20 +184,52 @@ public class CustomerGenerateOrder {
 			double price = SwitchSceneUtil.getCurrentPrice(getCurrentRawPrice());
 			totalPrice.setText(String.valueOf(price) + "元");
 		} catch (NullPointerException nullPointerException) {
-			totalPrice.setText("");
+			totalPrice.setText("0.0元");
 		}
 		
 	}
 	
 	private double getCurrentSingleRoomPrice() {
-		return Double.parseDouble(roomPrice.getText().replaceAll("元", ""));
+		try {
+			return Double.parseDouble(roomPrice.getText().replaceAll("元", ""));
+		} catch (NumberFormatException numberFormatException) {
+			return 0;
+		}
 	}
 	
 	private double getCurrentRawPrice() {
-		return Double.parseDouble(rawPrice.getText().replaceAll("元", ""));
+		try {
+			return Double.parseDouble(rawPrice.getText().replaceAll("元", ""));
+		} catch (NumberFormatException numberFormatException) {
+			return 0;
+		}
 	}
 	
 	private double getCurrentTotalPrice() {
-		return Double.parseDouble(totalPrice.getText().replaceAll("元", ""));
+		try {
+			return Double.parseDouble(totalPrice.getText().replaceAll("元", ""));
+		} catch (NumberFormatException numberFormatException) {
+			return 0;
+		}
+	}
+	
+	private boolean checkPhoneNumberFormat() {
+		String phoneString = phoneNumber.getText();
+		if (phoneString.length() != 11) {
+			return false;
+		}
+		for (int i = 0; i < 11; i++) {
+			if (!isNumeric(phoneString.charAt(i))) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	private boolean isNumeric(char c) {
+		if (c >= 48 && c <= 57) {
+			return true;
+		}
+		return false;
 	}
 }

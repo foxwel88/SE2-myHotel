@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="567.0" prefWidth="920.0" style="-fx-background-color: rgba(255,255,255,0.4);" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.presentation.customer.CustomerCheckHotelList">
+<AnchorPane fx:id="root" onKeyPressed="#search_causedByKeyboard" prefHeight="567.0" prefWidth="920.0" style="-fx-background-color: rgba(255,255,255,0.4);" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.presentation.customer.CustomerCheckHotelList">
    <effect>
       <DropShadow />
    </effect>
@@ -44,7 +44,7 @@
             </Label>
             <ChoiceBox fx:id="roomType" layoutX="759.0" layoutY="61.0" prefHeight="23.0" prefWidth="113.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.leftAnchor="759.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="61.0" />
             <ChoiceBox fx:id="city" layoutX="34.0" layoutY="16.0" prefHeight="27.0" prefWidth="96.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.topAnchor="16.0" />
-            <ChoiceBox fx:id="area" layoutX="186.0" layoutY="16.0" onMouseClicked="#refreshAreas" prefHeight="27.0" prefWidth="120.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.leftAnchor="186.0" AnchorPane.topAnchor="16.0" />
+            <ChoiceBox fx:id="area" layoutX="186.0" layoutY="16.0" onMousePressed="#refreshAreas" prefHeight="27.0" prefWidth="120.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.leftAnchor="186.0" AnchorPane.topAnchor="16.0" />
             <Label layoutX="165.0" layoutY="24.0" prefHeight="15.0" prefWidth="30.0" text="商圈" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="20.0">
                <font>
                   <Font name="Microsoft JhengHei" size="15.0" />
@@ -62,7 +62,7 @@
             </Label>
             <TextField fx:id="roomNum" layoutX="759.0" layoutY="99.0" prefHeight="23.0" prefWidth="150.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.leftAnchor="759.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="99.0" />
             <Separator layoutY="50.0" prefHeight="0.0" prefWidth="808.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-            <Button fx:id="searchButton" layoutX="802.0" layoutY="16.0" mnemonicParsing="false" onMouseClicked="#search" prefHeight="15.0" prefWidth="70.0" style="-fx-background-color: rgba(0,0,0,0.4);" text="搜索" textFill="WHITE" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="16.0">
+            <Button fx:id="searchButton" layoutX="802.0" layoutY="16.0" mnemonicParsing="false" onMouseClicked="#search_causedByMouse" prefHeight="15.0" prefWidth="70.0" style="-fx-background-color: rgba(0,0,0,0.4);" text="搜索" textFill="WHITE" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="16.0">
                <font>
                   <Font name="Microsoft JhengHei" size="15.0" />
                </font>

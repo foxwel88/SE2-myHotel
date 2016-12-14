@@ -2,6 +2,7 @@ package org.client.presentation.customer;
 
 import java.time.LocalDate;
 
+import org.client.launcher.Resources;
 import org.client.vo.OrderVO;
 
 import javafx.fxml.FXML;
@@ -80,6 +81,16 @@ public class CustomerConfirmOrder {
 	
 	@FXML
 	void confirm() {
+		SwitchSceneUtil.commitOrder(order);
 		
+		// 返回前一界面
+		SwitchSceneUtil.isBack = true;
+		if (SwitchSceneUtil.isBackToDetail) {
+			SwitchSceneUtil.currentScene = CustomerBackableScene.HOTEL_INFO_SCENE;
+			SwitchSceneUtil.turnToDetailedHotelScene((GridPane)root.getParent(), SwitchSceneUtil.hotelID);
+		} else {
+			SwitchSceneUtil.turnToAnotherScene((GridPane)root.getParent(), Resources.getInstance().customerCheckHotelList);
+		}
+		SwitchSceneUtil.isBack = false;
 	}
 }

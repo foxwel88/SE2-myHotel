@@ -11,6 +11,8 @@ import org.common.utility.RoomType;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
@@ -135,8 +137,6 @@ public class CustomerCheckHotelList {
 		setStartDate();
 		setEndDate();
 		setRoomType();
-		LiveDatePicker.initDatePicker(null, fromDate);
-		LiveDatePicker.initDatePicker(fromDate, toDate);
 		
 		SwitchSceneUtil.isBackToDetail = false;
 		if (SwitchSceneUtil.isBack) {
@@ -253,8 +253,27 @@ public class CustomerCheckHotelList {
 	}
 	
 	@FXML
-	void search() {
-		showHotelList();
+	void search_causedByMouse() {
+		search();
+	}
+	
+	@FXML
+	void search_causedByKeyboard(KeyEvent keyEvent) {
+		if (keyEvent.getCode() == KeyCode.ENTER) {
+			search();
+		}
+	}
+	
+	private void search() {
+		if (city.getValue() == null || area.getValue() == null) {
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Warning Dialog");
+			alert.setHeaderText(null);
+			alert.setContentText("You must choose both city and area before starting search!");
+			alert.showAndWait();
+		} else {
+			showHotelList();
+		}
 	}
 	
 	private void showHotelList() {
@@ -334,11 +353,11 @@ public class CustomerCheckHotelList {
 	}
 	
 	private void setStartDate() {
-		// TODO
+		LiveDatePicker.initDatePicker(null, fromDate);
 	}
 	
 	private void setEndDate() {
-		// TODO
+		LiveDatePicker.initDatePicker(fromDate, toDate);
 	}
 	
 	private void setRoomType() {
