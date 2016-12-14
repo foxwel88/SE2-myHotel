@@ -44,10 +44,10 @@ public interface HotelDataService extends Remote {
 	//结束持久化数据库的使用
 	public void finish() throws RemoteException;
 
-	//增加一个某类型可用房间
-	public void increaseAvailableRoom(RoomType type, String hotelID) throws RemoteException;
+	//增加某类型可用房间
+	public void increaseAvailableRoom(RoomType type, String hotelID, int num) throws RemoteException;
 
-	//减少一个某类型可用房间
-	public ResultMessage decreaseAvailableRoom(RoomType type, String hotelID) throws RemoteException;
+	//减少某类型可用房间
+	public ResultMessage decreaseAvailableRoom(RoomType type, String hotelID, int num) throws RemoteException;
 
 }

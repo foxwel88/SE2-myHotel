@@ -88,8 +88,8 @@ public class HotelModuleTest {
 
 	@Test
 	public void testChangeRoom() {
-		controller.increaseAvailableRoom(RoomType.SINGLE, "00001");
-		ResultMessage result = controller.decreaseAvailableRoom(RoomType.SINGLE, "00001");
+		controller.increaseAvailableRoom(RoomType.SINGLE, "00001", 1);
+		ResultMessage result = controller.decreaseAvailableRoom(RoomType.SINGLE, "00001", 1);
 		assertEquals(ResultMessage.SUCCESS, result);
 	}
 
