@@ -1,11 +1,13 @@
 package org.client.presentation.customer;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Objects;
 
 import org.client.vo.HotelVO;
 import org.client.vo.OrderVO;
 import org.client.vo.UserVO;
+import org.common.utility.OrderType;
 import org.common.utility.RoomType;
 
 import javafx.collections.FXCollections;
@@ -109,6 +111,7 @@ public class CustomerGenerateOrder {
 		}
 		level.setText(String.valueOf(SwitchSceneUtil.promotionController.calLevel(user.credit)));
 		credit.setText(String.valueOf(user.credit));
+		phoneNumber.setText(user.phoneNumber);
 		setRoomType();
 		roomType.setValue("单人间");
 		roomNum.setText("1");
@@ -122,9 +125,9 @@ public class CustomerGenerateOrder {
 	void commitOrder() {
 		if (checkPhoneNumberFormat()) {
 			try {
-				OrderVO newOrder = new OrderVO(user.ID, user.type, null, LiveDatePicker.toDate(schFromDate.getValue()), LiveDatePicker.toDate(schToDate.getValue()),
-						null, null, LiveDatePicker.toDate(schFromDate.getValue().plusDays(1)), null, hotel.address, 
-						null, hotel.id, hotel.hotelName, roomType.getValue(), getCurrentTotalPrice(), Integer.parseInt(roomNum.getText()), Integer.parseInt(residentNum.getText()),
+				OrderVO newOrder = new OrderVO(user.ID, OrderType.UNEXECUTED.getString(), null, LiveDatePicker.toDate(schFromDate.getValue()), LiveDatePicker.toDate(schToDate.getValue()),
+						new Date(0, 0, 1), new Date(0, 0, 1), LiveDatePicker.toDate(schFromDate.getValue().plusDays(1)), new Date(0, 0, 1), hotel.id, 
+						hotel.hotelName, null, hotel.address, roomType.getValue(), getCurrentTotalPrice(), Integer.parseInt(roomNum.getText()), Integer.parseInt(residentNum.getText()),
 						hasChildren.isSelected(), user.name, phoneNumber.getText());
 				SwitchSceneUtil.turnToConfirmOrderScene((GridPane)root.getParent(), newOrder);
 			} catch (NumberFormatException numberFormatException) {

@@ -275,7 +275,7 @@ public class CustomerUnexcutedOrderList {
 	}
 	
 	private String latestDate(int i) {
-		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_ORDER_ONE_OAGE + 1;
+		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_ORDER_ONE_OAGE + i;
 		try {
 			return LiveDatePicker.dateToCoarseString(unExcutedOrderList.get(seq).latestTime);
 		} catch (IndexOutOfBoundsException nullex) {
