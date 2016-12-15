@@ -16,6 +16,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 /**
@@ -47,7 +48,7 @@ public class Customer_Guide {
 	Label welcomeLabel;
 	
 	@FXML
-	Label backArrow;
+	Pane backArrow;
 	
 	@FXML
 	MenuBar avatarBar;
@@ -191,26 +192,119 @@ public class Customer_Guide {
 	}
 	
 	/*
+	 * 下面10种方法分别用于鼠标悬浮在不同导航栏tab上的改变视觉效果的方法
+	 */
+	@FXML
+	void suspendOnMain() {
+		activeGuideTab(0);
+	}
+	
+	@FXML
+	void suspendOnInfo() {
+		activeGuideTab(1);
+	}
+	
+	@FXML
+	void suspendOnHotel() {
+		activeGuideTab(2);
+	}
+	
+	@FXML
+	void suspendOnHistoryOrder() {
+		activeGuideTab(3);
+	}
+	
+	@FXML
+	void suspendOnUnexecutedOrder() {
+		activeGuideTab(4);
+	}
+	
+	@FXML
+	void desuspendOnMain() {
+		if (presentGuide != 0) {
+			deactiveGuideTab(0);
+		}
+	}
+	
+	@FXML
+	void desuspendOnInfo() {
+		if (presentGuide != 1) {
+			deactiveGuideTab(1);
+		}
+	}
+	
+	@FXML
+	void desuspendOnHotel() {
+		if (presentGuide != 2) {
+			deactiveGuideTab(2);
+		}
+	}
+	
+	@FXML
+	void desuspendOnHistoryOrder() {
+		if (presentGuide != 3) {
+			deactiveGuideTab(3);
+		}
+	}
+	
+	@FXML
+	void desuspendOnUnexecutedOrder() {
+		if (presentGuide != 4) {
+			deactiveGuideTab(4);
+		}
+	}
+	/*******************************************************************/
+	
+	@FXML
+	void activeBackButton() {
+		((Label)backArrow.getChildren().get(0)).setStyle("-fx-text-fill: black");
+		backArrow.setStyle("-fx-background-color: rgba(255,255,255,0.4)");
+		backArrow.setEffect(new DropShadow());
+	}
+	
+	@FXML
+	void deactiveBackButton() {
+		((Label)backArrow.getChildren().get(0)).setStyle("-fx-text-fill: white");
+		backArrow.setEffect(null);
+		backArrow.setStyle("-fx-background-color: rgba(0,0,0,0.56)");
+	}
+	
+	/*
 	 * 此方法用于改变被选中的导航栏样式
 	 * 参数0-4分别表示改变主界面、客户信息、酒店列表、历史订单列表、未执行订单列表的导航栏
 	 */
 	private void changeGuideTab(int whichOne) {
-		AnchorPane tempPane = ((AnchorPane)((GridPane)gridpane.getChildren().get(0)).getChildren().get(whichOne));		// 
-		((Label)tempPane.getChildren().get(0)).setStyle("-fx-text-fill: black");
-		tempPane.setStyle("-fx-background-color: rgba(255,255,255,0.4)");
-		tempPane.setEffect(new DropShadow());
+		activeGuideTab(whichOne);
 		presentGuide = whichOne;
 	}
 	
 	/*
-	 * 此方法用于将导航栏样式恢复到未选中状态
+	 * 此方法在点击某个导航栏时调用，用于将导航栏样式恢复到未选中状态
 	 */
 	private void initGuideTab() {
-		AnchorPane tempPane = ((AnchorPane)((GridPane)gridpane.getChildren().get(0)).getChildren().get(presentGuide));
+		deactiveGuideTab(presentGuide);
+	}
+	
+	/**
+	 * 将某导航栏样式置为选中状态
+	 */
+	private void activeGuideTab(int whichOne) {
+		AnchorPane tempPane = ((AnchorPane)((GridPane)gridpane.getChildren().get(0)).getChildren().get(whichOne));		// 
+		((Label)tempPane.getChildren().get(0)).setStyle("-fx-text-fill: black");
+		tempPane.setStyle("-fx-background-color: rgba(255,255,255,0.4)");
+		tempPane.setEffect(new DropShadow());
+	}
+	
+	/**
+	 * 将不同的导航栏样式恢复到未选中状态
+	 * @param whichOne 0-4
+	 */
+	private void deactiveGuideTab(int whichOne) {
+		AnchorPane tempPane = ((AnchorPane)((GridPane)gridpane.getChildren().get(0)).getChildren().get(whichOne));
 		Label tempLabel = (Label)tempPane.getChildren().get(0);
 		tempLabel.setStyle("-fx-text-fill: white");
 		tempPane.setEffect(null);
-		switch (presentGuide) {
+		switch (whichOne) {
 			case 0:
 				tempPane.setStyle("-fx-background-color: rgba(0,0,0,0.56)");
 				break;
