@@ -62,16 +62,16 @@
                   </Label>
                   <Button fx:id="saveButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#save" prefHeight="30.0" prefWidth="255.0" style="-fx-background-color: rgba(0,0,0,0.1);" text="提交" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                   <TextField fx:id="nameLabel" prefHeight="30.0" prefWidth="214.0" style="-fx-background-color: rgba(255,255,255,0.1);" GridPane.columnIndex="1" />
+                  <ChoiceBox fx:id="typeBox" prefWidth="150.0" style="-fx-background-color: rgba(255,255,255,0.1);" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="discountLabel" prefHeight="30.0" prefWidth="214.0" style="-fx-background-color: rgba(255,255,255,0.1);" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <ChoiceBox fx:id="levelBox" prefWidth="150.0" style="-fx-background-color: rgba(255,255,255,0.1);" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <DatePicker fx:id="startTimePicker" style="-fx-background-color: rgba(255,255,255,0.1);" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <DatePicker fx:id="endTimePicker" style="-fx-background-color: rgba(255,255,255,0.1);" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                   <Label alignment="CENTER" prefHeight="94.0" prefWidth="126.0" text="结束时间" textFill="WHITE" GridPane.rowIndex="5">
                      <font>
                         <Font name="Microsoft YaHei" size="15.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="discountLabel" prefHeight="30.0" prefWidth="214.0" style="-fx-background-color: rgba(255,255,255,0.1);" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <ChoiceBox fx:id="levelBox" prefWidth="150.0" style="-fx-background-color: rgba(255,255,255,0.1);" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <ChoiceBox fx:id="typeBox" prefWidth="150.0" style="-fx-background-color: rgba(255,255,255,0.1);" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <DatePicker fx:id="startTimePicker" style="-fx-background-color: rgba(255,255,255,0.1);" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <DatePicker fx:id="endTimePicker" style="-fx-background-color: rgba(255,255,255,0.1);" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                </children>
             </GridPane>
             <Label fx:id="resultLabel" layoutX="386.0" layoutY="432.0" textFill="WHITE">

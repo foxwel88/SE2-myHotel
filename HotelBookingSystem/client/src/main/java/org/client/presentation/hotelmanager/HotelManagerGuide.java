@@ -116,7 +116,54 @@ public class HotelManagerGuide {
 		
 	}
 
-	/*Visually change active guideLabel(and its pane) */
+	/**When cursor casually hovers on some item, change the item's look */
+	@FXML
+	void mouseEnter(MouseEvent event) {
+		Label source = (Label)event.getSource();
+		if (source == mainLabel) { //main
+			CurrentItem.getInstance().active(mainLabel, mainLabelPane);
+		} else if (source == infoLabel) { //info
+			CurrentItem.getInstance().active(infoLabel, infoLabelPane);
+		} else if (source == executeLabel) { //execute
+			CurrentItem.getInstance().active(executeLabel, executeLabelPane);
+		} else if (source == historyLabel) { //history
+			CurrentItem.getInstance().active(historyLabel, historyLabelPane);
+		} else if (source == promotionLabel) {  //promotion
+			CurrentItem.getInstance().active(promotionLabel, promotionLabelPane);
+		}
+
+	}
+
+	@FXML
+	void mouseEnterForBack(MouseEvent event) {
+		backPane.setStyle("-fx-background-color: rgba(255,255,255,0.5)");
+		backArrow.setStyle("-fx-text-fill: Black");
+	}
+
+	/**When cursor casually leaves some item, change the item's look unless the item is selected*/
+	@FXML
+	void mouseExit(MouseEvent event) {
+		Label source = (Label)event.getSource();
+		if (source == mainLabel) { //main
+			CurrentItem.getInstance().deActive(GuideLabelType.MAIN, mainLabel, mainLabelPane);
+		} else if (source == infoLabel) { //info
+			CurrentItem.getInstance().deActive(GuideLabelType.INFO, infoLabel, infoLabelPane);
+		} else if (source == executeLabel) { //execute
+			CurrentItem.getInstance().deActive(GuideLabelType.EXECUTE, executeLabel, executeLabelPane);
+		} else if (source == historyLabel) { //history
+			CurrentItem.getInstance().deActive(GuideLabelType.HISTORY, historyLabel, historyLabelPane);
+		} else if (source == promotionLabel) {  //promotion
+			CurrentItem.getInstance().deActive(GuideLabelType.PROMOTION, promotionLabel, promotionLabelPane);
+		}
+	}
+
+	@FXML
+	void mouseExitForBack(MouseEvent event) {
+		backPane.setStyle("-fx-background-color: rgba(0,0,0,0.5)");
+		backArrow.setStyle("-fx-text-fill: #bcb8b8");
+	}
+
+	/*Visually change current active (actually selected) guideLabel(and its pane) */
 	void changeActive(GuideLabelType to) {
 		switch(to) {
 			case MAIN:

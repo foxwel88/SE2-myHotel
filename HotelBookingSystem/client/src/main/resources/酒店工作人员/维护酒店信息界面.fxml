@@ -134,6 +134,7 @@
                   <Font name="Microsoft YaHei" size="16.0" />
                </font>
             </Label>
+            <TextField fx:id="roomNumber" layoutX="326.0" layoutY="104.0" prefHeight="30.0" prefWidth="109.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-text-inner-color: white;" />
             <TextField fx:id="startTime" layoutX="95.0" layoutY="149.0" prefHeight="30.0" prefWidth="103.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-text-inner-color: white;" />
             <TextField fx:id="endTime" layoutX="326.0" layoutY="149.0" prefHeight="30.0" prefWidth="109.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-text-inner-color: white;" />
             <Button fx:id="checkInSaveButton" layoutX="327.0" layoutY="197.0" mnemonicParsing="false" onAction="#saveCheckIn" prefHeight="34.0" prefWidth="109.0" style="-fx-background-color: rgba(0,0,0,0.1);" text="保存" textFill="WHITE">
@@ -168,7 +169,6 @@
                   <Font name="Microsoft YaHei" size="16.0" />
                </font>
             </Button>
-            <TextField fx:id="roomNumber" layoutX="326.0" layoutY="104.0" prefHeight="30.0" prefWidth="109.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-text-inner-color: white;" />
             <Label fx:id="resultLabel" alignment="CENTER_RIGHT" layoutX="183.0" layoutY="437.0" prefHeight="20.0" prefWidth="153.0" textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei" size="15.0" />
