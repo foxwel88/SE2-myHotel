@@ -151,6 +151,53 @@ public class WebMarketerGuide {
 		
 	}
 	
+	/**When cursor casually hovers on some item, change the item's look */
+	@FXML
+	void mouseEnter(MouseEvent event) {
+		Label source = (Label)event.getSource();
+		if (source == mainLabel) {
+			CurrentItem.getInstance().active(mainLabel, mainPane);
+		} else if (source == creditLabel) {
+			CurrentItem.getInstance().active(creditLabel, creditPane);
+		} else if (source == levelLabel) {
+			CurrentItem.getInstance().active(levelLabel, levelPane);
+		} else if (source == promotionLabel) {
+			CurrentItem.getInstance().active(promotionLabel, promotionPane);
+		} else if (source == orderLabel) {
+			CurrentItem.getInstance().active(orderLabel, orderPane);
+		}
+
+	}
+
+	@FXML
+	void mouseEnterForBack(MouseEvent event) {
+		backPane.setStyle("-fx-background-color: rgba(255,255,255,0.5)");
+		backArrow.setStyle("-fx-text-fill: Black");
+	}
+
+	/**When cursor casually leaves some item, change the item's look unless the item is selected*/
+	@FXML
+	void mouseExit(MouseEvent event) {
+		Label source = (Label)event.getSource();
+		if (source == mainLabel) {
+			CurrentItem.getInstance().deActive(GuideLabelType.MAIN, mainLabel, mainPane);
+		} else if (source == creditLabel) { 
+			CurrentItem.getInstance().deActive(GuideLabelType.CREDIT, creditLabel, creditPane);
+		} else if (source == levelLabel) { 
+			CurrentItem.getInstance().deActive(GuideLabelType.LEVEL, levelLabel, levelPane);
+		} else if (source == orderLabel) {
+			CurrentItem.getInstance().deActive(GuideLabelType.ORDER, orderLabel, orderPane);
+		} else if (source == promotionLabel) {
+			CurrentItem.getInstance().deActive(GuideLabelType.PROMOTION, promotionLabel, promotionPane);
+		}
+	}
+
+	@FXML
+	void mouseExitForBack(MouseEvent event) {
+		backPane.setStyle("-fx-background-color: rgba(0,0,0,0.5)");
+		backArrow.setStyle("-fx-text-fill: #bcb8b8");
+	}
+	
 	@FXML
 	void goBack(MouseEvent event) {
 		String currentId = belowGridPane.getChildren().get(1).getId();

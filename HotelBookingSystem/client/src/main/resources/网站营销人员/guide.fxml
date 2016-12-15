@@ -56,7 +56,7 @@
                            <children>
                               <AnchorPane fx:id="orderPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.32);" GridPane.rowIndex="4">
                                  <children>
-                                    <Label fx:id="orderLabel" alignment="CENTER" onMouseClicked="#handleSwitch" prefHeight="114.0" prefWidth="120.0" text="异常订单" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <Label fx:id="orderLabel" alignment="CENTER" onMouseClicked="#handleSwitch" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" prefHeight="114.0" prefWidth="120.0" text="异常订单" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <font>
                                           <Font name="Microsoft YaHei UI Light" size="21.0" />
                                        </font>
@@ -64,7 +64,7 @@
                                  </children></AnchorPane>
                               <AnchorPane fx:id="levelPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.44);" GridPane.rowIndex="2">
                                  <children>
-                                    <Label fx:id="levelLabel" alignment="CENTER" onMouseClicked="#handleSwitch" prefHeight="114.0" prefWidth="120.0" text="等级制度" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <Label fx:id="levelLabel" alignment="CENTER" onMouseClicked="#handleSwitch" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" prefHeight="114.0" prefWidth="120.0" text="等级制度" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <font>
                                           <Font name="Microsoft YaHei UI Light" size="21.0" />
                                        </font>
@@ -72,7 +72,7 @@
                                  </children></AnchorPane>
                               <AnchorPane fx:id="promotionPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.38);" GridPane.rowIndex="3">
                                  <children>
-                                    <Label fx:id="promotionLabel" alignment="CENTER" onMouseClicked="#handleSwitch" prefHeight="114.0" prefWidth="120.0" text="促销策略" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <Label fx:id="promotionLabel" alignment="CENTER" onMouseClicked="#handleSwitch" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" prefHeight="114.0" prefWidth="120.0" text="促销策略" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <font>
                                           <Font name="Microsoft YaHei UI Light" size="21.0" />
                                        </font>
@@ -80,7 +80,7 @@
                                  </children></AnchorPane>
                               <AnchorPane fx:id="creditPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.5);" GridPane.rowIndex="1">
                                  <children>
-                                    <Label fx:id="creditLabel" alignment="CENTER" onMouseClicked="#handleSwitch" prefHeight="114.0" prefWidth="120.0" text="信用充值" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <Label fx:id="creditLabel" alignment="CENTER" onMouseClicked="#handleSwitch" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" prefHeight="114.0" prefWidth="120.0" text="信用充值" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <font>
                                           <Font name="Microsoft YaHei UI Light" size="21.0" />
                                        </font>
@@ -92,7 +92,7 @@
                                     <DropShadow />
                                  </effect>
                                  <children>
-                                    <Label fx:id="mainLabel" alignment="CENTER" layoutX="-7.0" layoutY="1.0" onMouseClicked="#handleSwitch" prefHeight="113.0" prefWidth="120.0" text="首页" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <Label fx:id="mainLabel" alignment="CENTER" layoutX="-7.0" layoutY="1.0" onMouseClicked="#handleSwitch" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" prefHeight="113.0" prefWidth="120.0" text="首页" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <font>
                                           <Font name="Microsoft YaHei UI Light" size="21.0" />
                                        </font>
@@ -115,7 +115,7 @@
                         <Font name="Microsoft YaHei UI Light" size="24.0" />
                      </font>
                   </Label>
-                  <Pane fx:id="backPane" layoutY="-2.0" onMouseClicked="#goBack" prefHeight="65.0" prefWidth="110.0" style="-fx-background-color: rgba(0,0,0,0.5);">
+                  <Pane fx:id="backPane" layoutY="-2.0" onMouseClicked="#goBack" onMouseEntered="#mouseEnterForBack" onMouseExited="#mouseExitForBack" prefHeight="65.0" prefWidth="110.0" style="-fx-background-color: rgba(0,0,0,0.5);">
                      <children>
                         <Label fx:id="backArrow" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="38.0" layoutY="2.0" prefHeight="48.0" prefWidth="35.0" text="&lt;" textFill="#bcb8b8">
                            <font>

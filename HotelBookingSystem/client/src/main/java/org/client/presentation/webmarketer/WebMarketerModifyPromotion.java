@@ -205,11 +205,10 @@ public class WebMarketerModifyPromotion {
 				}
 			}
 		};
+		endTimePicker.setDayCellFactory(endDayCellFactory);
 		
 		// 未选择促销类型则无法选择其他选项
 		setVisible();
-		endTimePicker.setDayCellFactory(endDayCellFactory);
-
 	}
 	
 	void setPromotionVO(PromotionVO vo) {
@@ -317,7 +316,7 @@ public class WebMarketerModifyPromotion {
 		}
 		
 		//has a name
-		if (nameLabel.getText() == null) {
+		if (nameLabel.getText() == null || nameLabel.getText().equals("")) {
 			return false;
 		}
 

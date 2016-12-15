@@ -141,7 +141,7 @@ public class WebMarketerModifyLevel {
 			ResultInfoHelper.setResultLabel(resultLabel, info);
 			return;
 		}
-		// 如果修改促销策略成功，将copyList改为修改之后的，即无法取消
+		// 如果修改成功，将copyList改为修改之后的，即无法取消
 		ResultInfoHelper.setResultLabel(resultLabel, info);
 		allLevelPanesCopy.clear();
 		for (int i = 0; i < allLevelPanes.size(); i++) {
@@ -180,9 +180,9 @@ public class WebMarketerModifyLevel {
 	void switchCurrentPage(int toPageNum) {
 		// 修改currentNamePanes和currentDetailPanes
 		currentLevelPanes = new ArrayList<>();
-		// 当前页面要显示的第一个促销策略在list中的位置
+		// 当前页面要显示的第一个等级制度在list中的位置
 		int fromNum = (toPageNum - 1) * NUM_OF_LEVEL_PER_PAGE;
-		// 当前页面要显示的最后一个促销策略在list中的位置
+		// 当前页面要显示的最后一个等级制度在list中的位置
 		int toNum = fromNum + NUM_OF_LEVEL_PER_PAGE;
 		if (toPageNum > MAX_PAGE_NUM) { // 页数过大
 			switchCurrentPage(MAX_PAGE_NUM);
