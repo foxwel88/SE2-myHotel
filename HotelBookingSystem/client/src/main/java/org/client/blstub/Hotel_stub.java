@@ -93,12 +93,12 @@ public class Hotel_stub implements Hotelblservice, HotelHelper {
 	}
 
 	@Override
-	public void increaseAvailableRoom(RoomType type, String hotelID) {
+	public void increaseAvailableRoom(RoomType type, String hotelID, int num) {
 
 	}
 
 	@Override
-	public ResultMessage decreaseAvailableRoom(RoomType type, String hotelID) {
+	public ResultMessage decreaseAvailableRoom(RoomType type, String hotelID, int num) {
 		return ResultMessage.SUCCESS;
 	}
 

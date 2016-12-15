@@ -132,7 +132,7 @@ public class OrderUtil {
 			return ResultMessage.CREDIT_NOT_ENOUGH;
 		}
 		
-		ResultMessage message = hotelHelper.decreaseAvailableRoom(RoomType.getType(vo.roomType), vo.hotelID);
+		ResultMessage message = hotelHelper.decreaseAvailableRoom(RoomType.getType(vo.roomType), vo.hotelID, vo.roomNum);
 		if (message != ResultMessage.SUCCESS) {
 			return message;
 		}
@@ -221,7 +221,7 @@ public class OrderUtil {
 		if (checkOutMessage != ResultMessage.SUCCESS) {
 			return checkOutMessage;
 		}
-		hotelHelper.increaseAvailableRoom(myorder.roomType, myorder.hotelAddress);
+		hotelHelper.increaseAvailableRoom(myorder.roomType, myorder.hotelAddress, myorder.roomNum);
 		return ResultMessage.SUCCESS;
 	}
 }

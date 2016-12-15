@@ -22,9 +22,9 @@ public interface Hotelblservice {
 	
 	public ResultMessage modifyHotel(HotelVO vo);
 	
-	public void increaseAvailableRoom(RoomType type, String hotelID);
+	public void increaseAvailableRoom(RoomType type, String hotelID, int num);
 	
-	public ResultMessage decreaseAvailableRoom(RoomType type, String hotelID);
+	public ResultMessage decreaseAvailableRoom(RoomType type, String hotelID, int num);
 	
 	public HotelVO getHotelVO(String hotelID);
 	

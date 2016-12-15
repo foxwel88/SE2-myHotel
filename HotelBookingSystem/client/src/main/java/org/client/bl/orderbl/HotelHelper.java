@@ -12,7 +12,7 @@ import org.common.utility.RoomType;
 public interface HotelHelper {
 	HotelVO getHotelVO(String hotelAddress);
 	
-	void increaseAvailableRoom(RoomType type, String hotelID);
+	void increaseAvailableRoom(RoomType type, String hotelID, int num);
 
-	ResultMessage decreaseAvailableRoom(RoomType type, String hotelID);
+	ResultMessage decreaseAvailableRoom(RoomType type, String hotelID, int num);
 }

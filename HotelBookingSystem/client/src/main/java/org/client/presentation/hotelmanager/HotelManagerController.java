@@ -131,7 +131,6 @@ public class HotelManagerController {
 	
 	/**酒店可用房间数量增加，增加订单退房时间 */
 	public ResultMessage checkOut() {
-		hotelbl.increaseAvailableRoom(RoomType.getType(currentOrder.roomType), hotelID);
 		return orderbl.checkOut(currentOrder.orderID);
 	}
 

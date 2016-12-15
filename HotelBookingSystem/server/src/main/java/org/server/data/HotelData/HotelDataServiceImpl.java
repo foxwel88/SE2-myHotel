@@ -292,7 +292,7 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 	}
 
 	@Override
-	public void increaseAvailableRoom(RoomType type, String hotelID) throws RemoteException {
+	public void increaseAvailableRoom(RoomType type, String hotelID, int num) throws RemoteException {
 
 		try {
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(
@@ -300,7 +300,7 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
 			if (resultSet.next()) {
 				int roomNum = resultSet.getInt("roomNum");
-				roomNum += 1;
+				roomNum += num;
 				String update = "UPDATE `" + hotelID +
 						"` SET roomNum = " + String.valueOf(roomNum) +
 						" WHERE roomType = '" + type.getString() + "'";
@@ -314,7 +314,7 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 	}
 
 	@Override
-	public ResultMessage decreaseAvailableRoom(RoomType type, String hotelID) throws RemoteException {
+	public ResultMessage decreaseAvailableRoom(RoomType type, String hotelID, int num) throws RemoteException {
 
 		try {
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(
@@ -322,7 +322,7 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
 			if (resultSet.next()) {
 				int roomNum = resultSet.getInt("roomNum");
-				roomNum -= 1;
+				roomNum -= num;
 
 				//房间不够时，返回ROOM_NOT_ENOUGH
 				if (roomNum < 0) {

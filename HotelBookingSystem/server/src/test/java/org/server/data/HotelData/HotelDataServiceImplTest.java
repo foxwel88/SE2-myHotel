@@ -107,8 +107,8 @@ public class HotelDataServiceImplTest {
 		List<RoomPO> list = dao.getRooms("00001");
 		RoomType roomType = list.get(0).roomType;
 
-		dao.increaseAvailableRoom(roomType, "00001");
-		ResultMessage resultMessage = dao.decreaseAvailableRoom(roomType, "00001");
+		dao.increaseAvailableRoom(roomType, "00001", 1);
+		ResultMessage resultMessage = dao.decreaseAvailableRoom(roomType, "00001", 1);
 
 		assertEquals(ResultMessage.SUCCESS, resultMessage);
 	}
