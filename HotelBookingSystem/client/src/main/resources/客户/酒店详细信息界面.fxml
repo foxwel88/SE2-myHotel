@@ -234,12 +234,12 @@
                               </Pane>
                               <Pane layoutX="49.0" layoutY="74.0" prefHeight="175.0" prefWidth="785.0" style="-fx-border-style: dashed;">
                                  <children>
-                                    <Label fx:id="orderPreviousPage" layoutX="180.0" layoutY="152.0" onMouseClicked="#commentTurnToPreviousPage" text="&lt;上一页">
+                                    <Label fx:id="orderPreviousPage" layoutX="180.0" layoutY="152.0" onMouseClicked="#orderTurnToPreviousPage" text="&lt;上一页">
                                        <font>
                                           <Font name="Microsoft YaHei" size="15.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="orderNextPage" layoutX="304.0" layoutY="152.0" onMouseClicked="#commentTurnToNextPage" text="下一页&gt;">
+                                    <Label fx:id="orderNextPage" layoutX="304.0" layoutY="152.0" onMouseClicked="#orderTurnToNextPage" text="下一页&gt;">
                                        <font>
                                           <Font name="Microsoft YaHei" size="15.0" />
                                        </font>
@@ -249,7 +249,7 @@
                                           <Font name="Microsoft YaHei" size="15.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="orderToPage" layoutX="483.0" layoutY="149.0" onKeyPressed="#commentTurnToSpecialPage" prefHeight="20.0" prefWidth="30.0" style="-fx-background-color: rgba(255,255,255,0.4);" />
+                                    <TextField fx:id="orderToPage" layoutX="483.0" layoutY="149.0" onKeyPressed="#orderTurnToSpecialPage" prefHeight="20.0" prefWidth="30.0" style="-fx-background-color: rgba(255,255,255,0.4);" />
                                     <Label fx:id="orderCurrentPage" layoutX="265.0" layoutY="152.0" text="1">
                                        <font>
                                           <Font name="Microsoft YaHei" size="15.0" />
@@ -350,12 +350,12 @@
                               </Label>
                               <Pane layoutX="49.0" layoutY="307.0" prefHeight="255.0" prefWidth="785.0" style="-: ;">
                                  <children>
-                                    <Label fx:id="commentPreviousPage" layoutX="180.0" layoutY="234.0" text="&lt;上一页">
+                                    <Label fx:id="commentPreviousPage" layoutX="180.0" layoutY="234.0" onMouseClicked="#commentTurnToPreviousPage" text="&lt;上一页">
                                        <font>
                                           <Font name="Microsoft YaHei" size="15.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="commentNextPage" layoutX="304.0" layoutY="234.0" text="下一页&gt;">
+                                    <Label fx:id="commentNextPage" layoutX="304.0" layoutY="234.0" onMouseClicked="#commentTurnToNextPage" text="下一页&gt;">
                                        <font>
                                           <Font name="Microsoft YaHei" size="15.0" />
                                        </font>
@@ -365,7 +365,7 @@
                                           <Font name="Microsoft YaHei" size="15.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="commentToPage" layoutX="483.0" layoutY="231.0" prefHeight="20.0" prefWidth="30.0" style="-fx-background-color: rgba(255,255,255,0.4);" />
+                                    <TextField fx:id="commentToPage" layoutX="483.0" layoutY="231.0" onKeyPressed="#commentTurnToSpecialPage" prefHeight="20.0" prefWidth="30.0" style="-fx-background-color: rgba(255,255,255,0.4);" />
                                     <Label fx:id="commentCurrentPage" layoutX="265.0" layoutY="234.0" text="1">
                                        <font>
                                           <Font name="Microsoft YaHei" size="15.0" />
