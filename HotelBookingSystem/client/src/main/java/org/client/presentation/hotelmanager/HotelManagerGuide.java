@@ -2,8 +2,11 @@ package org.client.presentation.hotelmanager;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
+import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import org.client.launcher.Resources;
 
 import javafx.event.ActionEvent;
@@ -21,12 +24,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import org.client.vo.HotelVO;
 
 /**
  * FXML Controller
  * 酒店工作人员-导航界面
  * @author Hirico
- * @version 2016/11/27 Hirico
+ * @version 2016/12/16 Hirico
  */
 public class HotelManagerGuide {
 	
@@ -249,18 +253,34 @@ public class HotelManagerGuide {
 		assert avatar != null : "fx:id=\"avatar\" was not injected: check your FXML file 'guide.fxml'.";
 		assert backPane != null : "fx:id=\"backPane\" was not injected: check your FXML file 'guide.fxml'.";
 		assert backArrow != null : "fx:id=\"backArrow\" was not injected: check your FXML file 'guide.fxml'.";
-				
-		//默认显示主界面
-		try {
-			belowGridPane.add(FXMLLoader.load(getClass().getResource("/酒店工作人员/酒店工作人员主界面.fxml")), 1, 0);
-			CurrentItem.setInstance(mainLabel, mainLabelPane, GuideLabelType.MAIN);
-		} catch (IOException e) {
-			e.printStackTrace();
+
+		Resources resources = Resources.getInstance();
+		//默认显示主界面，如果酒店信息中房间总数量为0且无房间入住信息，则弹出提示并显示编辑信息界面
+		if (infoNotEnough()) {
+			try {
+				belowGridPane.add(resources.load(resources.hotelManagerModifyHotel), 1, 0);
+				CurrentItem.setInstance(infoLabel, infoLabelPane, GuideLabelType.INFO);
+				Alert alert = new Alert(Alert.AlertType.INFORMATION);
+				alert.setTitle("提示");
+				alert.setHeaderText(null);
+				alert.setContentText("请先补全酒店基本信息");
+
+				alert.show();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} else {
+			try {
+				belowGridPane.add(resources.load(resources.hotelManagerMain), 1, 0);
+				CurrentItem.setInstance(mainLabel, mainLabelPane, GuideLabelType.MAIN);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
+		CurrentItem.getInstance().active();
 		
 		welcomeLabel.setText("Welcome, " + HotelManagerController.getInstance().managerName);
 
-		Resources resources = Resources.getInstance();
 		Image avatarImg = new Image(resources.avatar.toString());
 		ImageView avatarImgView = new ImageView();
 
@@ -268,6 +288,20 @@ public class HotelManagerGuide {
 		avatarImgView.setFitHeight(AVATAR_SIZE);
 		avatarImgView.setFitWidth(AVATAR_SIZE);
 		avatar.setGraphic(avatarImgView);
+	}
+
+	/**检测酒店信息是否不全 */
+	boolean infoNotEnough() {
+		HotelVO hotelVO = HotelManagerController.getInstance().getHotelInfo();
+		List<Integer> roomNum = hotelVO.roomNum;
+		int totalNum = 0;
+		for (int i = 0; i < roomNum.size(); i++) {
+			totalNum += roomNum.get(i);
+		}
+		if (totalNum == 0 && hotelVO.checkInInfos.isEmpty()) {
+			return true;
+		}
+		return false;
 	}
 	
 	@FXML

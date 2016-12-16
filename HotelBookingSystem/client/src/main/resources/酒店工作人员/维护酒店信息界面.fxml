@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -13,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="567.0" prefWidth="920.0" style="-fx-background-color: rgba(255,255,255,0.4);" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.presentation.hotelmanager.HotelManagerModifyHotel">
+<AnchorPane prefHeight="567.0" prefWidth="920.0" style="-fx-background-color: rgba(255,255,255,0.4);" stylesheets="@/darkTheme.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.presentation.hotelmanager.HotelManagerModifyHotel">
    <effect>
       <DropShadow />
    </effect>
@@ -77,21 +76,13 @@
                   <Font name="Microsoft YaHei" size="16.0" />
                </font>
             </Label>
-            <ChoiceBox fx:id="city" prefHeight="0.0" prefWidth="125.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <ChoiceBox fx:id="area" prefHeight="27.0" prefWidth="125.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <ChoiceBox fx:id="city" prefHeight="0.0" prefWidth="125.0" style="-fx-background-color: rgba(255,255,255,0.1);" stylesheets="@/darkTheme.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ChoiceBox fx:id="area" prefHeight="27.0" prefWidth="125.0" style="-fx-background-color: rgba(255,255,255,0.1);" stylesheets="@/darkTheme.css" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <TextField fx:id="address" prefHeight="30.0" prefWidth="205.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <TextField fx:id="name" prefHeight="27.0" prefWidth="311.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-            <ChoiceBox fx:id="star" prefHeight="27.0" prefWidth="125.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-            <TextArea fx:id="intro" prefHeight="200.0" prefWidth="200.0" style="-fx-text-inner-color: white; -fx-text-fill: #ffffff;" GridPane.columnIndex="1" GridPane.rowIndex="11">
-               <effect>
-                  <ColorAdjust brightness="-0.6" />
-               </effect>
-            </TextArea>
-            <TextArea fx:id="facility" prefHeight="200.0" prefWidth="200.0" style="text-area-background: rgba(0,0,0,0.1); -fx-text-inner-color: white; -fx-text-fill: #ffffff;" GridPane.columnIndex="1" GridPane.rowIndex="13">
-               <effect>
-                  <ColorAdjust brightness="-0.6" />
-               </effect>
-            </TextArea>
+            <ChoiceBox fx:id="star" prefHeight="27.0" prefWidth="125.0" style="-fx-background-color: rgba(255,255,255,0.1);" stylesheets="@/darkTheme.css" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <TextArea fx:id="intro" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: dimgray;" stylesheets="@/darkTheme.css" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+            <TextArea fx:id="facility" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: dimgray;" GridPane.columnIndex="1" GridPane.rowIndex="13" />
          </children>
       </GridPane>
       <AnchorPane layoutX="430.0" layoutY="61.0" prefHeight="476.0" prefWidth="448.0" style="-fx-background-color: rgba(0,0,0,0.4);">
@@ -101,7 +92,7 @@
                   <Font name="Microsoft YaHei" size="16.0" />
                </font>
             </Label>
-            <ChoiceBox fx:id="roomType" layoutX="87.0" layoutY="17.0" prefHeight="30.0" prefWidth="83.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-text-inner-color: white;" />
+            <ChoiceBox fx:id="roomType" layoutX="87.0" layoutY="17.0" prefHeight="30.0" prefWidth="83.0" style="-fx-background-color: rgba(255,255,255,0.1);" stylesheets="@/darkTheme.css" />
             <Label layoutX="188.0" layoutY="15.0" prefHeight="34.0" prefWidth="83.0" text="数量" textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei" size="16.0" />
@@ -137,7 +128,7 @@
             <TextField fx:id="roomNumber" layoutX="326.0" layoutY="104.0" prefHeight="30.0" prefWidth="109.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-text-inner-color: white;" />
             <TextField fx:id="startTime" layoutX="95.0" layoutY="149.0" prefHeight="30.0" prefWidth="103.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-text-inner-color: white;" />
             <TextField fx:id="endTime" layoutX="326.0" layoutY="149.0" prefHeight="30.0" prefWidth="109.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-text-inner-color: white;" />
-            <Button fx:id="checkInSaveButton" layoutX="327.0" layoutY="197.0" mnemonicParsing="false" onAction="#saveCheckIn" prefHeight="34.0" prefWidth="109.0" style="-fx-background-color: rgba(0,0,0,0.1);" text="保存" textFill="WHITE">
+            <Button fx:id="checkInSaveButton" layoutX="327.0" layoutY="197.0" mnemonicParsing="false" onAction="#saveCheckIn" prefHeight="34.0" prefWidth="109.0" style="-fx-background-color: rgba(0,0,0,0.1);" text="暂存" textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei" size="16.0" />
                </font>
@@ -174,7 +165,7 @@
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
             </Label>
-            <Button fx:id="roomSaveButton" layoutX="326.0" layoutY="57.0" mnemonicParsing="false" onAction="#saveRoom" prefHeight="34.0" prefWidth="109.0" style="-fx-background-color: rgba(0,0,0,0.1);" text="保存" textFill="WHITE">
+            <Button fx:id="roomSaveButton" layoutX="326.0" layoutY="57.0" mnemonicParsing="false" onAction="#saveRoom" prefHeight="34.0" prefWidth="109.0" style="-fx-background-color: rgba(0,0,0,0.1);" text="暂存" textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei" size="16.0" />
                </font>

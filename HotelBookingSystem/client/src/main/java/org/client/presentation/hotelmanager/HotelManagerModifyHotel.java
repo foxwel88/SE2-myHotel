@@ -246,14 +246,14 @@ public class HotelManagerModifyHotel {
 		
 		//facility, name, intro
 		facility.setText(vo.facility);
-		facility.setStyle("-fx-text-fill: black;");
 		name.setText(vo.hotelName);
 		intro.setText(vo.introduction);
-		intro.setStyle("-fx-text-fill: black;");
 		
 		//roomNum roomPrice roomType
 		roomTypes = FXCollections.observableArrayList(vo.roomType);
 		roomType.setItems(roomTypes);
+
+
 		
 		roomNums = new ArrayList<>(vo.roomNum);
 		roomPrices = new ArrayList<>(vo.roomPrice);

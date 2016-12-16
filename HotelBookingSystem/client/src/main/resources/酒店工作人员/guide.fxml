@@ -55,17 +55,14 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <AnchorPane fx:id="mainLabelPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.4);">
+                              <AnchorPane fx:id="mainLabelPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0,0,0,0.56);">
                                  <children>
-                                    <Label fx:id="mainLabel" alignment="CENTER" layoutX="1.0" onMouseClicked="#handleSwitch" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" prefHeight="113.0" prefWidth="120.0" text="首页" textAlignment="CENTER" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
+                                    <Label fx:id="mainLabel" alignment="CENTER" layoutX="1.0" onMouseClicked="#handleSwitch" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" prefHeight="113.0" prefWidth="120.0" text="首页" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
                                        <font>
                                           <Font name="Microsoft YaHei UI Light" size="21.0" />
                                        </font>
                                     </Label>
-                                 </children>
-                                 <effect>
-                                    <DropShadow />
-                                 </effect></AnchorPane>
+                                 </children></AnchorPane>
                               <AnchorPane fx:id="infoLabelPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0,0,0,0.5);" GridPane.rowIndex="1">
                                  <children>
                                     <Label fx:id="infoLabel" alignment="CENTER" onMouseClicked="#handleSwitch" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" prefHeight="114.0" prefWidth="120.0" text="酒店信息" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
