@@ -132,14 +132,14 @@ public class CustomerGenerateOrder {
 				SwitchSceneUtil.turnToConfirmOrderScene((GridPane)root.getParent(), newOrder);
 			} catch (NumberFormatException numberFormatException) {
 				Alert alert = new Alert(AlertType.WARNING);
-				alert.setTitle("Warning");
+				alert.setTitle("Sorry, please check your entry again.");
 				alert.setHeaderText(null);
 				alert.setContentText("住宿人姓名、房间数量和入住人数均不能为空");
 				alert.showAndWait();
 			}
 		} else {
 			Alert alert = new Alert(AlertType.WARNING);
-			alert.setTitle("Warning");
+			alert.setTitle("Sorry, please check your entry again.");
 			alert.setHeaderText(null);
 			alert.setContentText("电话格式不正确(应为11位中国区号码)");
 			alert.showAndWait();

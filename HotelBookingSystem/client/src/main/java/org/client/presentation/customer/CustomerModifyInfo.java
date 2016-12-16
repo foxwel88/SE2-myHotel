@@ -79,19 +79,19 @@ public class CustomerModifyInfo {
 			ResultMessage modifyInfoResult = SwitchSceneUtil.modifyInfo(userVO);
 			if (modifyInfoResult.equals(ResultMessage.SUCCESS)) {
 				alert = new Alert(AlertType.INFORMATION);
-				alert.setTitle("OK");
+				alert.setTitle("Success");
 				alert.setHeaderText(null);
 				alert.setContentText("修改成功");
 				SwitchSceneUtil.turnToAnotherScene((GridPane)root.getParent(), resources.customerCheckInfo);
 			} else {
 				alert = new Alert(AlertType.ERROR);
-				alert.setTitle("Error Dialog");
+				alert.setTitle("Sorry, please check your entry again.");
 				alert.setHeaderText(null);
 				alert.setContentText(modifyInfoResult.toString());
 			}
 		} else {
 			alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Error Dialog");
+			alert.setTitle("Sorry, please check your entry again.");
 			alert.setHeaderText(null);
 			alert.setContentText("电话格式不正确(应为11位中国区号码)");
 		}
@@ -114,25 +114,25 @@ public class CustomerModifyInfo {
 				ResultMessage resultMessage = SwitchSceneUtil.modifyPassword(originPassword.getText(), newPassword1);
 				if (!resultMessage.equals(ResultMessage.SUCCESS)) {
 					alert = new Alert(AlertType.ERROR);
-					alert.setTitle("Error Dialog");
+					alert.setTitle("Sorry, please check your entry again.");
 					alert.setHeaderText(null);
 					alert.setContentText("原密码错误");
 				} else {
 					alert = new Alert(AlertType.INFORMATION);
-					alert.setTitle("OK");
+					alert.setTitle("Success");
 					alert.setHeaderText(null);
 					alert.setContentText("修改成功");
 					SwitchSceneUtil.turnToAnotherScene((GridPane)root.getParent(), resources.customerModifyInfo);
 				}
 			} else {
 				alert = new Alert(AlertType.ERROR);
-				alert.setTitle("Error Dialog");
+				alert.setTitle("Sorry, please check your entry again.");
 				alert.setHeaderText(null);
 				alert.setContentText("密码只能由字母或数字组成（支持大小写），且长度不小于6位");
 			}
 		} else {
 			alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Error Dialog");
+			alert.setTitle("Sorry, please check your entry again.");
 			alert.setHeaderText(null);
 			alert.setContentText("两次输入的密码不一致");
 		}

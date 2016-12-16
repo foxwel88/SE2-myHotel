@@ -145,6 +145,7 @@ public class CustomerCheckHotelList {
 			if (previousFilter.city != null) {
 				city.setValue(previousFilter.city);
 			}
+			refreshAreas();
 			if (previousFilter.area != null) {
 				area.setValue(previousFilter.area);
 			}
@@ -267,7 +268,7 @@ public class CustomerCheckHotelList {
 	private void search() {
 		if (city.getValue() == null || area.getValue() == null) {
 			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("Warning Dialog");
+			alert.setTitle("Sorry, please check your entry again.");
 			alert.setHeaderText(null);
 			alert.setContentText("You must choose both city and area before starting search!");
 			alert.showAndWait();
