@@ -8,12 +8,11 @@ import org.client.rmi.RMIHelper;
 import org.client.vo.CommentVO;
 import org.client.vo.OrderVO;
 
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -30,7 +29,7 @@ public class CustomerComment {
 	AnchorPane root;
 	
 	@FXML
-	ChoiceBox<Double> score;
+	ChoiceBox<Integer> score;
 	
 	@FXML
 	TextArea comment;
@@ -66,7 +65,8 @@ public class CustomerComment {
 	@FXML
 	void initialize() {
 		resources = Resources.getInstance();
-		score.setContextMenu(new ContextMenu(new MenuItem("1"), new MenuItem("2"), new MenuItem("3"), new MenuItem("4"), new MenuItem("5")));
+		score.setItems(FXCollections.observableArrayList(1,2,3,4,5));
+		score.setValue(5);
 		OrderVO vo = SwitchSceneUtil.getCurrentOrder();
 		orderID.setText(vo.orderID);
 		hotelAddress.setText(vo.hotelAddress);
@@ -79,7 +79,7 @@ public class CustomerComment {
 	void commitComment() {
 		commentController = CommentController.getInstance();
 		String commentContent = comment.getText();
-		double rankValue = 5;
+		int rankValue = 5;
 		try {
 			rankValue = score.getValue();
 			if (commentContent.length() >= 15) {

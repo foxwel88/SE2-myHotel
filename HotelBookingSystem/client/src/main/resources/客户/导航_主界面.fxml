@@ -55,7 +55,7 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <AnchorPane fx:id="mainTab" onMouseClicked="#turnToCusController_Main" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(255,255,255,0.4);">
+                              <AnchorPane fx:id="mainTab" onMouseClicked="#turnToCusController_Main" onMouseEntered="#suspendOnMain" onMouseExited="#desuspendOnMain" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(255,255,255,0.4);">
                                  <children>
                                     <Label layoutX="29.0" layoutY="45.0" text="主界面" textAlignment="CENTER" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="45.0">
                                        <font>
@@ -64,7 +64,7 @@
                                     </Label>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane fx:id="infoTab" onMouseClicked="#turnToCusController_CusInfo" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.5);" GridPane.rowIndex="1">
+                              <AnchorPane fx:id="infoTab" onMouseClicked="#turnToCusController_CusInfo" onMouseEntered="#suspendOnInfo" onMouseExited="#desuspendOnInfo" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.5);" GridPane.rowIndex="1">
                                  <children>
                                     <Label text="个人信息" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="45.0">
                                        <font>
@@ -72,7 +72,7 @@
                                        </font>
                                     </Label>
                                  </children></AnchorPane>
-                              <AnchorPane fx:id="hotelTab" onMouseClicked="#turnToCusController_HotelList" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.44);" GridPane.rowIndex="2">
+                              <AnchorPane fx:id="hotelTab" onMouseClicked="#turnToCusController_HotelList" onMouseEntered="#suspendOnHotel" onMouseExited="#desuspendOnHotel" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.44);" GridPane.rowIndex="2">
                                  <children>
                                     <Label text="酒店列表" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="45.0">
                                        <font>
@@ -80,7 +80,7 @@
                                        </font>
                                     </Label>
                                  </children></AnchorPane>
-                              <AnchorPane fx:id="historyTab" onMouseClicked="#turnToCusController_HistoryOrderList" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0,0,0,0.38);" GridPane.rowIndex="3">
+                              <AnchorPane fx:id="historyTab" onMouseClicked="#turnToCusController_HistoryOrderList" onMouseEntered="#suspendOnHistoryOrder" onMouseExited="#desuspendOnHistoryOrder" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0,0,0,0.38);" GridPane.rowIndex="3">
                                  <children>
                                     <Label text="历史订单" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="45.0">
                                        <font>
@@ -89,7 +89,7 @@
                                     </Label>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane fx:id="unexcutedTab" onMouseClicked="#turnToCusController_UnexcutedOrderList" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.32);" GridPane.rowIndex="4">
+                              <AnchorPane fx:id="unexcutedTab" onMouseClicked="#turnToCusController_UnexcutedOrderList" onMouseEntered="#suspendOnUnexecutedOrder" onMouseExited="#desuspendOnUnexecutedOrder" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.32);" GridPane.rowIndex="4">
                                  <children>
                                     <Label layoutX="20.0" layoutY="29.0" text="未执行订单" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="29.0">
                                        <font>
@@ -114,9 +114,9 @@
                         <Font name="Microsoft YaHei UI Light" size="24.0" />
                      </font>
                   </Label>
-                  <Pane prefHeight="65.0" prefWidth="110.0" style="-fx-background-color: rgba(0,0,0,0.5);">
+                  <Pane fx:id="backArrow" onMouseClicked="#goBack" onMouseEntered="#activeBackButton" onMouseExited="#deactiveBackButton" prefHeight="65.0" prefWidth="110.0" style="-fx-background-color: rgba(0,0,0,0.5);">
                      <children>
-                        <Label fx:id="backArrow" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="38.0" layoutY="2.0" onMouseClicked="#goBack" prefHeight="48.0" prefWidth="35.0" text="&lt;" textFill="#bcb8b8">
+                        <Label alignment="TOP_LEFT" contentDisplay="TOP" layoutX="38.0" layoutY="2.0" prefHeight="48.0" prefWidth="35.0" text="&lt;" textFill="#bcb8b8">
                            <font>
                               <Font name="Symbol" size="39.0" />
                            </font>

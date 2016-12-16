@@ -2,6 +2,7 @@ package org.common.dataservice.OrderDataService;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.Date;
 import java.util.List;
 
 import org.common.po.OrderPO;
@@ -33,4 +34,5 @@ public interface OrderDataService extends Remote {
 	public void finish() throws RemoteException;
 	//结束持久化数据库的使用
 
+	public void updateAbnormalOrders(Date date) throws RemoteException;
 }

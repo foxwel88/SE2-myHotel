@@ -117,4 +117,10 @@ public class OrderDataServiceImpl_stub extends UnicastRemoteObject implements Or
 		System.out.println("finish");
 	}
 
+	@Override
+	public void updateAbnormalOrders(Date date) throws RemoteException {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

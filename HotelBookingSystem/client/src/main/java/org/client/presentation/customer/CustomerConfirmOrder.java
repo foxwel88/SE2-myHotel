@@ -4,10 +4,13 @@ import java.time.LocalDate;
 
 import org.client.launcher.Resources;
 import org.client.vo.OrderVO;
+import org.common.utility.ResultMessage;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
@@ -81,16 +84,33 @@ public class CustomerConfirmOrder {
 	
 	@FXML
 	void confirm() {
-		SwitchSceneUtil.commitOrder(order);
-		
-		// 返回前一界面
-		SwitchSceneUtil.isBack = true;
-		if (SwitchSceneUtil.isBackToDetail) {
-			SwitchSceneUtil.currentScene = CustomerBackableScene.HOTEL_INFO_SCENE;
-			SwitchSceneUtil.turnToDetailedHotelScene((GridPane)root.getParent(), SwitchSceneUtil.hotelID);
+		ResultMessage commitResult = SwitchSceneUtil.commitOrder(order);
+		Alert alert;
+		if (commitResult.equals(ResultMessage.SUCCESS)) {
+			alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Success");
+			alert.setHeaderText(null);
+			alert.setContentText("成功生成订单");
+			// 返回前一界面
+			SwitchSceneUtil.isBack = true;
+			if (SwitchSceneUtil.isBackToDetail) {
+				SwitchSceneUtil.currentScene = CustomerBackableScene.HOTEL_INFO_SCENE;
+				SwitchSceneUtil.turnToDetailedHotelScene((GridPane)root.getParent(), SwitchSceneUtil.hotelID);
+			} else {
+				SwitchSceneUtil.turnToAnotherScene((GridPane)root.getParent(), Resources.getInstance().customerCheckHotelList);
+			}
+			SwitchSceneUtil.isBack = false;
+		} else if (commitResult.equals(ResultMessage.ROOM_NOT_ENOUGH)) {
+			alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Sorry, please check your entry again.");
+			alert.setHeaderText(null);
+			alert.setContentText("剩余房间数量不足");
 		} else {
-			SwitchSceneUtil.turnToAnotherScene((GridPane)root.getParent(), Resources.getInstance().customerCheckHotelList);
+			alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Unknown Error Occured, please connect with administrator.");
+			alert.setHeaderText(null);
+			alert.setContentText("生成订单失败");
 		}
-		SwitchSceneUtil.isBack = false;
+		alert.showAndWait();
 	}
 }

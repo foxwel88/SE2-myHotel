@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 
 import org.client.vo.UserVO;
 import org.common.utility.ResultMessage;
+import org.common.utility.UserType;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,7 +19,7 @@ import javafx.scene.input.MouseEvent;
  * 
  * 网站工作人员-浏览客户信息
  * @author Foxwel
- * @version 2016/11/27 Foxwel
+ * @version 2016/12/16 Foxwel
  *
  */
 public class WebManagerCheckCustomer {
@@ -26,6 +27,9 @@ public class WebManagerCheckCustomer {
 	private WebManagerController controller;
 	
 	private UserVO nowvo;
+	
+	@FXML
+	private Label resultLabel;
 
 	@FXML
 	private Label PorCLabel;
@@ -94,6 +98,7 @@ public class WebManagerCheckCustomer {
 	@FXML
 	void initialize() {
 		controller = WebManagerController.getInstance();
+		modifyButton.setVisible(false);
 		clearContent();
 	}
 	
@@ -114,9 +119,17 @@ public class WebManagerCheckCustomer {
 		clearContent();
 		UserVO vo = controller.findbyUserName(userNameTextField.getText());
 		if (vo.resultMessage == ResultMessage.SUCCESS) {
-			if (vo.type.equals("个人客户") || vo.type.equals("企业客户")) {
+			if (vo.type.equals(UserType.PERSONALCUSTOMER.getString()) || vo.type.equals(UserType.COMPANYCUSTOMER.getString())) {
+				resultLabel.setText("");
 				changeContent(vo);
+				modifyButton.setVisible(true);
+			} else {
+				resultLabel.setText("该用户不是客户");
+				modifyButton.setVisible(false);
 			}
+		} else {
+			resultLabel.setText("用户名不存在");
+			modifyButton.setVisible(false);
 		}
 	}
 }

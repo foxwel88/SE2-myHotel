@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import org.client.launcher.PwModify;
 import org.client.launcher.Resources;
 import org.common.utility.ResultMessage;
 
@@ -14,10 +15,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -37,6 +38,9 @@ public class WebMarketerGuide {
 	
 	private static final int AVATAR_SIZE = 48;
 
+	@FXML
+	private Pane parent;
+	
 	@FXML
 	private ResourceBundle resources;
 
@@ -91,6 +95,8 @@ public class WebMarketerGuide {
 	@FXML
 	private Menu avatar;
 	
+	private String userName;
+	
 	@FXML
 	void initialize() {
 		assert belowGridPane != null : "fx:id=\"belowGridPane\" was not injected: check your FXML file 'guide.fxml'.";
@@ -116,7 +122,9 @@ public class WebMarketerGuide {
 			e.printStackTrace();
 		}
 		
-		welcomeLabel.setText("Welcome, " + WebMarketerController.getInstance().getUserName());
+		
+		userName = WebMarketerController.getInstance().getUserName();
+		welcomeLabel.setText("Welcome, " + userName);
 
 		Resources resources = Resources.getInstance();
 		Image avatarImg = new Image(resources.avatar.toString());
@@ -149,6 +157,53 @@ public class WebMarketerGuide {
 			changeContent(GuideLabelType.ORDER);
 		}
 		
+	}
+	
+	/**When cursor casually hovers on some item, change the item's look */
+	@FXML
+	void mouseEnter(MouseEvent event) {
+		Label source = (Label)event.getSource();
+		if (source == mainLabel) {
+			CurrentItem.getInstance().active(mainLabel, mainPane);
+		} else if (source == creditLabel) {
+			CurrentItem.getInstance().active(creditLabel, creditPane);
+		} else if (source == levelLabel) {
+			CurrentItem.getInstance().active(levelLabel, levelPane);
+		} else if (source == promotionLabel) {
+			CurrentItem.getInstance().active(promotionLabel, promotionPane);
+		} else if (source == orderLabel) {
+			CurrentItem.getInstance().active(orderLabel, orderPane);
+		}
+
+	}
+
+	@FXML
+	void mouseEnterForBack(MouseEvent event) {
+		backPane.setStyle("-fx-background-color: rgba(255,255,255,0.5)");
+		backArrow.setStyle("-fx-text-fill: Black");
+	}
+
+	/**When cursor casually leaves some item, change the item's look unless the item is selected*/
+	@FXML
+	void mouseExit(MouseEvent event) {
+		Label source = (Label)event.getSource();
+		if (source == mainLabel) {
+			CurrentItem.getInstance().deActive(GuideLabelType.MAIN, mainLabel, mainPane);
+		} else if (source == creditLabel) { 
+			CurrentItem.getInstance().deActive(GuideLabelType.CREDIT, creditLabel, creditPane);
+		} else if (source == levelLabel) { 
+			CurrentItem.getInstance().deActive(GuideLabelType.LEVEL, levelLabel, levelPane);
+		} else if (source == orderLabel) {
+			CurrentItem.getInstance().deActive(GuideLabelType.ORDER, orderLabel, orderPane);
+		} else if (source == promotionLabel) {
+			CurrentItem.getInstance().deActive(GuideLabelType.PROMOTION, promotionLabel, promotionPane);
+		}
+	}
+
+	@FXML
+	void mouseExitForBack(MouseEvent event) {
+		backPane.setStyle("-fx-background-color: rgba(0,0,0,0.5)");
+		backArrow.setStyle("-fx-text-fill: #bcb8b8");
 	}
 	
 	@FXML
@@ -251,6 +306,29 @@ public class WebMarketerGuide {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	@FXML
+	void modifyPassword() {
+		AnchorPane mask = new AnchorPane();
+		mask.setStyle("-fx-background-color:rgba(0,0,0,0.5)");
+		mask.setLayoutX(0);
+		mask.setLayoutY(0);
+		mask.setPrefSize(1103.0, 683.0);
+		parent.getChildren().add(mask);
+		Resources resources = Resources.getInstance();
+		Parent root = null;
+		try {
+			root = resources.load(resources.modify);
+			((PwModify)resources.getCurrentController()).setParentPane(parent);
+			((PwModify)resources.getCurrentController()).setUserName(userName);;
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		mask.getChildren().add(root);
+		AnchorPane.setLeftAnchor(root, 352.0);
+		AnchorPane.setRightAnchor(root, 351.0);
+		AnchorPane.setTopAnchor(root, 99.0);
 	}
 	
 }

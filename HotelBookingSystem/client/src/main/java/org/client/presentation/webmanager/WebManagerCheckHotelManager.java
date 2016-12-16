@@ -18,14 +18,17 @@ import javafx.scene.input.MouseEvent;
  * 
  * 网站工作人员-浏览酒店工作人员信息
  * @author Foxwel
- * @version 2016/11/27 Foxwel
+ * @version 2016/12/16 Foxwel
  *
  */
 public class WebManagerCheckHotelManager {
 	
 	private WebManagerController controller;
 	
-	private UserVO nowvo;
+	private UserVO nowvo;	
+	
+	@FXML
+	private Label resultLabel;
 	
 	@FXML
 	private Label nameLabel;
@@ -69,6 +72,7 @@ public class WebManagerCheckHotelManager {
 	@FXML
 	void initialize() {
 		controller = WebManagerController.getInstance();
+		modifyButton.setVisible(false);
 		clear();
 	}
 	
@@ -90,8 +94,16 @@ public class WebManagerCheckHotelManager {
 		UserVO vo = controller.findbyUserName(userNameTextField.getText());
 		if (vo.resultMessage == ResultMessage.SUCCESS) {
 			if (vo.type.equals("酒店工作人员")) {
+				resultLabel.setText("");
 				changeContent(vo);
+				modifyButton.setVisible(true);
+			} else {
+				resultLabel.setText("该用户不是酒店工作人员");
+				modifyButton.setVisible(false);
 			}
+		} else {
+			resultLabel.setText("用户名不存在");
+			modifyButton.setVisible(false);
 		}
 	}
 }

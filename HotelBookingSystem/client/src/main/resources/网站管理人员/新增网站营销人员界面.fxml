@@ -58,11 +58,11 @@
                   <Font name="Microsoft YaHei" size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="userNameTextField" prefHeight="27.0" prefWidth="311.0" GridPane.columnIndex="1" />
-            <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <PasswordField fx:id="passwordField2" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <TextField fx:id="nameTextField" prefHeight="27.0" prefWidth="311.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <TextField fx:id="phoneTextField" prefHeight="27.0" prefWidth="311.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <TextField fx:id="userNameTextField" prefHeight="27.0" prefWidth="311.0" promptText="请输入包含字母或数字的账号" GridPane.columnIndex="1" />
+            <PasswordField fx:id="passwordField" promptText="长度不少于6位的数字或字母组合" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <PasswordField fx:id="passwordField2" promptText="请再一次输入密码" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="nameTextField" prefHeight="27.0" prefWidth="311.0" promptText="请输入真实姓名" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <TextField fx:id="phoneTextField" prefHeight="27.0" prefWidth="311.0" promptText="请输入11位手机号" GridPane.columnIndex="1" GridPane.rowIndex="8" />
          </children>
       </GridPane>
       <Button fx:id="cancelButton" layoutX="291.0" layoutY="369.0" mnemonicParsing="false" onMouseClicked="#handleCancelAction" prefHeight="37.0" prefWidth="98.0" text="取消" AnchorPane.topAnchor="389.0">
@@ -78,6 +78,11 @@
       <Label text="添加网站营销人员" textAlignment="CENTER" AnchorPane.leftAnchor="110.0" AnchorPane.topAnchor="80.0">
          <font>
             <Font name="STHeiti" size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="resultLabel" alignment="CENTER_RIGHT" layoutX="376.0" layoutY="442.0" prefHeight="19.0" prefWidth="144.0" wrapText="true">
+         <font>
+            <Font name="Microsoft YaHei" size="14.0" />
          </font>
       </Label>
    </children>

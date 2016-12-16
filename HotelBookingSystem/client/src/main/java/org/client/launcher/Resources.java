@@ -18,6 +18,8 @@ public class Resources {
 	public URL login = getClass().getResource("/登录界面.fxml");
 	
 	public URL register = getClass().getResource("/注册界面.fxml");
+	
+	public URL modify = getClass().getResource("/修改密码界面.fxml");
 
 	//Images
 	public URL avatar = getClass().getResource("/profile.png");

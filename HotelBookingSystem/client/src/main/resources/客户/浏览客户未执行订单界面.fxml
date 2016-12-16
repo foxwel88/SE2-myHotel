@@ -59,7 +59,7 @@
                      </children>
                   </HBox>
                   <Separator prefWidth="200.0" />
-                  <HBox fx:id="order1" onMouseClicked="#checkDetailedOrder" prefHeight="40.0" prefWidth="200.0">
+                  <HBox fx:id="order1" onMouseClicked="#checkDetailedOrder" onMouseEntered="#active" onMouseExited="#deactive" prefHeight="40.0" prefWidth="200.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="40.0" prefWidth="167.0" text="1992/01/01">
                            <font>
@@ -88,7 +88,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox fx:id="order2" onMouseClicked="#checkDetailedOrder" prefHeight="40.0" prefWidth="200.0">
+                  <HBox fx:id="order2" onMouseClicked="#checkDetailedOrder" onMouseEntered="#active" onMouseExited="#deactive" prefHeight="40.0" prefWidth="200.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="40.0" prefWidth="167.0" text="2004/11/11">
                            <font>
@@ -117,7 +117,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox fx:id="order3" onMouseClicked="#checkDetailedOrder" prefHeight="40.0" prefWidth="200.0">
+                  <HBox fx:id="order3" onMouseClicked="#checkDetailedOrder" onMouseEntered="#active" onMouseExited="#deactive" prefHeight="40.0" prefWidth="200.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="40.0" prefWidth="167.0" text="2004/11/11">
                            <font>
@@ -146,7 +146,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox fx:id="order4" onMouseClicked="#checkDetailedOrder" prefHeight="40.0" prefWidth="200.0">
+                  <HBox fx:id="order4" onMouseClicked="#checkDetailedOrder" onMouseEntered="#active" onMouseExited="#deactive" prefHeight="40.0" prefWidth="200.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="40.0" prefWidth="167.0" text="2004/11/11">
                            <font>
@@ -175,7 +175,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox fx:id="order5" onMouseClicked="#checkDetailedOrder" prefHeight="40.0" prefWidth="200.0">
+                  <HBox fx:id="order5" onMouseClicked="#checkDetailedOrder" onMouseEntered="#active" onMouseExited="#deactive" prefHeight="40.0" prefWidth="200.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="40.0" prefWidth="167.0" text="2004/11/11">
                            <font>
@@ -204,7 +204,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox fx:id="order6" onMouseClicked="#checkDetailedOrder" prefHeight="40.0" prefWidth="200.0">
+                  <HBox fx:id="order6" onMouseClicked="#checkDetailedOrder" onMouseEntered="#active" onMouseExited="#deactive" prefHeight="40.0" prefWidth="200.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="40.0" prefWidth="167.0" text="2004/11/11">
                            <font>
@@ -233,7 +233,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox fx:id="order7" onMouseClicked="#checkDetailedOrder" prefHeight="40.0" prefWidth="200.0">
+                  <HBox fx:id="order7" onMouseClicked="#checkDetailedOrder" onMouseEntered="#active" onMouseExited="#deactive" prefHeight="40.0" prefWidth="200.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="40.0" prefWidth="167.0" text="2004/11/11">
                            <font>
@@ -262,7 +262,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox fx:id="order8" onMouseClicked="#checkDetailedOrder" prefHeight="40.0" prefWidth="200.0">
+                  <HBox fx:id="order8" onMouseClicked="#checkDetailedOrder" onMouseEntered="#active" onMouseExited="#deactive" prefHeight="40.0" prefWidth="200.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="40.0" prefWidth="167.0" text="2004/11/11">
                            <font>
@@ -291,7 +291,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox fx:id="order9" onMouseClicked="#checkDetailedOrder" prefHeight="40.0" prefWidth="200.0">
+                  <HBox fx:id="order9" onMouseClicked="#checkDetailedOrder" onMouseEntered="#active" onMouseExited="#deactive" prefHeight="40.0" prefWidth="200.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="40.0" prefWidth="167.0" text="2004/11/11">
                            <font>
@@ -320,7 +320,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox fx:id="order10" onMouseClicked="#checkDetailedOrder" prefHeight="40.0" prefWidth="200.0">
+                  <HBox fx:id="order10" onMouseClicked="#checkDetailedOrder" onMouseEntered="#active" onMouseExited="#deactive" prefHeight="40.0" prefWidth="200.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="40.0" prefWidth="167.0" text="2004/11/11">
                            <font>
@@ -349,7 +349,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox fx:id="order11" onMouseClicked="#checkDetailedOrder" prefHeight="40.0" prefWidth="200.0">
+                  <HBox fx:id="order11" onMouseClicked="#checkDetailedOrder" onMouseEntered="#active" onMouseExited="#deactive" prefHeight="40.0" prefWidth="200.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="40.0" prefWidth="167.0" text="2004/11/11">
                            <font>

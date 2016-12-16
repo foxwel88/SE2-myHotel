@@ -67,4 +67,36 @@ public class CurrentItem {
 		pane.setEffect(new DropShadow());
 	}
 	
+	/**辅助函数，只active参数指定的item */
+	public void active(Label l, AnchorPane p) {
+		l.setStyle("-fx-text-fill: black");
+		p.setStyle("-fx-background-color: rgba(255,255,255,0.4)");
+		p.setEffect(new DropShadow());
+	}
+	
+	/**辅助函数，只deActive参数指定的item，且若item是当前所选项则不会被deActive */
+	public void deActive(GuideLabelType t, Label l, AnchorPane p) {
+		if (t != type) {
+			l.setStyle("-fx-text-fill: white");
+			p.setEffect(null);
+			switch (t) {
+				case MAIN:
+					p.setStyle("-fx-background-color: rgba(0,0,0,0.56)");
+					break;
+				case CREDIT:
+					p.setStyle("-fx-background-color: rgba(0,0,0,0.5)");
+					break;
+				case LEVEL:
+					p.setStyle("-fx-background-color: rgba(0,0,0,0.44)");
+					break;
+				case PROMOTION:
+					p.setStyle("-fx-background-color: rgba(0,0,0,0.38)");
+					break;
+				case ORDER:
+					p.setStyle("-fx-background-color: rgba(0,0,0,0.32)");
+					break;
+			}
+		}
+	}
+	
 }
