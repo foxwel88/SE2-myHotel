@@ -75,6 +75,10 @@ public class WebMarketerController {
 	}
 	
 	public String getUserName() {
+		return userName;
+	}
+	
+	public String getName() {
 		return name;
 	}
 	
