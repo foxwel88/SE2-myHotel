@@ -18,13 +18,16 @@ import javafx.scene.input.MouseEvent;
  * 
  * 网站工作人员-浏览网站营销人员
  * @author Foxwel
- * @version 2016/11/27 Foxwel
+ * @version 2016/12/16 Foxwel
  *
  */
 public class WebManagerCheckWebMarketer {
 	private WebManagerController controller;
 	
 	private UserVO nowvo;
+	
+	@FXML
+	private Label resultLabel;
 	
 	@FXML
 	private Label nameLabel;
@@ -76,6 +79,7 @@ public class WebManagerCheckWebMarketer {
 	@FXML
 	void initialize() {
 		controller = WebManagerController.getInstance();
+		modifyButton.setVisible(false);
 		clear();
 	}
 	
@@ -95,10 +99,17 @@ public class WebManagerCheckWebMarketer {
 	void handleSearchAction(MouseEvent event) {
 		clear();
 		UserVO vo = controller.findbyUserName(userNameTextField.getText());
+		resultLabel.setText("");
 		if (vo.resultMessage == ResultMessage.SUCCESS) {
 			if (vo.type.equals("网站营销人员")) {
 				changeContent(vo);
+			} else {
+				resultLabel.setText("该用户不是网站营销人员");
+				modifyButton.setVisible(false);
 			}
+		} else {
+			resultLabel.setText("用户名不存在");
+			modifyButton.setVisible(false);
 		}
 	}
 }

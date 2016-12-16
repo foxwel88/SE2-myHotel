@@ -71,7 +71,7 @@
                   <Font name="Microsoft YaHei" size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="userNameTextField" prefHeight="27.0" prefWidth="141.0" />
+            <TextField fx:id="userNameTextField" prefHeight="27.0" prefWidth="141.0" promptText="请输入账号" />
             <Button fx:id="searchButton" mnemonicParsing="false" onMouseClicked="#handleSearchAction" prefHeight="37.0" prefWidth="98.0" text="搜索账号" GridPane.columnIndex="2">
                <font>
                   <Font name="Microsoft YaHei" size="15.0" />
@@ -124,5 +124,10 @@
             </Label>
          </children>
       </GridPane>
+      <Label fx:id="resultLabel" alignment="CENTER" layoutX="476.0" layoutY="74.0" prefHeight="19.0" prefWidth="133.0" wrapText="true">
+         <font>
+            <Font name="Microsoft YaHei" size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

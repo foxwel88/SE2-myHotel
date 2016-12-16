@@ -13,16 +13,28 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="670.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.launcher.RegisterController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.launcher.RegisterController">
    <children>
-      <ImageView fitHeight="670.0" fitWidth="450.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ImageView fitHeight="690.0" fitWidth="450.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@1.jpg" />
          </image>
       </ImageView>
-      <AnchorPane minHeight="670.0" prefHeight="670.0" prefWidth="450.0" style="-fx-background-color: rgba(0,0,0,0.5);">
+      <AnchorPane minHeight="690.0" prefHeight="670.0" prefWidth="450.0" style="-fx-background-color: rgba(0,0,0,0.5);">
          <children>
-            <TextField fx:id="userNameTextField" layoutX="98.0" layoutY="111.0" maxHeight="50.0" minHeight="37.0" prefHeight="50.0" prefWidth="318.0" promptText="输入您的账号" style="-fx-background-color: rgba(0,0,0,0.7); -fx-text-inner-color: white;" AnchorPane.bottomAnchor="510.0" AnchorPane.leftAnchor="105.0" AnchorPane.rightAnchor="27.0" AnchorPane.topAnchor="110.0" />
+            <TextField fx:id="userNameTextField" layoutX="98.0" layoutY="111.0" maxHeight="50.0" minHeight="50.0" prefHeight="50.0" prefWidth="318.0" promptText="请输入您的账号 包含字母或数字" style="-fx-background-color: rgba(0,0,0,0.7); -fx-text-inner-color: white;" AnchorPane.bottomAnchor="530.0" AnchorPane.leftAnchor="105.0" AnchorPane.rightAnchor="27.0" AnchorPane.topAnchor="110.0" />
+            <PasswordField fx:id="passwordField" layoutX="98.0" layoutY="189.0" prefHeight="50.0" prefWidth="318.0" promptText="请输入长度不少于6位的数字或字母组合" style="-fx-background-color: rgba(0,0,0,0.7); -fx-text-inner-color: white;" AnchorPane.bottomAnchor="460.0" AnchorPane.leftAnchor="105.0" AnchorPane.topAnchor="180.0" />
+            <PasswordField fx:id="passwordField2" layoutX="98.0" layoutY="266.0" prefHeight="50.0" prefWidth="318.0" promptText="请再次输入你的密码" style="-fx-background-color: rgba(0,0,0,0.7); -fx-text-inner-color: white;" AnchorPane.leftAnchor="105.0" AnchorPane.topAnchor="250.0" />
+            <TextField fx:id="nameTextField" layoutX="105.0" layoutY="347.0" prefHeight="50.0" prefWidth="318.0" promptText="请输入您的真实姓名" style="-fx-background-color: rgba(0,0,0,0.7); -fx-text-inner-color: white;" AnchorPane.topAnchor="320.0" />
+            <ChoiceBox fx:id="typeChoiceBox" layoutX="105.0" layoutY="396.0" prefWidth="150.0" style="-fx-background-color: rgba(0,0,0,0.7);" AnchorPane.leftAnchor="105.0" AnchorPane.topAnchor="396.0" />
+            <TextField fx:id="phoneTextField" layoutX="105.0" layoutY="475.0" prefHeight="50.0" prefWidth="318.0" promptText="输入11位手机号" style="-fx-background-color: rgba(0,0,0,0.7); -fx-text-inner-color: white;" AnchorPane.leftAnchor="105.0" AnchorPane.topAnchor="450.0" />
+            <DatePicker fx:id="birthDatePicker" layoutX="105.0" layoutY="567.0" prefHeight="40.0" prefWidth="318.0" AnchorPane.topAnchor="530.0" />
+            <TextField fx:id="companyTextField" layoutX="105.0" layoutY="527.0" prefHeight="50.0" prefWidth="318.0" promptText="输入企业名称" style="-fx-background-color: rgba(0,0,0,0.7); -fx-text-inner-color: white;" visible="false" />
+            <Button defaultButton="true" layoutX="105.0" layoutY="593.0" mnemonicParsing="false" onMouseClicked="#handleSignUpAction" prefHeight="50.0" prefWidth="318.0" style="-fx-background-color: rgba(255,45,45,0.5);" text="立即注册" textFill="WHITE" AnchorPane.bottomAnchor="47.0" AnchorPane.leftAnchor="105.0" AnchorPane.topAnchor="593.0">
+               <font>
+                  <Font name="Microsoft YaHei UI Light" size="20.0" />
+               </font>
+            </Button>
             <Label layoutX="113.0" layoutY="42.0" text="酒店预订管理系统" textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei UI Light" size="28.0" />
@@ -31,11 +43,6 @@
                   <Bloom threshold="0.89" />
                </effect>
             </Label>
-            <Button defaultButton="true" layoutX="105.0" layoutY="633.0" mnemonicParsing="false" onMouseClicked="#handleSignUpAction" prefHeight="47.0" prefWidth="318.0" style="-fx-background-color: rgba(255,45,45,0.5);" text="立即注册" textFill="WHITE" AnchorPane.bottomAnchor="23.0" AnchorPane.leftAnchor="105.0" AnchorPane.topAnchor="600.0">
-               <font>
-                  <Font name="Microsoft YaHei UI Light" size="20.0" />
-               </font>
-            </Button>
             <Label layoutX="45.0" layoutY="130.0" text="账号：" textFill="WHITE" AnchorPane.topAnchor="123.0">
                <font>
                   <Font name="Microsoft YaHei UI Light" size="16.0" />
@@ -60,8 +67,6 @@
                   <Bloom threshold="0.89" />
                </effect>
             </Label>
-            <PasswordField fx:id="passwordField" layoutX="98.0" layoutY="189.0" prefHeight="50.0" prefWidth="318.0" promptText="长度大于6位的数字字母组合" style="-fx-background-color: rgba(0,0,0,0.7); -fx-text-inner-color: white;" AnchorPane.leftAnchor="105.0" AnchorPane.topAnchor="180.0" />
-            <PasswordField fx:id="passwordField2" layoutX="98.0" layoutY="266.0" prefHeight="50.0" prefWidth="318.0" promptText="请再输入你的密码" style="-fx-background-color: rgba(0,0,0,0.7); -fx-text-inner-color: white;" AnchorPane.leftAnchor="105.0" AnchorPane.topAnchor="250.0" />
             <Label layoutX="15.0" layoutY="399.0" text="账号类型 : " textFill="WHITE" AnchorPane.rightAnchor="357.0" AnchorPane.topAnchor="399.0">
                <font>
                   <Font name="Microsoft YaHei UI Light" size="16.0" />
@@ -86,8 +91,6 @@
                   <Bloom threshold="0.89" />
                </effect>
             </Label>
-            <ChoiceBox fx:id="typeChoiceBox" layoutX="105.0" layoutY="396.0" prefWidth="150.0" AnchorPane.leftAnchor="105.0" AnchorPane.topAnchor="396.0" />
-            <TextField fx:id="phoneTextField" layoutX="105.0" layoutY="475.0" prefHeight="50.0" prefWidth="318.0" promptText="输入11位手机号" style="-fx-background-color: rgba(0,0,0,0.7); -fx-text-inner-color: white;" AnchorPane.leftAnchor="105.0" AnchorPane.topAnchor="450.0" />
             <Label layoutX="45.0" layoutY="334.0" text="姓名：" textFill="WHITE" AnchorPane.topAnchor="334.0">
                <font>
                   <Font name="Microsoft YaHei UI Light" size="16.0" />
@@ -96,19 +99,21 @@
                   <Bloom threshold="0.89" />
                </effect>
             </Label>
-            <TextField fx:id="nameTextField" layoutX="105.0" layoutY="347.0" prefHeight="50.0" prefWidth="318.0" promptText="输入您的真实姓名" style="-fx-background-color: rgba(0,0,0,0.7); -fx-text-inner-color: white;" AnchorPane.topAnchor="320.0" />
-            <Circle blendMode="SOFT_LIGHT" fill="#adadad43" layoutX="56.0" layoutY="624.0" onMouseClicked="#goBack" radius="24.5" stroke="BLACK" strokeMiterLimit="1.0" strokeType="INSIDE">
+            <Circle blendMode="SOFT_LIGHT" fill="#adadad43" layoutX="56.0" layoutY="616.0" onMouseClicked="#goBack" radius="24.5" stroke="BLACK" strokeMiterLimit="1.0" strokeType="INSIDE">
                <effect>
                   <Bloom />
                </effect>
             </Circle>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="39.0" layoutY="598.0" onMouseClicked="#goBack" prefHeight="30.0" prefWidth="32.0" text="&lt;" textFill="WHITE">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="39.0" layoutY="590.0" onMouseClicked="#goBack" prefHeight="30.0" prefWidth="32.0" text="&lt;" textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei" size="35.0" />
                </font>
             </Label>
-            <DatePicker fx:id="birthDatePicker" layoutX="105.0" layoutY="567.0" prefHeight="40.0" prefWidth="318.0" AnchorPane.topAnchor="530.0" />
-            <TextField fx:id="companyTextField" layoutX="105.0" layoutY="527.0" prefHeight="50.0" prefWidth="318.0" promptText="输入企业名称" style="-fx-background-color: rgba(0,0,0,0.7); -fx-text-inner-color: white;" visible="false" />
+            <Label fx:id="resultLabel" alignment="CENTER" layoutX="179.0" layoutY="656.0" prefHeight="18.0" prefWidth="170.0" text="密码错误" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="Microsoft YaHei" size="14.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

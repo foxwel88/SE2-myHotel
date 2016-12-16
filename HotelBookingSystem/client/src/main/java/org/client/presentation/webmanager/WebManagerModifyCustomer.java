@@ -79,6 +79,8 @@ public class WebManagerModifyCustomer {
 	void handleCancelAction(MouseEvent event) throws IOException {
 		returnPane(nowvo);
 	}
+	
+	
 
 	@FXML
 	void handleConfirmAction(MouseEvent event) throws IOException {
