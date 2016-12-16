@@ -102,7 +102,9 @@ public class WebManagerCheckWebMarketer {
 		resultLabel.setText("");
 		if (vo.resultMessage == ResultMessage.SUCCESS) {
 			if (vo.type.equals("网站营销人员")) {
+				resultLabel.setText("");
 				changeContent(vo);
+				modifyButton.setVisible(true);
 			} else {
 				resultLabel.setText("该用户不是网站营销人员");
 				modifyButton.setVisible(false);

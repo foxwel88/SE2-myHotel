@@ -94,7 +94,9 @@ public class WebManagerCheckHotelManager {
 		UserVO vo = controller.findbyUserName(userNameTextField.getText());
 		if (vo.resultMessage == ResultMessage.SUCCESS) {
 			if (vo.type.equals("酒店工作人员")) {
+				resultLabel.setText("");
 				changeContent(vo);
+				modifyButton.setVisible(true);
 			} else {
 				resultLabel.setText("该用户不是酒店工作人员");
 				modifyButton.setVisible(false);

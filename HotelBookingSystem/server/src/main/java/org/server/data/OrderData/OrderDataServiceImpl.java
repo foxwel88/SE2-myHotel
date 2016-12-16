@@ -190,5 +190,11 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 		
 	}
 
+	@Override
+	public void updateAbnormalOrders(Date date) throws RemoteException {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 }
