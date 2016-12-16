@@ -154,10 +154,8 @@ public class HotelManagerModifyPromotion {
 		discountLabel.setStyle("-fx-text-fill: white;-fx-background-color: rgba(255,255,255,0.1)");
 		
 		levelBox.setValue(vo.level);
-		levelBox.setStyle("-fx-text-fill: white");
 
 		typeBox.setValue(vo.type);
-		typeBox.setStyle("-fx-text-fill: white");
 		
 		modifyMode = true;
 
