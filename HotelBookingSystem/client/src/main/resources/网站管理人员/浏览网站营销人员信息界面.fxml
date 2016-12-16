@@ -64,7 +64,7 @@
                   <Font name="Microsoft YaHei" size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="userNameTextField" maxWidth="130.0" prefHeight="27.0" prefWidth="120.0" />
+            <TextField fx:id="userNameTextField" maxWidth="130.0" prefHeight="27.0" prefWidth="120.0" promptText="请输入账号" />
             <Button fx:id="modifyButton" mnemonicParsing="false" onMouseClicked="#handleModifyAction" prefHeight="37.0" prefWidth="98.0" text="修改信息" GridPane.columnIndex="2" GridPane.rowIndex="8">
                <font>
                   <Font name="Microsoft YaHei" size="15.0" />
@@ -86,5 +86,10 @@
             </Pane>
          </children>
       </GridPane>
+      <Label fx:id="resultLabel" alignment="CENTER" layoutX="580.0" layoutY="116.0" prefHeight="19.0" prefWidth="133.0" wrapText="true">
+         <font>
+            <Font name="Microsoft YaHei" size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

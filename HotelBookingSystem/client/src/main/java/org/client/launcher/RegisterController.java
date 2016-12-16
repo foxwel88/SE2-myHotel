@@ -10,6 +10,7 @@ import java.util.Date;
 import javafx.scene.control.*;
 import org.client.bl.userbl.UserController;
 import org.client.blservice.userblservice.Userblservice;
+import org.client.presentation.util.CheckStyle;
 import org.client.vo.UserVO;
 import org.common.utility.ResultMessage;
 import org.common.utility.UserType;
@@ -23,6 +24,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class RegisterController {
+	@FXML
+	private Label resultLabel;
+	
 	@FXML
 	private TextField userNameTextField;
 
@@ -59,7 +63,8 @@ public class RegisterController {
 		userTypes.add(UserType.COMPANYCUSTOMER.getString());
 		typeChoiceBox.setItems(userTypes);
 		typeChoiceBox.setValue(UserType.PERSONALCUSTOMER.getString());
-		
+		birthDatePicker.setValue(LocalDate.of(1990,1,1));
+		resultLabel.setText("");
 		typeChoiceBox.getSelectionModel().selectedIndexProperty().addListener((observableValue, oldIndex, newIndex) -> {
 			if (userTypes.get((Integer)newIndex).equals(UserType.PERSONALCUSTOMER.getString())) {
 				birthLabel.setText("生日：");
@@ -73,11 +78,51 @@ public class RegisterController {
 		});
 	}
 	
+	void show(String s) {
+		resultLabel.setText(s);
+	}
+	
+	
+	
+	boolean check() {
+		if (! passwordField.getText().equals(passwordField2.getText())) {
+			show("两次输入密码不一致");
+			return false;
+		}
+		if (! CheckStyle.checkUsername(userNameTextField.getText())) {
+			show("用户名格式不正确");
+			return false;
+		}
+		if (! CheckStyle.checkPassword(passwordField.getText())) {
+			show("密码格式不正确");
+			return false;
+		}
+		if (! CheckStyle.checkName(nameTextField.getText())) {
+			show("请填写姓名");
+			return false;
+		}
+		if (! CheckStyle.checkPhone(phoneTextField.getText())) {
+			show("手机号格式不正确");
+			return false;
+		}
+		if (typeChoiceBox.getValue() == UserType.PERSONALCUSTOMER.getString()) {
+			
+		} else {
+			if (! CheckStyle.checkCompanyname(companyTextField.getText())) {
+				show("请填写公司名称");
+				return false;
+			}
+		}
+		return true;
+	}
+	
 	@FXML
 	void handleSignUpAction(MouseEvent event) {
 		Userblservice userBl = UserController.getInstance();
-		if (passwordField.getText().equals(passwordField2.getText())) {
-
+		
+			
+		if (check()) {
+			ResultMessage message = null;
 			if (typeChoiceBox.getValue() == UserType.PERSONALCUSTOMER.getString()) {
 				//记录生日
 				Date birthDate = null;
@@ -90,18 +135,19 @@ public class RegisterController {
 				UserVO vo = new UserVO(typeChoiceBox.getValue(), userNameTextField.getText(), nameTextField.getText(), null,
 						passwordField.getText(), phoneTextField.getText(), 200, birthDate, null, null, null);
 				
-				ResultMessage message = userBl.add(vo);
-				if (message == ResultMessage.SUCCESS) {
-					backToLogin();
-				}
+				message = userBl.add(vo);
 			} else {
 				UserVO vo = new UserVO(typeChoiceBox.getValue(), userNameTextField.getText(), nameTextField.getText(), null,
 						passwordField.getText(), phoneTextField.getText(), 200, null, companyTextField.getText(), null, null);
 				
-				ResultMessage message = userBl.add(vo);
-				if (message == ResultMessage.SUCCESS) {
-					backToLogin();
-				}
+				message = userBl.add(vo);
+			}
+
+			if (message == ResultMessage.EXIST) {
+				show("用户名已存在");
+			}
+			if (message == ResultMessage.SUCCESS) {
+				backToLogin();
 			}
 		}
 	
