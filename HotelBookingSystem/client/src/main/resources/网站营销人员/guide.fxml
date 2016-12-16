@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="680.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.presentation.webmarketer.WebMarketerGuide">
+<Pane fx:id="parent" prefHeight="680.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.presentation.webmarketer.WebMarketerGuide">
    <children>
       <ImageView fitHeight="683.0" fitWidth="1103.0">
          <image>
@@ -132,6 +132,7 @@
                         <Menu fx:id="avatar" mnemonicParsing="false">
                            <items>
                               <MenuItem mnemonicParsing="false" onAction="#logOut" text="注销" />
+                              <MenuItem mnemonicParsing="false" onAction="#modifyPassword" text="修改密码" />
                            </items>
                         </Menu>
                      </menus>
