@@ -9,6 +9,7 @@ import org.client.vo.OrderVO;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -138,12 +139,9 @@ public class CustomerHistoryOrder {
 	 */
 	@FXML
 	void switchToExecutedOrder() {
-		executedOrder.setStyle("-fx-background-color:  rgba(0,0,0,0.3)");
-		canceledOrder.setStyle("-fx-background-color:  rgba(255,255,255,0.2)");
-		abnormalOrder.setStyle("-fx-background-color:  rgba(255,255,255,0.2)");
-		executedOrderText.setStyle("-fx-text-fill: white");
-		canceledOrderText.setStyle("-fx-text-fill: black");
-		abnormalOrderText.setStyle("-fx-text-fill: black");
+		active_innerGuide(0);
+		deactive_innerGuide(1);
+		deactive_innerGuide(2);
 		currentLabel = 0;
 		currentPage.setText(String.valueOf(1));
 		showExecutedOrderList();
@@ -151,12 +149,9 @@ public class CustomerHistoryOrder {
 	
 	@FXML
 	void switchToCanceledOrder() {
-		executedOrder.setStyle("-fx-background-color:  rgba(255,255,255,0.2)");
-		canceledOrder.setStyle("-fx-background-color:  rgba(0,0,0,0.3)");
-		abnormalOrder.setStyle("-fx-background-color:  rgba(255,255,255,0.2)");
-		executedOrderText.setStyle("-fx-text-fill: black");
-		canceledOrderText.setStyle("-fx-text-fill: white");
-		abnormalOrderText.setStyle("-fx-text-fill: black");
+		deactive_innerGuide(0);
+		active_innerGuide(1);
+		deactive_innerGuide(2);
 		currentLabel = 1;
 		currentPage.setText(String.valueOf(1));
 		showCanceledOrderList();
@@ -164,12 +159,9 @@ public class CustomerHistoryOrder {
 	
 	@FXML
 	void switchToAbnormalOrder() {
-		executedOrder.setStyle("-fx-background-color:  rgba(255,255,255,0.2)");
-		canceledOrder.setStyle("-fx-background-color:  rgba(255,255,255,0.2)");
-		abnormalOrder.setStyle("-fx-background-color:  rgba(0,0,0,0.3)");
-		executedOrderText.setStyle("-fx-text-fill: black");
-		canceledOrderText.setStyle("-fx-text-fill: black");
-		abnormalOrderText.setStyle("-fx-text-fill: white");
+		deactive_innerGuide(0);
+		deactive_innerGuide(1);
+		active_innerGuide(2);
 		currentLabel = 2;
 		currentPage.setText(String.valueOf(1));
 		showAbnormalOrderList();
@@ -277,6 +269,104 @@ public class CustomerHistoryOrder {
 			}
 		} catch (IndexOutOfBoundsException indexOutOfBoundsException) {
 			// 点击无订单的订单列表区域会出现此异常，可以忽略
+		}
+	}
+	
+	@FXML
+	void active(MouseEvent mouseEvent) {
+		HBox hbox = (HBox)mouseEvent.getSource();
+		if (!((Label)hbox.getChildren().get(0)).getText().isEmpty()) {
+			for (int i = 0; i < hbox.getChildren().size(); i++) {
+				hbox.getChildren().get(i).setStyle("-fx-text-fill: white");
+			}
+			hbox.setStyle("-fx-background-color: rgba(255,255,255,0.14)");
+			hbox.setEffect(new DropShadow());
+		}
+	}
+	
+	@FXML
+	void deactive(MouseEvent mouseEvent) {
+		HBox hbox = (HBox)mouseEvent.getSource();
+		if (!((Label)hbox.getChildren().get(0)).getText().isEmpty()) {
+			hbox.setStyle(null);
+			hbox.setEffect(null);
+			for (int i = 0; i < hbox.getChildren().size(); i++) {
+				hbox.getChildren().get(i).setStyle(null);
+			}
+		}
+	}
+	
+	@FXML
+	void activeExecutedOrderGuide() {
+		active_innerGuide(0);
+	}
+	
+	@FXML
+	void activeCanceledOrderGuide() {
+		active_innerGuide(1);
+	}
+	
+	@FXML
+	void activeAbnormalOrderGuide() {
+		active_innerGuide(2);
+	}
+	
+	@FXML
+	void deactiveExecutedOrderGuide() {
+		if (currentLabel != 0) {
+			deactive_innerGuide(0);
+		}
+	}
+	
+	@FXML
+	void deactiveCanceledOrderGuide() {
+		if (currentLabel != 1) {
+			deactive_innerGuide(1);
+		}
+	}
+	
+	@FXML
+	void deactiveAbnormalOrderGuide() {
+		if (currentLabel != 2) {
+			deactive_innerGuide(2);
+		}
+	}
+	
+	/**
+	 * 
+	 * @param whichOne 0-2
+	 */
+	private void active_innerGuide(int whichOne) {
+		switch (whichOne) {
+			case 0:
+				executedOrder.setStyle("-fx-background-color:  rgba(0,0,0,0.3)");
+				executedOrderText.setStyle("-fx-text-fill: white");
+				break;
+			case 1:
+				canceledOrder.setStyle("-fx-background-color:  rgba(0,0,0,0.3)");
+				canceledOrderText.setStyle("-fx-text-fill: white");
+				break;
+			case 2:
+				abnormalOrder.setStyle("-fx-background-color:  rgba(0,0,0,0.3)");
+				abnormalOrderText.setStyle("-fx-text-fill: white");
+				break;
+		}
+	}
+	
+	private void deactive_innerGuide(int whichOne) {
+		switch (whichOne) {
+			case 0:
+				executedOrder.setStyle("-fx-background-color:  rgba(255,255,255,0.2)");
+				executedOrderText.setStyle("-fx-text-fill: black");
+				break;
+			case 1:
+				canceledOrder.setStyle("-fx-background-color:  rgba(255,255,255,0.2)");
+				canceledOrderText.setStyle("-fx-text-fill: black");
+				break;
+			case 2:
+				abnormalOrder.setStyle("-fx-background-color:  rgba(255,255,255,0.2)");
+				abnormalOrderText.setStyle("-fx-text-fill: black");
+				break;
 		}
 	}
 	

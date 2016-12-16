@@ -8,6 +8,7 @@ import org.client.vo.OrderVO;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -157,6 +158,30 @@ public class CustomerUnexcutedOrderList {
 			}
 		} catch (IndexOutOfBoundsException indexOutOfBoundsException) {
 			// 点击无订单的订单列表区域会出现此异常，可以忽略
+		}
+	}
+	
+	@FXML
+	void active(MouseEvent mouseEvent) {
+		HBox hbox = (HBox)mouseEvent.getSource();
+		if (!((Label)hbox.getChildren().get(0)).getText().isEmpty()) {
+			for (int i = 0; i < hbox.getChildren().size(); i++) {
+				hbox.getChildren().get(i).setStyle("-fx-text-fill: white");
+			}
+			hbox.setStyle("-fx-background-color: rgba(255,255,255,0.14)");
+			hbox.setEffect(new DropShadow());
+		}
+	}
+	
+	@FXML
+	void deactive(MouseEvent mouseEvent) {
+		HBox hbox = (HBox)mouseEvent.getSource();
+		if (!((Label)hbox.getChildren().get(0)).getText().isEmpty()) {
+			hbox.setStyle(null);
+			hbox.setEffect(null);
+			for (int i = 0; i < hbox.getChildren().size(); i++) {
+				hbox.getChildren().get(i).setStyle(null);
+			}
 		}
 	}
 	
