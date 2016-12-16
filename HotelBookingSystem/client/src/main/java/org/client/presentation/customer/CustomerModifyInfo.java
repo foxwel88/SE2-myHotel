@@ -110,18 +110,25 @@ public class CustomerModifyInfo {
 		String newPassword2 = newPasswordAgain.getText();
 		Alert alert;
 		if (newPassword1.equals(newPassword2)) {
-			ResultMessage resultMessage = SwitchSceneUtil.modifyPassword(originPassword.getText(), newPassword1);
-			if (!resultMessage.equals(ResultMessage.SUCCESS)) {
+			if (checkPasswordFormat(newPassword1)) {
+				ResultMessage resultMessage = SwitchSceneUtil.modifyPassword(originPassword.getText(), newPassword1);
+				if (!resultMessage.equals(ResultMessage.SUCCESS)) {
+					alert = new Alert(AlertType.ERROR);
+					alert.setTitle("Error Dialog");
+					alert.setHeaderText(null);
+					alert.setContentText("原密码错误");
+				} else {
+					alert = new Alert(AlertType.INFORMATION);
+					alert.setTitle("OK");
+					alert.setHeaderText(null);
+					alert.setContentText("修改成功");
+					SwitchSceneUtil.turnToAnotherScene((GridPane)root.getParent(), resources.customerModifyInfo);
+				}
+			} else {
 				alert = new Alert(AlertType.ERROR);
 				alert.setTitle("Error Dialog");
 				alert.setHeaderText(null);
-				alert.setContentText("原密码错误");
-			} else {
-				alert = new Alert(AlertType.INFORMATION);
-				alert.setTitle("OK");
-				alert.setHeaderText(null);
-				alert.setContentText("修改成功");
-				SwitchSceneUtil.turnToAnotherScene((GridPane)root.getParent(), resources.customerModifyInfo);
+				alert.setContentText("密码只能由字母或数字组成（支持大小写），且长度不小于6位");
 			}
 		} else {
 			alert = new Alert(AlertType.ERROR);
@@ -158,9 +165,33 @@ public class CustomerModifyInfo {
 		return true;
 	}
 	
+	private boolean checkPasswordFormat(String password) {
+		if (password.length() < 6) {
+			return false;
+		}
+		for (int i = 0; i < password.length(); i++) {
+			char c = password.charAt(i);
+			if (isNumeric(c) || isAlphabet(c)) {
+				// continue
+			} else {
+				return false;
+			}
+		}
+		return true;
+	}
+	
 	private boolean isNumeric(char c) {
 		if (c >= 48 && c <= 57) {
 			return true;
+		}
+		return false;
+	}
+	
+	private boolean isAlphabet(char c) {
+		if (c >= 65 && c <= 90) {
+			if (c >= 97 && c <= 122) {
+				return true;
+			}
 		}
 		return false;
 	}
