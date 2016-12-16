@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 
 import org.client.bl.userbl.UserController;
 import org.client.blservice.userblservice.Userblservice;
+import org.client.presentation.util.CheckStyle;
 import org.common.utility.ResultMessage;
 
 import javafx.event.ActionEvent;
@@ -64,6 +65,11 @@ public class PwModify {
 		String oldPassword = oldPwField.getText();
 		String newPassword = newPwField.getText();
 		String toCheck = confirmPwField.getText();
+		
+		if (!CheckStyle.checkPassword(newPassword)) {
+			infoLabel.setText("新密码格式不正确");
+			return;
+		}
 		if (!newPassword.equals(toCheck)) {
 			infoLabel.setText("两次密码不一致");
 			return;
