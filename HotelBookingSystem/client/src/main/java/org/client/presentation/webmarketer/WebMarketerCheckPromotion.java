@@ -82,14 +82,9 @@ public class WebMarketerCheckPromotion {
 	private List<PromotionVO> promotionList;
 	
 	/**
-	 * 当前页面中的每条促销策略的NamePane的list
+	 * 当前页面中的PromotionPane的list
 	 */
-	private ArrayList<NamePane> currentNamePanes;
-	
-	/**
-	 * 当前页面中的每条促销策略的DetailPane的list
-	 */
-	private ArrayList<DetailPane> currentDetailPanes;
+	private ArrayList<PromotionPane> currentPromotionPanes;
 	
 	@FXML
     void initialize() {
@@ -175,8 +170,7 @@ public class WebMarketerCheckPromotion {
 	private void switchCurrentPage(int toPageNum) {
 
 		//修改currentNamePanes和currentDetailPanes
-		currentNamePanes = new ArrayList<>();
-		currentDetailPanes = new ArrayList<>();
+		currentPromotionPanes = new ArrayList<>();
 		//当前页面要显示的第一个促销策略在list中的位置
 		int fromNum = (toPageNum - 1) * NUM_OF_PROMOTION_PER_PAGE;
 		//当前页面要显示的最后一个促销策略在list中的位置
@@ -191,23 +185,22 @@ public class WebMarketerCheckPromotion {
 			return;
 		}
 		for (int i = fromNum; i < toNum; i++) {
-			currentNamePanes.add(new NamePane(promotionList.get(i)));
-			currentDetailPanes.add(new DetailPane(promotionList.get(i)));
+			currentPromotionPanes.add(new PromotionPane(promotionList.get(i)));
+			
 		}
 		
 		//修改contentGridPane
+		int lastIndex = 0;
 		contentGridPane.getChildren().clear();
 		for (int i = 0; i < promotionNums; i++) {
-			NamePane namePane = currentNamePanes.get(i);
-			DetailPane detailPane = currentDetailPanes.get(i);
-			contentGridPane.add(namePane, 0, i * 2);
-			contentGridPane.add(detailPane, 1, i * 2);
+			PromotionPane promotionPane = currentPromotionPanes.get(i);
+			contentGridPane.add(promotionPane, 0, i * 2);
+			lastIndex++;
 		}
-		//加黑条
-		for (int i = 1; i <= 7; i = i + 2) {
-			AnchorPane pane = new AnchorPane();
-			pane.setStyle("-fx-background-color:rgba(85,85,85,0.4)");
-			contentGridPane.add(pane, 0, i, 2, 1);
+		for (int i = lastIndex; i < NUM_OF_PROMOTION_PER_PAGE; i++) {
+			AnchorPane blackPane = new AnchorPane();
+			blackPane.setStyle("-fx-background-color:rgba(0,0,0,0.45)");
+			contentGridPane.add(blackPane, 0, i * 2);
 		}
 		
 		//修改pageNum
@@ -217,21 +210,8 @@ public class WebMarketerCheckPromotion {
 		
 	}
 	
-	class NamePane extends AnchorPane {
-		
+	class PromotionPane extends AnchorPane {
 		Text name;
-		
-		NamePane(PromotionVO promotionVO) {
-			name = new Text(promotionVO.name);
-			name.setFont(Font.font("Microsoft YaHei", 18));
-			
-			this.getChildren().add(name);
-			AnchorPane.setLeftAnchor(name, 60.0);
-			AnchorPane.setTopAnchor(name, 9.0);
-		}
-	}
-	
-	class DetailPane extends AnchorPane {
 		
 		Text type;
 		
@@ -239,43 +219,55 @@ public class WebMarketerCheckPromotion {
 		
 		Button detail;
 		
-		PromotionVO vo;
-		
-		DetailPane(PromotionVO promotionVO) {
-			vo = promotionVO;
+		PromotionPane(PromotionVO vo) {
+			name = new Text(vo.name);
+			type = new Text(vo.type);
+			discount = new Text(String.valueOf(vo.discount));
+			detail = new Button("详情");
 			
-			// set style
-			type = new Text(promotionVO.type);
-			type.setFont(Font.font("Microsoft YaHei", 18));
+			// set effect
+			this.setStyle("-fx-background-color:rgba(0,0,0,0.45)");
+			name.setFont(Font.font("Microsoft YaHei Light", 22));
+			name.setStyle("-fx-fill: white");
+			name.setWrappingWidth(183.0);
+			name.setTextAlignment(TextAlignment.CENTER);
+			type.setFont(Font.font("Microsoft YaHei Light", 22));
+			type.setStyle("-fx-fill: white");
+			type.setWrappingWidth(183.0);
 			type.setTextAlignment(TextAlignment.CENTER);
-			
-			discount = new Text(new Double(promotionVO.discount).toString());
-			discount.setFont(Font.font("Microsoft YaHei", 18));
+			discount.setFont(Font.font("Microsoft YaHei Light", 22));
+			discount.setStyle("-fx-fill: white");
+			discount.setWrappingWidth(110.0);
 			discount.setTextAlignment(TextAlignment.CENTER);
-			
-			detail = new Button("编辑");
 			detail.setFont(Font.font("Microsoft YaHei", 15));
-			detail.setStyle("-fx-background-color:rgba(0,0,0,0.4); -fx-text-fill: white");
-			detail.setTextAlignment(TextAlignment.CENTER);
+			detail.setStyle("-fx-background-color:rgba(0,0,0,0.2); -fx-text-fill: white");
 			
 			// add node
+			this.getChildren().add(name);
 			this.getChildren().add(type);
 			this.getChildren().add(discount);
 			this.getChildren().add(detail);
 			
 			// set location
-			AnchorPane.setBottomAnchor(type, 9.0);
-			AnchorPane.setLeftAnchor(type, 160.0);
+			AnchorPane.setBottomAnchor(name, 10.0);
+			AnchorPane.setTopAnchor(name, 10.0);
+			AnchorPane.setLeftAnchor(name, 0.0);
+			AnchorPane.setRightAnchor(name, 540.0);
 			
-			AnchorPane.setBottomAnchor(discount, 9.0);
-			AnchorPane.setLeftAnchor(discount, 400.0);
-			AnchorPane.setTopAnchor(discount, 9.0);
-			AnchorPane.setRightAnchor(discount, 120.0);
+			AnchorPane.setBottomAnchor(type, 10.0);
+			AnchorPane.setTopAnchor(type, 10.0);
+			AnchorPane.setLeftAnchor(discount, 222.0);
+			AnchorPane.setRightAnchor(type, 319.0);
 			
-			AnchorPane.setBottomAnchor(detail, 6.0);
-			AnchorPane.setLeftAnchor(detail, 555.0);
-			AnchorPane.setRightAnchor(detail, 34.0);
-			AnchorPane.setTopAnchor(detail, 6.0);
+			AnchorPane.setBottomAnchor(discount, 10.0);
+			AnchorPane.setTopAnchor(discount, 10.0);
+			AnchorPane.setLeftAnchor(discount, 426.0);
+			AnchorPane.setRightAnchor(discount, 189.0);
+			
+			AnchorPane.setBottomAnchor(detail, 11.0);
+			AnchorPane.setTopAnchor(detail, 10.0);
+			AnchorPane.setLeftAnchor(detail, 633.0);
+			AnchorPane.setRightAnchor(detail, 23.0);
 			
 			// add listener
 			detail.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -285,6 +277,7 @@ public class WebMarketerCheckPromotion {
 				}
 			});
 		}
+		
 	}
 
 }

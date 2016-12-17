@@ -82,6 +82,23 @@ public class Resources {
 	
 	public URL customerCheckAbnormalOrder = getClass().getResource("/客户/异常订单详细信息界面.fxml");
 	
+	//WebMarketer UI
+	public URL webMarketerGuide = getClass().getResource("/网站营销人员/guide.fxml");
+	
+	public URL webMarketerAbnormalOrder = getClass().getResource("/网站营销人员/异常订单详细信息界面.fxml");
+	
+	public URL webMarketerAbnormalOrderList = getClass().getResource("/网站营销人员/浏览异常订单界面.fxml");
+	
+	public URL webMarketerCheckPromotion = getClass().getResource("/网站营销人员/管理促销策略界面.fxml");
+	
+	public URL webMarketerMain = getClass().getResource("/网站营销人员/网站营销人员主界面.fxml");
+	
+	public URL webMarketerModifyCredit = getClass().getResource("/网站营销人员/信用充值界面.fxml");
+	
+	public URL webMarketerModifyLevel = getClass().getResource("/网站营销人员/修改会员等级制度界面.fxml");
+	
+	public URL webMarketerModifyPromotion = getClass().getResource("/网站营销人员/修改促销策略界面.fxml");
+	
 	private FXMLLoader loader;
 	
 	private Resources() {

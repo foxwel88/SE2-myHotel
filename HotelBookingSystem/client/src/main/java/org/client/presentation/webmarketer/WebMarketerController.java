@@ -52,10 +52,6 @@ public class WebMarketerController {
 		promotionbl = PromotionController.getInstance();
 		orderbl = OrderController.getInstance();
 		hotelbl = HotelController.getInstance();
-//		userbl = new User_stub();
-//		promotionbl = new Promotion_stub();
-//		orderbl = new Order_stub();
-//		hotelbl = new Hotel_stub();
 	}
 	
 	public static WebMarketerController getInstance() {

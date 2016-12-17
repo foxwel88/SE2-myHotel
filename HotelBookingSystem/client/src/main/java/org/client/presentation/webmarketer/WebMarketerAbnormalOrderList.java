@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import org.client.presentation.util.ResultInfoHelper;
 import org.client.vo.OrderVO;
 import org.common.utility.ResultMessage;
 
@@ -22,6 +23,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 
 /**
  * FXML Controller
@@ -67,6 +69,9 @@ public class WebMarketerAbnormalOrderList {
 	@FXML
 	private GridPane contentGridPane;
 	
+	@FXML
+	private Label infoLabel;
+	
 	private WebMarketerController controller;
 	
 	/**
@@ -92,13 +97,18 @@ public class WebMarketerAbnormalOrderList {
 	@FXML
     void handleSearch(MouseEvent event) {
 		String id = orderNumLabel.getText();
+		if (id == null || id.equals("")) {
+			infoLabel.setText("请输入订单号");
+			return;
+		}
 		OrderVO vo = controller.getAbnormalOrder(id);
 		if (vo.resultMessage != ResultMessage.SUCCESS) { // check
-			// warning window
+			ResultInfoHelper.setResultLabel(infoLabel, vo.resultMessage);
 			orderList = controller.getAbnormalOrders();
 			switchCurrentPage(FIRST_PAGE_NUM);
 			return;
 		}
+		infoLabel.setText("搜索成功");
 		orderList = new ArrayList<>();
 		orderList.add(vo);
 		switchCurrentPage(FIRST_PAGE_NUM);
@@ -166,9 +176,16 @@ public class WebMarketerAbnormalOrderList {
 
 		// 修改contentGridPane
 		contentGridPane.getChildren().clear();
+		int lastIndex = 0;
 		for (int i = 0; i < promotionNums; i++) {
 			OrderPane orderPane = currentOrderPanes.get(i);
 			contentGridPane.add(orderPane, 0, i * 2);
+			lastIndex++;
+		}
+		for (int i = lastIndex; i < NUM_OF_ORDER_PER_PAGE; i++) {
+			AnchorPane blackPane = new AnchorPane();
+			blackPane.setStyle("-fx-background-color:rgba(0,0,0,0.45)");
+			contentGridPane.add(blackPane, 0, i * 2);
 		}
 
 		// 修改pageNum
@@ -194,6 +211,7 @@ public class WebMarketerAbnormalOrderList {
         assert nextPage != null : "fx:id=\"nextPage\" was not injected: check your FXML file '浏览异常订单界面.fxml'.";
         assert jumpField != null : "fx:id=\"jumpField\" was not injected: check your FXML file '浏览异常订单界面.fxml'.";
         assert contentGridPane != null : "fx:id=\"contentGridPane\" was not injected: check your FXML file '浏览异常订单界面.fxml'.";
+        assert infoLabel != null : "fx:id=\"infoLabel\" was not injected: check your FXML file '浏览异常订单界面.fxml'.";
         
 
 		controller = WebMarketerController.getInstance();
@@ -207,30 +225,43 @@ public class WebMarketerAbnormalOrderList {
 	class OrderPane extends AnchorPane {
 		Text orderNum;
 		
+		Text hotel;
+		
 		Button detail;
 		
 		OrderPane(OrderVO vo) {
 			orderNum = new Text(vo.orderID);
+			hotel = new Text(vo.hotelName);
 			detail = new Button("详情");
 			
 			// set effect
-			this.setStyle("-fx-background-color:rgba(85,85,85,0.4)");
-			orderNum.setFont(Font.font("Microsoft YaHei", 15));
-			orderNum.setStyle("-fx-text-fill: black");
-			detail.setFont(Font.font("Microsoft YaHei", 14));
+			this.setStyle("-fx-background-color:rgba(0,0,0,0.45)");
+			orderNum.setFont(Font.font("Microsoft YaHei", 17));
+			orderNum.setStyle("-fx-fill: white");
+			hotel.setFont(Font.font("Microsoft YaHei UI Light", 23));
+			hotel.setStyle("-fx-fill: white");
+			hotel.setWrappingWidth(240.0);
+			hotel.setTextAlignment(TextAlignment.CENTER);
+			detail.setFont(Font.font("Microsoft YaHei", 15));
 			detail.setStyle("-fx-background-color:rgba(0,0,0,0.3); -fx-text-fill: white");
 			
 			this.getChildren().add(detail);
+			this.getChildren().add(hotel);
 			this.getChildren().add(orderNum);
 			
 			// set location
-			AnchorPane.setBottomAnchor(orderNum, 9.0);
+			AnchorPane.setBottomAnchor(orderNum, 12.0);
 			AnchorPane.setLeftAnchor(orderNum, 14.0);
 			
-			AnchorPane.setBottomAnchor(detail, 4.0);
+			AnchorPane.setBottomAnchor(hotel, 8.5);
+			AnchorPane.setTopAnchor(hotel, 8.5);
+			AnchorPane.setLeftAnchor(hotel, 396.0);
+			AnchorPane.setRightAnchor(hotel, 153.0);
+			
+			AnchorPane.setBottomAnchor(detail, 10.0);
 			AnchorPane.setLeftAnchor(detail, 704.0);
 			AnchorPane.setRightAnchor(detail, 14.0);
-			AnchorPane.setTopAnchor(detail, 5.0);
+			AnchorPane.setTopAnchor(detail, 10.0);
 			
 			// add listener
 			detail.setOnMouseClicked(new EventHandler<MouseEvent>() {

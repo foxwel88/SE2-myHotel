@@ -251,10 +251,11 @@ public class WebMarketerModifyLevel {
 			}
 			
 			// set effect
-			this.setStyle("-fx-background-color:rgba(85,85,85,0.4)");
-			levelName.setFont(Font.font("Microsoft YaHei", 20));
+			this.setStyle("-fx-background-color:rgba(0,0,0,0.45)");
+			levelName.setFont(Font.font("Microsoft YaHei Light", 20));
+			levelName.setStyle("-fx-fill: white");
 			credit.setFont(Font.font("Microsoft YaHei", 16));
-			credit.setStyle("-fx-background-color:rgba(255,255,255,0.4)");
+			credit.setStyle("-fx-background-color:rgba(255,255,255,0.1); -fx-text-fill: white");
 			
 			this.getChildren().add(levelName);
 			this.getChildren().add(credit);
@@ -264,10 +265,10 @@ public class WebMarketerModifyLevel {
 			AnchorPane.setLeftAnchor(levelName, 37.0);
 			AnchorPane.setTopAnchor(levelName, 7.0);
 			
-			AnchorPane.setBottomAnchor(credit, 4.0);
+			AnchorPane.setBottomAnchor(credit, 6.0);
 			AnchorPane.setLeftAnchor(credit, 280.0);
 			AnchorPane.setRightAnchor(credit, 225.0);
-			AnchorPane.setTopAnchor(credit, 4.0);
+			AnchorPane.setTopAnchor(credit, 6.0);
 		}
 		
 		double getCredit() {

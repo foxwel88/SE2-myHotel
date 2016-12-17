@@ -254,25 +254,25 @@ public class WebMarketerGuide {
 	
 	void changeContent(GuideLabelType to) {
 		Parent root = null;
-		FXMLLoader loader = new FXMLLoader();
+		Resources resources = Resources.getInstance();
 		try {
 			switch(to) {
 				case MAIN:
-					root = loader.load(getClass().getResource("/网站营销人员/网站营销人员主界面.fxml").openStream());
+					root = resources.load(resources.webMarketerMain);
 					break;
 				case CREDIT:
-					root = loader.load(getClass().getResource("/网站营销人员/信用充值界面.fxml").openStream());
+					root = resources.load(resources.webMarketerModifyCredit);
 					break;
 				case LEVEL:
-					root = loader.load(getClass().getResource("/网站营销人员/修改会员等级制度界面.fxml").openStream());
+					root = resources.load(resources.webMarketerModifyLevel);
 					break;
 				case PROMOTION:
-					root = loader.load(getClass().getResource("/网站营销人员/管理促销策略界面.fxml").openStream());
-					((WebMarketerCheckPromotion)loader.getController()).setParentGridPane(belowGridPane);
+					root = resources.load(resources.webMarketerCheckPromotion);
+					((WebMarketerCheckPromotion)resources.getCurrentController()).setParentGridPane(belowGridPane);
 					break;
 				case ORDER:
-					root = loader.load(getClass().getResource("/网站营销人员/浏览异常订单界面.fxml").openStream());
-					((WebMarketerAbnormalOrderList)loader.getController()).setParentGridPane(belowGridPane);
+					root = resources.load(resources.webMarketerAbnormalOrderList);
+					((WebMarketerAbnormalOrderList)resources.getCurrentController()).setParentGridPane(belowGridPane);
 					break;
 			}
 		} catch (IOException e) {

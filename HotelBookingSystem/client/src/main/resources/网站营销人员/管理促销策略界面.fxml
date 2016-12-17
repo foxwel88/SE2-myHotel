@@ -17,9 +17,8 @@
       <DropShadow />
    </effect>
    <children>
-      <Line endX="740.0" layoutX="101.0" layoutY="114.0" startX="-80.0" />
-      <Line endY="420.0" layoutX="224.0" layoutY="86.0" startY="-30.0" AnchorPane.leftAnchor="280.0" />
-      <Button fx:id="addButton" layoutX="741.0" layoutY="514.0" mnemonicParsing="false" onMouseClicked="#addPromotion" prefHeight="30.0" prefWidth="101.0" style="-fx-background-color: rgba(0,0,00,0.4);" text="添加" textFill="WHITE" AnchorPane.bottomAnchor="23.0" AnchorPane.leftAnchor="741.0" AnchorPane.rightAnchor="78.0" AnchorPane.topAnchor="514.0">
+      <Line endX="740.0" layoutX="101.0" layoutY="124.0" startX="-10.0" AnchorPane.leftAnchor="85.0" AnchorPane.rightAnchor="85.0" AnchorPane.topAnchor="95.0" />
+      <Button fx:id="addButton" layoutX="741.0" layoutY="514.0" mnemonicParsing="false" onMouseClicked="#addPromotion" prefHeight="30.0" prefWidth="101.0" style="-fx-background-color: rgba(0,0,00,0.45);" text="添加" textFill="WHITE" AnchorPane.bottomAnchor="23.0" AnchorPane.leftAnchor="741.0" AnchorPane.rightAnchor="78.0" AnchorPane.topAnchor="514.0">
          <font>
             <Font name="Microsoft YaHei" size="15.0" />
          </font>
@@ -54,150 +53,80 @@
             <Font name="Microsoft YaHei" size="15.0" />
          </font>
       </Label>
-      <GridPane layoutX="23.0" layoutY="40.0" prefHeight="451.0" prefWidth="821.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints maxHeight="220.0" minHeight="10.0" prefHeight="73.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="388.0" minHeight="10.0" prefHeight="378.0" vgrow="SOMETIMES" />
-        </rowConstraints>
+      <GridPane layoutX="110.0" layoutY="54.0" prefHeight="437.0" prefWidth="721.0" AnchorPane.bottomAnchor="86.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="99.0" AnchorPane.topAnchor="44.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="221.0" minHeight="10.0" prefHeight="66.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="386.0" minHeight="10.0" prefHeight="371.0" vgrow="SOMETIMES" />
+         </rowConstraints>
          <children>
-            <GridPane fx:id="contentGridPane" prefHeight="385.0" prefWidth="804.0" GridPane.rowIndex="1">
+            <GridPane fx:id="contentGridPane" GridPane.rowIndex="1">
                <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="356.0" minWidth="10.0" prefWidth="182.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="640.0" minWidth="10.0" prefWidth="639.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                </columnConstraints>
                <rowConstraints>
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                  <AnchorPane style="-fx-background-color: rgba(0,0,0,0.3);">
                      <children>
-                        <Text layoutX="61.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="双十一促销" textAlignment="CENTER" wrappingWidth="120.00000953674316" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="9.0">
+                        <Text fill="WHITE" layoutX="37.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="网站特殊促销" textAlignment="CENTER" wrappingWidth="183.0000123977661" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="540.0" AnchorPane.topAnchor="10.0">
                            <font>
-                              <Font name="Microsoft YaHei" size="18.0" />
+                              <Font name="Microsoft YaHei Light" size="22.0" />
                            </font>
                         </Text>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane opacity="0.4" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #555555;" GridPane.rowIndex="1" />
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
-                     <children>
-                        <Text layoutX="61.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="老客户大酬宾" textAlignment="CENTER" wrappingWidth="120.00000953674316" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="9.0">
+                        <Text fill="WHITE" layoutX="222.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="特定商圈" textAlignment="CENTER" wrappingWidth="183.0000123977661" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="222.0" AnchorPane.rightAnchor="319.0" AnchorPane.topAnchor="10.0">
                            <font>
-                              <Font name="Microsoft YaHei" size="20.0" />
+                              <Font name="Microsoft YaHei Light" size="22.0" />
                            </font>
                         </Text>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane opacity="0.4" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #555555;" GridPane.rowIndex="3" />
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
-                     <children>
-                        <Text layoutX="53.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="特价仙林" textAlignment="CENTER" wrappingWidth="120.00000953674316" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="9.0">
+                        <Text fill="WHITE" layoutX="426.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7.5折" textAlignment="CENTER" wrappingWidth="110.00001239776611" AnchorPane.bottomAnchor="9.078125" AnchorPane.leftAnchor="426.0" AnchorPane.rightAnchor="188.9999876022339" AnchorPane.topAnchor="10.0">
                            <font>
-                              <Font name="Microsoft YaHei" size="20.0" />
+                              <Font name="Microsoft YaHei Light" size="22.0" />
                            </font>
                         </Text>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane opacity="0.4" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #555555;" GridPane.rowIndex="5" />
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="6" />
-                  <AnchorPane opacity="0.4" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #555555;" GridPane.rowIndex="7" />
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
-                     <children>
-                        <Text layoutX="160.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="特定日期类" textAlignment="CENTER" wrappingWidth="120.00000953674316" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="1.999990463256836" AnchorPane.topAnchor="9.0">
-                           <font>
-                              <Font name="Microsoft YaHei" size="18.0" />
-                           </font>
-                        </Text>
-                        <Text layoutX="400.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7.5" textAlignment="CENTER" wrappingWidth="120.00000953674316" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="9.0">
-                           <font>
-                              <Font name="Microsoft YaHei" size="18.0" />
-                           </font>
-                        </Text>
-                        <Button layoutX="555.0" layoutY="7.0" mnemonicParsing="false" style="-fx-background-color: rgba(0,0,00,0.4);" text="详情" textFill="WHITE" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="555.0" AnchorPane.rightAnchor="34.0" AnchorPane.topAnchor="6.0">
+                        <Button layoutX="633.0" layoutY="11.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="69.0" style="-fx-background-color: rgba(0,0,00,0.2);" text="详情" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="633.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="11.0">
                            <font>
                               <Font name="Microsoft YaHei" size="15.0" />
                            </font>
                         </Button>
                      </children>
                   </AnchorPane>
-                  <AnchorPane opacity="0.4" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #555555;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                     <children>
-                        <Text layoutX="165.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="会员等级类" textAlignment="CENTER" wrappingWidth="120.00000953674316" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="9.0">
-                           <font>
-                              <Font name="Microsoft YaHei" size="18.0" />
-                           </font>
-                        </Text>
-                        <Text layoutX="402.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="8.0" textAlignment="CENTER" wrappingWidth="120.00000953674316" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="9.0">
-                           <font>
-                              <Font name="Microsoft YaHei" size="18.0" />
-                           </font>
-                        </Text>
-                        <Button layoutX="556.0" layoutY="5.0" mnemonicParsing="false" style="-fx-background-color: rgba(0,0,00,0.4);" text="详情" textFill="WHITE" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="555.0" AnchorPane.rightAnchor="34.0" AnchorPane.topAnchor="6.0">
-                           <font>
-                              <Font name="Microsoft YaHei" size="15.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane opacity="0.4" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #555555;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                     <children>
-                        <Text layoutX="69.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="173.00000429153442" AnchorPane.leftAnchor="33.0">
-                           <font>
-                              <Font name="Microsoft YaHei UI Light" size="18.0" />
-                           </font>
-                        </Text>
-                        <Text layoutX="162.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="特定商圈类" textAlignment="CENTER" wrappingWidth="120.00000953674316" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="9.0">
-                           <font>
-                              <Font name="Microsoft YaHei" size="18.0" />
-                           </font>
-                        </Text>
-                        <Text layoutX="393.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="9.0" textAlignment="CENTER" wrappingWidth="120.00000953674316" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="9.0">
-                           <font>
-                              <Font name="Microsoft YaHei" size="18.0" />
-                           </font>
-                        </Text>
-                        <Button layoutX="560.0" layoutY="8.0" mnemonicParsing="false" style="-fx-background-color: rgba(0,0,00,0.4);" text="详情" textFill="WHITE" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="555.0" AnchorPane.rightAnchor="34.0" AnchorPane.topAnchor="6.0">
-                           <font>
-                              <Font name="Microsoft YaHei" size="15.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane opacity="0.4" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #555555;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                  <AnchorPane opacity="0.4" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #555555;" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="8" />
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0,0,0,0.3);" GridPane.rowIndex="2" />
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3" />
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0,0,0,0.3);" GridPane.rowIndex="4" />
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5" />
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0,0,0,0.3);" GridPane.rowIndex="6" />
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="7" />
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0,0,0,0.3);" GridPane.rowIndex="8" />
                </children>
             </GridPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+            <AnchorPane prefHeight="43.0" prefWidth="721.0">
                <children>
-                  <Text layoutX="61.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="促销策略" textAlignment="CENTER" wrappingWidth="120.00000953674316">
+                  <Text layoutX="44.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="促销策略" wrappingWidth="100.00001239776611">
                      <font>
-                        <Font name="Microsoft YaHei" size="22.0" />
+                        <Font name="Microsoft YaHei Light" size="24.0" />
                      </font>
                   </Text>
-                  <Text layoutX="350.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="类型" textAlignment="CENTER" wrappingWidth="120.00000953674316">
+                  <Text layoutX="260.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="促销类型" wrappingWidth="100.00001572072506">
                      <font>
-                        <Font name="Microsoft YaHei" size="22.0" />
+                        <Font name="Microsoft YaHei Light" size="24.0" />
                      </font>
                   </Text>
-                  <Text layoutX="581.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="折扣" textAlignment="CENTER" wrappingWidth="120.00000953674316">
+                  <Text layoutX="454.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="折扣" wrappingWidth="49.99999736621976">
                      <font>
-                        <Font name="Microsoft YaHei" size="22.0" />
+                        <Font name="Microsoft YaHei Light" size="24.0" />
                      </font>
                   </Text>
                </children>

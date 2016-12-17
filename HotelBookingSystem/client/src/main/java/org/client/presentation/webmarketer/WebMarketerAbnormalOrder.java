@@ -131,7 +131,7 @@ public class WebMarketerAbnormalOrder {
 		typeLabel.setText(vo.roomType);
 		numLabel.setText(String.valueOf(vo.roomNum));
 		arriveTimeLabel.setText(dateFormat.format(vo.schFrom));
-		long days = (vo.schTo.getTime() - vo.schFrom.getTime()) / (24 * 60 * 60); //获得住宿时间
+		long days = (vo.schTo.getTime() - vo.schFrom.getTime()) / (24 * 60 * 60 * 1000); //获得住宿时间
 		liveTimeLabel.setText(String.valueOf(days) + " 天");
 		creditNumLabel.setText(String.valueOf(vo.totalPrice));
 		nameLabel.setText(vo.customerName);
