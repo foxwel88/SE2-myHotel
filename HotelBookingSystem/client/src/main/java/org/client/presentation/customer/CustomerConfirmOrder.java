@@ -25,7 +25,7 @@ public class CustomerConfirmOrder {
 	AnchorPane root;
 	
 	@FXML
-	Label orderID;
+	Label hotelname;
 	
 	@FXML
 	Label address;
@@ -37,7 +37,7 @@ public class CustomerConfirmOrder {
 	Label roomNum;
 	
 	@FXML
-	Label appointedArrivalTime;
+	Label latestArrivalTime;
 	
 	@FXML
 	Label appointedLivingTime;
@@ -65,11 +65,11 @@ public class CustomerConfirmOrder {
 	@FXML
 	void initialize() {
 		order = SwitchSceneUtil.toBeGeneratedOrder;
-		orderID.setText(order.orderID);
+		hotelname.setText(order.hotelName);
 		address.setText(order.hotelAddress);
 		roomType.setText(order.roomType);
 		roomNum.setText(String.valueOf(order.roomNum));
-		appointedArrivalTime.setText(LiveDatePicker.dateToCoarseString(order.schFrom));
+		latestArrivalTime.setText(LiveDatePicker.dateToDetaildString(order.latestTime));
 		appointedLivingTime.setText(LiveDatePicker.dateToCoarseString(order.schFrom) + "到" + LiveDatePicker.dateToCoarseString(order.schTo));
 		resident.setText(order.customerName);
 		phoneNumber.setText(order.phoneNumber);
