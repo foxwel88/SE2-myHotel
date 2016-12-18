@@ -224,7 +224,7 @@ public class OrderUtil {
 		if (checkOutMessage != ResultMessage.SUCCESS) {
 			return checkOutMessage;
 		}
-		hotelHelper.increaseAvailableRoom(myorder.roomType, myorder.hotelAddress, myorder.roomNum);
+		hotelHelper.increaseAvailableRoom(myorder.roomType, myorder.hotelID, myorder.roomNum);
 		return ResultMessage.SUCCESS;
 	}
 }
