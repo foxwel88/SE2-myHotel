@@ -105,7 +105,7 @@
                   </GridPane>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="60.0" prefWidth="1118.0" style="-fx-background-color: rgba(0,0,0,0.4);">
+            <AnchorPane prefHeight="60.0" prefWidth="1118.0" style="-fx-background-color: rgba(0,0,0,0.4);" stylesheets="@/avatarMenu.css">
                <effect>
                   <DropShadow />
                </effect>

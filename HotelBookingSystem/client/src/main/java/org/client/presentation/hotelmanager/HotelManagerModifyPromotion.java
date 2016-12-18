@@ -55,9 +55,6 @@ public class HotelManagerModifyPromotion {
 	private DatePicker endTimePicker;
 
 	@FXML
-    private ChoiceBox<Integer> levelBox;
-
-	@FXML
     private ChoiceBox<String> typeBox;
 	
 	@FXML
@@ -71,6 +68,9 @@ public class HotelManagerModifyPromotion {
     void save(ActionEvent event) {
 		if (!modifyMode) {
 			vo = new PromotionVO();
+			vo.provider = "hotel";
+			vo.hotelID = HotelManagerController.getInstance().hotelID;
+			vo.hotelName = HotelManagerController.getInstance().hotelName;
 		}
 		//界面先自己检查
 		if (!isFormatCorrect()) {
@@ -81,22 +81,26 @@ public class HotelManagerModifyPromotion {
 		//赋值
 		vo.discount = Double.parseDouble(discountLabel.getText());
 		vo.name = nameLabel.getText();
-		
-		//startTime, at the start of the day
-		LocalDate startDate = startTimePicker.getValue();
-		
-		ZonedDateTime startZonedTime = startDate.atStartOfDay(ZoneId.systemDefault());
-		Instant startInstant = Instant.from(startZonedTime);
-		vo.startTime = Date.from(startInstant);
-		
-		//endTime, at the start of the day
-		LocalDate endDate = endTimePicker.getValue();
-		
-		ZonedDateTime endZonedTime = endDate.atStartOfDay(ZoneId.systemDefault());
-		Instant endInstant = Instant.from(endZonedTime);
-		vo.endTime = Date.from(endInstant);
-				
-		vo.level = levelBox.getValue();
+
+		if (!startTimePicker.isDisable()) {
+			//startTime, at the start of the day
+			LocalDate startDate = startTimePicker.getValue();
+
+			ZonedDateTime startZonedTime = startDate.atStartOfDay(ZoneId.systemDefault());
+			Instant startInstant = Instant.from(startZonedTime);
+			vo.startTime = Date.from(startInstant);
+
+			//endTime, at the start of the day
+			LocalDate endDate = endTimePicker.getValue();
+
+			ZonedDateTime endZonedTime = endDate.atStartOfDay(ZoneId.systemDefault());
+			Instant endInstant = Instant.from(endZonedTime);
+			vo.endTime = Date.from(endInstant);
+		} else {
+			vo.startTime = Calendar.getInstance().getTime();
+			vo.endTime = Calendar.getInstance().getTime();
+		}
+
 		vo.type = typeBox.getValue();
 		
 		ResultMessage result;
@@ -115,19 +119,27 @@ public class HotelManagerModifyPromotion {
 		assert discountLabel != null : "fx:id=\"discountLabel\" was not injected: check your FXML file '修改酒店促销策略界面.fxml'.";
 		assert startTimePicker != null : "fx:id=\"startTimePicker\" was not injected: check your FXML file '修改酒店促销策略界面.fxml'.";
 		assert endTimePicker != null : "fx:id=\"endTimePicker\" was not injected: check your FXML file '修改酒店促销策略界面.fxml'.";
-		assert levelBox != null : "fx:id=\"levelBox\" was not injected: check your FXML file '修改酒店促销策略界面.fxml'.";
 		assert typeBox != null : "fx:id=\"typeBox\" was not injected: check your FXML file '修改酒店促销策略界面.fxml'.";
 		assert resultLabel != null : "fx:id=\"resultLabel\" was not injected: check your FXML file '修改酒店促销策略界面.fxml'.";
-		
-		ObservableList<Integer> levelList = FXCollections.observableArrayList((new ArrayList<>(Arrays.asList(new Integer[]{1, 2, 3, 4, 5}))));
-		levelBox.setItems(levelList);
 		
 		ObservableList<String> typeList = FXCollections.observableArrayList((new ArrayList<>(Arrays.asList(new String[]{"生日促销", "企业促销", "三间以上促销", "特定日期促销"}))));
 		typeBox.setItems(typeList);
 
+		typeBox.getSelectionModel().selectedIndexProperty().addListener((observableValue, oldIndex, newIndex) -> {
+			if (typeList.get(newIndex.intValue()).equals("特定日期促销")) {
+				startTimePicker.setDisable(false);
+				endTimePicker.setDisable(false);
+			} else {
+				startTimePicker.setDisable(true);
+				endTimePicker.setDisable(true);
+			}
+		});
+
 		//起始时间必须先于结束时间
 		
 		startTimePicker.setValue(LocalDate.now());
+
+
 		Callback<DatePicker, DateCell> endDayCellFactory = dp -> new DateCell() {
 			@Override
 			public void updateItem(LocalDate item, boolean empty) {
@@ -139,7 +151,7 @@ public class HotelManagerModifyPromotion {
 				}
 			}
 		};
-		
+		endTimePicker.setValue(LocalDate.now().plusDays(1));
 		endTimePicker.setDayCellFactory(endDayCellFactory);
 	}
 	
@@ -153,8 +165,6 @@ public class HotelManagerModifyPromotion {
 		discountLabel.setFont(Font.font("Microsoft YaHei", 15));
 		discountLabel.setStyle("-fx-text-fill: white;-fx-background-color: rgba(255,255,255,0.1)");
 		
-		levelBox.setValue(vo.level);
-
 		typeBox.setValue(vo.type);
 		
 		modifyMode = true;
@@ -170,8 +180,10 @@ public class HotelManagerModifyPromotion {
 	
 	boolean isFormatCorrect() {
 		//time order
-		if (startTimePicker.getValue().isAfter(endTimePicker.getValue()) || startTimePicker.getValue().isEqual(endTimePicker.getValue())) {
-			return false;
+		if (!startTimePicker.isDisable()) {
+			if (startTimePicker.getValue().isAfter(endTimePicker.getValue()) || startTimePicker.getValue().isEqual(endTimePicker.getValue())) {
+				return false;
+			}
 		}
 		
 		//discount range

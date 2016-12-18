@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="680.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.presentation.hotelmanager.HotelManagerGuide">
+<Pane fx:id="rootPane" prefHeight="680.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.presentation.hotelmanager.HotelManagerGuide">
    <children>
       <ImageView fitHeight="683.0" fitWidth="1103.0">
          <image>
@@ -102,7 +102,7 @@
                   </GridPane>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="60.0" prefWidth="1108.0" style="-fx-background-color: rgba(0,0,0,0.4);">
+            <AnchorPane prefHeight="60.0" prefWidth="1108.0" style="-fx-background-color: rgba(0,0,0,0.4);" stylesheets="@/avatarMenu.css">
                <effect>
                   <DropShadow />
                </effect>
@@ -124,10 +124,11 @@
                         </Label>
                      </children>
                   </Pane>
-                  <MenuBar fx:id="avatarBar" layoutX="1021.0" layoutY="5.0" prefHeight="60.0" prefWidth="48.0" style="-fx-background-color: rgba(0,0,0,0);">
+                  <MenuBar fx:id="avatarBar" layoutX="1021.0" layoutY="6.0" prefHeight="60.0" prefWidth="48.0" style="-fx-background-color: rgba(0,0,0,0);">
                     <menus>
                       <Menu fx:id="avatar" mnemonicParsing="false">
                         <items>
+                              <MenuItem mnemonicParsing="false" onAction="#modifyPassword" text="修改密码" />
                           <MenuItem mnemonicParsing="false" onAction="#logOut" text="注销" />
                         </items>
                       </Menu>
