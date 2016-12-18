@@ -56,7 +56,7 @@ public class PromotionDataServiceImplTest {
 	public void testAdd1() {
 		try {
 			PromotionPO po = new PromotionPO("0000000004", "hotel", PromotionType.BIRTHDAYBONUS, new Date(1999, 9, 9), new Date(1999, 9, 9), DatabaseCommunicator.getStorableQuote("南京1号'大酒店"), "00001", 2, "南京", "新街口", 5, "新的大促销1");
-			assertEquals(ResultMessage.SUCCESS, promotionDAO.add(po));
+			assertEquals(ResultMessage.WRONG_VALUE, promotionDAO.add(po));
 		} catch (RemoteException remoteException) {
 			remoteException.printStackTrace();
 		}

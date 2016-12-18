@@ -62,7 +62,7 @@ public class HotelModuleTest {
 	public void testAddHotel() throws RemoteException {
 		CityVO city = new CityVO("南京");
 		AreaVO area = new AreaVO("仙林中心");
-		HotelVO vo = new HotelVO(null,"lovelive", org.client.rmi.RMIHelper.getInstance().getIDUtil().generateNewHotelID(), city, area, "niconiconi", 5, 5, "", "", null, null, null, null);
+		HotelVO vo = new HotelVO(null,"lovelive", org.client.rmi.RMIHelper.getInstance().getIDUtil().generateNewHotelID(), city, area, "niconiconi", 5, 5, "", "", null, null, null, null, "");
 		UserVO uvo = new UserVO("客户", "X", "Y", null, "first0xaa55", "12233345678", 21.21, new Date(19890604), "μ's", null, "unknown");
 		Userblservice userstub = new User_stub();
 		controller.setUserblservice(userstub);
@@ -80,7 +80,7 @@ public class HotelModuleTest {
 		List<Integer> roomNum = new ArrayList<Integer>(Arrays.asList(new Integer[]{1}));
 		List<Double> roomPrice = new ArrayList<Double>(Arrays.asList(new Double[]{21.21}));
 		List<String> cooperators = new ArrayList<String>(Arrays.asList(new String[]{"μs"}));
-		HotelVO vo = new HotelVO("00001","lovelive", "unknown", city, area, "niconiconi", 5, 5, null, null, roomType, roomNum, roomPrice, cooperators);
+		HotelVO vo = new HotelVO("00001","lovelive", "unknown", city, area, "niconiconi", 5, 5, null, null, roomType, roomNum, roomPrice, cooperators, "");
 
 		ResultMessage result = controller.modifyHotel(vo);
 		assertEquals(ResultMessage.SUCCESS, result);

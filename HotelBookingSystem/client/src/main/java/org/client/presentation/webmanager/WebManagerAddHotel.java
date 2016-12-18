@@ -123,7 +123,7 @@ public class WebManagerAddHotel {
 					null, passwordField.getText(), phoneTextField.getText(), 0, null, null, null, hotelAddressTextField.getText());
 			HotelVO hotelvo = new HotelVO(null, hotelNameTextField.getText(), hotelAddressTextField.getText(), new CityVO(cityChoiceBox.getValue()),
 						new AreaVO(areaChoiceBox.getValue()), introduceTextArea.getText(), 0, StarChoiceBox.getValue(), serverTextArea.getText(),
-						null,null, null, null, null);
+						null,null, null, null, null, "");
 			ResultMessage message = WebManagerController.getInstance().addHotel(hotelvo, hotelManagervo);
 			if (message == ResultMessage.EXIST) {
 				resultLabel.setText("酒店地址或用户名重复");

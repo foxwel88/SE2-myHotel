@@ -73,6 +73,9 @@ public class HotelManagerModifyHotel {
     private TextArea facility;
 
 	@FXML
+	private TextField imageURLField;
+
+	@FXML
     private ChoiceBox<String> roomType;
 
 	private ObservableList<String> roomTypes;
@@ -164,6 +167,7 @@ public class HotelManagerModifyHotel {
 		vo.city = new CityVO(city.getValue());
 		vo.cooperators = new ArrayList<>(currentCooperators);
 		vo.facility = facility.getText().trim();
+		vo.imgURL = imageURLField.getText();
 		vo.hotelName = name.getText().trim();
 		vo.introduction = intro.getText().trim();
 		
@@ -257,17 +261,16 @@ public class HotelManagerModifyHotel {
 		cooperatorBox.getSelectionModel().selectedItemProperty()
 	    	.addListener( (ObservableValue< ? extends String> observable, String oldValue, String newValue) -> cooperatorField.setText(newValue) );
 		
-		//facility, name, intro
+		//facility, name, intro, imgURL
 		facility.setText(vo.facility);
 		name.setText(vo.hotelName);
 		intro.setText(vo.introduction);
+		imageURLField.setText(vo.imgURL);
 		
 		//roomNum roomPrice roomType
 		roomTypes = FXCollections.observableArrayList(vo.roomType);
 		roomType.setItems(roomTypes);
 
-
-		
 		roomNums = new ArrayList<>(vo.roomNum);
 		roomPrices = new ArrayList<>(vo.roomPrice);
 

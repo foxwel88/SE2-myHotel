@@ -43,11 +43,11 @@ public class Hotel_stub implements Hotelblservice, HotelHelper {
 
 	HotelVO hotelvo1 = new HotelVO("123","goodhotel","XianLin Campus"
 			,city1,area1,"a good hotel",4,3,"good",
-			checkInInfo, roomTypes, roomNums, roomPrices, cooperators);
+			checkInInfo, roomTypes, roomNums, roomPrices, cooperators, "");
 	
 	HotelVO hotelvo2 = new HotelVO("123","goodhotel","aaa"
 			,city1,area2,"xxxxx",4,3,"good",
-			checkInInfo, roomTypes, roomNums, roomPrices, cooperators);
+			checkInInfo, roomTypes, roomNums, roomPrices, cooperators, "");
 
 	public ArrayList<HotelVO> findHotels(HotelFilter filter, String id, boolean historyOnly) {
 		ArrayList<HotelVO> vo = new ArrayList<>();

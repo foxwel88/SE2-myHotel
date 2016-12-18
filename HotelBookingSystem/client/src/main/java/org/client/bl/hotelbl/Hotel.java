@@ -27,6 +27,8 @@ public class Hotel {
 	public String area;
 	
 	public String introduction;
+
+	public String imgURL;
 	
 	public double rank;
 	
@@ -51,7 +53,7 @@ public class Hotel {
 	 * @return hotelVO
 	 */
 	public HotelVO generateVO() {
-		return new HotelVO(id, hotelName, address, new CityVO(city), new AreaVO(area), introduction, rank, star, facility, checkInInfos, roomType, roomNum, roomPrice, cooperators);
+		return new HotelVO(id, hotelName, address, new CityVO(city), new AreaVO(area), introduction, rank, star, facility, checkInInfos, roomType, roomNum, roomPrice, cooperators, imgURL);
 	}
 	
 	/**
@@ -66,6 +68,7 @@ public class Hotel {
 		this.city = po.city;
 		this.area = po.area;
 		this.introduction = po.introduction;
+		this.imgURL = po.imgURL;
 		this.rank = po.rank;
 		this.star = po.star;
 		this.facility = po.facility;
@@ -110,6 +113,7 @@ public class Hotel {
 		this.city = vo.city.cityName;
 		this.area = vo.area.address;
 		this.introduction = vo.introduction;
+		this.imgURL = vo.imgURL;
 		this.rank = vo.rank;
 		this.star = vo.star;
 		this.facility = vo.facility;
@@ -139,7 +143,7 @@ public class Hotel {
 			introduction = "暂无";
 		}
 		
-		return new HotelPO(id, hotelName, address, city, area, introduction, rank, star, facility, checkInInfos, cooperators_po);
+		return new HotelPO(id, hotelName, address, city, area, introduction, rank, star, facility, checkInInfos, cooperators_po, imgURL);
 	}
 	
 }
