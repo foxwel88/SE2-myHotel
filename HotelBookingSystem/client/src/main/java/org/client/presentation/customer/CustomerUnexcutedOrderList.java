@@ -48,21 +48,6 @@ public class CustomerUnexcutedOrderList {
 	HBox order6;
 	
 	@FXML
-	HBox order7;
-	
-	@FXML
-	HBox order8;
-	
-	@FXML
-	HBox order9;
-	
-	@FXML
-	HBox order10;
-	
-	@FXML
-	HBox order11;
-	
-	@FXML
 	Label previousPage;
 	
 	@FXML
@@ -81,7 +66,7 @@ public class CustomerUnexcutedOrderList {
 	private Resources resources;
 	
 	// 该字段表示同时显示的最大订单的数量
-	private static final int MAX_ORDER_ONE_OAGE = 11;
+	private static final int MAX_ORDER_ONE_OAGE = 6;
 	
 	@FXML
 	void initialize() {
@@ -94,11 +79,6 @@ public class CustomerUnexcutedOrderList {
 		boxList.add(order4);
 		boxList.add(order5);
 		boxList.add(order6);
-		boxList.add(order7);
-		boxList.add(order8);
-		boxList.add(order9);
-		boxList.add(order10);
-		boxList.add(order11);
 		showUnExcutedOrderList();
 		
 		if (SwitchSceneUtil.isBack) {

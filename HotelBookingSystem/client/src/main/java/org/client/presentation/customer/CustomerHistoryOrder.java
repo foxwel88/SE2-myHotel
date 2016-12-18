@@ -45,6 +45,9 @@ public class CustomerHistoryOrder {
 	
 	@FXML
 	Label abnormalOrderText;
+
+	@FXML
+	Label timeLabel;
 	
 	@FXML
 	TextField toPage;
@@ -144,6 +147,7 @@ public class CustomerHistoryOrder {
 		deactive_innerGuide(2);
 		currentLabel = 0;
 		currentPage.setText(String.valueOf(1));
+		timeLabel.setText("入住时间");
 		showExecutedOrderList();
 	}
 	
@@ -154,6 +158,7 @@ public class CustomerHistoryOrder {
 		deactive_innerGuide(2);
 		currentLabel = 1;
 		currentPage.setText(String.valueOf(1));
+		timeLabel.setText("撤销时间");
 		showCanceledOrderList();
 	}
 	
@@ -164,6 +169,7 @@ public class CustomerHistoryOrder {
 		active_innerGuide(2);
 		currentLabel = 2;
 		currentPage.setText(String.valueOf(1));
+		timeLabel.setText("最晚入住时间");
 		showAbnormalOrderList();
 	}
 	/************************************************************************************/

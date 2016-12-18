@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
@@ -27,351 +28,206 @@
             <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
          </rowConstraints>
          <children>
-            <VBox prefHeight="517.0" prefWidth="887.0" GridPane.rowSpan="3">
+            <VBox prefHeight="517.0" prefWidth="887.0" style="-fx-border-style: dashed;" GridPane.rowSpan="3">
                <children>
-                  <HBox prefHeight="40.0" prefWidth="200.0">
+                  <HBox prefHeight="45.0" prefWidth="600.0">
                      <children>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="167.0" text="下单时间">
+                        <Label alignment="CENTER" prefHeight="45.0" prefWidth="167.0" text="下单时间">
                            <font>
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="318.0" text="酒店地址">
+                        <Label alignment="CENTER" prefHeight="45.0" prefWidth="318.0" text="酒店地址">
                            <font>
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="148.0" text="房型">
+                        <Label alignment="CENTER" prefHeight="45.0" prefWidth="148.0" text="房型">
                            <font>
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="113.0" text="房间数量">
+                        <Label alignment="CENTER" prefHeight="45.0" prefWidth="113.0" text="房间数量">
                            <font>
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="154.0" text="最晚执行时间">
+                        <Label alignment="CENTER" prefHeight="45.0" prefWidth="154.0" text="最晚执行时间">
                            <font>
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>
                         </Label>
                      </children>
                   </HBox>
-                  <Separator prefWidth="200.0" />
-                  <HBox fx:id="order1" onMouseClicked="#checkDetailedOrder" onMouseEntered="#active" onMouseExited="#deactive" prefHeight="40.0" prefWidth="200.0">
+                  <Separator prefHeight="8.0" prefWidth="698.0" />
+                  <HBox fx:id="order1" onMouseClicked="#checkDetailedOrder" onMouseEntered="#active" onMouseExited="#deactive" prefHeight="50.0" prefWidth="200.0">
                      <children>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="167.0" text="1992/01/01">
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="167.0" text="1992/01/01">
                            <font>
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="318.0" text="北京市南京大学东门400m">
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="318.0" text="北京市南京大学东门400m">
                            <font>
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="148.0" text="单人间">
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="148.0" text="单人间">
                            <font>
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="113.0" text="2">
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="113.0" text="2">
                            <font>
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="154.0" text="1992/01/21">
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="154.0" text="1992/01/21">
                            <font>
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>
                         </Label>
                      </children>
                   </HBox>
-                  <HBox fx:id="order2" onMouseClicked="#checkDetailedOrder" onMouseEntered="#active" onMouseExited="#deactive" prefHeight="40.0" prefWidth="200.0">
+                  <HBox fx:id="order2" onMouseClicked="#checkDetailedOrder" onMouseEntered="#active" onMouseExited="#deactive" prefHeight="50.0" prefWidth="200.0">
                      <children>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="167.0" text="2004/11/11">
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="167.0" text="2004/11/11">
                            <font>
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="318.0" text="长安省xyz县76区">
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="318.0" text="长安省xyz县76区">
                            <font>
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="148.0" text="双人间">
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="148.0" text="双人间">
                            <font>
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="113.0" text="1">
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="113.0" text="1">
                            <font>
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="154.0" text="2004/11/15">
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="154.0" text="2004/11/15">
                            <font>
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>
                         </Label>
                      </children>
                   </HBox>
-                  <HBox fx:id="order3" onMouseClicked="#checkDetailedOrder" onMouseEntered="#active" onMouseExited="#deactive" prefHeight="40.0" prefWidth="200.0">
+                  <HBox fx:id="order3" onMouseClicked="#checkDetailedOrder" onMouseEntered="#active" onMouseExited="#deactive" prefHeight="50.0" prefWidth="200.0">
                      <children>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="167.0" text="2004/11/11">
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="167.0" text="2004/11/11">
                            <font>
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="318.0" text="长安省xyz县76区">
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="318.0" text="长安省xyz县76区">
                            <font>
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="148.0" text="双人间">
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="148.0" text="双人间">
                            <font>
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="113.0" text="1">
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="113.0" text="1">
                            <font>
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="154.0" text="2004/11/15">
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="154.0" text="2004/11/15">
                            <font>
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>
                         </Label>
                      </children>
                   </HBox>
-                  <HBox fx:id="order4" onMouseClicked="#checkDetailedOrder" onMouseEntered="#active" onMouseExited="#deactive" prefHeight="40.0" prefWidth="200.0">
+                  <HBox fx:id="order4" onMouseClicked="#checkDetailedOrder" onMouseEntered="#active" onMouseExited="#deactive" prefHeight="50.0" prefWidth="200.0">
                      <children>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="167.0" text="2004/11/11">
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="167.0" text="2004/11/11">
                            <font>
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="318.0" text="长安省xyz县76区">
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="318.0" text="长安省xyz县76区">
                            <font>
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="148.0" text="双人间">
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="148.0" text="双人间">
                            <font>
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="113.0" text="1">
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="113.0" text="1">
                            <font>
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="154.0" text="2004/11/15">
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="154.0" text="2004/11/15">
                            <font>
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>
                         </Label>
                      </children>
                   </HBox>
-                  <HBox fx:id="order5" onMouseClicked="#checkDetailedOrder" onMouseEntered="#active" onMouseExited="#deactive" prefHeight="40.0" prefWidth="200.0">
+                  <HBox fx:id="order5" onMouseClicked="#checkDetailedOrder" onMouseEntered="#active" onMouseExited="#deactive" prefHeight="50.0" prefWidth="200.0">
                      <children>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="167.0" text="2004/11/11">
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="167.0" text="2004/11/11">
                            <font>
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="318.0" text="长安省xyz县76区">
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="318.0" text="长安省xyz县76区">
                            <font>
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="148.0" text="双人间">
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="148.0" text="双人间">
                            <font>
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="113.0" text="1">
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="113.0" text="1">
                            <font>
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="154.0" text="2004/11/15">
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="154.0" text="2004/11/15">
                            <font>
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>
                         </Label>
                      </children>
                   </HBox>
-                  <HBox fx:id="order6" onMouseClicked="#checkDetailedOrder" onMouseEntered="#active" onMouseExited="#deactive" prefHeight="40.0" prefWidth="200.0">
+                  <HBox fx:id="order6" onMouseClicked="#checkDetailedOrder" onMouseEntered="#active" onMouseExited="#deactive" prefHeight="50.0" prefWidth="200.0">
                      <children>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="167.0" text="2004/11/11">
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="167.0" text="2004/11/11">
                            <font>
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="318.0" text="长安省xyz县76区">
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="318.0" text="长安省xyz县76区">
                            <font>
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="148.0" text="双人间">
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="148.0" text="双人间">
                            <font>
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="113.0" text="1">
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="113.0" text="1">
                            <font>
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="154.0" text="2004/11/15">
-                           <font>
-                              <Font name="Microsoft YaHei" size="16.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox fx:id="order7" onMouseClicked="#checkDetailedOrder" onMouseEntered="#active" onMouseExited="#deactive" prefHeight="40.0" prefWidth="200.0">
-                     <children>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="167.0" text="2004/11/11">
-                           <font>
-                              <Font name="Microsoft YaHei" size="16.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="318.0" text="长安省xyz县76区">
-                           <font>
-                              <Font name="Microsoft YaHei" size="16.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="148.0" text="双人间">
-                           <font>
-                              <Font name="Microsoft YaHei" size="16.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="113.0" text="1">
-                           <font>
-                              <Font name="Microsoft YaHei" size="16.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="154.0" text="2004/11/15">
-                           <font>
-                              <Font name="Microsoft YaHei" size="16.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox fx:id="order8" onMouseClicked="#checkDetailedOrder" onMouseEntered="#active" onMouseExited="#deactive" prefHeight="40.0" prefWidth="200.0">
-                     <children>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="167.0" text="2004/11/11">
-                           <font>
-                              <Font name="Microsoft YaHei" size="16.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="318.0" text="长安省xyz县76区">
-                           <font>
-                              <Font name="Microsoft YaHei" size="16.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="148.0" text="双人间">
-                           <font>
-                              <Font name="Microsoft YaHei" size="16.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="113.0" text="1">
-                           <font>
-                              <Font name="Microsoft YaHei" size="16.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="154.0" text="2004/11/15">
-                           <font>
-                              <Font name="Microsoft YaHei" size="16.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox fx:id="order9" onMouseClicked="#checkDetailedOrder" onMouseEntered="#active" onMouseExited="#deactive" prefHeight="40.0" prefWidth="200.0">
-                     <children>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="167.0" text="2004/11/11">
-                           <font>
-                              <Font name="Microsoft YaHei" size="16.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="318.0" text="长安省xyz县76区">
-                           <font>
-                              <Font name="Microsoft YaHei" size="16.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="148.0" text="双人间">
-                           <font>
-                              <Font name="Microsoft YaHei" size="16.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="113.0" text="1">
-                           <font>
-                              <Font name="Microsoft YaHei" size="16.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="154.0" text="2004/11/15">
-                           <font>
-                              <Font name="Microsoft YaHei" size="16.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox fx:id="order10" onMouseClicked="#checkDetailedOrder" onMouseEntered="#active" onMouseExited="#deactive" prefHeight="40.0" prefWidth="200.0">
-                     <children>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="167.0" text="2004/11/11">
-                           <font>
-                              <Font name="Microsoft YaHei" size="16.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="318.0" text="长安省xyz县76区">
-                           <font>
-                              <Font name="Microsoft YaHei" size="16.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="148.0" text="双人间">
-                           <font>
-                              <Font name="Microsoft YaHei" size="16.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="113.0" text="1">
-                           <font>
-                              <Font name="Microsoft YaHei" size="16.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="154.0" text="2004/11/15">
-                           <font>
-                              <Font name="Microsoft YaHei" size="16.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox fx:id="order11" onMouseClicked="#checkDetailedOrder" onMouseEntered="#active" onMouseExited="#deactive" prefHeight="40.0" prefWidth="200.0">
-                     <children>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="167.0" text="2004/11/11">
-                           <font>
-                              <Font name="Microsoft YaHei" size="16.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="318.0" text="长安省xyz县76区">
-                           <font>
-                              <Font name="Microsoft YaHei" size="16.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="148.0" text="双人间">
-                           <font>
-                              <Font name="Microsoft YaHei" size="16.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="113.0" text="1">
-                           <font>
-                              <Font name="Microsoft YaHei" size="16.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="154.0" text="2004/11/15">
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="154.0" text="2004/11/15">
                            <font>
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>
@@ -379,10 +235,13 @@
                      </children>
                   </HBox>
                </children>
+               <GridPane.margin>
+                  <Insets bottom="80.0" left="100.0" right="100.0" top="80.0" />
+               </GridPane.margin>
             </VBox>
          </children>
       </GridPane>
-      <AnchorPane layoutX="39.0" layoutY="520.0" prefHeight="36.0" prefWidth="708.0">
+      <AnchorPane layoutX="39.0" layoutY="471.0" prefHeight="36.0" prefWidth="708.0">
          <children>
             <Label fx:id="previousPage" layoutX="193.0" layoutY="5.0" onMouseClicked="#turnToPreviousPage" text="&lt;上一页">
                <font>

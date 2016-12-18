@@ -73,7 +73,7 @@
                <children>
                   <HBox prefHeight="50.0" prefWidth="200.0">
                      <children>
-                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="290.0" text="时间">
+                        <Label fx:id="timeLabel" alignment="CENTER" prefHeight="50.0" prefWidth="290.0" text="入住时间">
                            <font>
                               <Font name="Microsoft YaHei" size="20.0" />
                            </font>
