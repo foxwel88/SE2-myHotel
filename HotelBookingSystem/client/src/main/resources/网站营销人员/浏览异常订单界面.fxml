@@ -34,7 +34,7 @@
                         <Font name="Microsoft YaHei" size="17.0" />
                      </font>
                   </TextField>
-                  <Button fx:id="searchButton" layoutX="421.0" layoutY="19.0" mnemonicParsing="false" onMouseClicked="#handleSearch" prefHeight="30.0" prefWidth="85.0" style="-fx-background-color: rgba(0,0,0,0.4);" text="搜索订单" textFill="#fffafa" AnchorPane.bottomAnchor="24.0" AnchorPane.topAnchor="19.0">
+                  <Button fx:id="searchButton" layoutX="421.0" layoutY="19.0" mnemonicParsing="false" onMouseClicked="#handleSearch" prefHeight="30.0" prefWidth="85.0" style="-fx-background-color: rgba(0,0,0,0.45);" text="搜索订单" textFill="#fffafa" AnchorPane.bottomAnchor="24.0" AnchorPane.topAnchor="19.0">
                      <font>
                         <Font name="Microsoft YaHei" size="15.0" />
                      </font>
@@ -110,23 +110,23 @@
                                     <Font name="Microsoft YaHei" size="14.0" />
                                  </font>
                               </Button>
-                              <Text fill="#f8f7f7" layoutX="396.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="仙林大酒店" textAlignment="CENTER" wrappingWidth="240.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="396.0" AnchorPane.rightAnchor="153.0" AnchorPane.topAnchor="7.0">
+                              <Text fill="#f8f7f7" layoutX="396.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="仙林大酒店" textAlignment="CENTER" wrappingWidth="240.0" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="396.0" AnchorPane.rightAnchor="153.0">
                                  <font>
-                                    <Font name="Microsoft YaHei UI Light" size="24.0" />
+                                    <Font name="Microsoft YaHei UI Light" size="20.0" />
                                  </font>
                               </Text>
                            </children>
                         </AnchorPane>
                      </children>
                   </GridPane>
-                  <Text layoutX="70.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="订单号" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="5.0">
+                  <Text layoutX="70.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="订单号" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="8.0">
                      <font>
-                        <Font name="Microsoft YaHei UI Light" size="24.0" />
+                        <Font name="Microsoft YaHei UI Light" size="22.0" />
                      </font>
                   </Text>
-                  <Text layoutX="474.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="所属酒店">
+                  <Text layoutX="474.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="所属酒店" AnchorPane.leftAnchor="474.0" AnchorPane.topAnchor="8.0">
                      <font>
-                        <Font name="Microsoft YaHei UI Light" size="24.0" />
+                        <Font name="Microsoft YaHei UI Light" size="22.0" />
                      </font>
                   </Text>
                </children>

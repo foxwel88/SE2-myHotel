@@ -175,9 +175,9 @@
             </AnchorPane>
          </children>
       </GridPane>
-      <Label fx:id="resultLabel" layoutX="741.0" layoutY="534.0">
+      <Label fx:id="resultLabel" alignment="CENTER" layoutX="678.0" layoutY="534.0" prefHeight="27.0" prefWidth="230.0">
          <font>
-            <Font name="Microsoft YaHei" size="15.0" />
+            <Font name="Microsoft YaHei" size="20.0" />
          </font>
       </Label>
    </children>

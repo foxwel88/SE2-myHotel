@@ -20,7 +20,6 @@ import org.server.rmi.RMIHelper;
  * Orderbl模块集成测试，用到的Orderbl类均为真实类，dao和其它bl模块的类为stub
  *
  */
-@Ignore
 public class OrderControllerTest {
 	
 	OrderController controller;

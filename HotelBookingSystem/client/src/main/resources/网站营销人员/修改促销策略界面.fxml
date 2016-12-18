@@ -59,7 +59,7 @@
                   </Text>
                </children>
             </AnchorPane>
-            <AnchorPane opacity="0.4" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #555555;" GridPane.rowIndex="2" />
+            <AnchorPane opacity="0.45" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black;" GridPane.rowIndex="2" />
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
                <children>
                   <Text layoutX="46.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="策略类型" textAlignment="CENTER">
@@ -69,7 +69,7 @@
                   </Text>
                </children>
             </AnchorPane>
-            <AnchorPane opacity="0.4" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #555555;" GridPane.rowIndex="4" />
+            <AnchorPane opacity="0.45" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black;" GridPane.rowIndex="4" />
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5">
                <children>
                   <Text layoutX="46.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="适用日期" textAlignment="CENTER">
@@ -79,7 +79,7 @@
                   </Text>
                </children>
             </AnchorPane>
-            <AnchorPane opacity="0.4" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #555555;" GridPane.rowIndex="6" />
+            <AnchorPane opacity="0.45" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black;" GridPane.rowIndex="6" />
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="7">
                <children>
                   <Text layoutX="46.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="适用等级" textAlignment="CENTER">
@@ -89,20 +89,20 @@
                   </Text>
                </children>
             </AnchorPane>
-            <AnchorPane opacity="0.4" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #555555;" GridPane.rowIndex="8" />
+            <AnchorPane opacity="0.45" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black;" GridPane.rowIndex="8" />
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <TextField fx:id="nameLabel" layoutX="31.0" layoutY="4.0" prefHeight="30.0" prefWidth="247.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.leftAnchor="30.0" />
+                  <TextField fx:id="nameLabel" layoutX="31.0" layoutY="4.0" prefHeight="30.0" prefWidth="247.0" style="-fx-background-color: rgba(255,255,255,0.65);" AnchorPane.leftAnchor="30.0" />
                </children>
             </AnchorPane>
-            <AnchorPane opacity="0.4" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #555555;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <AnchorPane opacity="0.45" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <children>
-                  <ComboBox fx:id="typeBox" layoutX="32.0" layoutY="3.0" onAction="#changeEditable" prefHeight="30.0" prefWidth="247.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.leftAnchor="30.0" />
+                  <ComboBox fx:id="typeBox" layoutX="32.0" layoutY="3.0" onAction="#changeEditable" prefHeight="30.0" prefWidth="247.0" style="-fx-background-color: rgba(255,255,255,0.65);" AnchorPane.leftAnchor="30.0" />
                </children>
             </AnchorPane>
-            <AnchorPane opacity="0.4" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #555555;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <AnchorPane opacity="0.45" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <children>
                   <Text layoutX="69.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="173.00000429153442" AnchorPane.leftAnchor="33.0">
@@ -120,17 +120,17 @@
                         <Font name="Microsoft YaHei" size="20.0" />
                      </font>
                   </Text>
-                  <DatePicker fx:id="startTimePicker" layoutX="33.0" layoutY="4.0" opacity="0.4" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="4.0" />
-                  <DatePicker fx:id="endTimePicker" layoutX="305.0" layoutY="5.0" opacity="0.4" AnchorPane.bottomAnchor="3.0" AnchorPane.topAnchor="4.0" />
+                  <DatePicker fx:id="startTimePicker" layoutX="33.0" layoutY="4.0" opacity="0.65" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="4.0" />
+                  <DatePicker fx:id="endTimePicker" layoutX="305.0" layoutY="5.0" opacity="0.65" AnchorPane.bottomAnchor="3.0" AnchorPane.topAnchor="4.0" />
                </children>
             </AnchorPane>
-            <AnchorPane opacity="0.4" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #555555;" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <AnchorPane opacity="0.45" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="6" />
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
                <children>
-                  <ComboBox fx:id="levelBox" layoutX="66.0" layoutY="3.0" prefHeight="30.0" prefWidth="247.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.leftAnchor="30.0" />
+                  <ComboBox fx:id="levelBox" layoutX="66.0" layoutY="3.0" prefHeight="30.0" prefWidth="247.0" style="-fx-background-color: rgba(255,255,255,0.65);" AnchorPane.leftAnchor="30.0" />
                </children>
             </AnchorPane>
-            <AnchorPane opacity="0.4" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #555555;" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <AnchorPane opacity="0.45" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="8" />
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="9">
                <children>
                   <Text layoutX="46.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="适用商圈" textAlignment="CENTER">
@@ -142,13 +142,13 @@
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
                <children>
-                  <ComboBox fx:id="cityBox" layoutX="52.0" layoutY="8.0" onAction="#setAreaBox" prefHeight="30.0" prefWidth="180.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="4.0" />
+                  <ComboBox fx:id="cityBox" layoutX="52.0" layoutY="8.0" onAction="#setAreaBox" prefHeight="30.0" prefWidth="180.0" style="-fx-background-color: rgba(255,255,255,0.65);" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="4.0" />
                   <Text layoutX="223.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="城市" AnchorPane.bottomAnchor="5.0" AnchorPane.topAnchor="5.0">
                      <font>
                         <Font name="Microsoft YaHei" size="20.0" />
                      </font>
                   </Text>
-                  <ComboBox fx:id="areaBox" layoutX="270.0" layoutY="-4.0" prefHeight="30.0" prefWidth="180.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.bottomAnchor="3.0" AnchorPane.topAnchor="4.0" />
+                  <ComboBox fx:id="areaBox" layoutX="270.0" layoutY="-4.0" prefHeight="30.0" prefWidth="180.0" style="-fx-background-color: rgba(255,255,255,0.65);" AnchorPane.bottomAnchor="3.0" AnchorPane.topAnchor="4.0" />
                   <Text layoutX="464.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="商圈" AnchorPane.bottomAnchor="5.0" AnchorPane.topAnchor="5.0">
                      <font>
                         <Font name="Microsoft YaHei" size="20.0" />
@@ -156,7 +156,7 @@
                   </Text>
                </children>
             </AnchorPane>
-            <AnchorPane opacity="0.4" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #555555;" GridPane.rowIndex="10" />
+            <AnchorPane opacity="0.45" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black;" GridPane.rowIndex="10" />
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="11">
                <children>
                   <Text layoutX="56.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="促销折扣" textAlignment="CENTER" AnchorPane.leftAnchor="46.0">
@@ -166,10 +166,10 @@
                   </Text>
                </children>
             </AnchorPane>
-            <AnchorPane opacity="0.4" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #555555;" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+            <AnchorPane opacity="0.45" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="10" />
             <AnchorPane prefHeight="45.0" prefWidth="626.0" GridPane.columnIndex="1" GridPane.rowIndex="11">
                <children>
-                  <TextField fx:id="discountLabel" layoutX="82.0" layoutY="5.0" prefHeight="30.0" prefWidth="46.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="4.0" />
+                  <TextField fx:id="discountLabel" layoutX="82.0" layoutY="5.0" prefHeight="30.0" prefWidth="46.0" style="-fx-background-color: rgba(255,255,255,0.65);" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="4.0" />
                   <Text layoutX="87.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="折" textAlignment="CENTER" AnchorPane.bottomAnchor="4.0" AnchorPane.topAnchor="6.0">
                      <font>
                         <Font name="Microsoft YaHei" size="20.0" />
@@ -179,14 +179,14 @@
             </AnchorPane>
          </children>
       </GridPane>
-      <Button fx:id="confirmButton" layoutX="745.0" layoutY="497.0" mnemonicParsing="false" onMouseClicked="#handleConfirm" prefHeight="30.0" prefWidth="85.0" style="-fx-background-color: rgba(0,0,0,0.4);" text="确认" textFill="WHITE">
+      <Button fx:id="confirmButton" layoutX="745.0" layoutY="497.0" mnemonicParsing="false" onMouseClicked="#handleConfirm" prefHeight="30.0" prefWidth="85.0" style="-fx-background-color: rgba(0,0,0,0.45);" text="确认" textFill="WHITE">
          <font>
             <Font name="Microsoft YaHei" size="15.0" />
          </font>
       </Button>
-      <Label fx:id="resultLabel" layoutX="742.0" layoutY="533.0">
+      <Label fx:id="resultLabel" alignment="CENTER" layoutX="657.0" layoutY="527.0" prefHeight="27.0" prefWidth="263.0" AnchorPane.topAnchor="530.0">
          <font>
-            <Font name="Microsoft YaHei" size="15.0" />
+            <Font name="Microsoft YaHei" size="20.0" />
          </font>
       </Label>
    </children>

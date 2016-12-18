@@ -238,7 +238,7 @@ public class WebMarketerAbnormalOrderList {
 			this.setStyle("-fx-background-color:rgba(0,0,0,0.45)");
 			orderNum.setFont(Font.font("Microsoft YaHei", 17));
 			orderNum.setStyle("-fx-fill: white");
-			hotel.setFont(Font.font("Microsoft YaHei UI Light", 23));
+			hotel.setFont(Font.font("Microsoft YaHei UI Light", 20));
 			hotel.setStyle("-fx-fill: white");
 			hotel.setWrappingWidth(240.0);
 			hotel.setTextAlignment(TextAlignment.CENTER);
@@ -253,8 +253,7 @@ public class WebMarketerAbnormalOrderList {
 			AnchorPane.setBottomAnchor(orderNum, 12.0);
 			AnchorPane.setLeftAnchor(orderNum, 14.0);
 			
-			AnchorPane.setBottomAnchor(hotel, 8.5);
-			AnchorPane.setTopAnchor(hotel, 8.5);
+			AnchorPane.setBottomAnchor(hotel, 11.0);
 			AnchorPane.setLeftAnchor(hotel, 396.0);
 			AnchorPane.setRightAnchor(hotel, 153.0);
 			

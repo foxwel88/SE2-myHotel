@@ -78,7 +78,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <AnchorPane style="-fx-background-color: rgba(0,0,0,0.3);">
+                  <AnchorPane style="-fx-background-color: rgba(0,0,0,0.45);">
                      <children>
                         <Text fill="WHITE" layoutX="37.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="网站特殊促销" textAlignment="CENTER" wrappingWidth="183.0000123977661" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="540.0" AnchorPane.topAnchor="10.0">
                            <font>
