@@ -227,15 +227,15 @@ public class WebMarketerCheckPromotion {
 			
 			// set effect
 			this.setStyle("-fx-background-color:rgba(0,0,0,0.45)");
-			name.setFont(Font.font("Microsoft YaHei Light", 22));
+			name.setFont(Font.font("Microsoft YaHei Light", 20));
 			name.setStyle("-fx-fill: white");
 			name.setWrappingWidth(183.0);
 			name.setTextAlignment(TextAlignment.CENTER);
-			type.setFont(Font.font("Microsoft YaHei Light", 22));
+			type.setFont(Font.font("Microsoft YaHei Light", 20));
 			type.setStyle("-fx-fill: white");
 			type.setWrappingWidth(183.0);
 			type.setTextAlignment(TextAlignment.CENTER);
-			discount.setFont(Font.font("Microsoft YaHei Light", 22));
+			discount.setFont(Font.font("Microsoft YaHei Light", 20));
 			discount.setStyle("-fx-fill: white");
 			discount.setWrappingWidth(110.0);
 			discount.setTextAlignment(TextAlignment.CENTER);

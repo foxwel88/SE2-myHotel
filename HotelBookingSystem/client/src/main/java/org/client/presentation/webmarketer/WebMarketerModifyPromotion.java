@@ -255,24 +255,32 @@ public class WebMarketerModifyPromotion {
 		if (type == null) {
 			startTimePicker.setDisable(true);;
 			endTimePicker.setDisable(true);
+			startTimePicker.setOpacity(0.4);
+			endTimePicker.setOpacity(0.4);
 			levelBox.setDisable(true);
 			cityBox.setDisable(true);
 			areaBox.setDisable(true);
 		} else if (type.equals("特定日期促销")) {
 			startTimePicker.setDisable(false);;
 			endTimePicker.setDisable(false);
+			startTimePicker.setOpacity(0.7);
+			endTimePicker.setOpacity(0.7);
 			levelBox.setDisable(true);
 			cityBox.setDisable(true);
 			areaBox.setDisable(true);
 		} else if (type.equals("VIP促销")) {
 			startTimePicker.setDisable(true);;
 			endTimePicker.setDisable(true);
+			startTimePicker.setOpacity(0.4);
+			endTimePicker.setOpacity(0.4);
 			levelBox.setDisable(false);
 			cityBox.setDisable(true);
 			areaBox.setDisable(true);
 		} else if (type.equals("商圈促销")) {
 			startTimePicker.setDisable(true);;
 			endTimePicker.setDisable(true);
+			startTimePicker.setOpacity(0.4);
+			endTimePicker.setOpacity(0.4);
 			levelBox.setDisable(false);
 			cityBox.setDisable(false);
 			areaBox.setDisable(false);

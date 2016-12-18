@@ -78,15 +78,17 @@ public class WebMarketerModifyCredit {
 	@FXML
     void handleConfirm(MouseEvent event) {
 		String credit = addCreditTextField.getText();
-		if (credit == null) {
+		if (credit == null || credit.equals("")) {
 			ResultInfoHelper.setResultLabel(resultLabel, ResultMessage.WRONG_FORMAT);
+			return;
 		}
 		
 		double creditNum = 0;
 		try {
 			creditNum = Double.parseDouble(credit);
 		} catch (RuntimeException e) {
-			ResultInfoHelper.setResultLabel(resultLabel, ResultMessage.CONNECTION_FAIL);
+			ResultInfoHelper.setResultLabel(resultLabel, ResultMessage.WRONG_FORMAT);
+			return;
 		}
 		
 		ResultMessage info = controller.addCredit(creditNum);
@@ -99,6 +101,7 @@ public class WebMarketerModifyCredit {
 		String currentCredit = controller.getCurrentCreidt();
 		currentCreditText.setText(currentCredit);
 		ResultInfoHelper.setResultLabel(resultLabel, info);
+		addCreditTextField.setText("");
 		
 	}
 
@@ -106,21 +109,29 @@ public class WebMarketerModifyCredit {
     void handleSearch(MouseEvent event) {
 		String userName = searchTextField.getText();
 		
+		if (userName == null || userName.equals("")) {
+			searchResultLabel.setText("输入的用户名有误");
+			return;
+		}
+		
 		// initialize the userVO of controller
 		ResultMessage info = controller.setUserVO(userName);
 		if (info != ResultMessage.SUCCESS) {
 			setDefaultText();
-			ResultInfoHelper.setResultLabel(searchResultLabel, info);
+			searchResultLabel.setText("输入的用户名有误");
 			return;
 		}
 		// 搜索成功的话不会显示“成功”的label
+		searchResultLabel.setText("");
+		
 		
 		// get content
 		String userId = controller.getCurrentId();
 		String credit = controller.getCurrentCreidt();
+		String name = controller.getName();
 		
 		// set content
-		nameText.setText(userName);
+		nameText.setText(name);
 		idText.setText(userId);
 		currentCreditText.setText(credit);
 	}

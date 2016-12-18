@@ -22,6 +22,12 @@ public class ResultInfoHelper {
 			case EXIST:
 				label.setText("该名称已被使用");
 				break;
+			case WRONG_USERNAME:
+				label.setText("用户名有误");
+				break;
+			case WRONG_PASSWORD:
+				label.setText("密码有误");
+				break;
 			default:
 				label.setText("错误");
 				break;
