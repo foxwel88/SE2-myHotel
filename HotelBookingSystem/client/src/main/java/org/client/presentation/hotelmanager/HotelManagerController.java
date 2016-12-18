@@ -37,7 +37,9 @@ public class HotelManagerController {
 	
 	private static HotelManagerController controller;
 	
-	private String hotelID;
+	public String hotelID;
+
+	public String hotelName;
 
 	public String managerUserName;
 	
@@ -54,6 +56,7 @@ public class HotelManagerController {
 		this.hotelID = hotelID;
 		this.managerName = managerName;
 		this.managerUserName = managerUserName;
+		this.hotelName = getHotelInfo().hotelName;
 	}
 	
 	/** 登录之后就要马上调用这个方法 */

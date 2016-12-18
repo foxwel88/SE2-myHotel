@@ -102,7 +102,7 @@
                   </GridPane>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="60.0" prefWidth="1108.0" style="-fx-background-color: rgba(0,0,0,0.4);">
+            <AnchorPane prefHeight="60.0" prefWidth="1108.0" style="-fx-background-color: rgba(0,0,0,0.4);" stylesheets="@/avatarMenu.css">
                <effect>
                   <DropShadow />
                </effect>
@@ -124,7 +124,7 @@
                         </Label>
                      </children>
                   </Pane>
-                  <MenuBar fx:id="avatarBar" layoutX="1021.0" layoutY="5.0" prefHeight="60.0" prefWidth="48.0" style="-fx-background-color: rgba(0,0,0,0);">
+                  <MenuBar fx:id="avatarBar" layoutX="1021.0" layoutY="6.0" prefHeight="60.0" prefWidth="48.0" style="-fx-background-color: rgba(0,0,0,0);">
                     <menus>
                       <Menu fx:id="avatar" mnemonicParsing="false">
                         <items>

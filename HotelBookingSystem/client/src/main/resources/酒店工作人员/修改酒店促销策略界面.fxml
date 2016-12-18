@@ -32,7 +32,6 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
                   <Label alignment="CENTER" prefHeight="100.0" prefWidth="126.0" text="策略类型" textFill="WHITE" GridPane.rowIndex="1">
@@ -45,12 +44,7 @@
                         <Font name="Microsoft YaHei" size="15.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="94.0" prefWidth="126.0" text="起始时间" textFill="WHITE" GridPane.rowIndex="4">
-                     <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" prefHeight="103.0" prefWidth="126.0" text="最低适用等级" textFill="WHITE" GridPane.rowIndex="3">
+                  <Label alignment="CENTER" prefHeight="94.0" prefWidth="126.0" text="起始时间" textFill="WHITE" GridPane.rowIndex="3">
                      <font>
                         <Font name="Microsoft YaHei" size="15.0" />
                      </font>
@@ -60,14 +54,13 @@
                         <Font name="Microsoft YaHei" size="15.0" />
                      </font>
                   </Label>
-                  <Button fx:id="saveButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#save" prefHeight="30.0" prefWidth="255.0" style="-fx-background-color: rgba(0,0,0,0.1);" text="提交" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                  <TextField fx:id="nameLabel" prefHeight="30.0" prefWidth="214.0" style="-fx-background-color: rgba(255,255,255,0.1);" GridPane.columnIndex="1" />
+                  <Button fx:id="saveButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#save" prefHeight="30.0" prefWidth="255.0" style="-fx-background-color: rgba(0,0,0,0.1);" text="提交" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <TextField fx:id="nameLabel" prefHeight="30.0" prefWidth="214.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-text-inner-color: white;" GridPane.columnIndex="1" />
                   <ChoiceBox fx:id="typeBox" prefWidth="150.0" style="-fx-background-color: rgba(255,255,255,0.1);" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField fx:id="discountLabel" prefHeight="30.0" prefWidth="214.0" style="-fx-background-color: rgba(255,255,255,0.1);" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <ChoiceBox fx:id="levelBox" prefWidth="150.0" style="-fx-background-color: rgba(255,255,255,0.1);" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <DatePicker fx:id="startTimePicker" style="-fx-background-color: rgba(255,255,255,0.1);" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <DatePicker fx:id="endTimePicker" style="-fx-background-color: rgba(255,255,255,0.1);" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                  <Label alignment="CENTER" prefHeight="94.0" prefWidth="126.0" text="结束时间" textFill="WHITE" GridPane.rowIndex="5">
+                  <TextField fx:id="discountLabel" prefHeight="30.0" prefWidth="214.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <DatePicker fx:id="startTimePicker" style="-fx-background-color: rgba(255,255,255,0.1);" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <DatePicker fx:id="endTimePicker" style="-fx-background-color: rgba(255,255,255,0.1);" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Label alignment="CENTER" prefHeight="94.0" prefWidth="126.0" text="结束时间" textFill="WHITE" GridPane.rowIndex="4">
                      <font>
                         <Font name="Microsoft YaHei" size="15.0" />
                      </font>
