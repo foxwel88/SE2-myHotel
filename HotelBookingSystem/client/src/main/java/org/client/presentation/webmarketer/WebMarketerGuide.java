@@ -124,7 +124,7 @@ public class WebMarketerGuide {
 		
 		
 		userName = WebMarketerController.getInstance().getUserName();
-		welcomeLabel.setText("Welcome, " + userName);
+		welcomeLabel.setText("Welcome, " + WebMarketerController.getInstance().getName());
 
 		Resources resources = Resources.getInstance();
 		Image avatarImg = new Image(resources.avatar.toString());
