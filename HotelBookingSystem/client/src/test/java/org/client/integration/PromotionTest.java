@@ -1,4 +1,4 @@
-package ord.client.integration;
+package org.client.integration;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
