@@ -321,7 +321,7 @@ public class WebMarketerGuide {
 		try {
 			root = resources.load(resources.modify);
 			((PwModify)resources.getCurrentController()).setParentPane(parent);
-			((PwModify)resources.getCurrentController()).setUserName(userName);;
+			((PwModify)resources.getCurrentController()).setUserName(userName);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

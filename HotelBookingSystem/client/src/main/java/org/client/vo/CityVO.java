@@ -15,12 +15,9 @@ public class CityVO implements Serializable {
 	private static final long serialVersionUID = 8137334106595243657L;
 	
 	public String cityName;
-	
-	public ResultMessage resultMessage;
-	
+
 	public CityVO(String cityName) {
 		this.cityName = cityName;
-		resultMessage = ResultMessage.SUCCESS;
 	}
 	
 	/*For fast transfer from data to view, called from hotelLogic*/
@@ -35,9 +32,5 @@ public class CityVO implements Serializable {
 	
 	public static CityPO generatePO(CityVO vo) {
 		return new CityPO(vo.cityName);
-	}
-	
-	public CityVO(ResultMessage resultMessage) {
-		this.resultMessage = resultMessage;
 	}
 }

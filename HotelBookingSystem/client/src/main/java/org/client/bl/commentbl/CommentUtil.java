@@ -22,7 +22,7 @@ public class CommentUtil {
 		
 		CommentDataService commentDataService = rmiHelper.getCommentDataServiceImpl();
 		
-		List<CommentVO> commentVOList = new ArrayList<CommentVO>();;
+		List<CommentVO> commentVOList = new ArrayList<CommentVO>();
 		
 		try {
 			List<CommentPO> commentPOList = commentDataService.find(hotelID);

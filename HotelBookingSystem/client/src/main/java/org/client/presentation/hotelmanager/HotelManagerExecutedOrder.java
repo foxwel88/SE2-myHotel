@@ -115,7 +115,7 @@ public class HotelManagerExecutedOrder {
 		
 		//在没有退房信息（尚未退房）时，显示更新退房信息按钮（controller已内嵌），
 		//否则显示退房时间
-		if (vo.actTo != null) {
+		if (vo.isCheckedOut) {
 			gridPane.getChildren().remove(updateButton);
 			
 			DateFormat timeFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");

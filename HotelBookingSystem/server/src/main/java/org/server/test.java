@@ -65,7 +65,7 @@ public class test extends JFrame {
 		
 		btnStartstub.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				RMIHelper.getinstance().buildStubConnection();;
+				RMIHelper.getinstance().buildStubConnection();
 				startbutton.setEnabled(false);
 				stopbutton.setEnabled(true);
 				btnStartstub.setEnabled(false);

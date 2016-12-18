@@ -28,7 +28,6 @@ public class Comment_stub implements Commentblservice {
 	}
 
 	public ResultMessage addComment(CommentVO vo) {
-		// TODO Auto-generated method stub
 		return ResultMessage.SUCCESS;
 	}
 

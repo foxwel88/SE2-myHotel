@@ -131,7 +131,6 @@ public class WebManagerAddHotel {
 			if (message == ResultMessage.SUCCESS) {
 				resultLabel.setText("添加成功");
 				clear();
-				return;
 			}
 		}
 	}

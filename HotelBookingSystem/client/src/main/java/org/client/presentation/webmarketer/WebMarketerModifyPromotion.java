@@ -257,7 +257,7 @@ public class WebMarketerModifyPromotion {
 	private void setVisible() {
 		String type = typeBox.getValue();
 		if (type == null) {
-			startTimePicker.setDisable(true);;
+			startTimePicker.setDisable(true);
 			endTimePicker.setDisable(true);
 			startTimePicker.setOpacity(0.4);
 			endTimePicker.setOpacity(0.4);
@@ -265,7 +265,7 @@ public class WebMarketerModifyPromotion {
 			cityBox.setDisable(true);
 			areaBox.setDisable(true);
 		} else if (type.equals("特定日期促销")) {
-			startTimePicker.setDisable(false);;
+			startTimePicker.setDisable(false);
 			endTimePicker.setDisable(false);
 			startTimePicker.setOpacity(0.7);
 			endTimePicker.setOpacity(0.7);
@@ -273,7 +273,7 @@ public class WebMarketerModifyPromotion {
 			cityBox.setDisable(true);
 			areaBox.setDisable(true);
 		} else if (type.equals("VIP促销")) {
-			startTimePicker.setDisable(true);;
+			startTimePicker.setDisable(true);
 			endTimePicker.setDisable(true);
 			startTimePicker.setOpacity(0.4);
 			endTimePicker.setOpacity(0.4);
@@ -281,7 +281,7 @@ public class WebMarketerModifyPromotion {
 			cityBox.setDisable(true);
 			areaBox.setDisable(true);
 		} else if (type.equals("商圈促销")) {
-			startTimePicker.setDisable(true);;
+			startTimePicker.setDisable(true);
 			endTimePicker.setDisable(true);
 			startTimePicker.setOpacity(0.4);
 			endTimePicker.setOpacity(0.4);
