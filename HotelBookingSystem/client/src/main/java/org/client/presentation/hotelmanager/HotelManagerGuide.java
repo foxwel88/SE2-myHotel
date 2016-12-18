@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
+import org.client.launcher.PwModify;
 import org.client.launcher.Resources;
 
 import javafx.event.ActionEvent;
@@ -41,7 +42,10 @@ public class HotelManagerGuide {
 
 	@FXML
     private URL location;
-	
+
+	@FXML
+	private Pane rootPane;
+
 	@FXML
     private GridPane belowGridPane;
 
@@ -338,6 +342,29 @@ public class HotelManagerGuide {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	@FXML
+	void modifyPassword() {
+		AnchorPane mask = new AnchorPane();
+		mask.setStyle("-fx-background-color:rgba(0,0,0,0.5)");
+		mask.setLayoutX(0);
+		mask.setLayoutY(0);
+		mask.setPrefSize(1103.0, 683.0);
+		rootPane.getChildren().add(mask);
+		Resources resources = Resources.getInstance();
+		Parent root = null;
+		try {
+			root = resources.load(resources.modify);
+			((PwModify)resources.getCurrentController()).setParentPane(rootPane);
+			((PwModify)resources.getCurrentController()).setUserName(HotelManagerController.getInstance().managerUserName);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		mask.getChildren().add(root);
+		AnchorPane.setLeftAnchor(root, 352.0);
+		AnchorPane.setRightAnchor(root, 351.0);
+		AnchorPane.setTopAnchor(root, 99.0);
 	}
 }
 
