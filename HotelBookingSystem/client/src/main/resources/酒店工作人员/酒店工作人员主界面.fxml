@@ -4,6 +4,7 @@
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.web.WebView?>
 
 <AnchorPane fx:id="main" prefHeight="567.0" prefWidth="920.0" style="-fx-background-color: rgba(255,255,255,0.4);" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.presentation.hotelmanager.HotelManagerMain">
    <effect>
@@ -25,5 +26,6 @@
             <Font name="Microsoft YaHei UI Light" size="28.0" />
          </font>
       </Label>
+      <WebView fx:id="hotelImage" layoutX="337.0" layoutY="323.0" prefHeight="200.0" prefWidth="200.0" />
    </children>
 </AnchorPane>

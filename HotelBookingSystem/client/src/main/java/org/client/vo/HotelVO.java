@@ -39,10 +39,12 @@ public class HotelVO implements Serializable {
 	public List<Double> roomPrice;
 	
 	public List<String> cooperators;
+
+	public String imgURL;
 	
 	public HotelVO(String id, String hotelName, String address, CityVO city, AreaVO area, String introduction,
 			double rank, int star, String facility, String checkInInfos, List<String> roomType,
-			List<Integer> roomNum, List<Double> roomPrice, List<String> cooperators) {
+			List<Integer> roomNum, List<Double> roomPrice, List<String> cooperators, String imgURL) {
 
 		this.id = id;
 		this.hotelName = hotelName;
@@ -75,6 +77,11 @@ public class HotelVO implements Serializable {
 			this.cooperators = null;
 		} else {
 			this.cooperators = new ArrayList<>(cooperators);
+		}
+		if (imgURL == null) {
+			this.imgURL = null;
+		} else {
+			this.imgURL = imgURL;
 		}
 	}
 

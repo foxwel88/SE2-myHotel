@@ -4,6 +4,7 @@ import java.net.URL;
 import java.rmi.RemoteException;
 import java.util.ResourceBundle;
 
+import javafx.scene.web.WebView;
 import org.client.rmi.RMIHelper;
 
 import javafx.animation.Animation;
@@ -31,6 +32,9 @@ public class HotelManagerMain {
     private Label timeLabel;
 
 	@FXML
+	private WebView hotelImage;
+
+	@FXML
     void initialize() {
 		assert timeLabel != null : "fx:id=\"timeLabel\" was not injected: check your FXML file '酒店工作人员主界面.fxml'.";
 		
@@ -49,6 +53,9 @@ public class HotelManagerMain {
 			  );
 		timeline.setCycleCount(Animation.INDEFINITE);
 		timeline.play();
+
+		String imgURL = HotelManagerController.getInstance().getHotelInfo().imgURL;
+		hotelImage.getEngine().load(imgURL);
 	}
 	
 }
