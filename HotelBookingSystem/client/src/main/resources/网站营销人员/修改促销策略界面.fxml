@@ -120,8 +120,8 @@
                         <Font name="Microsoft YaHei" size="20.0" />
                      </font>
                   </Text>
-                  <DatePicker fx:id="startTimePicker" layoutX="33.0" layoutY="4.0" opacity="0.65" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="4.0" />
-                  <DatePicker fx:id="endTimePicker" layoutX="305.0" layoutY="5.0" opacity="0.65" AnchorPane.bottomAnchor="3.0" AnchorPane.topAnchor="4.0" />
+                  <DatePicker fx:id="startTimePicker" editable="false" layoutX="33.0" layoutY="4.0" opacity="0.65" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="4.0" />
+                  <DatePicker fx:id="endTimePicker" editable="false" layoutX="305.0" layoutY="5.0" opacity="0.65" AnchorPane.bottomAnchor="3.0" AnchorPane.topAnchor="4.0" />
                </children>
             </AnchorPane>
             <AnchorPane opacity="0.45" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="6" />
