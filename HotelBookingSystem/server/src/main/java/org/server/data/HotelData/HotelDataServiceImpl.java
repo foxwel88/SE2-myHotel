@@ -44,10 +44,10 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 
 				//在Hotel Table中添加酒店
 				preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("INSERT INTO Hotel(hotelID,hotelName,address,area,"
-						+ "city,introduction,rank,star,facility,cooperators,checkInInfos)"
+						+ "city,introduction,rank,star,facility,cooperators,checkInInfos,imgURL)"
 						+ " VALUES ('" + po.id + "','" + po.hotelName + "','" + po.address + "','" + po.area
 						+ "','" + po.city + "','" + po.introduction + "','" + po.rank + "','" + po.star
-						+ "','" + po.facility + "','" + po.cooperators + "','" + po.checkInInfos + "')");
+						+ "','" + po.facility + "','" + po.cooperators + "','" + po.checkInInfos + "','" + po.imgURL + "')");
 				DatabaseCommunicator.execute(preparedStatement);
 
 				//Create新Table存储该酒店的房间信息
@@ -81,10 +81,10 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 			DatabaseCommunicator.execute(preparedStatement);
 
 			preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("INSERT INTO Hotel(hotelID,hotelName,address,area,"
-					+ "city,introduction,rank,star,facility,cooperators,checkInInfos)"
+					+ "city,introduction,rank,star,facility,cooperators,checkInInfos,imgURL)"
 					+ " VALUES ('" + po.id + "','" + po.hotelName + "','" + po.address + "','" + po.area
 					+ "','" + po.city + "','" + po.introduction + "','" + po.rank + "','" + po.star
-					+ "','" + po.facility + "','" + po.cooperators + "','" + po.checkInInfos + "')");
+					+ "','" + po.facility + "','" + po.cooperators + "','" + po.checkInInfos + "','" + po.imgURL + "')");
 			DatabaseCommunicator.execute(preparedStatement);
 
 			return ResultMessage.SUCCESS;
@@ -109,7 +109,8 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 			String facility = set.getString("facility");
 			String cooperators = set.getString("cooperators");
 			String checkInInfos = set.getString("checkInInfos");
-			po = new HotelPO(id, hotelName, address, city, area, introduction, rank, star, facility, checkInInfos, cooperators);
+			String imgURL = set.getString("imgURL");
+			po = new HotelPO(id, hotelName, address, city, area, introduction, rank, star, facility, checkInInfos, cooperators, imgURL);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

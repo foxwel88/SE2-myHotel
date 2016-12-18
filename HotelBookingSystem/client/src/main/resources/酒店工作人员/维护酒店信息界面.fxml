@@ -39,6 +39,8 @@
             <RowConstraints maxHeight="120.0" minHeight="2.13140869140625" prefHeight="120.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="54.6693115234375" minHeight="22.0" prefHeight="21.521881103515625" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="56.478118896484375" minHeight="10.0" prefHeight="56.478118896484375" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="56.478118896484375" minHeight="10.0" prefHeight="56.478118896484375" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="56.478118896484375" minHeight="10.0" prefHeight="56.478118896484375" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
             <Label alignment="CENTER" prefHeight="60.0" prefWidth="160.0" text="酒店所属城市" textFill="WHITE" GridPane.rowIndex="1">
@@ -83,6 +85,12 @@
             <ChoiceBox fx:id="star" prefHeight="27.0" prefWidth="125.0" style="-fx-background-color: rgba(255,255,255,0.1);" stylesheets="@/darkTheme.css" GridPane.columnIndex="1" GridPane.rowIndex="9" />
             <TextArea fx:id="intro" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: dimgray;" stylesheets="@/darkTheme.css" GridPane.columnIndex="1" GridPane.rowIndex="11" />
             <TextArea fx:id="facility" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: dimgray;" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+            <Label alignment="CENTER" prefHeight="60.0" prefWidth="160.0" text="酒店图片URL" textFill="WHITE" GridPane.rowIndex="16">
+               <font>
+                  <Font name="Microsoft YaHei" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="imageURLField" prefHeight="30.0" prefWidth="205.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="16" />
          </children>
       </GridPane>
       <AnchorPane layoutX="430.0" layoutY="61.0" prefHeight="476.0" prefWidth="448.0" style="-fx-background-color: rgba(0,0,0,0.4);">
