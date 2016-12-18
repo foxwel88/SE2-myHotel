@@ -125,7 +125,7 @@ public class WebMarketerModifyLevel {
 			}
 		}
 		if (flag) {
-			resultLabel.setText("高等级信用值必须大于低等级");
+			resultLabel.setText("信用值必须递增");
 			return;
 		}
 		// 获得levelVO
@@ -153,6 +153,7 @@ public class WebMarketerModifyLevel {
 			LevelPane now = new LevelPane(before.levelNum, before.getCredit());
 			allLevelPanesCopy.add(now);
 		}
+		switchCurrentPage(pageNum);
 	}
 
 	@FXML
