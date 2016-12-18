@@ -129,7 +129,7 @@ public class CustomerGenerateOrder {
 				OrderVO newOrder = new OrderVO(user.ID, OrderType.UNEXECUTED.getString(), null, LiveDatePicker.toDate(schFromDate.getValue()), LiveDatePicker.toDate(schToDate.getValue()),
 						new Date(0, 0, 1), new Date(0, 0, 1), LiveDatePicker.toDate(schFromDate.getValue().plusDays(1)), new Date(0, 0, 1), hotel.id, 
 						hotel.hotelName, null, hotel.address, roomType.getValue(), getCurrentTotalPrice(), Integer.parseInt(roomNum.getText()), Integer.parseInt(residentNum.getText()),
-						hasChildren.isSelected(), user.name, phoneNumber.getText());
+						hasChildren.isSelected(), user.name, phoneNumber.getText(), false, false);
 				SwitchSceneUtil.turnToConfirmOrderScene((GridPane)root.getParent(), newOrder);
 			} catch (NumberFormatException numberFormatException) {
 				Alert alert = new Alert(AlertType.WARNING);
