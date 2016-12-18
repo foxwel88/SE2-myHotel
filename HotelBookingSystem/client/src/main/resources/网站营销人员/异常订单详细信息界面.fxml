@@ -17,9 +17,7 @@
       <DropShadow />
    </effect>
    <children>
-      <Line endX="760.0" layoutX="101.0" layoutY="114.0" startX="-80.0" />
-      <Line endX="240.0" endY="540.0" startX="240.0" startY="60.0" />
-      <GridPane layoutX="34.0" layoutY="67.0" prefHeight="460.0" prefWidth="808.0">
+      <GridPane layoutX="37.0" layoutY="70.0" prefHeight="460.0" prefWidth="808.0" AnchorPane.leftAnchor="36.0" AnchorPane.topAnchor="70.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="399.0" minWidth="10.0" prefWidth="205.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="617.0" minWidth="10.0" prefWidth="603.0" />
@@ -39,7 +37,7 @@
          <children>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Text layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="订单详情" textAlignment="CENTER" wrappingWidth="203.00002336502075" AnchorPane.leftAnchor="0.0">
+                  <Text layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="订单详情" textAlignment="CENTER" wrappingWidth="203.00002336502075" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="10.0">
                      <font>
                         <Font name="Microsoft YaHei" size="20.0" />
                      </font>
@@ -55,9 +53,9 @@
                   </Text>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(85,85,85,0.4);" GridPane.rowIndex="2">
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0,0,0,0.45);" GridPane.rowIndex="2">
                <children>
-                  <Text layoutX="1.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="酒店地址" textAlignment="CENTER" wrappingWidth="203.00002336502075" AnchorPane.bottomAnchor="11.2890625" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="10.9541015625">
+                  <Text fill="WHITE" layoutX="1.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="酒店地址" textAlignment="CENTER" wrappingWidth="203.00002336502075" AnchorPane.bottomAnchor="11.2890625" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="10.9541015625">
                      <font>
                         <Font name="Microsoft YaHei" size="18.0" />
                      </font>
@@ -73,9 +71,9 @@
                   </Text>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(85,85,85,0.4);" GridPane.rowIndex="4">
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0,0,0,0.45);" GridPane.rowIndex="4">
                <children>
-                  <Text layoutX="1.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="预约到店时间" textAlignment="CENTER" wrappingWidth="203.00002336502075" AnchorPane.bottomAnchor="11.2890625" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="10.9541015625">
+                  <Text fill="WHITE" layoutX="1.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="预约到店时间" textAlignment="CENTER" wrappingWidth="203.00002336502075" AnchorPane.bottomAnchor="11.2890625" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="10.9541015625">
                      <font>
                         <Font name="Microsoft YaHei" size="18.0" />
                      </font>
@@ -91,9 +89,9 @@
                   </Text>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(85,85,85,0.4);" GridPane.rowIndex="6">
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0,0,0,0.45);" GridPane.rowIndex="6">
                <children>
-                  <Text layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="扣除信用值" textAlignment="CENTER" wrappingWidth="203.00002336502075" AnchorPane.bottomAnchor="11.2890625" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="10.9541015625">
+                  <Text fill="WHITE" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="扣除信用值" textAlignment="CENTER" wrappingWidth="203.00002336502075" AnchorPane.bottomAnchor="11.2890625" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="10.9541015625">
                      <font>
                         <Font name="Microsoft YaHei" size="18.0" />
                      </font>
@@ -109,9 +107,9 @@
                   </Text>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(85,85,85,0.4);" GridPane.rowIndex="8">
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0,0,0,0.45);" GridPane.rowIndex="8">
                <children>
-                  <Text layoutX="1.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="下单时间" textAlignment="CENTER" wrappingWidth="203.00002336502075" AnchorPane.bottomAnchor="11.2890625" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="10.9541015625">
+                  <Text fill="WHITE" layoutX="1.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="下单时间" textAlignment="CENTER" wrappingWidth="203.00002336502075" AnchorPane.bottomAnchor="11.2890625" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="10.9541015625">
                      <font>
                         <Font name="Microsoft YaHei" size="18.0" />
                      </font>
@@ -120,7 +118,7 @@
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                <children>
-                  <Button fx:id="cancelButton" layoutX="488.0" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#handleCancel" prefHeight="36.0" prefWidth="100.0" style="-fx-background-color: rgba(0,0,0,0.4);" text="撤销" textFill="WHITE">
+                  <Button fx:id="cancelButton" layoutX="488.0" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#handleCancel" prefHeight="36.0" prefWidth="100.0" style="-fx-background-color: rgba(0,0,0,0.45);" text="撤销" textFill="WHITE" AnchorPane.bottomAnchor="7.0" AnchorPane.topAnchor="3.0">
                      <font>
                         <Font name="Microsoft YaHei" size="18.0" />
                      </font>
@@ -140,9 +138,9 @@
                      </font>
                   </Text>
                </children></AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(85,85,85,0.4);" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0,0,0,0.45);" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <Text fx:id="hotelAdressLabel" layoutX="31.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="xx路xx街" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="28.0" AnchorPane.topAnchor="11.0">
+                  <Text fx:id="hotelAdressLabel" fill="WHITE" layoutX="31.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="xx路xx街" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="28.0" AnchorPane.topAnchor="11.0">
                      <font>
                         <Font name="Microsoft YaHei" size="18.0" />
                      </font>
@@ -166,9 +164,9 @@
                      </font>
                   </Text>
                </children></AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(85,85,85,0.4);" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0,0,0,0.45);" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <children>
-                  <Text fx:id="arriveTimeLabel" layoutX="24.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="（到店时间）" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="28.0" AnchorPane.topAnchor="11.0">
+                  <Text fx:id="arriveTimeLabel" fill="WHITE" layoutX="24.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="（到店时间）" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="28.0" AnchorPane.topAnchor="11.0">
                      <font>
                         <Font name="Microsoft YaHei" size="18.0" />
                      </font>
@@ -182,9 +180,9 @@
                      </font>
                   </Text>
                </children></AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(85,85,85,0.4);" GridPane.columnIndex="1" GridPane.rowIndex="6">
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0,0,0,0.45);" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <children>
-                  <Text fx:id="creditNumLabel" layoutX="40.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="28.0" AnchorPane.topAnchor="11.0">
+                  <Text fx:id="creditNumLabel" fill="WHITE" layoutX="40.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="28.0" AnchorPane.topAnchor="11.0">
                      <font>
                         <Font name="Microsoft YaHei" size="18.0" />
                      </font>
@@ -198,9 +196,9 @@
                      </font>
                   </Text>
                </children></AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(85,85,85,0.4);" GridPane.columnIndex="1" GridPane.rowIndex="8">
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0,0,0,0.45);" GridPane.columnIndex="1" GridPane.rowIndex="8">
                <children>
-                  <Text fx:id="bookTimeLabel" layoutX="23.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="（下单时间）" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="28.0" AnchorPane.topAnchor="11.0">
+                  <Text fx:id="bookTimeLabel" fill="WHITE" layoutX="23.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="（下单时间）" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="28.0" AnchorPane.topAnchor="11.0">
                      <font>
                         <Font name="Microsoft YaHei" size="18.0" />
                      </font>
@@ -231,5 +229,7 @@
             </AnchorPane>
          </children>
       </GridPane>
+      <Line endX="240.0" endY="540.0" startX="240.0" startY="60.0" />
+      <Line endX="760.0" layoutX="101.0" layoutY="114.0" startX="-80.0" />
    </children>
 </AnchorPane>

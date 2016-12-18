@@ -119,9 +119,13 @@ public class WebMarketerModifyLevel {
 				flag = true;
 				break;
 			}
+			if (allLevelPanes.get(i).getCredit() < 0 || allLevelPanes.get(i - 1).getCredit() < 0) {
+				resultLabel.setText("输入格式有误");
+				return;
+			}
 		}
 		if (flag) {
-			ResultInfoHelper.setResultLabel(resultLabel, ResultMessage.WRONG_FORMAT);
+			resultLabel.setText("高等级信用值必须大于低等级");
 			return;
 		}
 		// 获得levelVO
@@ -261,9 +265,8 @@ public class WebMarketerModifyLevel {
 			this.getChildren().add(credit);
 			
 			// set location
-			AnchorPane.setBottomAnchor(levelName, 6.0);
+			AnchorPane.setBottomAnchor(levelName, 10.0);
 			AnchorPane.setLeftAnchor(levelName, 37.0);
-			AnchorPane.setTopAnchor(levelName, 7.0);
 			
 			AnchorPane.setBottomAnchor(credit, 6.0);
 			AnchorPane.setLeftAnchor(credit, 280.0);
@@ -273,10 +276,13 @@ public class WebMarketerModifyLevel {
 		
 		double getCredit() {
 			double creditNum = -1;
+			if (credit.getText() == null || credit.getText().equals("")) {
+				return creditNum;
+			}
 			try {
 				creditNum = Double.parseDouble(credit.getText());
 			} catch (RuntimeException e) {
-				
+				resultLabel.setText("输入格式有误");
 			}
 			return creditNum;
 		}
