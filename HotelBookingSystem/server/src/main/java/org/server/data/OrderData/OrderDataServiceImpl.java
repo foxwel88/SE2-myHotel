@@ -57,8 +57,10 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 			boolean existsChild = resultSet.getBoolean("existsChildren");
 			String customerName = resultSet.getString("customerName");
 			String phoneNumber = resultSet.getString("phoneNumber");
+			boolean isCommented = resultSet.getBoolean("isCommented");
+			boolean isCheckedOut = resultSet.getBoolean("isCheckOut");
 			po = new OrderPO(type,generatedDate,schFrom,schTo,actFrom,actTo,latestTime,cancelTime,hotelID,hotelName,orderID,hotelAddress,
-					roomType,totalPrice,roomNum,numOfPeople,existsChild,customerName,userId,phoneNumber);
+					roomType,totalPrice,roomNum,numOfPeople,existsChild,customerName,userId,phoneNumber,isCommented,isCheckedOut);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -70,10 +72,7 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 		OrderPO po = null;
 		PreparedStatement preparedStatement;
 		try {
-			preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("select type,userId,generatedDate,"
-					+ "schFrom,schTo,actFrom,actTo,latestTime,cancelTime,hotelid,hotelAddress,orderID,hotelName,roomType,totalPrice,roomNum,numOfPeople,"
-					+ "existsChildren,customerName,phoneNumber from `Order` where orderID='" + orderID + "'");
-			
+			preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("select * from `Order` where orderID='" + orderID + "'");
 			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
 			while (resultSet.next()) {
 				po = getPOfromSet(resultSet);
@@ -89,9 +88,7 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 		List<OrderPO> res = new ArrayList<OrderPO>();
 		PreparedStatement preparedStatement;
 		try {
-			preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("select type,userId,generatedDate,"
-					+ "schFrom,schTo,actFrom,actTo,latestTime,cancelTime,hotelid,hotelAddress,orderID,hotelName,roomType,totalPrice,roomNum,numOfPeople,"
-					+ "existsChildren,customerName,phoneNumber from `Order` where userId='" + userID + "' and type='" + type.getString() + "'");
+			preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("select * from `Order` where userId='" + userID + "' and type='" + type.getString() + "'");
 			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
 			while (resultSet.next()) {
 				res.add(getPOfromSet(resultSet));
@@ -107,9 +104,7 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 		List<OrderPO> res = new ArrayList<OrderPO>();
 		PreparedStatement preparedStatement;
 		try {
-			preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("select type,userId,generatedDate,"
-					+ "schFrom,schTo,actFrom,actTo,latestTime,cancelTime,hotelid,hotelAddress,orderID,hotelName,roomType,totalPrice,roomNum,numOfPeople,"
-					+ "existsChildren,customerName,phoneNumber from `Order` where hotelid='" + hotelID + "' and type='" + type.getString() + "'");
+			preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("select * from `Order` where hotelid='" + hotelID + "' and type='" + type.getString() + "'");
 			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
 			while (resultSet.next()) {
 				res.add(getPOfromSet(resultSet));
@@ -125,9 +120,7 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 		List<OrderPO> res = new ArrayList<OrderPO>();
 		PreparedStatement preparedStatement;
 		try {
-			preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("select type,userId,generatedDate,"
-					+ "schFrom,schTo,actFrom,actTo,latestTime,cancelTime,hotelid,hotelAddress,orderID,hotelName,roomType,totalPrice,roomNum,numOfPeople,"
-					+ "existsChildren,customerName,phoneNumber from `Order` where type='" + OrderType.ABNORMAL.getString() + "'");
+			preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("select * from `Order` where type='" + OrderType.ABNORMAL.getString() + "'");
 			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
 			while (resultSet.next()) {
 				res.add(getPOfromSet(resultSet));
@@ -146,11 +139,11 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 			if (!resultSet.next()) {
 				preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("insert into `Order`(type,userId,generatedDate,"
 								+ "schFrom,schTo,actFrom,actTo,latestTime,cancelTime,hotelAddress,hotelname,orderID,hotelID,roomType,totalPrice,roomNum,numOfPeople,"
-								+ "existsChildren,customerName,phoneNumber) values('" + po.type.getString() + "','" + po.userId + "','" + transtime(po.generatedDate)
+								+ "existsChildren,customerName,phoneNumber,isCommented,isCheckedOut) values('" + po.type.getString() + "','" + po.userId + "','" + transtime(po.generatedDate)
 								+ "','" + transtime(po.schFrom) + "','" + transtime(po.schTo) + "','" + transtime(po.actFrom) + "','" + transtime(po.actTo)
 								+ "','" + transtime(po.latestTime) + "','" + transtime(po.cancelTime) + "','" + po.hotelAddress + "','" + po.hotelName + "','" + po.orderID + "','" + po.hotelID
 								+ "','" + po.roomType.getString() + "'," + po.totalPrice + "," + po.roomNum + "," + po.numOfPeople + "," + po.existsChild + ",'" 
-								+ po.customerName + "','" + po.phoneNumber + "')");
+								+ po.customerName + "','" + po.phoneNumber + "','" + po.isCommented + "','" + po.isCheckedOut + "')");
 				//DatabaseCommunicator.execute(preparedStatement);
 				preparedStatement.execute();
 				return ResultMessage.SUCCESS;

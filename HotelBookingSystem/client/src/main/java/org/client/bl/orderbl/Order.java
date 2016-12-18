@@ -71,6 +71,10 @@ public class Order {
 	
 	public String phoneNumber;
 	
+	public boolean isCommented;
+	
+	public boolean isCheckedOut;
+	
 	public Order() {
 		this.dao = OrderUtil.getInstance().dao;
 		this.timedao = OrderUtil.getInstance().timedao;
@@ -103,6 +107,9 @@ public class Order {
 		this.existsChild = vo.existsChild;
 		this.phoneNumber = vo.phoneNumber;
 		
+		this.isCommented = vo.isCommented;
+		this.isCheckedOut = vo.isCheckedOut;
+		
 		return ResultMessage.SUCCESS;
 	}
 	
@@ -131,6 +138,9 @@ public class Order {
 		this.numOfPeople = po.numOfPeople;
 		this.existsChild = po.existsChild;
 		this.phoneNumber = po.phoneNumber;
+		
+		this.isCommented = po.isCommented;
+		this.isCheckedOut = po.isCheckedOut;
 		
 		return ResultMessage.SUCCESS;
 	}
@@ -179,6 +189,7 @@ public class Order {
 		if (type != OrderType.EXECUTED) {
 			return ResultMessage.WRONG_ORDER_TYPE;
 		}
+		this.isCheckedOut = true;
 		try {
 			actTo = timedao.getDate();
 		} catch (RemoteException e) {
@@ -225,12 +236,12 @@ public class Order {
 	}
 	
 	public OrderVO getOrderVO () {
-		OrderVO vo = new OrderVO(userID,type.getString(),generatedDate,schFrom,schTo,actFrom,actTo,latestTime,cancelTime,hotelID,hotelName,orderID,hotelAddress,roomType.getString(),totalPrice,roomNum,numOfPeople,existsChild,customerName,phoneNumber);
+		OrderVO vo = new OrderVO(userID,type.getString(),generatedDate,schFrom,schTo,actFrom,actTo,latestTime,cancelTime,hotelID,hotelName,orderID,hotelAddress,roomType.getString(),totalPrice,roomNum,numOfPeople,existsChild,customerName,phoneNumber,isCommented,isCheckedOut);
 		return vo;
 	}
 	
 	public OrderPO getOrderPO () {
-		OrderPO po = new OrderPO(type,generatedDate,schFrom,schTo,actFrom,actTo,latestTime,cancelTime,hotelID,hotelName,orderID,hotelAddress,roomType,totalPrice,roomNum,numOfPeople,existsChild,customerName,userID,phoneNumber);
+		OrderPO po = new OrderPO(type,generatedDate,schFrom,schTo,actFrom,actTo,latestTime,cancelTime,hotelID,hotelName,orderID,hotelAddress,roomType,totalPrice,roomNum,numOfPeople,existsChild,customerName,userID,phoneNumber,isCommented,isCheckedOut);
 		return po;
 	}
 

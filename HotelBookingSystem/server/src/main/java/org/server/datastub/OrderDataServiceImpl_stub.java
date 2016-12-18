@@ -29,16 +29,16 @@ public class OrderDataServiceImpl_stub extends UnicastRemoteObject implements Or
 	protected OrderDataServiceImpl_stub() throws RemoteException {
 		super();
 		po1 = new OrderPO(OrderType.UNEXECUTED,new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),
-					"00001","栖霞大酒店","000000000120161122112233","南京市仙林大道168号栖霞大酒店",RoomType.BIG,100,1,2,false, "foxwel","0000000001","13919191919");
+					"00001","栖霞大酒店","000000000120161122112233","南京市仙林大道168号栖霞大酒店",RoomType.BIG,100,1,2,false, "foxwel","0000000001","13919191919",false,false);
 		
 		po2 = new OrderPO(OrderType.CANCELED,new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),
-				"00002","栖霞大酒店","000000000120161122112244","南京市仙林大道168号栖霞大酒店",RoomType.BIG,120,1,2,false, "foxwel","0000000001","13919191919");
+				"00002","栖霞大酒店","000000000120161122112244","南京市仙林大道168号栖霞大酒店",RoomType.BIG,120,1,2,false, "foxwel","0000000001","13919191919",false,false);
 	
 		po3 = new OrderPO(OrderType.UNEXECUTED,new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),
-				"00002","七天连锁酒店","000001234520161122112255","栖七天连锁酒店大酒店",RoomType.SINGLE,150,1,2,false, "ct","0000012345","13645454545");
+				"00002","七天连锁酒店","000001234520161122112255","栖七天连锁酒店大酒店",RoomType.SINGLE,150,1,2,false, "ct","0000012345","13645454545",false,false);
 		
 		po4 = new OrderPO(OrderType.ABNORMAL,new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),
-				"00001","七天连锁酒店","000001234520161122112266","栖七天连锁酒店大酒店",RoomType.SINGLE,350,1,2,false, "ct","0000012345","13645454545");
+				"00001","七天连锁酒店","000001234520161122112266","栖七天连锁酒店大酒店",RoomType.SINGLE,350,1,2,false, "ct","0000012345","13645454545",false,false);
 	
 		// TODO Auto-generated constructor stub
 	}

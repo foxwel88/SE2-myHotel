@@ -23,13 +23,13 @@ public class OrderTest {
 	OrderController controller;
 	
 	OrderVO vo1 = new OrderVO("0000000001",OrderType.UNEXECUTED.getString(),null,new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),
-			"00001","aaaaa某某某大酒店",null,"仙林大道168号栖霞大酒店",RoomType.BIG.getString(),100,1,2,false, "foxweltest1","13919191919");
+			"00001","aaaaa某某某大酒店",null,"仙林大道168号栖霞大酒店",RoomType.BIG.getString(),100,1,2,false, "foxweltest1","13919191919",false,false);
 	
 	OrderVO vo2 = new OrderVO("0000000002",OrderType.UNEXECUTED.getString(),null,new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),
-			"00001","aaaaa某某某大酒店",null,"仙林大道168号栖霞大酒店",RoomType.BIG.getString(),100,1,2,false, "foxweltest2","13919191919");
+			"00001","aaaaa某某某大酒店",null,"仙林大道168号栖霞大酒店",RoomType.BIG.getString(),100,1,2,false, "foxweltest2","13919191919",false,false);
 	
 	OrderVO vo3 = new OrderVO("0000000003",OrderType.UNEXECUTED.getString(),null,new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),
-			"00001","aaaaa某某某大酒店",null,"仙林大道168号栖霞大酒店",RoomType.BIG.getString(),100,1,2,false, "foxweltest3","13919191919");
+			"00001","aaaaa某某某大酒店",null,"仙林大道168号栖霞大酒店",RoomType.BIG.getString(),100,1,2,false, "foxweltest3","13919191919",false,false);
 
 	String orderID1 = null;
 	

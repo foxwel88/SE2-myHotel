@@ -16,193 +16,193 @@ public class Order_stub implements Orderblservice {
 	OrderVO vo1 = new OrderVO("i'm a userid",OrderType.ABNORMAL.getString()
 			,new Date(),new Date(),new Date(),new Date()
 			,new Date(),new Date(),new Date(),
-			"00001","南京某酒店","010000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13919191919");
+			"00001","南京某酒店","010000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13919191919",false,false);
 
 	OrderVO vo2 = new OrderVO("i'm a userid",OrderType.ABNORMAL.getString(),
 			new Date(),new Date(),new Date(),new Date()
 			,new Date(),new Date(),new Date(),
-			"00001","南京某酒店","020000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "张","13671717171");
+			"00001","南京某酒店","020000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "张","13671717171",false,false);
 	
 	OrderVO fvo1 = new OrderVO("i'm a userid",OrderType.EXECUTED.getString(),
 			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
-			"00002","fhotel1","030000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171");
+			"00002","fhotel1","030000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171",false,false);
 	
 	OrderVO fvo2 = new OrderVO("i'm a userid",OrderType.EXECUTED.getString(),
 			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
-			"00002","fhotel2","040000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171");
+			"00002","fhotel2","040000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171",false,false);
 	
 	OrderVO fvo3 = new OrderVO("i'm a userid",OrderType.EXECUTED.getString(),
 			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
-			"00002","fhotel3","050000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171");
+			"00002","fhotel3","050000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171",false,false);
 	
 	OrderVO fvo4 = new OrderVO("i'm a userid",OrderType.EXECUTED.getString(),
 			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
-			"00004","fhotel4","060000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171");
+			"00004","fhotel4","060000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171",false,false);
 	
 	OrderVO fvo5 = new OrderVO("i'm a userid",OrderType.EXECUTED.getString(),
 			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
-			"00005","fhotel5","070000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171");
+			"00005","fhotel5","070000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171",false,false);
 	
 	
 	OrderVO fvo6 = new OrderVO("i'm a userid",OrderType.EXECUTED.getString(),
 			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
-			"00006","fhotel6","080000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171");
+			"00006","fhotel6","080000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171",false,false);
 	
 	OrderVO fvo7 = new OrderVO("i'm a userid",OrderType.EXECUTED.getString(),
 			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
-			"00007","fhotel7","090000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171");
+			"00007","fhotel7","090000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171",false,false);
 	
 	OrderVO fvo8 = new OrderVO("i'm a userid",OrderType.EXECUTED.getString(),
 			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
-			"00008","fhotel8","100000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171");
+			"00008","fhotel8","100000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171",false,false);
 	
 	OrderVO cvo1 = new OrderVO("i'm a userid",OrderType.CANCELED.getString(),
 			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
-			"00011","chotel1","110000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171");
+			"00011","chotel1","110000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171",false,false);
 	
 	OrderVO cvo2 = new OrderVO("i'm a userid",OrderType.CANCELED.getString(),
 			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
-			"00011","chotel2","120000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171");
+			"00011","chotel2","120000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171",false,false);
 	
 	OrderVO cvo3 = new OrderVO("i'm a userid",OrderType.CANCELED.getString(),
 			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
-			"00011","chotel3","130000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171");
+			"00011","chotel3","130000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171",false,false);
 	
 	OrderVO cvo4 = new OrderVO("i'm a userid",OrderType.CANCELED.getString(),
 			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
-			"00011","chotel4","140000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171");
+			"00011","chotel4","140000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171",false,false);
 	
 	OrderVO cvo5 = new OrderVO("i'm a userid",OrderType.CANCELED.getString(),
 			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
-			"00011","chotel5","150000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171");
+			"00011","chotel5","150000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171",false,false);
 	
 	OrderVO cvo6 = new OrderVO("i'm a userid",OrderType.CANCELED.getString(),
 			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
-			"00011","chotel6","160000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171");
+			"00011","chotel6","160000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171",false,false);
 	
 	OrderVO cvo7 = new OrderVO("i'm a userid",OrderType.CANCELED.getString(),
 			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
-			"00011","chotel7","170000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171");
+			"00011","chotel7","170000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171",false,false);
 	
 	OrderVO cvo8 = new OrderVO("i'm a userid",OrderType.CANCELED.getString(),
 			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
-			"00011","chotel8","180000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171");
+			"00011","chotel8","180000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171",false,false);
 	
 	OrderVO avo1 = new OrderVO("i'm a userid",OrderType.ABNORMAL.getString(),
 			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
-			"00011","ahotel1","190000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171");
+			"00011","ahotel1","190000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171",false,false);
 	
 	OrderVO avo2 = new OrderVO("i'm a userid",OrderType.ABNORMAL.getString(),
 			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
-			"00011","ahotel2","200000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171");
+			"00011","ahotel2","200000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171",false,false);
 	
 	OrderVO avo3 = new OrderVO("i'm a userid",OrderType.ABNORMAL.getString(),
 			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
-			"00011","ahotel3","210000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171");
+			"00011","ahotel3","210000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171",false,false);
 	
 	OrderVO avo4 = new OrderVO("i'm a userid",OrderType.ABNORMAL.getString(),
 			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
-			"00011","ahotel4","220000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171");
+			"00011","ahotel4","220000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171",false,false);
 	
 	OrderVO avo5 = new OrderVO("i'm a userid",OrderType.ABNORMAL.getString(),
 			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
-			"00011","ahotel5","230000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171");
+			"00011","ahotel5","230000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171",false,false);
 	
 	OrderVO avo6 = new OrderVO("i'm a userid",OrderType.ABNORMAL.getString(),
 			new Date(100000000),new Date(10),new Date(100000000),new Date(10)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
-			"00011","ahotel6","240000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171");
+			"00011","ahotel6","240000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171",false,false);
 	
 	OrderVO avo7 = new OrderVO("i'm a userid",OrderType.ABNORMAL.getString(),
 			new Date(100000000),new Date(10),new Date(100000000),new Date(10)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
-			"00011","ahotel7","250000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171");
+			"00011","ahotel7","250000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171",false,false);
 	
 	OrderVO avo8 = new OrderVO("i'm a userid",OrderType.ABNORMAL.getString(),
 			new Date(100000000),new Date(10),new Date(100000000),new Date(10)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
-			"00011","ahotel8","260000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171");
+			"00011","ahotel8","260000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171",false,false);
 	
 	OrderVO uvo1 = new OrderVO("i'm a userid",OrderType.UNEXECUTED.getString(),
 			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
-			"00011","uhotel1","270000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171");
+			"00011","uhotel1","270000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171",false,false);
 	
 	OrderVO uvo2 = new OrderVO("i'm a userid",OrderType.UNEXECUTED.getString(),
 			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
-			"00011","uhotel2","280000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171");
+			"00011","uhotel2","280000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171",false,false);
 	
 	OrderVO uvo3 = new OrderVO("i'm a userid",OrderType.UNEXECUTED.getString(),
 			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
-			"00011","uhotel3","290000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "张","13671717171");
+			"00011","uhotel3","290000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "张","13671717171",false,false);
 	
 	OrderVO uvo4 = new OrderVO("i'm a userid",OrderType.UNEXECUTED.getString(),
 			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
-			"00011","uhotel4","300000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171");
+			"00011","uhotel4","300000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "王","13671717171",false,false);
 	
 	OrderVO uvo5 = new OrderVO("i'm a userid",OrderType.UNEXECUTED.getString(),
 			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
-			"00011","uhotel5","310000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,false, "张","13671717171");
+			"00011","uhotel5","310000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,false, "张","13671717171",false,false);
 	
 	OrderVO uvo6 = new OrderVO("i'm a userid",OrderType.UNEXECUTED.getString(),
 			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
-			"00011","uhotel6","320000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,false, "李","13671717171");
+			"00011","uhotel6","320000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,false, "李","13671717171",false,false);
 	
 	OrderVO uvo7 = new OrderVO("i'm a userid",OrderType.UNEXECUTED.getString(),
 			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
-			"00011","uhotel7","330000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,false, "李","13671717171");
+			"00011","uhotel7","330000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,false, "李","13671717171",false,false);
 	
 	OrderVO uvo8 = new OrderVO("i'm a userid",OrderType.UNEXECUTED.getString(),
 			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
-			"00011","uhotel8","340000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,false, "李","13671717171");
+			"00011","uhotel8","340000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,false, "李","13671717171",false,false);
 	
 	OrderVO uvo9 = new OrderVO("i'm a userid",OrderType.UNEXECUTED.getString(),
 			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
-			"00011","uhotel9","350000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,false, "李","13671717171");
+			"00011","uhotel9","350000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,false, "李","13671717171",false,false);
 	
 	OrderVO uvo10 = new OrderVO("i'm a userid",OrderType.UNEXECUTED.getString(),
 			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
-			"00011","uhotel10","360000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,false, "李","13671717171");
+			"00011","uhotel10","360000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,false, "李","13671717171",false,false);
 	
 	OrderVO uvo11 = new OrderVO("i'm a userid",OrderType.UNEXECUTED.getString(),
 			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
-			"00011","uhotel11","370000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "李","13671717171");
+			"00011","uhotel11","370000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "李","13671717171",false,false);
 	
 	OrderVO uvo12 = new OrderVO("i'm a userid",OrderType.UNEXECUTED.getString(),
 			new Date(100000000),new Date(100000000),new Date(100000000),new Date(100000000)
 			,new Date(100000000),new Date(100000000),new Date(100000000),
-			"00011","uhotel12","380000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "李","13671717171");
+			"00011","uhotel12","380000000120161122112233","lalala",RoomType.BIG.getString(),100,2,2,true, "李","13671717171",false,false);
 
 	ArrayList<OrderVO> vo;
 	
