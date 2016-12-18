@@ -95,8 +95,7 @@ public class WebManagerAddWebMarketer {
 	void handleConfirmAction(MouseEvent event) throws IOException {
 		if (checkUser()) {
 			UserVO newvo = new UserVO(UserType.WEBMARKETER.getString(), userNameTextField.getText(), nameTextField.getText(), 
-					null, passwordField.getText(), phoneTextField.getText(), 0, nowvo.birthday, nowvo.companyName, 
-					nowvo.hotelID, nowvo.hotelAddress);
+					null, passwordField.getText(), phoneTextField.getText(), 0, null, null, null, null);
 			ResultMessage message = WebManagerController.getInstance().add(newvo);
 			if (message == ResultMessage.EXIST) {
 				resultLabel.setText("用户名已存在");
