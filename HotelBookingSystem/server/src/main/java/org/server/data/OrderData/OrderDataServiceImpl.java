@@ -35,6 +35,7 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 	}
 	
 	OrderPO getPOfromSet(ResultSet resultSet) {
+		System.out.println("lalalalla");
 		OrderPO po = null;
 		try {
 			OrderType type = OrderType.getType((resultSet.getString("type")));
@@ -58,9 +59,10 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 			String customerName = resultSet.getString("customerName");
 			String phoneNumber = resultSet.getString("phoneNumber");
 			boolean isCommented = resultSet.getBoolean("isCommented");
-			boolean isCheckedOut = resultSet.getBoolean("isCheckOut");
+			boolean isCheckedOut = resultSet.getBoolean("isCheckedOut");
 			po = new OrderPO(type,generatedDate,schFrom,schTo,actFrom,actTo,latestTime,cancelTime,hotelID,hotelName,orderID,hotelAddress,
 					roomType,totalPrice,roomNum,numOfPeople,existsChild,customerName,userId,phoneNumber,isCommented,isCheckedOut);
+			System.out.println(po.orderID);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -143,7 +145,7 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 								+ "','" + transtime(po.schFrom) + "','" + transtime(po.schTo) + "','" + transtime(po.actFrom) + "','" + transtime(po.actTo)
 								+ "','" + transtime(po.latestTime) + "','" + transtime(po.cancelTime) + "','" + po.hotelAddress + "','" + po.hotelName + "','" + po.orderID + "','" + po.hotelID
 								+ "','" + po.roomType.getString() + "'," + po.totalPrice + "," + po.roomNum + "," + po.numOfPeople + "," + po.existsChild + ",'" 
-								+ po.customerName + "','" + po.phoneNumber + "','" + po.isCommented + "','" + po.isCheckedOut + "')");
+								+ po.customerName + "','" + po.phoneNumber + "'," + po.isCommented + "," + po.isCheckedOut + ")");
 				//DatabaseCommunicator.execute(preparedStatement);
 				preparedStatement.execute();
 				return ResultMessage.SUCCESS;

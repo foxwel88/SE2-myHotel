@@ -93,6 +93,9 @@ public class OrderUtil {
 	public List<OrderVO> getUserOrderList (String userID, OrderType type) {		
 		OrderList mylist = new OrderList();
 		try {
+			if (dao.getUserOrderPO(userID, type).get(0) == null) {
+				System.out.println("hahahah");
+			}
 			mylist.setOrderList(dao.getUserOrderPO(userID, type));
 			return mylist.getOrderListVO();
 		} catch (RemoteException e) {
