@@ -82,7 +82,7 @@
             <Separator layoutX="5.0" layoutY="236.0" prefHeight="11.0" prefWidth="806.0" AnchorPane.topAnchor="236.0" />
             <AnchorPane layoutX="5.0" layoutY="240.0" prefHeight="110.0" prefWidth="807.0">
                <children>
-                  <Label layoutY="10.0" text="下单人姓名/企业名称">
+                  <Label layoutY="10.0" text="住宿人姓名/企业名称">
                      <font>
                         <Font name="Microsoft YaHei" size="16.0" />
                      </font>

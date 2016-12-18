@@ -6,6 +6,8 @@ import org.client.vo.OrderVO;
 import org.common.utility.ResultMessage;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -96,6 +98,11 @@ public class CustomerUnexcutedOrder {
 	void cancelOrder() {
 		ResultMessage resultMessage = cancel();
 		if (ResultMessage.SUCCESS == resultMessage) {
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Success");
+			alert.setHeaderText(null);
+			alert.setContentText("成功撤销订单");
+			alert.showAndWait();
 			SwitchSceneUtil.turnToAnotherScene((GridPane)(root.getParent()), resources.customerCheckUnexecutedOrderList);
 		} else {
 			// TODO

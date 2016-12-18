@@ -1,4 +1,4 @@
-package ord.client.integration;
+package org.client.integration;
 
 import org.client.bl.hotelbl.HotelController;
 import org.client.bl.orderbl.OrderController;

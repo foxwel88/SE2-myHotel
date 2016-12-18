@@ -37,7 +37,7 @@
                   </Button>
                   <Label fx:id="searchResultLabel" layoutX="541.0" layoutY="27.0">
                      <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
+                        <Font name="Microsoft YaHei" size="20.0" />
                      </font>
                   </Label>
                </children>
@@ -105,7 +105,7 @@
                   </Button>
                   <Label fx:id="resultLabel" layoutX="560.0" layoutY="349.0">
                      <font>
-                        <Font name="Microsoft YaHei" size="15.0" />
+                        <Font name="Microsoft YaHei" size="20.0" />
                      </font>
                   </Label>
                </children>

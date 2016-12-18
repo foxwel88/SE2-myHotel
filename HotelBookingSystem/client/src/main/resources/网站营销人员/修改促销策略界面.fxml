@@ -184,9 +184,9 @@
             <Font name="Microsoft YaHei" size="15.0" />
          </font>
       </Button>
-      <Label fx:id="resultLabel" layoutX="742.0" layoutY="533.0">
+      <Label fx:id="resultLabel" alignment="CENTER" layoutX="657.0" layoutY="527.0" prefHeight="27.0" prefWidth="263.0" AnchorPane.topAnchor="530.0">
          <font>
-            <Font name="Microsoft YaHei" size="15.0" />
+            <Font name="Microsoft YaHei" size="20.0" />
          </font>
       </Label>
    </children>
