@@ -32,7 +32,7 @@
             <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Label prefHeight="20.0" prefWidth="203.0" text="订单号">
+            <Label prefHeight="20.0" prefWidth="203.0" text="酒店名称">
                <font>
                   <Font name="Microsoft YaHei" size="20.0" />
                </font>
@@ -52,7 +52,7 @@
                   <Font name="Microsoft YaHei" size="20.0" />
                </font>
             </Label>
-            <Label prefHeight="20.0" prefWidth="203.0" text="预约到店时间" GridPane.rowIndex="4">
+            <Label prefHeight="20.0" prefWidth="203.0" text="最晚到店时间" GridPane.rowIndex="4">
                <font>
                   <Font name="Microsoft YaHei" size="20.0" />
                </font>
@@ -77,7 +77,7 @@
                   <Font name="Microsoft YaHei" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="orderID" prefHeight="20.0" prefWidth="626.0" text="201609170224201314359745" GridPane.columnIndex="1">
+            <Label fx:id="hotelname" prefHeight="20.0" prefWidth="626.0" text="哇哈哈" GridPane.columnIndex="1">
                <font>
                   <Font name="Microsoft YaHei" size="20.0" />
                </font>
@@ -97,12 +97,12 @@
                   <Font name="Microsoft YaHei" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="appointedArrivalTime" prefHeight="20.0" prefWidth="626.0" text="2016/9/17" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <Label fx:id="latestArrivalTime" prefHeight="20.0" prefWidth="626.0" text="2016/9/17/00/00/00" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <font>
                   <Font name="Microsoft YaHei" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="appointedLivingTime" prefHeight="20.0" prefWidth="626.0" text="2016/9/17中午12点 到 2016/9/19中午10点" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <Label fx:id="appointedLivingTime" prefHeight="20.0" prefWidth="626.0" text="2016/9/18 - 2016/9/19" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <font>
                   <Font name="Microsoft YaHei" size="20.0" />
                </font>
