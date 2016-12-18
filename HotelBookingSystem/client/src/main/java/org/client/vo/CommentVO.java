@@ -14,7 +14,7 @@ public class CommentVO implements Serializable {
 
 	public String userName;
 	
-	public String hotelAdrress;
+	public String hotelID;
 	
 	public Date date;
 	
@@ -24,9 +24,9 @@ public class CommentVO implements Serializable {
 	
 	public ResultMessage resultMessage;
 	
-	public CommentVO(String UserName, String hotelAdrress, Date date, double rank, String comment) {
+	public CommentVO(String UserName, String hotelID, Date date, double rank, String comment) {
 		this.userName = UserName;
-		this.hotelAdrress = hotelAdrress;
+		this.hotelID = hotelID;
 		this.date = date;
 		this.rank = rank;
 		this.comment = comment;

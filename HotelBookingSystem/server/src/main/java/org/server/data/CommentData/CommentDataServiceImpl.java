@@ -2,6 +2,7 @@ package org.server.data.CommentData;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -49,7 +50,7 @@ public class CommentDataServiceImpl extends UnicastRemoteObject implements Comme
 		try {
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(
 					"insert into comment(username, hotelid, commentdate, rank, comment) values ('" + po.userName +
-					"','" + po.hotelID + "','" + po.date + "','" + po.rank + "','" + DatabaseCommunicator.getStorableQuote(po.comment) + "')");
+					"','" + po.hotelID + "','" + getSQLDate(po.date) + "','" + po.rank + "','" + DatabaseCommunicator.getStorableQuote(po.comment) + "')");
 			preparedStatement.executeUpdate();
 			return ResultMessage.SUCCESS;
 		} catch (SQLException e) {
@@ -78,6 +79,10 @@ public class CommentDataServiceImpl extends UnicastRemoteObject implements Comme
 	public void finish() throws RemoteException {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	private Date getSQLDate(java.util.Date rawDate) {
+		return new Date(rawDate.getTime());
 	}
 
 

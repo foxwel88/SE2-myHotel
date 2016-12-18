@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
 
+import org.client.presentation.util.CheckStyle;
 import org.client.vo.HotelVO;
 import org.client.vo.OrderVO;
 import org.client.vo.UserVO;
@@ -218,21 +219,6 @@ public class CustomerGenerateOrder {
 	
 	private boolean checkPhoneNumberFormat() {
 		String phoneString = phoneNumber.getText();
-		if (phoneString.length() != 11) {
-			return false;
-		}
-		for (int i = 0; i < 11; i++) {
-			if (!isNumeric(phoneString.charAt(i))) {
-				return false;
-			}
-		}
-		return true;
-	}
-	
-	private boolean isNumeric(char c) {
-		if (c >= 48 && c <= 57) {
-			return true;
-		}
-		return false;
+		return CheckStyle.checkPhone(phoneString);
 	}
 }

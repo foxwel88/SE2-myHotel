@@ -45,7 +45,7 @@ public class CommentUtil {
 		CommentDataService commentDataService = rmiHelper.getCommentDataServiceImpl();
 		
 		try {
-			CommentPO po = new CommentPO(vo.userName, vo.hotelAdrress, vo.date, vo.rank, vo.comment);
+			CommentPO po = new CommentPO(vo.userName, vo.hotelID, vo.date, vo.rank, vo.comment);
 			return commentDataService.insert(po);
 		} catch (RemoteException rex) {
 			return ResultMessage.CONNECTION_FAIL;
