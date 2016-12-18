@@ -51,16 +51,15 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 				DatabaseCommunicator.execute(preparedStatement);
 
 				//Create新Table存储该酒店的房间信息
-				String create = "CREATE TABLE `" + po.id + "`(roomType VARCHAR(100), roomNum INT, roomPrice DOUBLE) DEFAULT CHARSET=utf8";
+				String create = "CREATE TABLE `" + po.id + "`(RoomType TEXT, RoomNum INT, RoomPrice DOUBLE) DEFAULT CHARSET=utf8";
 				preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(create);
 				DatabaseCommunicator.execute(preparedStatement);
 
 				for (RoomType t: RoomType.values()) {
-					preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("INSERT INTO `" + po.id + "`(roomType,roomNum,roomPrice)"
+					preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("INSERT INTO `" + po.id + "`(RoomType,RoomNum,RoomPrice)"
 							+ " VALUES ('" + t.getString() + "','0','0')");
 					DatabaseCommunicator.execute(preparedStatement);
 				}
-				DatabaseCommunicator.execute(preparedStatement);
 
 				return ResultMessage.SUCCESS;
 			} else {
