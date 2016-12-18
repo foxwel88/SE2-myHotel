@@ -68,16 +68,16 @@ public class HotelController implements Hotelblservice, HotelHelper {
 	public ResultMessage addHotel(HotelVO hotelVO, UserVO userVO) {
 		if (userBl == null) { // when userBl is not set by external driver
 			userBl = UserController.getInstance(); // use true logic code
-		}
 
-		//预填补酒店工作人员的HotelID
-		String newHotelID = null;
-		try {
-			newHotelID = RMIHelper.getInstance().getIDUtil().generateNewHotelID();
-		} catch (RemoteException e) {
-			return ResultMessage.CONNECTION_FAIL;
+			//预填补酒店工作人员的HotelID
+			String newHotelID = null;
+			try {
+				newHotelID = RMIHelper.getInstance().getIDUtil().generateNewHotelID();
+			} catch (RemoteException e) {
+				return ResultMessage.CONNECTION_FAIL;
+			}
+			userVO.hotelID = newHotelID;
 		}
-		userVO.hotelID = newHotelID;
 
 		ResultMessage userRe = userBl.add(userVO);
 		if (userRe != ResultMessage.SUCCESS) {
