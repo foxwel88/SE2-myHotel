@@ -10,6 +10,8 @@ import org.client.vo.OrderVO;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -29,7 +31,7 @@ public class CustomerComment {
 	AnchorPane root;
 	
 	@FXML
-	ChoiceBox<Integer> score;
+	ChoiceBox<Double> score;
 	
 	@FXML
 	TextArea comment;
@@ -65,8 +67,8 @@ public class CustomerComment {
 	@FXML
 	void initialize() {
 		resources = Resources.getInstance();
-		score.setItems(FXCollections.observableArrayList(1,2,3,4,5));
-		score.setValue(5);
+		score.setItems(FXCollections.observableArrayList(1.0,2.0,3.0,4.0,5.0));
+		score.setValue(5.0);
 		OrderVO vo = SwitchSceneUtil.getCurrentOrder();
 		orderID.setText(vo.orderID);
 		hotelAddress.setText(vo.hotelAddress);
@@ -79,15 +81,22 @@ public class CustomerComment {
 	void commitComment() {
 		commentController = CommentController.getInstance();
 		String commentContent = comment.getText();
-		int rankValue = 5;
+		double rankValue = 5;
 		try {
 			rankValue = score.getValue();
+			scoreTip.setText("");
 			if (commentContent.length() >= 15) {
+				commentTip.setText("");
 				try {
-					commentController.addComment(new CommentVO(SwitchSceneUtil.getUserVO().name, SwitchSceneUtil.getHotelVO().hotelName, RMIHelper.getInstance().getTimeServiceImpl().getDate(), rankValue, commentContent));
+					commentController.addComment(new CommentVO(SwitchSceneUtil.getUserVO().name, SwitchSceneUtil.getCurrentOrder().hotelID, RMIHelper.getInstance().getTimeServiceImpl().getDate(), rankValue, commentContent));
 				} catch (RemoteException e) {
 					e.printStackTrace();
 				}
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("Success");
+				alert.setHeaderText(null);
+				alert.setContentText("感谢您的评价！");
+				alert.showAndWait();
 				SwitchSceneUtil.turnToAnotherScene((GridPane)root.getParent(), resources.customerCheckExecutedOrder);
 			} else {
 				commentTip.setText("评论不能少于15字!");

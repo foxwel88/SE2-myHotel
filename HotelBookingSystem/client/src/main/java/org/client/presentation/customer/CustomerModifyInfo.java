@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.Date;
 
 import org.client.launcher.Resources;
+import org.client.presentation.util.CheckStyle;
 import org.client.vo.UserVO;
 import org.common.utility.ResultMessage;
 import org.common.utility.UserType;
@@ -54,10 +55,12 @@ public class CustomerModifyInfo {
 	
 	private Resources resources;
 	
+	private UserVO vo;
+	
 	@FXML
 	void initialize() {
 		resources = Resources.getInstance();
-		UserVO vo = SwitchSceneUtil.getUserVO();
+		vo = SwitchSceneUtil.getUserVO();
 		name.setText(vo.name);
 		phoneNumber.setText(vo.phoneNumber);
 		company.setText(vo.companyName);
@@ -70,6 +73,12 @@ public class CustomerModifyInfo {
 	void confirmChangeInfo() {
 		boolean isFormatRight = true;
 		if (!checkPhoneNumberFormat()) {
+			isFormatRight = false;
+		}
+		if (!checkName()) {
+			isFormatRight = false;
+		}
+		if (!checkCompanyName()) {
 			isFormatRight = false;
 		}
 		Alert alert;
@@ -154,45 +163,34 @@ public class CustomerModifyInfo {
 	
 	private boolean checkPhoneNumberFormat() {
 		String phoneString = phoneNumber.getText();
-		if (phoneString.length() != 11) {
-			return false;
-		}
-		for (int i = 0; i < 11; i++) {
-			if (!isNumeric(phoneString.charAt(i))) {
-				return false;
-			}
-		}
-		return true;
+		return CheckStyle.checkPhone(phoneString);
 	}
 	
 	private boolean checkPasswordFormat(String password) {
-		if (password.length() < 6) {
-			return false;
-		}
-		for (int i = 0; i < password.length(); i++) {
-			char c = password.charAt(i);
-			if (isNumeric(c) || isAlphabet(c)) {
-				// continue
+		return CheckStyle.checkPassword(password);
+	}
+	
+	private boolean checkCompanyName() {
+		if (vo.type.equals(UserType.PERSONALCUSTOMER)) {
+			if (companyLabel.getText().isEmpty()) {
+				return true;
 			} else {
 				return false;
 			}
+		} else {
+			return CheckStyle.checkCompanyname(companyLabel.getText());
 		}
-		return true;
 	}
 	
-	private boolean isNumeric(char c) {
-		if (c >= 48 && c <= 57) {
-			return true;
-		}
-		return false;
-	}
-	
-	private boolean isAlphabet(char c) {
-		if (c >= 65 && c <= 90) {
-			if (c >= 97 && c <= 122) {
+	private boolean checkName() {
+		if (vo.type.equals(UserType.COMPANYCUSTOMER)) {
+			if (name.getText().isEmpty()) {
 				return true;
+			} else {
+				return false;
 			}
+		} else {
+			return CheckStyle.checkName(name.getText());
 		}
-		return false;
 	}
 }
