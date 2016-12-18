@@ -105,8 +105,8 @@
                   <Font name="Microsoft JhengHei" size="15.0" />
                </font>
             </Label>
-            <DatePicker fx:id="fromDate" layoutX="65.0" layoutY="96.0" prefHeight="23.0" prefWidth="134.0" />
-            <DatePicker fx:id="toDate" layoutX="305.0" layoutY="97.0" prefHeight="23.0" prefWidth="134.0" />
+            <DatePicker fx:id="fromDate" editable="false" layoutX="65.0" layoutY="96.0" prefHeight="23.0" prefWidth="134.0" />
+            <DatePicker fx:id="toDate" editable="false" layoutX="305.0" layoutY="97.0" prefHeight="23.0" prefWidth="134.0" />
          </children>
       </AnchorPane>
       <GridPane layoutX="18.0" layoutY="143.0" prefHeight="383.0" prefWidth="880.0" AnchorPane.bottomAnchor="47.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="22.0" AnchorPane.topAnchor="132.0">

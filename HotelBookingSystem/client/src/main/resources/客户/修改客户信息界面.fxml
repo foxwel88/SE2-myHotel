@@ -57,7 +57,7 @@
                   <Font name="Microsoft YaHei" size="20.0" />
                </font>
             </Label>
-            <DatePicker fx:id="birthday" prefHeight="34.0" prefWidth="220.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <DatePicker fx:id="birthday" editable="false" prefHeight="34.0" prefWidth="220.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Label fx:id="companyLabel" disable="true" prefHeight="60.0" prefWidth="160.0" text="企业名称" GridPane.rowIndex="6">
                <font>
                   <Font name="Microsoft YaHei" size="20.0" />
