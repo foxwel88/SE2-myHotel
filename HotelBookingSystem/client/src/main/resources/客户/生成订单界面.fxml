@@ -9,186 +9,219 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane fx:id="root" onMouseMoved="#refreshPrice" prefHeight="567.0" prefWidth="920.0" style="-fx-background-color: rgba(255,255,255,0.4);" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.presentation.customer.CustomerGenerateOrder">
    <effect>
       <DropShadow />
    </effect>
    <children>
-      <AnchorPane prefHeight="567.0" prefWidth="874.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="0.0">
+      <GridPane layoutX="61.0" layoutY="72.0" prefHeight="376.0" prefWidth="766.0" AnchorPane.leftAnchor="61.0" AnchorPane.topAnchor="68.0">
+         <columnConstraints>
+            <ColumnConstraints maxWidth="175.0" minWidth="104.0" prefWidth="104.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="62.0" minWidth="9.0" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="212.0" minWidth="10.0" prefWidth="212.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="102.0" minWidth="10.0" prefWidth="51.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="149.0" minWidth="10.0" prefWidth="82.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="134.0" minWidth="6.0" prefWidth="19.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="352.0" minWidth="10.0" prefWidth="269.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" />
+            <RowConstraints maxHeight="6.0" minHeight="6.0" prefHeight="6.0" />
+            <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="6.0" minHeight="6.0" prefHeight="6.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="15.0" prefHeight="15.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="15.0" prefHeight="15.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="15.0" prefHeight="15.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="15.0" prefHeight="15.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="15.0" prefHeight="15.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="15.0" prefHeight="15.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="15.0" prefHeight="15.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+         </rowConstraints>
          <children>
-            <Label alignment="CENTER" layoutX="252.0" layoutY="-1.0" prefHeight="36.0" prefWidth="211.0" style="-fx-font-size: 24;" text="酒店房间预订" />
-            <Separator layoutX="5.0" layoutY="33.0" prefHeight="11.0" prefWidth="806.0" />
-            <Button fx:id="confirmButton" layoutX="680.0" layoutY="528.0" mnemonicParsing="false" onMouseClicked="#commitOrder" prefWidth="70.0" style="-fx-background-color: rgba(0,0,0,0.4);" text="提交订单" textFill="WHITE" AnchorPane.bottomAnchor="12.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="529.0" />
-            <AnchorPane layoutX="-8.0" layoutY="2.0" prefHeight="247.0" prefWidth="819.0">
+            <Label text="酒店名称">
+               <font>
+                  <Font name="Microsoft YaHei" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="hotelName" text="你猜我是什么酒店" GridPane.columnIndex="2">
+               <font>
+                  <Font name="Microsoft YaHei" size="16.0" />
+               </font>
+            </Label>
+            <Label text="酒店地址" GridPane.columnIndex="4">
+               <font>
+                  <Font name="Microsoft YaHei" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="hotelAddress" prefHeight="15.0" prefWidth="357.0" text="仙林大道163号南京大学仙林校区" GridPane.columnIndex="6">
+               <font>
+                  <Font name="Microsoft YaHei" size="16.0" />
+               </font>
+            </Label>
+            <Label text="所属城市" GridPane.rowIndex="2">
+               <font>
+                  <Font name="Microsoft YaHei" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="city" prefHeight="22.0" prefWidth="70.0" text="南京" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <font>
+                  <Font name="Microsoft YaHei" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="area" prefHeight="22.0" prefWidth="70.0" text="某商圈" GridPane.columnIndex="6" GridPane.rowIndex="2">
+               <font>
+                  <Font name="Microsoft YaHei" size="16.0" />
+               </font>
+            </Label>
+            <Label prefHeight="22.0" prefWidth="88.0" text="所属商圈" GridPane.columnIndex="4" GridPane.rowIndex="2">
+               <font>
+                  <Font name="Microsoft YaHei" size="16.0" />
+               </font>
+            </Label>
+            <Label text="信用值" GridPane.rowIndex="4">
+               <font>
+                  <Font name="Microsoft YaHei" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="credit" text="110" GridPane.columnIndex="2" GridPane.rowIndex="4">
+               <font>
+                  <Font name="Microsoft YaHei" size="16.0" />
+               </font>
+            </Label>
+            <Label text="会员等级" GridPane.columnIndex="4" GridPane.rowIndex="4">
+               <font>
+                  <Font name="Microsoft YaHei" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="level" text="level" GridPane.columnIndex="6" GridPane.rowIndex="4">
+               <font>
+                  <Font name="Microsoft YaHei" size="16.0" />
+               </font>
+            </Label>
+            <Label text="住宿人姓名" GridPane.rowIndex="6">
+               <font>
+                  <Font name="Microsoft YaHei" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="customerName" style="-fx-background-color: rgba(255,255,255,0.4);" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+            <TextField fx:id="phoneNumber" style="-fx-background-color: rgba(255,255,255,0.4);" text="153245678974" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="5" GridPane.rowIndex="10">
                <children>
-                  <Label layoutX="12.0" layoutY="191.0" prefHeight="27.0" prefWidth="127.0" text="预约入住时间" AnchorPane.leftAnchor="12.0">
+                  <DatePicker fx:id="schFromDate" editable="false" layoutY="1.0" opacity="0.8" prefHeight="30.0" prefWidth="212.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Text layoutX="231.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="至" AnchorPane.bottomAnchor="3.8125" AnchorPane.topAnchor="5.0703125">
                      <font>
                         <Font name="Microsoft YaHei" size="16.0" />
                      </font>
-                  </Label>
-                  <Label layoutX="12.0" layoutY="46.0" text="酒店名称" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="46.0">
-                     <font>
-                        <Font name="Microsoft YaHei" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="402.0" layoutY="133.0" prefHeight="22.0" prefWidth="88.0" text="所属商圈" AnchorPane.leftAnchor="402.0" AnchorPane.topAnchor="133.0">
-                     <font>
-                        <Font name="Microsoft YaHei" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="12.0" layoutY="133.0" text="所属城市" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="133.0">
-                     <font>
-                        <Font name="Microsoft YaHei" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="12.0" layoutY="90.0" text="酒店地址" AnchorPane.leftAnchor="12.0">
-                     <font>
-                        <Font name="Microsoft YaHei" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="hotelAddress" layoutX="193.0" layoutY="90.0" prefHeight="15.0" prefWidth="357.0" text="仙林大道163号南京大学仙林校区" AnchorPane.leftAnchor="193.0">
-                     <font>
-                        <Font name="Microsoft YaHei" size="16.0" />
-                     </font>
-                  </Label>
-                  <Separator layoutX="13.0" layoutY="166.0" prefHeight="11.0" prefWidth="806.0" />
-                  <Label fx:id="hotelName" layoutX="193.0" layoutY="46.0" text="你猜我是什么酒店" AnchorPane.leftAnchor="193.0">
-                     <font>
-                        <Font name="Microsoft YaHei" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="397.0" layoutY="189.0" text="-">
-                     <font>
-                        <Font name="Microsoft JhengHei" size="24.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="city" layoutX="193.0" layoutY="133.0" prefHeight="22.0" prefWidth="70.0" text="南京" AnchorPane.leftAnchor="193.0" AnchorPane.topAnchor="133.0">
-                     <font>
-                        <Font name="Microsoft YaHei" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="area" layoutX="484.0" layoutY="133.0" prefHeight="22.0" prefWidth="70.0" text="某商圈" AnchorPane.topAnchor="133.0">
-                     <font>
-                        <Font name="Microsoft YaHei" size="16.0" />
-                     </font>
-                  </Label>
-                  <DatePicker fx:id="schFromDate" layoutX="193.0" layoutY="194.0" AnchorPane.leftAnchor="193.0" />
-                  <DatePicker fx:id="schToDate" layoutX="426.0" layoutY="195.0" />
+                  </Text>
+                  <DatePicker fx:id="schToDate" editable="false" layoutX="263.0" layoutY="1.0" opacity="0.8" prefWidth="212.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
-            <Separator layoutX="5.0" layoutY="236.0" prefHeight="11.0" prefWidth="806.0" AnchorPane.topAnchor="236.0" />
-            <AnchorPane layoutX="5.0" layoutY="240.0" prefHeight="110.0" prefWidth="807.0">
+            <ChoiceBox fx:id="roomType" prefHeight="30.0" prefWidth="220.0" style="-fx-background-color: rgba(255,255,255,0.4);" GridPane.columnIndex="2" GridPane.rowIndex="12" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="14">
                <children>
-                  <Label layoutY="10.0" text="住宿人姓名/企业名称">
+                  <TextField fx:id="roomNum" layoutY="1.0" maxWidth="64.0" onKeyReleased="#refreshPrice" prefHeight="30.0" prefWidth="64.0" style="-fx-background-color: rgba(255,255,255,0.4);" />
+                  <Label layoutX="80.0" layoutY="6.0" text="间" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="5.0">
                      <font>
                         <Font name="Microsoft YaHei" size="16.0" />
                      </font>
                   </Label>
-                  <Label layoutY="38.0" text="会员等级">
-                     <font>
-                        <Font name="Microsoft YaHei" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label layoutY="95.0" text="联系方式">
-                     <font>
-                        <Font name="Microsoft YaHei" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="level" layoutX="180.0" layoutY="38.0" text="level" AnchorPane.leftAnchor="180.0">
-                     <font>
-                        <Font name="Microsoft YaHei" size="16.0" />
-                     </font>
-                  </Label>
-                  <Separator layoutY="149.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="124.0" />
-                  <Label layoutY="67.0" text="信用值">
-                     <font>
-                        <Font name="Microsoft YaHei" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="credit" layoutX="180.0" layoutY="65.0" text="110" AnchorPane.leftAnchor="180.0">
-                     <font>
-                        <Font name="Microsoft YaHei" size="16.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="phoneNumber" layoutX="180.0" layoutY="91.0" style="-fx-background-color: rgba(255,255,255,0.4);" text="153245678974" AnchorPane.leftAnchor="180.0" />
-                  <TextField fx:id="customerName" layoutX="179.0" layoutY="9.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.leftAnchor="180.0" />
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="5.0" layoutY="371.0" prefHeight="94.0" prefWidth="806.0">
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="16">
                <children>
-                  <Label layoutY="5.0" text="房间类型" AnchorPane.topAnchor="5.0">
+                  <TextField fx:id="residentNum" prefHeight="30.0" prefWidth="64.0" style="-fx-background-color: rgba(255,255,255,0.4);" />
+                  <Label layoutX="79.0" layoutY="6.0" text="人" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="5.0">
                      <font>
                         <Font name="Microsoft YaHei" size="16.0" />
                      </font>
                   </Label>
-                  <ChoiceBox fx:id="roomType" layoutX="180.0" layoutY="4.0" prefHeight="23.0" prefWidth="153.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.leftAnchor="180.0" AnchorPane.topAnchor="4.0" />
-                  <Label layoutX="399.0" layoutY="8.0" text="数量" AnchorPane.leftAnchor="399.0" AnchorPane.topAnchor="5.0">
-                     <font>
-                        <Font name="Microsoft YaHei" size="16.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="roomNum" layoutX="480.0" layoutY="7.0" onKeyReleased="#refreshPrice" prefHeight="23.0" prefWidth="55.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.leftAnchor="470.0" AnchorPane.topAnchor="4.0" />
-                  <Label layoutX="535.0" layoutY="6.0" text="间" AnchorPane.topAnchor="5.0">
-                     <font>
-                        <Font name="Microsoft YaHei" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label layoutY="70.0" text="入住人数">
-                     <font>
-                        <Font name="Microsoft YaHei" size="16.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="residentNum" layoutX="180.0" layoutY="67.0" prefHeight="23.0" prefWidth="88.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.leftAnchor="180.0" />
-                  <Label layoutX="276.0" layoutY="69.0" text="人">
-                     <font>
-                        <Font name="Microsoft YaHei" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label layoutY="37.0" text="单间价格" AnchorPane.leftAnchor="0.0">
-                     <font>
-                        <Font name="Microsoft YaHei" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="roomPrice" layoutX="180.0" layoutY="39.0" text="200元" AnchorPane.leftAnchor="180.0">
-                     <font>
-                        <Font name="Microsoft YaHei" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="399.0" layoutY="70.0" text="有无儿童" AnchorPane.leftAnchor="399.0">
-                     <font>
-                        <Font name="Microsoft YaHei" size="16.0" />
-                     </font>
-                  </Label>
-                  <CheckBox fx:id="hasChildren" layoutX="471.0" layoutY="72.0" mnemonicParsing="false" />
                </children>
             </AnchorPane>
-            <Separator layoutX="5.0" layoutY="478.0" prefHeight="11.0" prefWidth="806.0" />
-            <Label layoutX="7.0" layoutY="531.0" text="原价：">
+            <CheckBox fx:id="hasChildren" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="18" />
+            <Label text="联系方式" GridPane.rowIndex="8">
                <font>
-                  <Font name="Microsoft YaHei" size="12.0" />
+                  <Font name="Microsoft YaHei" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="rawPrice" layoutX="44.0" layoutY="531.0" text="200元">
+            <Label prefHeight="27.0" prefWidth="127.0" text="预约入住时间" GridPane.rowIndex="10">
                <font>
-                  <Font name="Microsoft YaHei" size="12.0" />
+                  <Font name="Microsoft YaHei" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="5.0" layoutY="489.0" text="总价格：">
+            <Label text="房间类型" GridPane.rowIndex="12">
                <font>
-                  <Font name="Microsoft YaHei" size="23.0" />
+                  <Font name="Microsoft YaHei" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="totalPrice" layoutX="97.0" layoutY="489.0" text="200元">
+            <Label text="数量" GridPane.rowIndex="14">
                <font>
-                  <Font name="Microsoft YaHei" size="23.0" />
+                  <Font name="Microsoft YaHei" size="16.0" />
                </font>
             </Label>
-            <Button fx:id="cancelButton" layoutX="551.0" layoutY="529.0" mnemonicParsing="false" onMouseClicked="#cancel" prefHeight="3.0" prefWidth="70.0" style="-fx-background-color: rgba(0,0,0,0.4);" text="取消" textFill="WHITE" AnchorPane.bottomAnchor="12.0" AnchorPane.rightAnchor="130.0" />
-            <Line endX="-33.0" endY="-2.0" layoutX="115.0" layoutY="541.0" startX="-112.0" startY="-2.0" strokeWidth="0.8" />
+            <Label text="入住人数" GridPane.rowIndex="16">
+               <font>
+                  <Font name="Microsoft YaHei" size="16.0" />
+               </font>
+            </Label>
+            <Label text="单间价格" GridPane.columnIndex="4" GridPane.rowIndex="12">
+               <font>
+                  <Font name="Microsoft YaHei" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="roomPrice" text="200元" GridPane.columnIndex="6" GridPane.rowIndex="12">
+               <font>
+                  <Font name="Microsoft YaHei" size="16.0" />
+               </font>
+            </Label>
+            <Label text="有无儿童" GridPane.rowIndex="18">
+               <font>
+                  <Font name="Microsoft YaHei" size="16.0" />
+               </font>
+            </Label>
          </children>
-      </AnchorPane>
+      </GridPane>
+      <Label alignment="CENTER" layoutX="355.0" layoutY="13.0" prefHeight="36.0" prefWidth="211.0" style="-fx-font-size: 24;" text="酒店房间预订" />
+      <Button fx:id="cancelButton" layoutX="714.0" layoutY="526.0" mnemonicParsing="false" onMouseClicked="#cancel" prefHeight="3.0" prefWidth="70.0" style="-fx-background-color: rgba(0,0,0,0.4);" text="取消" textFill="WHITE" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="136.0" />
+      <Button fx:id="confirmButton" layoutX="804.0" layoutY="526.0" mnemonicParsing="false" onMouseClicked="#commitOrder" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: rgba(0,0,0,0.4);" text="提交订单" textFill="WHITE" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="526.0" />
+      <Label layoutX="62.0" layoutY="503.0" text="原价：">
+         <font>
+            <Font name="Microsoft YaHei" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="rawPrice" layoutX="123.0" layoutY="504.0" text="200元">
+         <font>
+            <Font name="Microsoft YaHei" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="61.0" layoutY="525.0" text="总价格：">
+         <font>
+            <Font name="Microsoft YaHei" size="23.0" />
+         </font>
+      </Label>
+      <Label fx:id="totalPrice" layoutX="160.0" layoutY="526.0" text="200元">
+         <font>
+            <Font name="Microsoft YaHei" size="23.0" />
+         </font>
+      </Label>
+      <Line endX="-33.0" endY="-2.0" layoutX="215.0" layoutY="515.0" startX="-112.0" startY="-2.0" strokeWidth="0.8" />
+      <Separator layoutX="36.0" layoutY="57.0" prefHeight="1.0" prefWidth="849.0" AnchorPane.leftAnchor="36.0" />
+      <Separator layoutX="37.0" layoutY="176.0" prefHeight="1.0" prefWidth="849.0" AnchorPane.leftAnchor="36.0" />
+      <Separator layoutX="36.0" layoutY="490.0" prefHeight="1.0" prefWidth="849.0" AnchorPane.leftAnchor="36.0" />
    </children>
 </AnchorPane>
