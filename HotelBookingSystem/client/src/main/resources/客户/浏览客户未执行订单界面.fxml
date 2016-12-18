@@ -31,7 +31,7 @@
                <children>
                   <HBox prefHeight="40.0" prefWidth="200.0">
                      <children>
-                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="167.0" text="时间">
+                        <Label alignment="CENTER" prefHeight="40.0" prefWidth="167.0" text="下单时间">
                            <font>
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>
