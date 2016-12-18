@@ -153,7 +153,11 @@ public class HotelManagerModifyHotel {
 	/**最终提交，只有提交才会保存所有修改的信息 */
 	@FXML
     void handIn(ActionEvent event) {
-		
+		if (!basicInfoCorrect()) {
+			ResultInfoHelper.setResultLabel(resultLabel, ResultMessage.WRONG_FORMAT);
+			return;
+		}
+
 		vo.address = address.getText().trim();
 		vo.area = new AreaVO(area.getValue());
 		vo.checkInInfos += newCheckInInfos;
@@ -172,6 +176,14 @@ public class HotelManagerModifyHotel {
 		ResultInfoHelper.setResultLabel(resultLabel, result);
 	}
 
+	/**检查名称、地址、城市、商圈是否不为空 */
+	boolean basicInfoCorrect() {
+		if (name.getText().isEmpty() || address.getText().isEmpty() || city.getValue() == null || area.getValue() == null) {
+			return false;
+		}
+		return true;
+	}
+
 	/**保存当前选择的房间信息 */
 	@FXML
     void saveRoom(ActionEvent event) {
@@ -182,13 +194,14 @@ public class HotelManagerModifyHotel {
 		} catch (NumberFormatException e) {
 			ResultInfoHelper.setResultLabel(resultLabel, ResultMessage.WRONG_FORMAT);
 		}
-
+		ResultInfoHelper.setResultLabel(resultLabel, null);
 	}
 	
 	/**保存（添加）当前输入的入住信息 */
 	@FXML
 	void saveCheckIn(ActionEvent event) {
 		newCheckInInfos += (roomNumber.getText() + "," + startTime.getText() + "," + endTime.getText() + ";");
+		ResultInfoHelper.setResultLabel(resultLabel, null);
 	}
 
 	@FXML
