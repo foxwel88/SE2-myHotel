@@ -174,8 +174,12 @@ public class WebMarketerModifyPromotion {
 		controller = WebMarketerController.getInstance();
 
 		// 初始化levelBox
-		ObservableList<Integer> levelList = FXCollections
-				.observableArrayList((new ArrayList<>(Arrays.asList(new Integer[]{1, 2, 3, 4, 5}))));
+		int levelNum = controller.getCurrentLevel().size();
+		ArrayList<Integer> levelNums = new ArrayList<>();
+		for (int i = 0; i < levelNum; i++) {
+			levelNums.add(i + 1);
+		}
+		ObservableList<Integer> levelList = FXCollections.observableArrayList(levelNums);
 		levelBox.setItems(levelList);
 
 		// 初始化typeBox
