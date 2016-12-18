@@ -13,6 +13,7 @@ import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
+import org.client.vo.HotelVO;
 
 /**
  * FXML Controller
@@ -35,6 +36,9 @@ public class HotelManagerMain {
 	private WebView hotelImage;
 
 	@FXML
+	private Label hotelNameLabel;
+
+	@FXML
     void initialize() {
 		assert timeLabel != null : "fx:id=\"timeLabel\" was not injected: check your FXML file '酒店工作人员主界面.fxml'.";
 		
@@ -54,7 +58,15 @@ public class HotelManagerMain {
 		timeline.setCycleCount(Animation.INDEFINITE);
 		timeline.play();
 
-		String imgURL = HotelManagerController.getInstance().getHotelInfo().imgURL;
+		HotelVO tempVO = HotelManagerController.getInstance().getHotelInfo();
+
+		hotelNameLabel.setText(tempVO.hotelName);
+
+		String imgURL = tempVO.imgURL;
+
+		final com.sun.webkit.WebPage webPage = com.sun.javafx.webkit.Accessor.getPageFor(hotelImage.getEngine());
+		webPage.setBackgroundColor(0);
+
 		hotelImage.getEngine().load(imgURL);
 	}
 	

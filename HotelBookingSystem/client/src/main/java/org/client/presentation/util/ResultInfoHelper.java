@@ -12,6 +12,10 @@ public class ResultInfoHelper {
 
     /**将提示信息显示在一个Label上 */
 	public static void setResultLabel(Label label, ResultMessage resultMessage) {
+		if (resultMessage == null) {
+			label.setText("");
+			return;
+		}
 		switch(resultMessage) {
 			case SUCCESS:
 				label.setText("编辑成功");
