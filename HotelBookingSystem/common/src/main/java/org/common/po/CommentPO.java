@@ -13,6 +13,8 @@ public class CommentPO implements Serializable {
 	public String userName;
 	
 	public String hotelID;
+
+	public String orderID;
 	
 	public Date date;
 	
@@ -20,9 +22,10 @@ public class CommentPO implements Serializable {
 	
 	public String comment;
 	
-	public CommentPO(String UserName, String hotelID, Date date, double rank, String comment) {
+	public CommentPO(String UserName, String hotelID, String orderID, Date date, double rank, String comment) {
 		this.userName = UserName;
 		this.hotelID = hotelID;
+		this.orderID = orderID;
 		this.date = date;
 		this.rank = rank;
 		this.comment = comment;

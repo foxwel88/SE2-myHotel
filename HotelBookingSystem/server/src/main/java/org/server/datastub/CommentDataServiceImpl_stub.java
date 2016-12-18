@@ -26,7 +26,7 @@ public class CommentDataServiceImpl_stub extends UnicastRemoteObject implements 
 
 	public ArrayList<CommentPO> find(String hotelAddress) throws RemoteException {
 		ArrayList<CommentPO> comments = new ArrayList<>();
-		comments.add(new CommentPO(hotelAddress, hotelAddress, null, 1, hotelAddress));
+		comments.add(new CommentPO(hotelAddress, hotelAddress, hotelAddress, null, 1, hotelAddress));
 		return comments;
 	}
 

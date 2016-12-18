@@ -31,7 +31,7 @@ public class CommentUtil {
 			
 			for (int i = 0; i < commentPOList.size(); i++) {
 				po = commentPOList.get(i);
-				commentVOList.add(new CommentVO(po.userName, po.hotelID, po.date, po.rank, po.comment));
+				commentVOList.add(new CommentVO(po.userName, po.hotelID, po.orderID, po.date, po.rank, po.comment));
 			}
 		} catch (RemoteException rex) {
 			commentVOList.add(new CommentVO(ResultMessage.CONNECTION_FAIL));
@@ -45,7 +45,7 @@ public class CommentUtil {
 		CommentDataService commentDataService = rmiHelper.getCommentDataServiceImpl();
 		
 		try {
-			CommentPO po = new CommentPO(vo.userName, vo.hotelID, vo.date, vo.rank, vo.comment);
+			CommentPO po = new CommentPO(vo.userName, vo.hotelID, vo.orderID, vo.date, vo.rank, vo.comment);
 			return commentDataService.insert(po);
 		} catch (RemoteException rex) {
 			return ResultMessage.CONNECTION_FAIL;

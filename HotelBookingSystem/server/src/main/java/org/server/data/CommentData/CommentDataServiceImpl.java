@@ -49,8 +49,8 @@ public class CommentDataServiceImpl extends UnicastRemoteObject implements Comme
 	public ResultMessage insert(CommentPO po) throws RemoteException {
 		try {
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(
-					"insert into comment(username, hotelid, commentdate, rank, comment) values ('" + po.userName +
-					"','" + po.hotelID + "','" + getSQLDate(po.date) + "','" + po.rank + "','" + DatabaseCommunicator.getStorableQuote(po.comment) + "')");
+					"insert into comment(username, hotelid, orderid, commentdate, rank, comment) values ('" + po.userName +
+					"','" + po.hotelID + "','" + po.orderID + "','" + getSQLDate(po.date) + "','" + po.rank + "','" + DatabaseCommunicator.getStorableQuote(po.comment) + "')");
 			preparedStatement.executeUpdate();
 			return ResultMessage.SUCCESS;
 		} catch (SQLException e) {
@@ -67,7 +67,7 @@ public class CommentDataServiceImpl extends UnicastRemoteObject implements Comme
 		ArrayList<CommentPO> poList = new ArrayList<>();
 		try {
 			while (resultSet.next()) {
-				CommentPO commentPO = new CommentPO(resultSet.getString("username"), resultSet.getString("hotelid"), resultSet.getDate("commentdate"), resultSet.getDouble("rank"), DatabaseCommunicator.getReadableQuete(resultSet.getString("comment")));
+				CommentPO commentPO = new CommentPO(resultSet.getString("username"), resultSet.getString("hotelid"), resultSet.getString("orderid"), resultSet.getDate("commentdate"), resultSet.getDouble("rank"), DatabaseCommunicator.getReadableQuete(resultSet.getString("comment")));
 				poList.add(commentPO);
 			}
 		} catch (SQLException e) {

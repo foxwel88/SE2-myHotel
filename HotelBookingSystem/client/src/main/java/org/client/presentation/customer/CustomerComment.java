@@ -88,7 +88,7 @@ public class CustomerComment {
 			if (commentContent.length() >= 15) {
 				commentTip.setText("");
 				try {
-					commentController.addComment(new CommentVO(SwitchSceneUtil.getUserVO().name, SwitchSceneUtil.getCurrentOrder().hotelID, RMIHelper.getInstance().getTimeServiceImpl().getDate(), rankValue, commentContent));
+					commentController.addComment(new CommentVO(SwitchSceneUtil.getUserVO().name, SwitchSceneUtil.getCurrentOrder().hotelID, SwitchSceneUtil.orderID, RMIHelper.getInstance().getTimeServiceImpl().getDate(), rankValue, commentContent));
 				} catch (RemoteException e) {
 					e.printStackTrace();
 				}
