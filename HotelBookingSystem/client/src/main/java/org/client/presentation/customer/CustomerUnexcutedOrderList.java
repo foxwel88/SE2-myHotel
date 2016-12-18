@@ -128,7 +128,7 @@ public class CustomerUnexcutedOrderList {
 		int page = Integer.parseInt(currentPage.getText());
 		try {
 			for (int i = 0; i < MAX_ORDER_ONE_OAGE; i++) {
-				if (((HBox)(event.getSource())).equals(boxList.get(i))) {
+				if (((event.getSource())).equals(boxList.get(i))) {
 					orderID = unExcutedOrderList.get((page - 1) * MAX_ORDER_ONE_OAGE + i).orderID;
 					SwitchSceneUtil.currentScene = CustomerBackableScene.UNEXECUTED_ORDER_SCENE;
 					SwitchSceneUtil.previousOrderSceneInfo = new PreviousOrderSceneInfo(Integer.parseInt(currentPage.getText()));

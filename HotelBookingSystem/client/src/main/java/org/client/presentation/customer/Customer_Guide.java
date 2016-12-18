@@ -257,14 +257,14 @@ public class Customer_Guide {
 	
 	@FXML
 	void activeBackButton() {
-		((Label)backArrow.getChildren().get(0)).setStyle("-fx-text-fill: black");
+		(backArrow.getChildren().get(0)).setStyle("-fx-text-fill: black");
 		backArrow.setStyle("-fx-background-color: rgba(255,255,255,0.4)");
 		backArrow.setEffect(new DropShadow());
 	}
 	
 	@FXML
 	void deactiveBackButton() {
-		((Label)backArrow.getChildren().get(0)).setStyle("-fx-text-fill: white");
+		(backArrow.getChildren().get(0)).setStyle("-fx-text-fill: white");
 		backArrow.setEffect(null);
 		backArrow.setStyle("-fx-background-color: rgba(0,0,0,0.56)");
 	}
@@ -290,7 +290,7 @@ public class Customer_Guide {
 	 */
 	private void activeGuideTab(int whichOne) {
 		AnchorPane tempPane = ((AnchorPane)((GridPane)gridpane.getChildren().get(0)).getChildren().get(whichOne));		// 
-		((Label)tempPane.getChildren().get(0)).setStyle("-fx-text-fill: black");
+		(tempPane.getChildren().get(0)).setStyle("-fx-text-fill: black");
 		tempPane.setStyle("-fx-background-color: rgba(255,255,255,0.4)");
 		tempPane.setEffect(new DropShadow());
 	}

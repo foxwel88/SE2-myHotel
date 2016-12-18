@@ -101,7 +101,7 @@ public class WebManagerModifyCustomer {
 			resultLabel.setText("手机号格式不正确");
 			return false;
 		}
-		if (typeChoiceBox.getValue() == UserType.PERSONALCUSTOMER.getString()) {
+		if (typeChoiceBox.getValue().equals(UserType.PERSONALCUSTOMER.getString())) {
 			
 		} else {
 			if (! CheckStyle.checkCompanyname(companyTextField.getText())) {

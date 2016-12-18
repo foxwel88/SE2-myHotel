@@ -105,7 +105,7 @@ public class RegisterController {
 			show("手机号格式不正确");
 			return false;
 		}
-		if (typeChoiceBox.getValue() == UserType.PERSONALCUSTOMER.getString()) {
+		if (typeChoiceBox.getValue().equals(UserType.PERSONALCUSTOMER.getString())) {
 			
 		} else {
 			if (! CheckStyle.checkCompanyname(companyTextField.getText())) {
@@ -123,7 +123,7 @@ public class RegisterController {
 			
 		if (check()) {
 			ResultMessage message = null;
-			if (typeChoiceBox.getValue() == UserType.PERSONALCUSTOMER.getString()) {
+			if (typeChoiceBox.getValue().equals(UserType.PERSONALCUSTOMER.getString())) {
 				//记录生日
 				Date birthDate = null;
 				
