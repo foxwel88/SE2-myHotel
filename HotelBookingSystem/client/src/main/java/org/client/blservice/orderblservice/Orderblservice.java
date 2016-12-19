@@ -26,4 +26,6 @@ public interface Orderblservice {
 	public List<String> getHistoryHotels(String userId);
 	
 	public ResultMessage checkOut(String ID);
+	
+	public ResultMessage comment(String orderID);
 }

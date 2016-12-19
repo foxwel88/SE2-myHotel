@@ -221,6 +221,12 @@ public class Order {
 		type = OrderType.UNEXECUTED;
 		return modify();
 	}
+
+	public ResultMessage comment() {
+		// TODO Auto-generated method stub
+		isCommented = true;
+		return modify();
+	}
 	
 	public ResultMessage addCreditRecord(Double value, String type) {
 		CreditRecordVO creditrecordvo;
@@ -244,5 +250,6 @@ public class Order {
 		OrderPO po = new OrderPO(type,generatedDate,schFrom,schTo,actFrom,actTo,latestTime,cancelTime,hotelID,hotelName,orderID,hotelAddress,roomType,totalPrice,roomNum,numOfPeople,existsChild,customerName,userID,phoneNumber,isCommented,isCheckedOut);
 		return po;
 	}
+
 
 }
