@@ -35,7 +35,6 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 	}
 	
 	OrderPO getPOfromSet(ResultSet resultSet) {
-		System.out.println("lalalalla");
 		OrderPO po = null;
 		try {
 			OrderType type = OrderType.getType((resultSet.getString("type")));
@@ -62,7 +61,6 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 			boolean isCheckedOut = resultSet.getBoolean("isCheckedOut");
 			po = new OrderPO(type,generatedDate,schFrom,schTo,actFrom,actTo,latestTime,cancelTime,hotelID,hotelName,orderID,hotelAddress,
 					roomType,totalPrice,roomNum,numOfPeople,existsChild,customerName,userId,phoneNumber,isCommented,isCheckedOut);
-			System.out.println(po.orderID);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -94,7 +94,6 @@ public class OrderUtil {
 		OrderList mylist = new OrderList();
 		try {
 			if (dao.getUserOrderPO(userID, type).get(0) == null) {
-				System.out.println("hahahah");
 			}
 			mylist.setOrderList(dao.getUserOrderPO(userID, type));
 			return mylist.getOrderListVO();
@@ -226,5 +225,18 @@ public class OrderUtil {
 		}
 		hotelHelper.increaseAvailableRoom(myorder.roomType, myorder.hotelID, myorder.roomNum);
 		return ResultMessage.SUCCESS;
+	}
+
+	public ResultMessage comment(String orderID) {
+		OrderPO po = null;
+		try {
+			po = dao.getOrderPO(orderID);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Order myorder = new Order();
+		myorder.setOrder(po);
+		return myorder.comment();
 	}
 }

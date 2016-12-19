@@ -94,5 +94,11 @@ public class OrderController implements Orderblservice {
 		return orderutil.checkOut(ID);
 	}
 
+	@Override
+	public ResultMessage comment(String orderID) {
+		// TODO Auto-generated method stub
+		return orderutil.comment(orderID);
+	}
+
 	
 }
