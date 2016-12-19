@@ -1,6 +1,7 @@
 package org.client.presentation.hotelmanager;
 
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
 
 import org.client.vo.OrderVO;
@@ -50,6 +51,21 @@ public class HotelManagerAbnormalOrder {
     private Label resultLabel;
 	
 	@FXML
+    private Label customerNameLabel;
+
+	@FXML
+    private Label startTimeLabel; // sch from
+
+	@FXML
+    private Label endTimeLabel;  // sch to
+	
+	@FXML
+	private Label latestTimeLabel;
+	
+	@FXML
+	private Label phoneLabel;
+	
+	@FXML
 	void execute(ActionEvent event) {
 		ResultMessage result = HotelManagerController.getInstance().executeOrder();
 		switch(result) {
@@ -85,6 +101,15 @@ public class HotelManagerAbnormalOrder {
 			childrenLabel.setText("无");
 		}
 		orderTypeLabel.setText(vo.type);
+		
+		customerNameLabel.setText(vo.customerName);
+		
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+		SimpleDateFormat datetimeFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		startTimeLabel.setText(dateFormat.format(vo.schFrom));
+		endTimeLabel.setText(dateFormat.format(vo.schTo));
+		latestTimeLabel.setText(datetimeFormat.format(vo.latestTime));
+		phoneLabel.setText(vo.phoneNumber);
 	}
 }
 
