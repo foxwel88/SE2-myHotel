@@ -93,9 +93,9 @@ public class OrderUtil {
 	public List<OrderVO> getUserOrderList (String userID, OrderType type) {		
 		OrderList mylist = new OrderList();
 		try {
-			if (dao.getUserOrderPO(userID, type).get(0) == null) {
-			}
+			//if (dao.getUserOrderPO(userID, type).size() != 0) {
 			mylist.setOrderList(dao.getUserOrderPO(userID, type));
+			//}
 			return mylist.getOrderListVO();
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
@@ -107,7 +107,9 @@ public class OrderUtil {
 	public List<OrderVO> getHotelOrderList (String hotelID, OrderType type) {
 		OrderList mylist = new OrderList();
 		try {
+			//if (dao.getHotelOrderPO(hotelID, type).size() != 0) {
 			mylist.setOrderList(dao.getHotelOrderPO(hotelID, type));
+			//}
 			return mylist.getOrderListVO();
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block

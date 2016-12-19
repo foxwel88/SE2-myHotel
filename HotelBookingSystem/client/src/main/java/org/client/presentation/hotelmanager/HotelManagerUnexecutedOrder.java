@@ -16,7 +16,7 @@ import javafx.scene.control.Label;
  * FXML Controller
  * 酒店工作人员-未执行订单
  * @author Hirico
- * @version 2016/11/27 Hirico
+ * @version 2016/12/19 Foxwel
  */
 public class HotelManagerUnexecutedOrder {
 
@@ -54,6 +54,12 @@ public class HotelManagerUnexecutedOrder {
     private Label endTimeLabel;  // sch to
 	
 	@FXML
+	private Label latestTimeLabel;
+	
+	@FXML
+	private Label phoneLabel;
+	
+	@FXML
     private Button executeButton;
 	
 	@FXML
@@ -86,10 +92,12 @@ public class HotelManagerUnexecutedOrder {
 		}
 		orderTypeLabel.setText(vo.type);
 		customerNameLabel.setText(vo.customerName);
-		
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+		SimpleDateFormat datetimeFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		startTimeLabel.setText(dateFormat.format(vo.schFrom));
 		endTimeLabel.setText(dateFormat.format(vo.schTo));
+		latestTimeLabel.setText(datetimeFormat.format(vo.latestTime));
+		phoneLabel.setText(vo.phoneNumber);
 	}
 	
 	@FXML
