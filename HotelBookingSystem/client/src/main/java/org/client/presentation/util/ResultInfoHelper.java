@@ -37,4 +37,8 @@ public class ResultInfoHelper {
 				break;
 		}
 	}
+
+	public static void setResultLabel(Label label, String content) {
+		label.setText(content);
+	}
 }

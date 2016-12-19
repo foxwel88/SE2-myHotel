@@ -1,9 +1,14 @@
 package org.client.presentation.hotelmanager;
 
+import java.awt.*;
+import java.io.IOException;
 import java.net.URL;
 import java.rmi.RemoteException;
 import java.util.ResourceBundle;
 
+import javafx.scene.image.*;
+import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.WebView;
 import org.client.rmi.RMIHelper;
 
@@ -14,6 +19,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
 import org.client.vo.HotelVO;
+
+import javax.imageio.ImageIO;
 
 /**
  * FXML Controller
@@ -28,12 +35,15 @@ public class HotelManagerMain {
 
 	@FXML
     private URL location;
-	
+
+	@FXML
+	private AnchorPane root;
+
 	@FXML
     private Label timeLabel;
 
 	@FXML
-	private WebView hotelImage;
+	private ImageView hotelImage;
 
 	@FXML
 	private Label hotelNameLabel;
@@ -64,12 +74,15 @@ public class HotelManagerMain {
 
 		String imgURL = tempVO.imgURL;
 
-		final com.sun.webkit.WebPage webPage = com.sun.javafx.webkit.Accessor.getPageFor(hotelImage.getEngine());
-		webPage.setBackgroundColor(0);
 
-		hotelImage.getEngine().load(imgURL);
+		try {
+			Image image = new Image(imgURL, 100, 60, false, true);
+			hotelImage.setImage(image);
+		} catch (IllegalArgumentException e) {
+
+		}
 	}
-	
+
 }
 
 

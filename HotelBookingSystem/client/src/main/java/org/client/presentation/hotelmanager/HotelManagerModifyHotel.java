@@ -157,7 +157,11 @@ public class HotelManagerModifyHotel {
 	@FXML
     void handIn(ActionEvent event) {
 		if (!basicInfoCorrect()) {
-			ResultInfoHelper.setResultLabel(resultLabel, ResultMessage.WRONG_FORMAT);
+			ResultInfoHelper.setResultLabel(resultLabel, "基本信息不能为空");
+			return;
+		}
+		if (!urlFormatCorrect()) {
+			ResultInfoHelper.setResultLabel(resultLabel, "请填写完整的URL");
 			return;
 		}
 
@@ -188,6 +192,14 @@ public class HotelManagerModifyHotel {
 		return true;
 	}
 
+	/**图片链接格式是否正确 */
+	boolean urlFormatCorrect() {
+		if (!imageURLField.getText().isEmpty() && !imageURLField.getText().contains("http")) {
+			return false;
+		}
+		return true;
+	}
+
 	/**保存当前选择的房间信息 */
 	@FXML
     void saveRoom(ActionEvent event) {
@@ -198,14 +210,14 @@ public class HotelManagerModifyHotel {
 		} catch (NumberFormatException e) {
 			ResultInfoHelper.setResultLabel(resultLabel, ResultMessage.WRONG_FORMAT);
 		}
-		ResultInfoHelper.setResultLabel(resultLabel, null);
+		ResultInfoHelper.setResultLabel(resultLabel, "");
 	}
 	
 	/**保存（添加）当前输入的入住信息 */
 	@FXML
 	void saveCheckIn(ActionEvent event) {
 		newCheckInInfos += (roomNumber.getText() + "," + startTime.getText() + "," + endTime.getText() + ";");
-		ResultInfoHelper.setResultLabel(resultLabel, null);
+		ResultInfoHelper.setResultLabel(resultLabel, "");
 	}
 
 	@FXML
