@@ -134,7 +134,9 @@ public class HotelManagerController {
 	
 	/**酒店可用房间数量增加，增加订单退房时间 */
 	public ResultMessage checkOut() {
-		return orderbl.checkOut(currentOrder.orderID);
+		ResultMessage result = orderbl.checkOut(currentOrder.orderID);
+		currentOrder = orderbl.getOrder(currentOrder.orderID);
+		return result;
 	}
 
 	public void deletePromotion(String promotionID) {

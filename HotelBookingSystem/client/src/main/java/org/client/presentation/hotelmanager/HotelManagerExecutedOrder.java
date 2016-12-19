@@ -112,13 +112,15 @@ public class HotelManagerExecutedOrder {
 		orderTypeLabel.setText(vo.type);
 		priceLabel.setText(String.valueOf(vo.totalPrice));
 		customerNameLabel.setText(vo.customerName);
+
+		DateFormat timeFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		actFromLabel.setText(timeFormat.format(vo.actFrom));
 		
 		//在没有退房信息（尚未退房）时，显示更新退房信息按钮（controller已内嵌），
 		//否则显示退房时间
 		if (vo.isCheckedOut) {
 			gridPane.getChildren().remove(updateButton);
-			
-			DateFormat timeFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+
 			actToLabel = new Label(timeFormat.format(vo.actTo));
 			actToLabel.setFont(Font.font("Microsoft YaHei", 15));
 			actToLabel.setStyle("-fx-text-fill: white");
