@@ -24,5 +24,7 @@ public interface Promotionblservice {
 	
 	public ResultMessage modifyLevel(LevelVO vo);
 	
+	public double getPrice (String userID, String hotelID, double rawPrice);
 	
+	public int calLevel(double credit);
 }

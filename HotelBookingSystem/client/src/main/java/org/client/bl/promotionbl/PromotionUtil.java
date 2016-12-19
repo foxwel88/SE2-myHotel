@@ -46,9 +46,8 @@ public class PromotionUtil {
 		try {
 			return promotionDataService.delete(promotionID);
 		} catch (RemoteException remoteException) {
-			
+			return ResultMessage.CONNECTION_FAIL;
 		}
-		return ResultMessage.CONNECTION_FAIL;
 	}
 	
 	static List<PromotionVO> getPromotion (String hotelID, String userID) {
@@ -211,6 +210,11 @@ public class PromotionUtil {
 			}
 		} catch (RemoteException remoteException) {
 			remoteException.printStackTrace();
+		}
+		try {
+			
+		} catch (NullPointerException nullPointerException) {
+			
 		}
 		if (promotion.level > userLevel) {
 			return false;

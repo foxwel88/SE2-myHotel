@@ -10,6 +10,11 @@ import org.client.bl.hotelbl.HotelController;
 import org.client.bl.orderbl.OrderController;
 import org.client.bl.promotionbl.PromotionController;
 import org.client.bl.userbl.UserController;
+import org.client.blservice.commentblservice.Commentblservice;
+import org.client.blservice.hotelblservice.Hotelblservice;
+import org.client.blservice.orderblservice.Orderblservice;
+import org.client.blservice.promotionblservice.Promotionblservice;
+import org.client.blservice.userblservice.Userblservice;
 import org.client.launcher.Resources;
 import org.client.vo.AreaVO;
 import org.client.vo.CityVO;
@@ -36,15 +41,15 @@ import javafx.stage.Stage;
 public class SwitchSceneUtil {
 	static Stage stage = null;
 	
-	static UserController userController;
+	static Userblservice userController;
 	
-	static OrderController orderController;
+	static Orderblservice orderController;
 	
-	static HotelController hotelController;
+	static Hotelblservice hotelController;
 	
-	static PromotionController promotionController;
+	static Promotionblservice promotionController;
 	
-	static CommentController commentController;
+	static Commentblservice commentController;
 	
 	// 记录当前登录客户的客户ID
 	static String userID;
