@@ -19,6 +19,8 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -284,6 +286,7 @@ public class CustomerCheckHotelList {
 		
 		for (int i = 0; i < MAX_HOTEL_ONE_OAGE; i++) {
 			if (getName(i) != null) {
+				getImageLabel(i).setGraphic(new ImageView(getImage(i)));
 				getNameLabel(i).setText(getName(i));
 				getStarLabel(i).setText(String.valueOf(getStar(i)));
 				getScoreLabel(i).setText(String.valueOf(getScore(i)));
@@ -292,6 +295,7 @@ public class CustomerCheckHotelList {
 				getRoomNumLabel(i).setText(String.valueOf(getRoomNum(i)));
 				getMakeOrderLabel(i).setText("预订此酒店");
 			} else {
+				getImageLabel(i).setText("");
 				getNameLabel(i).setText("");
 				getStarLabel(i).setText("");
 				getScoreLabel(i).setText("");
@@ -447,9 +451,13 @@ public class CustomerCheckHotelList {
 	}
 	
 	/**
-	 * 下面7个方法分别用于获得单个酒店的不同信息字段的Label的引用
+	 * 下面8个方法分别用于获得单个酒店的不同信息字段的Label的引用
 	 * @param i 取值为0到MAX_HOTEL_ONE_OAGE - 1 表示页面上的第i个酒店
 	 */
+	private Label getImageLabel(int i) {
+		return (Label)(pictureBox.getChildren().get(i + 1));
+	}
+	
 	private Label getNameLabel(int i) {
 		return (Label)((Pane)(hotelNameBox.getChildren().get(i + 1))).getChildren().get(0);
 	}
@@ -480,14 +488,25 @@ public class CustomerCheckHotelList {
 	/********************************************************/
 	
 	/**
-	 * 下面6种方法分别用来获得某个酒店的酒店名称、星级、评分、酒店地址、最低价格、剩余房间数量
+	 * 下面6种方法分别用来获得某个酒店的酒店图片、名称、星级、评分、酒店地址、最低价格、剩余房间数量
 	 * @param i 范围是 0 到 MAX_HOTEL_ONE_OAGE - 1
 	 */
-	private String getName(int i) {
+	private Image getImage(int i) {
 		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_HOTEL_ONE_OAGE + i;	// 计算当前页面第i个信息字段在arraylist中的实际位置；
 		try {
+			return CustomerImageGrabber.gethotelImage(hotelList.get(seq).id);
+		} catch (IndexOutOfBoundsException indexOutOfBoundsException) {
+			return null;
+		} catch (NullPointerException nullPointerException) {
+			return null;
+		}
+	}
+	
+	private String getName(int i) {
+		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_HOTEL_ONE_OAGE + i;
+		try {
 			return hotelList.get(seq).hotelName;
-		} catch (IndexOutOfBoundsException nullex) {
+		} catch (IndexOutOfBoundsException indexOutOfBoundsException) {
 			return null;
 		}
 	}
@@ -496,7 +515,7 @@ public class CustomerCheckHotelList {
 		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_HOTEL_ONE_OAGE + i;
 		try {
 			return hotelList.get(seq).star;
-		} catch (IndexOutOfBoundsException nullex) {
+		} catch (IndexOutOfBoundsException indexOutOfBoundsException) {
 			return -1;
 		}
 	}
@@ -506,7 +525,7 @@ public class CustomerCheckHotelList {
 		try {
 			DecimalFormat formator = new DecimalFormat("0.00");
 			return Double.parseDouble(formator.format(hotelList.get(seq).rank));
-		} catch (IndexOutOfBoundsException nullex) {
+		} catch (IndexOutOfBoundsException indexOutOfBoundsException) {
 			return -1;
 		}
 	}
@@ -515,7 +534,7 @@ public class CustomerCheckHotelList {
 		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_HOTEL_ONE_OAGE + i;
 		try {
 			return hotelList.get(seq).address;
-		} catch (IndexOutOfBoundsException nullex) {
+		} catch (IndexOutOfBoundsException indexOutOfBoundsException) {
 			return null;
 		}
 	}
@@ -531,7 +550,7 @@ public class CustomerCheckHotelList {
 				}
 			}
 			return minPrice;
-		} catch (IndexOutOfBoundsException nullex) {
+		} catch (IndexOutOfBoundsException indexOutOfBoundsException) {
 			return -1;
 		}
 	}
@@ -545,7 +564,7 @@ public class CustomerCheckHotelList {
 				totalRoomNum += roomNumList.get(j);
 			}
 			return totalRoomNum;
-		} catch (IndexOutOfBoundsException nullex) {
+		} catch (IndexOutOfBoundsException indexOutOfBoundsException) {
 			return -1;
 		}
 	}

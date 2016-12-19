@@ -2,6 +2,7 @@ package org.client.presentation.customer;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,30 +12,31 @@ import java.net.URL;
 
 public class CustomerHTTPPictureDownloader {
 	
-	static int fileNameNO = 0;
-	
-	public static void downLoadImage(String address) {
-		CustomerHTTPPictureDownloader.fileNameNO++;
-		String filename = new String(fileNameNO + ".jpg");
+	public static void downLoadImage(String address, String hotelID) throws FileNotFoundException {
+		String filename = new String(hotelID + ".jpg");
 		
-		try {
-			URL url = new URL(address);
-			HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
-			httpURLConnection.setRequestMethod("GET");
-			httpURLConnection.setConnectTimeout(5 * 1000);
-			InputStream instream = httpURLConnection.getInputStream();
-			byte[] data = readInputStream(instream);
-			File tempImage = new File(CustomerHTTPPictureDownloader.class.getResource("/") + "temp");
-			if (!tempImage.exists()) {
-				tempImage.mkdirs();
+		if (address != null) {
+			try {
+				URL url = new URL(address);
+				HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
+				httpURLConnection.setRequestMethod("GET");
+				httpURLConnection.setConnectTimeout(5 * 1000);
+				InputStream instream = httpURLConnection.getInputStream();
+				byte[] data = readInputStream(instream);
+				File tempImage = new File(CustomerHTTPPictureDownloader.class.getResource("/") + "temp");
+				if (!tempImage.exists()) {
+					tempImage.mkdirs();
+				}
+				FileOutputStream fileOutputStream = new FileOutputStream(tempImage.getPath().substring(6) + File.separator + filename);
+				fileOutputStream.write(data);
+				fileOutputStream.close();
+			} catch (MalformedURLException malformedURLException) {
+				malformedURLException.printStackTrace();
+			} catch (IOException ioException) {
+				ioException.printStackTrace();
 			}
-			FileOutputStream fileOutputStream = new FileOutputStream(tempImage.getPath().substring(6) + File.separator + filename);
-			fileOutputStream.write(data);
-			fileOutputStream.close();
-		} catch (MalformedURLException malformedURLException) {
-			malformedURLException.printStackTrace();
-		} catch (IOException ioException) {
-			ioException.printStackTrace();
+		} else {
+			throw new FileNotFoundException();
 		}
 	}
 	
@@ -66,9 +68,10 @@ public class CustomerHTTPPictureDownloader {
 	/**
 	 * 这个是用来测试的
 	 * @param args
+	 * @throws FileNotFoundException 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 		String address = "http://p1.bpimg.com/567571/ec6618599bf66d79.jpg";
-		downLoadImage(address);
+		downLoadImage(address, "00000");
 	}
 }

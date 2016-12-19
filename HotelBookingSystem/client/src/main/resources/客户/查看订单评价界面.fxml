@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="567.0" prefWidth="920.0" style="-fx-background-color: rgba(255,255,255,0.4);" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.presentation.customer.CustomerComment">
+<AnchorPane fx:id="root" prefHeight="567.0" prefWidth="920.0" style="-fx-background-color: rgba(255,255,255,0.4);" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.presentation.customer.CustomerCheckComment">
    <effect>
       <DropShadow />
    </effect>
@@ -83,7 +83,7 @@
                   <Font name="Microsoft YaHei" size="20.0" />
                </font>
             </Label>
-            <Label prefHeight="27.0" prefWidth="70.0" text="5分" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <Label fx:id="rank" prefHeight="27.0" prefWidth="70.0" text="5分" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <font>
                   <Font name="Microsoft YaHei" size="20.0" />
                </font>
@@ -100,7 +100,7 @@
       <Line fx:id="chose4_2" endX="631.0" endY="248.0" layoutX="-20.0" startX="604.0" startY="280.0" stroke="#00ff37" strokeLineCap="ROUND" strokeWidth="4.0" visible="false" />
       <Line fx:id="chose3_2" endX="531.0" endY="248.0" layoutX="-20.0" startX="504.0" startY="280.0" stroke="#00ff37" strokeLineCap="ROUND" strokeWidth="4.0" visible="false" />
       <Line fx:id="chose2_2" endX="431.0" endY="248.0" layoutX="-20.0" startX="404.0" startY="280.0" stroke="#00ff37" strokeLineCap="ROUND" strokeWidth="4.0" visible="false" />
-      <Label alignment="TOP_LEFT" layoutX="58.0" layoutY="315.0" prefHeight="193.0" prefWidth="781.0" text="评价:">
+      <Label fx:id="comment" alignment="TOP_LEFT" layoutX="58.0" layoutY="315.0" prefHeight="193.0" prefWidth="781.0" text="评价:">
          <font>
             <Font name="Microsoft YaHei" size="20.0" />
          </font>
