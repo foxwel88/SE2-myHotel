@@ -69,9 +69,9 @@ public class HotelManagerModifyPromotion {
 		if (!modifyMode) {
 			vo = new PromotionVO();
 			vo.provider = "hotel";
-			vo.hotelID = HotelManagerController.getInstance().hotelID;
-			vo.hotelName = HotelManagerController.getInstance().hotelName;
 		}
+		vo.hotelID = HotelManagerController.getInstance().hotelID;
+		vo.hotelName = HotelManagerController.getInstance().hotelName;
 		//界面先自己检查
 		if (!isFormatCorrect()) {
 			ResultInfoHelper.setResultLabel(resultLabel, ResultMessage.WRONG_FORMAT);
@@ -82,24 +82,20 @@ public class HotelManagerModifyPromotion {
 		vo.discount = Double.parseDouble(discountLabel.getText());
 		vo.name = nameLabel.getText();
 
-		if (!startTimePicker.isDisable()) {
-			//startTime, at the start of the day
-			LocalDate startDate = startTimePicker.getValue();
+		//startTime, at the start of the day
+		LocalDate startDate = startTimePicker.getValue();
 
-			ZonedDateTime startZonedTime = startDate.atStartOfDay(ZoneId.systemDefault());
-			Instant startInstant = Instant.from(startZonedTime);
-			vo.startTime = Date.from(startInstant);
+		ZonedDateTime startZonedTime = startDate.atStartOfDay(ZoneId.systemDefault());
+		Instant startInstant = Instant.from(startZonedTime);
+		vo.startTime = Date.from(startInstant);
 
-			//endTime, at the start of the day
-			LocalDate endDate = endTimePicker.getValue();
+		//endTime, at the start of the day
+		LocalDate endDate = endTimePicker.getValue();
 
-			ZonedDateTime endZonedTime = endDate.atStartOfDay(ZoneId.systemDefault());
-			Instant endInstant = Instant.from(endZonedTime);
-			vo.endTime = Date.from(endInstant);
-		} else {
-			vo.startTime = Calendar.getInstance().getTime();
-			vo.endTime = Calendar.getInstance().getTime();
-		}
+		ZonedDateTime endZonedTime = endDate.atStartOfDay(ZoneId.systemDefault());
+		Instant endInstant = Instant.from(endZonedTime);
+		vo.endTime = Date.from(endInstant);
+
 
 		vo.type = typeBox.getValue();
 		
@@ -125,20 +121,21 @@ public class HotelManagerModifyPromotion {
 		ObservableList<String> typeList = FXCollections.observableArrayList((new ArrayList<>(Arrays.asList(new String[]{"生日促销", "企业促销", "三间以上促销", "特定日期促销"}))));
 		typeBox.setItems(typeList);
 
-		typeBox.getSelectionModel().selectedIndexProperty().addListener((observableValue, oldIndex, newIndex) -> {
-			if (typeList.get(newIndex.intValue()).equals("特定日期促销")) {
-				startTimePicker.setDisable(false);
-				endTimePicker.setDisable(false);
-			} else {
-				startTimePicker.setDisable(true);
-				endTimePicker.setDisable(true);
-			}
-		});
-
-		//起始时间必须先于结束时间
+		//起始时间必须先于结束时间，起始时间不能早于当前时间
 		
 		startTimePicker.setValue(LocalDate.now());
+		Callback<DatePicker, DateCell> startDayCellFactory = dp -> new DateCell() {
+			@Override
+			public void updateItem(LocalDate item, boolean empty) {
+				super.updateItem(item, empty);
 
+				if (item.isBefore(LocalDate.now())) {
+					setStyle("-fx-background-color: #ffc0cb;");
+					Platform.runLater(() -> setDisable(true));
+				}
+			}
+		};
+		startTimePicker.setDayCellFactory(startDayCellFactory);
 
 		Callback<DatePicker, DateCell> endDayCellFactory = dp -> new DateCell() {
 			@Override
@@ -180,10 +177,8 @@ public class HotelManagerModifyPromotion {
 	
 	boolean isFormatCorrect() {
 		//time order
-		if (!startTimePicker.isDisable()) {
-			if (startTimePicker.getValue().isAfter(endTimePicker.getValue()) || startTimePicker.getValue().isEqual(endTimePicker.getValue())) {
-				return false;
-			}
+		if (startTimePicker.getValue().isBefore(LocalDate.now()) || startTimePicker.getValue().isAfter(endTimePicker.getValue()) || startTimePicker.getValue().isEqual(endTimePicker.getValue())) {
+			return false;
 		}
 		
 		//discount range

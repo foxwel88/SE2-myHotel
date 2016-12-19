@@ -87,7 +87,7 @@ public class HotelManagerUnexecutedOrder {
 		orderTypeLabel.setText(vo.type);
 		customerNameLabel.setText(vo.customerName);
 		
-		SimpleDateFormat dateFormat = new SimpleDateFormat();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		startTimeLabel.setText(dateFormat.format(vo.schFrom));
 		endTimeLabel.setText(dateFormat.format(vo.schTo));
 	}

@@ -67,7 +67,7 @@ public class HotelManagerCancelledOrder {
 		}
 		orderTypeLabel.setText(vo.type);
 
-		SimpleDateFormat dateFormat = new SimpleDateFormat();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		cancelTimeLabel.setText(dateFormat.format(vo.cancelTime));
 	}
 }
