@@ -468,7 +468,7 @@ public class CustomerCheckHotel {
 	}
 	
 	void showCommentList() {
-		commentList = SwitchSceneUtil.getComment();
+		commentList = SwitchSceneUtil.getComments();
 		setCommentContent();
 	}
 	

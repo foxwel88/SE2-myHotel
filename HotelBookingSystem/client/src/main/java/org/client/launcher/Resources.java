@@ -56,6 +56,8 @@ public class Resources {
 	
 	public URL customerCheckInfo = getClass().getResource("/客户/查看客户信息界面.fxml");
 	
+	public URL customerCheckComment = getClass().getResource("/客户/查看订单评价界面.fxml");
+	
 	public URL customerModifyInfo = getClass().getResource("/客户/修改客户信息界面.fxml");
 	
 	public URL customerCheckCredits = getClass().getResource("/客户/查看信用记录界面.fxml");

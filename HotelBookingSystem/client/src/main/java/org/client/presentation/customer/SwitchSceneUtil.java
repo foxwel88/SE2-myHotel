@@ -188,8 +188,21 @@ public class SwitchSceneUtil {
 		return promotionController.getPrice(userID, hotelID, rawPrice);
 	}
 	
-	public static ArrayList<CommentVO> getComment() {
+	public static ArrayList<CommentVO> getComments() {
 		return (ArrayList<CommentVO>)commentController.getComment(hotelID);
+	}
+	
+	public static CommentVO getComment() {
+		String hotelID = getCurrentOrder().hotelID;
+		ArrayList<CommentVO> commentVOList = (ArrayList<CommentVO>)commentController.getComment(hotelID);
+		CommentVO commentVO = null;
+		for (CommentVO tempVO:commentVOList) {
+			if (tempVO.orderID == SwitchSceneUtil.orderID) {
+				commentVO = tempVO;
+				break;
+			}
+		}
+		return commentVO;
 	}
 	
 	public static OrderVO getCurrentOrder() {

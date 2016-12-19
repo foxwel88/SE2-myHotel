@@ -56,7 +56,7 @@ public class CustomerHTTPPictureDownloader {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		String address = "http://lain.bgm.tv/pic/eden/icon/l/000/00/00/3.jpg";
+		String address = "http://p1.bpimg.com/567571/ec6618599bf66d79.jpg";
 		downLoadImage(address);
 	}
 }

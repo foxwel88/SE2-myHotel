@@ -4,8 +4,6 @@ import org.client.launcher.Resources;
 import org.client.vo.OrderVO;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
@@ -94,6 +92,9 @@ public class CustomerExecutedOrder {
 		actToLabel.setText(LiveDatePicker.dateToDetaildString(vo.actTo));
 		generatedTimeLabel.setText(LiveDatePicker.dateToDetaildString(vo.generatedDate));
 		priceLabel.setText(String.valueOf(vo.totalPrice));
+		if (vo.isCommented) {
+			commentButton.setText("查看评价");
+		}
 	}
 	
 	@FXML
@@ -104,11 +105,8 @@ public class CustomerExecutedOrder {
 	@FXML
 	void makeComment() {
 		if (SwitchSceneUtil.getCurrentOrder().isCommented) {
-			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("Comment refused");
-			alert.setHeaderText(null);
-			alert.setContentText("您已经评价过此订单");
-			alert.showAndWait();
+			SwitchSceneUtil.currentScene = CustomerBackableScene.MAKE_COMMENT_SCENE;
+			SwitchSceneUtil.turnToAnotherScene((GridPane)(root.getParent()), resources.customerCheckComment);
 		} else {
 			SwitchSceneUtil.currentScene = CustomerBackableScene.MAKE_COMMENT_SCENE;
 			SwitchSceneUtil.turnToAnotherScene((GridPane)(root.getParent()), resources.customerMakeComments);
