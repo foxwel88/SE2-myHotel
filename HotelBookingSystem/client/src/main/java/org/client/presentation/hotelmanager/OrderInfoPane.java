@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
+import org.common.utility.OrderType;
 
 /** 
  * 在浏览订单列表时用到的单条订单的pane，包含了客户姓名、订单ID的label和详情button
@@ -26,6 +27,8 @@ public class OrderInfoPane extends Pane {
 	OrderVO vo;
 	
 	GridPane parentGridPane;
+
+	Label isCheckedOutLabel;
 	
 	OrderInfoPane(OrderVO vo, GridPane gridPane) {
 		super();
@@ -39,6 +42,15 @@ public class OrderInfoPane extends Pane {
 		
 		this.getChildren().add(customerNameLabel);
 		this.getChildren().add(orderIDLabel);
+		if (vo.type.equals(OrderType.EXECUTED.getString())) {
+			isCheckedOutLabel = new Label();
+			if (vo.isCheckedOut) {
+				isCheckedOutLabel.setText("已退房");
+			} else {
+				isCheckedOutLabel.setText("未退房");
+			}
+			this.getChildren().add(isCheckedOutLabel);
+		}
 		this.getChildren().add(specButton);
 		
 		this.setPrefSize(727, 55);
@@ -55,6 +67,16 @@ public class OrderInfoPane extends Pane {
 		orderIDLabel.setStyle("-fx-text-fill: white");
 		orderIDLabel.setLayoutX(292);
 		orderIDLabel.setLayoutY(13);
+
+		if (vo.type.equals(OrderType.EXECUTED.getString())) {
+			orderIDLabel.setLayoutX(220);
+			orderIDLabel.setLayoutY(13);
+			isCheckedOutLabel.setPrefSize(50, 28);
+			isCheckedOutLabel.setFont(Font.font("Microsoft YaHei", 15));
+			isCheckedOutLabel.setStyle("-fx-text-fill: white");
+			isCheckedOutLabel.setLayoutX(550);
+			isCheckedOutLabel.setLayoutY(13);
+		}
 				
 		specButton.setFont(Font.font("Microsoft YaHei", 15));
 		specButton.setStyle("-fx-background-color:rgba(255,255,255,0.2); -fx-text-fill: white");

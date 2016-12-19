@@ -2,9 +2,11 @@ package org.client.presentation.hotelmanager;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import org.client.presentation.util.ActFromComparator;
 import org.client.vo.OrderVO;
 
 import javafx.event.ActionEvent;
@@ -107,6 +109,9 @@ public class HotelManagerHistoryOrder {
 	@FXML
     void toExecutedOrders(MouseEvent event) {
 		currentOrders = HotelManagerController.getInstance().getExecutedOrders();
+
+		//按照执行时间排序
+		Collections.sort(currentOrders, new ActFromComparator());
 		switchCurrentPage(FIRST_PAGE_NUM);
 		CurrentTabItem.getInstance().deActive();
 		CurrentTabItem.setInstance(executedPane, executedLabel);
@@ -144,6 +149,8 @@ public class HotelManagerHistoryOrder {
 
 		//默认查看已执行订单
 		currentOrders = HotelManagerController.getInstance().getExecutedOrders();
+		//按照执行时间排序
+		Collections.sort(currentOrders, new ActFromComparator());
 	}
 	
 	/** 持有导航界面GridPane的引用，为了完成从浏览到编辑界面的跳转
