@@ -18,15 +18,17 @@ public class CustomerHTTPPictureDownloader {
 		String filename = new String(fileNameNO + ".jpg");
 		
 		try {
-			
 			URL url = new URL(address);
 			HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
 			httpURLConnection.setRequestMethod("GET");
 			httpURLConnection.setConnectTimeout(5 * 1000);
 			InputStream instream = httpURLConnection.getInputStream();
 			byte[] data = readInputStream(instream);
-			File tempImage = new File("/temp/" + filename);
-			FileOutputStream fileOutputStream = new FileOutputStream(tempImage);
+			File tempImage = new File(CustomerHTTPPictureDownloader.class.getResource("/") + "temp");
+			if (!tempImage.exists()) {
+				tempImage.mkdirs();
+			}
+			FileOutputStream fileOutputStream = new FileOutputStream(tempImage.getPath().substring(6) + File.separator + filename);
 			fileOutputStream.write(data);
 			fileOutputStream.close();
 		} catch (MalformedURLException malformedURLException) {
@@ -37,7 +39,17 @@ public class CustomerHTTPPictureDownloader {
 	}
 	
 	public static void clearTempFile() {
-		
+		String FileFolderPath = new String((CustomerHTTPPictureDownloader.class.getResource("/") + "temp").substring(6));
+		File fileFolder = new File(FileFolderPath);
+		String[] fileList = fileFolder.list();
+		File tempFile = null;
+		for (int i = 0; i < fileList.length; i++) {
+			tempFile = new File(FileFolderPath + File.separator + fileList[i]);
+			// 只会删除文件，所以文件夹可以放心(？)的保存在这里面
+			if (tempFile.isFile()) {
+				tempFile.delete();
+			}
+		}
 	}
 	
 	private static byte[] readInputStream(InputStream instream) throws IOException {

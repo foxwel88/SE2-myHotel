@@ -38,9 +38,9 @@ public class PromotionDataServiceImpl extends UnicastRemoteObject implements Pro
 		}
 		try {
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(
-					"insert into promotion(provider, type, promotionid, starttime, endtime, hotelname, hotelid, level, area, discount, name)"
+					"insert into promotion(provider, type, promotionid, starttime, endtime, hotelname, hotelid, level, city, area, discount, name)"
 					+ " values ('" + po.provider + "','" + po.type.getString() + "','" + po.promotionID + "','" + getSQLDate(po.startTime) + "','" + getSQLDate(po.endTime)
-					+ "','" + DatabaseCommunicator.getStorableQuote(po.hotelName) + "','" + po.hotelID + "','" + po.level + "','" + po.area + "','" + po.discount + "','"
+					+ "','" + DatabaseCommunicator.getStorableQuote(po.hotelName) + "','" + po.hotelID + "','" + po.level + "','" + po.city + "','" + po.area + "','" + po.discount + "','"
 					+ DatabaseCommunicator.getStorableQuote(po.name) + "')");
 			preparedStatement.executeUpdate();
 			return ResultMessage.SUCCESS;
