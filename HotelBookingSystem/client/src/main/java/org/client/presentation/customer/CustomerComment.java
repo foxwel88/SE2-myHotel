@@ -3,6 +3,7 @@ package org.client.presentation.customer;
 import java.rmi.RemoteException;
 
 import org.client.bl.commentbl.CommentController;
+import org.client.blservice.commentblservice.Commentblservice;
 import org.client.launcher.Resources;
 import org.client.rmi.RMIHelper;
 import org.client.vo.CommentVO;
@@ -62,7 +63,7 @@ public class CustomerComment {
 	
 	private Resources resources;
 	
-	private CommentController commentController;
+	private Commentblservice commentController;
 	
 	@FXML
 	void initialize() {

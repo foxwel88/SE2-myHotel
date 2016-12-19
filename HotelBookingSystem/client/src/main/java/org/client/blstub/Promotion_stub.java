@@ -76,5 +76,9 @@ public class Promotion_stub implements Promotionblservice {
 		return ResultMessage.SUCCESS;
 	}
 	
-
+	@Override
+	public int calLevel(double credit) {
+		// TODO Auto-generated method stub
+		return 3;
+	}
 }
