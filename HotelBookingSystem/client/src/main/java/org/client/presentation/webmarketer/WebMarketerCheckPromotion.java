@@ -6,12 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import org.client.launcher.Resources;
 import org.client.vo.PromotionVO;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -112,28 +112,35 @@ public class WebMarketerCheckPromotion {
 	@FXML
     void addPromotion(MouseEvent event) {
 		Parent modifyRoot = null;
-		FXMLLoader loader = new FXMLLoader();
+		Resources resources = Resources.getInstance();
 		try {
-			modifyRoot = loader.load(getClass().getResource("/网站营销人员/修改促销策略界面.fxml").openStream());
+			modifyRoot = resources.load(resources.webMarketerModifyPromotion);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		parentPane.getChildren().set(1, modifyRoot);
 		GridPane.setConstraints(modifyRoot, 1, 0);
+		((WebMarketerModifyPromotion)resources.getCurrentController()).setParentGridPane(parentPane);
 	}
 	
 	private void modifyPromotion(PromotionVO promotionVO) {
 		Parent modifyRoot = null;
-		FXMLLoader loader = new FXMLLoader();
+		Resources resources = Resources.getInstance();
 		try {
-			modifyRoot = loader.load(getClass().getResource("/网站营销人员/修改促销策略界面.fxml").openStream());
+			modifyRoot = resources.load(resources.webMarketerModifyPromotion);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		parentPane.getChildren().set(1, modifyRoot);
 		GridPane.setConstraints(modifyRoot, 1, 0);
-		
-		((WebMarketerModifyPromotion)loader.getController()).setPromotionVO(promotionVO);
+		((WebMarketerModifyPromotion)resources.getCurrentController()).setParentGridPane(parentPane);
+		((WebMarketerModifyPromotion)resources.getCurrentController()).setPromotionVO(promotionVO);
+	}
+	
+	private void deletePromotion(String promotionID) {
+		controller.deletePromotion(promotionID);
+		promotionList = controller.getPromotions();
+		switchCurrentPage(pageNum);
 	}
 
 	@FXML
@@ -219,34 +226,40 @@ public class WebMarketerCheckPromotion {
 		
 		Button detail;
 		
+		Button delete;
+		
 		PromotionPane(PromotionVO vo) {
 			name = new Text(vo.name);
 			type = new Text(vo.type);
 			discount = new Text(String.valueOf(vo.discount));
 			detail = new Button("详情");
+			delete = new Button("删除");
 			
 			// set effect
 			this.setStyle("-fx-background-color:rgba(0,0,0,0.45)");
-			name.setFont(Font.font("Microsoft YaHei Light", 20));
+			name.setFont(Font.font("Microsoft YaHei Light", 19));
 			name.setStyle("-fx-fill: white");
 			name.setWrappingWidth(183.0);
 			name.setTextAlignment(TextAlignment.CENTER);
-			type.setFont(Font.font("Microsoft YaHei Light", 20));
+			type.setFont(Font.font("Microsoft YaHei Light", 19));
 			type.setStyle("-fx-fill: white");
 			type.setWrappingWidth(183.0);
 			type.setTextAlignment(TextAlignment.CENTER);
-			discount.setFont(Font.font("Microsoft YaHei Light", 20));
+			discount.setFont(Font.font("Microsoft YaHei Light", 19));
 			discount.setStyle("-fx-fill: white");
 			discount.setWrappingWidth(110.0);
 			discount.setTextAlignment(TextAlignment.CENTER);
 			detail.setFont(Font.font("Microsoft YaHei", 15));
 			detail.setStyle("-fx-background-color:rgba(0,0,0,0.2); -fx-text-fill: white");
+			delete.setFont(Font.font("Microsoft YaHei", 15));
+			delete.setStyle("-fx-background-color:rgba(0,0,0,0.2); -fx-text-fill: white");
 			
 			// add node
 			this.getChildren().add(name);
 			this.getChildren().add(type);
 			this.getChildren().add(discount);
 			this.getChildren().add(detail);
+			this.getChildren().add(delete);
 			
 			// set location
 			AnchorPane.setBottomAnchor(name, 10.0);
@@ -256,18 +269,23 @@ public class WebMarketerCheckPromotion {
 			
 			AnchorPane.setBottomAnchor(type, 10.0);
 			AnchorPane.setTopAnchor(type, 10.0);
-			AnchorPane.setLeftAnchor(discount, 222.0);
-			AnchorPane.setRightAnchor(type, 319.0);
+			AnchorPane.setLeftAnchor(type, 183.0);
+			AnchorPane.setRightAnchor(type, 360.0);
 			
 			AnchorPane.setBottomAnchor(discount, 10.0);
 			AnchorPane.setTopAnchor(discount, 10.0);
-			AnchorPane.setLeftAnchor(discount, 426.0);
-			AnchorPane.setRightAnchor(discount, 189.0);
+			AnchorPane.setLeftAnchor(discount, 366.0);
+			AnchorPane.setRightAnchor(discount, 250.0);
 			
 			AnchorPane.setBottomAnchor(detail, 11.0);
 			AnchorPane.setTopAnchor(detail, 10.0);
-			AnchorPane.setLeftAnchor(detail, 633.0);
-			AnchorPane.setRightAnchor(detail, 23.0);
+			AnchorPane.setLeftAnchor(detail, 569.0);
+			AnchorPane.setRightAnchor(detail, 87.0);
+			
+			AnchorPane.setBottomAnchor(delete, 11.0);
+			AnchorPane.setTopAnchor(delete, 10.0);
+			AnchorPane.setLeftAnchor(delete, 649.0);
+			AnchorPane.setRightAnchor(delete, 7.0);
 			
 			// add listener
 			detail.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -275,6 +293,13 @@ public class WebMarketerCheckPromotion {
 				public void handle(MouseEvent event) {
 					modifyPromotion(vo);
 				}
+			});
+			delete.setOnMouseClicked(new EventHandler<MouseEvent>() {
+				@Override
+				public void handle(MouseEvent event) {
+					deletePromotion(vo.promotionID);
+				}
+				
 			});
 		}
 		

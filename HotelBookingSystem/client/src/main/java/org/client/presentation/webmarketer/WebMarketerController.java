@@ -208,15 +208,32 @@ public class WebMarketerController {
 		return promotionbl.add(vo);
 	}
 	
+	/**
+	 * 登出
+	 * @return
+	 */
 	public ResultMessage logout() {
 		return userbl.logout(userName);
 	}
 	
+	/**
+	 * 获得所有城市
+	 * @return
+	 */
 	public List<CityVO> getCitys() {
 		return hotelbl.getCitys();
 	}
 	
+	/**
+	 * 获得某一城市的所有商圈
+	 * @param vo
+	 * @return
+	 */
 	public List<AreaVO> getAreas(CityVO vo) {
 		return hotelbl.getAreas(vo);
+	}
+	
+	public ResultMessage deletePromotion(String promotionID) {
+		return promotionbl.delete(promotionID);
 	}
 }

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import org.client.launcher.Resources;
 import org.client.presentation.util.ResultInfoHelper;
 import org.client.vo.OrderVO;
 import org.common.utility.ResultMessage;
@@ -13,7 +14,6 @@ import org.common.utility.ResultMessage;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -142,16 +142,16 @@ public class WebMarketerAbnormalOrderList {
 
 	private void cancelOrder(OrderVO vo) {
 		Parent modifyRoot = null;
-		FXMLLoader loader = new FXMLLoader();
+		Resources resources = Resources.getInstance();
 		try {
-			modifyRoot = loader.load(getClass().getResource("/网站营销人员/异常订单详细信息界面.fxml").openStream());
+			modifyRoot = resources.load(resources.webMarketerAbnormalOrder);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		parentPane.getChildren().set(1, modifyRoot);
 		GridPane.setConstraints(modifyRoot, 1, 0);
 		
-		((WebMarketerAbnormalOrder)loader.getController()).setOrderVO(vo);
+		((WebMarketerAbnormalOrder)resources.getCurrentController()).setOrderVO(vo);
 	}
 	
 	void switchCurrentPage(int toPageNum) {

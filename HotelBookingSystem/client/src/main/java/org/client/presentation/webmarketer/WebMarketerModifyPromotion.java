@@ -1,5 +1,6 @@
 package org.client.presentation.webmarketer;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -11,6 +12,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import org.client.launcher.Resources;
 import org.client.presentation.util.ResultInfoHelper;
 import org.client.vo.AreaVO;
 import org.client.vo.CityVO;
@@ -22,6 +24,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DateCell;
@@ -30,6 +33,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.util.Callback;
 
@@ -80,6 +84,12 @@ public class WebMarketerModifyPromotion {
 	@FXML
 	private Label resultLabel;
 	
+	@FXML
+	private Button deleteButton;
+	
+	@FXML
+	private Label delResultLabel;
+	
 	private PromotionVO vo;
 	
 	private WebMarketerController controller;
@@ -88,7 +98,15 @@ public class WebMarketerModifyPromotion {
 	
 	private List<String> citys;
 	
+	/**
+	 * true表示修改；false表示增加
+	 */
 	private boolean isModify;
+	
+	/**
+	 * 导航界面的GridPane
+	 */
+	private GridPane parentPane;
 	
 	@FXML
 	void changeEditable(ActionEvent event) {
@@ -109,6 +127,24 @@ public class WebMarketerModifyPromotion {
 		
 	}
 
+	@FXML
+	void handleDelete(MouseEvent event) {
+		ResultMessage info = controller.deletePromotion(vo.promotionID);
+		ResultInfoHelper.setResultLabel(delResultLabel, info);
+		if (info == ResultMessage.SUCCESS) {
+			Parent root = null;
+			Resources resources = Resources.getInstance();
+			try {
+				root = resources.load(resources.webMarketerCheckPromotion);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			parentPane.getChildren().set(1, root);
+			GridPane.setConstraints(root, 1, 0);
+			((WebMarketerCheckPromotion)resources.getCurrentController()).setParentGridPane(parentPane);
+		}
+	}
+	
 	@FXML 
     void handleConfirm(MouseEvent event) {
 		if (typeBox.getValue() == null) {
@@ -154,6 +190,20 @@ public class WebMarketerModifyPromotion {
 			result = WebMarketerController.getInstance().addPromotion(vo);
 		}
 		ResultInfoHelper.setResultLabel(resultLabel, result);
+		
+		// 如果是增加促销策略界面且增加成功，则返回上一个界面
+		if ((!isModify) && (result == ResultMessage.SUCCESS)) {
+			Parent root = null;
+			Resources resources = Resources.getInstance();
+			try {
+				root = resources.load(resources.webMarketerCheckPromotion);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			parentPane.getChildren().set(1, root);
+			GridPane.setConstraints(root, 1, 0);
+			((WebMarketerCheckPromotion)resources.getCurrentController()).setParentGridPane(parentPane);
+		}
 	}
 
 	@FXML
@@ -169,6 +219,8 @@ public class WebMarketerModifyPromotion {
         assert discountLabel != null : "fx:id=\"discountLabel\" was not injected: check your FXML file '修改促销策略界面.fxml'.";
         assert confirmButton != null : "fx:id=\"confirmButton\" was not injected: check your FXML file '修改促销策略界面.fxml'.";
         assert resultLabel != null : "fx:id=\"resultLabel\" was not injected: check your FXML file '修改促销策略界面.fxml'.";
+        assert deleteButton != null : "fx:id=\"deleteButton\" was not injected: check your FXML file '修改促销策略界面.fxml'.";
+        assert delResultLabel != null : "fx:id=\"delRedultLabel\" was not injected: check your FXML file '修改促销策略界面.fxml'.";
         
         // 初始化controller
 		controller = WebMarketerController.getInstance();
@@ -215,6 +267,14 @@ public class WebMarketerModifyPromotion {
 		setVisible();
 	}
 	
+	/**
+	 * 获得导航界面GridPane的引用以完成到编辑界面的跳转
+	 * @param pane
+	 */
+	void setParentGridPane(GridPane pane) {
+		parentPane = pane;
+	}
+	
 	void setPromotionVO(PromotionVO vo) {
 		this.vo = vo;
 		
@@ -228,12 +288,11 @@ public class WebMarketerModifyPromotion {
 		// define which part is disable
 		setVisible();
 		// then show other parts 
-		if (!startTimePicker.isDisable()) {
-//			startTimePicker.setValue(LocalDate.from(Instant.ofEpochMilli(vo.startTime.getTime())));
-//			endTimePicker.setValue(LocalDate.from(Instant.ofEpochMilli(vo.endTime.getTime())));
-			startTimePicker.setValue(Instant.ofEpochMilli(vo.startTime.getTime()).atZone(ZoneId.systemDefault()).toLocalDate());
-			endTimePicker.setValue(Instant.ofEpochMilli(vo.endTime.getTime()).atZone(ZoneId.systemDefault()).toLocalDate());
-		}
+		// startTimePicker.setValue(LocalDate.from(Instant.ofEpochMilli(vo.startTime.getTime())));
+		// endTimePicker.setValue(LocalDate.from(Instant.ofEpochMilli(vo.endTime.getTime())));
+		startTimePicker.setValue(Instant.ofEpochMilli(vo.startTime.getTime()).atZone(ZoneId.systemDefault()).toLocalDate());
+		endTimePicker.setValue(Instant.ofEpochMilli(vo.endTime.getTime()).atZone(ZoneId.systemDefault()).toLocalDate());
+
 		if (!levelBox.isDisable()) {
 			levelBox.setValue(vo.level);
 		}
@@ -244,11 +303,11 @@ public class WebMarketerModifyPromotion {
 		
 		typeBox.setValue(vo.type);
 		
-		// show editable
-		setVisible();
-		
 		// set isModify
 		isModify = true;
+		
+		// show editable
+		setVisible();
 	}
 	
 	/**
@@ -256,35 +315,24 @@ public class WebMarketerModifyPromotion {
 	 */
 	private void setVisible() {
 		String type = typeBox.getValue();
+		if (isModify) {
+			deleteButton.setVisible(true);
+		} else {
+			deleteButton.setVisible(false);
+		}
 		if (type == null) {
-			startTimePicker.setDisable(true);
-			endTimePicker.setDisable(true);
-			startTimePicker.setOpacity(0.4);
-			endTimePicker.setOpacity(0.4);
 			levelBox.setDisable(true);
 			cityBox.setDisable(true);
 			areaBox.setDisable(true);
 		} else if (type.equals("特定日期促销")) {
-			startTimePicker.setDisable(false);
-			endTimePicker.setDisable(false);
-			startTimePicker.setOpacity(0.7);
-			endTimePicker.setOpacity(0.7);
 			levelBox.setDisable(true);
 			cityBox.setDisable(true);
 			areaBox.setDisable(true);
 		} else if (type.equals("VIP促销")) {
-			startTimePicker.setDisable(true);
-			endTimePicker.setDisable(true);
-			startTimePicker.setOpacity(0.4);
-			endTimePicker.setOpacity(0.4);
 			levelBox.setDisable(false);
 			cityBox.setDisable(true);
 			areaBox.setDisable(true);
 		} else if (type.equals("商圈促销")) {
-			startTimePicker.setDisable(true);
-			endTimePicker.setDisable(true);
-			startTimePicker.setOpacity(0.4);
-			endTimePicker.setOpacity(0.4);
 			levelBox.setDisable(false);
 			cityBox.setDisable(false);
 			areaBox.setDisable(false);
@@ -298,11 +346,15 @@ public class WebMarketerModifyPromotion {
 	 */
 	boolean isFormatCorrect() {
 		//time order
-		if (!startTimePicker.isDisable()) {
-			if (startTimePicker.getValue().isAfter(endTimePicker.getValue()) || startTimePicker.getValue().isEqual(endTimePicker.getValue())) {
-				return false;
-			}
+		if (startTimePicker.getValue() == null || endTimePicker.getValue() == null) {
+			return false;
 		}
+		
+		if (startTimePicker.getValue().isAfter(endTimePicker.getValue())
+				|| startTimePicker.getValue().isEqual(endTimePicker.getValue())) {
+			return false;
+		}
+		
 		
 		//select level
 		if (!levelBox.isDisable()) {

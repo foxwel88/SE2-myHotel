@@ -90,7 +90,19 @@
                </children>
             </AnchorPane>
             <AnchorPane opacity="0.45" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black;" GridPane.rowIndex="8" />
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+               <children>
+                  <Button fx:id="deleteButton" layoutX="509.0" layoutY="28.0" mnemonicParsing="false" onMouseClicked="#handleDelete" prefHeight="32.0" prefWidth="107.0" style="-fx-background-color: rgba(0,0,0,0.45);" text="删除该策略" textFill="WHITE">
+                     <font>
+                        <Font name="Microsoft YaHei" size="15.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="delResultLabel" alignment="CENTER_RIGHT" layoutX="232.0" layoutY="31.0" prefHeight="27.0" prefWidth="263.0">
+                     <font>
+                        <Font name="Microsoft YaHei" size="20.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
                   <TextField fx:id="nameLabel" layoutX="31.0" layoutY="4.0" prefHeight="30.0" prefWidth="247.0" style="-fx-background-color: rgba(255,255,255,0.65);" AnchorPane.leftAnchor="30.0" />

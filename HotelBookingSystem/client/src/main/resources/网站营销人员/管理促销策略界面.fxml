@@ -64,7 +64,7 @@
          <children>
             <GridPane fx:id="contentGridPane" GridPane.rowIndex="1">
                <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" />
                </columnConstraints>
                <rowConstraints>
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -82,24 +82,29 @@
                      <children>
                         <Text fill="WHITE" layoutX="37.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="网站特殊促销" textAlignment="CENTER" wrappingWidth="183.0000123977661" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="540.0" AnchorPane.topAnchor="10.0">
                            <font>
-                              <Font name="Microsoft YaHei Light" size="22.0" />
+                              <Font name="Microsoft YaHei Light" size="19.0" />
                            </font>
                         </Text>
-                        <Text fill="WHITE" layoutX="222.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="特定商圈" textAlignment="CENTER" wrappingWidth="183.0000123977661" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="222.0" AnchorPane.rightAnchor="319.0" AnchorPane.topAnchor="10.0">
+                        <Text fill="WHITE" layoutX="183.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="特定商圈" textAlignment="CENTER" wrappingWidth="183.0000123977661" AnchorPane.bottomAnchor="15.728515625" AnchorPane.leftAnchor="183.0" AnchorPane.rightAnchor="359.9999876022339" AnchorPane.topAnchor="10.0">
                            <font>
-                              <Font name="Microsoft YaHei Light" size="22.0" />
+                              <Font name="Microsoft YaHei Light" size="19.0" />
                            </font>
                         </Text>
-                        <Text fill="WHITE" layoutX="426.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7.5折" textAlignment="CENTER" wrappingWidth="110.00001239776611" AnchorPane.bottomAnchor="9.078125" AnchorPane.leftAnchor="426.0" AnchorPane.rightAnchor="188.9999876022339" AnchorPane.topAnchor="10.0">
-                           <font>
-                              <Font name="Microsoft YaHei Light" size="22.0" />
-                           </font>
-                        </Text>
-                        <Button layoutX="633.0" layoutY="11.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="69.0" style="-fx-background-color: rgba(0,0,00,0.2);" text="详情" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="633.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="11.0">
+                        <Button layoutX="548.0" layoutY="11.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="69.0" style="-fx-background-color: rgba(0,0,00,0.2);" text="详情" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="548.0" AnchorPane.rightAnchor="108.0" AnchorPane.topAnchor="11.0">
                            <font>
                               <Font name="Microsoft YaHei" size="15.0" />
                            </font>
                         </Button>
+                        <Button layoutX="641.0" layoutY="11.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="69.0" style="-fx-background-color: rgba(0,0,00,0.2);" text="删除" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="641.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="11.0">
+                           <font>
+                              <Font name="Microsoft YaHei" size="15.0" />
+                           </font>
+                        </Button>
+                        <Text fill="WHITE" layoutX="366.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="7.5折" textAlignment="CENTER" wrappingWidth="110.00001239776611" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="366.0" AnchorPane.rightAnchor="249.9999876022339" AnchorPane.topAnchor="10.0">
+                           <font>
+                              <Font name="Microsoft YaHei Light" size="19.0" />
+                           </font>
+                        </Text>
                      </children>
                   </AnchorPane>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
@@ -116,17 +121,17 @@
                <children>
                   <Text layoutX="44.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="促销策略" wrappingWidth="100.00001239776611">
                      <font>
-                        <Font name="Microsoft YaHei Light" size="24.0" />
+                        <Font name="Microsoft YaHei Light" size="22.0" />
                      </font>
                   </Text>
-                  <Text layoutX="260.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="促销类型" wrappingWidth="100.00001572072506">
+                  <Text layoutX="231.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="促销类型" wrappingWidth="100.00001572072506">
                      <font>
-                        <Font name="Microsoft YaHei Light" size="24.0" />
+                        <Font name="Microsoft YaHei Light" size="22.0" />
                      </font>
                   </Text>
-                  <Text layoutX="454.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="折扣" wrappingWidth="49.99999736621976">
+                  <Text layoutX="398.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="折扣" wrappingWidth="49.99999736621976">
                      <font>
-                        <Font name="Microsoft YaHei Light" size="24.0" />
+                        <Font name="Microsoft YaHei Light" size="22.0" />
                      </font>
                   </Text>
                </children>
