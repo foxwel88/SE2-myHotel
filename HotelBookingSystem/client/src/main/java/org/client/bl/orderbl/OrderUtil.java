@@ -1,8 +1,6 @@
 package org.client.bl.orderbl;
 
 import java.rmi.RemoteException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -26,7 +24,7 @@ import org.common.utility.TimeService;
  * 
  * bl层order模块的工具类
  * @author Foxwel
- * @version 2016/12/5 Foxwel
+ * @version 2016/12/20 Foxwel
  * 
  */
 
@@ -41,7 +39,6 @@ public class OrderUtil {
 	protected Userblservice userController;
 	
 	private OrderUtil() {
-		System.out.println("hahah");
 		dao = RMIHelper.getInstance().getOrderDataServiceImpl();
 		userController = UserController.getInstance();
 		timedao = RMIHelper.getInstance().getTimeServiceImpl();
