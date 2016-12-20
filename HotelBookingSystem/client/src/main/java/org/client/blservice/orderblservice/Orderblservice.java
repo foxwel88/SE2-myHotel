@@ -32,4 +32,6 @@ public interface Orderblservice {
 	public ResultMessage comment(String orderID);
 	
 	public int getBookedRoomNum(String hotelID, RoomType type, Date fromdate, Date todate);
+	
+	public ResultMessage createOffLineOrder(OrderVO vo);
 }
