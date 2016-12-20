@@ -99,10 +99,8 @@ public class HotelController implements Hotelblservice {
 		} else {
 			int requiredNum = filter.roomNum;
 			for (int i = 0; i < types.size(); i++) {
-				if (types.get(i).equals(filter.roomType.getString())) {
-					if (prices.get(i) >= filter.minPrice && prices.get(i) <= filter.maxPrice) {
-						requiredNum -= getAvailableRoomNum(filter.schFrom, filter.schTo, hotelId, RoomType.getType(types.get(i)));
-					}
+				if (prices.get(i) >= filter.minPrice && prices.get(i) <= filter.maxPrice) {
+					requiredNum -= getAvailableRoomNum(filter.schFrom, filter.schTo, hotelId, RoomType.getType(types.get(i)));
 				}
 				if (requiredNum <= 0) {
 					return true;
