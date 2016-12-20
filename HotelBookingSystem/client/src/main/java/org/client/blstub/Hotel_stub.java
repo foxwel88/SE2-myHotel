@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-import org.client.bl.orderbl.HotelHelper;
 import org.client.blservice.hotelblservice.Hotelblservice;
 import org.client.vo.AreaVO;
 import org.client.vo.CityVO;

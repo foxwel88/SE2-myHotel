@@ -35,4 +35,6 @@ public interface OrderDataService extends Remote {
 	//结束持久化数据库的使用
 
 	public void updateAbnormalOrders(Date date) throws RemoteException;
+	
+	public List<OrderPO> getDateOrderPO (String hotelID, Date date) throws RemoteException;
 }

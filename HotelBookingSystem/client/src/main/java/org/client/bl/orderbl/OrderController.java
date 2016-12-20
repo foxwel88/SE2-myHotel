@@ -1,5 +1,6 @@
 package org.client.bl.orderbl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.client.blservice.orderblservice.Orderblservice;
@@ -7,12 +8,13 @@ import org.client.blservice.userblservice.Userblservice;
 import org.client.vo.OrderVO;
 import org.common.utility.OrderType;
 import org.common.utility.ResultMessage;
+import org.common.utility.RoomType;
 
 /**
  * 
  * bl层Order模块的接口分发
  * @author Foxwel
- * @version 2016/11/27 Foxwel
+ * @version 2016/12/20 Foxwel
  * 
  */
 
@@ -36,11 +38,6 @@ public class OrderController implements Orderblservice {
 	public void setUserblservice(Userblservice userController) {
 		this.orderutil.setUserblservice(userController);
 	}
-	
-	public void setHotelHelper(HotelHelper hotelHelper) {
-		this.orderutil.setHotelHelper(hotelHelper);
-	}
-	
 	
 	public ResultMessage createOrder(OrderVO vo) {
 		// TODO Auto-generated method stub
@@ -98,6 +95,12 @@ public class OrderController implements Orderblservice {
 	public ResultMessage comment(String orderID) {
 		// TODO Auto-generated method stub
 		return orderutil.comment(orderID);
+	}
+
+	@Override
+	public int getBookedRoomNum(String hotelID, RoomType type, Date fromdate, Date todate) {
+		// TODO Auto-generated method stub
+		return orderutil.getRestRoom(hotelID, type, fromdate, todate);
 	}
 
 	

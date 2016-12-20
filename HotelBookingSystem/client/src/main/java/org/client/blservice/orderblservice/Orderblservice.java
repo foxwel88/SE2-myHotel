@@ -31,5 +31,5 @@ public interface Orderblservice {
 	
 	public ResultMessage comment(String orderID);
 	
-	public int getRestRoom(String hotelID, RoomType type, Date fromdate, Date todate);
+	public int getBookedRoomNum(String hotelID, RoomType type, Date fromdate, Date todate);
 }
