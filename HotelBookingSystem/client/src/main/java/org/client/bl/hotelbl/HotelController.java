@@ -65,7 +65,7 @@ public class HotelController implements Hotelblservice {
 			filter.setHistory(hotelIDs);
 		}
 
-		//先获得匹配房间数量之外信息的酒店列表
+		//先获得匹配房间价格数量之外信息的酒店列表
 		List<HotelVO> list = util.getHotelList(filter);
 		List<HotelVO> result = new ArrayList<>();
 
@@ -167,6 +167,7 @@ public class HotelController implements Hotelblservice {
 				}
 			}
 
+			availableNum = total;
 			availableNum -= orderBl.getBookedRoomNum(hotelId, type, schFrom, schTo);
 		} catch (RemoteException e) {
 			e.printStackTrace();
