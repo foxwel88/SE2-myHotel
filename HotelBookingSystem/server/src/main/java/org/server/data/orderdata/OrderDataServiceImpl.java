@@ -31,6 +31,17 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 	
 	String transtime(Date date) {
 		SimpleDateFormat timeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		if (date == null) {
+			return ("1970-01-01 00:00:00");
+		}
+		return timeFormat.format(date);
+	}
+	
+	String transdate(Date date) {
+		SimpleDateFormat timeFormat = new SimpleDateFormat("yyyy-MM-dd");
+		if (date == null) {
+			return ("1970-01-01");
+		}
 		return timeFormat.format(date);
 	}
 	
@@ -198,9 +209,19 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 
 	@Override
 	public List<OrderPO> getDateOrderPO(String hotelID, Date date) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		List<OrderPO> res = new ArrayList<OrderPO>();
+		PreparedStatement preparedStatement;
+		try {
+			preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("select * from `Order` where hotelid='" + hotelID + "' and type<>'已撤销订单' and '"  
+					+ transdate(date) + "' >= schfrom and '" + transdate(date) + "' < schto");
+			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
+			while (resultSet.next()) {
+				res.add(getPOfromSet(resultSet));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return res;
 	}
-
-	
 }

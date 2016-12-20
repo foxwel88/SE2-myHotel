@@ -105,6 +105,10 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 		nowUsers.add(userName);
 	}
 	
+	public int getNowUserNum() {
+		return nowUsers.size();
+	}
+	
 	public ResultMessage userIsExist(String userName) {
 		if (nowUsers.indexOf(userName) != -1) {
 			return ResultMessage.EXIST;

@@ -6,6 +6,7 @@ import java.util.List;
 import org.client.vo.OrderVO;
 import org.common.po.OrderPO;
 import org.common.utility.ResultMessage;
+import org.common.utility.RoomType;
 
 /**
  * 
@@ -43,6 +44,17 @@ public class OrderList {
 			reslist.add(list.get(i).hotelID);
 		}
 		return reslist;
+	}
+
+	public int getTypeRoomNum(RoomType roomType) {
+		int res = 0;
+		for (int i = 0; i < list.size(); ++i) {
+			Order myorder = list.get(i);
+			if (myorder.roomType == roomType) {
+				res += myorder.roomNum;
+			}
+		}
+		return res;
 	}
 	
 }

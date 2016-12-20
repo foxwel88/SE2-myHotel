@@ -1,12 +1,13 @@
 package org.client.bl.orderbl;
 
 import java.rmi.RemoteException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-import org.client.bl.hotelbl.HotelController;
 import org.client.bl.userbl.UserController;
 import org.client.blservice.userblservice.Userblservice;
 import org.client.rmi.RMIHelper;
@@ -40,9 +41,11 @@ public class OrderUtil {
 	protected Userblservice userController;
 	
 	private OrderUtil() {
+		System.out.println("hahah");
 		dao = RMIHelper.getInstance().getOrderDataServiceImpl();
 		userController = UserController.getInstance();
 		timedao = RMIHelper.getInstance().getTimeServiceImpl();
+		
 	}
 	
 	public static OrderUtil getInstance() {
@@ -130,6 +133,12 @@ public class OrderUtil {
 		if (uservo.credit <= 0) {
 			return ResultMessage.CREDIT_NOT_ENOUGH;
 		}
+		Order myorder = new Order();
+		myorder.setOrder(vo);
+		return myorder.create();
+	}
+	
+	public ResultMessage createOffLineOrder(OrderVO vo) {
 		Order myorder = new Order();
 		myorder.setOrder(vo);
 		return myorder.create();
@@ -230,22 +239,50 @@ public class OrderUtil {
 		return myorder.comment();
 	}
 
-	public int getRestRoom(String hotelID, RoomType type, Date fromDate, Date toDate) {
+	public int getRestRoom(String hotelID, RoomType roomType, Date fromDate, Date toDate) {
 		Calendar startDay = new GregorianCalendar();
 		startDay.setTime(fromDate);
 		Calendar stopDay = new GregorianCalendar();
 		stopDay.setTime(toDate);
+		int[] res = new int[10000];
+		int n = 0;
 		while (startDay.compareTo(stopDay) != 0) {
-			
+			OrderList mylist = new OrderList();
+			try {
+				Date nowDate = startDay.getTime();
+				mylist.setOrderList(dao.getDateOrderPO(hotelID, nowDate));
+			} catch (RemoteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			res[n] = mylist.getTypeRoomNum(roomType);
+			++n;
 			startDay.add(Calendar.DATE, 1);
 		}
-		OrderList mylist = new OrderList();
-		try {
-			mylist.setOrderList(dao.getDateOrderPO(hotelID, fromDate));
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		int maxn = 0;
+		for (int i = 0; i < n; ++i) {
+			if (res[i] > maxn) {
+				maxn = res[i];
+			}
 		}
-		return 0;
+		
+		return maxn;
 	}
+
+
+
+	/*
+	public static void main(String[] args) throws ParseException {
+		System.out.println("start");
+		RMIHelper.getInstance().init();
+		System.out.println("end");
+		OrderUtil test = new OrderUtil();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date fromDate = null;
+		Date toDate = null;
+		fromDate = dateFormat.parse("2016-12-18 00:00:00");
+		toDate = dateFormat.parse("2016-12-20 00:00:00");
+		System.out.println(test.getRestRoom("00001", RoomType.DOUBLE, fromDate, toDate));
+	}
+	*/
 }

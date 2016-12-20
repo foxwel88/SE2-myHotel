@@ -98,15 +98,15 @@ public class OrderController implements Orderblservice {
 	}
 
 	@Override
-	public int getBookedRoomNum(String hotelID, RoomType type, Date fromdate, Date todate) {
+	public int getBookedRoomNum(String hotelID, RoomType roomType, Date fromdate, Date todate) {
 		// TODO Auto-generated method stub
-		return orderutil.getRestRoom(hotelID, type, fromdate, todate);
+		return orderutil.getRestRoom(hotelID, roomType, fromdate, todate);
 	}
 
 	@Override
 	public ResultMessage createOffLineOrder(OrderVO vo) {
 		// TODO Auto-generated method stub
-		return null;
+		return orderutil.createOffLineOrder(vo);
 	}
 
 	

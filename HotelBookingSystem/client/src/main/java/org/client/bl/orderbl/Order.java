@@ -160,8 +160,11 @@ public class Order {
 		try {
 			generatedDate = timedao.getDate();
 			SimpleDateFormat timeFormat = new SimpleDateFormat("yyyyMMddHHmmss");
-			orderID = userID + timeFormat.format(generatedDate);
-			//System.out.println(getOrderPO().generatedDate);
+			if (type == OrderType.OFFLINE) {
+				orderID = "00000" + hotelID + timeFormat.format(generatedDate);
+			} else {
+				orderID = userID + timeFormat.format(generatedDate);
+			}
 			return dao.add(getOrderPO());
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
