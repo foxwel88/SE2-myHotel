@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 import java.util.Date;
 import java.util.List;
 
-import org.client.blstub.Hotel_stub;
 import org.client.blstub.User_stub;
 import org.client.vo.OrderVO;
 import org.common.utility.OrderType;
@@ -12,7 +11,6 @@ import org.common.utility.ResultMessage;
 import org.common.utility.RoomType;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.server.rmi.RMIHelper;
 
@@ -30,7 +28,6 @@ public class OrderControllerTest {
 		org.client.rmi.RMIHelper.getInstance().init();
 		controller = OrderController.getInstance();
 		controller.setUserblservice(new User_stub());
-		controller.setHotelHelper(new Hotel_stub());
 	}
 
 	@Test

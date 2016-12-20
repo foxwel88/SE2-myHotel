@@ -196,5 +196,11 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 		}
 	}
 
+	@Override
+	public List<OrderPO> getDateOrderPO(String hotelID, Date date) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 }

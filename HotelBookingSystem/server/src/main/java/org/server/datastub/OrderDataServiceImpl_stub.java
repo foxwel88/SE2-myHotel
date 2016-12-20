@@ -3,6 +3,7 @@ package org.server.datastub;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.Date;
+import java.util.List;
 import java.util.ArrayList;
 
 import org.common.dataservice.OrderDataService.OrderDataService;
@@ -121,6 +122,12 @@ public class OrderDataServiceImpl_stub extends UnicastRemoteObject implements Or
 	public void updateAbnormalOrders(Date date) throws RemoteException {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public List<OrderPO> getDateOrderPO(String hotelID, Date date) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

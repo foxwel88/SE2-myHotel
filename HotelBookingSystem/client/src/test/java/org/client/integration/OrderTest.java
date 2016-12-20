@@ -42,7 +42,6 @@ public class OrderTest {
 		DatabaseCommunicator.setTestConnection();
 		controller = OrderController.getInstance();
 		controller.setUserblservice(new User_stub());
-		controller.setHotelHelper(new Hotel_stub());
 	}
 
 	@Test

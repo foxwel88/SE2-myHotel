@@ -409,6 +409,10 @@ public class Order_stub implements Orderblservice {
 		return 0;
 	}
 
-	
+	@Override
+	public ResultMessage createOffLineOrder(OrderVO vo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

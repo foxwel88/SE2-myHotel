@@ -103,5 +103,11 @@ public class OrderController implements Orderblservice {
 		return orderutil.getRestRoom(hotelID, type, fromdate, todate);
 	}
 
+	@Override
+	public ResultMessage createOffLineOrder(OrderVO vo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 }
