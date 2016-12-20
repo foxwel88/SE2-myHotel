@@ -81,7 +81,7 @@ public class OrderPO implements Serializable {
 		this.customerName = customerName;
 		this.userId = userId;
 		this.phoneNumber = phoneNumber;
-		this.isCheckedOut = isCommented;
+		this.isCommented = isCommented;
 		this.isCheckedOut = isCheckedOut;
 	}
 	
