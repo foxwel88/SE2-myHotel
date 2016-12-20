@@ -21,7 +21,7 @@ public class CustomerImageGrabber {
 			HotelVO hotelVO = hotelController.getHotelVO(hotelID);
 			String httpAddress = hotelVO.imgURL;
 			CustomerHTTPPictureDownloader.downLoadImage(httpAddress, hotelID);
-			Image hotelImage = new Image(CustomerImageGrabber.class.getResource("/") + "temp" + File.separator + hotelID + ".jpg");
+			Image hotelImage = new Image(CustomerImageGrabber.class.getResource("/") + "temp" + File.separator + hotelID + ".jpg", 100, 60, false, false);
 			return hotelImage;
 		} catch (FileNotFoundException fileNotFoundException) {
 			return null;
