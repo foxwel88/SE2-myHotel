@@ -185,12 +185,20 @@ public class CustomerGenerateOrder {
 	
 	private void setTotalPrice() {
 		try {
-			double price = SwitchSceneUtil.getCurrentPrice(getCurrentRawPrice());
+			double price = SwitchSceneUtil.getCurrentPrice(getRoomNum(), getCurrentRawPrice());
 			totalPrice.setText(String.valueOf(price) + "元");
 		} catch (NullPointerException nullPointerException) {
 			totalPrice.setText("0.0元");
 		}
-		
+	}
+	
+	private int getRoomNum() {
+		try {
+			int rooms = Integer.parseInt(roomNum.getText());
+			return rooms;
+		} catch (NumberFormatException unNumberFormatException) {
+			return 0;
+		}
 	}
 	
 	private double getCurrentSingleRoomPrice() {

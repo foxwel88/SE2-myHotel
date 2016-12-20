@@ -217,17 +217,17 @@ public class CustomerCheckHotel {
 				case "单人间":
 					leftNum1.setText(String.valueOf(hotel.roomNum.get(i)));
 					rawPrice1.setText(String.valueOf(hotel.roomPrice.get(i)));
-					currentPrice1.setText(String.valueOf(SwitchSceneUtil.getCurrentPrice(hotel.roomPrice.get(i))));
+					currentPrice1.setText(String.valueOf(SwitchSceneUtil.getCurrentPrice(1, hotel.roomPrice.get(i))));
 					break;
 				case "套间":
 					leftNum2.setText(String.valueOf(hotel.roomNum.get(i)));
 					rawPrice2.setText(String.valueOf(hotel.roomPrice.get(i)));
-					currentPrice2.setText(String.valueOf(SwitchSceneUtil.getCurrentPrice(hotel.roomPrice.get(i))));
+					currentPrice2.setText(String.valueOf(SwitchSceneUtil.getCurrentPrice(1, hotel.roomPrice.get(i))));
 					break;
 				case "标间":
 					leftNum3.setText(String.valueOf(hotel.roomNum.get(i)));
 					rawPrice3.setText(String.valueOf(hotel.roomPrice.get(i)));
-					currentPrice2.setText(String.valueOf(SwitchSceneUtil.getCurrentPrice(hotel.roomPrice.get(i))));
+					currentPrice3.setText(String.valueOf(SwitchSceneUtil.getCurrentPrice(1, hotel.roomPrice.get(i))));
 					break;
 			}
 		}
