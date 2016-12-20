@@ -23,8 +23,7 @@ import org.common.utility.RoomType;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.server.id.IDUtil;
-import org.server.mySQL.DatabaseCommunicator;
+import org.server.mysql.DatabaseCommunicator;
 import org.server.rmi.RMIHelper;
 
 /**
@@ -83,13 +82,6 @@ public class HotelModuleTest {
 		HotelVO vo = new HotelVO("00001","lovelive", "unknown", city, area, "niconiconi", 5, 5, null, null, roomType, roomNum, roomPrice, cooperators, "");
 
 		ResultMessage result = controller.modifyHotel(vo);
-		assertEquals(ResultMessage.SUCCESS, result);
-	}
-
-	@Test
-	public void testChangeRoom() {
-		controller.increaseAvailableRoom(RoomType.SINGLE, "00001", 1);
-		ResultMessage result = controller.decreaseAvailableRoom(RoomType.SINGLE, "00001", 1);
 		assertEquals(ResultMessage.SUCCESS, result);
 	}
 

@@ -17,7 +17,7 @@ import org.common.utility.CreditOperation;
 import org.common.utility.ResultMessage;
 import org.common.utility.UserType;
 import org.server.data.datafactory.DataFactory;
-import org.server.mySQL.DatabaseCommunicator;
+import org.server.mysql.DatabaseCommunicator;
 import org.server.security.EncryptUtil;
 
 /**

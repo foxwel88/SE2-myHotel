@@ -1,4 +1,4 @@
-package org.server.data.PromotionData;
+package org.server.data.promotiondata;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -14,7 +14,7 @@ import org.common.po.LevelPO;
 import org.common.po.PromotionPO;
 import org.common.utility.PromotionType;
 import org.common.utility.ResultMessage;
-import org.server.mySQL.DatabaseCommunicator;
+import org.server.mysql.DatabaseCommunicator;
 
 public class PromotionDataServiceImpl extends UnicastRemoteObject implements PromotionDataService {
 

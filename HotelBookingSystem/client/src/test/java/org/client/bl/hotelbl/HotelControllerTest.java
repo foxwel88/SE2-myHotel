@@ -110,12 +110,6 @@ public class HotelControllerTest {
 	}
 	
 	@Test
-	public void testChangeRoom() {
-		ResultMessage result = controller.decreaseAvailableRoom(RoomType.DOUBLE, "00001", 1);
-		assertEquals(ResultMessage.SUCCESS, result);
-	}
-	
-	@Test
 	public void testGetVO() {		
 		//verify and assert
 		HotelVO vo = controller.getHotelVO("00001");

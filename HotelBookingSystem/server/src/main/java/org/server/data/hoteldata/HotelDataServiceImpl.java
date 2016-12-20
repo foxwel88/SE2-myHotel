@@ -1,4 +1,4 @@
-package org.server.data.HotelData;
+package org.server.data.hoteldata;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -14,8 +14,7 @@ import org.common.utility.HotelFilter;
 import org.common.utility.ResultMessage;
 import org.common.utility.RoomType;
 import org.server.data.datafactory.DataFactory;
-import org.server.id.IDUtil;
-import org.server.mySQL.DatabaseCommunicator;
+import org.server.mysql.DatabaseCommunicator;
 
 public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDataService {
 
@@ -291,58 +290,5 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 		return ResultMessage.SUCCESS;
 	}
 
-	@Override
-	public void increaseAvailableRoom(RoomType type, String hotelID, int num) throws RemoteException {
-
-		try {
-			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(
-					"SELECT roomNum FROM `" + hotelID + "` WHERE roomType='" + type.getString() + "'");
-			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
-			if (resultSet.next()) {
-				int roomNum = resultSet.getInt("roomNum");
-				roomNum += num;
-				String update = "UPDATE `" + hotelID +
-						"` SET roomNum = " + String.valueOf(roomNum) +
-						" WHERE roomType = '" + type.getString() + "'";
-				preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(update);
-				DatabaseCommunicator.execute(preparedStatement);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-	}
-
-	@Override
-	public ResultMessage decreaseAvailableRoom(RoomType type, String hotelID, int num) throws RemoteException {
-
-		try {
-			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(
-					"SELECT roomNum FROM `" + hotelID + "` WHERE roomType='" + type.getString() + "'");
-			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
-			if (resultSet.next()) {
-				int roomNum = resultSet.getInt("roomNum");
-				roomNum -= num;
-
-				//房间不够时，返回ROOM_NOT_ENOUGH
-				if (roomNum < 0) {
-					return ResultMessage.ROOM_NOT_ENOUGH;
-				}
-
-				String update = "UPDATE `" + hotelID +
-						"` SET roomNum = " + String.valueOf(roomNum) +
-						" WHERE roomType = '" + type.getString() + "'";
-				preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(update);
-				DatabaseCommunicator.execute(preparedStatement);
-			} else {
-				return ResultMessage.NOT_EXIST;
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return ResultMessage.SUCCESS;
-	}
-	
 
 }

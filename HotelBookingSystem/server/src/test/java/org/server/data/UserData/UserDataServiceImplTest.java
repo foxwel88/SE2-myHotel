@@ -12,7 +12,7 @@ import org.common.utility.ResultMessage;
 import org.junit.Before;
 import org.junit.Test;
 import org.server.data.datafactory.DataFactory;
-import org.server.mySQL.DatabaseCommunicator;
+import org.server.mysql.DatabaseCommunicator;
 
 /**
  * UserDataServiceImpl的测试类

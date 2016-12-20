@@ -1,15 +1,12 @@
 package org.client.presentation.hotelmanager;
 
-import java.awt.*;
-import java.io.IOException;
 import java.net.URL;
 import java.rmi.RemoteException;
-import java.util.ResourceBundle;
+import java.util.*;
 
 import javafx.scene.image.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.web.WebView;
 import org.client.rmi.RMIHelper;
 
 import javafx.animation.Animation;
@@ -20,7 +17,6 @@ import javafx.scene.control.Label;
 import javafx.util.Duration;
 import org.client.vo.HotelVO;
 
-import javax.imageio.ImageIO;
 
 /**
  * FXML Controller
@@ -47,6 +43,24 @@ public class HotelManagerMain {
 
 	@FXML
 	private Label hotelNameLabel;
+
+	@FXML
+	private Label singleTotalLabel;
+
+	@FXML
+	private Label doubleTotalLabel;
+
+	@FXML
+	private Label bigTotalLabel;
+
+	@FXML
+	private Label singleBookedLabel;
+
+	@FXML
+	private Label doubleBookedLabel;
+
+	@FXML
+	private Label bigBookedLabel;
 
 	@FXML
     void initialize() {
@@ -81,6 +95,10 @@ public class HotelManagerMain {
 		} catch (IllegalArgumentException e) {
 
 		}
+
+
+		//房间数量
+		List<Integer> roomNums = HotelManagerController.getInstance().getHotelInfo().roomNum;
 	}
 
 }

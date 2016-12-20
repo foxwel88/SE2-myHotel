@@ -1,5 +1,6 @@
 package org.client.blservice.hotelblservice;
 
+import java.util.Date;
 import java.util.List;
 
 import org.client.vo.AreaVO;
@@ -13,7 +14,7 @@ import org.common.utility.RoomType;
 /**
  * Hotel模块的logic层接口
  * @author Hirico
- * @version 2016/11/29 Hirico
+ * @version 2016/12/20 Hirico
  */
 public interface Hotelblservice {
 	public List<HotelVO> findHotels(HotelFilter filter, String userId, boolean historyOnly);
@@ -22,9 +23,7 @@ public interface Hotelblservice {
 	
 	public ResultMessage modifyHotel(HotelVO vo);
 	
-	public void increaseAvailableRoom(RoomType type, String hotelID, int num);
-	
-	public ResultMessage decreaseAvailableRoom(RoomType type, String hotelID, int num);
+	public int getAvailableRoomNum(Date schFrom, Date schTo, String hotelId, RoomType type);
 	
 	public HotelVO getHotelVO(String hotelID);
 	

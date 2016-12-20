@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.TimerTask;
 
 import org.common.dataservice.OrderDataService.OrderDataService;
-import org.server.data.OrderData.OrderDataServiceImpl;
+import org.server.data.orderdata.OrderDataServiceImpl;
 
 public class UpdateOrderTask extends TimerTask {
 	OrderDataService orderDataService;

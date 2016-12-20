@@ -1,11 +1,8 @@
-package org.server.data.PromotionData;
+package org.server.data.promotiondata;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.URL;
 import java.rmi.RemoteException;
 import java.sql.Date;
 import java.util.ArrayList;
@@ -15,11 +12,10 @@ import org.common.po.LevelPO;
 import org.common.po.PromotionPO;
 import org.common.utility.PromotionType;
 import org.common.utility.ResultMessage;
-import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.server.data.datafactory.DataFactory;
-import org.server.mySQL.DatabaseCommunicator;
+import org.server.mysql.DatabaseCommunicator;
 
 
 public class PromotionDataServiceImplTest {
@@ -38,7 +34,7 @@ public class PromotionDataServiceImplTest {
 	 *//*
 	@AfterClass
 	public static void tearDown() throws Exception {
-		URL testDataBaseURL = PromotionDataServiceImplTest.class.getResource("/org/server/data/PromotionData/hotelbookingsystemfortest.sql");
+		URL testDataBaseURL = PromotionDataServiceImplTest.class.getResource("/org/server/data/promotiondata/hotelbookingsystemfortest.sql");
 		String testDataBasePath = testDataBaseURL.getPath().toString();
 		testDataBasePath = new String(testDataBasePath.substring(1));
 

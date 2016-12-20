@@ -1,4 +1,4 @@
-package org.server.data.CommentData;
+package org.server.data.commentdata;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -13,7 +13,7 @@ import org.common.utility.ResultMessage;
 import org.junit.Before;
 import org.junit.Test;
 import org.server.data.datafactory.DataFactory;
-import org.server.mySQL.DatabaseCommunicator;
+import org.server.mysql.DatabaseCommunicator;
 
 
 public class CommentDataServiceImplTest {
