@@ -16,9 +16,10 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.shape.Line;
+import javafx.scene.paint.Color;
 
 /**
  * 
@@ -51,36 +52,6 @@ public class CustomerComment {
 	
 	@FXML
 	Button rank5;
-	
-	@FXML
-	Line chose1_1;
-	
-	@FXML
-	Line chose1_2;
-	
-	@FXML
-	Line chose2_1;
-	
-	@FXML
-	Line chose2_2;
-	
-	@FXML
-	Line chose3_1;
-	
-	@FXML
-	Line chose3_2;
-	
-	@FXML
-	Line chose4_1;
-	
-	@FXML
-	Line chose4_2;
-	
-	@FXML
-	Line chose5_1;
-	
-	@FXML
-	Line chose5_2;
 	
 	@FXML
 	Label orderID;
@@ -153,57 +124,132 @@ public class CustomerComment {
 	
 	@FXML
 	void selectRank1() {
-		hideSelection();
-		chose1_1.setVisible(true);
-		chose1_2.setVisible(true);
 		selectedRank = 1;
+		hideSelection();
+		activeRank1Button();
 	}
 	
 	@FXML
 	void selectRank2() {
-		hideSelection();
-		chose2_1.setVisible(true);
-		chose2_2.setVisible(true);
 		selectedRank = 2;
+		hideSelection();
+		activeRank2Button();
 	}
 	
 	@FXML
 	void selectRank3() {
-		hideSelection();
-		chose3_1.setVisible(true);
-		chose3_2.setVisible(true);
 		selectedRank = 3;
+		hideSelection();
+		activeRank3Button();
 	}
 	
 	@FXML
 	void selectRank4() {
-		hideSelection();
-		chose4_1.setVisible(true);
-		chose4_2.setVisible(true);
 		selectedRank = 4;
+		hideSelection();
+		activeRank4Button();
 	}
 	
 	@FXML
 	void selectRank5() {
-		hideSelection();
-		chose5_1.setVisible(true);
-		chose5_2.setVisible(true);
 		selectedRank = 5;
+		hideSelection();
+		activeRank5Button();
+	}
+	
+	@FXML
+	void activeRank1Button() {
+		rank1.setStyle("-fx-background-color: rgba(243,223,136,0.7)");
+		DropShadow shadow = new DropShadow();
+		shadow.setColor(Color.web("f3df88"));
+		shadow.setSpread(0.5);
+		rank1.setEffect(shadow);
+	}
+	
+	@FXML
+	void activeRank2Button() {
+		rank2.setStyle("-fx-background-color: rgba(243,223,136,0.7)");
+		DropShadow shadow = new DropShadow();
+		shadow.setColor(Color.web("f3df88"));
+		shadow.setSpread(0.5);
+		rank2.setEffect(shadow);
+	}
+	
+	@FXML
+	void activeRank3Button() {
+		rank3.setStyle("-fx-background-color: rgba(243,223,136,0.7)");
+		DropShadow shadow = new DropShadow();
+		shadow.setColor(Color.web("f3df88"));
+		shadow.setSpread(0.5);
+		rank3.setEffect(shadow);
+	}
+	
+	@FXML
+	void activeRank4Button() {
+		rank4.setStyle("-fx-background-color: rgba(243,223,136,0.7)");
+		DropShadow shadow = new DropShadow();
+		shadow.setColor(Color.web("f3df88"));
+		shadow.setSpread(0.5);
+		rank4.setEffect(shadow);
+	}
+	
+	@FXML
+	void activeRank5Button() {
+		rank5.setStyle("-fx-background-color: rgba(243,223,136,0.7)");
+		DropShadow shadow = new DropShadow();
+		shadow.setColor(Color.web("f3df88"));
+		shadow.setSpread(0.5);
+		rank5.setEffect(shadow);
+	}
+	
+	@FXML
+	void deactiveRank1Button() {
+		if (selectedRank != 1) {
+			rank1.setEffect(null);
+			rank1.setStyle("-fx-background-color: rgba(255,255,255,0.7)");
+		}
+	}
+	
+	@FXML
+	void deactiveRank2Button() {
+		if (selectedRank != 2) {
+			rank2.setEffect(null);
+			rank2.setStyle("-fx-background-color: rgba(255,255,255,0.7)");
+		}
+	}
+	
+	@FXML
+	void deactiveRank3Button() {
+		if (selectedRank != 3) {
+			rank3.setEffect(null);
+			rank3.setStyle("-fx-background-color: rgba(255,255,255,0.7)");
+		}
+	}
+	
+	@FXML
+	void deactiveRank4Button() {
+		if (selectedRank != 4) {
+			rank4.setEffect(null);
+			rank4.setStyle("-fx-background-color: rgba(255,255,255,0.7)");
+		}
+	}
+	
+	@FXML
+	void deactiveRank5Button() {
+		if (selectedRank != 5) {
+			rank5.setEffect(null);
+			rank5.setStyle("-fx-background-color: rgba(255,255,255,0.7)");
+		}
 	}
 	
 	/*
-	 * 隐藏所有选中评分的勾
+	 * 隐藏所有选中评分的特效
 	 */
 	private void hideSelection() {
-		chose1_1.setVisible(false);
-		chose1_2.setVisible(false);
-		chose2_1.setVisible(false);
-		chose2_2.setVisible(false);
-		chose3_1.setVisible(false);
-		chose3_2.setVisible(false);
-		chose4_1.setVisible(false);
-		chose4_2.setVisible(false);
-		chose5_1.setVisible(false);
-		chose5_2.setVisible(false);
+		deactiveRank1Button();
+		deactiveRank2Button();
+		deactiveRank3Button();
+		deactiveRank4Button();
+		deactiveRank5Button();
 	}
 }

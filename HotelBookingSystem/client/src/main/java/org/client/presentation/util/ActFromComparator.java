@@ -10,7 +10,7 @@ import java.util.Comparator;
  * @author Hirico
  * @version 2016/12/19 Hirico
  */
-public class ActFromComparator implements Comparator<OrderVO>{
+public class ActFromComparator implements Comparator<OrderVO> {
 
 	@Override
 	public int compare(OrderVO o1, OrderVO o2) {
