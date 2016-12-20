@@ -2,6 +2,7 @@ package org.client.presentation.customer;
 
 import java.util.ArrayList;
 
+import org.client.presentation.util.LiveDatePicker;
 import org.client.vo.CreditRecordVO;
 
 import javafx.fxml.FXML;

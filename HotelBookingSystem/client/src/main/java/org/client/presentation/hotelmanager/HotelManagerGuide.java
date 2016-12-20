@@ -210,6 +210,7 @@ public class HotelManagerGuide {
 			switch(to) {
 				case MAIN:
 					root = resources.load(resources.hotelManagerMain);
+					((HotelManagerMain)resources.getCurrentController()).setParentPane(rootPane);
 					break;
 				case INFO:
 					root = resources.load(resources.hotelManagerModifyHotel);
@@ -276,6 +277,7 @@ public class HotelManagerGuide {
 		} else {
 			try {
 				belowGridPane.add(resources.load(resources.hotelManagerMain), 1, 0);
+				((HotelManagerMain)resources.getCurrentController()).setParentPane(rootPane);
 				CurrentItem.setInstance(mainLabel, mainLabelPane, GuideLabelType.MAIN);
 			} catch (IOException e) {
 				e.printStackTrace();

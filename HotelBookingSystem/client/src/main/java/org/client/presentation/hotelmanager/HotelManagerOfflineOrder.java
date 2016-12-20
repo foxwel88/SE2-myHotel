@@ -6,18 +6,16 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import org.client.vo.OrderVO;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 /**
  * @author Hirico
  * @version 2016/12/20 Hirico
  */
 public class HotelManagerOfflineOrder {
-
-	@FXML
-	private AnchorPane offline;
-
-	@FXML
-	private GridPane gridPane;
 
 	@FXML
 	private Label orderIDLabel;
@@ -38,19 +36,35 @@ public class HotelManagerOfflineOrder {
 	private Label orderTypeLabel;
 
 	@FXML
-	private Label priceLabel;
+	private Label phoneLabel;
 
 	@FXML
-	private Label actFromLabel;
+	private Label schFromLabel;
 
 	@FXML
 	private Label customerNameLabel;
 
 	@FXML
-	private Button updateButton;
+	private Label schToLabel;
 
 	@FXML
-	void checkOut(ActionEvent event) {
+	void initialize() {
+		OrderVO vo = HotelManagerController.getInstance().currentOrder;
 
+		orderIDLabel.setText(vo.orderID);
+		roomTypeLabel.setText(vo.roomType);
+		roomNumLabel.setText(String.valueOf(vo.roomNum));
+		numOfPeopleLabel.setText(String.valueOf(vo.numOfPeople));
+		if (vo.existsChild) {
+			childrenLabel.setText("有");
+		} else {
+			childrenLabel.setText("无");
+		}
+		orderTypeLabel.setText(vo.type);
+		phoneLabel.setText(vo.phoneNumber);
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+		schFromLabel.setText(dateFormat.format(vo.schFrom));
+		schToLabel.setText(dateFormat.format(vo.schTo));
+		customerNameLabel.setText(vo.customerName);
 	}
 }

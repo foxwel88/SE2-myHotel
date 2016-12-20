@@ -9,14 +9,14 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="offline" prefHeight="567.0" prefWidth="920.0" style="-fx-background-color: rgba(255,255,255,0.4);" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.presentation.hotelmanager.HotelManagerOfflineOrder">
+<AnchorPane prefHeight="567.0" prefWidth="920.0" style="-fx-background-color: rgba(255,255,255,0.4);" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.presentation.hotelmanager.HotelManagerOfflineOrder">
    <effect>
       <DropShadow />
    </effect>
    <children>
       <Pane layoutX="57.0" layoutY="46.0" prefHeight="472.0" prefWidth="775.0" style="-fx-background-color: rgba(0,0,0,0.4);" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="81.0" AnchorPane.topAnchor="62.0">
          <children>
-            <GridPane fx:id="gridPane" layoutY="-2.0" prefHeight="478.0" prefWidth="775.0">
+            <GridPane layoutY="-2.0" prefHeight="478.0" prefWidth="775.0">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="181.0" minWidth="10.0" prefWidth="126.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="246.0" minWidth="10.0" prefWidth="246.0" />
