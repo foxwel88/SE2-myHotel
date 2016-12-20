@@ -1,9 +1,13 @@
 package org.client.presentation.customer;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 
 import org.client.launcher.Resources;
+import org.client.presentation.util.ActFromComparator;
+import org.client.presentation.util.CancelTimeComparator;
+import org.client.presentation.util.LatestTimeComparator;
 import org.client.vo.OrderVO;
 
 import javafx.fxml.FXML;
@@ -414,16 +418,19 @@ public class CustomerHistoryOrder {
 	
 	void showExecutedOrderList() {
 		executedOrderList = new ArrayList<>(SwitchSceneUtil.getFinishedOrderList());
+		Collections.sort(executedOrderList, new ActFromComparator());
 		setContent();
 	}
 	
 	void showCanceledOrderList() {
 		canceledOrderList = new ArrayList<>(SwitchSceneUtil.getCanceledOrderList());
+		Collections.sort(canceledOrderList, new CancelTimeComparator());
 		setContent();
 	}
 	
 	void showAbnormalOrderList() {
 		abnormalOrderList = new ArrayList<>(SwitchSceneUtil.getAbnormalOrderList());
+		Collections.sort(abnormalOrderList, new LatestTimeComparator());
 		setContent();
 	}
 	

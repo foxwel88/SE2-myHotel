@@ -1,8 +1,10 @@
 package org.client.presentation.customer;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import org.client.launcher.Resources;
+import org.client.presentation.util.GenerateTimeComparator;
 import org.client.vo.OrderVO;
 
 import javafx.fxml.FXML;
@@ -167,6 +169,7 @@ public class CustomerUnexcutedOrderList {
 	
 	private void showUnExcutedOrderList() {
 		unExcutedOrderList = new ArrayList<>(SwitchSceneUtil.getUnExcutedOrderList());
+		Collections.sort(unExcutedOrderList, new GenerateTimeComparator());
 		setContent();
 	}
 	
