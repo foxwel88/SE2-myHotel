@@ -403,6 +403,16 @@ public class Order_stub implements Orderblservice {
 		return ResultMessage.SUCCESS;
 	}
 
-	
+	@Override
+	public int getBookedRoomNum(String hotelID, RoomType type, Date fromdate, Date todate) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public ResultMessage createOffLineOrder(OrderVO vo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

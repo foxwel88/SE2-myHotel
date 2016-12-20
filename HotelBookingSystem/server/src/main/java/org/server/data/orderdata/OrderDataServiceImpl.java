@@ -1,4 +1,4 @@
-package org.server.data.OrderData;
+package org.server.data.orderdata;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -15,7 +15,7 @@ import org.common.po.OrderPO;
 import org.common.utility.OrderType;
 import org.common.utility.ResultMessage;
 import org.common.utility.RoomType;
-import org.server.mySQL.DatabaseCommunicator;
+import org.server.mysql.DatabaseCommunicator;
 
 public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDataService {
 
@@ -194,6 +194,12 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public List<OrderPO> getDateOrderPO(String hotelID, Date date) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

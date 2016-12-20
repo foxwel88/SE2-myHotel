@@ -1,6 +1,9 @@
 package org.client.bl.orderbl;
 
 import java.rmi.RemoteException;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.client.bl.hotelbl.HotelController;
@@ -36,13 +39,9 @@ public class OrderUtil {
 	
 	protected Userblservice userController;
 	
-	protected HotelHelper hotelHelper;
-	
-	
 	private OrderUtil() {
 		dao = RMIHelper.getInstance().getOrderDataServiceImpl();
 		userController = UserController.getInstance();
-		hotelHelper = HotelController.getInstance();
 		timedao = RMIHelper.getInstance().getTimeServiceImpl();
 	}
 	
@@ -55,10 +54,6 @@ public class OrderUtil {
 	
 	public void setUserblservice(Userblservice userController) {
 		this.userController = userController;
-	}
-	
-	public void setHotelHelper(HotelHelper hotelHelper) {
-		this.hotelHelper = hotelHelper;
 	}
 	
 	public OrderVO getOrder (String orderID) {
@@ -135,12 +130,6 @@ public class OrderUtil {
 		if (uservo.credit <= 0) {
 			return ResultMessage.CREDIT_NOT_ENOUGH;
 		}
-		
-		ResultMessage message = hotelHelper.decreaseAvailableRoom(RoomType.getType(vo.roomType), vo.hotelID, vo.roomNum);
-		if (message != ResultMessage.SUCCESS) {
-			return message;
-		}
-		
 		Order myorder = new Order();
 		myorder.setOrder(vo);
 		return myorder.create();
@@ -225,7 +214,6 @@ public class OrderUtil {
 		if (checkOutMessage != ResultMessage.SUCCESS) {
 			return checkOutMessage;
 		}
-		hotelHelper.increaseAvailableRoom(myorder.roomType, myorder.hotelID, myorder.roomNum);
 		return ResultMessage.SUCCESS;
 	}
 
@@ -240,5 +228,24 @@ public class OrderUtil {
 		Order myorder = new Order();
 		myorder.setOrder(po);
 		return myorder.comment();
+	}
+
+	public int getRestRoom(String hotelID, RoomType type, Date fromDate, Date toDate) {
+		Calendar startDay = new GregorianCalendar();
+		startDay.setTime(fromDate);
+		Calendar stopDay = new GregorianCalendar();
+		stopDay.setTime(toDate);
+		while (startDay.compareTo(stopDay) != 0) {
+			
+			startDay.add(Calendar.DATE, 1);
+		}
+		OrderList mylist = new OrderList();
+		try {
+			mylist.setOrderList(dao.getDateOrderPO(hotelID, fromDate));
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
 	}
 }

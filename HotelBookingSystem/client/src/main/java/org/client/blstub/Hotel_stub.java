@@ -2,9 +2,9 @@ package org.client.blstub;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
-import org.client.bl.orderbl.HotelHelper;
 import org.client.blservice.hotelblservice.Hotelblservice;
 import org.client.vo.AreaVO;
 import org.client.vo.CityVO;
@@ -14,7 +14,7 @@ import org.common.utility.HotelFilter;
 import org.common.utility.ResultMessage;
 import org.common.utility.RoomType;
 
-public class Hotel_stub implements Hotelblservice, HotelHelper {
+public class Hotel_stub implements Hotelblservice {
 	CityVO city1 = new CityVO("南京");
 	
 	CityVO city2 = new CityVO("北京");
@@ -68,6 +68,11 @@ public class Hotel_stub implements Hotelblservice, HotelHelper {
 		return ResultMessage.SUCCESS;
 	}
 
+	@Override
+	public int getAvailableRoomNum(Date schFrom, Date schTo, String hotelId, RoomType type) {
+		return 10;
+	}
+
 	public HotelVO getHotelVO(String hotelID) {
 		return hotelvo1;
 	}
@@ -91,15 +96,4 @@ public class Hotel_stub implements Hotelblservice, HotelHelper {
 		}
 		return vo3;
 	}
-
-	@Override
-	public void increaseAvailableRoom(RoomType type, String hotelID, int num) {
-
-	}
-
-	@Override
-	public ResultMessage decreaseAvailableRoom(RoomType type, String hotelID, int num) {
-		return ResultMessage.SUCCESS;
-	}
-
 }

@@ -13,16 +13,11 @@ import org.common.utility.HotelFilter;
 import org.common.utility.ResultMessage;
 import org.common.utility.RoomType;
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
-import org.server.id.IDUtil;
-import org.server.mySQL.DatabaseCommunicator;
+import org.server.mysql.DatabaseCommunicator;
 import org.server.rmi.RMIHelper;
 
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.URL;
 import java.rmi.RemoteException;
 import java.util.Date;
 import java.util.List;
@@ -79,14 +74,6 @@ public class HotelTest {
 
 		result = controller.addHotel(vo, uvo);
 		assertEquals(ResultMessage.EXIST, result);
-	}
-
-
-	@Test
-	public void testChangeRoom() {
-		controller.increaseAvailableRoom(RoomType.SINGLE, "00001", 1);
-		ResultMessage resultDecrease = controller.decreaseAvailableRoom(RoomType.SINGLE, "00001", 1);
-		assertEquals(ResultMessage.SUCCESS, resultDecrease);
 	}
 
 	@Test

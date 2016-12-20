@@ -2,7 +2,7 @@ package org.common.utility;
 
 public enum OrderType {
 
-	UNEXECUTED("未执行订单"), EXECUTED("已执行订单"), CANCELED("已撤销订单"), ABNORMAL("异常订单");
+	UNEXECUTED("未执行订单"), EXECUTED("已执行订单"), CANCELED("已撤销订单"), ABNORMAL("异常订单"), OFFLINE("线下订单");
 	
 	private String s;
 	
@@ -26,6 +26,9 @@ public enum OrderType {
 		}
 		if (ss.equals("异常订单")) {
 			return OrderType.ABNORMAL;
+		}
+		if (ss.equals("线下订单")) {
+			return OrderType.OFFLINE;
 		}
 		return null;
 	}

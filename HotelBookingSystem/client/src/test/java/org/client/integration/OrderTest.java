@@ -15,7 +15,7 @@ import org.common.utility.RoomType;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.server.mySQL.DatabaseCommunicator;
+import org.server.mysql.DatabaseCommunicator;
 import org.server.rmi.RMIHelper;
 
 
@@ -42,7 +42,6 @@ public class OrderTest {
 		DatabaseCommunicator.setTestConnection();
 		controller = OrderController.getInstance();
 		controller.setUserblservice(new User_stub());
-		controller.setHotelHelper(new Hotel_stub());
 	}
 
 	@Test

@@ -1,4 +1,4 @@
-package org.server.data.HotelData;
+package org.server.data.hoteldata;
 
 import static org.junit.Assert.*;
 import org.common.dataservice.HotelDataService.HotelDataService;
@@ -13,12 +13,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.server.data.datafactory.DataFactory;
-import org.server.id.IDUtil;
-import org.server.mySQL.DatabaseCommunicator;
+import org.server.mysql.DatabaseCommunicator;
 
 import java.rmi.RemoteException;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -100,17 +97,6 @@ public class HotelDataServiceImplTest {
 
 		List<HotelPO> hotelPOS = dao.findHotels(filter);
 		assertEquals(true, hotelPOS.size() > 0);
-	}
-
-	@Test
-	public void testChangeRoomNums() throws RemoteException {
-		List<RoomPO> list = dao.getRooms("00001");
-		RoomType roomType = list.get(0).roomType;
-
-		dao.increaseAvailableRoom(roomType, "00001", 1);
-		ResultMessage resultMessage = dao.decreaseAvailableRoom(roomType, "00001", 1);
-
-		assertEquals(ResultMessage.SUCCESS, resultMessage);
 	}
 
 	@Test

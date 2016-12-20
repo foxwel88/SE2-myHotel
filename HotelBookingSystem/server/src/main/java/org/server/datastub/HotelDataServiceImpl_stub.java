@@ -87,14 +87,4 @@ public class HotelDataServiceImpl_stub extends UnicastRemoteObject implements Ho
 		System.out.println("finish");
 	}
 
-	@Override
-	public void increaseAvailableRoom(RoomType type, String hotelID, int num) throws RemoteException {
-
-	}
-
-	@Override
-	public ResultMessage decreaseAvailableRoom(RoomType type, String hotelID, int num) throws RemoteException {
-		return ResultMessage.SUCCESS;
-	}
-
 }

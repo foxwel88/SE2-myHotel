@@ -1,9 +1,9 @@
 package org.client.bl.hotelbl;
 
 import java.rmi.RemoteException;
+import java.util.Date;
 import java.util.List;
 
-import org.client.bl.orderbl.HotelHelper;
 import org.client.bl.orderbl.OrderController;
 import org.client.bl.userbl.UserController;
 import org.client.blservice.hotelblservice.Hotelblservice;
@@ -15,6 +15,7 @@ import org.client.vo.CityVO;
 import org.client.vo.HotelVO;
 import org.client.vo.UserVO;
 import org.common.dataservice.HotelDataService.HotelDataService;
+import org.common.po.RoomPO;
 import org.common.utility.HotelFilter;
 import org.common.utility.IDService;
 import org.common.utility.ResultMessage;
@@ -25,7 +26,7 @@ import org.common.utility.RoomType;
  * @author Hirico
  * @version 2016/11/29 Hirico
  */
-public class HotelController implements Hotelblservice, HotelHelper {
+public class HotelController implements Hotelblservice {
 	private static HotelController controller;
 	
 	private Userblservice userBl;
@@ -52,7 +53,8 @@ public class HotelController implements Hotelblservice, HotelHelper {
 		} 
 		return controller;
 	}
-	
+
+	@Override
 	public List<HotelVO> findHotels(HotelFilter filter, String userId, boolean historyOnly) {
 		if (userId != null && historyOnly) {
 			if (orderBl == null) { // when orderBl is not set by external driver
@@ -65,6 +67,7 @@ public class HotelController implements Hotelblservice, HotelHelper {
 		return list;
 	}
 
+	@Override
 	public ResultMessage addHotel(HotelVO hotelVO, UserVO userVO) {
 		if (userBl == null) { // when userBl is not set by external driver
 			userBl = UserController.getInstance(); // use true logic code
@@ -96,14 +99,22 @@ public class HotelController implements Hotelblservice, HotelHelper {
 	/**
 	 * 修改酒店信息，包括酒店持久化对象和房间持久化对象的信息
 	 */
+	@Override
 	public ResultMessage modifyHotel(HotelVO vo) {
 		return util.modify(vo);
 	}
 
+	@Override
+	public int getAvailableRoomNum(Date schFrom, Date schTo, String hotelId, RoomType type) {
+		return 0;
+	}
+
+	@Override
 	public HotelVO getHotelVO(String hotelID) {
 		return util.getHotel(hotelID);
 	}
 
+	@Override
 	public List<AreaVO> getAreas(CityVO vo) {
 		try {
 			return AreaVO.generateVOList(RMIHelper.getInstance().getHotelDataServiceImpl().getAreas(CityVO.generatePO(vo)));
@@ -113,6 +124,7 @@ public class HotelController implements Hotelblservice, HotelHelper {
 		return null;
 	}
 
+	@Override
 	public List<CityVO> getCitys() {
 		try {
 			return CityVO.generateVOList(RMIHelper.getInstance().getHotelDataServiceImpl().getCitys());
@@ -120,27 +132,6 @@ public class HotelController implements Hotelblservice, HotelHelper {
 			e.printStackTrace();
 		}
 		return null;
-	}
-
-	public void increaseAvailableRoom(RoomType type, String hotelID, int num) {
-		HotelDataService dao = RMIHelper.getInstance().getHotelDataServiceImpl();
-		try {
-			dao.increaseAvailableRoom(type, hotelID, num);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public ResultMessage decreaseAvailableRoom(RoomType type, String hotelID, int num) {
-		HotelDataService dao = RMIHelper.getInstance().getHotelDataServiceImpl();
-		try {
-			ResultMessage result = dao.decreaseAvailableRoom(type, hotelID, num);
-			return result;
-		} catch (RemoteException e) {
-			e.printStackTrace();
-			return ResultMessage.CONNECTION_FAIL;
-		}
-
 	}
 
 
