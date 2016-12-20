@@ -1,6 +1,7 @@
 package org.client.presentation.hotelmanager;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.client.bl.hotelbl.HotelController;
@@ -87,6 +88,10 @@ public class HotelManagerController {
 	public List<OrderVO> getAbnormalOrders() {
 		return orderbl.getHotelOrderList(hotelID, OrderType.ABNORMAL);
 	}
+
+	public List<OrderVO> getOfflineOrders() {
+		return orderbl.getHotelOrderList(hotelID, OrderType.OFFLINE);
+	}
 	
 	public List<PromotionVO> getPromotions() {
 		return promotionbl.showHotelPromotion(hotelID);
@@ -137,6 +142,10 @@ public class HotelManagerController {
 		ResultMessage result = orderbl.checkOut(currentOrder.orderID);
 		currentOrder = orderbl.getOrder(currentOrder.orderID);
 		return result;
+	}
+
+	public int getBookedRoomNum(RoomType type, Date from, Date to) {
+		return orderbl.getBookedRoomNum(hotelID, type, from, to);
 	}
 
 	public void deletePromotion(String promotionID) {

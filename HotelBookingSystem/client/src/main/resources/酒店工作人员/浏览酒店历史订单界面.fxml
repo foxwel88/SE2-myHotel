@@ -40,6 +40,15 @@
             </Label>
          </children>
       </Pane>
+      <Pane fx:id="offlinePane" layoutX="589.0" layoutY="62.0" onMouseClicked="#toOfflineOrders" prefHeight="55.0" prefWidth="175.0">
+         <children>
+            <Label fx:id="offlineLabel" layoutX="58.0" layoutY="17.0" text="线下订单">
+               <font>
+                  <Font name="Microsoft YaHei" size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
       <Pane layoutX="64.0" layoutY="117.0" prefHeight="418.0" prefWidth="785.0" style="-fx-background-color: rgba(0,0,0,0.4);">
          <children>
             <AnchorPane fx:id="contentPane" layoutX="23.0" layoutY="14.0" prefHeight="350.0" prefWidth="740.0">

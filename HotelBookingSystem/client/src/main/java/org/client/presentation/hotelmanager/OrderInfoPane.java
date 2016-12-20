@@ -104,7 +104,10 @@ public class OrderInfoPane extends Pane {
 					break;
 				case "异常订单":
 					modifyRoot = resources.load(resources.hotelManagerAbnormalOrder);
-					break;					
+					break;
+				case "线下订单":
+					modifyRoot = resources.load(resources.hotelManagerOfflineOrder);
+					break;
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

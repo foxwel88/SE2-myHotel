@@ -54,6 +54,12 @@ public class HotelManagerHistoryOrder {
     private Label abnormalLabel;
 
 	@FXML
+	private Pane offlinePane;
+
+	@FXML
+	private Label offlineLabel;
+
+	@FXML
     private AnchorPane contentPane;
 
 	@FXML
@@ -115,6 +121,15 @@ public class HotelManagerHistoryOrder {
 		switchCurrentPage(FIRST_PAGE_NUM);
 		CurrentTabItem.getInstance().deActive();
 		CurrentTabItem.setInstance(executedPane, executedLabel);
+		CurrentTabItem.getInstance().active();
+	}
+
+	@FXML
+	void toOfflineOrders(MouseEvent event) {
+		currentOrders = HotelManagerController.getInstance().getOfflineOrders();
+		switchCurrentPage(FIRST_PAGE_NUM);
+		CurrentTabItem.getInstance().deActive();
+		CurrentTabItem.setInstance(offlinePane, offlineLabel);
 		CurrentTabItem.getInstance().active();
 	}
 

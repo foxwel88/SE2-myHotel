@@ -106,7 +106,29 @@ public class HotelController implements Hotelblservice {
 
 	@Override
 	public int getAvailableRoomNum(Date schFrom, Date schTo, String hotelId, RoomType type) {
-		return 0;
+		HotelDataService dao = RMIHelper.getInstance().getHotelDataServiceImpl();
+		int availableNum = 0;
+
+		//需要向order模块获得该类型房间已被预定数量
+		if (orderBl == null) { // when orderBl is not set by external driver
+			orderBl = OrderController.getInstance(); // use true logic code
+		}
+
+		try {
+			List<RoomPO> roomPOS = dao.getRooms(hotelId);
+			int total = 0;
+			for (RoomPO po: roomPOS) {
+				if (po.roomType == type) {
+					total = po.roomNum;
+					break;
+				}
+			}
+
+			availableNum -= orderBl.getBookedRoomNum(hotelId, type, schFrom, schTo);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return availableNum;
 	}
 
 	@Override

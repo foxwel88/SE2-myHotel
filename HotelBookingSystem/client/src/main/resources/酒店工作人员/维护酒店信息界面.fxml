@@ -101,7 +101,7 @@
                </font>
             </Label>
             <ChoiceBox fx:id="roomType" layoutX="87.0" layoutY="17.0" prefHeight="30.0" prefWidth="83.0" style="-fx-background-color: rgba(255,255,255,0.1);" stylesheets="@/darkTheme.css" />
-            <Label layoutX="188.0" layoutY="15.0" prefHeight="34.0" prefWidth="83.0" text="数量" textFill="WHITE">
+            <Label layoutX="188.0" layoutY="15.0" prefHeight="34.0" prefWidth="83.0" text="总数" textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei" size="16.0" />
                </font>

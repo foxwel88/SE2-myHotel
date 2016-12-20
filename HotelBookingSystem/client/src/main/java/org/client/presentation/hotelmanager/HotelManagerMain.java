@@ -2,8 +2,16 @@ package org.client.presentation.hotelmanager;
 
 import java.net.URL;
 import java.rmi.RemoteException;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.chrono.ChronoLocalDate;
 import java.util.*;
 
+import javafx.event.ActionEvent;
+import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.image.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
@@ -16,6 +24,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
 import org.client.vo.HotelVO;
+import org.common.utility.RoomType;
 
 
 /**
@@ -63,6 +72,39 @@ public class HotelManagerMain {
 	private Label bigBookedLabel;
 
 	@FXML
+	private DatePicker startTimePicker;
+
+	@FXML
+	private DatePicker endTimePicker;
+
+	@FXML
+	private Button searchNum;
+
+	@FXML
+	void searchRoomNum(ActionEvent event) {
+		refreshBookedRoomNum();
+	}
+
+	void refreshBookedRoomNum() {
+		LocalDate fromDate = startTimePicker.getValue();
+		LocalDate toDate = endTimePicker.getValue();
+
+		if (toDate.isBefore(fromDate)) {
+			return;
+		}
+
+		ZonedDateTime fromZonedTime = fromDate.atStartOfDay(ZoneId.systemDefault());
+		Instant fromInstant = Instant.from(fromZonedTime);
+
+		ZonedDateTime toZonedTime = toDate.atStartOfDay(ZoneId.systemDefault());
+		Instant toInstant = Instant.from(toZonedTime);
+
+		singleBookedLabel.setText(String.valueOf(HotelManagerController.getInstance().getBookedRoomNum(RoomType.SINGLE, Date.from(fromInstant), Date.from(toInstant))));
+		bigBookedLabel.setText(String.valueOf(HotelManagerController.getInstance().getBookedRoomNum(RoomType.BIG, Date.from(fromInstant), Date.from(toInstant))));
+		doubleBookedLabel.setText(String.valueOf(HotelManagerController.getInstance().getBookedRoomNum(RoomType.DOUBLE, Date.from(fromInstant), Date.from(toInstant))));
+	}
+
+	@FXML
     void initialize() {
 		assert timeLabel != null : "fx:id=\"timeLabel\" was not injected: check your FXML file '酒店工作人员主界面.fxml'.";
 		
@@ -96,9 +138,29 @@ public class HotelManagerMain {
 
 		}
 
-
 		//房间数量
-		List<Integer> roomNums = HotelManagerController.getInstance().getHotelInfo().roomNum;
+		HotelVO hotelVO = HotelManagerController.getInstance().getHotelInfo();
+		List<Integer> roomNums = hotelVO.roomNum;
+		List<String> roomTypes = hotelVO.roomType;
+		for (int i = 0; i < roomTypes.size(); i++) {
+			switch (roomTypes.get(i)) {
+				case "单人间":
+					singleTotalLabel.setText(roomNums.get(i).toString());
+					break;
+				case "套间":
+					bigTotalLabel.setText(roomNums.get(i).toString());
+					break;
+				case "标间":
+					doubleTotalLabel.setText(roomNums.get(i).toString());
+					break;
+			}
+		}
+
+		//时间默认值，显示接下来一周房源情况
+		startTimePicker.setValue(LocalDate.now());
+		endTimePicker.setValue(LocalDate.now().plusDays(7));
+
+		refreshBookedRoomNum();
 	}
 
 }
