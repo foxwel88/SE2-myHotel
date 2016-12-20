@@ -59,7 +59,7 @@ public class PromotionTest {
 	}
 
 	public void testGetPromotion() {
-		ArrayList<PromotionVO> promotionVOList = (ArrayList<PromotionVO>)controller.getPromotion("00001", "1234567890");
+		ArrayList<PromotionVO> promotionVOList = (ArrayList<PromotionVO>)controller.getPromotion("00001", "1234567890", 1);
 		assertEquals(2, promotionVOList.size());
 	}
 	
@@ -108,7 +108,7 @@ public class PromotionTest {
 	}
 
 	public void testGetPrice() {
-		assertEquals(30, controller.getPrice("1234567890", "00001", 100), 0.1);
+		assertEquals(30, controller.getPrice("1234567890", "00001", 1, 100), 0.1);
 	}
 	
 	@Test

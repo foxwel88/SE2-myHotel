@@ -10,7 +10,7 @@ public interface Promotionblservice {
 	
 	public ResultMessage add(PromotionVO vo);
 	
-	public List<PromotionVO> getPromotion(String hotelAddress, String userID);
+	public List<PromotionVO> getPromotion(String hotelAddress, String userID, int roomNum);
 	
 	public List<PromotionVO> showHotelPromotion(String hotelAddress);
 	
@@ -24,7 +24,7 @@ public interface Promotionblservice {
 	
 	public ResultMessage modifyLevel(LevelVO vo);
 	
-	public double getPrice (String userID, String hotelID, double rawPrice);
+	public double getPrice (String userID, String hotelID, int roomNum, double rawPrice);
 	
 	public int calLevel(double credit);
 }

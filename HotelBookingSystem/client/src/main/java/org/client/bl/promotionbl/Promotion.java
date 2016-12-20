@@ -3,12 +3,17 @@ package org.client.bl.promotionbl;
 import java.rmi.RemoteException;
 import java.util.Date;
 
+import org.client.bl.hotelbl.HotelController;
+import org.client.bl.userbl.UserController;
 import org.client.rmi.RMIHelper;
+import org.client.vo.HotelVO;
 import org.client.vo.PromotionVO;
+import org.client.vo.UserVO;
 import org.common.dataservice.PromotionDataService.PromotionDataService;
 import org.common.po.PromotionPO;
 import org.common.utility.PromotionType;
 import org.common.utility.ResultMessage;
+import org.common.utility.UserType;
 
 /**
  * 实现了修改促销策略的逻辑
@@ -139,6 +144,58 @@ public class Promotion implements Comparable<Promotion> {
 		}
 	}
 	
+	boolean canBeUsed(String hotelID, String userID, int roomNum) {
+		UserVO userVO = UserController.getInstance().findbyID(userID);
+		HotelVO hotelVO = HotelController.getInstance().getHotelVO(hotelID);
+		boolean isAvailable = isInPromotionPeriod();
+		if (provider.equals("web")) {
+			switch (type) {
+				case "特定日期促销":			// nothing to check
+					break;
+				case "VIP促销":				// level
+					if (PromotionController.getInstance().calLevel(userVO.credit) < level) {
+						isAvailable = false;
+					}
+					break;
+				case "商圈促销":				// level、city、area
+					if (PromotionController.getInstance().calLevel(userVO.credit) < level) {
+						isAvailable = false;
+					}
+					if (!(hotelVO.city.equals(city) && hotelVO.area.equals(area))) {
+						isAvailable = false;
+					}
+					break;
+			}
+		} else {							// hotelID
+			isAvailable = (isInPromotionHotel(hotelID) && isAvailable);
+			switch (type) {
+				case "生日促销":				// birthday
+					try {
+						if (!((userVO.birthday.getMonth() == RMIHelper.getInstance().getTimeServiceImpl().getDate().getMonth())
+								&& (userVO.birthday.getDate() == RMIHelper.getInstance().getTimeServiceImpl().getDate().getDate()))) {
+							isAvailable = false;
+						}
+					} catch (RemoteException e) {
+						e.printStackTrace();
+					}
+					break;
+				case "企业促销":				// isCompany
+					if (!userVO.type.equals(UserType.COMPANYCUSTOMER)) {
+						isAvailable = false;
+					}
+					break;
+				case "三间以上促销":			// roomNum
+					if (roomNum < 3) {
+						isAvailable = false;
+					}
+					break;
+				case "特定日期促销":			// nothing to check
+					break;
+			}
+		}
+		return isAvailable;
+	}
+	
 	/**
 	 * 现在的promotion均为折扣类型，因此目前只考虑discount的比较
 	 */
@@ -150,5 +207,27 @@ public class Promotion implements Comparable<Promotion> {
 			return 1;
 		}
 		return 0;
+	}
+	
+	private boolean isInPromotionPeriod() {
+		try {
+			if (startTime.after(RMIHelper.getInstance().getTimeServiceImpl().getDate())) {
+				return false;
+			}
+			if (endTime.before(RMIHelper.getInstance().getTimeServiceImpl().getDate())) {
+				return false;
+			}
+		} catch (RemoteException remoteException) {
+			remoteException.printStackTrace();
+		}
+		return true;
+	}
+	
+	private boolean isInPromotionHotel(String hid) {
+		if (!hotelID.equals(hid)) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 }

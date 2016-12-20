@@ -31,7 +31,7 @@ public class Promotion_stub implements Promotionblservice {
 		return ResultMessage.SUCCESS;
 	}
 
-	public ArrayList<PromotionVO> getPromotion(String hotelAddress, String userID) {
+	public ArrayList<PromotionVO> getPromotion(String hotelAddress, String userID, int roomNum) {
 		// TODO Auto-generated method stub
 		return generalVOs;
 	}
@@ -46,7 +46,7 @@ public class Promotion_stub implements Promotionblservice {
 		return generalVOs;
 	}
 	
-	public double getPrice (String userID, String hotelID, double rawPrice) {
+	public double getPrice (String userID, String hotelID, int roomNum, double rawPrice) {
 		return 25;
 	}
 

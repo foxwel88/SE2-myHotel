@@ -184,8 +184,8 @@ public class SwitchSceneUtil {
 		return -1;
 	}
 	
-	public static double getCurrentPrice(double rawPrice) {
-		return promotionController.getPrice(userID, hotelID, rawPrice);
+	public static double getCurrentPrice(int roomNum, double rawPrice) {
+		return promotionController.getPrice(userID, hotelID, roomNum, rawPrice);
 	}
 	
 	public static ArrayList<CommentVO> getComments() {

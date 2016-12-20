@@ -120,7 +120,7 @@ public class PromotionControllerTest extends EasyMockSupport {
 	
 	@Test(timeout = 1000)
 	public void testgetPrice() {
-		assertEquals(true, (promotionController.getPrice("userID", "hotelAddress", 120)) == 120);
+		assertEquals(true, (promotionController.getPrice("userID", "hotelAddress", 1, 120)) == 120);
 	}
 	
 	@After
