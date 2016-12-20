@@ -157,7 +157,7 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(query);
 			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
 
-			//再根据酒店地址,房间信息进一步筛选
+			//再根据酒店地址进一步筛选
 			while (resultSet.next()) {
 				HotelPO po = getHotelFromSet(resultSet);
 				if (filter.livedHotelIDs != null) {
@@ -165,45 +165,12 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 						continue;
 					}
 				}
-				if (isRoomInfoMatched(getRooms(po.id), filter)) {
-					list.add(po);
-				}
+				list.add(po);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return list;
-	}
-
-	/**
-	 * 满足条件要求：若filter中指定房间类型，该类型的价格和数量满足要求
-	 *               若filter没有指定房间类型，则只要同时有房间满足价格要求且房间总数满足数量要求即可
-	 * */
-	private boolean isRoomInfoMatched(List<RoomPO> rooms, HotelFilter filter) {
-
-		if (filter.roomType != null) {
-			for (RoomPO r : rooms) {
-				if (r.roomType.equals(filter.roomType)) {
-					if (r.roomPrice >= filter.minPrice && r.roomPrice <= filter.maxPrice
-							&& r.roomNum >= filter.roomNum) {
-						return true;
-					}
-				}
-			}
-		} else {
-			int requiredNum = filter.roomNum;
-			for (RoomPO r : rooms) {
-				if (r.roomPrice >= filter.minPrice && r.roomPrice <= filter.maxPrice
-						&& r.roomNum >= requiredNum) {
-					requiredNum -= r.roomNum;
-					if (requiredNum <= 0) {
-						return true;
-					}
-				}
-			}
-		}
-
-		return false;
 	}
 
 	public List<CityPO> getCitys() throws RemoteException {
