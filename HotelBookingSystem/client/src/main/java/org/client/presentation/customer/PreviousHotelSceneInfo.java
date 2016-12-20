@@ -12,15 +12,15 @@ public class PreviousHotelSceneInfo {
 	// 记录酒店列表界面的酒店筛选条件
 	final HotelFilter hotelFilter;
 	
-	// 记录是否有儿童入住
-	final boolean hasChildren;
+	// 记录是否曾经入住
+	final boolean everOrdered;
 	
 	// 保存酒店列表界面所处的页码
 	final int currentPage;
 	
-	public PreviousHotelSceneInfo(HotelFilter hotelFilter, boolean hasChildren, int currentPage) {
+	public PreviousHotelSceneInfo(HotelFilter hotelFilter, boolean everOrdered, int currentPage) {
 		this.hotelFilter = hotelFilter;
-		this.hasChildren = hasChildren;
+		this.everOrdered = everOrdered;
 		this.currentPage = currentPage;
 	}
 }

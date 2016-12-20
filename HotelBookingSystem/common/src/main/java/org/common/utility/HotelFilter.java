@@ -2,6 +2,7 @@ package org.common.utility;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -36,10 +37,22 @@ public class HotelFilter implements Serializable {
 	
 	public String area; 
 	
+	public Date schFrom;
+
+	public Date schTo;
+	
 	public RoomType roomType;
 	
 	public int roomNum = 1;
 
+	public void setHotelName(String name) {
+		if (name != null) {
+			if (!name.isEmpty()) {
+				this.hotelName = name;
+			}
+		}
+	}
+	
 	public void setRank(double min, double max) {
 		minRank = min;
 		maxRank = max;
@@ -94,5 +107,13 @@ public class HotelFilter implements Serializable {
 	public void setLocation(String city, String area) {
 		this.city = city;
 		this.area = area;
+	}
+	
+	public void setSchFromDate (Date date) {
+		this.schFrom = date;
+	}
+	
+	public void setSchToDate (Date date) {
+		this.schTo = date;
 	}
 }

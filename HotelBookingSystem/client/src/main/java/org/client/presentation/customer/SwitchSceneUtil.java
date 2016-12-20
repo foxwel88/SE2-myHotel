@@ -197,7 +197,7 @@ public class SwitchSceneUtil {
 		ArrayList<CommentVO> commentVOList = (ArrayList<CommentVO>)commentController.getComment(hotelID);
 		CommentVO commentVO = null;
 		for (CommentVO tempVO:commentVOList) {
-			if (tempVO.orderID == SwitchSceneUtil.orderID) {
+			if (tempVO.orderID.equals(SwitchSceneUtil.orderID)) {
 				commentVO = tempVO;
 				break;
 			}

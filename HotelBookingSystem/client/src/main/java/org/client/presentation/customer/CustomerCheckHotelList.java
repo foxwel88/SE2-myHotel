@@ -144,12 +144,18 @@ public class CustomerCheckHotelList {
 		if (SwitchSceneUtil.isBack) {
 			HotelFilter previousFilter = SwitchSceneUtil.previousHotelSceneInfo.hotelFilter;
 			currentPage.setText(String.valueOf(SwitchSceneUtil.previousHotelSceneInfo.currentPage));
+			everOrdered.setSelected(SwitchSceneUtil.previousHotelSceneInfo.everOrdered);
 			if (previousFilter.city != null) {
 				city.setValue(previousFilter.city);
 			}
 			refreshAreas();
 			if (previousFilter.area != null) {
 				area.setValue(previousFilter.area);
+			}
+			if (previousFilter.hotelName != null) {
+				if (!previousFilter.hotelName.isEmpty()) {
+					hotelName.setText(previousFilter.hotelName);
+				}
 			}
 			if (previousFilter.minStar != 0) {
 				lowerStar.setValue(previousFilter.minStar);
@@ -175,7 +181,8 @@ public class CustomerCheckHotelList {
 			if (previousFilter.roomNum != 1) {
 				roomNum.setText(String.valueOf(previousFilter.roomNum));
 			}
-//			fromDate.setValue(previousFilter.);
+			fromDate.setValue(LiveDatePicker.toLocalDate(previousFilter.schFrom));
+			toDate.setValue(LiveDatePicker.toLocalDate(previousFilter.schTo));
 		}
 		showHotelList();
 	}
@@ -410,14 +417,8 @@ public class CustomerCheckHotelList {
 
 		filter.hotelName = hotelName.getText();
 
-//		try {
-//			filter.set
-//			System.out.println(fromDate.getValue());
-//		} catch (NullPointerException nullPointerException) {
-//			nullPointerException.printStackTrace();
-//		}
-		// TODO 没有办法根据入住日期区间搜索
-		// TODO try-catch没有写（格式检查）
+		filter.setSchFromDate(LiveDatePicker.toDate(fromDate.getValue()));
+		filter.setSchToDate(LiveDatePicker.toDate(toDate.getValue()));
 		return filter;
 	}
 	
