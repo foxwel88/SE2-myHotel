@@ -89,8 +89,7 @@
             <Font name="Microsoft YaHei UI Light" size="18.0" />
          </font>
       </Label>
-      <DatePicker fx:id="startTimePicker" editable="false" layoutX="209.0" layoutY="212.0" />
-      <DatePicker fx:id="endTimePicker" editable="false" layoutX="447.0" layoutY="212.0" />
+      <DatePicker fx:id="endTimePicker" layoutX="447.0" layoutY="212.0" />
       <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="128.0" layoutY="194.0" prefHeight="60.0" prefWidth="68.0" text="从" textAlignment="JUSTIFY">
          <font>
             <Font name="Microsoft YaHei UI Light" size="18.0" />
@@ -106,5 +105,6 @@
             <Font name="Microsoft YaHei UI Light" size="13.0" />
          </font>
       </Button>
+      <DatePicker fx:id="startTimePicker" layoutX="214.0" layoutY="212.0" />
    </children>
 </AnchorPane>
