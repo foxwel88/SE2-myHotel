@@ -1,10 +1,12 @@
 package org.client.blservice.orderblservice;
 
+import java.util.Date;
 import java.util.List;
 
 import org.client.vo.OrderVO;
 import org.common.utility.OrderType;
 import org.common.utility.ResultMessage;
+import org.common.utility.RoomType;
 
 public interface Orderblservice {
 	public ResultMessage createOrder(OrderVO vo);
@@ -28,4 +30,6 @@ public interface Orderblservice {
 	public ResultMessage checkOut(String ID);
 	
 	public ResultMessage comment(String orderID);
+	
+	public int getRestRoom(String hotelID, RoomType type, Date fromdate, Date todate);
 }
