@@ -63,9 +63,6 @@ public class CustomerComment {
 	Label roomType;
 	
 	@FXML
-	Label roomNum;
-	
-	@FXML
 	Label totalPrice;
 	
 	@FXML
@@ -87,8 +84,7 @@ public class CustomerComment {
 		orderID.setText(vo.orderID);
 		String hotel = vo.hotelName + "，" + vo.hotelAddress;
 		hotelInfo.setText(hotel);
-		roomType.setText(vo.roomType);
-		roomNum.setText(String.valueOf(vo.roomNum));
+		roomType.setText(vo.roomType + " " + String.valueOf(vo.roomNum) + "间");
 		totalPrice.setText(String.valueOf(vo.totalPrice) + "元");
 	}
 	
