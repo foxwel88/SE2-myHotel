@@ -3,6 +3,7 @@ package org.client.presentation.customer;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+import org.client.presentation.util.LiveDatePicker;
 import org.client.vo.AreaVO;
 import org.client.vo.CityVO;
 import org.client.vo.HotelVO;

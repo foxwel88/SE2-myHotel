@@ -1,5 +1,6 @@
 package org.client.presentation.hotelmanager;
 
+import java.io.IOException;
 import java.net.URL;
 import java.rmi.RemoteException;
 import java.time.Instant;
@@ -10,11 +11,16 @@ import java.time.chrono.ChronoLocalDate;
 import java.util.*;
 
 import javafx.event.ActionEvent;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.image.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import org.client.launcher.PwModify;
+import org.client.launcher.Resources;
 import org.client.rmi.RMIHelper;
 
 import javafx.animation.Animation;
@@ -43,6 +49,8 @@ public class HotelManagerMain {
 
 	@FXML
 	private AnchorPane root;
+
+	private Pane parentPane;
 
 	@FXML
     private Label timeLabel;
@@ -79,6 +87,37 @@ public class HotelManagerMain {
 
 	@FXML
 	private Button searchNum;
+
+	@FXML
+	private Button offlineButton;
+
+	@FXML
+	void generateOfflineOrder(ActionEvent event) {
+		AnchorPane mask = new AnchorPane();
+		mask.setStyle("-fx-background-color:rgba(0,0,0,0.9)");
+		mask.setLayoutX(0);
+		mask.setLayoutY(0);
+		mask.setPrefSize(1103.0, 683.0);
+		parentPane.getChildren().add(mask);
+		Resources resources = Resources.getInstance();
+		Parent newRoot = null;
+		try {
+			newRoot = resources.load(resources.hotelManagerGenerateOfflineOrder);
+			((HotelManagerGenerateOfflineOrder)resources.getCurrentController()).setParentPane(parentPane);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		mask.getChildren().add(newRoot);
+		AnchorPane.setLeftAnchor(newRoot, 352.0);
+		AnchorPane.setRightAnchor(newRoot, 351.0);
+		AnchorPane.setTopAnchor(newRoot, 80.0);
+	}
+
+
+	/** 持有导航界面Pane的引用，为了实现登记线下入住时覆盖全窗口的效果 */
+	void setParentPane(Pane parent) {
+		parentPane = parent;
+	}
 
 	@FXML
 	void searchRoomNum(ActionEvent event) {

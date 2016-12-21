@@ -49,7 +49,9 @@ public class Resources {
 	
 	public URL hotelManagerModifyPromotion = getClass().getResource("/酒店工作人员/修改酒店促销策略界面.fxml");
 
-	public URL hotelManagerOfflineOrder = getClass().getResource("/酒店工作人员/线下订单详细界面.fxml");
+	public URL hotelManagerOfflineOrder = getClass().getResource("/酒店工作人员/线下订单详细信息界面.fxml");
+
+	public URL hotelManagerGenerateOfflineOrder = getClass().getResource("/酒店工作人员/线下订单生成界面.fxml");
 		
 	//Customer UI
 	public URL customerGuide = getClass().getResource("/客户/导航_主界面.fxml");

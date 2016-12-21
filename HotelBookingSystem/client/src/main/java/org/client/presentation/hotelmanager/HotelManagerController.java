@@ -42,6 +42,8 @@ public class HotelManagerController {
 
 	public String hotelName;
 
+	public String hotelAddress;
+
 	public String managerUserName;
 	
 	public String managerName;
@@ -57,7 +59,10 @@ public class HotelManagerController {
 		this.hotelID = hotelID;
 		this.managerName = managerName;
 		this.managerUserName = managerUserName;
-		this.hotelName = getHotelInfo().hotelName;
+
+		HotelVO hotelVO = getHotelInfo();
+		this.hotelName = hotelVO.hotelName;
+		this.hotelAddress = hotelVO.address;
 	}
 	
 	/** 登录之后就要马上调用这个方法 */
@@ -146,6 +151,10 @@ public class HotelManagerController {
 
 	public int getBookedRoomNum(RoomType type, Date from, Date to) {
 		return orderbl.getBookedRoomNum(hotelID, type, from, to);
+	}
+
+	public ResultMessage addOfflineOrder(OrderVO vo) {
+		return orderbl.createOffLineOrder(vo);
 	}
 
 	public void deletePromotion(String promotionID) {

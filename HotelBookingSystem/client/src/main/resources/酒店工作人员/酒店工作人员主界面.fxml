@@ -106,5 +106,10 @@
          </font>
       </Button>
       <DatePicker fx:id="startTimePicker" layoutX="214.0" layoutY="212.0" />
+      <Button fx:id="offlineButton" layoutX="802.0" layoutY="101.0" mnemonicParsing="false" onAction="#generateOfflineOrder" text="线下入住登记">
+         <font>
+            <Font name="Microsoft YaHei UI Light" size="13.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
