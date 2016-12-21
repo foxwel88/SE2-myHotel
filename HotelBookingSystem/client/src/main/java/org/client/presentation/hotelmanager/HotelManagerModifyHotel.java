@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.animation.*;
+import javafx.scene.Node;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -411,6 +412,10 @@ public class HotelManagerModifyHotel {
 
 	/**显示完整的编辑内容 */
 	void setAppearTransition(Pane pane, Label label) {
+		for (Node node: pane.getChildren()) {
+			node.setDisable(false);
+		}
+
 		FadeTransition ft = new FadeTransition(Duration.millis(100), pane);
 		ft.setRate(0.6);
 		ft.setFromValue(0);
@@ -422,6 +427,10 @@ public class HotelManagerModifyHotel {
 
 	/**隐去完整的编辑内容 */
 	void setDisappearTransition(Pane pane, Label label) {
+		for (Node node: pane.getChildren()) {
+			node.setDisable(true);
+		}
+
 		FadeTransition ft = new FadeTransition(Duration.millis(100), pane);
 		ft.setRate(0.6);
 		ft.setFromValue(1.0);
