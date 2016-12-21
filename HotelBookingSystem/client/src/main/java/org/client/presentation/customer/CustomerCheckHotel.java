@@ -3,10 +3,13 @@ package org.client.presentation.customer;
 import java.util.ArrayList;
 import java.util.Date;
 
+import org.client.bl.promotionbl.PromotionController;
 import org.client.presentation.util.LiveDatePicker;
 import org.client.vo.CommentVO;
 import org.client.vo.HotelVO;
 import org.client.vo.OrderVO;
+import org.client.vo.PromotionVO;
+import org.common.utility.RoomType;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -30,6 +33,9 @@ import javafx.scene.layout.VBox;
 public class CustomerCheckHotel {
 	@FXML
 	AnchorPane root;
+	
+	@FXML
+	AnchorPane promotionPane;
 	
 	@FXML
 	Label hotelName;
@@ -172,6 +178,33 @@ public class CustomerCheckHotel {
 	Label commentCurrentPage;
 	
 	@FXML
+	Label showPromotionLabel;
+	
+	@FXML
+	Label hidePromotionButton;
+	
+	@FXML
+	Label promotion1;
+	
+	@FXML
+	Label promotion2;
+	
+	@FXML
+	Label promotion3;
+	
+	@FXML
+	Label promotion4;
+	
+	@FXML
+	Label promotionPreviousPage;
+	
+	@FXML
+	Label promotionCurrentPage;
+	
+	@FXML
+	Label promotionNextPage;
+	
+	@FXML
 	TextField orderToPage;
 	
 	@FXML
@@ -180,6 +213,8 @@ public class CustomerCheckHotel {
 	private static final int MAX_ORDER_ONE_OAGE = 2;
 	
 	private static final int MAX_COMMENT_ONE_OAGE = 3;
+
+	private static final int MAX_PROMOTION_ONE_OAGE = 4;
 	
 	private int currentLabel = 0;
 	
@@ -205,6 +240,10 @@ public class CustomerCheckHotel {
 	
 	private ArrayList<Label> commentDateAndMakerList;
 	
+	private ArrayList<Label> promotionLabelList;
+	
+	private ArrayList<PromotionVO> promotionVOList;
+	
 	private HotelVO hotel;
 	
 	@FXML
@@ -213,20 +252,24 @@ public class CustomerCheckHotel {
 		hotelName.setText(hotel.hotelName);
 		introduce.setText(hotel.introduction);
 		address.setText(hotel.address);
+		int temproomnum;		// 初始化时临时存储三种剩余房间数量
 		for (int i = 0; i < hotel.roomType.size(); i++) {
 			switch (hotel.roomType.get(i)) {
 				case "单人间":
-					leftNum1.setText(String.valueOf(hotel.roomNum.get(i)));
+					temproomnum = SwitchSceneUtil.getLeftRoomNum(SwitchSceneUtil.previousHotelSceneInfo.hotelFilter.schFrom, SwitchSceneUtil.previousHotelSceneInfo.hotelFilter.schTo, SwitchSceneUtil.hotelID, RoomType.SINGLE.getString());
+					leftNum1.setText(String.valueOf(temproomnum));
 					rawPrice1.setText(String.valueOf(hotel.roomPrice.get(i)));
 					currentPrice1.setText(String.valueOf(SwitchSceneUtil.getCurrentPrice(1, hotel.roomPrice.get(i))));
 					break;
 				case "套间":
-					leftNum2.setText(String.valueOf(hotel.roomNum.get(i)));
+					temproomnum = SwitchSceneUtil.getLeftRoomNum(SwitchSceneUtil.previousHotelSceneInfo.hotelFilter.schFrom, SwitchSceneUtil.previousHotelSceneInfo.hotelFilter.schTo, SwitchSceneUtil.hotelID, RoomType.BIG.getString());
+					leftNum2.setText(String.valueOf(temproomnum));
 					rawPrice2.setText(String.valueOf(hotel.roomPrice.get(i)));
 					currentPrice2.setText(String.valueOf(SwitchSceneUtil.getCurrentPrice(1, hotel.roomPrice.get(i))));
 					break;
 				case "标间":
-					leftNum3.setText(String.valueOf(hotel.roomNum.get(i)));
+					temproomnum = SwitchSceneUtil.getLeftRoomNum(SwitchSceneUtil.previousHotelSceneInfo.hotelFilter.schFrom, SwitchSceneUtil.previousHotelSceneInfo.hotelFilter.schTo, SwitchSceneUtil.hotelID, RoomType.DOUBLE.getString());
+					leftNum3.setText(String.valueOf(temproomnum));
 					rawPrice3.setText(String.valueOf(hotel.roomPrice.get(i)));
 					currentPrice3.setText(String.valueOf(SwitchSceneUtil.getCurrentPrice(1, hotel.roomPrice.get(i))));
 					break;
@@ -261,6 +304,13 @@ public class CustomerCheckHotel {
 		
 		showExecutedOrderList();
 		showCommentList();
+		
+		promotionLabelList = new ArrayList<>();
+		promotionLabelList.add(promotion1);
+		promotionLabelList.add(promotion2);
+		promotionLabelList.add(promotion3);
+		promotionLabelList.add(promotion4);
+		promotionVOList = (ArrayList<PromotionVO>)PromotionController.getInstance().showHotelPromotion(SwitchSceneUtil.hotelID);
 	}
 	
 	@FXML
@@ -402,6 +452,33 @@ public class CustomerCheckHotel {
 			int goalPage = checkGoalPage(false);
 			commentCurrentPage.setText(String.valueOf(goalPage));
 			showCommentList();
+		}
+	}
+	
+	@FXML
+	void showHotelPromotion() {
+		promotionPane.setVisible(true);
+		setPromotionContent();
+	}
+	
+	@FXML
+	void hidePromotion() {
+		promotionPane.setVisible(false);
+	}
+	
+	@FXML
+	void turnToNextPage() {
+		if (Integer.parseInt(promotionCurrentPage.getText()) < calPromotionMaxPage(promotionVOList)) {
+			promotionCurrentPage.setText(String.valueOf(Integer.parseInt(promotionCurrentPage.getText()) + 1));
+			showHotelPromotion();
+		}
+	}
+	
+	@FXML
+	void turnToPreviousPage() {
+		if (Integer.parseInt(promotionCurrentPage.getText()) > 1) {
+			promotionCurrentPage.setText(String.valueOf(Integer.parseInt(promotionCurrentPage.getText()) - 1));
+			showHotelPromotion();
 		}
 	}
 	
@@ -617,6 +694,36 @@ public class CustomerCheckHotel {
 			return commentList.get(seq).rank;
 		} catch (IndexOutOfBoundsException nullex) {
 			return -1;
+		}
+	}
+	/**************************************************************************************/
+	
+	/**
+	 * 下面的方法用于promotion
+	 */
+	private void setPromotionContent() {
+		for (int i = 0; i < MAX_PROMOTION_ONE_OAGE; i++) {
+			if (promotion(i) != null) {
+				promotionLabelList.get(i).setVisible(true);
+				promotionLabelList.get(i).setText(promotion(i));
+			} else {
+				promotionLabelList.get(i).setVisible(false);
+				promotionLabelList.get(i).setText(null);
+			}
+		}
+	}
+	
+	private int calPromotionMaxPage(ArrayList<PromotionVO> voList) {
+		return (voList.size() / MAX_PROMOTION_ONE_OAGE) + 1;
+	}
+	
+	private String promotion(int i) {
+		System.out.println(promotionCurrentPage.getText());
+		int seq = (Integer.parseInt(promotionCurrentPage.getText()) - 1) * MAX_PROMOTION_ONE_OAGE + i;	// 计算当前页面第i个信息字段在arraylist中的实际位置；
+		try {
+			return promotionVOList.get(seq).name;
+		} catch (IndexOutOfBoundsException nullex) {
+			return null;
 		}
 	}
 	/**************************************************************************************/
