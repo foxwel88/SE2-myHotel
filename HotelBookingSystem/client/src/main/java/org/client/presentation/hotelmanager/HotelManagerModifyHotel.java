@@ -429,6 +429,12 @@ public class HotelManagerModifyHotel {
 		ft.play();
 
 		label.setVisible(true);
+		label.setOpacity(0);
+		FadeTransition labelFt = new FadeTransition(Duration.millis(500), label);
+		labelFt.setRate(0.6);
+		labelFt.setFromValue(0);
+		labelFt.setToValue(1.0);
+		labelFt.play();
 	}
 
 	void setFoldMoveTransition(ImageView image, double toX, double toY) {

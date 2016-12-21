@@ -1,0 +1,3 @@
+.button:hover { 
+    -fx-effect: dropshadow(three-pass-box, #000000, 5, 0.5, 2, 2);
+}
