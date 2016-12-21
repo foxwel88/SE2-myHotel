@@ -12,31 +12,27 @@ import java.net.URL;
 
 public class CustomerHTTPPictureDownloader {
 	
-	public static void downLoadImage(String address, String hotelID) throws FileNotFoundException {
+	public static void downLoadImage(String address, String hotelID) {
 		String filename = new String(hotelID + ".jpg");
 		
-		if (address != null) {
-			try {
-				URL url = new URL(address);
-				HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
-				httpURLConnection.setRequestMethod("GET");
-				httpURLConnection.setConnectTimeout(5 * 1000);
-				InputStream instream = httpURLConnection.getInputStream();
-				byte[] data = readInputStream(instream);
-				File tempImage = new File(CustomerHTTPPictureDownloader.class.getResource("/") + "temp");
-				if (!tempImage.exists()) {
-					tempImage.mkdirs();
-				}
-				FileOutputStream fileOutputStream = new FileOutputStream(tempImage.getPath().substring(6) + File.separator + filename);
-				fileOutputStream.write(data);
-				fileOutputStream.close();
-			} catch (MalformedURLException malformedURLException) {
-				malformedURLException.printStackTrace();
-			} catch (IOException ioException) {
-				ioException.printStackTrace();
+		try {
+			URL url = new URL(address);
+			HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
+			httpURLConnection.setRequestMethod("GET");
+			httpURLConnection.setConnectTimeout(5 * 1000);
+			InputStream instream = httpURLConnection.getInputStream();
+			byte[] data = readInputStream(instream);
+			File tempImage = new File(CustomerHTTPPictureDownloader.class.getResource("/") + "temp");
+			if (!tempImage.exists()) {
+				tempImage.mkdirs();
 			}
-		} else {
-			throw new FileNotFoundException();
+			FileOutputStream fileOutputStream = new FileOutputStream(tempImage.getPath().substring(6) + File.separator + filename);
+			fileOutputStream.write(data);
+			fileOutputStream.close();
+		} catch (MalformedURLException malformedURLException) {
+			malformedURLException.printStackTrace();
+		} catch (IOException ioException) {
+			ioException.printStackTrace();
 		}
 	}
 	
