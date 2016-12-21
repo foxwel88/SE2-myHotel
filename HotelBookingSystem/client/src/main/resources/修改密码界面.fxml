@@ -37,7 +37,7 @@
                   <Font name="Microsoft YaHei" size="18.0" />
                </font>
             </Text>
-            <Button id="loginButton" fx:id="returnButton" defaultButton="true" layoutX="41.0" layoutY="469.0" mnemonicParsing="false" onAction="#handleReturn" prefHeight="49.0" prefWidth="318.0" style="-fx-background-color: rgba(255,45,45,0.5);" text="返回" textFill="WHITE">
+            <Button id="loginButton" fx:id="returnButton" cancelButton="true" layoutX="41.0" layoutY="469.0" mnemonicParsing="false" onAction="#handleReturn" prefHeight="49.0" prefWidth="318.0" style="-fx-background-color: rgba(255,45,45,0.5);" text="返回" textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei UI Light" size="20.0" />
                </font>

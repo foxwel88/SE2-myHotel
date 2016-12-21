@@ -22,7 +22,7 @@
          <children>
             <TextField id="accountField" fx:id="accountField" layoutX="66.0" layoutY="184.0" onAction="#handleLoginAction" prefHeight="61.0" prefWidth="318.0" promptText="输入您的账号" style="-fx-background-color: rgba(0,0,0,0.7); -fx-text-inner-color: white;" AnchorPane.leftAnchor="66.0" />
             <PasswordField fx:id="pwField" layoutX="66.0" layoutY="259.0" onAction="#handleLoginAction" prefHeight="61.0" prefWidth="318.0" promptText="输入您的密码" style="-fx-background-color: rgba(0,0,0,0.7); -fx-text-inner-color: white;" />
-            <Button id="registerButton" fx:id="registerButton" defaultButton="true" layoutX="66.0" layoutY="417.0" mnemonicParsing="false" onAction="#handleRegisterAction" prefHeight="49.0" prefWidth="318.0" style="-fx-background-color: rgba(255,45,45,0.5);" text="没有账号？点击注册" textFill="WHITE">
+            <Button id="registerButton" fx:id="registerButton" layoutX="66.0" layoutY="417.0" mnemonicParsing="false" onAction="#handleRegisterAction" prefHeight="49.0" prefWidth="318.0" style="-fx-background-color: rgba(255,45,45,0.5);" text="没有账号？点击注册" textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei UI Light" size="20.0" />
                </font>
