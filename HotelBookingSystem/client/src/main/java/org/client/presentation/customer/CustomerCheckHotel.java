@@ -3,9 +3,11 @@ package org.client.presentation.customer;
 import java.util.ArrayList;
 import java.util.Date;
 
+import org.client.bl.promotionbl.PromotionController;
 import org.client.vo.CommentVO;
 import org.client.vo.HotelVO;
 import org.client.vo.OrderVO;
+import org.client.vo.PromotionVO;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -29,6 +31,9 @@ import javafx.scene.layout.VBox;
 public class CustomerCheckHotel {
 	@FXML
 	AnchorPane root;
+	
+	@FXML
+	AnchorPane promotionPane;
 	
 	@FXML
 	Label hotelName;
@@ -171,6 +176,33 @@ public class CustomerCheckHotel {
 	Label commentCurrentPage;
 	
 	@FXML
+	Label showPromotionLabel;
+	
+	@FXML
+	Label hidePromotionButton;
+	
+	@FXML
+	Label promotion1;
+	
+	@FXML
+	Label promotion2;
+	
+	@FXML
+	Label promotion3;
+	
+	@FXML
+	Label promotion4;
+	
+	@FXML
+	Label promotionPreviousPage;
+	
+	@FXML
+	Label promotionCurrentPage;
+	
+	@FXML
+	Label promotionNextPage;
+	
+	@FXML
 	TextField orderToPage;
 	
 	@FXML
@@ -179,6 +211,8 @@ public class CustomerCheckHotel {
 	private static final int MAX_ORDER_ONE_OAGE = 2;
 	
 	private static final int MAX_COMMENT_ONE_OAGE = 3;
+
+	private static final int MAX_PROMOTION_ONE_OAGE = 4;
 	
 	private int currentLabel = 0;
 	
@@ -203,6 +237,10 @@ public class CustomerCheckHotel {
 	private ArrayList<Label> commentContentList;
 	
 	private ArrayList<Label> commentDateAndMakerList;
+	
+	private ArrayList<Label> promotionLabelList;
+	
+	private ArrayList<PromotionVO> promotionVOList;
 	
 	private HotelVO hotel;
 	
@@ -260,6 +298,13 @@ public class CustomerCheckHotel {
 		
 		showExecutedOrderList();
 		showCommentList();
+		
+		promotionLabelList = new ArrayList<>();
+		promotionLabelList.add(promotion1);
+		promotionLabelList.add(promotion2);
+		promotionLabelList.add(promotion3);
+		promotionLabelList.add(promotion4);
+		promotionVOList = (ArrayList<PromotionVO>)PromotionController.getInstance().showHotelPromotion(SwitchSceneUtil.hotelID);
 	}
 	
 	@FXML
@@ -401,6 +446,33 @@ public class CustomerCheckHotel {
 			int goalPage = checkGoalPage(false);
 			commentCurrentPage.setText(String.valueOf(goalPage));
 			showCommentList();
+		}
+	}
+	
+	@FXML
+	void showHotelPromotion() {
+		promotionPane.setVisible(true);
+		setPromotionContent();
+	}
+	
+	@FXML
+	void hidePromotion() {
+		promotionPane.setVisible(false);
+	}
+	
+	@FXML
+	void turnToNextPage() {
+		if (Integer.parseInt(promotionCurrentPage.getText()) < calPromotionMaxPage(promotionVOList)) {
+			promotionCurrentPage.setText(String.valueOf(Integer.parseInt(promotionCurrentPage.getText()) + 1));
+			showHotelPromotion();
+		}
+	}
+	
+	@FXML
+	void turnToPreviousPage() {
+		if (Integer.parseInt(promotionCurrentPage.getText()) > 1) {
+			promotionCurrentPage.setText(String.valueOf(Integer.parseInt(promotionCurrentPage.getText()) - 1));
+			showHotelPromotion();
 		}
 	}
 	
@@ -616,6 +688,35 @@ public class CustomerCheckHotel {
 			return commentList.get(seq).rank;
 		} catch (IndexOutOfBoundsException nullex) {
 			return -1;
+		}
+	}
+	/**************************************************************************************/
+	
+	/**
+	 * 下面的方法用于promotion
+	 */
+	private void setPromotionContent() {
+		for (int i = 0; i < MAX_PROMOTION_ONE_OAGE; i++) {
+			if (promotion(i) != null) {
+				promotionLabelList.get(i).setVisible(true);
+				promotionLabelList.get(i).setText(promotion(i));
+			} else {
+				promotionLabelList.get(i).setVisible(false);
+				promotionLabelList.get(i).setText(null);
+			}
+		}
+	}
+	
+	private int calPromotionMaxPage(ArrayList<PromotionVO> voList) {
+		return (voList.size() / MAX_PROMOTION_ONE_OAGE) + 1;
+	}
+	
+	private String promotion(int i) {
+		int seq = (Integer.parseInt(promotionCurrentPage.getText()) - 1) * MAX_PROMOTION_ONE_OAGE + i;	// 计算当前页面第i个信息字段在arraylist中的实际位置；
+		try {
+			return promotionVOList.get(seq).name;
+		} catch (IndexOutOfBoundsException nullex) {
+			return null;
 		}
 	}
 	/**************************************************************************************/
