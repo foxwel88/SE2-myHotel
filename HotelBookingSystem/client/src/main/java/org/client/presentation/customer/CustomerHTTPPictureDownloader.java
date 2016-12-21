@@ -22,11 +22,11 @@ public class CustomerHTTPPictureDownloader {
 			httpURLConnection.setConnectTimeout(5 * 1000);
 			InputStream instream = httpURLConnection.getInputStream();
 			byte[] data = readInputStream(instream);
-			File tempImage = new File(CustomerHTTPPictureDownloader.class.getResource("/") + "temp");
+			File tempImage = new File(CustomerHTTPPictureDownloader.class.getResource("/").toString().substring(6) + "temp");
 			if (!tempImage.exists()) {
 				tempImage.mkdirs();
 			}
-			FileOutputStream fileOutputStream = new FileOutputStream(tempImage.getPath().substring(6) + File.separator + filename);
+			FileOutputStream fileOutputStream = new FileOutputStream(tempImage.getPath() + File.separator + filename);
 			fileOutputStream.write(data);
 			fileOutputStream.close();
 		} catch (MalformedURLException malformedURLException) {

@@ -15,7 +15,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
@@ -36,6 +35,9 @@ public class CustomerCheckHotel {
 	
 	@FXML
 	AnchorPane promotionPane;
+	
+	@FXML
+	Label picLabel;
 	
 	@FXML
 	Label hotelName;
@@ -80,9 +82,6 @@ public class CustomerCheckHotel {
 	
 	@FXML
 	Label service;
-	
-	@FXML
-	ImageView picture;
 	
 	@FXML
 	Button makeOrderButton;
@@ -216,6 +215,10 @@ public class CustomerCheckHotel {
 
 	private static final int MAX_PROMOTION_ONE_OAGE = 4;
 	
+	private static final double picWidth = 200;
+	
+	private static final double picHeight = 120;
+
 	private int currentLabel = 0;
 	
 	private ArrayList<OrderVO> executedOrderList;
@@ -252,6 +255,7 @@ public class CustomerCheckHotel {
 		hotelName.setText(hotel.hotelName);
 		introduce.setText(hotel.introduction);
 		address.setText(hotel.address);
+		picLabel.setGraphic(CustomerImageGrabber.getHotelImageView(hotel.id, picWidth, picHeight));
 		int temproomnum;		// 初始化时临时存储三种剩余房间数量
 		for (int i = 0; i < hotel.roomType.size(); i++) {
 			switch (hotel.roomType.get(i)) {

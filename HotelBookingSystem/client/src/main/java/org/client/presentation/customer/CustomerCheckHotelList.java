@@ -1,6 +1,5 @@
 package org.client.presentation.customer;
 
-import java.awt.Toolkit;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -12,7 +11,6 @@ import org.client.vo.CityVO;
 import org.client.vo.HotelVO;
 import org.common.utility.HotelFilter;
 import org.common.utility.RoomType;
-import org.common.utility.TimeService;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
