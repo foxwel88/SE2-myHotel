@@ -4,7 +4,6 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.client.bl.userbl.UserController;
 import org.client.rmi.RMIHelper;
 import org.client.vo.PromotionVO;
 import org.common.dataservice.PromotionDataService.PromotionDataService;

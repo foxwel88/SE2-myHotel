@@ -21,7 +21,6 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -128,6 +127,10 @@ public class CustomerCheckHotelList {
 	
 	// 该字段表示同时显示的最大酒店数量
 	private static final int MAX_HOTEL_ONE_OAGE = 5;
+
+	private static final double IMAGE_WIDTH = 100;
+	
+	private static final double IMAGE_HEIGHT = 60;
 	
 	@FXML
 	void initialize() {
@@ -295,7 +298,7 @@ public class CustomerCheckHotelList {
 		
 		for (int i = 0; i < MAX_HOTEL_ONE_OAGE; i++) {
 			if (getName(i) != null) {
-				getImageLabel(i).setGraphic(new ImageView(getImage(i)));
+				getImageLabel(i).setGraphic(getImageView(i));
 				getNameLabel(i).setText(getName(i));
 				getStarLabel(i).setText(String.valueOf(getStar(i)));
 				getScoreLabel(i).setText(String.valueOf(getScore(i)));
@@ -542,10 +545,10 @@ public class CustomerCheckHotelList {
 	 * 下面6种方法分别用来获得某个酒店的酒店图片、名称、星级、评分、酒店地址、最低价格、剩余房间数量
 	 * @param i 范围是 0 到 MAX_HOTEL_ONE_OAGE - 1
 	 */
-	private Image getImage(int i) {
+	private ImageView getImageView(int i) {
 		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_HOTEL_ONE_OAGE + i;	// 计算当前页面第i个信息字段在arraylist中的实际位置；
 		try {
-			return CustomerImageGrabber.gethotelImage(hotelList.get(seq).id);
+			return CustomerImageGrabber.getHotelImageView((hotelList.get(seq).id), IMAGE_WIDTH, IMAGE_HEIGHT);
 		} catch (IndexOutOfBoundsException indexOutOfBoundsException) {
 			return null;
 		} catch (NullPointerException nullPointerException) {
