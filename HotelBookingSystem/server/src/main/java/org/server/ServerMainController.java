@@ -87,10 +87,6 @@ public class ServerMainController {
 			RMIHelper.getinstance().releaseConnection();
 			startButton.setText("启动服务器");
 			ServerUtil.getInstance().show("服务器停止服务");
-			ServerUtil.getInstance().show("所有用户已全部下线");
-			ServerUtil.getInstance().cleanUser();
 		}
-		
 	}
-
 }
