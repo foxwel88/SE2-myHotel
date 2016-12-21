@@ -83,7 +83,7 @@ public class WebMarketerAbnormalOrder {
 		boolean isAll = allRecBox.isSelected();
 		boolean isHalf = halfRecBox.isSelected();
 		if (!(isAll ^ isHalf)) { // both selected or neither selected
-			ResultInfoHelper.setResultLabel(resultLabel, ResultMessage.WRONG_FORMAT);
+			ResultInfoHelper.setResultLabel(resultLabel, ResultMessage.WRONG_FORMAT, 2000);
 			allRecBox.setSelected(false);
 			halfRecBox.setSelected(false);
 			return;
@@ -92,12 +92,12 @@ public class WebMarketerAbnormalOrder {
 		ResultMessage info = controller.cancelOrder(vo.orderID, isHalf == true);
 		
 		if (info != ResultMessage.SUCCESS) { // check
-			ResultInfoHelper.setResultLabel(resultLabel, info);
+			ResultInfoHelper.setResultLabel(resultLabel, info, 2000);
 			allRecBox.setSelected(false);
 			halfRecBox.setSelected(false);
 			return;
 		}
-		ResultInfoHelper.setResultLabel(resultLabel, ResultMessage.SUCCESS);
+		ResultInfoHelper.setResultLabel(resultLabel, ResultMessage.SUCCESS, 2000);
 	}
 
 	@FXML

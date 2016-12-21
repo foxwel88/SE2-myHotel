@@ -4,6 +4,7 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
 
+import org.client.presentation.util.ResultInfoHelper;
 import org.client.vo.OrderVO;
 import org.common.utility.ResultMessage;
 
@@ -70,10 +71,10 @@ public class HotelManagerAbnormalOrder {
 		ResultMessage result = HotelManagerController.getInstance().executeOrder();
 		switch(result) {
 			case SUCCESS:
-				resultLabel.setText("执行完成");
+				ResultInfoHelper.setResultLabel(resultLabel, "执行完成", 2000);
 				break;
 			default:
-				resultLabel.setText("执行遇到错误");
+				ResultInfoHelper.setResultLabel(resultLabel, "执行遇到错误", 2000);
 				break;
 		}
 	}

@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import org.client.bl.userbl.UserController;
 import org.client.blservice.userblservice.Userblservice;
 import org.client.presentation.util.CheckStyle;
+import org.client.presentation.util.ResultInfoHelper;
 import org.client.vo.UserVO;
 import org.common.utility.ResultMessage;
 import org.common.utility.UserType;
@@ -79,7 +80,7 @@ public class RegisterController {
 	}
 	
 	void show(String s) {
-		resultLabel.setText(s);
+		ResultInfoHelper.setResultLabel(resultLabel, s, 2000);
 	}
 	
 	

@@ -74,7 +74,7 @@ public class HotelManagerModifyPromotion {
 		vo.hotelName = HotelManagerController.getInstance().hotelName;
 		//界面先自己检查
 		if (!isFormatCorrect()) {
-			ResultInfoHelper.setResultLabel(resultLabel, ResultMessage.WRONG_FORMAT);
+			ResultInfoHelper.setResultLabel(resultLabel, ResultMessage.WRONG_FORMAT, 2000);
 			return;
 		} 
 		
@@ -105,7 +105,7 @@ public class HotelManagerModifyPromotion {
 		} else {
 			result = HotelManagerController.getInstance().addPromotion(vo);
 		}
-		ResultInfoHelper.setResultLabel(resultLabel, result);
+		ResultInfoHelper.setResultLabel(resultLabel, result, 2000);
 	}
 
 	@FXML

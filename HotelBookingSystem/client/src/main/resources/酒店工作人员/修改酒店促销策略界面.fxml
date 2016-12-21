@@ -57,7 +57,7 @@
                   <Button fx:id="saveButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#save" prefHeight="30.0" prefWidth="255.0" style="-fx-background-color: rgba(0,0,0,0.1);" text="提交" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                   <TextField fx:id="nameLabel" prefHeight="30.0" prefWidth="214.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-text-inner-color: white;" GridPane.columnIndex="1" />
                   <ChoiceBox fx:id="typeBox" prefWidth="150.0" style="-fx-background-color: rgba(255,255,255,0.1);" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField fx:id="discountLabel" prefHeight="30.0" prefWidth="214.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="discountLabel" prefHeight="30.0" prefWidth="173.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <DatePicker fx:id="startTimePicker" editable="false" style="-fx-background-color: rgba(255,255,255,0.1);" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   <DatePicker fx:id="endTimePicker" editable="false" style="-fx-background-color: rgba(255,255,255,0.1);" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                   <Label alignment="CENTER" prefHeight="94.0" prefWidth="126.0" text="结束时间" textFill="WHITE" GridPane.rowIndex="4">
@@ -68,6 +68,11 @@
                </children>
             </GridPane>
             <Label fx:id="resultLabel" layoutX="386.0" layoutY="432.0" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft YaHei" size="15.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="361.0" layoutY="176.0" prefHeight="46.0" prefWidth="50.0" text="折" textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>

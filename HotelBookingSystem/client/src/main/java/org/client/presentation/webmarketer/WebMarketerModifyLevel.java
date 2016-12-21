@@ -142,11 +142,11 @@ public class WebMarketerModifyLevel {
 		LevelVO levelvo = new LevelVO(levelNum, credits);
 		ResultMessage info = controller.modifyLevel(levelvo);
 		if (info != ResultMessage.SUCCESS) {
-			ResultInfoHelper.setResultLabel(resultLabel, info);
+			ResultInfoHelper.setResultLabel(resultLabel, info, 2000);
 			return;
 		}
 		// 如果修改成功，将copyList改为修改之后的，即无法取消
-		ResultInfoHelper.setResultLabel(resultLabel, info);
+		ResultInfoHelper.setResultLabel(resultLabel, info, 2000);
 		allLevelPanesCopy.clear();
 		for (int i = 0; i < allLevelPanes.size(); i++) {
 			LevelPane before = allLevelPanes.get(i);

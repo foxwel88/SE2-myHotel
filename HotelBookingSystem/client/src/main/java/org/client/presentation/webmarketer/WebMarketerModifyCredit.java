@@ -79,7 +79,7 @@ public class WebMarketerModifyCredit {
     void handleConfirm(MouseEvent event) {
 		String credit = addCreditTextField.getText();
 		if (credit == null || credit.equals("")) {
-			ResultInfoHelper.setResultLabel(resultLabel, ResultMessage.WRONG_FORMAT);
+			ResultInfoHelper.setResultLabel(resultLabel, ResultMessage.WRONG_FORMAT, 2000);
 			return;
 		}
 		
@@ -87,20 +87,20 @@ public class WebMarketerModifyCredit {
 		try {
 			creditNum = Double.parseDouble(credit);
 		} catch (RuntimeException e) {
-			ResultInfoHelper.setResultLabel(resultLabel, ResultMessage.WRONG_FORMAT);
+			ResultInfoHelper.setResultLabel(resultLabel, ResultMessage.WRONG_FORMAT, 2000);
 			return;
 		}
 		
 		ResultMessage info = controller.addCredit(creditNum);
 		if (info != ResultMessage.SUCCESS) { // check
-			ResultInfoHelper.setResultLabel(resultLabel, info);
+			ResultInfoHelper.setResultLabel(resultLabel, info, 2000);
 			return;
 		}
 		
 		//set content
 		String currentCredit = controller.getCurrentCreidt();
 		currentCreditText.setText(currentCredit);
-		ResultInfoHelper.setResultLabel(resultLabel, info);
+		ResultInfoHelper.setResultLabel(resultLabel, info, 2000);
 		addCreditTextField.setText("");
 		
 	}

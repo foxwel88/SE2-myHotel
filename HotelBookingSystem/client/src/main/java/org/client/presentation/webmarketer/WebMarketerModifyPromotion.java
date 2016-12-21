@@ -130,7 +130,7 @@ public class WebMarketerModifyPromotion {
 	@FXML
 	void handleDelete(MouseEvent event) {
 		ResultMessage info = controller.deletePromotion(vo.promotionID);
-		ResultInfoHelper.setResultLabel(delResultLabel, info);
+		ResultInfoHelper.setResultLabel(delResultLabel, info, 2000);
 		if (info == ResultMessage.SUCCESS) {
 			Parent root = null;
 			Resources resources = Resources.getInstance();
@@ -155,7 +155,7 @@ public class WebMarketerModifyPromotion {
 			vo.provider = "web";
 		}
 		if (!isFormatCorrect()) {
-			ResultInfoHelper.setResultLabel(resultLabel, ResultMessage.WRONG_FORMAT);
+			ResultInfoHelper.setResultLabel(resultLabel, ResultMessage.WRONG_FORMAT, 2000);
 			return;
 		}
 		//赋值
@@ -189,7 +189,7 @@ public class WebMarketerModifyPromotion {
 		} else {
 			result = WebMarketerController.getInstance().addPromotion(vo);
 		}
-		ResultInfoHelper.setResultLabel(resultLabel, result);
+		ResultInfoHelper.setResultLabel(resultLabel, result, 2000);
 		
 		// 如果是增加促销策略界面且增加成功，则返回上一个界面
 		if ((!isModify) && (result == ResultMessage.SUCCESS)) {

@@ -103,7 +103,7 @@ public class WebMarketerAbnormalOrderList {
 		}
 		OrderVO vo = controller.getAbnormalOrder(id);
 		if (vo.resultMessage != ResultMessage.SUCCESS) { // check
-			ResultInfoHelper.setResultLabel(infoLabel, vo.resultMessage);
+			ResultInfoHelper.setResultLabel(infoLabel, vo.resultMessage, 2000);
 			orderList = controller.getAbnormalOrders();
 			switchCurrentPage(FIRST_PAGE_NUM);
 			return;
