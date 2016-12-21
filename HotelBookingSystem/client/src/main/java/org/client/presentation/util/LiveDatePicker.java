@@ -40,6 +40,10 @@ public class LiveDatePicker {
 								setDisable(true);
 								setStyle("-fx-background-color: #ffc0cb;");
 							}
+							if (item.isAfter(LocalDate.now().plusYears(3))) {
+								setDisable(true);
+								setStyle("-fx-background-color: #ffc0cb;");
+							}
 						}
 					};
 				}

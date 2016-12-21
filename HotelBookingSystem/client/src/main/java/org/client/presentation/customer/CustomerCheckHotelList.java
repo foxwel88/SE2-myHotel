@@ -1,6 +1,8 @@
 package org.client.presentation.customer;
 
+import java.awt.Toolkit;
 import java.text.DecimalFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -10,6 +12,7 @@ import org.client.vo.CityVO;
 import org.client.vo.HotelVO;
 import org.common.utility.HotelFilter;
 import org.common.utility.RoomType;
+import org.common.utility.TimeService;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -372,7 +375,9 @@ public class CustomerCheckHotelList {
 	}
 	
 	private void setStartDate() {
-		LiveDatePicker.initDatePicker(null, fromDate);
+		DatePicker banBeforeTodayPicker = new DatePicker();
+		banBeforeTodayPicker.setValue(LocalDate.now().minusDays(1));
+		LiveDatePicker.initDatePicker(banBeforeTodayPicker, fromDate);
 	}
 	
 	private void setEndDate() {
