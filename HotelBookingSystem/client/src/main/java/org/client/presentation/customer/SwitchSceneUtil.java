@@ -3,6 +3,7 @@ package org.client.presentation.customer;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.client.bl.commentbl.CommentController;
@@ -169,6 +170,10 @@ public class SwitchSceneUtil {
 			}
 		}
 		return hotelAbnormalOrder;
+	}
+	
+	public static int getLeftRoomNum(Date from, Date to, String hid, String roomTypeString) {
+		return hotelController.getAvailableRoomNum(from, to, hid, RoomType.getType(roomTypeString));
 	}
 	
 	public static double getSingleRoomPrice(RoomType roomType) {

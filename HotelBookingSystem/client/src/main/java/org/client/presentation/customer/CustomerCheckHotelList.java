@@ -2,6 +2,7 @@ package org.client.presentation.customer;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import org.client.presentation.util.LiveDatePicker;
 import org.client.vo.AreaVO;
@@ -559,11 +560,13 @@ public class CustomerCheckHotelList {
 	
 	private int getRoomNum(int i) {
 		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_HOTEL_ONE_OAGE + i;
+		Date from = LiveDatePicker.toDate(fromDate.getValue());
+		Date to = LiveDatePicker.toDate(toDate.getValue());
 		try {
-			ArrayList<Integer> roomNumList = new ArrayList<>(hotelList.get(seq).roomNum);
+			ArrayList<String> roomTypeList = new ArrayList<>(hotelList.get(seq).roomType);
 			int totalRoomNum = 0;
-			for (int j = 0; j < roomNumList.size(); j++) {
-				totalRoomNum += roomNumList.get(j);
+			for (int j = 0; j < roomTypeList.size(); j++) {
+				totalRoomNum += SwitchSceneUtil.getLeftRoomNum(from, to, hotelList.get(seq).id, roomTypeList.get(j));
 			}
 			return totalRoomNum;
 		} catch (IndexOutOfBoundsException indexOutOfBoundsException) {

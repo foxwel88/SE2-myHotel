@@ -9,6 +9,7 @@ import org.client.vo.CommentVO;
 import org.client.vo.HotelVO;
 import org.client.vo.OrderVO;
 import org.client.vo.PromotionVO;
+import org.common.utility.RoomType;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -251,20 +252,24 @@ public class CustomerCheckHotel {
 		hotelName.setText(hotel.hotelName);
 		introduce.setText(hotel.introduction);
 		address.setText(hotel.address);
+		int temproomnum;		// 初始化时临时存储三种剩余房间数量
 		for (int i = 0; i < hotel.roomType.size(); i++) {
 			switch (hotel.roomType.get(i)) {
 				case "单人间":
-					leftNum1.setText(String.valueOf(hotel.roomNum.get(i)));
+					temproomnum = SwitchSceneUtil.getLeftRoomNum(SwitchSceneUtil.previousHotelSceneInfo.hotelFilter.schFrom, SwitchSceneUtil.previousHotelSceneInfo.hotelFilter.schTo, SwitchSceneUtil.hotelID, RoomType.SINGLE.getString());
+					leftNum1.setText(String.valueOf(temproomnum));
 					rawPrice1.setText(String.valueOf(hotel.roomPrice.get(i)));
 					currentPrice1.setText(String.valueOf(SwitchSceneUtil.getCurrentPrice(1, hotel.roomPrice.get(i))));
 					break;
 				case "套间":
-					leftNum2.setText(String.valueOf(hotel.roomNum.get(i)));
+					temproomnum = SwitchSceneUtil.getLeftRoomNum(SwitchSceneUtil.previousHotelSceneInfo.hotelFilter.schFrom, SwitchSceneUtil.previousHotelSceneInfo.hotelFilter.schTo, SwitchSceneUtil.hotelID, RoomType.BIG.getString());
+					leftNum2.setText(String.valueOf(temproomnum));
 					rawPrice2.setText(String.valueOf(hotel.roomPrice.get(i)));
 					currentPrice2.setText(String.valueOf(SwitchSceneUtil.getCurrentPrice(1, hotel.roomPrice.get(i))));
 					break;
 				case "标间":
-					leftNum3.setText(String.valueOf(hotel.roomNum.get(i)));
+					temproomnum = SwitchSceneUtil.getLeftRoomNum(SwitchSceneUtil.previousHotelSceneInfo.hotelFilter.schFrom, SwitchSceneUtil.previousHotelSceneInfo.hotelFilter.schTo, SwitchSceneUtil.hotelID, RoomType.DOUBLE.getString());
+					leftNum3.setText(String.valueOf(temproomnum));
 					rawPrice3.setText(String.valueOf(hotel.roomPrice.get(i)));
 					currentPrice3.setText(String.valueOf(SwitchSceneUtil.getCurrentPrice(1, hotel.roomPrice.get(i))));
 					break;
