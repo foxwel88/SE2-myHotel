@@ -7,8 +7,6 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -39,15 +37,7 @@
                               </Label>
                               <HBox layoutY="66.0" prefHeight="140.0" prefWidth="887.0">
                                  <children>
-                                    <Label prefHeight="153.0" prefWidth="158.0">
-                                       <graphic>
-                                          <ImageView fx:id="picture" fitHeight="132.0" fitWidth="220.0">
-                                             <image>
-                                                <Image url="@/客户/pic.jpg" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic>
-                                    </Label>
+                                    <Label fx:id="picLabel" prefHeight="153.0" prefWidth="158.0" />
                                     <AnchorPane prefHeight="144.0" prefWidth="509.0">
                                        <children>
                                           <Label fx:id="introduce" alignment="TOP_LEFT" prefHeight="90.0" prefWidth="675.0" text="       我是被酒店工作人员写出来的简介，虽然看上去好丑。。。下面的字仅仅是凑字数凑到第二行，好看看首行需要多少个空格缩进。怎么还没到第二行。。。而且7个空格也是有点迷" wrapText="true">

@@ -1,6 +1,5 @@
 package org.client.presentation.customer;
 
-import java.awt.Toolkit;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -12,7 +11,6 @@ import org.client.vo.CityVO;
 import org.client.vo.HotelVO;
 import org.common.utility.HotelFilter;
 import org.common.utility.RoomType;
-import org.common.utility.TimeService;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -290,6 +288,7 @@ public class CustomerCheckHotelList {
 			alert.setContentText("You must choose both city and area before starting search!");
 			alert.showAndWait();
 		} else {
+			currentPage.setText("1");
 			showHotelList();
 		}
 	}
@@ -311,7 +310,7 @@ public class CustomerCheckHotelList {
 				getMakeOrderLabel(i).setText("预订此酒店");
 				showHotelInfoBorder(i);
 			} else {
-				getImageLabel(i).setText("");
+				getImageLabel(i).setGraphic(null);
 				getNameLabel(i).setText("");
 				getStarLabel(i).setText("");
 				getScoreLabel(i).setText("");
