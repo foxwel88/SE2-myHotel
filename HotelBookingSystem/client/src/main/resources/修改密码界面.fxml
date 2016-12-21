@@ -13,9 +13,9 @@
    <children>
       <AnchorPane prefHeight="550.0" prefWidth="400.0" style="-fx-background-color: rgba(0,0,0,0.7);">
          <children>
-            <PasswordField fx:id="oldPwField" layoutX="41.0" layoutY="148.0" prefHeight="49.0" prefWidth="318.0" promptText="输入您的原密码" style="-fx-background-color: rgba(0,0,0,0.7); -fx-text-inner-color: white;" />
-            <PasswordField fx:id="newPwField" layoutX="41.0" layoutY="211.0" prefHeight="49.0" prefWidth="318.0" promptText="输入您的新密码" style="-fx-background-color: rgba(0,0,0,0.7); -fx-text-inner-color: white;" />
-            <PasswordField fx:id="confirmPwField" layoutX="41.0" layoutY="276.0" prefHeight="49.0" prefWidth="318.0" promptText="确认新密码" style="-fx-background-color: rgba(0,0,0,0.7); -fx-text-inner-color: white;" />
+            <PasswordField fx:id="oldPwField" layoutX="41.0" layoutY="148.0" prefHeight="49.0" prefWidth="318.0" promptText="输入您的原密码" style="-fx-background-color: rgb(30,30,32); -fx-text-inner-color: white;" />
+            <PasswordField fx:id="newPwField" layoutX="41.0" layoutY="211.0" prefHeight="49.0" prefWidth="318.0" promptText="输入您的新密码" style="-fx-background-color: rgb(30,30,32); -fx-text-inner-color: white;" />
+            <PasswordField fx:id="confirmPwField" layoutX="41.0" layoutY="276.0" prefHeight="49.0" prefWidth="318.0" promptText="确认新密码" style="-fx-background-color: rgb(30,30,32); -fx-text-inner-color: white;" />
             <Button id="loginButton" fx:id="confirmButton" defaultButton="true" layoutX="41.0" layoutY="405.0" mnemonicParsing="false" onAction="#handlePwModify" prefHeight="49.0" prefWidth="318.0" style="-fx-background-color: rgba(255,255,255,0.5);" text="修改" AnchorPane.leftAnchor="41.0">
                <font>
                   <Font name="Microsoft YaHei UI Light" size="20.0" />
