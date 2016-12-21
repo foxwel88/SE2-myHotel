@@ -21,6 +21,8 @@ public class Resources {
 	
 	public URL modify = getClass().getResource("/修改密码界面.fxml");
 
+	public URL modifyIP = getClass().getResource("/设置服务器界面.fxml");
+
 	//Images
 	public URL avatar = getClass().getResource("/profile.png");
 

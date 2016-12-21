@@ -1,7 +1,10 @@
 package org.server;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
+import java.util.List;
 
+import org.common.utility.ResultMessage;
 import org.server.data.datafactory.DataFactory;
 
 import javafx.animation.KeyFrame;
@@ -14,11 +17,13 @@ import javafx.util.Duration;
 
 public class ServerUtil {
 	private static ServerUtil util;
-	
+
+	private static List<String> nowUsers;
+
 	public Parent root;
 	
 	private ServerUtil() {
-		
+		nowUsers = new ArrayList<>();
 	}
 	
 	public static ServerUtil getInstance() {
@@ -31,15 +36,41 @@ public class ServerUtil {
 	public void setParent(Parent root) {
 		this.root = root;
 	}
-	
-	public void show(String s) {
-		TextArea textarea = (TextArea)root.lookup("#logTextArea"); 
-		try {
-			textarea.appendText(DataFactory.getInstance().getTimeServiceImpl().getCurrentTime() + "  " + s + "\n");
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+
+	public void addNowUser(String userName) {
+		nowUsers.add(userName);
+		show("用户: " + userName + " 登录");
+		setUserNum(nowUsers.size());
+	}
+
+	public ResultMessage userIsExist(String userName) {
+		if (nowUsers.indexOf(userName) != -1) {
+			return ResultMessage.EXIST;
 		}
+		return ResultMessage.NOT_EXIST;
+	}
+
+	public ResultMessage deleteNowUser(String userName) {
+		if (userIsExist(userName) == ResultMessage.NOT_EXIST) {
+			return ResultMessage.NOT_EXIST;
+		}
+		nowUsers.remove(userName);
+		show("用户: " + userName + " 登出");
+		setUserNum(nowUsers.size());
+		return ResultMessage.SUCCESS;
+	}
+
+	public void show(String s) {
+		TextArea textarea = (TextArea)root.lookup("#logTextArea");
+		KeyFrame frame = new KeyFrame(Duration.millis(1), e -> {
+			try {
+				textarea.appendText(DataFactory.getInstance().getTimeServiceImpl().getCurrentTime() + "  " + s + "\n");
+			} catch (RemoteException e1) {
+				e1.printStackTrace();
+			}
+		});
+		Timeline timeline = new Timeline(frame);
+		Platform.runLater(timeline::play);
 	}
 	
 	public void setUserNum(int x) {
@@ -47,5 +78,10 @@ public class ServerUtil {
 		KeyFrame frame = new KeyFrame(Duration.millis(1),e -> userLabel.setText("当前登录用户数: " + Integer.toString(x)));
 		Timeline timeline = new Timeline(frame);
 		Platform.runLater(timeline::play);
+	}
+
+	public void cleanUser() {
+		nowUsers = new ArrayList<>();
+		setUserNum(0);
 	}
 }

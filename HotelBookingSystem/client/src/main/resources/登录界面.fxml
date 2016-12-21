@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.launcher.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.launcher.LoginController">
    <children>
       <ImageView fitHeight="568.0" fitWidth="450.0" preserveRatio="true">
          <image>
@@ -42,6 +42,11 @@
                <effect>
                   <Bloom threshold="0.89" />
                </effect>
+            </Label>
+            <Label layoutX="180.0" layoutY="480.0" onMouseClicked="#handleIPAction" text="修改服务器地址" underline="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
             </Label>
          </children>
       </AnchorPane>

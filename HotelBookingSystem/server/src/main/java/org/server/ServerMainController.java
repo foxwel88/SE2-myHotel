@@ -64,6 +64,13 @@ public class ServerMainController {
 		}
 		String ip = addr.getHostAddress().toString();//获得本机IP
 		String address = addr.getHostName().toString();//获得本机名称
+		InetAddress ia = null;
+		try {
+			ia = InetAddress.getLocalHost();
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		}
+		ip = ia.getHostAddress();
 		ipLabel.setText("服务器ip:" + ip);
 	}
 	
@@ -72,14 +79,14 @@ public class ServerMainController {
 		if (startButton.getText().equals("启动服务器")) {
 			RMIHelper.getinstance().buildConnection();
 			DatabaseCommunicator.databaseInit();
-			ServerUtil.getInstance().show("服务器启动服务");
 			startButton.setText("停止服务器");
+			ServerUtil.getInstance().show("服务器启动服务");
+
+
 		} else {
 			RMIHelper.getinstance().releaseConnection();
-			ServerUtil.getInstance().show("服务器停止服务");
 			startButton.setText("启动服务器");
+			ServerUtil.getInstance().show("服务器停止服务");
 		}
-		
 	}
-
 }

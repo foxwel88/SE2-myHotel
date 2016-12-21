@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.mysql.fabric.Server;
 import org.common.dataservice.UserDataService.UserDataService;
 import org.common.po.CreditRecordPO;
 import org.common.po.UserPO;
@@ -33,10 +34,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 	 */
 	private static final long serialVersionUID = 2823256785769392090L;
 	
-	private static List<String> nowUsers;
-	
 	public UserDataServiceImpl() throws RemoteException {
-		nowUsers = new ArrayList<>();
 		System.out.println("user start");
 	}
 	
@@ -102,27 +100,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 		return po;
 	}
 
-	public void addNowUser(String userName) {
-		nowUsers.add(userName);
-		ServerUtil.getInstance().show("用户: " + userName + " 登录");
-		ServerUtil.getInstance().setUserNum(nowUsers.size());
-	}
-	
-	public ResultMessage userIsExist(String userName) {
-		if (nowUsers.indexOf(userName) != -1) {
-			return ResultMessage.EXIST;
-		}
-		return ResultMessage.NOT_EXIST;
-	}
-	
-	public ResultMessage deleteNowUser(String userName) {
-		if (userIsExist(userName) == ResultMessage.NOT_EXIST) {
-			return ResultMessage.NOT_EXIST;
-		}
-		nowUsers.remove(userName);
-		ServerUtil.getInstance().show("用户: " + userName + " 登出");
-		return ResultMessage.SUCCESS;
-	} 
+
 	
 	public ResultMessage add(UserPO po) throws RemoteException {
 		try {
@@ -285,6 +263,21 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 		}
 		DatabaseCommunicator.execute(preparedStatement);
 		return ResultMessage.SUCCESS;
+	}
+
+	@Override
+	public void addNowUser(String userName) throws RemoteException {
+		ServerUtil.getInstance().addNowUser(userName);
+	}
+
+	@Override
+	public ResultMessage userIsExist(String userName) throws RemoteException {
+		return ServerUtil.getInstance().userIsExist(userName);
+	}
+
+	@Override
+	public ResultMessage deleteNowUser(String userName) throws RemoteException {
+		return ServerUtil.getInstance().deleteNowUser(userName);
 	}
 
 }

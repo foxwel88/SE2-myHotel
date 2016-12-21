@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.event.EventHandler;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.WindowEvent;
 import org.client.bl.userbl.UserController;
 import org.client.blservice.userblservice.Userblservice;
@@ -141,6 +142,20 @@ public class LoginController {
 		}
 
 		
+	}
+
+	@FXML
+	void handleIPAction(MouseEvent event) {
+		Stage stage = (Stage)accountField.getScene().getWindow();
+		Resources resources = Resources.getInstance();
+		Parent root = null;
+		try {
+			root = resources.load(resources.modifyIP);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		Scene scene = new Scene(root);
+		stage.setScene(scene);
 	}
 	
 	@FXML

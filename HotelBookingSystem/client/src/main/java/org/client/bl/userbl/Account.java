@@ -28,6 +28,9 @@ public class Account {
 	
 	public ResultMessage login(String userName, String password) {
 		UserDataService dao = RMIHelper.getInstance().getUserDataServiceImpl();
+		if (dao == null) {
+			return ResultMessage.CONNECTION_FAIL;
+		}
 		ResultMessage message = null;
 		// 检查用户名/密码是否正确
 		try {
