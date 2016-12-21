@@ -16,6 +16,7 @@ import org.common.po.UserPO;
 import org.common.utility.CreditOperation;
 import org.common.utility.ResultMessage;
 import org.common.utility.UserType;
+import org.server.ServerUtil;
 import org.server.data.datafactory.DataFactory;
 import org.server.mysql.DatabaseCommunicator;
 import org.server.security.EncryptUtil;
@@ -103,10 +104,8 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 
 	public void addNowUser(String userName) {
 		nowUsers.add(userName);
-	}
-	
-	public int getNowUserNum() {
-		return nowUsers.size();
+		ServerUtil.getInstance().show("用户: " + userName + " 登录");
+		ServerUtil.getInstance().setUserNum(nowUsers.size());
 	}
 	
 	public ResultMessage userIsExist(String userName) {
@@ -121,6 +120,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 			return ResultMessage.NOT_EXIST;
 		}
 		nowUsers.remove(userName);
+		ServerUtil.getInstance().show("用户: " + userName + " 登出");
 		return ResultMessage.SUCCESS;
 	} 
 	

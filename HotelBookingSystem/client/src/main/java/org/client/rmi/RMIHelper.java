@@ -44,19 +44,15 @@ public class RMIHelper {
 	
 	public void init() {
 		try {
-			CommentDataServiceImpl = (CommentDataService)Naming.lookup("rmi://localhost:8888/CommentDataServiceObject");
-			//System.out.println("Comment succed");
-			HotelDataServiceImpl = (HotelDataService)Naming.lookup("rmi://localhost:8888/HotelDataServiceObject");
-			//System.out.println("hotel succed");
-			orderDao = (OrderDataService)Naming.lookup("rmi://localhost:8888/ChenTong");
-			//System.out.println("order succed");
-			PromotionDataServiceImpl = (PromotionDataService)Naming.lookup("rmi://localhost:8888/PromotionDataServiceObject");
-			//System.out.println("promotion succed");
-			UserDataServiceImpl = (UserDataService)Naming.lookup("rmi://localhost:8888/UserDataServiceObject");
-			//System.out.println("user succeed");
-			//System.out.println("Connect successfully");
-			timeServiceImpl = (TimeService)Naming.lookup("rmi://localhost:8888/TimeServiceObject");
-			IDUtil = (IDService)Naming.lookup("rmi://localhost:8888/IDServiceObject");
+			String ip = "localhost";
+			String port = "8888";
+			CommentDataServiceImpl = (CommentDataService)Naming.lookup("rmi://" + ip + ":" + port + "/CommentDataServiceObject");
+			HotelDataServiceImpl = (HotelDataService)Naming.lookup("rmi://" + ip + ":" + port + "/HotelDataServiceObject");
+			orderDao = (OrderDataService)Naming.lookup("rmi://" + ip + ":" + port + "/ChenTong");
+			PromotionDataServiceImpl = (PromotionDataService)Naming.lookup("rmi://" + ip + ":" + port + "/PromotionDataServiceObject");
+			UserDataServiceImpl = (UserDataService)Naming.lookup("rmi://" + ip + ":" + port + "/UserDataServiceObject");
+			timeServiceImpl = (TimeService)Naming.lookup("rmi://" + ip + ":" + port + "/TimeServiceObject");
+			IDUtil = (IDService)Naming.lookup("rmi://" + ip + ":" + port + "/IDServiceObject");
 		}
 		catch (MalformedURLException e) {
 			e.printStackTrace();

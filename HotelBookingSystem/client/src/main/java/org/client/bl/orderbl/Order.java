@@ -19,7 +19,7 @@ import org.common.utility.TimeService;
  * bl层order模块的order类
  * 用于存放一个order 并在vo po之间转化
  * @author Foxwel
- * @version 2016/12/5 Foxwel
+ * @version 2016/12/20 Foxwel
  * 
  */
 

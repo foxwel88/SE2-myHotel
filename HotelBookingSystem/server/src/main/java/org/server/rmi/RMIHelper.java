@@ -70,19 +70,20 @@ public class RMIHelper {
 	public void buildConnection() {
 		try {
 			reg = LocateRegistry.createRegistry(8888);
-			Naming.rebind("rmi://localhost:8888/CommentDataServiceObject",DataFactory.getInstance().getCommentDataServiceImpl());
+			String ip = "localhost";
+			Naming.rebind("rmi://" + ip + ":8888/CommentDataServiceObject",DataFactory.getInstance().getCommentDataServiceImpl());
 			System.out.println("comment succeed");
-			Naming.rebind("rmi://localhost:8888/HotelDataServiceObject",DataFactory.getInstance().getHotelDataServiceImpl());
+			Naming.rebind("rmi://" + ip + ":8888/HotelDataServiceObject",DataFactory.getInstance().getHotelDataServiceImpl());
 			System.out.println("hotel succeed");
-			Naming.rebind("rmi://localhost:8888/ChenTong",DataFactory.getInstance().getOrderDataServiceImpl());
+			Naming.rebind("rmi://" + ip + ":8888/ChenTong",DataFactory.getInstance().getOrderDataServiceImpl());
 			System.out.println("order succeed");
-			Naming.rebind("rmi://localhost:8888/PromotionDataServiceObject",DataFactory.getInstance().getPromotionDataServiceImpl());
+			Naming.rebind("rmi://" + ip + ":8888/PromotionDataServiceObject",DataFactory.getInstance().getPromotionDataServiceImpl());
 			System.out.println("promotion succeed");
-			Naming.rebind("rmi://localhost:8888/UserDataServiceObject",DataFactory.getInstance().getUserDataServiceImpl());
+			Naming.rebind("rmi://" + ip + ":8888/UserDataServiceObject",DataFactory.getInstance().getUserDataServiceImpl());
 			System.out.println("user succeeed");
-			Naming.rebind("rmi://localhost:8888/TimeServiceObject",DataFactory.getInstance().getTimeServiceImpl());
+			Naming.rebind("rmi://" + ip + ":8888/TimeServiceObject",DataFactory.getInstance().getTimeServiceImpl());
 
-			Naming.rebind("rmi://localhost:8888/IDServiceObject",DataFactory.getInstance().getIDUtil());
+			Naming.rebind("rmi://" + ip + ":8888/IDServiceObject",DataFactory.getInstance().getIDUtil());
 			System.out.println("Connect successfully");
 			System.out.println();
 		} catch (RemoteException e) {
