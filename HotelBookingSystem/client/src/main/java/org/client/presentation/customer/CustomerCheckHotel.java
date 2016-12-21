@@ -713,6 +713,7 @@ public class CustomerCheckHotel {
 	}
 	
 	private String promotion(int i) {
+		System.out.println(promotionCurrentPage.getText());
 		int seq = (Integer.parseInt(promotionCurrentPage.getText()) - 1) * MAX_PROMOTION_ONE_OAGE + i;	// 计算当前页面第i个信息字段在arraylist中的实际位置；
 		try {
 			return promotionVOList.get(seq).name;

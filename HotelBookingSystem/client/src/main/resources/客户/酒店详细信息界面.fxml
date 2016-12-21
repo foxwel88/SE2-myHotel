@@ -66,7 +66,7 @@
                                                 <DropShadow />
                                              </effect>
                                           </Button>
-                                          <Label fx:id="showPromotionLabel" layoutX="230.0" layoutY="118.0" onMouseClicked="#showWebPromotion" prefHeight="22.0" prefWidth="273.0" text="现在预订该酒店，即可享受以下优惠" textFill="#fffe00" underline="true">
+                                          <Label fx:id="showPromotionLabel" layoutX="230.0" layoutY="118.0" onMouseClicked="#showHotelPromotion" prefHeight="22.0" prefWidth="273.0" text="现在预订该酒店，即可享受以下优惠" textFill="#fffe00" underline="true">
                                              <font>
                                                 <Font size="16.0" />
                                              </font>
@@ -486,7 +486,7 @@
             </AnchorPane>
          </content>
       </ScrollPane>
-      <AnchorPane fx:id="promotionPane" prefHeight="567.0" prefWidth="920.0" style="-fx-background-color: rgba(200,200,200,0.55);" visible="false">
+      <AnchorPane fx:id="promotionPane" prefHeight="567.0" prefWidth="920.0" style="-fx-background-color: rgba(200,200,200,0.8);" visible="false">
          <children>
             <Circle fill="#808080" layoutX="44.0" layoutY="44.0" opacity="0.2" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
             <Label fx:id="hidePromotionButton" alignment="CENTER" layoutX="12.0" layoutY="12.0" onMouseClicked="#hidePromotion" prefHeight="61.0" prefWidth="62.0" text="&lt;">
@@ -526,17 +526,17 @@
                   <Insets left="10.0" right="10.0" />
                </padding>
             </Label>
-            <Label fx:id="previousPage" layoutX="350.0" layoutY="33.0" onMouseClicked="#turnToPreviousPage" text="&lt;上一页">
+            <Label fx:id="promotionPreviousPage" layoutX="350.0" layoutY="33.0" onMouseClicked="#turnToPreviousPage" text="&lt;上一页">
                <font>
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
             </Label>
-            <Label fx:id="nextPage" layoutX="500.0" layoutY="33.0" onMouseClicked="#turnToNextPage" text="下一页&gt;">
+            <Label fx:id="promotionNextPage" layoutX="500.0" layoutY="33.0" onMouseClicked="#turnToNextPage" text="下一页&gt;">
                <font>
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
             </Label>
-            <Label fx:id="currentPage" layoutX="450.0" layoutY="33.0" text="1">
+            <Label fx:id="promotionCurrentPage" layoutX="450.0" layoutY="33.0" text="1">
                <font>
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
