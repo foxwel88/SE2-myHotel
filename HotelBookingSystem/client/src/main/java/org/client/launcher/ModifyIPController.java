@@ -19,51 +19,51 @@ import java.util.ResourceBundle;
  */
 public class ModifyIPController {
 
-    @FXML
+	@FXML
     private ResourceBundle resources;
 
-    @FXML
+	@FXML
     private URL location;
 
-    @FXML
+	@FXML
     private TextField ipTextField;
 
-    @FXML
+	@FXML
     private Button cancelButton;
 
-    @FXML
+	@FXML
     private Button confirmButton;
 
-    @FXML
+	@FXML
     void handleCancelAction(MouseEvent event) {
-        turnToLogin();
-    }
+		turnToLogin();
+	}
 
-    @FXML
+	@FXML
     void handleConfirmAction(MouseEvent event) {
-        RMIHelper.getInstance().setIP(ipTextField.getText());
-        RMIHelper.getInstance().init();
-        turnToLogin();
-    }
+		RMIHelper.getInstance().setIP(ipTextField.getText());
+		RMIHelper.getInstance().init();
+		turnToLogin();
+	}
 
-    void turnToLogin() {
-        Resources resources = Resources.getInstance();
-        Stage stage = (Stage)ipTextField.getScene().getWindow();
-        Parent root = null;
-        try {
-            root = resources.load(resources.login);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-    }
+	void turnToLogin() {
+		Resources resources = Resources.getInstance();
+		Stage stage = (Stage)ipTextField.getScene().getWindow();
+		Parent root = null;
+		try {
+			root = resources.load(resources.login);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		Scene scene = new Scene(root);
+		stage.setScene(scene);
+	}
 
-    @FXML
-    void initialize() {
-        assert ipTextField != null : "fx:id=\"ipTextField\" was not injected: check your FXML file '设置服务器界面.fxml'.";
-        assert cancelButton != null : "fx:id=\"cancelButton\" was not injected: check your FXML file '设置服务器界面.fxml'.";
-        assert confirmButton != null : "fx:id=\"confirmButton\" was not injected: check your FXML file '设置服务器界面.fxml'.";
-        ipTextField.setText(RMIHelper.getInstance().getIP());
-    }
+	@FXML
+	void initialize() {
+	    assert ipTextField != null : "fx:id=\"ipTextField\" was not injected: check your FXML file '设置服务器界面.fxml'.";
+	    assert cancelButton != null : "fx:id=\"cancelButton\" was not injected: check your FXML file '设置服务器界面.fxml'.";
+	    assert confirmButton != null : "fx:id=\"confirmButton\" was not injected: check your FXML file '设置服务器界面.fxml'.";
+	    	ipTextField.setText(RMIHelper.getInstance().getIP());
+	}
 }
