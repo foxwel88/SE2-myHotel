@@ -16,9 +16,19 @@ import org.common.utility.TimeService;
 public class RMIHelper {
 	
 	private static RMIHelper rmihelper;
-	
+
+	private String ip;
+
 	private RMIHelper() {
-		
+		ip = "localhost";
+	}
+
+	public void setIP(String ip) {
+		this.ip = ip;
+	}
+
+	public String getIP() {
+		return ip;
 	}
 	
 	public static RMIHelper getInstance() {
@@ -44,8 +54,8 @@ public class RMIHelper {
 	
 	public void init() {
 		try {
-			String ip = "localhost";
 			String port = "8888";
+			System.out.println(ip);
 			CommentDataServiceImpl = (CommentDataService)Naming.lookup("rmi://" + ip + ":" + port + "/CommentDataServiceObject");
 			HotelDataServiceImpl = (HotelDataService)Naming.lookup("rmi://" + ip + ":" + port + "/HotelDataServiceObject");
 			orderDao = (OrderDataService)Naming.lookup("rmi://" + ip + ":" + port + "/ChenTong");

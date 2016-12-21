@@ -15,11 +15,17 @@ public class RMIHelper {
 	public static RMIHelper rmihelper;
 	
 	Remote reg;
-	
+
+	private String ip;
+
 	private RMIHelper() {
-		
+		ip = "localhost";
 	}
-	
+
+	public void setIP(String ip) {
+		this.ip = ip;
+	}
+
 	public static RMIHelper getinstance() {
 		if (rmihelper == null) {
 			rmihelper = new RMIHelper();
@@ -70,7 +76,6 @@ public class RMIHelper {
 	public void buildConnection() {
 		try {
 			reg = LocateRegistry.createRegistry(8888);
-			String ip = "localhost";
 			Naming.rebind("rmi://" + ip + ":8888/CommentDataServiceObject",DataFactory.getInstance().getCommentDataServiceImpl());
 			System.out.println("comment succeed");
 			Naming.rebind("rmi://" + ip + ":8888/HotelDataServiceObject",DataFactory.getInstance().getHotelDataServiceImpl());
