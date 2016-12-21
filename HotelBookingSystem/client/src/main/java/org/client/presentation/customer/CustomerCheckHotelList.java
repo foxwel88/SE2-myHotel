@@ -303,6 +303,7 @@ public class CustomerCheckHotelList {
 				getPriceLabel(i).setText(String.valueOf(getPrice(i)));
 				getRoomNumLabel(i).setText(String.valueOf(getRoomNum(i)));
 				getMakeOrderLabel(i).setText("预订此酒店");
+				showHotelInfoBorder(i);
 			} else {
 				getImageLabel(i).setText("");
 				getNameLabel(i).setText("");
@@ -312,6 +313,7 @@ public class CustomerCheckHotelList {
 				getPriceLabel(i).setText("");
 				getRoomNumLabel(i).setText("");
 				getMakeOrderLabel(i).setText("");
+				hideHotelInfoBorder(i);
 			}
 		}
 	}
@@ -453,12 +455,54 @@ public class CustomerCheckHotelList {
 		return (voList.size() / MAX_HOTEL_ONE_OAGE) + 1;
 	}
 	
+	private void showHotelInfoBorder(int i) {
+		Label tempLabel = (Label)getImageLabel(i);
+		tempLabel.setStyle("-fx-border-style: solid");
+		tempLabel = (Label)getStarLabel(i);
+		tempLabel.setStyle("-fx-border-style: solid");
+		tempLabel = (Label)getScoreLabel(i);
+		tempLabel.setStyle("-fx-border-style: solid");
+		tempLabel = (Label)getAddressLabel(i);
+		tempLabel.setStyle("-fx-border-style: solid");
+		tempLabel = (Label)getPriceLabel(i);
+		tempLabel.setStyle("-fx-border-style: solid");
+		tempLabel = (Label)getRoomNumLabel(i);
+		tempLabel.setStyle("-fx-border-style: solid");
+		Pane tempPane = (Pane)getNamePane(i);
+		tempPane.setStyle("-fx-border-style: solid");
+		tempPane = (Pane)getMakeOrderPane(i);
+		tempPane.setStyle("-fx-border-style: solid");
+	}
+	
+	private void hideHotelInfoBorder(int i) {
+		Label tempLabel = (Label)getImageLabel(i);
+		tempLabel.setStyle(null);
+		tempLabel = (Label)getStarLabel(i);
+		tempLabel.setStyle(null);
+		tempLabel = (Label)getScoreLabel(i);
+		tempLabel.setStyle(null);
+		tempLabel = (Label)getAddressLabel(i);
+		tempLabel.setStyle(null);
+		tempLabel = (Label)getPriceLabel(i);
+		tempLabel.setStyle(null);
+		tempLabel = (Label)getRoomNumLabel(i);
+		tempLabel.setStyle(null);
+		Pane tempPane = (Pane)getNamePane(i);
+		tempPane.setStyle(null);
+		tempPane = (Pane)getMakeOrderPane(i);
+		tempPane.setStyle(null);
+	}
+	
 	/**
-	 * 下面8个方法分别用于获得单个酒店的不同信息字段的Label的引用
+	 * 下面10个方法分别用于获得单个酒店的不同信息字段的Label的引用(其中酒店名称和下订单还有getPane的方法，供修改边框使用)
 	 * @param i 取值为0到MAX_HOTEL_ONE_OAGE - 1 表示页面上的第i个酒店
 	 */
 	private Label getImageLabel(int i) {
 		return (Label)(pictureBox.getChildren().get(i + 1));
+	}
+	
+	private Pane getNamePane(int i) {
+		return (Pane)(hotelNameBox.getChildren().get(i + 1));
 	}
 	
 	private Label getNameLabel(int i) {
@@ -483,6 +527,10 @@ public class CustomerCheckHotelList {
 	
 	private Label getRoomNumLabel(int i) {
 		return (Label)(leftRoomNumBox.getChildren().get(i + 1));
+	}
+	
+	private Pane getMakeOrderPane(int i) {
+		return (Pane)(makeOrderBox.getChildren().get(i + 1));
 	}
 	
 	private Label getMakeOrderLabel(int i) {
