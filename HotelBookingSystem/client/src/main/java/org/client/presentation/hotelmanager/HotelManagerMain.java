@@ -10,15 +10,18 @@ import java.time.ZonedDateTime;
 import java.time.chrono.ChronoLocalDate;
 import java.util.*;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.image.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.util.Callback;
 import org.client.launcher.PwModify;
 import org.client.launcher.Resources;
 import org.client.rmi.RMIHelper;
@@ -163,20 +166,6 @@ public class HotelManagerMain {
 		timeline.setCycleCount(Animation.INDEFINITE);
 		timeline.play();
 
-		HotelVO tempVO = HotelManagerController.getInstance().getHotelInfo();
-
-		hotelNameLabel.setText(tempVO.hotelName);
-
-		String imgURL = tempVO.imgURL;
-
-
-		try {
-			Image image = new Image(imgURL, 100, 60, false, true);
-			hotelImage.setImage(image);
-		} catch (IllegalArgumentException e) {
-
-		}
-
 		//房间数量
 		HotelVO hotelVO = HotelManagerController.getInstance().getHotelInfo();
 		List<Integer> roomNums = hotelVO.roomNum;
@@ -195,11 +184,56 @@ public class HotelManagerMain {
 			}
 		}
 
-		//时间默认值，显示接下来一周房源情况
-		startTimePicker.setValue(LocalDate.now());
-		endTimePicker.setValue(LocalDate.now().plusDays(7));
+		//auto-refresh roomNum every 10 seconds
+		Timeline refreshRoomNumTimeline = new Timeline(
+				new KeyFrame(Duration.seconds(0), actionEvent -> refreshBookedRoomNum()),
+				new KeyFrame(Duration.seconds(10))
+		);
+		refreshRoomNumTimeline.setCycleCount(Animation.INDEFINITE);
+		refreshRoomNumTimeline.play();
 
-		refreshBookedRoomNum();
+
+		//Hotel name and image
+		hotelNameLabel.setText(hotelVO.hotelName);
+
+		String imgURL = hotelVO.imgURL;
+
+		try {
+			Image image = new Image(imgURL, 100, 60, false, true);
+			hotelImage.setImage(image);
+		} catch (IllegalArgumentException e) {
+
+		}
+
+		//时间默认值，显示接下来一周房源情况，不可查看超过一年后的预订情况
+		startTimePicker.setValue(LocalDate.now());
+		Callback<DatePicker, DateCell> startDayCellFactory = dp -> new DateCell() {
+			@Override
+			public void updateItem(LocalDate item, boolean empty) {
+				super.updateItem(item, empty);
+
+				if (item.isBefore(LocalDate.now())) {
+					setStyle("-fx-background-color: #ffc0cb;");
+					Platform.runLater(() -> setDisable(true));
+				}
+			}
+		};
+		startTimePicker.setDayCellFactory(startDayCellFactory);
+
+		endTimePicker.setValue(LocalDate.now().plusDays(7));
+		Callback<DatePicker, DateCell> endDayCellFactory = dp -> new DateCell() {
+			@Override
+			public void updateItem(LocalDate item, boolean empty) {
+				super.updateItem(item, empty);
+
+				if (item.isAfter(LocalDate.now().plusYears(1))) {
+					setStyle("-fx-background-color: #ffc0cb;");
+					Platform.runLater(() -> setDisable(true));
+				}
+			}
+		};
+		endTimePicker.setDayCellFactory(endDayCellFactory);
+
 	}
 
 }
