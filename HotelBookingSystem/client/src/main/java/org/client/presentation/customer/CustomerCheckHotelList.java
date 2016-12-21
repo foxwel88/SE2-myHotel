@@ -3,7 +3,6 @@ package org.client.presentation.customer;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 import org.client.presentation.util.LiveDatePicker;
 import org.client.vo.AreaVO;
@@ -28,8 +27,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 
 /**
  * 
@@ -100,31 +99,27 @@ public class CustomerCheckHotelList {
 	TextField toPage;
 	
 	/*
-	 * 接下来的7个成员变量是酒店信息的容器
+	 * 接下来的5个成员变量是酒店信息的容器
 	 */
 	@FXML
-	VBox pictureBox;			// 酒店缩略示意图列表
+	HBox hotel1;
 	
 	@FXML
-	VBox hotelNameBox;			// 酒店姓名列表
+	HBox hotel2;
 	
 	@FXML
-	VBox starAndScoreBox;		// 酒店星级和评分列表，注意：这个VBox的子组件比其他多
+	HBox hotel3;
 	
 	@FXML
-	VBox hotelAddressBox;		// 酒店地址列表
+	HBox hotel4;
 	
 	@FXML
-	VBox priceBox;				// 酒店最低价
-	
-	@FXML
-	VBox leftRoomNumBox;		// 酒店剩余房间
-	
-	@FXML
-	VBox makeOrderBox;			// 预定该酒店
+	HBox hotel5;
 	/******************************************************************/
 	
 	private ArrayList<HotelVO> hotelList;
+	
+	private ArrayList<HBox> hotelBoxList;
 	
 	// 该字段表示同时显示的最大酒店数量
 	private static final int MAX_HOTEL_ONE_OAGE = 5;
@@ -135,6 +130,13 @@ public class CustomerCheckHotelList {
 	
 	@FXML
 	void initialize() {
+		hotelBoxList = new ArrayList<>();
+		hotelBoxList.add(hotel1);
+		hotelBoxList.add(hotel2);
+		hotelBoxList.add(hotel3);
+		hotelBoxList.add(hotel4);
+		hotelBoxList.add(hotel5);
+		
 		SwitchSceneUtil.canBack = false;
 		setCity();
 		setArea();
@@ -306,9 +308,7 @@ public class CustomerCheckHotelList {
 				getScoreLabel(i).setText(String.valueOf(getScore(i)));
 				getAddressLabel(i).setText(getAddress(i));
 				getPriceLabel(i).setText(String.valueOf(getPrice(i)));
-				getRoomNumLabel(i).setText(String.valueOf(getRoomNum(i)));
 				getMakeOrderLabel(i).setText("预订此酒店");
-				showHotelInfoBorder(i);
 			} else {
 				getImageLabel(i).setGraphic(null);
 				getNameLabel(i).setText("");
@@ -316,9 +316,7 @@ public class CustomerCheckHotelList {
 				getScoreLabel(i).setText("");
 				getAddressLabel(i).setText("");
 				getPriceLabel(i).setText("");
-				getRoomNumLabel(i).setText("");
 				getMakeOrderLabel(i).setText("");
-				hideHotelInfoBorder(i);
 			}
 		}
 	}
@@ -462,91 +460,51 @@ public class CustomerCheckHotelList {
 		return (voList.size() / MAX_HOTEL_ONE_OAGE) + 1;
 	}
 	
-	private void showHotelInfoBorder(int i) {
-		Label tempLabel = (Label)getImageLabel(i);
-		tempLabel.setStyle("-fx-border-style: solid");
-		tempLabel = (Label)getStarLabel(i);
-		tempLabel.setStyle("-fx-border-style: solid");
-		tempLabel = (Label)getScoreLabel(i);
-		tempLabel.setStyle("-fx-border-style: solid");
-		tempLabel = (Label)getAddressLabel(i);
-		tempLabel.setStyle("-fx-border-style: solid");
-		tempLabel = (Label)getPriceLabel(i);
-		tempLabel.setStyle("-fx-border-style: solid");
-		tempLabel = (Label)getRoomNumLabel(i);
-		tempLabel.setStyle("-fx-border-style: solid");
-		Pane tempPane = (Pane)getNamePane(i);
-		tempPane.setStyle("-fx-border-style: solid");
-		tempPane = (Pane)getMakeOrderPane(i);
-		tempPane.setStyle("-fx-border-style: solid");
-	}
-	
-	private void hideHotelInfoBorder(int i) {
-		Label tempLabel = (Label)getImageLabel(i);
-		tempLabel.setStyle(null);
-		tempLabel = (Label)getStarLabel(i);
-		tempLabel.setStyle(null);
-		tempLabel = (Label)getScoreLabel(i);
-		tempLabel.setStyle(null);
-		tempLabel = (Label)getAddressLabel(i);
-		tempLabel.setStyle(null);
-		tempLabel = (Label)getPriceLabel(i);
-		tempLabel.setStyle(null);
-		tempLabel = (Label)getRoomNumLabel(i);
-		tempLabel.setStyle(null);
-		Pane tempPane = (Pane)getNamePane(i);
-		tempPane.setStyle(null);
-		tempPane = (Pane)getMakeOrderPane(i);
-		tempPane.setStyle(null);
-	}
-	
 	/**
-	 * 下面10个方法分别用于获得单个酒店的不同信息字段的Label的引用(其中酒店名称和下订单还有getPane的方法，供修改边框使用)
+	 * 下面8个方法分别用于获得单个酒店的不同信息字段的Label的引用
 	 * @param i 取值为0到MAX_HOTEL_ONE_OAGE - 1 表示页面上的第i个酒店
 	 */
 	private Label getImageLabel(int i) {
-		return (Label)(pictureBox.getChildren().get(i + 1));
+		return (Label)hotelBoxList.get(i).getChildren().get(0);
 	}
 	
-	private Pane getNamePane(int i) {
-		return (Pane)(hotelNameBox.getChildren().get(i + 1));
+	// get pane including labels of name/star/address/rank
+	private Pane getMostHotelInfoPane(int i) {
+		return (Pane)hotelBoxList.get(i).getChildren().get(1);
 	}
 	
 	private Label getNameLabel(int i) {
-		return (Label)((Pane)(hotelNameBox.getChildren().get(i + 1))).getChildren().get(0);
+		return (Label)((HBox)getMostHotelInfoPane(i).getChildren().get(0)).getChildren().get(0);
 	}
 	
 	private Label getStarLabel(int i) {
-		return (Label)(starAndScoreBox.getChildren().get(2 * i + 1));
-	}
-	
-	private Label getScoreLabel(int i) {
-		return (Label)(starAndScoreBox.getChildren().get(2 * i + 2));
+		return (Label)((HBox)getMostHotelInfoPane(i).getChildren().get(0)).getChildren().get(1);
 	}
 	
 	private Label getAddressLabel(int i) {
-		return (Label)(hotelAddressBox.getChildren().get(i + 1));
+		return (Label)(getMostHotelInfoPane(i).getChildren().get(1));
+	}
+	
+	private Label getScoreLabel(int i) {
+		return (Label)(getMostHotelInfoPane(i).getChildren().get(2));
 	}
 	
 	private Label getPriceLabel(int i) {
-		return (Label)(priceBox.getChildren().get(i + 1));
+		return (Label)hotelBoxList.get(i).getChildren().get(2);
 	}
 	
-	private Label getRoomNumLabel(int i) {
-		return (Label)(leftRoomNumBox.getChildren().get(i + 1));
-	}
-	
-	private Pane getMakeOrderPane(int i) {
-		return (Pane)(makeOrderBox.getChildren().get(i + 1));
+	// 用于获得那个“起”字
+	private Label getPriceTailLabel(int i) {
+		return (Label)hotelBoxList.get(i).getChildren().get(3);
 	}
 	
 	private Label getMakeOrderLabel(int i) {
-		return (Label)((Pane)(makeOrderBox.getChildren().get(i + 1))).getChildren().get(0);
+		return (Label)(getMostHotelInfoPane(i).getChildren().get(3));
 	}
 	/********************************************************/
 	
 	/**
-	 * 下面6种方法分别用来获得某个酒店的酒店图片、名称、星级、评分、酒店地址、最低价格、剩余房间数量
+	 * 下面5种方法分别用来获得某个酒店的酒店图片、名称、星级、评分、酒店地址、最低价格
 	 * @param i 范围是 0 到 MAX_HOTEL_ONE_OAGE - 1
 	 */
 	private ImageView getImageView(int i) {
@@ -613,20 +571,5 @@ public class CustomerCheckHotelList {
 		}
 	}
 	
-	private int getRoomNum(int i) {
-		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_HOTEL_ONE_OAGE + i;
-		Date from = LiveDatePicker.toDate(fromDate.getValue());
-		Date to = LiveDatePicker.toDate(toDate.getValue());
-		try {
-			ArrayList<String> roomTypeList = new ArrayList<>(hotelList.get(seq).roomType);
-			int totalRoomNum = 0;
-			for (int j = 0; j < roomTypeList.size(); j++) {
-				totalRoomNum += SwitchSceneUtil.getLeftRoomNum(from, to, hotelList.get(seq).id, roomTypeList.get(j));
-			}
-			return totalRoomNum;
-		} catch (IndexOutOfBoundsException indexOutOfBoundsException) {
-			return -1;
-		}
-	}
-	/**************************************************************************************/
+/**************************************************************************************/
 }

@@ -27,7 +27,7 @@
             <Font name="Microsoft YaHei UI Light" size="28.0" />
          </font>
       </Label>
-      <Label fx:id="showPromotionLabel" layoutX="627.0" layoutY="508.0" onMouseClicked="#showWebPromotion" prefHeight="22.0" prefWidth="240.0" text="现在订酒店，即可享受以下优惠" textFill="#fffe00" underline="true">
+      <Label fx:id="showPromotionLabel" layoutX="627.0" layoutY="508.0" onMouseClicked="#showWebPromotion" prefHeight="22.0" prefWidth="240.0" text="现在订酒店，即可享受以下优惠" textFill="RED" underline="true">
          <font>
             <Font size="16.0" />
          </font>

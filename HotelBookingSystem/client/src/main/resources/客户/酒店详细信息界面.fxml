@@ -30,7 +30,7 @@
                      <children>
                         <AnchorPane>
                            <children>
-                              <Label fx:id="hotelName" alignment="CENTER" prefHeight="69.0" prefWidth="908.0" text="南京美利坚大酒店" textFill="#da0095">
+                              <Label fx:id="hotelName" alignment="CENTER" prefHeight="69.0" prefWidth="908.0" text="南京美利坚大酒店" textFill="#9a6d31">
                                  <font>
                                     <Font name="Microsoft YaHei" size="31.0" />
                                  </font>
@@ -56,7 +56,7 @@
                                                 <DropShadow />
                                              </effect>
                                           </Button>
-                                          <Label fx:id="showPromotionLabel" layoutX="230.0" layoutY="118.0" onMouseClicked="#showHotelPromotion" prefHeight="22.0" prefWidth="273.0" text="现在预订该酒店，即可享受以下优惠" textFill="#fffe00" underline="true">
+                                          <Label fx:id="showPromotionLabel" layoutX="230.0" layoutY="118.0" onMouseClicked="#showHotelPromotion" prefHeight="22.0" prefWidth="273.0" text="现在预订该酒店，即可享受以下优惠" textFill="RED" underline="true">
                                              <font>
                                                 <Font size="16.0" />
                                              </font>
