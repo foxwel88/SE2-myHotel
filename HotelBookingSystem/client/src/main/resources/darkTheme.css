@@ -33,3 +33,12 @@
 .date-picker .text-field {
     -fx-control-inner-background: dimgray ;
 }
+
+.button {
+    -fx-text-fill: #dddddd;
+}
+
+.button:hover { 
+    -fx-text-fill: #ffffff;
+    -fx-effect: dropshadow(three-pass-box, #000000, 5, 0.5, 2, 2);
+}

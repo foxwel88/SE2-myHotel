@@ -258,7 +258,7 @@ public class WebManagerGuide {
 	@FXML
 	void modifyPassword() {
 		AnchorPane mask = new AnchorPane();
-		mask.setStyle("-fx-background-color:rgba(0,0,0,0.5)");
+		mask.setStyle("-fx-background-color:rgba(0,0,0,0.9)");
 		mask.setLayoutX(0);
 		mask.setLayoutY(0);
 		mask.setPrefSize(1103.0, 683.0);

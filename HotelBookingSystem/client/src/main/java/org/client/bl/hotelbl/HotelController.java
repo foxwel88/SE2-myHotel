@@ -71,7 +71,7 @@ public class HotelController implements Hotelblservice {
 
 		//再根据房间价格和数量做进一步的筛选
 		for (HotelVO vo: list) {
-			if (isRoomInfoMatched(vo.id, filter)) {
+			if (isRoomInfoMatched(vo, filter)) {
 				result.add(vo);
 			}
 		}
@@ -82,8 +82,7 @@ public class HotelController implements Hotelblservice {
 	 * 满足条件要求：若filter中指定房间类型，该类型的价格和数量满足要求
 	 *               若filter没有指定房间类型，则只要同时有房间满足价格要求且房间总数满足数量要求即可
 	 * */
-	private boolean isRoomInfoMatched(String hotelId, HotelFilter filter) {
-		HotelVO vo = getHotelVO(hotelId);
+	private boolean isRoomInfoMatched(HotelVO vo, HotelFilter filter) {
 		List<Double> prices = vo.roomPrice;
 		List<String> types = vo.roomType;
 
@@ -91,7 +90,7 @@ public class HotelController implements Hotelblservice {
 			for (int i = 0; i < types.size(); i++) {
 				if (types.get(i).equals(filter.roomType.getString())) {
 					if (prices.get(i) >= filter.minPrice && prices.get(i) <= filter.maxPrice
-							&& getAvailableRoomNum(filter.schFrom, filter.schTo, hotelId, RoomType.getType(types.get(i))) >= filter.roomNum) {
+							&& getAvailableRoomNum(filter.schFrom, filter.schTo, vo.id, RoomType.getType(types.get(i))) >= filter.roomNum) {
 						return true;
 					}
 				}
@@ -100,7 +99,7 @@ public class HotelController implements Hotelblservice {
 			int requiredNum = filter.roomNum;
 			for (int i = 0; i < types.size(); i++) {
 				if (prices.get(i) >= filter.minPrice && prices.get(i) <= filter.maxPrice) {
-					requiredNum -= getAvailableRoomNum(filter.schFrom, filter.schTo, hotelId, RoomType.getType(types.get(i)));
+					requiredNum -= getAvailableRoomNum(filter.schFrom, filter.schTo, vo.id, RoomType.getType(types.get(i)));
 				}
 				if (requiredNum <= 0) {
 					return true;
