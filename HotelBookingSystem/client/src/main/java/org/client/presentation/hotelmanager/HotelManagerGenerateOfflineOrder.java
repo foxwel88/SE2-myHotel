@@ -14,6 +14,7 @@ import org.common.utility.RoomType;
 import java.util.ArrayList;
 
 /**
+ * 生成线下订单（线下入住登记）界面
  * @author Hirico
  * @version 2016/12/20 Hirico
  */
@@ -45,6 +46,7 @@ public class HotelManagerGenerateOfflineOrder {
 
 	private Pane parent;
 
+	/**获得Parent的引用，用以完成操作后返回上一界面 */
 	public void setParentPane(Pane directParent) {
 		parent = directParent;
 	}
@@ -58,12 +60,21 @@ public class HotelManagerGenerateOfflineOrder {
 		roomNum.setText("1");
 	}
 
-	/*
-	 * 此方法会检查订单格式，如果格式正确则跳转到确认订单界面
-	 */
 	@FXML
 	void commitOrder() {
-		if (checkPhoneNumberFormat()) {
+		if (!checkCustomerName()) {
+			Alert alert = new Alert(Alert.AlertType.WARNING);
+			alert.setTitle("Sorry, please check your entry again.");
+			alert.setHeaderText(null);
+			alert.setContentText("请输入客户姓名");
+			alert.showAndWait();
+		} else if (!checkPhoneNumberFormat()) {
+			Alert alert = new Alert(Alert.AlertType.WARNING);
+			alert.setTitle("Sorry, please check your entry again.");
+			alert.setHeaderText(null);
+			alert.setContentText("电话格式不正确(应为11位中国区号码)");
+			alert.showAndWait();
+		} else {
 			try {
 				OrderVO newOrder = new OrderVO("", OrderType.OFFLINE.getString(), null, LiveDatePicker.toDate(schFromDate.getValue()), LiveDatePicker.toDate(schToDate.getValue()),
 						null, null, LiveDatePicker.toDate(schFromDate.getValue().plusDays(1)), null, HotelManagerController.getInstance().hotelID,
@@ -78,12 +89,6 @@ public class HotelManagerGenerateOfflineOrder {
 				alert.setContentText("住宿人姓名、房间数量和入住人数均不能为空");
 				alert.showAndWait();
 			}
-		} else {
-			Alert alert = new Alert(Alert.AlertType.WARNING);
-			alert.setTitle("Sorry, please check your entry again.");
-			alert.setHeaderText(null);
-			alert.setContentText("电话格式不正确(应为11位中国区号码)");
-			alert.showAndWait();
 		}
 	}
 
@@ -104,18 +109,13 @@ public class HotelManagerGenerateOfflineOrder {
 		roomType.setItems(FXCollections.observableArrayList(roomTypeList));
 	}
 
-	private int getRoomNum() {
-		try {
-			int rooms = Integer.parseInt(roomNum.getText());
-			return rooms;
-		} catch (NumberFormatException unNumberFormatException) {
-			return 0;
-		}
-	}
-
 	private boolean checkPhoneNumberFormat() {
 		String phoneString = phoneNumber.getText();
 		return CheckStyle.checkPhone(phoneString);
+	}
+
+	private boolean checkCustomerName() {
+		return !customerName.getText().isEmpty();
 	}
 
 }
