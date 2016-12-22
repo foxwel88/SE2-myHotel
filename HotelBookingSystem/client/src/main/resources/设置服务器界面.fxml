@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -10,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.launcher.ModifyIPController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.launcher.ModifyIPController">
    <children>
       <ImageView fitHeight="568.0" fitWidth="450.0" preserveRatio="true">
          <image>
@@ -27,6 +28,9 @@
                <font>
                   <Font name="Microsoft YaHei UI Light" size="20.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
             <Button id="loginButton" fx:id="confirmButton" defaultButton="true" layoutX="66.0" layoutY="275.0" mnemonicParsing="false" onMouseClicked="#handleConfirmAction" prefHeight="49.0" prefWidth="318.0" style="-fx-background-color: rgba(255,255,255,0.5);" text="确认" AnchorPane.leftAnchor="66.0">
                <font>
@@ -35,6 +39,9 @@
                <effect>
                   <ColorAdjust contrast="0.2" />
                </effect>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
             <Label layoutX="101.0" layoutY="112.0" text="请输入服务器IP地址" textFill="WHITE">
                <font>

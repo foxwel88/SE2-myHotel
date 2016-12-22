@@ -205,6 +205,7 @@ public class CustomerCheckHotelList {
 			}
 			fromDate.setValue(LiveDatePicker.toLocalDate(previousFilter.schFrom));
 			toDate.setValue(LiveDatePicker.toLocalDate(previousFilter.schTo));
+			SwitchSceneUtil.isBack = false;
 		}
 		showHotelList();
 		SwitchSceneUtil.showGuideAnimation(root, 0);

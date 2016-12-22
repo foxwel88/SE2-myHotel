@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -11,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="567.0" prefWidth="920.0" style="-fx-background-color: rgba(255,255,255,0.4);" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.presentation.webmanager.WebManagerCheckWebMarketer">
+<AnchorPane prefHeight="567.0" prefWidth="920.0" style="-fx-background-color: rgba(255,255,255,0.4);" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.presentation.webmanager.WebManagerCheckWebMarketer">
    <effect>
       <DropShadow />
    </effect>
@@ -69,6 +70,9 @@
                <font>
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
             <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
                <children>
@@ -76,11 +80,17 @@
                      <font>
                         <Font name="Microsoft YaHei" size="15.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                   <Button fx:id="addUserButton" layoutX="131.0" layoutY="-3.0" mnemonicParsing="false" onMouseClicked="#handleAddAction" prefHeight="24.0" prefWidth="102.0" text="增加账号">
                      <font>
                         <Font name="Microsoft YaHei" size="15.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                </children>
             </Pane>

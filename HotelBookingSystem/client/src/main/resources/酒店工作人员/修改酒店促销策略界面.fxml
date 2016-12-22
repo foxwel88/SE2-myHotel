@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
@@ -54,7 +55,10 @@
                         <Font name="Microsoft YaHei" size="15.0" />
                      </font>
                   </Label>
-                  <Button fx:id="saveButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#save" prefHeight="30.0" prefWidth="255.0" style="-fx-background-color: rgba(0,0,0,0.1);" text="提交" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <Button fx:id="saveButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#save" prefHeight="30.0" prefWidth="255.0" style="-fx-background-color: rgba(0,0,0,0.1);" text="提交" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
                   <TextField fx:id="nameLabel" prefHeight="23.0" prefWidth="214.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-text-inner-color: white;" GridPane.columnIndex="1" />
                   <ChoiceBox fx:id="typeBox" prefHeight="23.0" prefWidth="150.0" style="-fx-background-color: rgba(255,255,255,0.1);" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <TextField fx:id="discountLabel" prefHeight="23.0" prefWidth="173.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
