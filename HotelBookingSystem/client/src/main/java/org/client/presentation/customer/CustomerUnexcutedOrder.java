@@ -26,6 +26,9 @@ public class CustomerUnexcutedOrder {
 	private AnchorPane root;
 
 	@FXML
+	private AnchorPane curtain;
+
+	@FXML
 	private Label orderIDLabel;
 
 	@FXML
@@ -94,6 +97,8 @@ public class CustomerUnexcutedOrder {
 		schTimeLabel.setText(LiveDatePicker.dateToCoarseString(vo.schFrom) + " - " + LiveDatePicker.dateToCoarseString(vo.schTo));
 		generatedTimeLabel.setText(LiveDatePicker.dateToDetaildString(vo.generatedDate));
 		priceLabel.setText(String.valueOf(vo.totalPrice));
+		
+		SwitchSceneUtil.showLevelTwoSceneAnimation(root, curtain);
 	}
 	
 	@FXML

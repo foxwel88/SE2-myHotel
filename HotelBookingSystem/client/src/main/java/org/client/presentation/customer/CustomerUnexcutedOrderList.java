@@ -60,6 +60,9 @@ public class CustomerUnexcutedOrderList {
 	Label nextPage;
 	
 	@FXML
+	Label curtain;
+	
+	@FXML
 	TextField toPage;
 	
 	private ArrayList<HBox> boxList;
@@ -134,6 +137,7 @@ public class CustomerUnexcutedOrderList {
 		try {
 			for (int i = 0; i < MAX_ORDER_ONE_OAGE; i++) {
 				if (((event.getSource())).equals(boxList.get(i))) {
+					SwitchSceneUtil.showFoldTagAnimation(curtain);
 					orderID = unExcutedOrderList.get((page - 1) * MAX_ORDER_ONE_OAGE + i).orderID;
 					SwitchSceneUtil.currentScene = CustomerBackableScene.UNEXECUTED_ORDER_SCENE;
 					SwitchSceneUtil.previousOrderSceneInfo = new PreviousOrderSceneInfo(Integer.parseInt(currentPage.getText()));

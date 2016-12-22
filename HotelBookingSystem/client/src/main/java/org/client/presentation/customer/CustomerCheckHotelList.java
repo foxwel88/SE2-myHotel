@@ -357,7 +357,7 @@ public class CustomerCheckHotelList {
 			} else {
 				getImageLabel(i).setGraphic(null);
 				getNameLabel(i).setText("");
-				getStarLabel(i).setText("");
+				getStarLabel(i).setGraphic(null);
 				getScoreHeadLabel(i).setText("");
 				getScoreLabel(i).setText("");
 				getAddressLabel(i).setText("");
