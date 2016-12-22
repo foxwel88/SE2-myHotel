@@ -31,7 +31,7 @@
                </font>
             </Label>
             <TextField fx:id="hotelName" layoutX="395.0" layoutY="16.0" prefHeight="27.0" prefWidth="389.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.topAnchor="16.0" />
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="465.0" layoutY="98.0" prefHeight="22.0" prefWidth="183.0" text="只显示曾经预定过的酒店" textFill="#ccf57a" wrapText="true" AnchorPane.topAnchor="98.0">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="465.0" layoutY="98.0" prefHeight="22.0" prefWidth="183.0" text="只显示曾经预订过的酒店" textFill="#ccf57a" wrapText="true" AnchorPane.topAnchor="98.0">
                <font>
                   <Font name="Microsoft JhengHei" size="16.0" />
                </font>
@@ -105,7 +105,7 @@
                   <Font name="Microsoft JhengHei" size="15.0" />
                </font>
             </Label>
-            <DatePicker fx:id="fromDate" editable="false" layoutX="65.0" layoutY="96.0" prefHeight="23.0" prefWidth="134.0" />
+            <DatePicker fx:id="fromDate" editable="false" layoutX="65.0" layoutY="96.0" onAction="#refreshDatePicker" prefHeight="23.0" prefWidth="134.0" />
             <DatePicker fx:id="toDate" editable="false" layoutX="305.0" layoutY="97.0" prefHeight="23.0" prefWidth="134.0" />
          </children>
       </AnchorPane>
@@ -145,7 +145,7 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <Label layoutX="382.0" prefHeight="39.0" text="好评：">
+                        <Label layoutX="382.0" prefHeight="39.0" text="评分：">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -201,7 +201,7 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <Label layoutX="382.0" prefHeight="39.0" text="好评：">
+                        <Label layoutX="382.0" prefHeight="39.0" text="评分：">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -257,7 +257,7 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <Label layoutX="382.0" prefHeight="39.0" text="好评：">
+                        <Label layoutX="382.0" prefHeight="39.0" text="评分：">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -313,7 +313,7 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <Label layoutX="382.0" prefHeight="39.0" text="好评：">
+                        <Label layoutX="382.0" prefHeight="39.0" text="评分：">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -369,7 +369,7 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <Label layoutX="382.0" prefHeight="39.0" text="好评：">
+                        <Label layoutX="382.0" prefHeight="39.0" text="评分：">
                            <font>
                               <Font size="16.0" />
                            </font>
