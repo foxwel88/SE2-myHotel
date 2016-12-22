@@ -41,7 +41,7 @@ public class ServerUtil {
 		this.root = root;
 		if (fileWriter == null) {
 			try {
-				fileWriter = new FileWriter("/server_log.txt", true);
+				fileWriter = new FileWriter("server_log.txt", true);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
