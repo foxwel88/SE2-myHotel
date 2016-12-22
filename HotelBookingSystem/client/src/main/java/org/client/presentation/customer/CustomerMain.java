@@ -3,8 +3,13 @@ package org.client.presentation.customer;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.scene.control.ChoiceBox;
 import org.client.bl.promotionbl.PromotionController;
 import org.client.rmi.RMIHelper;
+import org.client.vo.AreaVO;
+import org.client.vo.CityVO;
 import org.client.vo.PromotionVO;
 
 import javafx.animation.Animation;
@@ -18,10 +23,10 @@ import javafx.util.Duration;
 public class CustomerMain {
 	@FXML
 	AnchorPane root;
-	
+
 	@FXML
-	Label time;
-	
+	AnchorPane promotionPane;
+
 	@FXML
 	Label showPromotionLabel;
 	
@@ -47,11 +52,14 @@ public class CustomerMain {
 	Label promotion4;
 	
 	@FXML
-	AnchorPane promotionPane;
-	
-	@FXML
 	Label hidePromotionButton;
-	
+
+	@FXML
+	ChoiceBox<String> city;
+
+	@FXML
+	ChoiceBox<String> area;
+
 	// 该字段表示同时显示的最大促销策略的数量
 	private static final int MAX_PROMOTION_ONE_OAGE = 4;
 	
@@ -59,23 +67,48 @@ public class CustomerMain {
 	
 	private ArrayList<PromotionVO> promotionVOList;
 
+	private void setCity() {
+		ArrayList<String> cityNameList = new ArrayList<>();
+		ArrayList<CityVO> cityVOList = SwitchSceneUtil.getCities();
+		for (CityVO vo : cityVOList) {
+			cityNameList.add(vo.cityName);
+		}
+		city.setItems(FXCollections.observableArrayList(cityNameList));
+	}
+
+	private void setArea() {
+		ArrayList<String> areaNameList = new ArrayList<>();
+		try {
+			ArrayList<AreaVO> areaVOList = SwitchSceneUtil.getAreas(city.getValue());
+			for (AreaVO vo : areaVOList) {
+				areaNameList.add(vo.address);
+			}
+			area.setItems(FXCollections.observableArrayList(areaNameList));
+		} catch (NullPointerException nullPointerException) {
+			area.setItems(null);
+		}
+	}
+
+	@FXML
+	void refreshAreas() {
+		setArea();
+		area.setValue(area.getItems().get(0));
+	}
+
 	@FXML
 	void initialize() {
-		assert time != null : "fx:id=\"time\" was not injected: check your FXML file '酒店工作人员主界面.fxml'.";
+		setCity();
+		city.setValue("南京");
+		setArea();
+
+
+		area.setValue("新街口");
+
+		city.getSelectionModel().selectedItemProperty().addListener( (ObservableValue< ? extends String> observable, String oldValue, String newValue) -> {
+			refreshAreas();
+		});
 
 		SwitchSceneUtil.showGuideAnimation(root, -200);
-		
-		// clock
-		Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0), actionEvent -> {
-			try {
-				time.setText("当前时间：" + RMIHelper.getInstance().getTimeServiceImpl().getCurrentTime());
-			} catch (RemoteException e) {
-				e.printStackTrace();
-			}
-		}), new KeyFrame(Duration.seconds(1)));
-		timeline.setCycleCount(Animation.INDEFINITE);
-		timeline.play();
-		
 		promotionLabelList = new ArrayList<>();
 		promotionLabelList.add(promotion1);
 		promotionLabelList.add(promotion2);
