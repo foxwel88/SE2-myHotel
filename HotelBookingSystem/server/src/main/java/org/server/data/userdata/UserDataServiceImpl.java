@@ -187,6 +187,9 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 	}
 
 	public ResultMessage Check(String userName, String password) throws RemoteException {
+		if (userName.equals("") || password.equals("")) {
+			return ResultMessage.WRONG_VALUE;
+		}
 		ResultMessage info = ResultMessage.WRONG_PASSWORD;
 		try {
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance()

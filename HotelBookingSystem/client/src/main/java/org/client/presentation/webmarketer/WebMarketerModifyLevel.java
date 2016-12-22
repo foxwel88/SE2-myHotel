@@ -256,7 +256,7 @@ public class WebMarketerModifyLevel {
 			}
 			
 			// set effect
-			this.setStyle("-fx-background-color:rgba(0,0,0,0.45)");
+			this.setStyle("-fx-background-color: rgba(0,20,81,0.45)");
 			levelName.setFont(Font.font("Microsoft YaHei Light", 19));
 			levelName.setStyle("-fx-fill: white");
 			credit.setFont(Font.font("Microsoft YaHei", 16));

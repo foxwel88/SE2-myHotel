@@ -206,7 +206,7 @@ public class WebMarketerCheckPromotion {
 		}
 		for (int i = lastIndex; i < NUM_OF_PROMOTION_PER_PAGE; i++) {
 			AnchorPane blackPane = new AnchorPane();
-			blackPane.setStyle("-fx-background-color:rgba(0,0,0,0.45)");
+			blackPane.setStyle("-fx-background-color: rgba(0,20,81,0.45)");
 			contentGridPane.add(blackPane, 0, i * 2);
 		}
 		
@@ -236,7 +236,7 @@ public class WebMarketerCheckPromotion {
 			delete = new Button("删除");
 			
 			// set effect
-			this.setStyle("-fx-background-color:rgba(0,0,0,0.45)");
+			this.setStyle("-fx-background-color: rgba(0,20,81,0.45)");
 			name.setFont(Font.font("Microsoft YaHei Light", 19));
 			name.setStyle("-fx-fill: white");
 			name.setWrappingWidth(183.0);
@@ -250,9 +250,9 @@ public class WebMarketerCheckPromotion {
 			discount.setWrappingWidth(110.0);
 			discount.setTextAlignment(TextAlignment.CENTER);
 			detail.setFont(Font.font("Microsoft YaHei", 15));
-			detail.setStyle("-fx-background-color:rgba(0,0,0,0.2); -fx-text-fill: white");
+			detail.setStyle("-fx-background-color: rgba(0,20,81,0.45); -fx-text-fill: white");
 			delete.setFont(Font.font("Microsoft YaHei", 15));
-			delete.setStyle("-fx-background-color:rgba(0,0,0,0.2); -fx-text-fill: white");
+			delete.setStyle("-fx-background-color: rgba(0,20,81,0.45); -fx-text-fill: white");
 			
 			// add node
 			this.getChildren().add(name);

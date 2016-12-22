@@ -41,19 +41,19 @@ public class CurrentItem {
 		pane.setEffect(null);
 		switch(type) {
 			case MAIN:
-				pane.setStyle("-fx-background-color: rgba(0,0,0,0.56)");
+				pane.setStyle("-fx-background-color: rgba(0,20,81,0.56)");
 				break;
 			case CREDIT:
-				pane.setStyle("-fx-background-color: rgba(0,0,0,0.5)");
+				pane.setStyle("-fx-background-color: rgba(0,20,81,0.5)");
 				break;
 			case LEVEL:
-				pane.setStyle("-fx-background-color: rgba(0,0,0,0.44)");
+				pane.setStyle("-fx-background-color: rgba(0,20,81,0.44)");
 				break;
 			case PROMOTION:
-				pane.setStyle("-fx-background-color: rgba(0,0,0,0.38)");
+				pane.setStyle("-fx-background-color: rgba(0,20,81,0.38)");
 				break;
 			case ORDER:
-				pane.setStyle("-fx-background-color: rgba(0,0,0,0.32)");
+				pane.setStyle("-fx-background-color: rgba(0,20,81,0.32)");
 				break;
 		}		
 	}
@@ -62,15 +62,15 @@ public class CurrentItem {
 	 * 将被选择的项高亮显示
 	 */
 	public void active() {
-		label.setStyle("-fx-text-fill: black");
-		pane.setStyle("-fx-background-color: rgba(255,255,255,0.4)");
+		label.setStyle("-fx-text-fill: white");
+		pane.setStyle("-fx-background-color: rgba(130,163,249,0.4)");
 		pane.setEffect(new DropShadow());
 	}
 	
 	/**辅助函数，只active参数指定的item */
 	public void active(Label l, AnchorPane p) {
-		l.setStyle("-fx-text-fill: black");
-		p.setStyle("-fx-background-color: rgba(255,255,255,0.4)");
+		l.setStyle("-fx-text-fill: white");
+		p.setStyle("-fx-background-color: rgba(130,163,249,0.4)");
 		p.setEffect(new DropShadow());
 	}
 	
@@ -81,19 +81,19 @@ public class CurrentItem {
 			p.setEffect(null);
 			switch (t) {
 				case MAIN:
-					p.setStyle("-fx-background-color: rgba(0,0,0,0.56)");
+					p.setStyle("-fx-background-color: rgba(0,20,81,0.56)");
 					break;
 				case CREDIT:
-					p.setStyle("-fx-background-color: rgba(0,0,0,0.5)");
+					p.setStyle("-fx-background-color: rgba(0,20,81,0.5)");
 					break;
 				case LEVEL:
-					p.setStyle("-fx-background-color: rgba(0,0,0,0.44)");
+					p.setStyle("-fx-background-color: rgba(0,20,81,0.44)");
 					break;
 				case PROMOTION:
-					p.setStyle("-fx-background-color: rgba(0,0,0,0.38)");
+					p.setStyle("-fx-background-color: rgba(0,20,81,0.38)");
 					break;
 				case ORDER:
-					p.setStyle("-fx-background-color: rgba(0,0,0,0.32)");
+					p.setStyle("-fx-background-color: rgba(0,20,81,0.32)");
 					break;
 			}
 		}

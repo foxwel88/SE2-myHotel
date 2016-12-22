@@ -184,7 +184,7 @@ public class WebMarketerAbnormalOrderList {
 		}
 		for (int i = lastIndex; i < NUM_OF_ORDER_PER_PAGE; i++) {
 			AnchorPane blackPane = new AnchorPane();
-			blackPane.setStyle("-fx-background-color:rgba(0,0,0,0.45)");
+			blackPane.setStyle("-fx-background-color: rgba(0,20,81,0.45)");
 			contentGridPane.add(blackPane, 0, i * 2);
 		}
 
@@ -235,7 +235,7 @@ public class WebMarketerAbnormalOrderList {
 			detail = new Button("详情");
 			
 			// set effect
-			this.setStyle("-fx-background-color:rgba(0,0,0,0.45)");
+			this.setStyle("-fx-background-color: rgba(0,20,81,0.45)");
 			orderNum.setFont(Font.font("Microsoft YaHei", 17));
 			orderNum.setStyle("-fx-fill: white");
 			hotel.setFont(Font.font("Microsoft YaHei UI Light", 20));
@@ -243,7 +243,7 @@ public class WebMarketerAbnormalOrderList {
 			hotel.setWrappingWidth(240.0);
 			hotel.setTextAlignment(TextAlignment.CENTER);
 			detail.setFont(Font.font("Microsoft YaHei", 15));
-			detail.setStyle("-fx-background-color:rgba(0,0,0,0.3); -fx-text-fill: white");
+			detail.setStyle("-fx-background-color: rgba(0,20,81,0.45); -fx-text-fill: white");
 			
 			this.getChildren().add(detail);
 			this.getChildren().add(hotel);

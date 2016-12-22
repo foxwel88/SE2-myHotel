@@ -5,22 +5,22 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="567.0" prefWidth="920.0" style="-fx-background-color: rgba(255,255,255,0.4);" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.presentation.webmarketer.WebMarketerMain">
+<AnchorPane prefHeight="567.0" prefWidth="920.0" style="-fx-background-color: rgba(130,163,249,0.4);" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.presentation.webmarketer.WebMarketerMain">
    <effect>
       <DropShadow />
    </effect>
    <children>
-      <Label layoutX="276.0" layoutY="131.0" prefHeight="133.0" prefWidth="438.0" text="酒店预订管理系统">
+      <Label layoutX="276.0" layoutY="131.0" prefHeight="133.0" prefWidth="438.0" text="酒店预订管理系统" textFill="WHITE">
          <font>
             <Font name="Microsoft YaHei UI Light" size="45.0" />
          </font>
       </Label>
-      <Label fx:id="timeLabel" alignment="CENTER" layoutX="187.0" layoutY="287.0" prefHeight="105.0" prefWidth="540.0" text="当前时间：2016/10/20 08:00:45">
+      <Label fx:id="timeLabel" alignment="CENTER" layoutX="187.0" layoutY="287.0" prefHeight="105.0" prefWidth="540.0" text="当前时间：2016/10/20 08:00:45" textFill="WHITE">
          <font>
             <Font name="Microsoft YaHei UI Light" size="28.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="373.0" layoutY="216.0" prefHeight="105.0" prefWidth="164.0" text="网站营销端">
+      <Label alignment="CENTER" layoutX="373.0" layoutY="216.0" prefHeight="105.0" prefWidth="164.0" text="网站营销端" textFill="WHITE">
          <font>
             <Font name="Microsoft YaHei UI Light" size="28.0" />
          </font>
