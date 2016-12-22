@@ -109,11 +109,6 @@
                      </font>
                   </Label>
                </children></Pane>
-            <ImageView fx:id="groupImage" fitHeight="36.0" fitWidth="36.0" layoutX="486.0" layoutY="300.0" onMouseClicked="#switchGroupState" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@/酒店工作人员/group.png" />
-               </image>
-            </ImageView>
             <Pane fx:id="roomPane" layoutX="483.0" layoutY="2.0" prefHeight="240.0" prefWidth="393.0" style="-fx-background-color: rgb(0,0,0,0.2);">
                <children>
                   <Label layoutX="62.0" layoutY="1.0" prefHeight="34.0" prefWidth="68.0" text="房间类型" textFill="WHITE">
@@ -183,11 +178,16 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label fx:id="resultLabel" alignment="CENTER_RIGHT" layoutX="411.0" layoutY="288.0" prefHeight="46.0" prefWidth="68.0" textFill="WHITE">
+            <Label fx:id="resultLabel" alignment="TOP_CENTER" layoutX="411.0" layoutY="288.0" prefHeight="143.0" prefWidth="68.0" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
             </Label>
+            <ImageView fx:id="groupImage" fitHeight="36.0" fitWidth="36.0" layoutX="486.0" layoutY="300.0" onMouseClicked="#switchGroupState" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/酒店工作人员/group.png" />
+               </image>
+            </ImageView>
             <ImageView fx:id="placeImage" fitHeight="36.0" fitWidth="36.0" layoutX="377.0" layoutY="206.0" onMouseClicked="#switchPlaceState" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@/酒店工作人员/place.png" />

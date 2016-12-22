@@ -261,10 +261,10 @@ public class HotelManagerModifyHotel {
 		try {
 			roomNums.set(index, Integer.parseInt(roomNum.getText().trim()));
 			roomPrices.set(index, Double.parseDouble(roomPrice.getText().trim()));
+			ResultInfoHelper.setResultLabel(resultLabel, "", 2000);
 		} catch (NumberFormatException e) {
 			ResultInfoHelper.setResultLabel(resultLabel, ResultMessage.WRONG_FORMAT, 2000);
 		}
-		ResultInfoHelper.setResultLabel(resultLabel, "", 2000);
 	}
 	
 	/**保存（添加）当前输入的入住信息 */
@@ -272,7 +272,7 @@ public class HotelManagerModifyHotel {
 	void saveCheckIn(ActionEvent event) {
 		if (!roomNumber.getText().isEmpty() && !startTime.getText().isEmpty() && !endTime.getText().isEmpty()) {
 			newCheckInInfos += (roomNumber.getText() + "," + startTime.getText() + "," + endTime.getText() + ";");
-			ResultInfoHelper.setResultLabel(resultLabel, "", 2000);
+			ResultInfoHelper.setResultLabel(resultLabel, "已暂存", 2000);
 			roomNumber.setText("");
 			startTime.setText("");
 			endTime.setText("");
