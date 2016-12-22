@@ -197,6 +197,7 @@ public class CustomerCheckHotelList {
 			toDate.setValue(LiveDatePicker.toLocalDate(previousFilter.schTo));
 		}
 		showHotelList();
+		SwitchSceneUtil.showGuideAnimation(root, 0);
 	}
 	
 	@FXML

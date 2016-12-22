@@ -55,6 +55,7 @@ public class CustomerCheckInfo {
 		credit.setText(String.valueOf(vo.credit));
 		level.setText(String.valueOf(SwitchSceneUtil.promotionController.calLevel(vo.credit)));
 		birthday.setText(LiveDatePicker.dateToCoarseString(vo.birthday));
+		SwitchSceneUtil.showGuideAnimation(root, -100);
 	}
 	
 	@FXML
