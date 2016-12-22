@@ -186,7 +186,14 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 	@Override
 	public void updateAbnormalOrders(Date date) throws RemoteException {
 		// TODO Auto-generated method stub
-		
+		try {
+			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement
+					("update `order` set type='异常订单' where type='未执行订单' and latesttime between '1980-03-03 00:00:00' and '" + transtime(date) + "'");
+			preparedStatement.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	

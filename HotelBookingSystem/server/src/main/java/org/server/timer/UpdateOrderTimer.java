@@ -17,14 +17,14 @@ public class UpdateOrderTimer {
 		setBaseline(24, 0, 0);
 		Timer orderUpdater = new Timer();
 		baselineTime = calendar.getTime();
-		orderUpdater.schedule(new UpdateOrderTask(baselineTime), baselineTime, 24 * 60 * 60 * 1000);
+		orderUpdater.schedule(new UpdateOrderTask(), baselineTime, 24 * 60 * 60 * 1000);
 	}
 	
 	public void startTimer(int hour, int minite, int second) {
 		setBaseline(hour, minite, second);
 		Timer orderUpdater = new Timer();
 		baselineTime = calendar.getTime();
-		orderUpdater.schedule(new UpdateOrderTask(baselineTime), baselineTime, 24 * 60 * 60 * 1000);
+		orderUpdater.schedule(new UpdateOrderTask(), baselineTime, 24 * 60 * 60 * 1000);
 	}
 	
 	private void setBaseline(int hour, int minite, int second) {

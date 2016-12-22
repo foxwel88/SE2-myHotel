@@ -1,6 +1,7 @@
 package org.server.timer;
 
 import java.rmi.RemoteException;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.TimerTask;
 
@@ -12,15 +13,14 @@ public class UpdateOrderTask extends TimerTask {
 	
 	Date ddl;
 	
-	UpdateOrderTask(Date ddl) {
-		this.ddl = ddl;
+	UpdateOrderTask() {
 	}
 	
 	@Override
 	public void run() {
 		try {
 			orderDataService = new OrderDataServiceImpl();
-			orderDataService.updateAbnormalOrders(ddl);
+			orderDataService.updateAbnormalOrders(Calendar.getInstance().getTime());
 		} catch (RemoteException remoteException) {
 			remoteException.printStackTrace();
 		}
