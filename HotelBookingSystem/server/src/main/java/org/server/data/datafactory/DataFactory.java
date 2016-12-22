@@ -6,7 +6,7 @@ import org.server.data.commentdata.CommentDataServiceImpl;
 import org.server.data.hoteldata.HotelDataServiceImpl;
 import org.server.data.orderdata.OrderDataServiceImpl;
 import org.server.data.promotiondata.PromotionDataServiceImpl;
-import org.server.data.UserData.UserDataServiceImpl;
+import org.server.data.userdata.UserDataServiceImpl;
 import org.server.id.IDUtil;
 import org.server.time.TimeServiceImpl;
 

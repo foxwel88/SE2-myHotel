@@ -5,6 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import javafx.animation.*;
+import javafx.scene.Node;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
+import javafx.util.Duration;
 import org.client.presentation.util.ResultInfoHelper;
 import org.client.vo.AreaVO;
 import org.client.vo.CityVO;
@@ -116,6 +122,50 @@ public class HotelManagerModifyHotel {
     private Button roomSaveButton;
 	
 	private HotelVO vo;
+
+	@FXML
+	private Pane placePane;
+
+	@FXML
+	private ImageView placeImage;
+
+	@FXML
+	private Pane infoPane;
+
+	@FXML
+	private ImageView infoImage;
+
+	@FXML
+	private Pane groupPane;
+
+	@FXML
+	private ImageView groupImage;
+
+	@FXML
+	private Pane roomPane;
+
+	@FXML
+	private ImageView roomImage;
+
+	private boolean placeFolded;
+
+	private boolean roomFolded;
+
+	private boolean infoFolded;
+
+	private boolean groupFolded;
+
+	@FXML
+	private Label placeLabel;
+
+	@FXML
+	private Label infoLabel;
+
+	@FXML
+	private Label roomLabel;
+
+	@FXML
+	private Label groupLabel;
 	
 	@FXML
 	void addCooperator(ActionEvent event) {
@@ -140,6 +190,10 @@ public class HotelManagerModifyHotel {
 			if (c.equals(editedCooperator)) {
 				return;
 			}
+		}
+
+		if (cooperatorBox.getValue() == null) {
+			return;
 		}
 		
 		int index = currentCooperators.indexOf(cooperatorBox.getValue());
@@ -300,6 +354,148 @@ public class HotelManagerModifyHotel {
 		ObservableList<Integer> stars = FXCollections.observableArrayList(1,2,3,4,5);
 		star.setItems(stars);
 		star.setValue(vo.star);
+
+		switchGroupState(null);
+		switchInfoState(null);
+		switchPlaceState(null);
+		switchRoomState(null);
+
+	}
+
+	@FXML
+	void switchGroupState(MouseEvent event) {
+		if (!groupFolded) {
+			setDisappearTransition(groupPane, groupLabel);
+			setFoldMoveTransition(groupImage, groupImage.getX() + 170, groupImage.getY() + 78);
+		} else {
+			setAppearTransition(groupPane, groupLabel);
+			setUnfoldMoveTransition(groupImage, groupImage.getX(), groupImage.getY());
+		}
+		groupFolded = !groupFolded;
+	}
+
+	@FXML
+	void switchInfoState(MouseEvent event) {
+		if (!infoFolded) {
+			setDisappearTransition(infoPane, infoLabel);
+			setFoldMoveTransition(infoImage, infoImage.getX() - 170, infoImage.getY() + 78);
+		} else {
+			setAppearTransition(infoPane, infoLabel);
+			setUnfoldMoveTransition(infoImage, infoImage.getX(), infoImage.getY());
+		}
+		infoFolded = !infoFolded;
+	}
+
+	@FXML
+	void switchPlaceState(MouseEvent event) {
+		if (!placeFolded) {
+			setDisappearTransition(placePane, placeLabel);
+			setFoldMoveTransition(placeImage, placeImage.getX() - 170, placeImage.getY() - 78);
+		} else {
+			setAppearTransition(placePane, placeLabel);
+			setUnfoldMoveTransition(placeImage, placeImage.getX(), placeImage.getY());
+		}
+		placeFolded = !placeFolded;
+	}
+
+	@FXML
+	void switchRoomState(MouseEvent event) {
+		if (!roomFolded) {
+			setDisappearTransition(roomPane, roomLabel);
+			setFoldMoveTransition(roomImage, roomImage.getX() + 170, roomImage.getY() - 78);
+		} else {
+			setAppearTransition(roomPane, roomLabel);
+			setUnfoldMoveTransition(roomImage, roomImage.getX(), roomImage.getY());
+		}
+		roomFolded = !roomFolded;
+	}
+
+	/**显示完整的编辑内容 */
+	void setAppearTransition(Pane pane, Label label) {
+		for (Node node: pane.getChildren()) {
+			node.setDisable(false);
+		}
+
+		FadeTransition ft = new FadeTransition(Duration.millis(100), pane);
+		ft.setRate(0.6);
+		ft.setFromValue(0);
+		ft.setToValue(1.0);
+		ft.play();
+
+		label.setVisible(false);
+	}
+
+	/**隐去完整的编辑内容 */
+	void setDisappearTransition(Pane pane, Label label) {
+		for (Node node: pane.getChildren()) {
+			node.setDisable(true);
+		}
+
+		FadeTransition ft = new FadeTransition(Duration.millis(100), pane);
+		ft.setRate(0.6);
+		ft.setFromValue(1.0);
+		ft.setToValue(0);
+		ft.play();
+
+		label.setVisible(true);
+		label.setOpacity(0);
+		FadeTransition labelFt = new FadeTransition(Duration.millis(500), label);
+		labelFt.setRate(0.6);
+		labelFt.setFromValue(0);
+		labelFt.setToValue(1.0);
+		labelFt.play();
+	}
+
+	void setFoldMoveTransition(ImageView image, double toX, double toY) {
+		FadeTransition fadeTransition =
+				new FadeTransition(Duration.millis(100), image);
+		fadeTransition.setRate(0.7);
+		fadeTransition.setFromValue(0.3f);
+		fadeTransition.setToValue(1f);
+
+		TranslateTransition translateTransition =
+				new TranslateTransition(Duration.millis(100), image);
+		translateTransition.setToX(toX);
+		translateTransition.setToY(toY);
+
+		ScaleTransition scaleTransition =
+				new ScaleTransition(Duration.millis(100), image);
+		scaleTransition.setToX(2f);
+		scaleTransition.setToY(2f);
+
+		ParallelTransition parallelTransition = new ParallelTransition();
+		parallelTransition.getChildren().addAll(
+				fadeTransition,
+				translateTransition,
+				scaleTransition
+		);
+		parallelTransition.play();
+	}
+
+	void setUnfoldMoveTransition(ImageView image, double toX, double toY) {
+		FadeTransition fadeTransition =
+				new FadeTransition(Duration.millis(100), image);
+		fadeTransition.setRate(0.7);
+		fadeTransition.setFromValue(1f);
+		fadeTransition.setToValue(0.3f);
+
+		TranslateTransition translateTransition =
+				new TranslateTransition(Duration.millis(100), image);
+		translateTransition.setToX(toX);
+		translateTransition.setToY(toY);
+
+		ScaleTransition scaleTransition =
+				new ScaleTransition(Duration.millis(100), image);
+		scaleTransition.setToX(1f);
+		scaleTransition.setToY(1f);
+
+		ParallelTransition parallelTransition = new ParallelTransition();
+		parallelTransition.getChildren().addAll(
+				fadeTransition,
+				translateTransition,
+				scaleTransition
+		);
+		parallelTransition.play();
 	}
 }
 

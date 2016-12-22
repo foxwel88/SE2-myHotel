@@ -1,4 +1,4 @@
-package org.server.data.UserData;
+package org.server.data.userdata;
 
 import static org.junit.Assert.assertEquals;
 
