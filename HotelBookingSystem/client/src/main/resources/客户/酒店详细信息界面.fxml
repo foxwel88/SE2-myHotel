@@ -48,7 +48,7 @@
                                                 <Font name="Microsoft YaHei" size="16.0" />
                                              </font>
                                           </Label>
-                                          <Button fx:id="makeOrderButton" alignment="CENTER" layoutX="528.0" layoutY="92.0" mnemonicParsing="false" onMouseClicked="#turnToCustomerGenerateOrder" prefHeight="48.0" prefWidth="120.0" style="-fx-background-color: #ff8c00;" text="立即预定" textFill="WHITE">
+                                          <Button fx:id="makeOrderButton" alignment="CENTER" layoutX="528.0" layoutY="92.0" mnemonicParsing="false" onMouseClicked="#turnToCustomerGenerateOrder" prefHeight="48.0" prefWidth="120.0" style="-fx-background-color: #ff8c00;" text="立即预订" textFill="WHITE">
                                              <font>
                                                 <Font name="Microsoft YaHei" size="20.0" />
                                              </font>
