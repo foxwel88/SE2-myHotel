@@ -14,3 +14,9 @@ hs_err_pid*
 HotelBookingSystem/.idea/*
 
 *.iml
+
+.DS_Store
+
+HotelBookingSystem/client/.settings/org.eclipse.core.resources.prefs
+
+HotelBookingSystem/server/.settings/org.eclipse.core.resources.prefs

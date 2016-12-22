@@ -22,7 +22,7 @@ public class CustomerHTTPPictureDownloader {
 			httpURLConnection.setConnectTimeout(5 * 1000);
 			InputStream instream = httpURLConnection.getInputStream();
 			byte[] data = readInputStream(instream);
-			File tempImage = new File(CustomerHTTPPictureDownloader.class.getResource("/").toString().substring(6) + "temp");
+			File tempImage = new File("hotelimgtemp");
 			if (!tempImage.exists()) {
 				tempImage.mkdirs();
 			}
@@ -37,17 +37,17 @@ public class CustomerHTTPPictureDownloader {
 	}
 	
 	public static void clearTempFile() {
-		String FileFolderPath = new String((CustomerHTTPPictureDownloader.class.getResource("/") + "temp").substring(6));
+		String FileFolderPath = new String("hotelimgtemp");
 		File fileFolder = new File(FileFolderPath);
 		String[] fileList = fileFolder.list();
 		File tempFile = null;
 		for (int i = 0; i < fileList.length; i++) {
 			tempFile = new File(FileFolderPath + File.separator + fileList[i]);
-			// 只会删除文件，所以文件夹可以放心(？)的保存在这里面
 			if (tempFile.isFile()) {
 				tempFile.delete();
 			}
 		}
+		fileFolder.delete();
 	}
 	
 	private static byte[] readInputStream(InputStream instream) throws IOException {
