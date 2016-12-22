@@ -105,7 +105,7 @@
                   <Font name="Microsoft JhengHei" size="15.0" />
                </font>
             </Label>
-            <DatePicker fx:id="fromDate" editable="false" layoutX="65.0" layoutY="96.0" prefHeight="23.0" prefWidth="134.0" />
+            <DatePicker fx:id="fromDate" editable="false" layoutX="65.0" layoutY="96.0" onAction="#refreshDatePicker" prefHeight="23.0" prefWidth="134.0" />
             <DatePicker fx:id="toDate" editable="false" layoutX="305.0" layoutY="97.0" prefHeight="23.0" prefWidth="134.0" />
          </children>
       </AnchorPane>

@@ -106,6 +106,8 @@ public class CustomerGenerateOrder {
 		area.setText(hotel.area.address);
 		LiveDatePicker.initDatePicker(null, schFromDate);
 		LiveDatePicker.initDatePicker(schFromDate, schToDate);
+		schFromDate.setValue(LiveDatePicker.toLocalDate(SwitchSceneUtil.previousHotelSceneInfo.hotelFilter.schFrom));
+		schToDate.setValue(LiveDatePicker.toLocalDate(SwitchSceneUtil.previousHotelSceneInfo.hotelFilter.schTo));
 		if (Objects.equals(user.type, "个人客户")) {
 			customerName.setText(user.name);
 		} else {
@@ -158,6 +160,16 @@ public class CustomerGenerateOrder {
 		setSingleRoomPrice();
 		setRawPrice();
 		setTotalPrice();
+	}
+	
+	/**
+	 * 保证todate一定实时保持在fromdate之后
+	 */
+	@FXML
+	void refreshDatePicker() {
+		if (!schToDate.getValue().isAfter(schFromDate.getValue())) {
+			schToDate.setValue(schFromDate.getValue().plusDays(1));
+		}
 	}
 	
 	private void setRoomType() {

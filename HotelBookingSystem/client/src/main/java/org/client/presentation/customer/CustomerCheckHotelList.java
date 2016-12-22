@@ -138,6 +138,10 @@ public class CustomerCheckHotelList {
 	
 	private static final double IMAGE_HEIGHT = 60;
 	
+	// 点击预订酒店按钮的时候，同样会触发显示酒店详细信息的监听从而报线程异常（无法catch，不影响正常运行），
+	// 因此特设此值，每当调用跳转到生成订单界面的方法时调用，将此值设为1，阻止调用查看酒店详细信息界面的方法
+	private int isTargetInOrder = 0;
+	
 	@FXML
 	void initialize() {
 		hotelBoxList = new ArrayList<>();
@@ -211,6 +215,16 @@ public class CustomerCheckHotelList {
 		setArea();
 	}
 	
+	/**
+	 * 保证todate一定实时保持在fromdate之后
+	 */
+	@FXML
+	void refreshDatePicker() {
+		if (!toDate.getValue().isAfter(fromDate.getValue())) {
+			toDate.setValue(fromDate.getValue().plusDays(1));
+		}
+	}
+	
 	@FXML
 	void turnToNextPage() {
 		if (Integer.parseInt(currentPage.getText()) < calMaxPage(hotelList)) {
@@ -246,7 +260,7 @@ public class CustomerCheckHotelList {
 		try {
 			for (int i = 0; i < MAX_HOTEL_ONE_OAGE; i++) {
 				HBox hbox = (HBox)(event.getSource());
-				if (hbox.equals(hotelBoxList.get(i))) {
+				if (hbox.equals(hotelBoxList.get(i)) && isTargetInOrder != 1) {
 					hotelID = hotelList.get((page - 1) * MAX_HOTEL_ONE_OAGE + i).id;
 					KeyFrame animationFrame = new KeyFrame(Duration.seconds(0), actionEvent -> {
 						SwitchSceneUtil.showOldSceneAnimation(root);
@@ -279,6 +293,7 @@ public class CustomerCheckHotelList {
 			Label clickedLabel = (Label)(event.getSource());
 			if (clickedLabel.equals(getMakeOrderLabel(i))) {
 				if (clickedLabel.getText() != null) {
+					isTargetInOrder = 1;
 					hotelID = hotelList.get((page - 1) * MAX_HOTEL_ONE_OAGE + i).id;
 					SwitchSceneUtil.previousHotelSceneInfo = new PreviousHotelSceneInfo(getCurrentFilter(), everOrdered.isSelected(), Integer.parseInt(currentPage.getText()));
 					SwitchSceneUtil.isBackToDetail = false;
