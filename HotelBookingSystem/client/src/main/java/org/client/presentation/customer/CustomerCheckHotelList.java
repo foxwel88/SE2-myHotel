@@ -4,6 +4,7 @@ import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import org.client.launcher.Resources;
 import org.client.presentation.util.LiveDatePicker;
 import org.client.vo.AreaVO;
 import org.client.vo.CityVO;
@@ -21,6 +22,8 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -29,6 +32,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 
 /**
  * 
@@ -234,8 +238,8 @@ public class CustomerCheckHotelList {
 		int page = Integer.parseInt(currentPage.getText());
 		try {
 			for (int i = 0; i < MAX_HOTEL_ONE_OAGE; i++) {
-				Label clickedLabel = (Label)(event.getSource());
-				if (clickedLabel.equals(getNameLabel(i))) {
+				HBox hbox = (HBox)(event.getSource());
+				if (hbox.equals(hotelBoxList.get(i))) {
 					hotelID = hotelList.get((page - 1) * MAX_HOTEL_ONE_OAGE + i).id;
 					SwitchSceneUtil.currentScene = CustomerBackableScene.HOTEL_INFO_SCENE;
 					SwitchSceneUtil.previousHotelSceneInfo = new PreviousHotelSceneInfo(getCurrentFilter(), everOrdered.isSelected(), Integer.parseInt(currentPage.getText()));
@@ -245,6 +249,8 @@ public class CustomerCheckHotelList {
 			}
 		} catch (IndexOutOfBoundsException indexOutOfBoundsException) {
 			// 点击无酒店的酒店列表区域会出现此异常，可以忽略
+		} catch (NullPointerException nullPointerException) {
+			// 点击预订酒店同样会检测到并调用此方法从而抛出此异常
 		}
 	}
 	
@@ -282,6 +288,42 @@ public class CustomerCheckHotelList {
 		}
 	}
 	
+	@FXML
+	void active(MouseEvent mouseEvent) {
+		HBox hbox = (HBox)mouseEvent.getSource();
+		if (!((Label)hbox.getChildren().get(2)).getText().isEmpty()) {
+			hbox.setStyle("-fx-background-color: rgba(255,255,255,0.14)");
+			DropShadow shadow = new DropShadow();
+			shadow.setColor(Color.color(0.4, 0.4, 0.4));
+			hbox.setEffect(shadow);
+		}
+	}
+	
+	@FXML
+	void deactive(MouseEvent mouseEvent) {
+		HBox hbox = (HBox)mouseEvent.getSource();
+		if (!((Label)hbox.getChildren().get(2)).getText().isEmpty()) {
+			hbox.setStyle(null);
+			hbox.setEffect(null);
+		}
+	}
+	
+	@FXML
+	void activeMakeOrderButton(MouseEvent mouseEvent) {
+		Label label = (Label)mouseEvent.getSource();
+		if (label.isVisible()) {
+			label.setStyle("-fx-border-color:#4599ff;-fx-background-color:#4599ff;fx-text-fill: rgb(255,255,255)");
+		}
+	}
+	
+	@FXML
+	void deactiveMakeOrderButton(MouseEvent mouseEvent) {
+		Label label = (Label)mouseEvent.getSource();
+		if (label.isVisible()) {
+			label.setStyle("-fx-border-color:#21e9ff;fx-text-fill:rgb(255,255,255)");
+		}
+	}
+	
 	private void search() {
 		if (city.getValue() == null || area.getValue() == null) {
 			Alert alert = new Alert(AlertType.INFORMATION);
@@ -304,19 +346,23 @@ public class CustomerCheckHotelList {
 			if (getName(i) != null) {
 				getImageLabel(i).setGraphic(getImageView(i));
 				getNameLabel(i).setText(getName(i));
-				getStarLabel(i).setText(String.valueOf(getStar(i)));
+				getStarLabel(i).setGraphic(getStar(i));
+				getScoreHeadLabel(i).setText("好评：");
 				getScoreLabel(i).setText(String.valueOf(getScore(i)));
 				getAddressLabel(i).setText(getAddress(i));
 				getPriceLabel(i).setText(String.valueOf(getPrice(i)));
-				getMakeOrderLabel(i).setText("预订此酒店");
+				getPriceTailLabel(i).setText("起");
+				getMakeOrderLabel(i).setVisible(true);
 			} else {
 				getImageLabel(i).setGraphic(null);
 				getNameLabel(i).setText("");
 				getStarLabel(i).setText("");
+				getScoreHeadLabel(i).setText("");
 				getScoreLabel(i).setText("");
 				getAddressLabel(i).setText("");
 				getPriceLabel(i).setText("");
-				getMakeOrderLabel(i).setText("");
+				getPriceTailLabel(i).setText("");
+				getMakeOrderLabel(i).setVisible(false);
 			}
 		}
 	}
@@ -461,7 +507,7 @@ public class CustomerCheckHotelList {
 	}
 	
 	/**
-	 * 下面8个方法分别用于获得单个酒店的不同信息字段的Label的引用
+	 * 下面几个方法分别用于获得单个酒店的不同信息字段的Label的引用
 	 * @param i 取值为0到MAX_HOTEL_ONE_OAGE - 1 表示页面上的第i个酒店
 	 */
 	private Label getImageLabel(int i) {
@@ -485,8 +531,17 @@ public class CustomerCheckHotelList {
 		return (Label)(getMostHotelInfoPane(i).getChildren().get(1));
 	}
 	
-	private Label getScoreLabel(int i) {
+	//用来获得“好评：”标签
+	private Label getScoreHeadLabel(int i) {
 		return (Label)(getMostHotelInfoPane(i).getChildren().get(2));
+	}
+	
+	private Label getScoreLabel(int i) {
+		return (Label)(getMostHotelInfoPane(i).getChildren().get(3));
+	}
+	
+	private Label getMakeOrderLabel(int i) {
+		return (Label)(getMostHotelInfoPane(i).getChildren().get(4));
 	}
 	
 	private Label getPriceLabel(int i) {
@@ -496,10 +551,6 @@ public class CustomerCheckHotelList {
 	// 用于获得那个“起”字
 	private Label getPriceTailLabel(int i) {
 		return (Label)hotelBoxList.get(i).getChildren().get(3);
-	}
-	
-	private Label getMakeOrderLabel(int i) {
-		return (Label)(getMostHotelInfoPane(i).getChildren().get(3));
 	}
 	/********************************************************/
 	
@@ -527,12 +578,25 @@ public class CustomerCheckHotelList {
 		}
 	}
 	
-	private int getStar(int i) {
+	private ImageView getStar(int i) {
 		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_HOTEL_ONE_OAGE + i;
 		try {
-			return hotelList.get(seq).star;
+			int starNum = hotelList.get(seq).star;
+			switch (starNum) {
+				case 1:
+					return new ImageView(new Image(Resources.getInstance().starIcon1.toString()));
+				case 2:
+					return new ImageView(new Image(Resources.getInstance().starIcon2.toString()));
+				case 3:
+					return new ImageView(new Image(Resources.getInstance().starIcon3.toString()));
+				case 4:
+					return new ImageView(new Image(Resources.getInstance().starIcon4.toString()));
+				case 5:
+					return new ImageView(new Image(Resources.getInstance().starIcon5.toString()));
+			}
+			return null;
 		} catch (IndexOutOfBoundsException indexOutOfBoundsException) {
-			return -1;
+			return null;
 		}
 	}
 	

@@ -90,6 +90,16 @@ public class Resources {
 	
 	public URL customerCheckAbnormalOrder = getClass().getResource("/客户/异常订单详细信息界面.fxml");
 	
+	public URL starIcon1 = getClass().getResource("/客户/star1.png");
+	
+	public URL starIcon2 = getClass().getResource("/客户/star2.png");
+	
+	public URL starIcon3 = getClass().getResource("/客户/star3.png");
+	
+	public URL starIcon4 = getClass().getResource("/客户/star4.png");
+	
+	public URL starIcon5 = getClass().getResource("/客户/star5.png");
+	
 	//WebMarketer UI
 	public URL webMarketerGuide = getClass().getResource("/网站营销人员/guide.fxml");
 	

@@ -121,36 +121,41 @@
             <RowConstraints maxHeight="123.0" minHeight="10.0" percentHeight="100.0" prefHeight="60.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <HBox fx:id="hotel1" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+            <HBox fx:id="hotel1" alignment="CENTER_LEFT" onMouseClicked="#checkDetailedHotel" onMouseEntered="#active" onMouseExited="#deactive" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Label prefHeight="70.0" prefWidth="104.0" />
                   <Pane prefHeight="78.0" prefWidth="655.0">
                      <children>
-                        <HBox prefHeight="25.0">
+                        <HBox layoutX="5.0" prefHeight="39.0">
                            <children>
-                              <Label prefHeight="25.0" text="name">
+                              <Label prefHeight="39.0" text="name">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <Label prefHeight="25.0" text="          star">
+                              <Label prefHeight="39.0" text="star">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Label>
                            </children>
                         </HBox>
-                        <Label layoutY="26.0" prefHeight="25.0" text="address">
+                        <Label layoutX="5.0" layoutY="39.0" prefHeight="39.0" text="address">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <Label layoutY="52.0" prefHeight="25.0" text="score">
+                        <Label layoutX="382.0" prefHeight="39.0" text="好评：">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <Label layoutX="519.0" layoutY="28.0" text="预订此酒店" textFill="#21e9ff" underline="true">
+                        <Label layoutX="382.0" layoutY="39.0" prefHeight="39.0" text="score">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" layoutX="512.0" layoutY="21.0" onMouseClicked="#turnToGenerateOrderScene" onMouseEntered="#activeMakeOrderButton" onMouseExited="#deactiveMakeOrderButton" prefHeight="36.0" prefWidth="119.0" style="-fx-border-style: solid; -fx-border-color: #21e9ff;" text="预订此酒店" textFill="#21e9ff">
                            <font>
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>
@@ -172,36 +177,41 @@
                   </Label>
                </children>
             </HBox>
-            <HBox fx:id="hotel2" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+            <HBox fx:id="hotel2" alignment="CENTER_LEFT" onMouseClicked="#checkDetailedHotel" onMouseEntered="#active" onMouseExited="#deactive" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
                <children>
                   <Label prefHeight="70.0" prefWidth="104.0" />
                   <Pane prefHeight="78.0" prefWidth="655.0">
                      <children>
-                        <HBox prefHeight="25.0">
+                        <HBox layoutX="5.0">
                            <children>
-                              <Label prefHeight="25.0" text="name">
+                              <Label prefHeight="39.0" text="name">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <Label prefHeight="25.0" text="          star">
+                              <Label prefHeight="39.0" text="star">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Label>
                            </children>
                         </HBox>
-                        <Label layoutY="26.0" prefHeight="25.0" text="address">
+                        <Label layoutX="5.0" layoutY="39.0" prefHeight="39.0" text="address">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <Label layoutY="52.0" prefHeight="25.0" text="score">
+                        <Label layoutX="382.0" prefHeight="39.0" text="好评：">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <Label layoutX="519.0" layoutY="28.0" text="预订此酒店" textFill="#21e9ff" underline="true">
+                        <Label layoutX="382.0" layoutY="39.0" prefHeight="39.0" text="score">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" layoutX="512.0" layoutY="21.0" onMouseClicked="#turnToGenerateOrderScene" onMouseEntered="#activeMakeOrderButton" onMouseExited="#deactiveMakeOrderButton" prefHeight="36.0" prefWidth="119.0" style="-fx-border-style: solid; -fx-border-color: #21e9ff;" text="预订此酒店" textFill="#21e9ff">
                            <font>
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>
@@ -223,36 +233,41 @@
                   </Label>
                </children>
             </HBox>
-            <HBox fx:id="hotel3" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
+            <HBox fx:id="hotel3" alignment="CENTER_LEFT" onMouseClicked="#checkDetailedHotel" onMouseEntered="#active" onMouseExited="#deactive" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
                <children>
                   <Label prefHeight="70.0" prefWidth="104.0" />
                   <Pane prefHeight="78.0" prefWidth="655.0">
                      <children>
-                        <HBox prefHeight="25.0">
+                        <HBox layoutX="5.0" prefHeight="39.0">
                            <children>
-                              <Label prefHeight="25.0" text="name">
+                              <Label prefHeight="39.0" text="name">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <Label prefHeight="25.0" text="          star">
+                              <Label prefHeight="39.0" text="star">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Label>
                            </children>
                         </HBox>
-                        <Label layoutY="26.0" prefHeight="25.0" text="address">
+                        <Label layoutX="5.0" layoutY="39.0" prefHeight="39.0" text="address">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <Label layoutY="52.0" prefHeight="25.0" text="score">
+                        <Label layoutX="382.0" prefHeight="39.0" text="好评：">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <Label layoutX="519.0" layoutY="28.0" text="预订此酒店" textFill="#21e9ff" underline="true">
+                        <Label layoutX="382.0" layoutY="39.0" prefHeight="39.0" text="score">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" layoutX="512.0" layoutY="21.0" onMouseClicked="#turnToGenerateOrderScene" onMouseEntered="#activeMakeOrderButton" onMouseExited="#deactiveMakeOrderButton" prefHeight="36.0" prefWidth="119.0" style="-fx-border-style: solid; -fx-border-color: #21e9ff;" text="预订此酒店" textFill="#21e9ff">
                            <font>
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>
@@ -274,36 +289,41 @@
                   </Label>
                </children>
             </HBox>
-            <HBox fx:id="hotel4" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
+            <HBox fx:id="hotel4" alignment="CENTER_LEFT" onMouseClicked="#checkDetailedHotel" onMouseEntered="#active" onMouseExited="#deactive" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
                <children>
                   <Label prefHeight="70.0" prefWidth="104.0" />
                   <Pane prefHeight="78.0" prefWidth="655.0">
                      <children>
-                        <HBox prefHeight="25.0">
+                        <HBox layoutX="5.0" prefHeight="39.0">
                            <children>
-                              <Label prefHeight="25.0" text="name">
+                              <Label prefHeight="39.0" text="name">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <Label prefHeight="25.0" text="          star">
+                              <Label prefHeight="39.0" text="star">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Label>
                            </children>
                         </HBox>
-                        <Label layoutY="26.0" prefHeight="25.0" text="address">
+                        <Label layoutX="5.0" layoutY="39.0" prefHeight="39.0" text="address">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <Label layoutY="52.0" prefHeight="25.0" text="score">
+                        <Label layoutX="382.0" prefHeight="39.0" text="好评：">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <Label layoutX="519.0" layoutY="28.0" text="预订此酒店" textFill="#21e9ff" underline="true">
+                        <Label layoutX="382.0" layoutY="39.0" prefHeight="39.0" text="score">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" layoutX="512.0" layoutY="21.0" onMouseClicked="#turnToGenerateOrderScene" onMouseEntered="#activeMakeOrderButton" onMouseExited="#deactiveMakeOrderButton" prefHeight="36.0" prefWidth="119.0" style="-fx-border-style: solid; -fx-border-color: #21e9ff;" text="预订此酒店" textFill="#21e9ff">
                            <font>
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>
@@ -325,36 +345,41 @@
                   </Label>
                </children>
             </HBox>
-            <HBox fx:id="hotel5" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4">
+            <HBox fx:id="hotel5" alignment="CENTER_LEFT" onMouseClicked="#checkDetailedHotel" onMouseEntered="#active" onMouseExited="#deactive" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4">
                <children>
                   <Label prefHeight="70.0" prefWidth="104.0" />
                   <Pane prefHeight="78.0" prefWidth="655.0">
                      <children>
-                        <HBox prefHeight="25.0">
+                        <HBox layoutX="5.0" prefHeight="39.0">
                            <children>
-                              <Label prefHeight="25.0" text="name">
+                              <Label prefHeight="39.0" text="name">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <Label prefHeight="25.0" text="          star">
+                              <Label prefHeight="39.0" text="star">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Label>
                            </children>
                         </HBox>
-                        <Label layoutY="26.0" prefHeight="25.0" text="address">
+                        <Label layoutX="5.0" layoutY="39.0" prefHeight="39.0" text="address">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <Label layoutY="52.0" prefHeight="25.0" text="score">
+                        <Label layoutX="382.0" prefHeight="39.0" text="好评：">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <Label layoutX="519.0" layoutY="28.0" text="预订此酒店" textFill="#21e9ff" underline="true">
+                        <Label layoutX="382.0" layoutY="39.0" prefHeight="39.0" text="score">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" layoutX="512.0" layoutY="21.0" onMouseClicked="#turnToGenerateOrderScene" onMouseEntered="#activeMakeOrderButton" onMouseExited="#deactiveMakeOrderButton" prefHeight="36.0" prefWidth="119.0" style="-fx-border-style: solid; -fx-border-color: #21e9ff;" text="预订此酒店" textFill="#21e9ff">
                            <font>
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>
