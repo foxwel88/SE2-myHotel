@@ -270,12 +270,13 @@ public class HotelManagerModifyHotel {
 	/**保存（添加）当前输入的入住信息 */
 	@FXML
 	void saveCheckIn(ActionEvent event) {
-		if (!roomNumber.getText().isEmpty() && !startTime.getText().isEmpty() && !endTime.getText().isEmpty())
-		newCheckInInfos += (roomNumber.getText() + "," + startTime.getText() + "," + endTime.getText() + ";");
-		ResultInfoHelper.setResultLabel(resultLabel, "", 2000);
-		roomNumber.setText("");
-		startTime.setText("");
-		endTime.setText("");
+		if (!roomNumber.getText().isEmpty() && !startTime.getText().isEmpty() && !endTime.getText().isEmpty()) {
+			newCheckInInfos += (roomNumber.getText() + "," + startTime.getText() + "," + endTime.getText() + ";");
+			ResultInfoHelper.setResultLabel(resultLabel, "", 2000);
+			roomNumber.setText("");
+			startTime.setText("");
+			endTime.setText("");
+		}
 	}
 
 	@FXML
