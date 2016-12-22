@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
@@ -96,6 +97,9 @@
                      <font>
                         <Font name="Microsoft YaHei" size="15.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                   <Label fx:id="delResultLabel" alignment="CENTER_RIGHT" layoutX="232.0" layoutY="31.0" prefHeight="27.0" prefWidth="263.0">
                      <font>
@@ -195,6 +199,9 @@
          <font>
             <Font name="Microsoft YaHei" size="15.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
       <Label fx:id="resultLabel" alignment="CENTER" layoutX="657.0" layoutY="527.0" prefHeight="27.0" prefWidth="263.0" AnchorPane.topAnchor="530.0">
          <font>

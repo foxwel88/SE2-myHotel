@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -55,11 +56,17 @@
                                              <effect>
                                                 <DropShadow />
                                              </effect>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
                                           </Button>
                                           <Label fx:id="showPromotionLabel" layoutX="230.0" layoutY="118.0" onMouseClicked="#showHotelPromotion" prefHeight="22.0" prefWidth="273.0" text="现在预订该酒店，即可享受以下优惠" textFill="RED" underline="true">
                                              <font>
                                                 <Font size="16.0" />
                                              </font>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
                                           </Label>
                                        </children>
                                     </AnchorPane>

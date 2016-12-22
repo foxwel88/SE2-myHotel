@@ -1,24 +1,24 @@
 package org.client.presentation.customer;
 
-import java.rmi.RemoteException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.scene.control.ChoiceBox;
 import org.client.bl.promotionbl.PromotionController;
-import org.client.rmi.RMIHelper;
+import org.client.presentation.util.LiveDatePicker;
 import org.client.vo.AreaVO;
 import org.client.vo.CityVO;
 import org.client.vo.PromotionVO;
+import org.common.utility.HotelFilter;
 
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.util.Duration;
 
 public class CustomerMain {
 	@FXML
@@ -59,6 +59,12 @@ public class CustomerMain {
 
 	@FXML
 	ChoiceBox<String> area;
+	
+	@FXML
+	DatePicker startDate;
+
+	@FXML
+	DatePicker endDate;
 
 	// 该字段表示同时显示的最大促销策略的数量
 	private static final int MAX_PROMOTION_ONE_OAGE = 4;
@@ -67,54 +73,62 @@ public class CustomerMain {
 	
 	private ArrayList<PromotionVO> promotionVOList;
 
-	private void setCity() {
-		ArrayList<String> cityNameList = new ArrayList<>();
-		ArrayList<CityVO> cityVOList = SwitchSceneUtil.getCities();
-		for (CityVO vo : cityVOList) {
-			cityNameList.add(vo.cityName);
-		}
-		city.setItems(FXCollections.observableArrayList(cityNameList));
-	}
-
-	private void setArea() {
-		ArrayList<String> areaNameList = new ArrayList<>();
-		try {
-			ArrayList<AreaVO> areaVOList = SwitchSceneUtil.getAreas(city.getValue());
-			for (AreaVO vo : areaVOList) {
-				areaNameList.add(vo.address);
-			}
-			area.setItems(FXCollections.observableArrayList(areaNameList));
-		} catch (NullPointerException nullPointerException) {
-			area.setItems(null);
-		}
-	}
-
-	@FXML
-	void refreshAreas() {
-		setArea();
-		area.setValue(area.getItems().get(0));
-	}
-
 	@FXML
 	void initialize() {
 		setCity();
 		city.setValue("南京");
 		setArea();
-
-
 		area.setValue("新街口");
-
 		city.getSelectionModel().selectedItemProperty().addListener( (ObservableValue< ? extends String> observable, String oldValue, String newValue) -> {
 			refreshAreas();
 		});
-
+		setStartDate();
+		setEndDate();
+				
 		SwitchSceneUtil.showGuideAnimation(root, -200);
+		
 		promotionLabelList = new ArrayList<>();
 		promotionLabelList.add(promotion1);
 		promotionLabelList.add(promotion2);
 		promotionLabelList.add(promotion3);
 		promotionLabelList.add(promotion4);
 		promotionVOList = (ArrayList<PromotionVO>)PromotionController.getInstance().showWebsitePromotion();
+	}
+	
+	@FXML
+	void search_causedByMouse() {
+		search();
+	}
+	
+	@FXML
+	void search_causedByKeyboard(KeyEvent keyEvent) {
+		if (keyEvent.getCode() == KeyCode.ENTER) {
+			search();
+		}
+	}
+	
+	@FXML
+	void search_fromPicture() {
+		city.setValue("南京");
+		refreshAreas();
+		area.setValue("湖南路");
+		search();
+	}
+	
+	@FXML
+	void refreshAreas() {
+		setArea();
+		area.setValue(area.getItems().get(0));
+	}
+	
+	/**
+	 * 保证todate一定实时保持在fromdate之后
+	 */
+	@FXML
+	void refreshDatePicker() {
+		if (!endDate.getValue().isAfter(startDate.getValue())) {
+			endDate.setValue(startDate.getValue().plusDays(1));
+		}
 	}
 	
 	@FXML
@@ -144,6 +158,17 @@ public class CustomerMain {
 		}
 	}
 	
+	// 跳转到酒店列表
+	private void search() {
+		HotelFilter hotelFilter = new HotelFilter();
+		hotelFilter.setLocation(city.getValue(), area.getValue());
+		hotelFilter.setSchFromDate(LiveDatePicker.toDate(startDate.getValue()));
+		hotelFilter.setSchToDate(LiveDatePicker.toDate(endDate.getValue()));
+		SwitchSceneUtil.previousHotelSceneInfo = new PreviousHotelSceneInfo(hotelFilter, false, 1);
+		SwitchSceneUtil.isBack = true;
+		SwitchSceneUtil.customerController.turnToCusController_HotelList();
+	}
+	
 	private void setContent() {
 		for (int i = 0; i < MAX_PROMOTION_ONE_OAGE; i++) {
 			if (promotion(i) != null) {
@@ -154,6 +179,38 @@ public class CustomerMain {
 				promotionLabelList.get(i).setText(null);
 			}
 		}
+	}
+	
+	private void setCity() {
+		ArrayList<String> cityNameList = new ArrayList<>();
+		ArrayList<CityVO> cityVOList = SwitchSceneUtil.getCities();
+		for (CityVO vo : cityVOList) {
+			cityNameList.add(vo.cityName);
+		}
+		city.setItems(FXCollections.observableArrayList(cityNameList));
+	}
+
+	private void setArea() {
+		ArrayList<String> areaNameList = new ArrayList<>();
+		try {
+			ArrayList<AreaVO> areaVOList = SwitchSceneUtil.getAreas(city.getValue());
+			for (AreaVO vo : areaVOList) {
+				areaNameList.add(vo.address);
+			}
+			area.setItems(FXCollections.observableArrayList(areaNameList));
+		} catch (NullPointerException nullPointerException) {
+			area.setItems(null);
+		}
+	}
+	
+	private void setStartDate() {
+		DatePicker banBeforeTodayPicker = new DatePicker();
+		banBeforeTodayPicker.setValue(LocalDate.now().minusDays(1));
+		LiveDatePicker.initDatePicker(banBeforeTodayPicker, startDate);
+	}
+	
+	private void setEndDate() {
+		LiveDatePicker.initDatePicker(startDate, endDate);
 	}
 	
 	private int calMaxPage(ArrayList<PromotionVO> voList) {

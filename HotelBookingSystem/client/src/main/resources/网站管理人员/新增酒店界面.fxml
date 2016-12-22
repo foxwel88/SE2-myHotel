@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
@@ -13,7 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="567.0" prefWidth="920.0" style="-fx-background-color: rgba(255,255,255,0.4);" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.presentation.webmanager.WebManagerAddHotel">
+<AnchorPane prefHeight="567.0" prefWidth="920.0" style="-fx-background-color: rgba(255,255,255,0.4);" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.presentation.webmanager.WebManagerAddHotel">
    <effect>
       <DropShadow />
    </effect>
@@ -136,11 +137,17 @@
          <font>
             <Font name="Microsoft YaHei" size="15.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
       <Button fx:id="confirmButton" layoutX="495.0" layoutY="470.0" mnemonicParsing="false" onMouseClicked="#handleConfirmAction" prefHeight="37.0" prefWidth="98.0" text="提交" AnchorPane.bottomAnchor="47.0" AnchorPane.leftAnchor="780.0" AnchorPane.rightAnchor="50.0">
          <font>
             <Font name="Microsoft YaHei" size="15.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
       <Label layoutX="512.0" layoutY="57.0" text="添加酒店所属工作人员" textAlignment="CENTER" AnchorPane.leftAnchor="550.0" AnchorPane.topAnchor="50.0">
          <font>
