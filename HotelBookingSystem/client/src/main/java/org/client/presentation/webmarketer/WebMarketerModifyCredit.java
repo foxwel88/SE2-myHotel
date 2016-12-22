@@ -128,7 +128,7 @@ public class WebMarketerModifyCredit {
 		// get content
 		String userId = controller.getCurrentId();
 		String credit = controller.getCurrentCreidt();
-		String name = controller.getName();
+		String name = controller.getAnotherName();
 		
 		// set content
 		nameText.setText(name);
