@@ -280,28 +280,6 @@ public class HotelManagerModifyHotel {
 
 	@FXML
     void initialize() {
-		assert city != null : "fx:id=\"city\" was not injected: check your FXML file '维护酒店信息界面.fxml'.";
-		assert area != null : "fx:id=\"area\" was not injected: check your FXML file '维护酒店信息界面.fxml'.";
-		assert address != null : "fx:id=\"address\" was not injected: check your FXML file '维护酒店信息界面.fxml'.";
-		assert name != null : "fx:id=\"name\" was not injected: check your FXML file '维护酒店信息界面.fxml'.";
-		assert star != null : "fx:id=\"star\" was not injected: check your FXML file '维护酒店信息界面.fxml'.";
-		assert intro != null : "fx:id=\"intro\" was not injected: check your FXML file '维护酒店信息界面.fxml'.";
-		assert facility != null : "fx:id=\"facility\" was not injected: check your FXML file '维护酒店信息界面.fxml'.";
-		assert roomType != null : "fx:id=\"roomType\" was not injected: check your FXML file '维护酒店信息界面.fxml'.";
-		assert roomNum != null : "fx:id=\"roomNum\" was not injected: check your FXML file '维护酒店信息界面.fxml'.";
-		assert roomPrice != null : "fx:id=\"roomPrice\" was not injected: check your FXML file '维护酒店信息界面.fxml'.";
-		assert startTime != null : "fx:id=\"startTime\" was not injected: check your FXML file '维护酒店信息界面.fxml'.";
-		assert endTime != null : "fx:id=\"endTime\" was not injected: check your FXML file '维护酒店信息界面.fxml'.";
-		assert saveButton != null : "fx:id=\"saveButton\" was not injected: check your FXML file '维护酒店信息界面.fxml'.";
-		assert cooperatorBox != null : "fx:id=\"cooperatorBox\" was not injected: check your FXML file '维护酒店信息界面.fxml'.";
-		assert cooperatorField != null : "fx:id=\"cooperatorField\" was not injected: check your FXML file '维护酒店信息界面.fxml'.";
-		assert addButton != null : "fx:id=\"addButton\" was not injected: check your FXML file '维护酒店信息界面.fxml'.";
-		assert changeButton != null : "fx:id=\"changeButton\" was not injected: check your FXML file '维护酒店信息界面.fxml'.";
-		assert deleteButton != null : "fx:id=\"deleteButton\" was not injected: check your FXML file '维护酒店信息界面.fxml'.";
-		assert handInButton != null : "fx:id=\"handInButton\" was not injected: check your FXML file '维护酒店信息界面.fxml'.";
-		assert roomNumber != null : "fx:id=\"roomNumber\" was not injected: check your FXML file '维护酒店信息界面.fxml'.";
-		assert resultLabel != null : "fx:id=\"resultLabel\" was not injected: check your FXML file '维护酒店信息界面.fxml'.";
-		assert roomSaveButton != null : "fx:id=\"roomSaveButton\" was not injected: check your FXML file '维护酒店信息界面.fxml'.";
 
 		vo = HotelManagerController.getInstance().getHotelInfo();
 		
@@ -439,8 +417,8 @@ public class HotelManagerModifyHotel {
 
 		label.setVisible(true);
 		label.setOpacity(0);
-		FadeTransition labelFt = new FadeTransition(Duration.millis(500), label);
-		labelFt.setRate(0.6);
+		FadeTransition labelFt = new FadeTransition(Duration.millis(400), label);
+		labelFt.setRate(0.5);
 		labelFt.setFromValue(0);
 		labelFt.setToValue(1.0);
 		labelFt.play();

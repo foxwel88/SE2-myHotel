@@ -58,8 +58,8 @@
                   <TextField fx:id="nameLabel" prefHeight="23.0" prefWidth="214.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-text-inner-color: white;" GridPane.columnIndex="1" />
                   <ChoiceBox fx:id="typeBox" prefHeight="23.0" prefWidth="150.0" style="-fx-background-color: rgba(255,255,255,0.1);" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <TextField fx:id="discountLabel" prefHeight="23.0" prefWidth="173.0" style="-fx-background-color: rgba(255,255,255,0.1); -fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <DatePicker fx:id="startTimePicker" editable="false" style="-fx-background-color: rgba(255,255,255,0.1);" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <DatePicker fx:id="endTimePicker" editable="false" style="-fx-background-color: rgba(255,255,255,0.1);" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <DatePicker fx:id="startTimePicker" editable="false" prefHeight="23.0" prefWidth="188.0" style="-fx-background-color: rgba(255,255,255,0.1);" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <DatePicker fx:id="endTimePicker" editable="false" prefHeight="23.0" prefWidth="188.0" style="-fx-background-color: rgba(255,255,255,0.1);" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                   <Label alignment="CENTER" prefHeight="94.0" prefWidth="126.0" text="结束时间" textFill="WHITE" GridPane.rowIndex="4">
                      <font>
                         <Font name="Microsoft YaHei" size="15.0" />
