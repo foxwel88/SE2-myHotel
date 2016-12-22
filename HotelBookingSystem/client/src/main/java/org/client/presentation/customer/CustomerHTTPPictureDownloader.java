@@ -39,15 +39,17 @@ public class CustomerHTTPPictureDownloader {
 	public static void clearTempFile() {
 		String FileFolderPath = new String("hotelimgtemp");
 		File fileFolder = new File(FileFolderPath);
-		String[] fileList = fileFolder.list();
-		File tempFile = null;
-		for (int i = 0; i < fileList.length; i++) {
-			tempFile = new File(FileFolderPath + File.separator + fileList[i]);
-			if (tempFile.isFile()) {
-				tempFile.delete();
+		if (fileFolder.exists()) {
+			String[] fileList = fileFolder.list();
+			File tempFile = null;
+			for (int i = 0; i < fileList.length; i++) {
+				tempFile = new File(FileFolderPath + File.separator + fileList[i]);
+				if (tempFile.isFile()) {
+					tempFile.delete();
+				}
 			}
+			fileFolder.delete();
 		}
-		fileFolder.delete();
 	}
 	
 	private static byte[] readInputStream(InputStream instream) throws IOException {

@@ -193,6 +193,5 @@
             </GridPane>
          </children>
       </Pane>
-      <AnchorPane fx:id="curtain" prefHeight="567.0" prefWidth="920.0" style="-fx-background-color: rgba(175,175,175,1);" />
    </children>
 </AnchorPane>

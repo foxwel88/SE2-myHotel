@@ -15,7 +15,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="root" onKeyPressed="#search_causedByKeyboard" prefHeight="567.0" prefWidth="920.0" style="-fx-background-color: rgba(255,255,255,0.4);" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.presentation.customer.CustomerCheckHotelList">
@@ -434,10 +433,5 @@
             <TextField fx:id="toPage" layoutX="596.0" layoutY="3.0" onKeyPressed="#turnToSpecialPage" prefHeight="20.0" prefWidth="30.0" style="-fx-background-color: rgba(0,0,0,0.1);" />
          </children>
       </AnchorPane>
-      <Rectangle fx:id="curtain1" arcHeight="5.0" arcWidth="5.0" fill="#adadad00" height="78.0" layoutX="18.0" layoutY="143.0" stroke="TRANSPARENT" strokeType="INSIDE" visible="false" width="880.0" />
-      <Rectangle fx:id="curtain2" arcHeight="5.0" arcWidth="5.0" fill="#adadad00" height="78.0" layoutX="18.0" layoutY="221.0" stroke="TRANSPARENT" strokeType="INSIDE" visible="false" width="880.0" />
-      <Rectangle fx:id="curtain3" arcHeight="5.0" arcWidth="5.0" fill="#adadad00" height="78.0" layoutX="18.0" layoutY="299.0" stroke="TRANSPARENT" strokeType="INSIDE" visible="false" width="880.0" />
-      <Rectangle fx:id="curtain4" arcHeight="5.0" arcWidth="5.0" fill="#adadad00" height="78.0" layoutX="18.0" layoutY="377.0" stroke="TRANSPARENT" strokeType="INSIDE" visible="false" width="880.0" />
-      <Rectangle fx:id="curtain5" arcHeight="5.0" arcWidth="5.0" fill="#adadad00" height="78.0" layoutX="18.0" layoutY="455.0" stroke="TRANSPARENT" strokeType="INSIDE" visible="false" width="880.0" />
    </children>
 </AnchorPane>

@@ -33,7 +33,6 @@ import javafx.animation.FadeTransition;
 import javafx.animation.ParallelTransition;
 import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
-import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -374,33 +373,33 @@ public class SwitchSceneUtil {
 		parallelTransition.play();
 	}
 	
-	public static void showFoldTagAnimation(Label label) {
-		FadeTransition fadeTransition = new FadeTransition(Duration.seconds(0.8), label);
-		fadeTransition.setFromValue(0);
-		fadeTransition.setToValue(1);
+	public static void showOldSceneAnimation(AnchorPane root) {
+		root.setVisible(true);
 		
-		TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(0.8), label);
-		translateTransition.setToX(0);
-		translateTransition.setToY(286);
+		FadeTransition fadeTransition = new FadeTransition(Duration.seconds(0.4), root);
+		fadeTransition.setFromValue(1);
+		fadeTransition.setToValue(0);
 		
-		ScaleTransition scaleTransition = new ScaleTransition(Duration.seconds(0.8), label);
-		scaleTransition.setFromX(1);
-		scaleTransition.setFromY(1);
-		scaleTransition.setToX(1.4);
-		scaleTransition.setToY(1);
+		TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(0.4), root);
+		translateTransition.setFromX(0);
+		translateTransition.setToX(-500);
 		
 		ParallelTransition parallelTransition = new ParallelTransition();
-		parallelTransition.getChildren().addAll(fadeTransition, translateTransition, scaleTransition);
+		parallelTransition.getChildren().addAll(fadeTransition, translateTransition);
 		parallelTransition.play();
 	}
 
-	public static void showLevelTwoSceneAnimation(AnchorPane root, AnchorPane curtain) {
-		FadeTransition curtainFadeTransition = new FadeTransition(Duration.seconds(0.8), curtain);
-		curtainFadeTransition.setFromValue(1);
-		curtainFadeTransition.setToValue(0);
+	public static void showNewSceneAnimation(AnchorPane root) {
+		FadeTransition curtainFadeTransition = new FadeTransition(Duration.seconds(0.4), root);
+		curtainFadeTransition.setFromValue(0);
+		curtainFadeTransition.setToValue(1);
+		
+		TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(0.4), root);
+		translateTransition.setFromX(-500);
+		translateTransition.setToX(0);
 		
 		ParallelTransition parallelTransition = new ParallelTransition();
-		parallelTransition.getChildren().addAll(curtainFadeTransition);
+		parallelTransition.getChildren().addAll(curtainFadeTransition, translateTransition);
 		parallelTransition.play();
 	}
 }

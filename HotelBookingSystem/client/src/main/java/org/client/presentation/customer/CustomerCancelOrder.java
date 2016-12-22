@@ -78,5 +78,7 @@ public class CustomerCancelOrder {
 		schTimeLabel.setText(LiveDatePicker.dateToCoarseString(vo.schFrom) + " - " + LiveDatePicker.dateToCoarseString(vo.schTo));
 		generatedTimeLabel.setText(LiveDatePicker.dateToDetaildString(vo.generatedDate));
 		priceLabel.setText(String.valueOf(vo.totalPrice));
+		
+		SwitchSceneUtil.showNewSceneAnimation(root);
 	}
 }

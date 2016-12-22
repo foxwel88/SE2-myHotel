@@ -8,6 +8,8 @@ import org.client.presentation.util.GenerateTimeComparator;
 import org.client.presentation.util.LiveDatePicker;
 import org.client.vo.OrderVO;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -18,6 +20,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.util.Duration;
 
 /**
  * 
@@ -58,9 +61,6 @@ public class CustomerUnexcutedOrderList {
 	
 	@FXML
 	Label nextPage;
-	
-	@FXML
-	Label curtain;
 	
 	@FXML
 	TextField toPage;
@@ -137,11 +137,17 @@ public class CustomerUnexcutedOrderList {
 		try {
 			for (int i = 0; i < MAX_ORDER_ONE_OAGE; i++) {
 				if (((event.getSource())).equals(boxList.get(i))) {
-					SwitchSceneUtil.showFoldTagAnimation(curtain);
 					orderID = unExcutedOrderList.get((page - 1) * MAX_ORDER_ONE_OAGE + i).orderID;
-					SwitchSceneUtil.currentScene = CustomerBackableScene.UNEXECUTED_ORDER_SCENE;
-					SwitchSceneUtil.previousOrderSceneInfo = new PreviousOrderSceneInfo(Integer.parseInt(currentPage.getText()));
-					SwitchSceneUtil.turnToDetailedOrderScene((GridPane)root.getParent(), resources.customerCheckUnexecutedOrder, orderID);
+					KeyFrame animationFrame = new KeyFrame(Duration.seconds(0), actionEvent -> {
+						SwitchSceneUtil.showOldSceneAnimation(root);
+					});
+					KeyFrame changeSceneFrame = new KeyFrame(Duration.seconds(0.4), actionEvent -> {
+						SwitchSceneUtil.currentScene = CustomerBackableScene.UNEXECUTED_ORDER_SCENE;
+						SwitchSceneUtil.previousOrderSceneInfo = new PreviousOrderSceneInfo(Integer.parseInt(currentPage.getText()));
+						SwitchSceneUtil.turnToDetailedOrderScene((GridPane)root.getParent(), resources.customerCheckUnexecutedOrder, orderID);
+					});
+					Timeline timeline = new Timeline(animationFrame, changeSceneFrame);
+					timeline.play();
 					break;
 				}
 			}

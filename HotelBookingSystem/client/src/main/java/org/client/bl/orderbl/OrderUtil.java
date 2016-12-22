@@ -265,21 +265,4 @@ public class OrderUtil {
 		
 		return maxn;
 	}
-
-
-
-	/*
-	public static void main(String[] args) throws ParseException {
-		System.out.println("start");
-		RMIHelper.getInstance().init();
-		System.out.println("end");
-		OrderUtil test = new OrderUtil();
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		Date fromDate = null;
-		Date toDate = null;
-		fromDate = dateFormat.parse("2016-12-18 00:00:00");
-		toDate = dateFormat.parse("2016-12-20 00:00:00");
-		System.out.println(test.getRestRoom("00001", RoomType.DOUBLE, fromDate, toDate));
-	}
-	*/
 }

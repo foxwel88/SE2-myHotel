@@ -28,7 +28,7 @@ public class Level {
 			this.levelNum = levelPO.levelNum;
 			this.credits = levelPO.credits;
 		} catch (RemoteException rex) {
-			System.out.println(ResultMessage.CONNECTION_FAIL);
+//			System.out.println(ResultMessage.CONNECTION_FAIL);
 		}
 	}
 	

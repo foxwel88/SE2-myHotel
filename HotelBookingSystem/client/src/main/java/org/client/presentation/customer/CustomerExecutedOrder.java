@@ -96,6 +96,8 @@ public class CustomerExecutedOrder {
 		if (vo.isCommented) {
 			commentButton.setText("查看评价");
 		}
+		
+		SwitchSceneUtil.showNewSceneAnimation(root);
 	}
 	
 	@FXML

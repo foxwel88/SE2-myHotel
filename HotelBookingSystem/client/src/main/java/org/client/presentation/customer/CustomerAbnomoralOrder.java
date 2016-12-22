@@ -86,5 +86,7 @@ public class CustomerAbnomoralOrder {
 		generatedTimeLabel.setText(LiveDatePicker.dateToDetaildString(vo.generatedDate));
 		priceLabel.setText(String.valueOf(vo.totalPrice));
 		creditLabel.setText("-" + String.valueOf(vo.totalPrice));
+		
+		SwitchSceneUtil.showNewSceneAnimation(root);
 	}
 }

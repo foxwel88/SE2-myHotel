@@ -32,6 +32,9 @@ import javafx.scene.layout.VBox;
 public class CustomerCheckHotel {
 	@FXML
 	AnchorPane root;
+
+	@FXML
+	AnchorPane curtain;
 	
 	@FXML
 	AnchorPane promotionPane;
@@ -280,6 +283,8 @@ public class CustomerCheckHotel {
 			}
 		}
 		
+		SwitchSceneUtil.showNewSceneAnimation(root);
+
 		orderDateList = new ArrayList<>();
 		orderRoomTypeList = new ArrayList<>();
 		orderRoomNumList = new ArrayList<>();

@@ -61,7 +61,6 @@ public class OrderController implements Orderblservice {
 
 	public List<OrderVO> getUserOrderList(String userID, OrderType type) {
 		// TODO Auto-generated method stub
-		System.out.println(userID + "----" + type.toString());
 		return orderutil.getUserOrderList(userID, type);
 	}
 

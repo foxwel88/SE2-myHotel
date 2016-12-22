@@ -11,6 +11,8 @@ import org.client.presentation.util.LatestTimeComparator;
 import org.client.presentation.util.LiveDatePicker;
 import org.client.vo.OrderVO;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -22,6 +24,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.util.Duration;
 
 /**
  * 
@@ -259,23 +262,36 @@ public class CustomerHistoryOrder {
 				HBox clickedBox = (HBox)(event.getSource());
 				if (clickedBox.equals(boxList.get(i))) {
 					SwitchSceneUtil.previousOrderSceneInfo = new PreviousOrderSceneInfo(Integer.parseInt(currentPage.getText()));
+					
+					KeyFrame animationFrame = new KeyFrame(Duration.seconds(0), actionEvent -> {
+						SwitchSceneUtil.showOldSceneAnimation(root);
+					});
+					KeyFrame changeSceneFrame = null;
 					switch (currentLabel) {
 						case 0:
 							orderID = executedOrderList.get((page - 1) * MAX_ORDER_ONE_OAGE + i).orderID;
-							SwitchSceneUtil.currentScene = CustomerBackableScene.EXECUTED_ORDER_SCENE;
-							SwitchSceneUtil.turnToDetailedOrderScene((GridPane)root.getParent(), resources.customerCheckExecutedOrder, orderID);
+							changeSceneFrame = new KeyFrame(Duration.seconds(0.4), actionEvent -> {
+								SwitchSceneUtil.currentScene = CustomerBackableScene.EXECUTED_ORDER_SCENE;
+								SwitchSceneUtil.turnToDetailedOrderScene((GridPane)root.getParent(), resources.customerCheckExecutedOrder, orderID);
+							});
 							break;
 						case 1:
 							orderID = canceledOrderList.get((page - 1) * MAX_ORDER_ONE_OAGE + i).orderID;
-							SwitchSceneUtil.currentScene = CustomerBackableScene.CANCELED_ORDER_SCENE;
-							SwitchSceneUtil.turnToDetailedOrderScene((GridPane)root.getParent(), resources.customerCheckCanceledOrder, orderID);
+							changeSceneFrame = new KeyFrame(Duration.seconds(0.4), actionEvent -> {
+								SwitchSceneUtil.currentScene = CustomerBackableScene.CANCELED_ORDER_SCENE;
+								SwitchSceneUtil.turnToDetailedOrderScene((GridPane)root.getParent(), resources.customerCheckCanceledOrder, orderID);
+							});
 							break;
 						case 2:
 							orderID = abnormalOrderList.get((page - 1) * MAX_ORDER_ONE_OAGE + i).orderID;
-							SwitchSceneUtil.currentScene = CustomerBackableScene.ABNORMAL_ORDER_SCENE;
-							SwitchSceneUtil.turnToDetailedOrderScene((GridPane)root.getParent(), resources.customerCheckAbnormalOrder, orderID);
+							changeSceneFrame = new KeyFrame(Duration.seconds(0.4), actionEvent -> {
+								SwitchSceneUtil.currentScene = CustomerBackableScene.ABNORMAL_ORDER_SCENE;
+								SwitchSceneUtil.turnToDetailedOrderScene((GridPane)root.getParent(), resources.customerCheckAbnormalOrder, orderID);
+							});
 							break;
 					}
+					Timeline timeline = new Timeline(animationFrame, changeSceneFrame);
+					timeline.play();
 					break;
 				}
 			}

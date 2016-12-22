@@ -12,6 +12,8 @@ import org.client.vo.HotelVO;
 import org.common.utility.HotelFilter;
 import org.common.utility.RoomType;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -33,6 +35,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.util.Duration;
 
 /**
  * 
@@ -44,6 +47,9 @@ import javafx.scene.paint.Color;
 public class CustomerCheckHotelList {
 	@FXML
 	AnchorPane root;
+
+	@FXML
+	AnchorPane curtain;
 	
 	@FXML
 	ChoiceBox<String> city;
@@ -242,9 +248,16 @@ public class CustomerCheckHotelList {
 				HBox hbox = (HBox)(event.getSource());
 				if (hbox.equals(hotelBoxList.get(i))) {
 					hotelID = hotelList.get((page - 1) * MAX_HOTEL_ONE_OAGE + i).id;
-					SwitchSceneUtil.currentScene = CustomerBackableScene.HOTEL_INFO_SCENE;
-					SwitchSceneUtil.previousHotelSceneInfo = new PreviousHotelSceneInfo(getCurrentFilter(), everOrdered.isSelected(), Integer.parseInt(currentPage.getText()));
-					SwitchSceneUtil.turnToDetailedHotelScene((GridPane)root.getParent(), hotelID);
+					KeyFrame animationFrame = new KeyFrame(Duration.seconds(0), actionEvent -> {
+						SwitchSceneUtil.showOldSceneAnimation(root);
+					});
+					KeyFrame changeSceneFrame = new KeyFrame(Duration.seconds(0.4), actionEvent -> {
+						SwitchSceneUtil.currentScene = CustomerBackableScene.HOTEL_INFO_SCENE;
+						SwitchSceneUtil.previousHotelSceneInfo = new PreviousHotelSceneInfo(getCurrentFilter(), everOrdered.isSelected(), Integer.parseInt(currentPage.getText()));
+						SwitchSceneUtil.turnToDetailedHotelScene((GridPane)root.getParent(), hotelID);
+					});
+					Timeline timeline = new Timeline(animationFrame, changeSceneFrame);
+					timeline.play();
 					break;
 				}
 			}
