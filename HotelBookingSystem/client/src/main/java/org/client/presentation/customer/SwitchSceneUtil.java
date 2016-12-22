@@ -47,6 +47,8 @@ import javafx.util.Duration;
 public class SwitchSceneUtil {
 	static Stage stage = null;
 	
+	static Customer_Guide customerController;
+	
 	static Userblservice userController;
 	
 	static Orderblservice orderController;
@@ -401,5 +403,9 @@ public class SwitchSceneUtil {
 		ParallelTransition parallelTransition = new ParallelTransition();
 		parallelTransition.getChildren().addAll(curtainFadeTransition, translateTransition);
 		parallelTransition.play();
+	}
+
+	public static void setController(Customer_Guide controller) {
+		SwitchSceneUtil.customerController = controller;
 	}
 }

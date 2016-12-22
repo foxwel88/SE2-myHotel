@@ -103,6 +103,10 @@ public class WebMarketerController {
 		return creditNum.toString();
 	}
 	
+	public String getAnotherName() {
+		return userVO.name;
+	}
+	
 	/**
 	 * 增加当前用户的信用值
 	 * @param credit 要增加的信用值

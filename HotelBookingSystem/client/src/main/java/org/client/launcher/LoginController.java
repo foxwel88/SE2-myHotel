@@ -4,12 +4,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import javafx.event.EventHandler;
-import javafx.scene.input.MouseEvent;
-import javafx.stage.WindowEvent;
 import org.client.bl.userbl.UserController;
 import org.client.blservice.userblservice.Userblservice;
 import org.client.presentation.customer.CustomerHTTPPictureDownloader;
+import org.client.presentation.customer.Customer_Guide;
 import org.client.presentation.customer.SwitchSceneUtil;
 import org.client.presentation.hotelmanager.HotelManagerController;
 import org.client.presentation.webmanager.WebManagerController;
@@ -18,6 +16,7 @@ import org.client.vo.UserVO;
 import org.common.utility.ResultMessage;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -27,7 +26,9 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 /**
  * FXML Controller
@@ -89,11 +90,17 @@ public class LoginController {
 					break;
 				case "个人客户":
 					SwitchSceneUtil.init(stage, uservo.ID);
-					root = FXMLLoader.load(getClass().getResource("/客户/导航_主界面.fxml"));
+					FXMLLoader loader1 = new FXMLLoader();
+					root = loader1.load(getClass().getResource("/客户/导航_主界面.fxml").openStream());
+					Customer_Guide customerController1 = (Customer_Guide) loader1.getController();
+					SwitchSceneUtil.setController(customerController1);
 					break;
 				case "企业客户":
 					SwitchSceneUtil.init(stage, uservo.ID);
-					root = FXMLLoader.load(getClass().getResource("/客户/导航_主界面.fxml"));
+					FXMLLoader loader2 = new FXMLLoader();
+					root = loader2.load(getClass().getResource("/客户/导航_主界面.fxml").openStream());
+					Customer_Guide customerController2 = (Customer_Guide) loader2.getController();
+					SwitchSceneUtil.setController(customerController2);
 					break;
 			}
 

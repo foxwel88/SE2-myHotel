@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
@@ -34,6 +35,9 @@
                <font>
                   <Font name="Microsoft YaHei UI Light" size="20.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
             <Label layoutX="113.0" layoutY="42.0" text="酒店预订管理系统" textFill="WHITE">
                <font>
@@ -103,6 +107,9 @@
                <effect>
                   <Bloom />
                </effect>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Circle>
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="39.0" layoutY="590.0" onMouseClicked="#goBack" prefHeight="30.0" prefWidth="32.0" text="&lt;" textFill="WHITE">
                <font>

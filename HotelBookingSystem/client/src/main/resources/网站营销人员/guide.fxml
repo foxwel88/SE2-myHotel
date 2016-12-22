@@ -6,6 +6,7 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.effect.Blend?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.GaussianBlur?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -19,8 +20,11 @@
    <children>
       <ImageView fitHeight="683.0" fitWidth="1103.0">
          <image>
-            <Image url="@2.jpg" />
+            <Image url="@05.jpg" />
          </image>
+         <effect>
+            <GaussianBlur radius="0.0" />
+         </effect>
       </ImageView>
       <GridPane layoutX="2.0" layoutY="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1100.0">
         <columnConstraints>
@@ -54,7 +58,7 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <AnchorPane fx:id="orderPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.32);" GridPane.rowIndex="4">
+                              <AnchorPane fx:id="orderPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0,20,81,0.32);" GridPane.rowIndex="4">
                                  <children>
                                     <Label fx:id="orderLabel" alignment="CENTER" onMouseClicked="#handleSwitch" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" prefHeight="114.0" prefWidth="120.0" text="异常订单" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <font>
@@ -62,7 +66,7 @@
                                        </font>
                                     </Label>
                                  </children></AnchorPane>
-                              <AnchorPane fx:id="levelPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.44);" GridPane.rowIndex="2">
+                              <AnchorPane fx:id="levelPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0,20,81,0.44);" GridPane.rowIndex="2">
                                  <children>
                                     <Label fx:id="levelLabel" alignment="CENTER" onMouseClicked="#handleSwitch" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" prefHeight="114.0" prefWidth="120.0" text="等级制度" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <font>
@@ -70,7 +74,7 @@
                                        </font>
                                     </Label>
                                  </children></AnchorPane>
-                              <AnchorPane fx:id="promotionPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.38);" GridPane.rowIndex="3">
+                              <AnchorPane fx:id="promotionPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0,20,81,0.38);" GridPane.rowIndex="3">
                                  <children>
                                     <Label fx:id="promotionLabel" alignment="CENTER" onMouseClicked="#handleSwitch" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" prefHeight="114.0" prefWidth="120.0" text="促销策略" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <font>
@@ -78,7 +82,7 @@
                                        </font>
                                     </Label>
                                  </children></AnchorPane>
-                              <AnchorPane fx:id="creditPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgb(0,0,0,0.5);" GridPane.rowIndex="1">
+                              <AnchorPane fx:id="creditPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0,20,81,0.5);" GridPane.rowIndex="1">
                                  <children>
                                     <Label fx:id="creditLabel" alignment="CENTER" onMouseClicked="#handleSwitch" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" prefHeight="114.0" prefWidth="120.0" text="信用充值" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <font>
@@ -87,12 +91,12 @@
                                     </Label>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane fx:id="mainPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(255,255,255,0.4);">
+                              <AnchorPane fx:id="mainPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(130,163,249,0.4);">
                                  <effect>
                                     <DropShadow />
                                  </effect>
                                  <children>
-                                    <Label fx:id="mainLabel" alignment="CENTER" layoutX="-7.0" layoutY="1.0" onMouseClicked="#handleSwitch" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" prefHeight="113.0" prefWidth="120.0" text="首页" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <Label fx:id="mainLabel" alignment="CENTER" layoutX="-7.0" layoutY="1.0" onMouseClicked="#handleSwitch" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" prefHeight="113.0" prefWidth="120.0" text="首页" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <font>
                                           <Font name="Microsoft YaHei UI Light" size="21.0" />
                                        </font>
@@ -105,7 +109,7 @@
                   </GridPane>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="60.0" prefWidth="1118.0" style="-fx-background-color: rgba(0,0,0,0.4);" stylesheets="@/avatarMenu.css">
+            <AnchorPane prefHeight="60.0" prefWidth="1118.0" style="-fx-background-color: rgba(0,0,0,0.2);" stylesheets="@/avatarMenu.css">
                <effect>
                   <DropShadow />
                </effect>
@@ -115,7 +119,7 @@
                         <Font name="Microsoft YaHei UI Light" size="24.0" />
                      </font>
                   </Label>
-                  <Pane fx:id="backPane" layoutY="-2.0" onMouseClicked="#goBack" onMouseEntered="#mouseEnterForBack" onMouseExited="#mouseExitForBack" prefHeight="65.0" prefWidth="110.0" style="-fx-background-color: rgba(0,0,0,0.5);">
+                  <Pane fx:id="backPane" layoutY="-2.0" onMouseClicked="#goBack" onMouseEntered="#mouseEnterForBack" onMouseExited="#mouseExitForBack" prefHeight="65.0" prefWidth="110.0">
                      <children>
                         <Label fx:id="backArrow" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="38.0" layoutY="2.0" prefHeight="48.0" prefWidth="35.0" text="&lt;" textFill="#bcb8b8">
                            <font>

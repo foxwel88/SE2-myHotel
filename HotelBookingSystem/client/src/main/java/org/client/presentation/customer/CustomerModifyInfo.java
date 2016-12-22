@@ -34,13 +34,16 @@ public class CustomerModifyInfo {
 	Label companyLabel;
 	
 	@FXML
+	Label birthLabel;
+	
+	@FXML
+	DatePicker birthday;
+	
+	@FXML
 	TextField name;
 	
 	@FXML
 	TextField phoneNumber;
-	
-	@FXML
-	DatePicker birthday;
 	
 	@FXML
 	TextField company;
@@ -50,9 +53,6 @@ public class CustomerModifyInfo {
 	
 	@FXML
 	TextField newPassword;
-
-	@FXML
-	Label birthLabel;
 
 	@FXML
 	TextField newPasswordAgain;

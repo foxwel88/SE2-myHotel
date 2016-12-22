@@ -1,5 +1,7 @@
 package org.server;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +21,8 @@ public class ServerUtil {
 	private static ServerUtil util;
 
 	private static List<String> nowUsers;
+	
+	private FileWriter fileWriter;
 
 	public Parent root;
 	
@@ -35,6 +39,13 @@ public class ServerUtil {
 	
 	public void setParent(Parent root) {
 		this.root = root;
+		if (fileWriter == null) {
+			try {
+				fileWriter = new FileWriter("server_log.txt", true);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	public void addNowUser(String userName) {
@@ -64,6 +75,7 @@ public class ServerUtil {
 		TextArea textarea = (TextArea)root.lookup("#logTextArea");
 		KeyFrame frame = new KeyFrame(Duration.millis(1), e -> {
 			try {
+				writeLog(s);
 				textarea.appendText(DataFactory.getInstance().getTimeServiceImpl().getCurrentTime() + "  " + s + "\n");
 			} catch (RemoteException e1) {
 				e1.printStackTrace();
@@ -83,5 +95,14 @@ public class ServerUtil {
 	public void cleanUser() {
 		nowUsers = new ArrayList<>();
 		setUserNum(0);
+	}
+	
+	private void writeLog(String s) {
+		try {
+			fileWriter.write(s + System.getProperty("line.separator"));
+			fileWriter.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

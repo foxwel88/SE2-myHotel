@@ -8,6 +8,7 @@ import org.client.launcher.Resources;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
@@ -268,7 +269,7 @@ public class Customer_Guide {
 		backArrow.setEffect(null);
 		backArrow.setStyle("-fx-background-color: rgba(0,0,0,0.56)");
 	}
-	
+		
 	/*
 	 * 此方法用于改变被选中的导航栏样式
 	 * 参数0-4分别表示改变主界面、客户信息、酒店列表、历史订单列表、未执行订单列表的导航栏

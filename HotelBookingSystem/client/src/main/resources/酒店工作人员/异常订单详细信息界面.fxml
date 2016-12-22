@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.DropShadow?>
@@ -10,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="abnormal" prefHeight="567.0" prefWidth="920.0" style="-fx-background-color: rgba(255,255,255,0.4);" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.presentation.hotelmanager.HotelManagerAbnormalOrder">
+<AnchorPane fx:id="abnormal" prefHeight="567.0" prefWidth="920.0" style="-fx-background-color: rgba(255,255,255,0.4);" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.presentation.hotelmanager.HotelManagerAbnormalOrder">
    <effect>
       <DropShadow />
    </effect>
@@ -143,6 +144,9 @@
                      <font>
                         <Font name="Microsoft YaHei" size="15.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                   <Label alignment="CENTER" prefHeight="103.0" prefWidth="126.0" style="-fx-background-color: rgba(255,255,255,0.1);" text="最晚到店时间" textFill="WHITE" GridPane.rowIndex="4">
                      <font>

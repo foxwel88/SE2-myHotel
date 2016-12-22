@@ -27,6 +27,8 @@ public class Launcher extends Application {
 			primaryStage.setTitle("酒店预订管理系统");
 			primaryStage.getIcons().add(new Image(Resources.getInstance().icon.toString()));
 			primaryStage.setScene(scene);
+			primaryStage.setX(170);
+			primaryStage.setY(20);
 			primaryStage.show();
 		} catch (Exception e) {
 			e.printStackTrace();
