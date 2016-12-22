@@ -376,10 +376,10 @@ public class CustomerCheckHotelList {
 				getImageLabel(i).setGraphic(getImageView(i));
 				getNameLabel(i).setText(getName(i));
 				getStarLabel(i).setGraphic(getStar(i));
-				getScoreHeadLabel(i).setText("好评：");
+				getScoreHeadLabel(i).setText("评分：");
 				getScoreLabel(i).setText(String.valueOf(getScore(i)));
 				getAddressLabel(i).setText(getAddress(i));
-				getPriceLabel(i).setText(String.valueOf(getPrice(i)));
+				getPriceLabel(i).setText("¥" + String.valueOf(getPrice(i)));
 				getPriceTailLabel(i).setText("起");
 				getMakeOrderLabel(i).setVisible(true);
 			} else {

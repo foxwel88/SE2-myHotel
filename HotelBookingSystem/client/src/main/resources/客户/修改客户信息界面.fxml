@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="567.0" prefWidth="920.0" style="-fx-background-color: rgba(255,255,255,0.4);" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.presentation.customer.CustomerModifyInfo">
+<AnchorPane fx:id="root" prefHeight="567.0" prefWidth="920.0" style="-fx-background-color: rgba(255,255,255,0.4);" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.presentation.customer.CustomerModifyInfo">
    <effect>
       <DropShadow />
    </effect>
@@ -52,18 +52,18 @@
                   <Font name="Microsoft YaHei" size="20.0" />
                </font>
             </Label>
-            <Label prefHeight="60.0" prefWidth="160.0" text="生日" GridPane.rowIndex="4">
+            <Label fx:id="birthLabel" prefHeight="60.0" prefWidth="160.0" text="生日" GridPane.rowIndex="4">
                <font>
                   <Font name="Microsoft YaHei" size="20.0" />
                </font>
             </Label>
             <DatePicker fx:id="birthday" editable="false" prefHeight="34.0" prefWidth="220.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Label fx:id="companyLabel" disable="true" prefHeight="60.0" prefWidth="160.0" text="企业名称" GridPane.rowIndex="6">
+            <Label fx:id="companyLabel" prefHeight="60.0" prefWidth="160.0" text="企业名称" GridPane.rowIndex="6">
                <font>
                   <Font name="Microsoft YaHei" size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="company" disable="true" prefHeight="27.0" prefWidth="141.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+            <TextField fx:id="company" prefHeight="27.0" prefWidth="141.0" style="-fx-background-color: rgba(255,255,255,0.4);" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <font>
                   <Font name="Microsoft YaHei" size="18.0" />
                </font>
