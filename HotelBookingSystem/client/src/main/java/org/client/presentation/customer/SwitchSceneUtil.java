@@ -29,9 +29,14 @@ import org.common.utility.OrderType;
 import org.common.utility.ResultMessage;
 import org.common.utility.RoomType;
 
+import javafx.animation.FadeTransition;
+import javafx.animation.ParallelTransition;
+import javafx.animation.ScaleTransition;
+import javafx.animation.TranslateTransition;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 /**
  * 
@@ -344,5 +349,27 @@ public class SwitchSceneUtil {
 	public static void returnToGenerateOrderScene(GridPane gridpane) {
 		Resources resources = Resources.getInstance();
 		turnToAnotherScene(gridpane, resources.customerGenerateOrder);
+	}
+	
+	public static void showGuideAnimation(AnchorPane root, double startFromY) {
+		FadeTransition fadeTransition = new FadeTransition(Duration.seconds(0.8), root);
+		fadeTransition.setFromValue(0);
+		fadeTransition.setToValue(1);;
+		
+		TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(0.8), root);
+		translateTransition.setFromX(-560);
+		translateTransition.setFromY(startFromY);
+		translateTransition.setToX(0);
+		translateTransition.setToY(0);
+		
+		ScaleTransition scaleTransition = new ScaleTransition(Duration.seconds(0.8), root);
+		scaleTransition.setFromX(0);
+		scaleTransition.setFromY(0);
+		scaleTransition.setToX(1);
+		scaleTransition.setToY(1);
+		
+		ParallelTransition parallelTransition = new ParallelTransition();
+		parallelTransition.getChildren().addAll(fadeTransition, translateTransition, scaleTransition);
+		parallelTransition.play();
 	}
 }

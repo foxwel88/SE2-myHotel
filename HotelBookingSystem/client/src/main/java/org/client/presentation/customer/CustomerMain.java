@@ -17,6 +17,9 @@ import javafx.util.Duration;
 
 public class CustomerMain {
 	@FXML
+	AnchorPane root;
+	
+	@FXML
 	Label time;
 	
 	@FXML
@@ -60,6 +63,8 @@ public class CustomerMain {
 	void initialize() {
 		assert time != null : "fx:id=\"time\" was not injected: check your FXML file '酒店工作人员主界面.fxml'.";
 
+		SwitchSceneUtil.showGuideAnimation(root, -200);
+		
 		// clock
 		Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0), actionEvent -> {
 			try {

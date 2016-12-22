@@ -89,6 +89,8 @@ public class CustomerUnexcutedOrderList {
 			currentPage.setText(String.valueOf(goalPage));
 			showUnExcutedOrderList();
 		}
+		
+		SwitchSceneUtil.showGuideAnimation(root, 200);
 	}
 	
 	@FXML

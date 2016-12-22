@@ -140,6 +140,7 @@ public class CustomerHistoryOrder {
 					break;
 			}
 		}
+		SwitchSceneUtil.showGuideAnimation(root, 100);
 	}
 	
 	/*
