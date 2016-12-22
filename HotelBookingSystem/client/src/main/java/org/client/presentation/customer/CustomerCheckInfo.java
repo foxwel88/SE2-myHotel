@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import org.common.utility.UserType;
 
 /**
  * 
@@ -37,6 +38,9 @@ public class CustomerCheckInfo {
 	
 	@FXML
 	Label level;
+
+	@FXML
+	Label birthcompanyLabel;
 	
 	@FXML
 	Label birthday;
@@ -54,7 +58,14 @@ public class CustomerCheckInfo {
 		phoneNumber.setText(vo.phoneNumber);
 		credit.setText(String.valueOf(vo.credit));
 		level.setText(String.valueOf(SwitchSceneUtil.promotionController.calLevel(vo.credit)));
-		birthday.setText(LiveDatePicker.dateToCoarseString(vo.birthday));
+		if (vo.type.equals(UserType.PERSONALCUSTOMER.getString())) {
+			birthday.setText(LiveDatePicker.dateToCoarseString(vo.birthday));
+			birthcompanyLabel.setText("生日");
+		} else {
+			birthday.setText(vo.companyName);
+			birthcompanyLabel.setText("企业名称");
+		}
+
 		SwitchSceneUtil.showGuideAnimation(root, -100);
 	}
 	

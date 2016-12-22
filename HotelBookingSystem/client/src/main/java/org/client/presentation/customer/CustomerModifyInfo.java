@@ -50,7 +50,10 @@ public class CustomerModifyInfo {
 	
 	@FXML
 	TextField newPassword;
-	
+
+	@FXML
+	Label birthLabel;
+
 	@FXML
 	TextField newPasswordAgain;
 	
@@ -64,10 +67,17 @@ public class CustomerModifyInfo {
 		vo = SwitchSceneUtil.getUserVO();
 		name.setText(vo.name);
 		phoneNumber.setText(vo.phoneNumber);
-		company.setText(vo.companyName);
-		LiveDatePicker.initDatePicker(null, birthday);
-		String[] dateStringArray = LiveDatePicker.dateToCoarseString(vo.birthday).split("/");
-		birthday.setValue(LocalDate.of(Integer.parseInt(dateStringArray[0]), Integer.parseInt(dateStringArray[1]), Integer.parseInt(dateStringArray[2])));
+		if (vo.type.equals(UserType.PERSONALCUSTOMER.getString())) {
+			LiveDatePicker.initDatePicker(null, birthday);
+			String[] dateStringArray = LiveDatePicker.dateToCoarseString(vo.birthday).split("/");
+			birthday.setValue(LocalDate.of(Integer.parseInt(dateStringArray[0]), Integer.parseInt(dateStringArray[1]), Integer.parseInt(dateStringArray[2])));
+			company.setDisable(true);
+			companyLabel.setDisable(true);
+		} else {
+			company.setText(vo.companyName);
+			birthday.setDisable(true);
+			birthLabel.setDisable(true);
+		}
 	}
 	
 	@FXML

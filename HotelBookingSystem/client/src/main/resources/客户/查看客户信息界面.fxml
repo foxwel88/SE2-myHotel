@@ -8,123 +8,120 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" prefHeight="567.0" prefWidth="920.0" style="-fx-background-color: rgba(255,255,255,0.4);" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.presentation.customer.CustomerCheckInfo">
+<AnchorPane fx:id="root" prefHeight="567.0" prefWidth="920.0" style="-fx-background-color: rgba(255,255,255,0.4);" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.client.presentation.customer.CustomerCheckInfo">
    <effect>
       <DropShadow />
    </effect>
    <children>
-      <ImageView fitHeight="235.0" fitWidth="239.0" layoutX="585.0" layoutY="28.0" AnchorPane.topAnchor="60.0">
-         <image>
-            <Image url="@/客户/what.png" />
-         </image>
-      </ImageView>
-      <GridPane layoutX="65.0" layoutY="69.0" prefHeight="365.0" prefWidth="710.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="69.0">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="320.6759033203125" minWidth="10.0" prefWidth="185.61578369140625" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="534.5501708984375" minWidth="10.0" prefWidth="186.61141967773438" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints maxHeight="25.0" minHeight="25.0" prefHeight="0.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="25.0" minHeight="25.0" prefHeight="0.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="25.0" minHeight="25.0" prefHeight="0.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="25.0" minHeight="25.0" prefHeight="0.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="25.0" minHeight="25.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="25.0" minHeight="25.0" prefHeight="0.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="25.0" minHeight="25.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="25.0" minHeight="25.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="25.0" minHeight="25.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="25.0" minHeight="25.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="25.0" minHeight="25.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="25.0" minHeight="25.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="25.0" minHeight="25.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="25.0" minHeight="25.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         </rowConstraints>
+      <Pane layoutX="67.0" layoutY="56.0" prefHeight="453.0" prefWidth="771.0" style="-fx-background-color: rgba(0,0,0,0.4);">
          <children>
-            <Label prefHeight="30.0" prefWidth="113.0" text="账号">
-               <font>
-                  <Font name="Microsoft YaHei" size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="name" prefHeight="60.0" prefWidth="160.0" text="王小二" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <font>
-                  <Font name="Microsoft YaHei" size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="phoneNumber" prefHeight="60.0" prefWidth="160.0" text="13912391919" GridPane.columnIndex="1" GridPane.rowIndex="6">
-               <font>
-                  <Font name="Microsoft YaHei" size="20.0" />
-               </font>
-            </Label>
-            <Label prefHeight="60.0" prefWidth="160.0" text="姓名" GridPane.rowIndex="2">
-               <font>
-                  <Font name="Microsoft YaHei" size="20.0" />
-               </font>
-            </Label>
-            <Label prefHeight="60.0" prefWidth="160.0" text="联系方式" GridPane.rowIndex="6">
-               <font>
-                  <Font name="Microsoft YaHei" size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="account" prefHeight="60.0" prefWidth="160.0" text="Foxwel" GridPane.columnIndex="1">
-               <font>
-                  <Font name="Microsoft YaHei" size="20.0" />
-               </font>
-            </Label>
-            <Label prefHeight="60.0" prefWidth="160.0" text="信用" GridPane.rowIndex="8">
-               <font>
-                  <Font name="Microsoft YaHei" size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="credit" prefHeight="27.0" prefWidth="488.0" text="400" GridPane.columnIndex="1" GridPane.rowIndex="8">
-               <font>
-                  <Font name="Microsoft YaHei" size="20.0" />
-               </font>
-            </Label>
-            <Label prefHeight="60.0" prefWidth="160.0" text="会员等级" GridPane.rowIndex="10">
-               <font>
-                  <Font name="Microsoft YaHei" size="20.0" />
-               </font>
-            </Label>
-            <Label prefHeight="60.0" prefWidth="160.0" text="生日" GridPane.rowIndex="12">
-               <font>
-                  <Font name="Microsoft YaHei" size="20.0" />
-               </font>
-            </Label>
-            <Label prefHeight="60.0" prefWidth="160.0" text="客户类型" GridPane.rowIndex="4">
-               <font>
-                  <Font name="Microsoft YaHei" size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="level" prefHeight="27.0" prefWidth="488.0" text="2" GridPane.columnIndex="1" GridPane.rowIndex="10">
-               <font>
-                  <Font name="Microsoft YaHei" size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="birthday" prefHeight="27.0" prefWidth="488.0" text="1997-4-1" GridPane.columnIndex="1" GridPane.rowIndex="12">
-               <font>
-                  <Font name="Microsoft YaHei" size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="accountType" prefHeight="27.0" prefWidth="488.0" text="个人客户" GridPane.columnIndex="1" GridPane.rowIndex="4">
-               <font>
-                  <Font name="Microsoft YaHei" size="20.0" />
-               </font>
-            </Label>
-            <Button mnemonicParsing="false" onMouseClicked="#turnToCustomerCheckCredit" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: rgba(0,0,0,0.4);" text="查看详细信用记录" textFill="WHITE" GridPane.rowIndex="14">
+            <GridPane prefHeight="426.0" prefWidth="403.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="181.0" minWidth="10.0" prefWidth="109.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="337.0" minWidth="10.0" prefWidth="304.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="65.0" minHeight="65.0" prefHeight="65.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="65.0" minHeight="65.0" prefHeight="65.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="65.0" minHeight="65.0" prefHeight="65.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="65.0" minHeight="65.0" prefHeight="65.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="65.0" minHeight="65.0" prefHeight="65.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="65.0" minHeight="65.0" prefHeight="65.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="65.0" minHeight="65.0" prefHeight="65.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label fx:id="birthcompanyLabel" alignment="CENTER" prefHeight="139.0" prefWidth="114.0" style="-fx-background-color: rgba(255,255,255,0.1);" text="生日" textFill="WHITE" GridPane.rowIndex="6">
+                     <font>
+                        <Font name="Microsoft YaHei" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="83.0" prefWidth="114.0" style="-fx-background-color: rgba(255,255,255,0.1);" text="姓名" textFill="WHITE" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Microsoft YaHei" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="101.0" prefWidth="114.0" style="-fx-background-color: rgba(255,255,255,0.1);" text="客户类型" textFill="WHITE" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="Microsoft YaHei" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="89.0" prefWidth="114.0" style="-fx-background-color: rgba(255,255,255,0.1);" text="会员等级" textFill="WHITE" GridPane.rowIndex="5">
+                     <font>
+                        <Font name="Microsoft YaHei" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="105.0" prefWidth="114.0" style="-fx-background-color: rgba(255,255,255,0.1);" text="信用" textFill="WHITE" GridPane.rowIndex="4">
+                     <font>
+                        <Font name="Microsoft YaHei" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="112.0" prefWidth="114.0" style="-fx-background-color: rgba(255,255,255,0.1);" text="联系方式" textFill="WHITE" GridPane.rowIndex="3">
+                     <font>
+                        <Font name="Microsoft YaHei" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="114.0" style="-fx-background-color: rgba(255,255,255,0.1);" text="账号" textFill="WHITE">
+                     <font>
+                        <Font name="Microsoft YaHei" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="account" alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="343.0" text="Foxwel" textFill="WHITE" GridPane.columnIndex="1">
+                     <font>
+                        <Font name="Microsoft YaHei" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="name" alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="354.0" text="大床房" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Microsoft YaHei" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="accountType" alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="366.0" text="1" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="Microsoft YaHei" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="phoneNumber" alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="330.0" text="2" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <font>
+                        <Font name="Microsoft YaHei" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="credit" alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="347.0" text="无" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                     <font>
+                        <Font name="Microsoft YaHei" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="level" alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="354.0" text="线下订单" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                     <font>
+                        <Font name="Microsoft YaHei" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="birthday" alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="376.0" text="13211115678" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                     <font>
+                        <Font name="Microsoft YaHei" size="17.0" />
+                     </font>
+                  </Label>
+               </children>
+            </GridPane>
+            <Button layoutX="410.0" layoutY="409.0" mnemonicParsing="false" onMouseClicked="#turnToCustomerModifyInfo" prefHeight="30.0" prefWidth="148.0" style="-fx-background-color: rgba(0,0,0,0.4);" text="修改个人信息" textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onMouseClicked="#turnToCustomerModifyInfo" prefHeight="30.0" prefWidth="148.0" style="-fx-background-color: rgba(0,0,0,0.4);" text="修改个人信息" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="14">
+            <Button layoutX="604.0" layoutY="409.0" mnemonicParsing="false" onMouseClicked="#turnToCustomerCheckCredit" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: rgba(0,0,0,0.4);" text="查看详细信用记录" textFill="WHITE">
                <font>
                   <Font name="Microsoft YaHei" size="15.0" />
                </font>
             </Button>
+            <ImageView fitHeight="235.0" fitWidth="239.0" layoutX="463.0" layoutY="46.0">
+               <image>
+                  <Image url="@/客户/what.png" />
+               </image>
+            </ImageView>
          </children>
-      </GridPane>
+      </Pane>
    </children>
 </AnchorPane>
