@@ -20,10 +20,12 @@ public class CustomerImageGrabber {
 		}
 		HotelVO hotelVO = hotelController.getHotelVO(hotelID);
 		String httpAddress = hotelVO.imgURL;
-		Image hotelImage = new Image(CustomerImageGrabber.class.getResource("/") + "temp" + File.separator + hotelID + ".jpg");
+
+		Image hotelImage = new Image("file:hotelimgtemp" + File.separator + hotelID + ".jpg");
 		if (hotelImage.isError()) {
 			CustomerHTTPPictureDownloader.downLoadImage(httpAddress, hotelID);
-			hotelImage = new Image(CustomerImageGrabber.class.getResource("/") + "temp" + File.separator + hotelID + ".jpg");
+			hotelImage = new Image("file:hotelimgtemp" + File.separator + hotelID + ".jpg");
+
 		}
 		// imageWidth 和  imageHeight 表示图像Image在resize后的长和宽，保持原图比例
 		double imageWidth;
@@ -35,7 +37,7 @@ public class CustomerImageGrabber {
 			imageWidth = width;
 			imageHeight = width * hotelImage.getHeight() / hotelImage.getWidth();
 		}
-		hotelImage = new Image(CustomerImageGrabber.class.getResource("/") + "temp" + File.separator + hotelID + ".jpg", imageWidth, imageHeight, false, false);
+		hotelImage = new Image("file:hotelimgtemp" + File.separator + hotelID + ".jpg", imageWidth, imageHeight, false, false);
 		ImageView hotelImageView = new ImageView(hotelImage);
 		hotelImageView.setPreserveRatio(true);
 		double x = (imageWidth - width) / 2;

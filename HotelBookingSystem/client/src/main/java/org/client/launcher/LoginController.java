@@ -9,6 +9,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.WindowEvent;
 import org.client.bl.userbl.UserController;
 import org.client.blservice.userblservice.Userblservice;
+import org.client.presentation.customer.CustomerHTTPPictureDownloader;
 import org.client.presentation.customer.SwitchSceneUtil;
 import org.client.presentation.hotelmanager.HotelManagerController;
 import org.client.presentation.webmanager.WebManagerController;
@@ -99,6 +100,7 @@ public class LoginController {
 			stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 				public void handle(WindowEvent we) {
 					userBl.logout(account);
+					CustomerHTTPPictureDownloader.clearTempFile();
 				}
 			});
 
