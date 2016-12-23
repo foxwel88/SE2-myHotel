@@ -464,14 +464,14 @@ public class CustomerHistoryOrder {
 	 */
 	private void setContent() {
 		for (int i = 0; i < MAX_ORDER_ONE_OAGE; i++) {
-			if (hotelAddress(i) != null) {
+			if (hotelName(i) != null) {
 				getDateLabel(boxList.get(i)).setText(date(i));
-				getHotelAddressLabel(boxList.get(i)).setText(hotelAddress(i));
+				getHotelNameLabel(boxList.get(i)).setText(hotelName(i));
 				getRoomTypeLabel(boxList.get(i)).setText(roomType(i));
 				getRoomNumLabel(boxList.get(i)).setText(String.valueOf(roomNum(i)));
 			} else {
 				getDateLabel(boxList.get(i)).setText("");
-				getHotelAddressLabel(boxList.get(i)).setText("");
+				getHotelNameLabel(boxList.get(i)).setText("");
 				getRoomTypeLabel(boxList.get(i)).setText("");
 				getRoomNumLabel(boxList.get(i)).setText("");
 			}
@@ -485,7 +485,7 @@ public class CustomerHistoryOrder {
 		return (Label)(order.getChildren().get(0));
 	}
 	
-	private Label getHotelAddressLabel(HBox order) {
+	private Label getHotelNameLabel(HBox order) {
 		return (Label)(order.getChildren().get(1));
 	}
 	
@@ -519,15 +519,15 @@ public class CustomerHistoryOrder {
 		}
 	}
 	
-	private String hotelAddress(int i) {
+	private String hotelName(int i) {
 		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_ORDER_ONE_OAGE + i;
 		try {
 			if (currentLabel == 0) {
-				return executedOrderList.get(seq).hotelAddress;
+				return executedOrderList.get(seq).hotelName;
 			} else if (currentLabel == 1) {
-				return canceledOrderList.get(seq).hotelAddress;
+				return canceledOrderList.get(seq).hotelName;
 			} else {
-				return abnormalOrderList.get(seq).hotelAddress;
+				return abnormalOrderList.get(seq).hotelName;
 			}
 		} catch (IndexOutOfBoundsException nullex) {
 			return null;

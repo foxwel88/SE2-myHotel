@@ -37,7 +37,7 @@
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="45.0" prefWidth="318.0" text="酒店地址">
+                        <Label alignment="CENTER" prefHeight="45.0" prefWidth="318.0" text="酒店">
                            <font>
                               <Font name="Microsoft YaHei" size="16.0" />
                            </font>

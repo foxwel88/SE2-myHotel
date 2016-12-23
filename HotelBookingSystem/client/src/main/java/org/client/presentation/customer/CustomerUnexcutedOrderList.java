@@ -191,15 +191,15 @@ public class CustomerUnexcutedOrderList {
 	 */
 	private void setContent() {
 		for (int i = 0; i < MAX_ORDER_ONE_OAGE; i++) {
-			if (hotelAddress(i) != null) {
+			if (hotelName(i) != null) {
 				getDateLabel(boxList.get(i)).setText(date(i));
-				getHotelAddressLabel(boxList.get(i)).setText(hotelAddress(i));
+				getHotelNameLabel(boxList.get(i)).setText(hotelName(i));
 				getRoomTypeLabel(boxList.get(i)).setText(roomType(i));
 				getRoomNumLabel(boxList.get(i)).setText(String.valueOf(roomNum(i)));
 				getLatestTimeLabel(boxList.get(i)).setText(latestDate(i));
 			} else {
 				getDateLabel(boxList.get(i)).setText("");
-				getHotelAddressLabel(boxList.get(i)).setText("");
+				getHotelNameLabel(boxList.get(i)).setText("");
 				getRoomTypeLabel(boxList.get(i)).setText("");
 				getRoomNumLabel(boxList.get(i)).setText("");
 				getLatestTimeLabel(boxList.get(i)).setText("");
@@ -238,7 +238,7 @@ public class CustomerUnexcutedOrderList {
 		return (Label)(order.getChildren().get(0));
 	}
 	
-	private Label getHotelAddressLabel(HBox order) {
+	private Label getHotelNameLabel(HBox order) {
 		return (Label)(order.getChildren().get(1));
 	}
 	
@@ -268,10 +268,10 @@ public class CustomerUnexcutedOrderList {
 		}
 	}
 	
-	private String hotelAddress(int i) {
+	private String hotelName(int i) {
 		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_ORDER_ONE_OAGE + i;
 		try {
-			return unExcutedOrderList.get(seq).hotelAddress;
+			return unExcutedOrderList.get(seq).hotelName;
 		} catch (IndexOutOfBoundsException nullex) {
 			return null;
 		}
