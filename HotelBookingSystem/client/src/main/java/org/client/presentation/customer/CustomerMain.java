@@ -26,9 +26,6 @@ public class CustomerMain {
 
 	@FXML
 	AnchorPane promotionPane;
-
-	@FXML
-	Label showPromotionLabel;
 	
 	@FXML
 	Label previousPage;
@@ -220,7 +217,19 @@ public class CustomerMain {
 	private String promotion(int i) {
 		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_PROMOTION_ONE_OAGE + i;	// 计算当前页面第i个信息字段在arraylist中的实际位置；
 		try {
-			return promotionVOList.get(seq).name;
+			StringBuilder sb = new StringBuilder();
+			PromotionVO vo = promotionVOList.get(seq);
+			sb.append(vo.name);
+			for (int j = 0; j < 40 - vo.name.length(); j++) {
+				sb.append(" ");
+			}
+			sb.append(vo.type);
+			for (int j = 0; j < 40 - vo.name.length(); j++) {
+				sb.append(" ");
+			}
+			sb.append(vo.discount);
+			sb.append("折");
+			return sb.toString();
 		} catch (IndexOutOfBoundsException nullex) {
 			return null;
 		}
