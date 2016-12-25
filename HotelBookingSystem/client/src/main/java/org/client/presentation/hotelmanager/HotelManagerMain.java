@@ -7,7 +7,6 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.time.chrono.ChronoLocalDate;
 import java.util.*;
 
 import javafx.application.Platform;
@@ -17,12 +16,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.image.*;
-import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.util.Callback;
-import org.client.launcher.PwModify;
 import org.client.launcher.Resources;
 import org.client.rmi.RMIHelper;
 
@@ -202,7 +198,7 @@ public class HotelManagerMain {
 			Image image = new Image(imgURL, 100, 60, false, true);
 			hotelImage.setImage(image);
 		} catch (IllegalArgumentException e) {
-
+			//fail to load image, hotelImage won't show
 		}
 
 		//时间默认值，显示接下来一周房源情况，不可查看超过一年后的预订情况

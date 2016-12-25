@@ -8,7 +8,6 @@ import org.client.vo.CityVO;
 import org.client.vo.HotelVO;
 import org.common.po.HotelPO;
 import org.common.po.RoomPO;
-import org.common.utility.RoomType;
 
 /**
  * Hotel的领域对象实体类，持有hotel的基本信息，拥有po和vo的转换方法

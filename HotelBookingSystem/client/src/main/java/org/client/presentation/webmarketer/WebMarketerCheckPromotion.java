@@ -231,7 +231,7 @@ public class WebMarketerCheckPromotion {
 		PromotionPane(PromotionVO vo) {
 			name = new Text(vo.name);
 			type = new Text(vo.type);
-			discount = new Text(String.valueOf(vo.discount));
+			discount = new Text(String.valueOf(vo.discount) + "折");
 			detail = new Button("详情");
 			delete = new Button("删除");
 			

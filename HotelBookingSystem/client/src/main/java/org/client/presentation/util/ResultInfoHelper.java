@@ -1,17 +1,11 @@
 package org.client.presentation.util;
 
-import com.sun.scenario.DelayedRunnable;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
-import javafx.concurrent.Task;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
 import org.common.utility.ResultMessage;
-
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Timer;
 
 /**
  * 根据ResultMessage设置一些界面上的提示信息

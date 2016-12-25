@@ -195,7 +195,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance()
 					.prepareStatement("SELECT * FROM User WHERE UserName='" + EncryptUtil.encrypt(userName) + "'");
 			ResultSet resultSet = DatabaseCommunicator.executeQuery(preparedStatement);
-			String toCheck = new String("");
+			String toCheck = "";
 			if (resultSet.next()) {
 				toCheck = EncryptUtil.decrypt(resultSet.getString("PassWord"));
 			} else {

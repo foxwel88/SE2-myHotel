@@ -13,7 +13,7 @@ import java.net.URL;
 public class CustomerHTTPPictureDownloader {
 	
 	public static void downLoadImage(String address, String hotelID) {
-		String filename = new String(hotelID + ".jpg");
+		String filename = hotelID + ".jpg";
 		
 		try {
 			URL url = new URL(address);
@@ -37,7 +37,7 @@ public class CustomerHTTPPictureDownloader {
 	}
 	
 	public static void clearTempFile() {
-		String FileFolderPath = new String("hotelimgtemp");
+		String FileFolderPath = "hotelimgtemp";
 		File fileFolder = new File(FileFolderPath);
 		if (fileFolder.exists()) {
 			String[] fileList = fileFolder.list();

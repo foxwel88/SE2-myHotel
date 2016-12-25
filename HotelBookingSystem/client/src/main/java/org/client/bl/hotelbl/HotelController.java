@@ -18,7 +18,6 @@ import org.client.vo.UserVO;
 import org.common.dataservice.HotelDataService.HotelDataService;
 import org.common.po.RoomPO;
 import org.common.utility.HotelFilter;
-import org.common.utility.IDService;
 import org.common.utility.ResultMessage;
 import org.common.utility.RoomType;
 

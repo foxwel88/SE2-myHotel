@@ -126,18 +126,18 @@
                         <Font name="Microsoft YaHei UI Light" size="18.0" />
                      </font>
                   </Text>
-                  <Text fill="WHITE" layoutX="275.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="起" AnchorPane.bottomAnchor="5.0" AnchorPane.topAnchor="5.0">
+                  <Text fill="WHITE" layoutX="236.0" layoutY="26.162109375" strokeType="OUTSIDE" strokeWidth="0.0" text="起" AnchorPane.bottomAnchor="5.603515625" AnchorPane.topAnchor="5.0">
                      <font>
                         <Font name="Microsoft YaHei" size="20.0" />
                      </font>
                   </Text>
-                  <Text fill="WHITE" layoutX="546.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="止" AnchorPane.bottomAnchor="5.0" AnchorPane.topAnchor="5.0">
+                  <Text fill="WHITE" layoutX="483.0" layoutY="26.162109375" strokeType="OUTSIDE" strokeWidth="0.0" text="止" AnchorPane.bottomAnchor="5.603515625" AnchorPane.topAnchor="5.0">
                      <font>
                         <Font name="Microsoft YaHei" size="20.0" />
                      </font>
                   </Text>
                   <DatePicker fx:id="startTimePicker" editable="false" layoutX="33.0" layoutY="4.0" opacity="0.65" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="4.0" />
-                  <DatePicker fx:id="endTimePicker" editable="false" layoutX="305.0" layoutY="5.0" opacity="0.65" AnchorPane.bottomAnchor="3.0" AnchorPane.topAnchor="4.0" />
+                  <DatePicker fx:id="endTimePicker" editable="false" layoutX="281.0" layoutY="4.0" opacity="0.65" AnchorPane.bottomAnchor="3.0" AnchorPane.topAnchor="4.0" />
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0,20,81,0.45);" GridPane.columnIndex="1" GridPane.rowIndex="6" />
@@ -158,14 +158,14 @@
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
                <children>
-                  <ComboBox fx:id="cityBox" layoutX="52.0" layoutY="8.0" onAction="#setAreaBox" prefHeight="30.0" prefWidth="180.0" style="-fx-background-color: rgba(255,255,255,0.65);" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="4.0" />
-                  <Text fill="WHITE" layoutX="223.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="城市" AnchorPane.bottomAnchor="5.0" AnchorPane.topAnchor="5.0">
+                  <ComboBox fx:id="cityBox" layoutX="52.0" layoutY="8.0" onAction="#setAreaBox" prefHeight="30.0" prefWidth="188.0" style="-fx-background-color: rgba(255,255,255,0.65);" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="4.0" />
+                  <Text fill="WHITE" layoutX="226.0" layoutY="26.162109375" strokeType="OUTSIDE" strokeWidth="0.0" text="城市" AnchorPane.bottomAnchor="5.603515625" AnchorPane.topAnchor="5.0">
                      <font>
                         <Font name="Microsoft YaHei" size="20.0" />
                      </font>
                   </Text>
-                  <ComboBox fx:id="areaBox" layoutX="270.0" layoutY="-4.0" prefHeight="30.0" prefWidth="180.0" style="-fx-background-color: rgba(255,255,255,0.65);" AnchorPane.bottomAnchor="3.0" AnchorPane.topAnchor="4.0" />
-                  <Text fill="WHITE" layoutX="464.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="商圈" AnchorPane.bottomAnchor="5.0" AnchorPane.topAnchor="5.0">
+                  <ComboBox fx:id="areaBox" layoutX="282.0" layoutY="4.0" prefHeight="30.0" prefWidth="188.0" style="-fx-background-color: rgba(255,255,255,0.65);" AnchorPane.bottomAnchor="3.0" AnchorPane.topAnchor="4.0" />
+                  <Text fill="WHITE" layoutX="483.0" layoutY="26.162109375" strokeType="OUTSIDE" strokeWidth="0.0" text="商圈" AnchorPane.bottomAnchor="5.603515625" AnchorPane.topAnchor="5.0">
                      <font>
                         <Font name="Microsoft YaHei" size="20.0" />
                      </font>
@@ -203,7 +203,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Label fx:id="resultLabel" alignment="CENTER" layoutX="657.0" layoutY="527.0" prefHeight="27.0" prefWidth="263.0" AnchorPane.topAnchor="530.0">
+      <Label fx:id="resultLabel" alignment="CENTER" layoutX="657.0" layoutY="527.0" prefHeight="27.0" prefWidth="263.0" textFill="WHITE" AnchorPane.topAnchor="530.0">
          <font>
             <Font name="Microsoft YaHei" size="20.0" />
          </font>

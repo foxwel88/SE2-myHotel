@@ -16,7 +16,6 @@ import org.client.vo.HotelVO;
 import org.client.vo.UserVO;
 import org.common.utility.HotelFilter;
 import org.common.utility.ResultMessage;
-import org.common.utility.RoomType;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -42,8 +41,6 @@ public class HotelControllerTest {
 	public void testFindHotels() {
 		HotelFilter filter = new HotelFilter();
 		filter.setLocation("南京", "仙林中心");
-		filter.setPrice(-1, 1000);
-		filter.setRank(1, 5);
 		Orderblservice orderstub = new Order_stub();
 		controller.setOrderblservice(orderstub);
 				

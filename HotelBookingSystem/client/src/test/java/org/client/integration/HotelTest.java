@@ -11,7 +11,6 @@ import org.client.vo.HotelVO;
 import org.client.vo.UserVO;
 import org.common.utility.HotelFilter;
 import org.common.utility.ResultMessage;
-import org.common.utility.RoomType;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

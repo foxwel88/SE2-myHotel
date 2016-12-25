@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.common.po.CityPO;
-import org.common.utility.ResultMessage;
 
 public class CityVO implements Serializable {
 	

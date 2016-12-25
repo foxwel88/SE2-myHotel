@@ -51,14 +51,9 @@ public class HotelListTest extends EasyMockSupport {
 		PowerMockito.whenNew(Hotel.class).withNoArguments().thenReturn(h);
 	}
 
-	@After
-	public void tearDown() throws Exception {
-	}
-
 	@Test
 	public void test() {
 		HotelFilter filter = new HotelFilter();
-		filter.setPrice(0, 5000);
 		HotelPO fake = new HotelPO("id", "123", "123", "x", "y", "z", 1, 2, "good", "", "", "");
 		List<HotelPO> fakeReturn = new ArrayList<HotelPO>();
 		fakeReturn.add(fake);

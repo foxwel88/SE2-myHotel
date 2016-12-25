@@ -10,7 +10,6 @@ import org.common.po.HotelPO;
 import org.common.po.RoomPO;
 import org.common.utility.HotelFilter;
 import org.common.utility.ResultMessage;
-import org.common.utility.RoomType;
 
 public interface HotelDataService extends Remote {
 	

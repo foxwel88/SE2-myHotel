@@ -5,7 +5,6 @@ import java.io.IOException;
 import org.client.presentation.util.CheckStyle;
 import org.client.vo.UserVO;
 import org.common.utility.ResultMessage;
-import org.common.utility.UserType;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

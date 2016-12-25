@@ -127,11 +127,6 @@ public class HotelDataServiceImplTest {
 		assertTrue(!pos.get(0).roomType.getString().isEmpty());
 	}
 
-	@After
-	public void tearDown() {
-
-	}
-
 
 
 }

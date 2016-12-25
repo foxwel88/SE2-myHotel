@@ -62,8 +62,8 @@ public class ServerMainController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		String ip = addr.getHostAddress().toString();//获得本机IP
-		String address = addr.getHostName().toString();//获得本机名称
+		String ip = addr.getHostAddress();//获得本机IP
+		String address = addr.getHostName();//获得本机名称
 		InetAddress ia = null;
 		try {
 			ia = InetAddress.getLocalHost();

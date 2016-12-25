@@ -10,7 +10,7 @@ public interface Promotionblservice {
 	
 	public ResultMessage add(PromotionVO vo);
 	
-	public List<PromotionVO> getPromotion(String hotelAddress, String userID, int roomNum);
+	public List<PromotionVO> getPromotion(String hotelID, String userID, int roomNum);
 	
 	public List<PromotionVO> showHotelPromotion(String hotelAddress);
 	

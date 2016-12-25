@@ -5,14 +5,12 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import org.client.launcher.PwModify;
 import org.client.launcher.Resources;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;

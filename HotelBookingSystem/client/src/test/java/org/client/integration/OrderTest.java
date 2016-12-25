@@ -6,7 +6,6 @@ import java.util.Date;
 import java.util.List;
 
 import org.client.bl.orderbl.OrderController;
-import org.client.blstub.Hotel_stub;
 import org.client.blstub.User_stub;
 import org.client.vo.OrderVO;
 import org.common.utility.OrderType;

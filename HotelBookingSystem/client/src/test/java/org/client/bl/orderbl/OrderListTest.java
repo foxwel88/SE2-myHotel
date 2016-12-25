@@ -49,7 +49,6 @@ public class OrderListTest extends EasyMockSupport {
 	@Test
 	public void test() {
 		HotelFilter filter = new HotelFilter();
-		filter.setPrice(0, 5000);
 		OrderPO po1 = new OrderPO(OrderType.UNEXECUTED,new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),new Date(),
 				"00001","南京某酒店","000000000120161122112233","南京市仙林大道168号栖霞大酒店",RoomType.BIG,100,1,2,false, "foxwel","0000000001","13919191919",false,false);
 
@@ -70,10 +69,6 @@ public class OrderListTest extends EasyMockSupport {
 		assertEquals(ResultMessage.SUCCESS, resultmessage);
 		assertEquals("南京市仙林大道168号栖霞大酒店", volist.get(0).hotelAddress);
 	}
-	
 
-	@After
-	public void tearDown() throws Exception {
-	}
 
 }
