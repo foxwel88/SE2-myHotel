@@ -42,7 +42,7 @@ public class Account {
 		if (message != ResultMessage.SUCCESS) {
 			return message;
 		}
-		//检查该用户是否已登陆
+		//检查该用户是否已登录
 		try {
 			message = dao.userIsExist(userName);
 		} catch (RemoteException e) {
@@ -52,7 +52,7 @@ public class Account {
 		if (message == ResultMessage.EXIST) {
 			return message;
 		}
-		//告诉服务器该用户已登陆
+		//告诉服务器该用户已登录
 		try {
 			dao.addNowUser(userName);
 		} catch (RemoteException e) {

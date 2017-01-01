@@ -4,6 +4,10 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Timer;
 
+/**
+ * 以输入的时间为起始点，每24小时执行一次UpdateOrderTask来更新订单状态
+ *
+ */
 public class UpdateOrderTimer {
 	private Date baselineTime;
 	
@@ -19,7 +23,7 @@ public class UpdateOrderTimer {
 		baselineTime = calendar.getTime();
 		orderUpdater.schedule(new UpdateOrderTask(), baselineTime, 24 * 60 * 60 * 1000);
 	}
-	
+
 	public void startTimer(int hour, int minite, int second) {
 		setBaseline(hour, minite, second);
 		Timer orderUpdater = new Timer();

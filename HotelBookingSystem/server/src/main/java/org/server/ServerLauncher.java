@@ -28,6 +28,7 @@ public class ServerLauncher extends Application {
 			e.printStackTrace();
 		}
 		
+		//To eliminate timer thread and so on
 		primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 			public void handle(WindowEvent event) {
 				System.exit(0);

@@ -16,18 +16,29 @@ import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.util.Duration;
+import org.server.timer.UpdateOrderTimer;
 
+/**
+ * Server端的单件服务类
+ * 存储当前登录的所有用户的用户名
+ * 负责协作UserDao和Server界面，完成当前登录用户情况的显示、对用户已登录的判断以及输出日志文件
+ * 也负责维持一个Timer检查超时的异常未执行订单
+ */
 public class ServerUtil {
 	private static ServerUtil util;
 
-	private static List<String> nowUsers;
+	private List<String> nowUsers;
 	
 	private FileWriter fileWriter;
+
+	private UpdateOrderTimer updateOrderTimer;
 
 	public Parent root;
 	
 	private ServerUtil() {
 		nowUsers = new ArrayList<>();
+		updateOrderTimer = new UpdateOrderTimer();
+		updateOrderTimer.startTimer();
 	}
 	
 	public static ServerUtil getInstance() {
@@ -71,12 +82,15 @@ public class ServerUtil {
 		return ResultMessage.SUCCESS;
 	}
 
+	/**在有用户登录/登出，或服务器启动/停止的时候，更新界面的textArea以及写log文件 */
 	public void show(String s) {
 		TextArea textarea = (TextArea)root.lookup("#logTextArea");
 		KeyFrame frame = new KeyFrame(Duration.millis(1), e -> {
 			try {
-				writeLog(s);
-				textarea.appendText(DataFactory.getInstance().getTimeServiceImpl().getCurrentTime() + "  " + s + "\n");
+				String text = DataFactory.getInstance().getTimeServiceImpl().getCurrentTime() + "  " + s;
+				writeLog(text);
+				textarea.appendText(text);
+				textarea.appendText("\n");
 			} catch (RemoteException e1) {
 				e1.printStackTrace();
 			}
@@ -85,6 +99,7 @@ public class ServerUtil {
 		Platform.runLater(timeline::play);
 	}
 	
+	/**设置当前登录的用户数 */
 	public void setUserNum(int x) {
 		Label userLabel = (Label)root.lookup("#userLabel");
 		KeyFrame frame = new KeyFrame(Duration.millis(1),e -> userLabel.setText("当前登录用户数: " + Integer.toString(x)));

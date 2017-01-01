@@ -10,6 +10,10 @@ import org.server.data.userdata.UserDataServiceImpl;
 import org.server.id.IDUtil;
 import org.server.time.TimeServiceImpl;
 
+/**
+ * 负责各类dao的创建工作
+ * 
+ */
 public class DataFactory {
 	private static DataFactory datafactory;
 	

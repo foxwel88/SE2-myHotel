@@ -17,6 +17,10 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
 
+/**
+ * Server端界面Fxml Controller
+ * 
+ */
 public class ServerMainController {
 
 	@FXML
@@ -50,21 +54,15 @@ public class ServerMainController {
 		timeline.setCycleCount(Animation.INDEFINITE);
 		timeline.play();
 
-		InetAddress addr = null;
-		try {
-			addr = InetAddress.getLocalHost();
-		} catch (UnknownHostException e) {
-			e.printStackTrace();
-		}
-		String ip = addr.getHostAddress();//获得本机IP
-		String address = addr.getHostName();//获得本机名称
+		//获得本机IP
 		InetAddress ia = null;
+		String ip = "";
 		try {
 			ia = InetAddress.getLocalHost();
+			ip = ia.getHostAddress();
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		}
-		ip = ia.getHostAddress();
 		ipLabel.setText("服务器ip:" + ip);
 	}
 	

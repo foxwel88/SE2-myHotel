@@ -38,7 +38,8 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 	}
 	
 	/**
-	 * 将date对象贵转换成特定格式的字符串
+	 * 将Date对象转换成特定格式的字符串
+	 * "yyyy-MM-dd HH:mm:ss"
 	 * @param date
 	 * @return
 	 */
@@ -51,7 +52,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 	}
 	
 	/**
-	 * 将User表的resultSet转换成PO
+	 * 将从User表查询到的resultSet转换成UserPO
 	 * @param resultSet
 	 * @return
 	 */
@@ -79,7 +80,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 	}
 	
 	/**
-	 * 将creditRecord表的resultSet转换成PO
+	 * 将从creditRecord表的resultSet转换成CreditRecordPO
 	 * @param resultSet
 	 * @return
 	 */
@@ -99,8 +100,6 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 		return po;
 	}
 
-
-	
 	public ResultMessage add(UserPO po) throws RemoteException {
 		try {
 			if (po.ID == null) {

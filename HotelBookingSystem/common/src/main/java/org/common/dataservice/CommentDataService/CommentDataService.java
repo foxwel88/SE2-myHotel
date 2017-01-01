@@ -15,5 +15,4 @@ public interface CommentDataService extends Remote {
 	public ResultMessage insert(CommentPO po) throws RemoteException;
 	//在数据库中插入一个po
 
-
 }
