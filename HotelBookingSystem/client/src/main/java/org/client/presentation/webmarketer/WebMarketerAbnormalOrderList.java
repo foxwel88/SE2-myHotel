@@ -2,6 +2,8 @@ package org.client.presentation.webmarketer;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -97,12 +99,12 @@ public class WebMarketerAbnormalOrderList {
 	@FXML
     void handleSearch(MouseEvent event) {
 		String id = orderNumLabel.getText();
-		if (id == null || id.equals("")) {
+		if (id == null || id.equals("")) { //如果没有输入订单号
 			infoLabel.setText("请输入订单号");
 			return;
 		}
 		OrderVO vo = controller.getAbnormalOrder(id);
-		if (vo.resultMessage != ResultMessage.SUCCESS) { // check
+		if (vo.resultMessage != ResultMessage.SUCCESS) { //如果没有成功得到OrderVO
 			ResultInfoHelper.setResultLabel(infoLabel, vo.resultMessage, 2000);
 			orderList = controller.getAbnormalOrders();
 			switchCurrentPage(FIRST_PAGE_NUM);
@@ -140,6 +142,11 @@ public class WebMarketerAbnormalOrderList {
 		}
 	}
 
+	/**
+	 * 替换OrderPane的内容，将其设为contentGridPane的子女显示 
+	 * 并更改pageNumLabel和pageNum
+	 * @param page
+	 */
 	private void cancelOrder(OrderVO vo) {
 		Parent modifyRoot = null;
 		Resources resources = Resources.getInstance();
@@ -157,16 +164,18 @@ public class WebMarketerAbnormalOrderList {
 	void switchCurrentPage(int toPageNum) {
 		// 修改currentNamePanes和currentDetailPanes
 		currentOrderPanes = new ArrayList<>();
-		// 当前页面要显示的第一个促销策略在list中的位置
+		// 当前页面要显示的第一个订单信息在list中的位置
 		int fromNum = (toPageNum - 1) * NUM_OF_ORDER_PER_PAGE;
-		// 当前页面要显示的最后一个促销策略在list中的位置
+		// 当前页面要显示的最后一个订单信息在list中的位置
 		int toNum = (toPageNum - 1) * NUM_OF_ORDER_PER_PAGE + Math.min(NUM_OF_ORDER_PER_PAGE,
 				orderList.size() - NUM_OF_ORDER_PER_PAGE * (toPageNum - 1));
-		// 当前页面显示的促销策略总数
-		int promotionNums = toNum - fromNum;
-		// 促销策略可能的最大页数
+		// 当前页面显示的订单信息总数
+		int orderNums = toNum - fromNum;
+		// 订单信息可能的最大页数
 		int maxPageNum = (orderList.size() + NUM_OF_ORDER_PER_PAGE - 1) / NUM_OF_ORDER_PER_PAGE;
-		if ((promotionNums <= 0) && (toPageNum > FIRST_PAGE_NUM)) { // 当前页面显示促销策略数量不小于0
+		// 如果将要调到的页面上的订单信息数量不大于0并且不是第一页
+		// 那么跳到最后一页
+		if ((orderNums <= 0) && (toPageNum > FIRST_PAGE_NUM)) { 
 			switchCurrentPage(maxPageNum);
 			return;
 		}
@@ -177,7 +186,7 @@ public class WebMarketerAbnormalOrderList {
 		// 修改contentGridPane
 		contentGridPane.getChildren().clear();
 		int lastIndex = 0;
-		for (int i = 0; i < promotionNums; i++) {
+		for (int i = 0; i < orderNums; i++) {
 			OrderPane orderPane = currentOrderPanes.get(i);
 			contentGridPane.add(orderPane, 0, i * 2);
 			lastIndex++;
@@ -202,6 +211,26 @@ public class WebMarketerAbnormalOrderList {
 		parentPane = pane;
 	}
 	
+	/**
+	 * 对orderVO进行排序
+	 * 使用冒泡排序
+	 * @param list
+	 */
+	private void sort(List<OrderVO> list) {
+		DateFormat format = new SimpleDateFormat("yyyyMMdd");
+		for (int i = list.size(); i >= 0; i--) {
+			for (int j = 0; j < i - 1; j++) {
+				long former = Integer.parseInt(format.format(list.get(j).schFrom));
+				long later = Integer.parseInt(format.format(list.get(j + 1).schFrom));
+				if (former < later) {
+					OrderVO temp = list.get(j);
+					list.set(j, list.get(j + 1));
+					list.set(j + 1, temp);
+				}
+			}
+		}
+	}
+	
 	@FXML
     void initialize() {
         assert orderNumLabel != null : "fx:id=\"orderNumLabel\" was not injected: check your FXML file '浏览异常订单界面.fxml'.";
@@ -216,16 +245,23 @@ public class WebMarketerAbnormalOrderList {
 
 		controller = WebMarketerController.getInstance();
 		orderList = controller.getAbnormalOrders();
+		sort(orderList);
 		
 		// show first page
 		switchCurrentPage(FIRST_PAGE_NUM);
         
 	}
 	
+	/**
+	 * 内部类。每个页面上包含若干个OrderPane，每个OrderPane上显示一个订单的信息。
+	 * @author gyue
+	 */
 	class OrderPane extends AnchorPane {
 		Text orderNum;
 		
 		Text hotel;
+		
+		Text date;
 		
 		Button detail;
 		
@@ -233,6 +269,8 @@ public class WebMarketerAbnormalOrderList {
 			orderNum = new Text(vo.orderID);
 			hotel = new Text(vo.hotelName);
 			detail = new Button("详情");
+			DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			date = new Text(format.format(vo.schFrom));
 			
 			// set effect
 			this.setStyle("-fx-background-color: rgba(0,20,81,0.45)");
@@ -244,23 +282,32 @@ public class WebMarketerAbnormalOrderList {
 			hotel.setTextAlignment(TextAlignment.CENTER);
 			detail.setFont(Font.font("Microsoft YaHei", 15));
 			detail.setStyle("-fx-background-color: rgba(0,20,81,0.45); -fx-text-fill: white");
+			date.setFont(Font.font("Microsoft YaHei UI Light", 20));
+			date.setStyle("-fx-fill: white");
+			date.setWrappingWidth(154.0);
+			date.setTextAlignment(TextAlignment.CENTER);
 			
 			this.getChildren().add(detail);
 			this.getChildren().add(hotel);
 			this.getChildren().add(orderNum);
+			this.getChildren().add(date);
 			
 			// set location
 			AnchorPane.setBottomAnchor(orderNum, 12.0);
 			AnchorPane.setLeftAnchor(orderNum, 14.0);
 			
 			AnchorPane.setBottomAnchor(hotel, 11.0);
-			AnchorPane.setLeftAnchor(hotel, 396.0);
-			AnchorPane.setRightAnchor(hotel, 153.0);
+			AnchorPane.setLeftAnchor(hotel, 312.0);
+			AnchorPane.setRightAnchor(hotel, 237.0);
 			
 			AnchorPane.setBottomAnchor(detail, 10.0);
 			AnchorPane.setLeftAnchor(detail, 704.0);
 			AnchorPane.setRightAnchor(detail, 14.0);
 			AnchorPane.setTopAnchor(detail, 10.0);
+			
+			AnchorPane.setBottomAnchor(date, 11.0);
+			AnchorPane.setLeftAnchor(date, 525.0);
+			AnchorPane.setRightAnchor(date, 110.0);
 			
 			// add listener
 			detail.setOnMouseClicked(new EventHandler<MouseEvent>() {

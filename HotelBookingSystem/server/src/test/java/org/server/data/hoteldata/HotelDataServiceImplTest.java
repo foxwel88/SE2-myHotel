@@ -9,7 +9,6 @@ import org.common.po.RoomPO;
 import org.common.utility.HotelFilter;
 import org.common.utility.ResultMessage;
 import org.common.utility.RoomType;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.server.data.datafactory.DataFactory;

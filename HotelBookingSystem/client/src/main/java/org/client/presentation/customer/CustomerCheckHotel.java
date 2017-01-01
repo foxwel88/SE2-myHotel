@@ -212,11 +212,11 @@ public class CustomerCheckHotel {
 	@FXML
 	TextField commentToPage;
 	
-	private static final int MAX_ORDER_ONE_OAGE = 2;
+	private static final int MAX_ORDER_ONE_PAGE = 2;
 	
-	private static final int MAX_COMMENT_ONE_OAGE = 3;
+	private static final int MAX_COMMENT_ONE_PAGE = 3;
 
-	private static final int MAX_PROMOTION_ONE_OAGE = 4;
+	private static final int MAX_PROMOTION_ONE_PAGE = 4;
 	
 	private static final double picWidth = 200;
 	
@@ -259,24 +259,24 @@ public class CustomerCheckHotel {
 		introduce.setText(hotel.introduction);
 		address.setText(hotel.address);
 		picLabel.setGraphic(CustomerImageGrabber.getHotelImageView(hotel.id, picWidth, picHeight));
-		int temproomnum;		// 初始化时临时存储三种剩余房间数量
+		int tempRoomNum;		// 初始化时临时存储三种剩余房间数量
 		for (int i = 0; i < hotel.roomType.size(); i++) {
 			switch (hotel.roomType.get(i)) {
 				case "单人间":
-					temproomnum = SwitchSceneUtil.getLeftRoomNum(SwitchSceneUtil.previousHotelSceneInfo.hotelFilter.schFrom, SwitchSceneUtil.previousHotelSceneInfo.hotelFilter.schTo, SwitchSceneUtil.hotelID, RoomType.SINGLE.getString());
-					leftNum1.setText(String.valueOf(temproomnum));
+					tempRoomNum = SwitchSceneUtil.getLeftRoomNum(SwitchSceneUtil.previousHotelSceneInfo.hotelFilter.schFrom, SwitchSceneUtil.previousHotelSceneInfo.hotelFilter.schTo, SwitchSceneUtil.hotelID, RoomType.SINGLE.getString());
+					leftNum1.setText(String.valueOf(tempRoomNum));
 					rawPrice1.setText(String.valueOf(hotel.roomPrice.get(i)));
 					currentPrice1.setText(String.valueOf(SwitchSceneUtil.getCurrentPrice(1, hotel.roomPrice.get(i))));
 					break;
 				case "套间":
-					temproomnum = SwitchSceneUtil.getLeftRoomNum(SwitchSceneUtil.previousHotelSceneInfo.hotelFilter.schFrom, SwitchSceneUtil.previousHotelSceneInfo.hotelFilter.schTo, SwitchSceneUtil.hotelID, RoomType.BIG.getString());
-					leftNum2.setText(String.valueOf(temproomnum));
+					tempRoomNum = SwitchSceneUtil.getLeftRoomNum(SwitchSceneUtil.previousHotelSceneInfo.hotelFilter.schFrom, SwitchSceneUtil.previousHotelSceneInfo.hotelFilter.schTo, SwitchSceneUtil.hotelID, RoomType.BIG.getString());
+					leftNum2.setText(String.valueOf(tempRoomNum));
 					rawPrice2.setText(String.valueOf(hotel.roomPrice.get(i)));
 					currentPrice2.setText(String.valueOf(SwitchSceneUtil.getCurrentPrice(1, hotel.roomPrice.get(i))));
 					break;
 				case "标间":
-					temproomnum = SwitchSceneUtil.getLeftRoomNum(SwitchSceneUtil.previousHotelSceneInfo.hotelFilter.schFrom, SwitchSceneUtil.previousHotelSceneInfo.hotelFilter.schTo, SwitchSceneUtil.hotelID, RoomType.DOUBLE.getString());
-					leftNum3.setText(String.valueOf(temproomnum));
+					tempRoomNum = SwitchSceneUtil.getLeftRoomNum(SwitchSceneUtil.previousHotelSceneInfo.hotelFilter.schFrom, SwitchSceneUtil.previousHotelSceneInfo.hotelFilter.schTo, SwitchSceneUtil.hotelID, RoomType.DOUBLE.getString());
+					leftNum3.setText(String.valueOf(tempRoomNum));
 					rawPrice3.setText(String.valueOf(hotel.roomPrice.get(i)));
 					currentPrice3.setText(String.valueOf(SwitchSceneUtil.getCurrentPrice(1, hotel.roomPrice.get(i))));
 					break;
@@ -560,7 +560,7 @@ public class CustomerCheckHotel {
 	}
 	
 	private void setOrderContent() {
-		for (int i = 0; i < MAX_ORDER_ONE_OAGE; i++) {
+		for (int i = 0; i < MAX_ORDER_ONE_PAGE; i++) {
 			if (orderRoomType(i) != null) {
 				orderDateList.get(i).setText(orderDate(i));
 				orderRoomTypeList.get(i).setText(orderRoomType(i));
@@ -576,7 +576,7 @@ public class CustomerCheckHotel {
 	}
 	
 	private void setCommentContent() {
-		for (int i = 0; i < MAX_COMMENT_ONE_OAGE; i++) {
+		for (int i = 0; i < MAX_COMMENT_ONE_PAGE; i++) {
 			if (commentRank(i) != -1) {
 				commentRankList.get(i).setText(String.valueOf(commentRank(i)));
 				commentContentList.get(i).setText(commentContent(i));
@@ -590,19 +590,19 @@ public class CustomerCheckHotel {
 	}
 	
 	private int calOrderMaxPage(ArrayList<OrderVO> voList) {
-		return (voList.size() / MAX_ORDER_ONE_OAGE) + 1;
+		return (voList.size() / MAX_ORDER_ONE_PAGE) + 1;
 	}
 	
 	private int calCommentMaxPage(ArrayList<CommentVO> voList) {
-		return (voList.size() / MAX_COMMENT_ONE_OAGE) + 1;
+		return (voList.size() / MAX_COMMENT_ONE_PAGE) + 1;
 	}
 	
 	/**
 	 * 下面四种方法分别用来获得某个订单的订单时间、房间类型、房间数量、订单价格的信息
-	 * @param i 范围是 0 到 MAX_ORDER_ONE_OAGE - 1
+	 * @param i 范围是 0 到 MAX_ORDER_ONE_PAGE - 1
 	 */
 	private String orderDate(int i) {
-		int seq = (Integer.parseInt(orderCurrentPage.getText()) - 1) * MAX_ORDER_ONE_OAGE + i;	// 计算当前页面第i个信息字段在arraylist中的实际位置；
+		int seq = (Integer.parseInt(orderCurrentPage.getText()) - 1) * MAX_ORDER_ONE_PAGE + i;	// 计算当前页面第i个信息字段在arraylist中的实际位置；
 		Date tempDate;
 		try {
 			if (currentLabel == 0) {
@@ -613,13 +613,14 @@ public class CustomerCheckHotel {
 				tempDate = abnormalOrderList.get(seq).generatedDate;
 			}
 			return DateUtil.dateToCoarseString(tempDate);
-		} catch (IndexOutOfBoundsException nullex) {
+		} catch (IndexOutOfBoundsException ex) {
+			ex.printStackTrace();
 			return null;
 		}
 	}
 	
 	private String orderRoomType(int i) {
-		int seq = (Integer.parseInt(orderCurrentPage.getText()) - 1) * MAX_ORDER_ONE_OAGE + i;
+		int seq = (Integer.parseInt(orderCurrentPage.getText()) - 1) * MAX_ORDER_ONE_PAGE + i;
 		try {
 			if (currentLabel == 0) {
 				return executedOrderList.get(seq).roomType;
@@ -628,13 +629,14 @@ public class CustomerCheckHotel {
 			} else {
 				return abnormalOrderList.get(seq).roomType;
 			}
-		} catch (IndexOutOfBoundsException nullex) {
+		} catch (IndexOutOfBoundsException ex) {
+			ex.printStackTrace();
 			return null;
 		}
 	}
 	
 	private int orderRoomNum(int i) {
-		int seq = (Integer.parseInt(orderCurrentPage.getText()) - 1) * MAX_ORDER_ONE_OAGE + i;
+		int seq = (Integer.parseInt(orderCurrentPage.getText()) - 1) * MAX_ORDER_ONE_PAGE + i;
 		try {
 			if (currentLabel == 0) {
 				return executedOrderList.get(seq).roomNum;
@@ -643,13 +645,14 @@ public class CustomerCheckHotel {
 			} else {
 				return abnormalOrderList.get(seq).roomNum;
 			}
-		} catch (IndexOutOfBoundsException nullex) {
+		} catch (IndexOutOfBoundsException ex) {
+			ex.printStackTrace();
 			return -1;
 		}
 	}
 	
 	private double orderPrice(int i) {
-		int seq = (Integer.parseInt(orderCurrentPage.getText()) - 1) * MAX_ORDER_ONE_OAGE + i;
+		int seq = (Integer.parseInt(orderCurrentPage.getText()) - 1) * MAX_ORDER_ONE_PAGE + i;
 		try {
 			if (currentLabel == 0) {
 				return executedOrderList.get(seq).totalPrice;
@@ -658,7 +661,8 @@ public class CustomerCheckHotel {
 			} else {
 				return abnormalOrderList.get(seq).totalPrice;
 			}
-		} catch (IndexOutOfBoundsException nullex) {
+		} catch (IndexOutOfBoundsException ex) {
+			ex.printStackTrace();
 			return -1;
 		}
 	}
@@ -666,42 +670,46 @@ public class CustomerCheckHotel {
 	
 	/**
 	 * 下面四种方法分别用来获得某个评论的评价时间、评价者、评分、评论内容的信息
-	 * @param i 范围是 0 到 MAX_COMMENT_ONE_OAGE - 1
+	 * @param i 范围是 0 到 MAX_COMMENT_ONE_PAGE - 1
 	 */
 	private String commentDate(int i) {
-		int seq = (Integer.parseInt(commentCurrentPage.getText()) - 1) * MAX_COMMENT_ONE_OAGE + i;	// 计算当前页面第i个信息字段在arraylist中的实际位置；
+		int seq = (Integer.parseInt(commentCurrentPage.getText()) - 1) * MAX_COMMENT_ONE_PAGE + i;	// 计算当前页面第i个信息字段在arraylist中的实际位置；
 		Date tempDate;
 		try {
 			tempDate = commentList.get(seq).date;
 			return DateUtil.dateToCoarseString(tempDate);
-		} catch (IndexOutOfBoundsException nullex) {
+		} catch (IndexOutOfBoundsException ex) {
+			ex.printStackTrace();
 			return null;
 		}
 	}
 	
 	private String commentMaker(int i) {
-		int seq = (Integer.parseInt(commentCurrentPage.getText()) - 1) * MAX_COMMENT_ONE_OAGE + i;	// 计算当前页面第i个信息字段在arraylist中的实际位置；
+		int seq = (Integer.parseInt(commentCurrentPage.getText()) - 1) * MAX_COMMENT_ONE_PAGE + i;	// 计算当前页面第i个信息字段在arraylist中的实际位置；
 		try {
 			return commentList.get(seq).userName;
-		} catch (IndexOutOfBoundsException nullex) {
+		} catch (IndexOutOfBoundsException ex) {
+			ex.printStackTrace();
 			return null;
 		}
 	}
 	
 	private String commentContent(int i) {
-		int seq = (Integer.parseInt(commentCurrentPage.getText()) - 1) * MAX_COMMENT_ONE_OAGE + i;	// 计算当前页面第i个信息字段在arraylist中的实际位置；
+		int seq = (Integer.parseInt(commentCurrentPage.getText()) - 1) * MAX_COMMENT_ONE_PAGE + i;	// 计算当前页面第i个信息字段在arraylist中的实际位置；
 		try {
 			return commentList.get(seq).comment;
-		} catch (IndexOutOfBoundsException nullex) {
+		} catch (IndexOutOfBoundsException ex) {
+			ex.printStackTrace();
 			return null;
 		}
 	}
 	
 	private double commentRank(int i) {
-		int seq = (Integer.parseInt(orderCurrentPage.getText()) - 1) * MAX_ORDER_ONE_OAGE + i;
+		int seq = (Integer.parseInt(orderCurrentPage.getText()) - 1) * MAX_ORDER_ONE_PAGE + i;
 		try {
 			return commentList.get(seq).rank;
-		} catch (IndexOutOfBoundsException nullex) {
+		} catch (IndexOutOfBoundsException ex) {
+			ex.printStackTrace();
 			return -1;
 		}
 	}
@@ -711,7 +719,7 @@ public class CustomerCheckHotel {
 	 * 下面的方法用于promotion
 	 */
 	private void setPromotionContent() {
-		for (int i = 0; i < MAX_PROMOTION_ONE_OAGE; i++) {
+		for (int i = 0; i < MAX_PROMOTION_ONE_PAGE; i++) {
 			if (promotion(i) != null) {
 				promotionLabelList.get(i).setVisible(true);
 				promotionLabelList.get(i).setText(promotion(i));
@@ -723,15 +731,16 @@ public class CustomerCheckHotel {
 	}
 	
 	private int calPromotionMaxPage(ArrayList<PromotionVO> voList) {
-		return (voList.size() / MAX_PROMOTION_ONE_OAGE) + 1;
+		return (voList.size() / MAX_PROMOTION_ONE_PAGE) + 1;
 	}
 	
 	private String promotion(int i) {
 		System.out.println(promotionCurrentPage.getText());
-		int seq = (Integer.parseInt(promotionCurrentPage.getText()) - 1) * MAX_PROMOTION_ONE_OAGE + i;	// 计算当前页面第i个信息字段在arraylist中的实际位置；
+		int seq = (Integer.parseInt(promotionCurrentPage.getText()) - 1) * MAX_PROMOTION_ONE_PAGE + i;	// 计算当前页面第i个信息字段在arraylist中的实际位置；
 		try {
 			return promotionVOList.get(seq).name;
-		} catch (IndexOutOfBoundsException nullex) {
+		} catch (IndexOutOfBoundsException ex) {
+			ex.printStackTrace();
 			return null;
 		}
 	}

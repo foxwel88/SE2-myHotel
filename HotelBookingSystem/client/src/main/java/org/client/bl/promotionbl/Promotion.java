@@ -161,7 +161,7 @@ public class Promotion implements Comparable<Promotion> {
 					if (PromotionController.getInstance().calLevel(userVO.credit) < level) {
 						isAvailable = false;
 					}
-					if (!(hotelVO.city.equals(city) && hotelVO.area.equals(area))) {
+					if (!(hotelVO.city.cityName.equals(city) && hotelVO.area.address.equals(area))) {
 						isAvailable = false;
 					}
 					break;
@@ -180,7 +180,7 @@ public class Promotion implements Comparable<Promotion> {
 					}
 					break;
 				case "企业促销":				// isCompany
-					if (!userVO.type.equals(UserType.COMPANYCUSTOMER)) {
+					if (!userVO.type.equals(UserType.COMPANYCUSTOMER.getString())) {
 						isAvailable = false;
 					}
 					break;

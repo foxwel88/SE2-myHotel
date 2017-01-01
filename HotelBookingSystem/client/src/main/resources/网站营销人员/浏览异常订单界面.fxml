@@ -114,7 +114,12 @@
                                     <Font name="Microsoft YaHei" size="14.0" />
                                  </font>
                               </Button>
-                              <Text fill="#f8f7f7" layoutX="396.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="仙林大酒店" textAlignment="CENTER" wrappingWidth="240.0" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="396.0" AnchorPane.rightAnchor="153.0">
+                              <Text fill="#f8f7f7" layoutX="312.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="仙林大酒店" textAlignment="CENTER" wrappingWidth="240.0" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="312.0" AnchorPane.rightAnchor="237.0">
+                                 <font>
+                                    <Font name="Microsoft YaHei UI Light" size="20.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="#f8f7f7" layoutX="525.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="yyyy-MM-dd" textAlignment="CENTER" wrappingWidth="154.0" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="525.0" AnchorPane.rightAnchor="110.0">
                                  <font>
                                     <Font name="Microsoft YaHei UI Light" size="20.0" />
                                  </font>
@@ -128,7 +133,12 @@
                         <Font name="Microsoft YaHei UI Light" size="22.0" />
                      </font>
                   </Text>
-                  <Text fill="WHITE" layoutX="474.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="所属酒店" AnchorPane.leftAnchor="474.0" AnchorPane.topAnchor="8.0">
+                  <Text fill="WHITE" layoutX="387.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="所属酒店" AnchorPane.leftAnchor="387.0" AnchorPane.topAnchor="7.65625">
+                     <font>
+                        <Font name="Microsoft YaHei UI Light" size="22.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="587.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="日期">
                      <font>
                         <Font name="Microsoft YaHei UI Light" size="22.0" />
                      </font>

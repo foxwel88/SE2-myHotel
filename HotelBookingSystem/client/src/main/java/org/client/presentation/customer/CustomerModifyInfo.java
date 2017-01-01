@@ -182,7 +182,7 @@ public class CustomerModifyInfo {
 	}
 	
 	private boolean checkCompanyName() {
-		if (vo.type.equals(UserType.PERSONALCUSTOMER)) {
+		if (vo.type.equals(UserType.PERSONALCUSTOMER.getString())) {
 			return companyLabel.getText().isEmpty();
 		} else {
 			return CheckStyle.checkCompanyName(companyLabel.getText());
@@ -190,7 +190,7 @@ public class CustomerModifyInfo {
 	}
 	
 	private boolean checkName() {
-		if (vo.type.equals(UserType.COMPANYCUSTOMER)) {
+		if (vo.type.equals(UserType.COMPANYCUSTOMER.getString())) {
 			return name.getText().isEmpty();
 		} else {
 			return CheckStyle.checkName(name.getText());

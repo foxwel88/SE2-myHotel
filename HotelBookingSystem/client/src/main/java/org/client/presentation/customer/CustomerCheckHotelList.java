@@ -98,13 +98,13 @@ public class CustomerCheckHotelList {
 	Button searchButton;
 	
 	@FXML
-	Button starSortor;
+	Button starSort;
 	
 	@FXML
-	Button rankSortor;
+	Button rankSort;
 
 	@FXML
-	Button priceSortor;
+	Button priceSort;
 	
 	@FXML
 	Label previousPage;
@@ -166,7 +166,7 @@ public class CustomerCheckHotelList {
 	private static final double IMAGE_HEIGHT = 60;
 	
 	//记录当前的酒店排序方式，0表示无排序，1表示按星级排序，2表示按评分排序，3表示按价格排序
-	private int currentSortor = 0;
+	private int currentSort = 0;
 	
 	// 点击预订酒店按钮的时候，同样会触发显示酒店详细信息的监听从而报线程异常（无法catch，不影响正常运行），
 	// 因此特设此值，每当调用跳转到生成订单界面的方法时调用，将此值设为1，阻止调用查看酒店详细信息界面的方法
@@ -351,9 +351,9 @@ public class CustomerCheckHotelList {
 	@FXML
 	void showByStar() {
 		if (hotelList != null && hotelList.size() > 0) {
-			currentSortor = 1;
-			deactiveRankSortorButton();
-			deactivePriceSortorButton();
+			currentSort = 1;
+			deactiveRankSortButton();
+			deactivePriceSortButton();
 			sortByStar(hotelList);
 			refreshHotelList();
 		}
@@ -362,9 +362,9 @@ public class CustomerCheckHotelList {
 	@FXML
 	void showByRank() {
 		if (hotelList != null && hotelList.size() > 0) {
-			currentSortor = 2;
-			deactiveStarSortorButton();
-			deactivePriceSortorButton();
+			currentSort = 2;
+			deactiveStarSortButton();
+			deactivePriceSortButton();
 			sortByRank(hotelList);
 			refreshHotelList();
 		}
@@ -373,9 +373,9 @@ public class CustomerCheckHotelList {
 	@FXML
 	void showByPrice() {
 		if (hotelList != null && hotelList.size() > 0) {
-			currentSortor = 3;
-			deactiveStarSortorButton();
-			deactiveRankSortorButton();
+			currentSort = 3;
+			deactiveStarSortButton();
+			deactiveRankSortButton();
 			sortByPrice(hotelList);
 			refreshHotelList();
 		}
@@ -418,38 +418,38 @@ public class CustomerCheckHotelList {
 	}
 	
 	@FXML
-	void activeStarSortorButton() {
-		starSortor.setStyle("-fx-background-color:rgba(0,0,0,0.4);-fx-text-fill:white");
+	void activeStarSortButton() {
+		starSort.setStyle("-fx-background-color:rgba(0,0,0,0.4);-fx-text-fill:white");
 	}
 	
 	@FXML
-	void activeRankSortorButton() {
-		rankSortor.setStyle("-fx-background-color:rgba(0,0,0,0.4);-fx-text-fill:white");
+	void activeRankSortButton() {
+		rankSort.setStyle("-fx-background-color:rgba(0,0,0,0.4);-fx-text-fill:white");
 	}
 	
 	@FXML
-	void activePriceSortorButton() {
-		priceSortor.setStyle("-fx-background-color:rgba(0,0,0,0.4);-fx-text-fill:white");
+	void activePriceSortButton() {
+		priceSort.setStyle("-fx-background-color:rgba(0,0,0,0.4);-fx-text-fill:white");
 	}
 	
 	@FXML
-	void deactiveStarSortorButton() {
-		if (currentSortor != 1) {
-			starSortor.setStyle("-fx-background-color:rgba(255,255,255,0.4);-fx-text-fill:black");
+	void deactiveStarSortButton() {
+		if (currentSort != 1) {
+			starSort.setStyle("-fx-background-color:rgba(255,255,255,0.4);-fx-text-fill:black");
 		}
 	}
 	
 	@FXML
-	void deactiveRankSortorButton() {
-		if (currentSortor != 2) {
-			rankSortor.setStyle("-fx-background-color:rgba(255,255,255,0.4);-fx-text-fill:black");
+	void deactiveRankSortButton() {
+		if (currentSort != 2) {
+			rankSort.setStyle("-fx-background-color:rgba(255,255,255,0.4);-fx-text-fill:black");
 		}
 	}
 	
 	@FXML
-	void deactivePriceSortorButton() {
-		if (currentSortor != 3) {
-			priceSortor.setStyle("-fx-background-color:rgba(255,255,255,0.4);-fx-text-fill:black");
+	void deactivePriceSortButton() {
+		if (currentSort != 3) {
+			priceSort.setStyle("-fx-background-color:rgba(255,255,255,0.4);-fx-text-fill:black");
 		}
 	}
 	

@@ -11,6 +11,7 @@ import org.client.vo.UserVO;
 import org.common.utility.ResultMessage;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.server.mysql.DatabaseCommunicator;
 import org.server.rmi.RMIHelper;
@@ -29,6 +30,7 @@ public class UserTest {
 		controller = UserController.getInstance();
 	}
 	
+	@Ignore
 	@Test
 	public void testLogin() {
 		String userName1 = "bob";
@@ -47,6 +49,7 @@ public class UserTest {
 		assertEquals(ResultMessage.EXIST, info4);
 	}
 	
+	@Ignore
 	@Test
 	public void testLogout() {
 		String userName1 = "root";

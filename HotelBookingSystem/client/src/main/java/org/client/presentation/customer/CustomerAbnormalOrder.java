@@ -14,7 +14,7 @@ import javafx.scene.layout.AnchorPane;
  * @author fraliphsoft
  * @version Foxwel 12/13
  */
-public class CustomerAbnomoralOrder {
+public class CustomerAbnormalOrder {
 	@FXML
 	private AnchorPane root;
 

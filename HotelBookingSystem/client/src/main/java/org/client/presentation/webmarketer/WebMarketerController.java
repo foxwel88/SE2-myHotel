@@ -45,7 +45,7 @@ public class WebMarketerController {
 	
 	private String name;
 	
-	private UserVO userVO;
+//	private UserVO userVO;
 	
 	private WebMarketerController() {
 		userbl = UserController.getInstance();
@@ -78,49 +78,33 @@ public class WebMarketerController {
 		return name;
 	}
 	
-	public ResultMessage setUserVO(String userName) {
-		userVO = userbl.findbyUserName(userName);
+	/**
+	 * 根据用户名获得用户的VO
+	 * @param userName
+	 * @return
+	 */
+	public UserVO searchUser(String userName) {
+		UserVO userVO = userbl.findbyUserName(userName);
 		if ((!Objects.equals(userVO.type, "个人客户")) && (!Objects.equals(userVO.type, "企业客户"))) {
-			return ResultMessage.NOT_EXIST;
+			return new UserVO(ResultMessage.NOT_EXIST);
 		}
-		return userVO.resultMessage;
-	}
-	
-	/**
-	 * 获得当前用户的id
-	 * @return 当前用户的id
-	 */
-	public String getCurrentId() {
-		return userVO.ID;
-	}
-	
-	/**
-	 * 获得当前用户的credit
-	 * @return 当前用户的credit
-	 */
-	public String getCurrentCreidt() {
-		Double creditNum = userVO.credit;
-		return creditNum.toString();
-	}
-	
-	public String getAnotherName() {
-		return userVO.name;
+		return userVO;
 	}
 	
 	/**
 	 * 增加当前用户的信用值
-	 * @param credit 要增加的信用值
+	 * @param vo 
 	 * @return 结果信息
 	 */
-	public ResultMessage addCredit(double credit) {
-		if (userVO == null) {
+	public ResultMessage addCredit(UserVO vo, double credit) {
+		if (vo == null) {
 			return ResultMessage.NOT_EXIST;
 		}
-		if (userVO.resultMessage != ResultMessage.SUCCESS) {
-			return userVO.resultMessage;
+		if (vo.resultMessage != ResultMessage.SUCCESS) {
+			return vo.resultMessage;
 		}
 		
-		userVO.credit += credit;
+		vo.credit += credit;
 		
 		// add credit record
 		Date date = null;
@@ -129,15 +113,15 @@ public class WebMarketerController {
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		CreditRecordVO creditRecordVO = new CreditRecordVO(date, null, userVO.ID
-				, credit, userVO.credit, "信用充值");
+		CreditRecordVO creditRecordVO = new CreditRecordVO(date, null, vo.ID
+				, credit, vo.credit, "信用充值");
 		ResultMessage info = userbl.addCreditRecord(creditRecordVO);
 		if (info != ResultMessage.SUCCESS) { // check
 			return info;
 		}
 		
 		// modify user info
-		return userbl.modify(userVO);
+		return userbl.modify(vo);
 	}
 	
 	/**

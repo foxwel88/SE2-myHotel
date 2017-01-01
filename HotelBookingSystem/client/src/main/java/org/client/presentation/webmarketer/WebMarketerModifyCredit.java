@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import org.client.presentation.util.ResultInfoHelper;
+import org.client.vo.UserVO;
 import org.common.utility.ResultMessage;
 
 import javafx.fxml.FXML;
@@ -57,6 +58,8 @@ public class WebMarketerModifyCredit {
 	private Label searchResultLabel;
 	
 	private WebMarketerController controller;
+	
+	private UserVO vo;
 
 	@FXML
     void initialize() {
@@ -77,6 +80,10 @@ public class WebMarketerModifyCredit {
 	
 	@FXML
     void handleConfirm(MouseEvent event) {
+		if (vo == null || vo.resultMessage != ResultMessage.SUCCESS) {
+			return;
+		}
+		
 		String credit = addCreditTextField.getText();
 		if (credit == null || credit.equals("")) {
 			ResultInfoHelper.setResultLabel(resultLabel, ResultMessage.WRONG_FORMAT, 2000);
@@ -91,14 +98,15 @@ public class WebMarketerModifyCredit {
 			return;
 		}
 		
-		ResultMessage info = controller.addCredit(creditNum);
+		ResultMessage info = controller.addCredit(vo, creditNum);
 		if (info != ResultMessage.SUCCESS) { // check
 			ResultInfoHelper.setResultLabel(resultLabel, info, 2000);
 			return;
 		}
 		
 		//set content
-		String currentCredit = controller.getCurrentCreidt();
+		vo = controller.searchUser(vo.name);
+		String currentCredit = String.valueOf(vo.credit);
 		currentCreditText.setText(currentCredit);
 		ResultInfoHelper.setResultLabel(resultLabel, info, 2000);
 		addCreditTextField.setText("");
@@ -114,9 +122,9 @@ public class WebMarketerModifyCredit {
 			return;
 		}
 		
-		// initialize the userVO of controller
-		ResultMessage info = controller.setUserVO(userName);
-		if (info != ResultMessage.SUCCESS) {
+		// get UserVO by userName
+		vo = controller.searchUser(userName);
+		if (vo.resultMessage != ResultMessage.SUCCESS) {
 			setDefaultText();
 			searchResultLabel.setText("输入的用户名有误");
 			return;
@@ -124,16 +132,10 @@ public class WebMarketerModifyCredit {
 		// 搜索成功的话不会显示“成功”的label
 		searchResultLabel.setText("");
 		
-		
-		// get content
-		String userId = controller.getCurrentId();
-		String credit = controller.getCurrentCreidt();
-		String name = controller.getAnotherName();
-		
 		// set content
-		nameText.setText(name);
-		idText.setText(userId);
-		currentCreditText.setText(credit);
+		nameText.setText(vo.name);
+		idText.setText(vo.ID);
+		currentCreditText.setText(String.valueOf(vo.credit));
 	}
 	
 	private void setDefaultText() {

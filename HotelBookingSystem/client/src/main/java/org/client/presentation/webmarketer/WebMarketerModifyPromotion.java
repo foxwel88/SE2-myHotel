@@ -349,7 +349,7 @@ public class WebMarketerModifyPromotion {
 		
 		//select level
 		if (!levelBox.isDisable()) {
-			if (levelBox.getValue() == null || levelBox.getValue().equals("")) {
+			if (levelBox.getValue() == null) {
 				return false;
 			}
 		}

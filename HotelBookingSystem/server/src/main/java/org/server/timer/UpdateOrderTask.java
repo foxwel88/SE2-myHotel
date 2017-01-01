@@ -2,7 +2,6 @@ package org.server.timer;
 
 import java.rmi.RemoteException;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.TimerTask;
 
 import org.common.dataservice.OrderDataService.OrderDataService;

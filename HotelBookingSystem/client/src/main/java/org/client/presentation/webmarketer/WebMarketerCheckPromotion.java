@@ -109,6 +109,10 @@ public class WebMarketerCheckPromotion {
 		parentPane = pane;
 	}
 	
+	/**
+	 * 跳转到增加促销策略界面
+	 * @param event
+	 */
 	@FXML
     void addPromotion(MouseEvent event) {
 		Parent modifyRoot = null;
@@ -123,6 +127,10 @@ public class WebMarketerCheckPromotion {
 		((WebMarketerModifyPromotion)resources.getCurrentController()).setParentGridPane(parentPane);
 	}
 	
+	/**
+	 * 跳转到修改促销策略界面
+	 * @param promotionVO
+	 */
 	private void modifyPromotion(PromotionVO promotionVO) {
 		Parent modifyRoot = null;
 		Resources resources = Resources.getInstance();
@@ -140,6 +148,7 @@ public class WebMarketerCheckPromotion {
 	private void deletePromotion(String promotionID) {
 		controller.deletePromotion(promotionID);
 		promotionList = controller.getPromotions();
+		// 更新当前页面
 		switchCurrentPage(pageNum);
 	}
 
@@ -170,7 +179,7 @@ public class WebMarketerCheckPromotion {
 	}
 	
 	/**
-	 * 替换NamePane和DetailPane的内容，将其设为contentGridPane的子女显示 
+	 * 替换PromotionPane的内容，将其设为contentGridPane的子女显示 
 	 * 并更改pageNumLabel和pageNum
 	 * @param page
 	 */
@@ -187,7 +196,9 @@ public class WebMarketerCheckPromotion {
 		int promotionNums = toNum - fromNum;
 		//最大页码数
 		int maxPageNum = (promotionList.size() + NUM_OF_PROMOTION_PER_PAGE - 1) / NUM_OF_PROMOTION_PER_PAGE;
-		if ((promotionNums <= 0) && (toPageNum > FIRST_PAGE_NUM)) { //当前页面显示促销策略数量不小于0
+		// 如果将要调到的页面上的促销策略数量不大于0并且不是第一页
+		// 那么跳到最后一页
+		if ((promotionNums <= 0) && (toPageNum > FIRST_PAGE_NUM)) {
 			switchCurrentPage(maxPageNum);
 			return;
 		}
@@ -217,6 +228,10 @@ public class WebMarketerCheckPromotion {
 		
 	}
 	
+	/**
+	 * 内部类。每个页面上有若干个PromotionPane，每个PromotionPane上显示一个促销策略的信息
+	 * @author gyue
+	 */
 	class PromotionPane extends AnchorPane {
 		Text name;
 		

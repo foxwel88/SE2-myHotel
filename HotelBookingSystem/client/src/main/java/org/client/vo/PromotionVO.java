@@ -3,8 +3,6 @@ package org.client.vo;
 import java.io.Serializable;
 import java.util.Date;
 
-import org.common.utility.ResultMessage;
-
 public class PromotionVO implements Serializable {
 	/**
 	 * 

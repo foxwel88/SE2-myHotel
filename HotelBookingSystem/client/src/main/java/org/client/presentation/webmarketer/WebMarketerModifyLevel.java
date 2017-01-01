@@ -238,6 +238,10 @@ public class WebMarketerModifyLevel {
 
 	}
 	
+	/**
+	 * 内部类。每个页面上有若干个LevelPane。每个LevelPane上显示一个等级的信息。
+	 * @author gyue
+	 */
 	class LevelPane extends AnchorPane {
 		Text levelName;
 		

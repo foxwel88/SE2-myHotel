@@ -26,14 +26,14 @@ public class CommentControllerTest {
 	}
 	
 	@Test(timeout = 1000)
-	public void testgetComment() {
+	public void testGetComment() {
 		List<CommentVO> commentVOList = commentController.getComment("java从没入门到放弃大酒店");
 		
 		assertEquals(false, commentVOList.isEmpty());
 	}
 	
 	@Test(timeout = 1000)
-	public void testaddComment() {
+	public void testAddComment() {
 		assertEquals(ResultMessage.SUCCESS, commentController.addComment(new CommentVO("你的名字", "大酒店", "123456789020080606143055", new Date(), 5, "讲道理，十五个字的评论打起来好累，重要的事情说一遍")));
 	}
 	

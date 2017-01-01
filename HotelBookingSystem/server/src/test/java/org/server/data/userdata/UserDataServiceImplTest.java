@@ -10,6 +10,7 @@ import org.common.po.CreditRecordPO;
 import org.common.po.UserPO;
 import org.common.utility.ResultMessage;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.server.data.datafactory.DataFactory;
 import org.server.mysql.DatabaseCommunicator;
@@ -30,7 +31,7 @@ public class UserDataServiceImplTest {
 
 	@Test
 	public void testAdd() throws RemoteException {
-		UserPO po = dao.findbyUserName("imindividual");
+		UserPO po = dao.findbyUserName("tom");
 
 		ResultMessage info = dao.add(po);
 		
@@ -53,7 +54,7 @@ public class UserDataServiceImplTest {
 
 	@Test
 	public void testFindbyUserName1() throws RemoteException {
-		UserPO po = dao.findbyUserName("imindividual");
+		UserPO po = dao.findbyUserName("tom");
 		assertEquals(po.name, "张客户");
 	}
 
@@ -65,16 +66,16 @@ public class UserDataServiceImplTest {
 
 	@Test
 	public void testModify1() throws RemoteException {
-		UserPO po = dao.findbyUserName("imindividual");
+		UserPO po = dao.findbyUserName("tom");
 		po.credit += 10;
 		ResultMessage info = dao.modify(po);
 
-		assertEquals(ResultMessage.WRONG_USERNAME, info);
+		assertEquals(ResultMessage.SUCCESS, info);
 	}
 
 	@Test
 	public void testModify2() throws RemoteException {
-		UserPO po = dao.findbyUserName("imindividual");
+		UserPO po = dao.findbyUserName("tom");
 		po.ID = "awrongid";
 		ResultMessage info = dao.modify(po);
 
@@ -83,19 +84,19 @@ public class UserDataServiceImplTest {
 
 	@Test
 	public void testCheck1() throws RemoteException {
-		ResultMessage info = dao.Check("imindividual", "person");
+		ResultMessage info = dao.Check("tom", "123456");
 		assertEquals(ResultMessage.SUCCESS, info);
 	}
 
 	@Test
 	public void testCheck2() throws RemoteException {
-		ResultMessage info = dao.Check("a wrong username", "persion");
+		ResultMessage info = dao.Check("a wrong username", "123456");
 		assertEquals(ResultMessage.WRONG_USERNAME, info);
 	}
 
 	@Test
 	public void testCheck3() throws RemoteException {
-		ResultMessage info = dao.Check("imindividual", "a wrong password");
+		ResultMessage info = dao.Check("tom", "a wrong password");
 		assertEquals(ResultMessage.WRONG_PASSWORD, info);
 	}
 
@@ -129,7 +130,7 @@ public class UserDataServiceImplTest {
 	
 	@Test
 	public void testDeleteUser2() throws RemoteException {
-		UserPO oldpo = dao.findbyUserName("imindividual");
+		UserPO oldpo = dao.findbyUserName("tom");
 		oldpo.userName = "temp";
 		ResultMessage res1 = dao.add(oldpo);
 		UserPO po1 = dao.findbyUserName("temp");
@@ -142,6 +143,7 @@ public class UserDataServiceImplTest {
 		assertEquals(ResultMessage.SUCCESS, res2);
 	}
 	
+	@Ignore
 	@Test
 	public void testDeleteNowUser() throws RemoteException {
 		String userName = "test";

@@ -181,7 +181,7 @@ public class OrderUtil {
 			return excuteMessage;
 		}
 		
-		myorder.addCreditRecord(-myorder.totalPrice, CreditOperation.CANCELORER.getString());
+		myorder.addCreditRecord(-myorder.totalPrice, CreditOperation.CANCELORDER.getString());
 		return ResultMessage.SUCCESS;
 	}
 

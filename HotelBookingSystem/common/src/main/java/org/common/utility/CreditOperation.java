@@ -1,7 +1,7 @@
 package org.common.utility;
 
 public enum CreditOperation {
-	FINISHORDER("执行订单"), EXCEPTIONORDER("恢复异常订单"), CANCELORER("撤销订单"), RECHARGE("信用充值"), ABNORMALORDER("异常订单");
+	FINISHORDER("执行订单"), EXCEPTIONORDER("恢复异常订单"), CANCELORDER("撤销订单"), RECHARGE("信用充值"), ABNORMALORDER("异常订单");
 	
 	private String s;
 	
@@ -21,7 +21,7 @@ public enum CreditOperation {
 			return CreditOperation.EXCEPTIONORDER;
 		}
 		if (ss.equals("撤销订单")) {
-			return CreditOperation.CANCELORER;
+			return CreditOperation.CANCELORDER;
 		}
 		if (ss.equals("信用充值")) {
 			return CreditOperation.RECHARGE;

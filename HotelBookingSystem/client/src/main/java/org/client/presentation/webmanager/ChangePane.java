@@ -5,7 +5,7 @@ import javafx.scene.layout.GridPane;
 
 /**
  * 
- * webmanage.ChangePane类负责网站管理人员的界面跳转
+ * webmanager.ChangePane类负责网站管理人员的界面跳转
  * 提供界面跳转的方法
  * @author Foxwel
  * @version 2016/11/27 Foxwel
@@ -32,9 +32,9 @@ public class ChangePane {
 		this.mainPane = pane;
 	}
 	
-	//进行页面跳转，turntopane为已加载的需要转去的pane
-	public void turn(Parent turntopane) {
-		mainPane.getChildren().set(1, turntopane);
-		GridPane.setConstraints(turntopane, 1, 0);
+	//进行页面跳转，turnToPane为已加载的需要转去的pane
+	public void turn(Parent turnToPane) {
+		mainPane.getChildren().set(1, turnToPane);
+		GridPane.setConstraints(turnToPane, 1, 0);
 	}
 }

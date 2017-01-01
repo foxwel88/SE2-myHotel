@@ -60,7 +60,7 @@
                            <children>
                               <AnchorPane fx:id="orderPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0,20,81,0.32);" GridPane.rowIndex="4">
                                  <children>
-                                    <Label fx:id="orderLabel" alignment="CENTER" onMouseClicked="#handleSwitch" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" prefHeight="114.0" prefWidth="120.0" text="异常订单" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <Label fx:id="orderLabel" alignment="CENTER" onMouseClicked="#handleSwitch" onMouseEntered="#mouseEnter" onMouseExited="#mouseExit" prefHeight="114.0" prefWidth="120.0" text="   未执行   异常订单" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <font>
                                           <Font name="Microsoft YaHei UI Light" size="21.0" />
                                        </font>
