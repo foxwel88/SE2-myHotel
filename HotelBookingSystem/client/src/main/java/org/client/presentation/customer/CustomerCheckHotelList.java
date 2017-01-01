@@ -137,9 +137,26 @@ public class CustomerCheckHotelList {
 	HBox hotel5;
 	/******************************************************************/
 	
+	@FXML
+	Pane hitoryMark1;
+	
+	@FXML
+	Pane hitoryMark2;
+	
+	@FXML
+	Pane hitoryMark3;
+	
+	@FXML
+	Pane hitoryMark4;
+	
+	@FXML
+	Pane hitoryMark5;
+	
 	private ArrayList<HotelVO> hotelList;
 	
 	private ArrayList<HBox> hotelBoxList;
+	
+	private ArrayList<Pane> historyMarkList;
 	
 	// 该字段表示同时显示的最大酒店数量
 	private static final int MAX_HOTEL_ONE_OAGE = 5;
@@ -163,6 +180,13 @@ public class CustomerCheckHotelList {
 		hotelBoxList.add(hotel3);
 		hotelBoxList.add(hotel4);
 		hotelBoxList.add(hotel5);
+		
+		historyMarkList = new ArrayList<>();
+		historyMarkList.add(hitoryMark1);
+		historyMarkList.add(hitoryMark2);
+		historyMarkList.add(hitoryMark3);
+		historyMarkList.add(hitoryMark4);
+		historyMarkList.add(hitoryMark5);
 		
 		SwitchSceneUtil.canBack = false;
 		setCity();
@@ -469,6 +493,7 @@ public class CustomerCheckHotelList {
 				getPriceLabel(i).setText("¥" + String.valueOf(getPrice(i)));
 				getPriceTailLabel(i).setText("起");
 				getMakeOrderLabel(i).setVisible(true);
+				getHistoryMarkPane(i).setVisible(getHistoryMark(i));
 			} else {
 				getImageLabel(i).setGraphic(null);
 				getNameLabel(i).setText("");
@@ -683,6 +708,10 @@ public class CustomerCheckHotelList {
 	private Label getPriceTailLabel(int i) {
 		return (Label)hotelBoxList.get(i).getChildren().get(3);
 	}
+	
+	private Pane getHistoryMarkPane(int i) {
+		return historyMarkList.get(i);
+	}
 	/********************************************************/
 	
 	/**
@@ -766,5 +795,16 @@ public class CustomerCheckHotelList {
 		}
 	}
 	
+	private boolean getHistoryMark(int i) {
+		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_HOTEL_ONE_OAGE + i;
+		ArrayList<HotelVO> historyHotels = SwitchSceneUtil.getFilteredHotels(getCurrentFilter(), true);
+		HotelVO tempHotel = hotelList.get(seq);
+		for (int j = 0; j < historyHotels.size(); j++) {
+			if (historyHotels.get(j).id.equals(tempHotel.id)) {
+				return true;
+			}
+		}
+		return false;
+	}
 /**************************************************************************************/
 }
