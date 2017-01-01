@@ -22,7 +22,6 @@ public class UserDataServiceImpl_stub extends UnicastRemoteObject implements Use
 
 	protected UserDataServiceImpl_stub() throws RemoteException {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public ResultMessage add(UserPO po) throws RemoteException {
@@ -66,25 +65,21 @@ public class UserDataServiceImpl_stub extends UnicastRemoteObject implements Use
 
 	@Override
 	public ResultMessage deleteUser(String userName) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		return ResultMessage.SUCCESS;
 	}
 
 	@Override
 	public void addNowUser(String userName) throws RemoteException {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public ResultMessage userIsExist(String userName) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		return ResultMessage.NOT_EXIST;
 	}
 
 	@Override
 	public ResultMessage deleteNowUser(String userName) throws RemoteException {
-		// TODO Auto-generated method stub
 		return ResultMessage.SUCCESS;
 	}
 

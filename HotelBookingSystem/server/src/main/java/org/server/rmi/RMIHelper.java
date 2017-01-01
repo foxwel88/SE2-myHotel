@@ -38,7 +38,6 @@ public class RMIHelper {
 			
 			java.rmi.server.UnicastRemoteObject.unexportObject(reg,true);
 		} catch (NoSuchObjectException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	
@@ -64,11 +63,9 @@ public class RMIHelper {
 			System.out.println("Connect successfully");
 			System.out.println();
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 	
 		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -92,11 +89,9 @@ public class RMIHelper {
 			System.out.println("Connect successfully");
 			System.out.println();
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 	
 		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

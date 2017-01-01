@@ -207,12 +207,10 @@ public class Order_stub implements Orderblservice {
 	ArrayList<OrderVO> vo;
 	
 	public ResultMessage createOrder(OrderVO vo) {
-		// TODO Auto-generated method stub
 		return ResultMessage.SUCCESS;
 	}
 
 	public ResultMessage cancelOrder(String orderID) {
-		// TODO Auto-generated method stub
 		return ResultMessage.SUCCESS;
 	}
 
@@ -268,7 +266,6 @@ public class Order_stub implements Orderblservice {
 	}
 
 	public ArrayList<OrderVO> getAbnormalOrder() {
-		// TODO Auto-generated method stub
 		vo = new ArrayList<>();
 		vo.add(avo1);
 		vo.add(avo2);
@@ -282,7 +279,6 @@ public class Order_stub implements Orderblservice {
 	}
 
 	public ArrayList<OrderVO> getUserOrderList(String userID, OrderType type) {
-		// TODO Auto-generated method stub
 		vo = new ArrayList<>();
 		switch (type) {
 			case ABNORMAL:
@@ -327,7 +323,6 @@ public class Order_stub implements Orderblservice {
 	}
 
 	public ArrayList<OrderVO> getHotelOrderList(String hotelID, OrderType type) {
-		// TODO Auto-generated method stub
 		vo = new ArrayList<>();
 
 		switch (type) {
@@ -374,17 +369,14 @@ public class Order_stub implements Orderblservice {
 	}
 
 	public ResultMessage executeOrder(String orderID) {
-		// TODO Auto-generated method stub
 		return ResultMessage.SUCCESS;
 	}
 
 	public ResultMessage cancelAbnormalOrder(String orderID, Boolean isHalf) {
-		// TODO Auto-generated method stub
 		return ResultMessage.SUCCESS;
 	}
 
 	public List<String> getHistoryHotels(String userId) {
-		// TODO Auto-generated method stub
 		List<String> list = new ArrayList<>();
 		list.add("1号酒店");
 		list.add("2号酒店");
@@ -393,25 +385,21 @@ public class Order_stub implements Orderblservice {
 
 	@Override
 	public ResultMessage checkOut(String ID) {
-		// TODO Auto-generated method stub
 		return ResultMessage.SUCCESS;
 	}
 
 	@Override
 	public ResultMessage comment(String orderID) {
-		// TODO Auto-generated method stub
 		return ResultMessage.SUCCESS;
 	}
 
 	@Override
 	public int getBookedRoomNum(String hotelID, RoomType type, Date fromdate, Date todate) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public ResultMessage createOffLineOrder(OrderVO vo) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

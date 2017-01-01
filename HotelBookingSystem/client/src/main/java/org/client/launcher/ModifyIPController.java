@@ -14,6 +14,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
+ * 登录时修改连接IP的界面
  * Created by Foxwel on 2016/12/21.
  */
 public class ModifyIPController {

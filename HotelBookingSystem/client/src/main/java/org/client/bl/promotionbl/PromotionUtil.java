@@ -131,49 +131,6 @@ public class PromotionUtil {
 		return priceCalculator.getPrice(rawPrice);
 	}
 	
-	// TODO 放到界面层检查
-//	/**
-//	 * 添加新的促销策略或者修改已有促销策略时，以下情况返回格式错误的ResultMessage：
-//	 * 		Promotion类型不存在
-//	 * 		Promotion的开始时间早于服务器系统时间
-//	 * 		Promotion结束时间早于开始时间
-//	 * 		添加时已有同名Promotion存在或者修改时无此Promotion存在
-//	 * 		折扣范围小于等于0或者大于等于10
-//	 * 		商圈不存在
-//	 * 		最低适用等级不在Level规定的范围内
-//	 */
-//	static boolean checkPromotionFormat(PromotionVO vo, boolean isNew) {
-//		boolean isOK = true;
-//		if (PromotionType.getType(vo.type) == null) {
-//			isOK = false;
-//		}
-////		if (promotion的结束时间早于服务器系统时间) {
-////			isOK = false;
-////		}
-//		if (!vo.startTime.before(vo.endTime)) {
-//			isOK = false;
-//		}
-////		if (isNew) {
-////			if (同名) {
-////				isOK = false;
-////			}
-////		} else {
-////			if(不同名) {
-////				isOK = false;
-////			}
-////		}
-//		if (vo.discount <= 0 || vo.discount >= 10) {
-//			isOK = false;
-//		}
-////		if (商圈不存在) {
-////			isOK = false;
-////		}
-////		if (等级范围) {
-////			isOK = false;
-////		}
-//		return isOK;
-//	}
-	
 	private static ArrayList<Promotion> getCanBeUsedHotelPromotion(String hotelID, String userID, int roomNum) {
 		List<Promotion> hotelPromotionList = showHotelPromotion(hotelID);
 		ArrayList<Promotion> canBeUsedHotelPromotion = new ArrayList<>();

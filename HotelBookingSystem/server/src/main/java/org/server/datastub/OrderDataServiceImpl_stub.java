@@ -112,13 +112,11 @@ public class OrderDataServiceImpl_stub extends UnicastRemoteObject implements Or
 
 	@Override
 	public void updateAbnormalOrders(Date date) throws RemoteException {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public List<OrderPO> getDateOrderPO(String hotelID, Date date) throws RemoteException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

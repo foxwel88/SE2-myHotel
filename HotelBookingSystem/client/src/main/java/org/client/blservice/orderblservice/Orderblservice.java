@@ -13,7 +13,7 @@ public interface Orderblservice {
 	
 	public ResultMessage cancelOrder(String orderID);
 	
-	public OrderVO getOrder(String ID);
+	public OrderVO getOrder(String orderID);
 	
 	public List<OrderVO> getAbnormalOrder();
 	
@@ -27,7 +27,7 @@ public interface Orderblservice {
 	
 	public List<String> getHistoryHotels(String userId);
 	
-	public ResultMessage checkOut(String ID);
+	public ResultMessage checkOut(String orderID);
 	
 	public ResultMessage comment(String orderID);
 	

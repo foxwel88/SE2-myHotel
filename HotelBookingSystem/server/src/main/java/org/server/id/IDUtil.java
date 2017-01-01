@@ -24,7 +24,6 @@ public class IDUtil extends UnicastRemoteObject implements IDService {
 
 	public IDUtil() throws RemoteException {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	private final int MAX_HOTELID_LENGTH = 5;

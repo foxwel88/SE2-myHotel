@@ -128,16 +128,15 @@ public class WebManagerModifyCustomer {
 	void handleConfirmAction(MouseEvent event) throws IOException {
 		if (check()) {
 			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-			Date DateObj = null;
+			Date dateObj = null;
 			try {
-				DateObj = dateFormat.parse(birthDatePicker.getValue().toString());
+				dateObj = dateFormat.parse(birthDatePicker.getValue().toString());
 			} catch (ParseException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
 			UserVO newvo = new UserVO(typeChoiceBox.getValue(),userNameTextField.getText(),nameTextField.getText(),nowvo.ID,nowvo.passWord,
-					phoneTextField.getText(),nowvo.credit,DateObj,companyTextField.getText(),nowvo.hotelID,nowvo.hotelAddress);
+					phoneTextField.getText(),nowvo.credit,dateObj,companyTextField.getText(),nowvo.hotelID,nowvo.hotelAddress);
 			
 			ResultMessage message = WebManagerController.getInstance().modify(newvo);
 			

@@ -108,8 +108,6 @@ public class CustomerUnexecutedOrder {
 			alert.setContentText("成功撤销订单");
 			alert.showAndWait();
 			SwitchSceneUtil.turnToAnotherScene((GridPane)(root.getParent()), resources.customerCheckUnexecutedOrderList);
-		} else {
-			// TODO
 		}
 	}
 	

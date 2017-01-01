@@ -22,6 +22,10 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+/**
+ * 注册界面 FXML controller
+ *
+ */
 public class RegisterController {
 	@FXML
 	private Label resultLabel;

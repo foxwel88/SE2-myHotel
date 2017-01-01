@@ -37,8 +37,7 @@ public class PromotionControllerTest extends EasyMockSupport {
 		promotionDataService = mock(PromotionDataService.class);
 		PromotionUtil.setDAO(null);
 	}
-	
-	// TODO 商圈和酒店名显然不符合规范。。。等数据库建起来了再改
+
 	@Test(timeout = 1000)
 	public void testadd() {
 		assertEquals(ResultMessage.SUCCESS, promotionController.add(new PromotionVO("i'm an id", "hotel", "生日促销", new Date(100000), new Date(1000000), "!什么东西", "我是地址", 1, "城市", "我不信还有", 9.9, "醉了")));

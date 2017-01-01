@@ -27,7 +27,7 @@ public class Order {
 	
 	private OrderDataService dao;
 	
-	private TimeService timedao;
+	private TimeService timeDao;
 	
 	private Userblservice userbl;
 	
@@ -77,14 +77,13 @@ public class Order {
 	
 	public Order() {
 		this.dao = OrderUtil.getInstance().dao;
-		this.timedao = OrderUtil.getInstance().timedao;
+		this.timeDao = OrderUtil.getInstance().timeDao;
 		this.userbl = OrderUtil.getInstance().userController;
 	}
 
 	/*
 	通过OrderVO来初始化该Order对象的内容
 	 */
-	
 	public ResultMessage setOrder (OrderVO vo) {
 		this.orderID = vo.orderID;
 		this.type = OrderType.getType(vo.type);
@@ -120,7 +119,6 @@ public class Order {
 	/*
 	通过OrderPO来初始化该Order对象的内容
 	 */
-
 	public ResultMessage setOrder (OrderPO po) {
 		this.orderID = po.orderID;
 		this.type = po.type;
@@ -158,10 +156,8 @@ public class Order {
 	 */
 	public ResultMessage modify() {
 		try {
-			//System.out.println(getOrderPO().generatedDate);
 			return dao.modify(getOrderPO());
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return ResultMessage.CONNECTION_FAIL;
 		}
@@ -169,7 +165,7 @@ public class Order {
 	
 	public ResultMessage create() {
 		try {
-			generatedDate = timedao.getDate();
+			generatedDate = timeDao.getDate();
 			SimpleDateFormat timeFormat = new SimpleDateFormat("yyyyMMddHHmmss");
 			if (type == OrderType.OFFLINE) {
 				orderID = "00000" + hotelID + timeFormat.format(generatedDate);
@@ -178,7 +174,6 @@ public class Order {
 			}
 			return dao.add(getOrderPO());
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return ResultMessage.CONNECTION_FAIL;
 		}
@@ -190,9 +185,8 @@ public class Order {
 		}
 		type = OrderType.EXECUTED;
 		try {
-			actFrom = timedao.getDate();
+			actFrom = timeDao.getDate();
 		} catch (RemoteException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 			return ResultMessage.CONNECTION_FAIL;
 		}
@@ -205,9 +199,8 @@ public class Order {
 		}
 		this.isCheckedOut = true;
 		try {
-			actTo = timedao.getDate();
+			actTo = timeDao.getDate();
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			return ResultMessage.CONNECTION_FAIL;
 		}
 		return modify();
@@ -219,9 +212,8 @@ public class Order {
 		}
 		type = OrderType.CANCELED;
 		try {
-			cancelTime = timedao.getDate();
+			cancelTime = timeDao.getDate();
 		} catch (RemoteException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 			return ResultMessage.CONNECTION_FAIL;
 		}
@@ -237,7 +229,6 @@ public class Order {
 	}
 
 	public ResultMessage comment() {
-		// TODO Auto-generated method stub
 		isCommented = true;
 		return modify();
 	}
@@ -248,11 +239,10 @@ public class Order {
 	public ResultMessage addCreditRecord(Double value, String type) {
 		CreditRecordVO creditrecordvo;
 		try {
-			creditrecordvo = new CreditRecordVO(timedao.getDate(), orderID, userID, value, userbl.findbyID(userID).credit + value, type);
+			creditrecordvo = new CreditRecordVO(timeDao.getDate(), orderID, userID, value, userbl.findbyID(userID).credit + value, type);
 			userbl.addCreditRecord(creditrecordvo);
 			return ResultMessage.SUCCESS;
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return ResultMessage.CONNECTION_FAIL;
 		}
@@ -261,7 +251,6 @@ public class Order {
 	/*
 	将order对象中的信息导出成OrderVO
 	 */
-
 	public OrderVO getOrderVO () {
 		OrderVO vo = new OrderVO(userID,type.getString(),generatedDate,schFrom,schTo,actFrom,actTo,latestTime,cancelTime,hotelID,hotelName,orderID,hotelAddress,roomType.getString(),totalPrice,roomNum,numOfPeople,existsChild,customerName,phoneNumber,isCommented,isCheckedOut);
 		return vo;
@@ -270,7 +259,6 @@ public class Order {
 	/*
 	将order对象中的信息导出成OrderPO
 	 */
-
 	public OrderPO getOrderPO () {
 		OrderPO po = new OrderPO(type,generatedDate,schFrom,schTo,actFrom,actTo,latestTime,cancelTime,hotelID,hotelName,orderID,hotelAddress,roomType,totalPrice,roomNum,numOfPeople,existsChild,customerName,userID,phoneNumber,isCommented,isCheckedOut);
 		return po;

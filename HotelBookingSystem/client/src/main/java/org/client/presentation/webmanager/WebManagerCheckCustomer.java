@@ -121,11 +121,11 @@ public class WebManagerCheckCustomer {
 	void handleModifyAction(MouseEvent event) throws IOException {
 		if (!userNameLabel.getText().equals("")) {
 			FXMLLoader fxmlLoader = new FXMLLoader();
-			Parent mypane = fxmlLoader.load(getClass().getResource("/网站管理人员/修改客户信息界面.fxml").openStream());
+			Parent myPane = fxmlLoader.load(getClass().getResource("/网站管理人员/修改客户信息界面.fxml").openStream());
 			WebManagerModifyCustomer webController = (WebManagerModifyCustomer) fxmlLoader.getController();
 			webController.changeContent(nowvo);
 			WebManagerController.getInstance().nowvo = nowvo;
-			ChangePane.getInstance().turn(mypane);
+			ChangePane.getInstance().turn(myPane);
 		}
 	}
 

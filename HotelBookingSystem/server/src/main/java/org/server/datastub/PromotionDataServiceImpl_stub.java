@@ -20,7 +20,6 @@ public class PromotionDataServiceImpl_stub extends UnicastRemoteObject implement
 
 	protected PromotionDataServiceImpl_stub() throws RemoteException {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	public String getNewID() throws RemoteException {

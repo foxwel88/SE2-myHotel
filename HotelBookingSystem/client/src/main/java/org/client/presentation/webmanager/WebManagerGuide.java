@@ -93,7 +93,6 @@ public class WebManagerGuide {
 			try {
 				pane = FXMLLoader.load(getClass().getResource("/网站管理人员/网站管理人员主界面.fxml"));
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			changePane(pane);
@@ -104,7 +103,6 @@ public class WebManagerGuide {
 			try {
 				pane = FXMLLoader.load(getClass().getResource("/网站管理人员/浏览客户信息界面.fxml"));
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			changePane(pane);
@@ -115,7 +113,6 @@ public class WebManagerGuide {
 			try {
 				pane = FXMLLoader.load(getClass().getResource("/网站管理人员/浏览酒店工作人员信息界面.fxml"));
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			changePane(pane);
@@ -126,7 +123,6 @@ public class WebManagerGuide {
 			try {
 				pane = FXMLLoader.load(getClass().getResource("/网站管理人员/浏览网站营销人员信息界面.fxml"));
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			changePane(pane);
@@ -137,7 +133,6 @@ public class WebManagerGuide {
 			try {
 				pane = FXMLLoader.load(getClass().getResource("/网站管理人员/新增酒店界面.fxml"));
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			changePane(pane);

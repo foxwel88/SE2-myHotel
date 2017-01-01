@@ -26,9 +26,9 @@ public class OrderList {
 	public ResultMessage setOrderList (List<OrderPO> polist) {
 		list = new ArrayList<>();
 		for (int i = 0;i < polist.size(); ++i) {
-			Order myorder = new Order();
-			myorder.setOrder(polist.get(i));
-			list.add(myorder);
+			Order myOrder = new Order();
+			myOrder.setOrder(polist.get(i));
+			list.add(myOrder);
 		}
 		return ResultMessage.SUCCESS;
 	}
@@ -38,11 +38,11 @@ public class OrderList {
 	 */
 
 	public List<OrderVO> getOrderListVO () {
-		List<OrderVO> reslist = new ArrayList<>();
+		List<OrderVO> resultList = new ArrayList<>();
 		for (int i = 0;i < list.size(); ++i) {
-			reslist.add(list.get(i).getOrderVO());
+			resultList.add(list.get(i).getOrderVO());
 		}
-		return reslist;
+		return resultList;
 	}
 
 	/*
@@ -50,11 +50,11 @@ public class OrderList {
 	 */
 
 	public List<String> getHotelList() {
-		List<String> reslist = new ArrayList<>();
+		List<String> resultList = new ArrayList<>();
 		for (int i = 0;i < list.size(); ++i) {
-			reslist.add(list.get(i).hotelID);
+			resultList.add(list.get(i).hotelID);
 		}
-		return reslist;
+		return resultList;
 	}
 
 	/*
@@ -64,9 +64,9 @@ public class OrderList {
 	public int getTypeRoomNum(RoomType roomType) {
 		int res = 0;
 		for (int i = 0; i < list.size(); ++i) {
-			Order myorder = list.get(i);
-			if (myorder.roomType == roomType) {
-				res += myorder.roomNum;
+			Order myOrder = list.get(i);
+			if (myOrder.roomType == roomType) {
+				res += myOrder.roomNum;
 			}
 		}
 		return res;
