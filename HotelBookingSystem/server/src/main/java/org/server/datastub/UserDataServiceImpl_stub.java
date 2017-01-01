@@ -58,14 +58,6 @@ public class UserDataServiceImpl_stub extends UnicastRemoteObject implements Use
 		return ResultMessage.SUCCESS;
 	}
 
-	public void init() throws RemoteException {
-		System.out.println("init!");
-	}
-
-	public void finish() throws RemoteException {
-		System.out.println("finish");
-	}
-
 	public List<CreditRecordPO> findCreditRecords(String ID) throws RemoteException {
 		List<CreditRecordPO> list = new ArrayList<>();
 		list.add(new CreditRecordPO(null, ID, 0, 0, CreditOperation.RECHARGE, ID));

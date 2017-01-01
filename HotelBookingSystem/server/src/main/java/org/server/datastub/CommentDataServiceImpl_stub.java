@@ -17,11 +17,6 @@ public class CommentDataServiceImpl_stub extends UnicastRemoteObject implements 
 
 	protected CommentDataServiceImpl_stub() throws RemoteException {
 		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public void init() throws RemoteException {
-		System.out.println("init!");
 	}
 
 	public ArrayList<CommentPO> find(String hotelAddress) throws RemoteException {
@@ -32,10 +27,6 @@ public class CommentDataServiceImpl_stub extends UnicastRemoteObject implements 
 
 	public ResultMessage insert(CommentPO po) throws RemoteException {
 		return ResultMessage.SUCCESS;
-	}
-
-	public void finish() throws RemoteException {
-		System.out.println("finish");
 	}
 
 }

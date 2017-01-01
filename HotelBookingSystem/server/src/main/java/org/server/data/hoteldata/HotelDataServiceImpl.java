@@ -27,10 +27,6 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 		System.out.println("hotel start");
 	}
 
-	public void init() throws RemoteException {
-		// TODO Auto-generated method stub
-	}
-
 	public ResultMessage addHotelInfo(HotelPO po) throws RemoteException {
 
 		//获取新ID
@@ -212,10 +208,6 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 			e.printStackTrace();
 		}
 		return list;
-	}
-
-	public void finish() throws RemoteException {
-		
 	}
 
 	public List<RoomPO> getRooms(String hotelID) throws RemoteException {

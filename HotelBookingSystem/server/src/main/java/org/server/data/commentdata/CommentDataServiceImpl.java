@@ -23,12 +23,6 @@ public class CommentDataServiceImpl extends UnicastRemoteObject implements Comme
 
 	public CommentDataServiceImpl() throws RemoteException {
 		System.out.println("comment start");
-		// TODO Auto-generated constructor stub
-	}
-
-	public void init() throws RemoteException {
-		// TODO Auto-generated method stub
-		
 	}
 
 	/**
@@ -74,11 +68,6 @@ public class CommentDataServiceImpl extends UnicastRemoteObject implements Comme
 			e.printStackTrace();
 		}
 		return poList;
-	}
-
-	public void finish() throws RemoteException {
-		// TODO Auto-generated method stub
-		
 	}
 	
 	private Date getSQLDate(java.util.Date rawDate) {

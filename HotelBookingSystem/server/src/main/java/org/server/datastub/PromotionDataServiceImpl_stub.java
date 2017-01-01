@@ -59,13 +59,4 @@ public class PromotionDataServiceImpl_stub extends UnicastRemoteObject implement
 		return ResultMessage.SUCCESS;
 	}
 
-	public void init() throws RemoteException {
-		System.out.println("init!");
-	}
-
-	public void finish() throws RemoteException {
-		System.out.println("finish");
-	}
-
-
 }

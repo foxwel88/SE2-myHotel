@@ -28,12 +28,6 @@ public interface PromotionDataService extends Remote {
 	//返回LevelPO记录
 	
 	public ResultMessage modifyLevel(LevelPO po) throws RemoteException;
-	//更新一个PO
-	
-	public void init() throws RemoteException;
-	//初始化持久化数据库
-	
-	public void finish() throws RemoteException;
-	//结束持久化数据库的使用
+	//更新一个POs
 
 }

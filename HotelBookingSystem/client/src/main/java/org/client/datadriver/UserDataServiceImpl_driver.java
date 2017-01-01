@@ -14,7 +14,6 @@ public class UserDataServiceImpl_driver {
 	public static void main(String[] args) {
 		UserDataService stub = RMIHelper.getInstance().getUserDataServiceImpl();
 		try {
-			stub.init();
 			System.out.println(stub.add(new UserPO(UserType.PERSONALCUSTOMER, 
 					"誰説我不會編程", "QinLiu", "0101010101", "njuse",
 					"13344456789", 0, null, null, null, null)));
@@ -28,7 +27,6 @@ public class UserDataServiceImpl_driver {
 			System.out.println(stub.modify(new UserPO(UserType.WEBMANAGER,
 					"阿喀琉斯", "一名香港記者",
 					null, "runningNews", null, 0, null, null, null, null)));
-			stub.finish();
 		} catch (RemoteException e1) {
 			e1.printStackTrace();
 		}

@@ -26,7 +26,6 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 
 	public OrderDataServiceImpl() throws RemoteException {
 		System.out.println("order start");
-		// TODO Auto-generated constructor stub
 	}
 	
 	String transtime(Date date) {
@@ -73,7 +72,6 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 			po = new OrderPO(type,generatedDate,schFrom,schTo,actFrom,actTo,latestTime,cancelTime,hotelID,hotelName,orderID,hotelAddress,
 					roomType,totalPrice,roomNum,numOfPeople,existsChild,customerName,userId,phoneNumber,isCommented,isCheckedOut);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return po;
@@ -89,7 +87,6 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 				po = getPOfromSet(resultSet);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return po;
@@ -105,7 +102,6 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 				res.add(getPOfromSet(resultSet));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return res;
@@ -121,7 +117,6 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 				res.add(getPOfromSet(resultSet));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return res;
@@ -137,7 +132,6 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 				res.add(getPOfromSet(resultSet));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return res;
@@ -163,7 +157,6 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return ResultMessage.SUCCESS;
@@ -176,33 +169,19 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 			//DatabaseCommunicator.execute(preparedStatement);
 			preparedStatement.execute();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		add(po);
-		// TODO Auto-generated method stub
 		return ResultMessage.SUCCESS;
-	}
-
-	public void init() throws RemoteException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void finish() throws RemoteException {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void updateAbnormalOrders(Date date) throws RemoteException {
-		// TODO Auto-generated method stub
 		try {
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement
 					("update `order` set type='异常订单' where type='未执行订单' and latesttime between '1980-03-03 00:00:00' and '" + transtime(date) + "'");
 			preparedStatement.execute();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -219,7 +198,6 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 				res.add(getPOfromSet(resultSet));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return res;

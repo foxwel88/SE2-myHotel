@@ -25,7 +25,6 @@ public class PromotionDataServiceImpl extends UnicastRemoteObject implements Pro
 
 	public PromotionDataServiceImpl() throws RemoteException {
 		System.out.println("promotion start");
-		// TODO Auto-generated constructor stub
 	}
 	
 	public ResultMessage add(PromotionPO po) throws RemoteException {
@@ -128,16 +127,6 @@ public class PromotionDataServiceImpl extends UnicastRemoteObject implements Pro
 		}
 		return ResultMessage.WRONG_VALUE;
 	}
-
-	public void init() throws RemoteException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void finish() throws RemoteException {
-		// TODO Auto-generated method stub
-		
-	}
 	
 	private String getNewID() throws RemoteException {
 		try {
@@ -180,7 +169,7 @@ public class PromotionDataServiceImpl extends UnicastRemoteObject implements Pro
 	}
 	
 	/**
-	 * 酒店促销策略检查项：是否重名、酒店是否存在
+	 * 酒店促销策略检查项：是否重名
 	 * 网站促销策略检查项：是否重名
 	 * @param po
 	 * @return
@@ -198,30 +187,12 @@ public class PromotionDataServiceImpl extends UnicastRemoteObject implements Pro
 					return ResultMessage.WRONG_VALUE;
 				}
 			}
-			
-			// TODO 这里需要访问hotel表，获得所有的hotelID，总觉得让promotionDAO做这种事不太好。。。。。。
-			if (po.hotelID != null) {
-				PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("select hotelid from hotel");
-				ResultSet resultSet = preparedStatement.executeQuery();
-				boolean isExsit = false;
-				while (resultSet.next()) {
-					String hotelID = resultSet.getString("hotelid");
-					if (hotelID.equals(po.hotelID)) {
-						isExsit = true;
-						break;
-					}
-				}
-				if (!isExsit) {
-					return ResultMessage.NOT_EXIST;
-				}
-			}
+
 		} catch (RemoteException remoteException) {
 			remoteException.printStackTrace();
 			return ResultMessage.CONNECTION_FAIL;
-		} catch (SQLException sqlException) {
-			sqlException.printStackTrace();
-			return ResultMessage.CONNECTION_FAIL;
 		}
+
 		return ResultMessage.SUCCESS;
 	}
 	

@@ -225,14 +225,6 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 		}
 	}
 
-	public void init() throws RemoteException {
-		
-	}
-
-	public void finish() throws RemoteException {
-		
-	}
-
 	public List<CreditRecordPO> findCreditRecords(String ID) throws RemoteException {
 		List<CreditRecordPO> res = new ArrayList<>();
 		PreparedStatement preparedStatement;
