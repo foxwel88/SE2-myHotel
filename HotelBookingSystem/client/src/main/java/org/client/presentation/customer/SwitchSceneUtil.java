@@ -142,7 +142,7 @@ public class SwitchSceneUtil {
 		return orderController.getUserOrderList(userID, OrderType.ABNORMAL);
 	}
 	
-	public static List<OrderVO> getUnExcutedOrderList() {
+	public static List<OrderVO> getUnExecutedOrderList() {
 		return orderController.getUserOrderList(userID, OrderType.UNEXECUTED);
 	}
 	

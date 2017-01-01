@@ -59,7 +59,7 @@ public class DateUtil {
 	 * @param date
 	 * @return "yyyy/MM/dd HH:mm:ss"
 	 */
-	public static String dateToDetaildString(Date date) {
+	public static String dateToDetailedString(Date date) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		return dateFormat.format(date);
 	}
@@ -70,7 +70,7 @@ public class DateUtil {
 	 * @return "yyyy/MM/dd"
 	 */
 	public static String dateToCoarseString(Date date) {
-		return (dateToDetaildString(date).split(" "))[0];
+		return (dateToDetailedString(date).split(" "))[0];
 	}
 	
 	public static Date toDate(LocalDate localDate) {

@@ -81,9 +81,9 @@ public class CustomerAbnormalOrder {
 		}
 		customerNameLabel.setText(vo.customerName);
 		phoneLabel.setText(vo.phoneNumber);
-		latestTimeLabel.setText(DateUtil.dateToDetaildString(vo.latestTime));
+		latestTimeLabel.setText(DateUtil.dateToDetailedString(vo.latestTime));
 		schTimeLabel.setText(DateUtil.dateToCoarseString(vo.schFrom) + " - " + DateUtil.dateToCoarseString(vo.schTo));
-		generatedTimeLabel.setText(DateUtil.dateToDetaildString(vo.generatedDate));
+		generatedTimeLabel.setText(DateUtil.dateToDetailedString(vo.generatedDate));
 		priceLabel.setText(String.valueOf(vo.totalPrice));
 		creditLabel.setText("-" + String.valueOf(vo.totalPrice));
 		

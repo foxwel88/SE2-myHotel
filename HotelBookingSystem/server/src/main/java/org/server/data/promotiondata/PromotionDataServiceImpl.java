@@ -154,9 +154,9 @@ public class PromotionDataServiceImpl extends UnicastRemoteObject implements Pro
 			while (resultSet.next()) {
 				poList.add(new PromotionPO(resultSet.getString("promotionID"), resultSet.getString("provider"), 
 						PromotionType.getType(resultSet.getString("type")), resultSet.getDate("startTime"), 
-						resultSet.getDate("endTime"), DatabaseCommunicator.getReadableQuete(resultSet.getString("hotelName")), 
+						resultSet.getDate("endTime"), DatabaseCommunicator.getReadableQuote(resultSet.getString("hotelName")),
 						resultSet.getString("hotelID"), resultSet.getInt("level"), resultSet.getString("city"), resultSet.getString("area"), 
-						resultSet.getDouble("discount"), DatabaseCommunicator.getReadableQuete(resultSet.getString("name"))));
+						resultSet.getDouble("discount"), DatabaseCommunicator.getReadableQuote(resultSet.getString("name"))));
 			}
 		} catch (SQLException ex) {
 			ex.printStackTrace();

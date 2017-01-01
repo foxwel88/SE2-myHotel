@@ -3,13 +3,13 @@ package org.server.datastub;
 import java.rmi.RemoteException;
 
 public class DataStubFactory {
-	private static DataStubFactory datafactory;
+	private static DataStubFactory dataFactory;
 	
 	public static DataStubFactory getInstance() {
-		if (datafactory == null) {
-			datafactory = new DataStubFactory();
+		if (dataFactory == null) {
+			dataFactory = new DataStubFactory();
 		}
-		return datafactory;
+		return dataFactory;
 	}
 	
 	public CommentDataServiceImpl_stub getCommentDataServiceImpl() throws RemoteException {

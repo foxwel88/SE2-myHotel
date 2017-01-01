@@ -89,9 +89,9 @@ public class CustomerExecutedOrder {
 		}
 		customerNameLabel.setText(vo.customerName);
 		phoneLabel.setText(vo.phoneNumber);
-		actFromLabel.setText(DateUtil.dateToDetaildString(vo.actFrom));
-		actToLabel.setText(DateUtil.dateToDetaildString(vo.actTo));
-		generatedTimeLabel.setText(DateUtil.dateToDetaildString(vo.generatedDate));
+		actFromLabel.setText(DateUtil.dateToDetailedString(vo.actFrom));
+		actToLabel.setText(DateUtil.dateToDetailedString(vo.actTo));
+		generatedTimeLabel.setText(DateUtil.dateToDetailedString(vo.generatedDate));
 		priceLabel.setText(String.valueOf(vo.totalPrice));
 		if (vo.isCommented) {
 			commentButton.setText("查看评价");

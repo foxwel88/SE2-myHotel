@@ -70,7 +70,7 @@ public class CustomerConfirmOrder {
 		address.setText(order.hotelAddress);
 		roomType.setText(order.roomType);
 		roomNum.setText(String.valueOf(order.roomNum));
-		latestArrivalTime.setText(DateUtil.dateToDetaildString(order.latestTime));
+		latestArrivalTime.setText(DateUtil.dateToDetailedString(order.latestTime));
 		appointedLivingTime.setText(DateUtil.dateToCoarseString(order.schFrom) + "到" + DateUtil.dateToCoarseString(order.schTo));
 		resident.setText(order.customerName);
 		phoneNumber.setText(order.phoneNumber);

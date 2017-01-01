@@ -78,7 +78,7 @@ public class DatabaseCommunicator {
 		}
 	}
 	
-	public static String getReadableQuete(String rawS) {
+	public static String getReadableQuote(String rawS) {
 		try {
 			char tempChar = 7;
 			String specialString = String.valueOf(tempChar);

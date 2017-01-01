@@ -72,7 +72,7 @@ public class CustomerUnexecutedOrderList {
 	private Resources resources;
 	
 	// 该字段表示同时显示的最大订单的数量
-	private static final int MAX_ORDER_ONE_OAGE = 6;
+	private static final int MAX_ORDER_ONE_PAGE = 6;
 	
 	@FXML
 	void initialize() {
@@ -135,9 +135,9 @@ public class CustomerUnexecutedOrderList {
 		String orderID;
 		int page = Integer.parseInt(currentPage.getText());
 		try {
-			for (int i = 0; i < MAX_ORDER_ONE_OAGE; i++) {
+			for (int i = 0; i < MAX_ORDER_ONE_PAGE; i++) {
 				if (((event.getSource())).equals(boxList.get(i))) {
-					orderID = unExcutedOrderList.get((page - 1) * MAX_ORDER_ONE_OAGE + i).orderID;
+					orderID = unExcutedOrderList.get((page - 1) * MAX_ORDER_ONE_PAGE + i).orderID;
 					KeyFrame animationFrame = new KeyFrame(Duration.seconds(0), actionEvent -> {
 						SwitchSceneUtil.showOldSceneAnimation(root);
 					});
@@ -181,7 +181,7 @@ public class CustomerUnexecutedOrderList {
 	}
 	
 	private void showUnExcutedOrderList() {
-		unExcutedOrderList = new ArrayList<>(SwitchSceneUtil.getUnExcutedOrderList());
+		unExcutedOrderList = new ArrayList<>(SwitchSceneUtil.getUnExecutedOrderList());
 		Collections.sort(unExcutedOrderList, new GenerateTimeComparator());
 		setContent();
 	}
@@ -190,7 +190,7 @@ public class CustomerUnexecutedOrderList {
 	 * 这个方法的作用是设置订单列表全部订单的内容
 	 */
 	private void setContent() {
-		for (int i = 0; i < MAX_ORDER_ONE_OAGE; i++) {
+		for (int i = 0; i < MAX_ORDER_ONE_PAGE; i++) {
 			if (hotelName(i) != null) {
 				getDateLabel(boxList.get(i)).setText(date(i));
 				getHotelNameLabel(boxList.get(i)).setText(hotelName(i));
@@ -228,7 +228,7 @@ public class CustomerUnexecutedOrderList {
 	 * 此方法用于计算订单列表能够展开的最大页数
 	 */
 	private int calMaxPage(ArrayList<OrderVO> voList) {
-		return (voList.size() / MAX_ORDER_ONE_OAGE) + 1;
+		return (voList.size() / MAX_ORDER_ONE_PAGE) + 1;
 	}
 	
 	/*
@@ -257,10 +257,10 @@ public class CustomerUnexecutedOrderList {
 	
 	/**
 	 * 下面五种方法分别用来获得某个订单的订单时间、酒店地址、房间类型、房间数量、最晚执行时间的信息
-	 * @param i 范围是 0 到 MAX_ORDER_ONE_OAGE - 1
+	 * @param i 范围是 0 到 MAX_ORDER_ONE_PAGE - 1
 	 */
 	private String date(int i) {
-		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_ORDER_ONE_OAGE + i;	// 计算当前页面第i个信息字段在arraylist中的实际位置；
+		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_ORDER_ONE_PAGE + i;	// 计算当前页面第i个信息字段在arraylist中的实际位置；
 		try {
 			return DateUtil.dateToCoarseString(unExcutedOrderList.get(seq).generatedDate);
 		} catch (IndexOutOfBoundsException nullex) {
@@ -269,7 +269,7 @@ public class CustomerUnexecutedOrderList {
 	}
 	
 	private String hotelName(int i) {
-		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_ORDER_ONE_OAGE + i;
+		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_ORDER_ONE_PAGE + i;
 		try {
 			return unExcutedOrderList.get(seq).hotelName;
 		} catch (IndexOutOfBoundsException nullex) {
@@ -278,7 +278,7 @@ public class CustomerUnexecutedOrderList {
 	}
 	
 	private String roomType(int i) {
-		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_ORDER_ONE_OAGE + i;
+		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_ORDER_ONE_PAGE + i;
 		try {
 			return unExcutedOrderList.get(seq).roomType;
 		} catch (IndexOutOfBoundsException nullex) {
@@ -287,7 +287,7 @@ public class CustomerUnexecutedOrderList {
 	}
 	
 	private int roomNum(int i) {
-		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_ORDER_ONE_OAGE + i;
+		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_ORDER_ONE_PAGE + i;
 		try {
 			return unExcutedOrderList.get(seq).roomNum;
 		} catch (IndexOutOfBoundsException nullex) {
@@ -296,7 +296,7 @@ public class CustomerUnexecutedOrderList {
 	}
 	
 	private String latestDate(int i) {
-		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_ORDER_ONE_OAGE + i;
+		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_ORDER_ONE_PAGE + i;
 		try {
 			return DateUtil.dateToCoarseString(unExcutedOrderList.get(seq).latestTime);
 		} catch (IndexOutOfBoundsException nullex) {

@@ -74,9 +74,9 @@ public class CustomerCancelOrder {
 		}
 		customerNameLabel.setText(vo.customerName);
 		phoneLabel.setText(vo.phoneNumber);
-		cancelTimeLabel.setText(DateUtil.dateToDetaildString(vo.cancelTime));
+		cancelTimeLabel.setText(DateUtil.dateToDetailedString(vo.cancelTime));
 		schTimeLabel.setText(DateUtil.dateToCoarseString(vo.schFrom) + " - " + DateUtil.dateToCoarseString(vo.schTo));
-		generatedTimeLabel.setText(DateUtil.dateToDetaildString(vo.generatedDate));
+		generatedTimeLabel.setText(DateUtil.dateToDetailedString(vo.generatedDate));
 		priceLabel.setText(String.valueOf(vo.totalPrice));
 		
 		SwitchSceneUtil.showNewSceneAnimation(root);

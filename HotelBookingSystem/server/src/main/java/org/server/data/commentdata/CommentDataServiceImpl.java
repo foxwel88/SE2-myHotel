@@ -61,7 +61,7 @@ public class CommentDataServiceImpl extends UnicastRemoteObject implements Comme
 		ArrayList<CommentPO> poList = new ArrayList<>();
 		try {
 			while (resultSet.next()) {
-				CommentPO commentPO = new CommentPO(resultSet.getString("username"), resultSet.getString("hotelid"), resultSet.getString("orderid"), resultSet.getDate("commentdate"), resultSet.getDouble("rank"), DatabaseCommunicator.getReadableQuete(resultSet.getString("comment")));
+				CommentPO commentPO = new CommentPO(resultSet.getString("username"), resultSet.getString("hotelid"), resultSet.getString("orderid"), resultSet.getDate("commentdate"), resultSet.getDouble("rank"), DatabaseCommunicator.getReadableQuote(resultSet.getString("comment")));
 				poList.add(commentPO);
 			}
 		} catch (SQLException e) {
