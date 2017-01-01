@@ -23,11 +23,6 @@ public class HotelDataServiceImpl_stub extends UnicastRemoteObject implements Ho
 
 	protected HotelDataServiceImpl_stub() throws RemoteException {
 		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public void init() throws RemoteException {
-		System.out.println("init!");
 	}
 
 	public ResultMessage addHotelInfo(HotelPO po) throws RemoteException {
@@ -80,10 +75,6 @@ public class HotelDataServiceImpl_stub extends UnicastRemoteObject implements Ho
 		ArrayList<AreaPO> areas = new ArrayList<>();
 		areas.add(new AreaPO("仙林中心"));
 		return areas;
-	}
-
-	public void finish() throws RemoteException {
-		System.out.println("finish");
 	}
 
 }

@@ -33,11 +33,6 @@ public class ServerMainController {
 	
 	private Timeline timeline;
 	
-	public void changenum() {
-		userLabel.setText("00");
-	}
-	
-	
 	@FXML
     void initialize() {
 		timeline = new Timeline(
@@ -59,7 +54,6 @@ public class ServerMainController {
 		try {
 			addr = InetAddress.getLocalHost();
 		} catch (UnknownHostException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		String ip = addr.getHostAddress();//获得本机IP
@@ -81,7 +75,6 @@ public class ServerMainController {
 			DatabaseCommunicator.databaseInit();
 			startButton.setText("停止服务器");
 			ServerUtil.getInstance().show("服务器启动服务");
-
 
 		} else {
 			RMIHelper.getinstance().releaseConnection();

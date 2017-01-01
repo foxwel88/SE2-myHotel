@@ -27,12 +27,6 @@ public interface OrderDataService extends Remote {
 	
 	public ResultMessage modify (OrderPO po) throws RemoteException;
 	//更新一个po
-	
-	public void init() throws RemoteException;
-	//初始化持久化数据库
-	
-	public void finish() throws RemoteException;
-	//结束持久化数据库的使用
 
 	public void updateAbnormalOrders(Date date) throws RemoteException;
 	

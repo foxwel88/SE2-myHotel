@@ -12,9 +12,6 @@ import org.common.utility.HotelFilter;
 import org.common.utility.ResultMessage;
 
 public interface HotelDataService extends Remote {
-	
-	//初始化持久化数据库
-	public void init() throws RemoteException;
 
 	//在数据库中插入一个po
 	public ResultMessage addHotelInfo(HotelPO po) throws RemoteException;
@@ -39,8 +36,5 @@ public interface HotelDataService extends Remote {
 
 	//根据CityPO返回所有AreaPO
 	public List<AreaPO> getAreas(CityPO po) throws RemoteException;
-
-	//结束持久化数据库的使用
-	public void finish() throws RemoteException;
 
 }

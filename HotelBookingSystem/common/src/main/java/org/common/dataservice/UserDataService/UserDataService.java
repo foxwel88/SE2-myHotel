@@ -30,12 +30,6 @@ public interface UserDataService extends Remote {
 	public List<CreditRecordPO> findCreditRecords(String ID) throws RemoteException;
 	//按ID进行查找返回相应的CreditRecordPO记录
 	
-	public void init() throws RemoteException;
-	//初始化持久化数据库
-	
-	public void finish() throws RemoteException;
-	//结束持久化数据库的使用
-	
 	public ResultMessage deleteUser(String userName) throws RemoteException;
 	//删除用户
 
