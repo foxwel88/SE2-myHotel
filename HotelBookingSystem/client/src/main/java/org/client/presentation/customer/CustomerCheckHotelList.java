@@ -7,6 +7,7 @@ import java.util.Collections;
 
 import org.client.launcher.Resources;
 import org.client.presentation.util.DateUtil;
+import org.client.presentation.util.HotelComparatorFactory;
 import org.client.vo.AreaVO;
 import org.client.vo.CityVO;
 import org.client.vo.HotelVO;

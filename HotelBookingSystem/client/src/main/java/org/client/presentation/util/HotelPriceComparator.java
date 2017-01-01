@@ -1,4 +1,4 @@
-package org.client.presentation.customer;
+package org.client.presentation.util;
 
 import java.util.ArrayList;
 import java.util.Comparator;
