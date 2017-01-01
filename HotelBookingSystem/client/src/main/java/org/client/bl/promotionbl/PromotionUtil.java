@@ -2,6 +2,7 @@ package org.client.bl.promotionbl;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.client.rmi.RMIHelper;
@@ -50,13 +51,19 @@ public class PromotionUtil {
 	}
 	
 	static List<PromotionVO> getPromotion (String hotelID, String userID, int roomNum) {
-		List<Promotion> okPromotion = getCanBeUsedHotelPromotion(hotelID, userID, roomNum);
-		okPromotion.addAll(getCanBeUsedWebsitePromotion(hotelID, userID, roomNum));
-		List<PromotionVO> okPromotionVO = new ArrayList<>();
-		for (int i = 0; i < okPromotion.size(); i++) {
-			okPromotionVO.add(okPromotion.get(i).toVO());
+		List<Promotion> hotelPromotion = getCanBeUsedHotelPromotion(hotelID, userID, roomNum);
+		List<Promotion> webPromotion = getCanBeUsedWebsitePromotion(hotelID, userID, roomNum);
+		Collections.sort(hotelPromotion);
+		Collections.sort(webPromotion);
+		ArrayList<PromotionVO> bestPromotion = new ArrayList<>();
+		try {
+			bestPromotion.add(hotelPromotion.get(0).toVO());
+			bestPromotion.add(webPromotion.get(0).toVO());
+		} catch (IndexOutOfBoundsException indexOutOfBoundsException) {
+			// nothing to  do
+			// 出现此异常说明没有可享用的网站或酒店促销策略
 		}
-		return okPromotionVO;
+		return bestPromotion;
 	}
 	
 	static List<Promotion> showHotelPromotion (String hotelID) {

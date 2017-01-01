@@ -12,6 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
@@ -124,7 +125,7 @@
             <TextField fx:id="phoneNumber" style="-fx-background-color: rgba(255,255,255,0.4);" text="153245678974" GridPane.columnIndex="2" GridPane.rowIndex="8" />
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.columnSpan="5" GridPane.rowIndex="10">
                <children>
-                  <DatePicker fx:id="schFromDate" editable="false" layoutY="1.0" opacity="0.8" prefHeight="30.0" prefWidth="212.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <DatePicker fx:id="schFromDate" editable="false" layoutY="1.0" onAction="#refreshDatePicker" opacity="0.8" prefHeight="30.0" prefWidth="212.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
                   <Text layoutX="231.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="至" AnchorPane.bottomAnchor="3.8125" AnchorPane.topAnchor="5.0703125">
                      <font>
                         <Font name="Microsoft YaHei" size="16.0" />
@@ -221,7 +222,7 @@
             <Font name="Microsoft YaHei" size="23.0" />
          </font>
       </Label>
-      <Label fx:id="totalPrice" layoutX="160.0" layoutY="526.0" text="200元">
+      <Label fx:id="totalPrice" layoutX="160.0" layoutY="526.0" onMouseEntered="#showPromotion" onMouseExited="#hidePromotion" text="200元">
          <font>
             <Font name="Microsoft YaHei" size="23.0" />
          </font>
@@ -230,5 +231,30 @@
       <Separator layoutX="36.0" layoutY="57.0" prefHeight="1.0" prefWidth="849.0" AnchorPane.leftAnchor="36.0" />
       <Separator layoutX="37.0" layoutY="176.0" prefHeight="1.0" prefWidth="849.0" AnchorPane.leftAnchor="36.0" />
       <Separator layoutX="36.0" layoutY="490.0" prefHeight="1.0" prefWidth="849.0" AnchorPane.leftAnchor="36.0" />
+      <Label fx:id="promotionLabel" layoutX="160.0" layoutY="526.0" prefHeight="32.0" prefWidth="82.0" style="-fx-border-color: rgba(140,140,140,0.4); -fx-background-color: rgba(255,255,255,0.4);" />
+      <Pane fx:id="promotionPane" layoutX="241.0" layoutY="327.0" prefHeight="200.0" prefWidth="600.0" style="-fx-background-color: rgba(0,0,0,0.4);">
+         <children>
+            <Label fx:id="hotelPromotionLabel" layoutX="40.0" layoutY="140.0" prefHeight="40.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3);" text="Label" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft YaHei" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="webPromotionLabel" layoutX="40.0" layoutY="50.0" prefHeight="40.0" prefWidth="500.0" style="-fx-background-color: rgba(255,255,255,0.3);" text="Label" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft YaHei" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="40.0" layoutY="19.0" text="您正在享用的网站促销活动：" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft YaHei" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="40.0" layoutY="109.0" text="您正在享用的酒店促销活动：" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft YaHei" size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

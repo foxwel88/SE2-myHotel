@@ -38,6 +38,9 @@ public class PromotionController implements Promotionblservice {
 		return PromotionUtil.add(vo);
 	}
 	
+	/**
+	 * 获得两个Promotion，分别是最优的网站促销策略和最优的酒店促销策略
+	 */
 	public List<PromotionVO> getPromotion(String hotelID, String userID, int roomNum) {
 		return PromotionUtil.getPromotion(hotelID, userID, roomNum);
 	}

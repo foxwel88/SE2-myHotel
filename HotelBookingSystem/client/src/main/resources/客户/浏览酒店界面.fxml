@@ -71,23 +71,23 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label layoutY="64.0" text="星级" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="64.0">
-               <font>
-                  <Font name="Microsoft JhengHei" size="15.0" />
-               </font>
-            </Label>
+            <Button fx:id="starSortor" layoutY="61.0" mnemonicParsing="false" onMouseClicked="#showByStar" onMouseEntered="#activeStarSortorButton" onMouseExited="#deactiveStarSortorButton" prefHeight="20.0" prefWidth="60.0" style="-fx-background-color: rgba(255,255,255,0.4);" text="星级↓">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
             <ChoiceBox fx:id="upperStar" layoutX="139.0" layoutY="61.0" prefHeight="23.0" prefWidth="55.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.leftAnchor="139.0" AnchorPane.rightAnchor="681.0" />
             <ChoiceBox fx:id="lowerStar" layoutX="66.0" layoutY="61.0" prefHeight="3.0" prefWidth="55.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.leftAnchor="66.0" AnchorPane.rightAnchor="756.0" AnchorPane.topAnchor="61.0" />
-            <Label layoutX="237.0" layoutY="64.0" prefHeight="15.0" prefWidth="36.0" text="评分" AnchorPane.leftAnchor="237.0" AnchorPane.topAnchor="64.0">
-               <font>
-                  <Font name="Microsoft JhengHei" size="15.0" />
-               </font>
-            </Label>
-            <Label layoutX="470.0" layoutY="64.0" text="价格区间" AnchorPane.topAnchor="64.0">
-               <font>
-                  <Font name="Microsoft JhengHei" size="15.0" />
-               </font>
-            </Label>
+            <Button fx:id="rankSortor" layoutX="237.0" layoutY="61.0" mnemonicParsing="false" onMouseClicked="#showByRank" onMouseEntered="#activeRankSortorButton" onMouseExited="#deactiveRankSortorButton" prefHeight="20.0" prefWidth="60.0" style="-fx-background-color: rgba(255,255,255,0.4);" text="评分↓">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="priceSortor" layoutX="470.0" layoutY="61.0" mnemonicParsing="false" onMouseClicked="#showByPrice" onMouseEntered="#activePriceSortorButton" onMouseExited="#deactivePriceSortorButton" prefHeight="20.0" prefWidth="60.0" style="-fx-background-color: rgba(255,255,255,0.4);" text="价格↑">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
             <TextField fx:id="toPrice" layoutX="616.0" layoutY="61.0" prefHeight="23.0" prefWidth="55.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.topAnchor="61.0" />
             <TextField fx:id="fromPrice" layoutX="536.0" layoutY="61.0" prefHeight="23.0" prefWidth="55.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.topAnchor="61.0" />
             <Label layoutX="600.0" layoutY="62.0" text="-" AnchorPane.topAnchor="62.0">

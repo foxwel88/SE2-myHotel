@@ -3,6 +3,7 @@ package org.client.presentation.customer;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import org.client.launcher.Resources;
 import org.client.presentation.util.LiveDatePicker;
@@ -97,6 +98,15 @@ public class CustomerCheckHotelList {
 	Button searchButton;
 	
 	@FXML
+	Button starSortor;
+	
+	@FXML
+	Button rankSortor;
+
+	@FXML
+	Button priceSortor;
+	
+	@FXML
 	Label previousPage;
 	
 	@FXML
@@ -137,6 +147,9 @@ public class CustomerCheckHotelList {
 	private static final double IMAGE_WIDTH = 100;
 	
 	private static final double IMAGE_HEIGHT = 60;
+	
+	//记录当前的酒店排序方式，0表示无排序，1表示按星级排序，2表示按评分排序，3表示按价格排序
+	private int currentSortor = 0;
 	
 	// 点击预订酒店按钮的时候，同样会触发显示酒店详细信息的监听从而报线程异常（无法catch，不影响正常运行），
 	// 因此特设此值，每当调用跳转到生成订单界面的方法时调用，将此值设为1，阻止调用查看酒店详细信息界面的方法
@@ -230,7 +243,7 @@ public class CustomerCheckHotelList {
 	void turnToNextPage() {
 		if (Integer.parseInt(currentPage.getText()) < calMaxPage(hotelList)) {
 			currentPage.setText(String.valueOf(Integer.parseInt(currentPage.getText()) + 1));
-			showHotelList();
+			refreshHotelList();
 		}
 	}
 	
@@ -238,7 +251,7 @@ public class CustomerCheckHotelList {
 	void turnToPreviousPage() {
 		if (Integer.parseInt(currentPage.getText()) > 1) {
 			currentPage.setText(String.valueOf(Integer.parseInt(currentPage.getText()) - 1));
-			showHotelList();
+			refreshHotelList();
 		}
 	}
 	
@@ -247,7 +260,7 @@ public class CustomerCheckHotelList {
 		if (event.getCode() == KeyCode.ENTER) {
 			int goalPage = checkGoalPage();
 			currentPage.setText(String.valueOf(goalPage));
-			showHotelList();
+			refreshHotelList();
 		}
 	}
 	
@@ -319,6 +332,39 @@ public class CustomerCheckHotelList {
 	}
 	
 	@FXML
+	void showByStar() {
+		if (hotelList != null && hotelList.size() > 0) {
+			currentSortor = 1;
+			deactiveRankSortorButton();
+			deactivePriceSortorButton();
+			sortByStar(hotelList);
+			refreshHotelList();
+		}
+	}
+	
+	@FXML
+	void showByRank() {
+		if (hotelList != null && hotelList.size() > 0) {
+			currentSortor = 2;
+			deactiveStarSortorButton();
+			deactivePriceSortorButton();
+			sortByRank(hotelList);
+			refreshHotelList();
+		}
+	}
+	
+	@FXML
+	void showByPrice() {
+		if (hotelList != null && hotelList.size() > 0) {
+			currentSortor = 3;
+			deactiveStarSortorButton();
+			deactiveRankSortorButton();
+			sortByPrice(hotelList);
+			refreshHotelList();
+		}
+	}
+	
+	@FXML
 	void active(MouseEvent mouseEvent) {
 		HBox hbox = (HBox)mouseEvent.getSource();
 		if (!((Label)hbox.getChildren().get(2)).getText().isEmpty()) {
@@ -342,7 +388,7 @@ public class CustomerCheckHotelList {
 	void activeMakeOrderButton(MouseEvent mouseEvent) {
 		Label label = (Label)mouseEvent.getSource();
 		if (label.isVisible()) {
-			label.setStyle("-fx-border-color:#4599ff;-fx-background-color:#4599ff;fx-text-fill: rgb(255,255,255)");
+			label.setStyle("-fx-border-color:#4599ff;-fx-background-color:#4599ff;-fx-text-fill: rgb(255,255,255)");
 		}
 	}
 	
@@ -350,7 +396,43 @@ public class CustomerCheckHotelList {
 	void deactiveMakeOrderButton(MouseEvent mouseEvent) {
 		Label label = (Label)mouseEvent.getSource();
 		if (label.isVisible()) {
-			label.setStyle("-fx-border-color:#21e9ff;fx-text-fill:rgb(255,255,255)");
+			label.setStyle("-fx-border-color:#21e9ff;-fx-text-fill:#21e9ff");
+		}
+	}
+	
+	@FXML
+	void activeStarSortorButton() {
+		starSortor.setStyle("-fx-background-color:rgba(0,0,0,0.4);-fx-text-fill:white");
+	}
+	
+	@FXML
+	void activeRankSortorButton() {
+		rankSortor.setStyle("-fx-background-color:rgba(0,0,0,0.4);-fx-text-fill:white");
+	}
+	
+	@FXML
+	void activePriceSortorButton() {
+		priceSortor.setStyle("-fx-background-color:rgba(0,0,0,0.4);-fx-text-fill:white");
+	}
+	
+	@FXML
+	void deactiveStarSortorButton() {
+		if (currentSortor != 1) {
+			starSortor.setStyle("-fx-background-color:rgba(255,255,255,0.4);-fx-text-fill:black");
+		}
+	}
+	
+	@FXML
+	void deactiveRankSortorButton() {
+		if (currentSortor != 2) {
+			rankSortor.setStyle("-fx-background-color:rgba(255,255,255,0.4);-fx-text-fill:black");
+		}
+	}
+	
+	@FXML
+	void deactivePriceSortorButton() {
+		if (currentSortor != 3) {
+			priceSortor.setStyle("-fx-background-color:rgba(255,255,255,0.4);-fx-text-fill:black");
 		}
 	}
 	
@@ -372,6 +454,10 @@ public class CustomerCheckHotelList {
 		boolean searchHistoryOnly = everOrdered.isSelected();
 		hotelList = new ArrayList<>(SwitchSceneUtil.getFilteredHotels(filter, searchHistoryOnly));
 		
+		refreshHotelList();
+	}
+	
+	private void refreshHotelList() {
 		for (int i = 0; i < MAX_HOTEL_ONE_OAGE; i++) {
 			if (getName(i) != null) {
 				getImageLabel(i).setGraphic(getImageView(i));
@@ -395,6 +481,21 @@ public class CustomerCheckHotelList {
 				getMakeOrderLabel(i).setVisible(false);
 			}
 		}
+	}
+	
+	private ArrayList<HotelVO> sortByPrice(ArrayList<HotelVO> rawHotelList) {
+		Collections.sort(rawHotelList, HotelComparatorFactory.getPriceComparator());
+		return rawHotelList;
+	}
+	
+	private ArrayList<HotelVO> sortByStar(ArrayList<HotelVO> rawHotelList) {
+		Collections.sort(rawHotelList, HotelComparatorFactory.getStarComparator());
+		return rawHotelList;
+	}
+
+	private ArrayList<HotelVO> sortByRank(ArrayList<HotelVO> rawHotelList) {
+		Collections.sort(rawHotelList, HotelComparatorFactory.getRankComparator());
+		return rawHotelList;
 	}
 	
 	private void setCity() {

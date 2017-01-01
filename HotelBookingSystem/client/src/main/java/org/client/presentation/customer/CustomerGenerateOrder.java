@@ -4,10 +4,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
 
+import org.client.bl.hotelbl.HotelController;
+import org.client.bl.promotionbl.PromotionController;
 import org.client.presentation.util.CheckStyle;
 import org.client.presentation.util.LiveDatePicker;
 import org.client.vo.HotelVO;
 import org.client.vo.OrderVO;
+import org.client.vo.PromotionVO;
 import org.client.vo.UserVO;
 import org.common.utility.OrderType;
 import org.common.utility.RoomType;
@@ -24,6 +27,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 
 /**
  * 
@@ -63,6 +67,12 @@ public class CustomerGenerateOrder {
 	Label rawPrice;
 	
 	@FXML
+	Label webPromotionLabel;
+	
+	@FXML
+	Label hotelPromotionLabel;
+	
+	@FXML
 	ChoiceBox<String> roomType;
 	
 	@FXML
@@ -91,6 +101,12 @@ public class CustomerGenerateOrder {
 	
 	@FXML
 	Button cancelButton;
+	
+	@FXML
+	Label promotionLabel;
+	
+	@FXML
+	Pane promotionPane;
 	
 	private HotelVO hotel;
 	
@@ -128,17 +144,38 @@ public class CustomerGenerateOrder {
 	@FXML
 	void commitOrder() {
 		if (checkPhoneNumberFormat()) {
+			int tempRoomNum = 0;
+			int tempResidentNum = 0;
 			try {
-				OrderVO newOrder = new OrderVO(user.ID, OrderType.UNEXECUTED.getString(), null, LiveDatePicker.toDate(schFromDate.getValue()), LiveDatePicker.toDate(schToDate.getValue()),
-						new Date(0, 0, 1), new Date(0, 0, 1), LiveDatePicker.toDate(schFromDate.getValue().plusDays(1)), new Date(0, 0, 1), hotel.id, 
-						hotel.hotelName, null, hotel.address, roomType.getValue(), getCurrentTotalPrice(), Integer.parseInt(roomNum.getText()), Integer.parseInt(residentNum.getText()),
-						hasChildren.isSelected(), user.name, phoneNumber.getText(), false, false);
-				SwitchSceneUtil.turnToConfirmOrderScene((GridPane)root.getParent(), newOrder);
+				tempRoomNum = Integer.parseInt(roomNum.getText());
+				tempResidentNum = Integer.parseInt(residentNum.getText());
 			} catch (NumberFormatException numberFormatException) {
 				Alert alert = new Alert(AlertType.WARNING);
 				alert.setTitle("Sorry, please check your entry again.");
 				alert.setHeaderText(null);
 				alert.setContentText("住宿人姓名、房间数量和入住人数均不能为空");
+				alert.showAndWait();
+			}
+			if (tempRoomNum > 0 && tempResidentNum > 0) {
+				int tempAvailableRoomNum = HotelController.getInstance().getAvailableRoomNum(LiveDatePicker.toDate(schFromDate.getValue()), LiveDatePicker.toDate(schToDate.getValue()), hotel.id, RoomType.getType(roomType.getValue()));
+				if (tempRoomNum <= tempAvailableRoomNum) {
+					OrderVO newOrder = new OrderVO(user.ID, OrderType.UNEXECUTED.getString(), null, LiveDatePicker.toDate(schFromDate.getValue()), LiveDatePicker.toDate(schToDate.getValue()),
+							new Date(0, 0, 1), new Date(0, 0, 1), LiveDatePicker.toDate(schFromDate.getValue().plusDays(1)), new Date(0, 0, 1), hotel.id, 
+							hotel.hotelName, null, hotel.address, roomType.getValue(), getCurrentTotalPrice(), tempRoomNum, tempResidentNum,
+							hasChildren.isSelected(), user.name, phoneNumber.getText(), false, false);
+					SwitchSceneUtil.turnToConfirmOrderScene((GridPane)root.getParent(), newOrder);
+				} else {
+					Alert alert = new Alert(AlertType.WARNING);
+					alert.setTitle("Sorry, please check your entry again.");
+					alert.setHeaderText(null);
+					alert.setContentText("抱歉，剩余房间数量不足");
+					alert.showAndWait();
+				}
+			} else {
+				Alert alert = new Alert(AlertType.WARNING);
+				alert.setTitle("Sorry, please check your entry again.");
+				alert.setHeaderText(null);
+				alert.setContentText("房间数量和入住人数必须大于0");
 				alert.showAndWait();
 			}
 		} else {
@@ -153,6 +190,53 @@ public class CustomerGenerateOrder {
 	@FXML
 	void cancel() {
 		SwitchSceneUtil.turnToDetailedHotelScene((GridPane)root.getParent(), SwitchSceneUtil.hotelID);
+	}
+	
+	@FXML
+	void showPromotion() {
+		int tempRoomNum;
+		PromotionVO webPromotionVO = null;
+		PromotionVO hotelPromotionVO = null;
+		try {
+			tempRoomNum = Integer.parseInt(roomNum.getText());
+		} catch (NumberFormatException numberFormatException) {
+			tempRoomNum = 0;
+		}
+		ArrayList<PromotionVO> bestPromotions = new ArrayList<>(PromotionController.getInstance().getPromotion(hotel.id, user.ID, tempRoomNum));
+		if (bestPromotions.size() == 2) {
+			if (bestPromotions.get(0).provider.equals("web")) {
+				webPromotionVO = bestPromotions.get(0);
+				hotelPromotionVO = bestPromotions.get(1);
+			}
+		} else if (bestPromotions.size() == 1) {
+			if (bestPromotions.get(0).provider.equals("web")) {
+				webPromotionVO = bestPromotions.get(0);
+			} else {
+				hotelPromotionVO = bestPromotions.get(0);
+			}
+		} else {
+			// nothing to do, both promotions are null
+		}
+		
+		//then show promotion in screen
+		if (webPromotionVO != null) {
+			webPromotionLabel.setText(webPromotionVO.name + "," + webPromotionVO.discount + "折折扣");
+		} else {
+			webPromotionLabel.setText("您当前不享用任何网站促销活动");
+		}
+		if (hotelPromotionVO != null) {
+			hotelPromotionLabel.setText(hotelPromotionVO.name + "," + hotelPromotionVO.discount + "折折扣");
+		} else {
+			hotelPromotionLabel.setText("您当前不享用任何酒店促销活动");
+		}
+		promotionLabel.setVisible(true);
+		promotionPane.setVisible(true);
+	}
+	
+	@FXML
+	void hidePromotion() {
+		promotionLabel.setVisible(false);
+		promotionPane.setVisible(false);
 	}
 	
 	@FXML
