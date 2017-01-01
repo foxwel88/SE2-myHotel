@@ -48,7 +48,7 @@ public class OrderTest {
 		OrderVO vo = controller.getOrder("123456789020080606143055");
 		//assert
 		assertEquals("123456789020080606143055",vo.orderID);
-		assertEquals("南京1号大酒店",vo.hotelName);
+		assertEquals("朗廷酒店",vo.hotelName);
 	}
 	
 	@Test
@@ -56,7 +56,7 @@ public class OrderTest {
 		OrderVO vo = controller.getOrder("123456789020090606130505");
 		//assert
 		assertEquals("123456789020090606130505",vo.orderID);
-		assertEquals("南京1号大酒店",vo.hotelName);
+		assertEquals("朗廷酒店",vo.hotelName);
 	}
 	
 	@Test
