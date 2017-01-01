@@ -97,11 +97,26 @@ public class WebManagerCheckCustomer {
 	
 	@FXML
 	void initialize() {
+        assert nameLabel != null : "fx:id=\"nameLabel\" was not injected: check your FXML file '浏览客户信息界面.fxml'.";
+        assert phoneLabel != null : "fx:id=\"phoneLabel\" was not injected: check your FXML file '浏览客户信息界面.fxml'.";
+        assert userNameLabel != null : "fx:id=\"userNameLabel\" was not injected: check your FXML file '浏览客户信息界面.fxml'.";
+        assert userNameTextField != null : "fx:id=\"userNameTextField\" was not injected: check your FXML file '浏览客户信息界面.fxml'.";
+        assert searchButton != null : "fx:id=\"searchButton\" was not injected: check your FXML file '浏览客户信息界面.fxml'.";
+        assert modifyButton != null : "fx:id=\"modifyButton\" was not injected: check your FXML file '浏览客户信息界面.fxml'.";
+        assert creditLabel != null : "fx:id=\"creditLabel\" was not injected: check your FXML file '浏览客户信息界面.fxml'.";
+        assert PorCLabel != null : "fx:id=\"PorCLabel\" was not injected: check your FXML file '浏览客户信息界面.fxml'.";
+        assert levelLabel != null : "fx:id=\"levelLabel\" was not injected: check your FXML file '浏览客户信息界面.fxml'.";
+        assert birthLabel != null : "fx:id=\"birthLabel\" was not injected: check your FXML file '浏览客户信息界面.fxml'.";
+        assert typeLabel != null : "fx:id=\"typeLabel\" was not injected: check your FXML file '浏览客户信息界面.fxml'.";
+        assert resultLabel != null : "fx:id=\"resultLabel\" was not injected: check your FXML file '浏览客户信息界面.fxml'.";
 		controller = WebManagerController.getInstance();
 		modifyButton.setVisible(false);
 		clearContent();
 	}
-	
+
+	/*
+ 	修改信息按钮监听
+	*/
 	@FXML
 	void handleModifyAction(MouseEvent event) throws IOException {
 		if (!userNameLabel.getText().equals("")) {
@@ -113,7 +128,10 @@ public class WebManagerCheckCustomer {
 			ChangePane.getInstance().turn(mypane);
 		}
 	}
-	
+
+	/*
+ 	搜索按钮监听
+	*/
 	@FXML
 	void handleSearchAction(MouseEvent event) {
 		clearContent();

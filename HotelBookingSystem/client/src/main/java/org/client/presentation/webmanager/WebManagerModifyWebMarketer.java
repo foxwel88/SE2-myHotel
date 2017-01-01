@@ -42,7 +42,10 @@ public class WebManagerModifyWebMarketer {
 		nameTextField.setText(nowvo.name);
 		phoneTextField.setText(nowvo.phoneNumber);
 	}
-	
+
+	/*
+	返回上一界面恢复内容的操作
+	 */
 	public void returnPane(UserVO vo) throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader();
 		Parent mypane = fxmlLoader.load(getClass().getResource("/网站管理人员/浏览网站营销人员信息界面.fxml").openStream());
@@ -50,12 +53,18 @@ public class WebManagerModifyWebMarketer {
 		webController.changeContent(vo);
 		ChangePane.getInstance().turn(mypane);
 	}
-	
+
+	/*
+    取消修改按钮监听
+	*/
 	@FXML
     void handleCancelAction(MouseEvent event) throws IOException {
 		returnPane(nowvo);
 	}
-	
+
+	/*
+	格式检查
+	*/
 	boolean check() {
 
 		if (! CheckStyle.checkUsername(userNameTextField.getText())) {
@@ -74,6 +83,9 @@ public class WebManagerModifyWebMarketer {
 		return true;
 	}
 
+	/*
+    确认修改按钮监听
+	*/
 	@FXML
     void handleModifyAction(MouseEvent event) throws IOException {
 		if (check()) {
@@ -97,5 +109,13 @@ public class WebManagerModifyWebMarketer {
 				ChangePane.getInstance().turn(mypane);
 			}
 		}
+	}
+	
+	@FXML
+	void initialize() {
+        assert userNameTextField != null : "fx:id=\"userNameTextField\" was not injected: check your FXML file '修改网站营销人员界面.fxml'.";
+        assert nameTextField != null : "fx:id=\"nameTextField\" was not injected: check your FXML file '修改网站营销人员界面.fxml'.";
+        assert phoneTextField != null : "fx:id=\"phoneTextField\" was not injected: check your FXML file '修改网站营销人员界面.fxml'.";
+        assert resultLabel != null : "fx:id=\"resultLabel\" was not injected: check your FXML file '修改网站营销人员界面.fxml'.";
 	}
 }

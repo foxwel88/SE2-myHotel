@@ -219,6 +219,24 @@ public class WebManagerGuide {
 
 	@FXML
 	void initialize() {
+		assert rootPane != null : "fx:id=\"rootPane\" was not injected: check your FXML file '导航.fxml'.";
+		assert welcomeLabel != null : "fx:id=\"welcomeLabel\" was not injected: check your FXML file '导航.fxml'.";
+		assert backPane != null : "fx:id=\"backPane\" was not injected: check your FXML file '导航.fxml'.";
+		assert backArrow != null : "fx:id=\"backArrow\" was not injected: check your FXML file '导航.fxml'.";
+		assert avatarBar != null : "fx:id=\"avatarBar\" was not injected: check your FXML file '导航.fxml'.";
+		assert avatar != null : "fx:id=\"avatar\" was not injected: check your FXML file '导航.fxml'.";
+		assert mainPane != null : "fx:id=\"mainPane\" was not injected: check your FXML file '导航.fxml'.";
+		assert toHomePane != null : "fx:id=\"toHomePane\" was not injected: check your FXML file '导航.fxml'.";
+		assert toHomeLabel != null : "fx:id=\"toHomeLabel\" was not injected: check your FXML file '导航.fxml'.";
+		assert toCustomerPane != null : "fx:id=\"toCustomerPane\" was not injected: check your FXML file '导航.fxml'.";
+		assert toCustomerLabel != null : "fx:id=\"toCustomerLabel\" was not injected: check your FXML file '导航.fxml'.";
+		assert toNewPane != null : "fx:id=\"toNewPane\" was not injected: check your FXML file '导航.fxml'.";
+		assert toNewLabel != null : "fx:id=\"toNewLabel\" was not injected: check your FXML file '导航.fxml'.";
+		assert toHotelPane != null : "fx:id=\"toHotelPane\" was not injected: check your FXML file '导航.fxml'.";
+		assert toHotelLabel != null : "fx:id=\"toHotelLabel\" was not injected: check your FXML file '导航.fxml'.";
+		assert toWebPane != null : "fx:id=\"toWebPane\" was not injected: check your FXML file '导航.fxml'.";
+		assert toWebLabel != null : "fx:id=\"toWebLabel\" was not injected: check your FXML file '导航.fxml'.";
+
 		ChangePane.getInstance().setMainPane(mainPane);
 		try {
 			AnchorPane mypane = FXMLLoader.load(getClass().getResource("/网站管理人员/网站管理人员主界面.fxml"));
@@ -240,7 +258,10 @@ public class WebManagerGuide {
 		String name = WebManagerController.getInstance().findbyID(userID).name;
 		welcomeLabel.setText("Welcome, " + name + "!");
 	}
-	
+
+	/*
+    登出
+	*/
 	@FXML
 	void logOut(ActionEvent event) {
 		WebManagerController.getInstance().logOut();
@@ -254,7 +275,10 @@ public class WebManagerGuide {
 			e.printStackTrace();
 		}
 	}
-	
+
+	/*
+	修改密码
+	 */
 	@FXML
 	void modifyPassword() {
 		AnchorPane mask = new AnchorPane();

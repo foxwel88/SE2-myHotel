@@ -28,6 +28,7 @@ public class WebManagerMain {
 	
 	@FXML
     void initialize() {
+		assert timeLabel != null : "fx:id=\"timeLabel\" was not injected: check your FXML file '网站管理人员主界面.fxml'.";
 
 		Timeline timeline = new Timeline(
 				new KeyFrame(Duration.seconds(0),

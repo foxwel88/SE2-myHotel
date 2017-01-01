@@ -72,7 +72,10 @@ public class WebManagerModifyCustomer {
 		typeChoiceBox.setItems(FXCollections.observableArrayList("个人客户","企业客户"));
 		typeChoiceBox.setValue(nowvo.type);
 	}
-	
+
+	/*
+	返回上一界面恢复内容的操作
+ 	*/
 	public void returnPane(UserVO vo) throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader();
 		Parent mypane = fxmlLoader.load(getClass().getResource("/网站管理人员/浏览客户信息界面.fxml").openStream());
@@ -80,12 +83,18 @@ public class WebManagerModifyCustomer {
 		webController.changeContent(vo);
 		ChangePane.getInstance().turn(mypane);
 	}
-	
+
+	/*
+    取消修改按钮监听
+	*/
 	@FXML
 	void handleCancelAction(MouseEvent event) throws IOException {
 		returnPane(nowvo);
 	}
-	
+
+	/*
+   	格式检查
+	*/
 	boolean check() {
 
 		if (! CheckStyle.checkUsername(userNameTextField.getText())) {
@@ -111,8 +120,10 @@ public class WebManagerModifyCustomer {
 		}
 		return true;
 	}
-	
 
+	/*
+	确认修改按钮监听
+	*/
 	@FXML
 	void handleConfirmAction(MouseEvent event) throws IOException {
 		if (check()) {
@@ -143,5 +154,18 @@ public class WebManagerModifyCustomer {
 				ChangePane.getInstance().turn(mypane);
 			}
 		}
+	}
+	
+	@FXML
+	void initialize() {
+	    assert userNameTextField != null : "fx:id=\"userNameTextField\" was not injected: check your FXML file '修改客户信息界面.fxml'.";
+	    assert nameTextField != null : "fx:id=\"nameTextField\" was not injected: check your FXML file '修改客户信息界面.fxml'.";
+	    assert phoneTextField != null : "fx:id=\"phoneTextField\" was not injected: check your FXML file '修改客户信息界面.fxml'.";
+	    assert typeChoiceBox != null : "fx:id=\"typeChoiceBox\" was not injected: check your FXML file '修改客户信息界面.fxml'.";
+	    assert companyTextField != null : "fx:id=\"companyTextField\" was not injected: check your FXML file '修改客户信息界面.fxml'.";
+	    assert birthDatePicker != null : "fx:id=\"birthDatePicker\" was not injected: check your FXML file '修改客户信息界面.fxml'.";
+	    assert confirmButton != null : "fx:id=\"confirmButton\" was not injected: check your FXML file '修改客户信息界面.fxml'.";
+	    assert cancelButton != null : "fx:id=\"cancelButton\" was not injected: check your FXML file '修改客户信息界面.fxml'.";
+	    assert resultLabel != null : "fx:id=\"resultLabel\" was not injected: check your FXML file '修改客户信息界面.fxml'.";
 	}
 }

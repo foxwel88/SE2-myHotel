@@ -55,7 +55,10 @@ public class OrderUtil {
 	public void setUserblservice(Userblservice userController) {
 		this.userController = userController;
 	}
-	
+
+	/*
+	通过orderID 获取orderVO
+	 */
 	public OrderVO getOrder (String orderID) {
 		Order myorder = new Order();
 		try {
@@ -72,7 +75,11 @@ public class OrderUtil {
 			return vo;
 		}
 	}
-	
+
+	/*
+	获得异常订单列表
+	 */
+
 	public List<OrderVO> getAbnormalOrder () {
 		OrderList mylist = new OrderList();
 		try {
@@ -84,7 +91,11 @@ public class OrderUtil {
 			return null;
 		}
 	}
-	
+
+	/*
+	通过用户userID 和 orderType 来获得该用户该类型订单的的列表
+	 */
+
 	public List<OrderVO> getUserOrderList (String userID, OrderType type) {		
 		OrderList mylist = new OrderList();
 		try {
@@ -98,7 +109,11 @@ public class OrderUtil {
 			return null;
 		}
 	}
-	
+
+	/*
+	通过酒店orderID 和 orderType 来获得该酒店该类型订单的的列表
+	 */
+
 	public List<OrderVO> getHotelOrderList (String hotelID, OrderType type) {
 		OrderList mylist = new OrderList();
 		try {
@@ -112,7 +127,11 @@ public class OrderUtil {
 			return null;
 		}
 	}
-	
+
+	/*
+	通过用户userID 来获得该用户历史预订过的酒店id列表
+	 */
+
 	public List<String> getHistoryHotels(String userId) {
 		OrderList mylist = new OrderList();
 		try {
@@ -124,7 +143,11 @@ public class OrderUtil {
 			return null;
 		}
 	}
-	
+
+	/*
+	通过orderVO 来新建一个订单
+	 */
+
 	public ResultMessage createOrder(OrderVO vo) {
 		UserVO uservo = userController.findbyID(vo.userID);
 		if (uservo.credit <= 0) {
@@ -134,13 +157,21 @@ public class OrderUtil {
 		myorder.setOrder(vo);
 		return myorder.create();
 	}
-	
+
+	/*
+	通过orderVO 来新建一个线下订单
+	 */
+
 	public ResultMessage createOffLineOrder(OrderVO vo) {
 		Order myorder = new Order();
 		myorder.setOrder(vo);
 		return myorder.create();
 	}
-	
+
+	/*
+	通过orderID 来对该订单做撤销操作
+	 */
+
 	public ResultMessage cancelOrder (String orderID) {
 		OrderPO orderpo = null;
 		try {
@@ -160,7 +191,11 @@ public class OrderUtil {
 		myorder.addCreditRecord(-myorder.totalPrice, CreditOperation.CANCELORER.getString());
 		return ResultMessage.SUCCESS;
 	}
-	
+
+	/*
+	通过orderID 来对该订单做执行操作
+	 */
+
 	public ResultMessage executeOrder (String orderID) {
 		OrderPO orderpo = null;
 		try {
@@ -180,7 +215,11 @@ public class OrderUtil {
 		myorder.addCreditRecord(myorder.totalPrice, CreditOperation.FINISHORDER.getString());
 		return ResultMessage.SUCCESS;
 	}
-	
+
+	/*
+	通过orderID 来对该订单做撤销异常订单操作
+	 */
+
 	public ResultMessage cancelAbnormalOrder (String orderID,Boolean isHalf) {
 		Order myorder = new Order();
 		OrderPO orderpo = null;
@@ -205,6 +244,9 @@ public class OrderUtil {
 		return ResultMessage.SUCCESS;
 	}
 
+	/*
+	通过orderID 来对该订单做退房操作
+	 */
 	
 	public ResultMessage checkOut(String ID) {
 		OrderPO po = null;
@@ -223,6 +265,10 @@ public class OrderUtil {
 		return ResultMessage.SUCCESS;
 	}
 
+	/*
+	通过orderID 来对该订单做标记已评论的操作
+	 */
+
 	public ResultMessage comment(String orderID) {
 		OrderPO po = null;
 		try {
@@ -236,7 +282,11 @@ public class OrderUtil {
 		return myorder.comment();
 	}
 
-	public int getRestRoom(String hotelID, RoomType roomType, Date fromDate, Date toDate) {
+	/*
+	通过酒店 hotelID 房间类型 roomType 起始和结束日期 fromDate toDate 来获得给定日期内该酒店该房间类型已被预订的房间数量
+	 */
+
+	public int getBookedRoomNum(String hotelID, RoomType roomType, Date fromDate, Date toDate) {
 		Calendar startDay = new GregorianCalendar();
 		startDay.setTime(fromDate);
 		Calendar stopDay = new GregorianCalendar();

@@ -92,6 +92,10 @@ public class WebManagerAddHotel {
 		clear();
 	}
 
+	/*
+	格式检查
+	 */
+
 	boolean checkUser() {
 		if (! passwordField.getText().equals(passwordField2.getText())) {
 			resultLabel.setText("两次输入密码不一致");
@@ -115,7 +119,11 @@ public class WebManagerAddHotel {
 		}
 		return true;
 	}
-	
+
+	/*
+	确认新增酒店按钮的监听
+	 */
+
 	@FXML
 	void handleConfirmAction(MouseEvent event) {
 		if (checkUser()) {
@@ -134,7 +142,10 @@ public class WebManagerAddHotel {
 			}
 		}
 	}
-	
+
+	/*
+	初始化城市选择列表
+ 	*/
 	void initCity() {
 		ObservableList<String> mycity = FXCollections.observableArrayList(); 
 		ArrayList<CityVO> citylist = (ArrayList<CityVO>) WebManagerController.getInstance().getCitys();
@@ -144,7 +155,10 @@ public class WebManagerAddHotel {
 		cityChoiceBox.setItems(mycity);
 		cityChoiceBox.setValue(citylist.get(0).cityName);
 	}
-	
+
+	/*
+	初始化商圈选择列表
+	 */
 	void initArea(String city) {
 		CityVO cityvo = new CityVO(city);
 		ObservableList<String> myarea = FXCollections.observableArrayList(); 
@@ -155,7 +169,10 @@ public class WebManagerAddHotel {
 		areaChoiceBox.setItems(myarea);
 		areaChoiceBox.setValue(arealist.get(0).address);
 	}
-	
+
+	/*
+	初始化星级选择列表
+	 */
 	void initStar() {
 		ObservableList<Integer> mystar = FXCollections.observableArrayList();
 		mystar.add(1);
@@ -169,6 +186,21 @@ public class WebManagerAddHotel {
 	
 	@FXML
 	void initialize() {
+		assert cityChoiceBox != null : "fx:id=\"cityChoiceBox\" was not injected: check your FXML file '新增酒店界面.fxml'.";
+        assert areaChoiceBox != null : "fx:id=\"areaChoiceBox\" was not injected: check your FXML file '新增酒店界面.fxml'.";
+        assert hotelAddressTextField != null : "fx:id=\"hotelAddressTextField\" was not injected: check your FXML file '新增酒店界面.fxml'.";
+        assert hotelNameTextField != null : "fx:id=\"hotelNameTextField\" was not injected: check your FXML file '新增酒店界面.fxml'.";
+        assert StarChoiceBox != null : "fx:id=\"StarChoiceBox\" was not injected: check your FXML file '新增酒店界面.fxml'.";
+        assert introduceTextArea != null : "fx:id=\"introduceTextArea\" was not injected: check your FXML file '新增酒店界面.fxml'.";
+        assert serverTextArea != null : "fx:id=\"serverTextArea\" was not injected: check your FXML file '新增酒店界面.fxml'.";
+        assert userNameTextField != null : "fx:id=\"userNameTextField\" was not injected: check your FXML file '新增酒店界面.fxml'.";
+        assert passwordField != null : "fx:id=\"passwordField\" was not injected: check your FXML file '新增酒店界面.fxml'.";
+        assert passwordField2 != null : "fx:id=\"passwordField2\" was not injected: check your FXML file '新增酒店界面.fxml'.";
+        assert nameTextField != null : "fx:id=\"nameTextField\" was not injected: check your FXML file '新增酒店界面.fxml'.";
+        assert phoneTextField != null : "fx:id=\"phoneTextField\" was not injected: check your FXML file '新增酒店界面.fxml'.";
+        assert cancelButton != null : "fx:id=\"cancelButton\" was not injected: check your FXML file '新增酒店界面.fxml'.";
+        assert confirmButton != null : "fx:id=\"confirmButton\" was not injected: check your FXML file '新增酒店界面.fxml'.";
+        assert resultLabel != null : "fx:id=\"resultLabel\" was not injected: check your FXML file '新增酒店界面.fxml'.";
 		initCity();
 		cityChoiceBox.getSelectionModel().selectedItemProperty().addListener( (ObservableValue< ? extends String> observable, String oldValue, String newValue) -> {	
 			initArea(newValue);

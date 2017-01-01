@@ -17,9 +17,9 @@ import org.common.utility.TimeService;
 /**
  * 
  * bl层order模块的order类
- * 用于存放一个order 并在vo po之间转化
+ * 用于存放一个order 并在VO PO之间转化
  * @author Foxwel
- * @version 2016/12/20 Foxwel
+ * @version 2017/1/1 Foxwel
  * 
  */
 
@@ -80,6 +80,10 @@ public class Order {
 		this.timedao = OrderUtil.getInstance().timedao;
 		this.userbl = OrderUtil.getInstance().userController;
 	}
+
+	/*
+	通过OrderVO来初始化该Order对象的内容
+	 */
 	
 	public ResultMessage setOrder (OrderVO vo) {
 		this.orderID = vo.orderID;
@@ -112,7 +116,11 @@ public class Order {
 		
 		return ResultMessage.SUCCESS;
 	}
-	
+
+	/*
+	通过OrderPO来初始化该Order对象的内容
+	 */
+
 	public ResultMessage setOrder (OrderPO po) {
 		this.orderID = po.orderID;
 		this.type = po.type;
@@ -144,7 +152,10 @@ public class Order {
 		
 		return ResultMessage.SUCCESS;
 	}
-	
+
+	/*
+	对该订单做更新操作，将新的数据持久化到数据库中
+	 */
 	public ResultMessage modify() {
 		try {
 			//System.out.println(getOrderPO().generatedDate);
@@ -230,7 +241,10 @@ public class Order {
 		isCommented = true;
 		return modify();
 	}
-	
+
+	/*
+	通用的修改信用方法，通过修改值和修改类型，来对该用户做信用变更操作
+	 */
 	public ResultMessage addCreditRecord(Double value, String type) {
 		CreditRecordVO creditrecordvo;
 		try {
@@ -243,12 +257,20 @@ public class Order {
 			return ResultMessage.CONNECTION_FAIL;
 		}
 	}
-	
+
+	/*
+	将order对象中的信息导出成OrderVO
+	 */
+
 	public OrderVO getOrderVO () {
 		OrderVO vo = new OrderVO(userID,type.getString(),generatedDate,schFrom,schTo,actFrom,actTo,latestTime,cancelTime,hotelID,hotelName,orderID,hotelAddress,roomType.getString(),totalPrice,roomNum,numOfPeople,existsChild,customerName,phoneNumber,isCommented,isCheckedOut);
 		return vo;
 	}
-	
+
+	/*
+	将order对象中的信息导出成OrderPO
+	 */
+
 	public OrderPO getOrderPO () {
 		OrderPO po = new OrderPO(type,generatedDate,schFrom,schTo,actFrom,actTo,latestTime,cancelTime,hotelID,hotelName,orderID,hotelAddress,roomType,totalPrice,roomNum,numOfPeople,existsChild,customerName,userID,phoneNumber,isCommented,isCheckedOut);
 		return po;

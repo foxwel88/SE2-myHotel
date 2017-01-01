@@ -32,7 +32,7 @@ public class ChangePane {
 		this.mainPane = pane;
 	}
 	
-	//跳转页面
+	//进行页面跳转，turntopane为已加载的需要转去的pane
 	public void turn(Parent turntopane) {
 		mainPane.getChildren().set(1, turntopane);
 		GridPane.setConstraints(turntopane, 1, 0);
