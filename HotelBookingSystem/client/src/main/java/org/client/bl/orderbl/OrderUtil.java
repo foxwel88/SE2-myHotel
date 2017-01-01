@@ -34,14 +34,14 @@ public class OrderUtil {
 	
 	protected OrderDataService dao;
 	
-	protected TimeService timeDao;
+	protected TimeService timedao;
 	
 	protected Userblservice userController;
 	
 	private OrderUtil() {
 		dao = RMIHelper.getInstance().getOrderDataServiceImpl();
 		userController = UserController.getInstance();
-		timeDao = RMIHelper.getInstance().getTimeServiceImpl();
+		timedao = RMIHelper.getInstance().getTimeServiceImpl();
 		
 	}
 	
@@ -60,15 +60,15 @@ public class OrderUtil {
 	通过orderID 获取orderVO
 	 */
 	public OrderVO getOrder (String orderID) {
-		Order myOrder = new Order();
+		Order myorder = new Order();
 		try {
-			OrderPO resPO = dao.getOrderPO(orderID);
-			if (resPO == null) {
+			OrderPO respo = dao.getOrderPO(orderID);
+			if (respo == null) {
 				OrderVO vo = new OrderVO(ResultMessage.NOT_EXIST);
 				return vo;
 			}
-			myOrder.setOrder(resPO);
-			return myOrder.getOrderVO();
+			myorder.setOrder(respo);
+			return myorder.getOrderVO();
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			OrderVO vo = new OrderVO(ResultMessage.CONNECTION_FAIL);
@@ -80,11 +80,12 @@ public class OrderUtil {
 	获得异常订单列表
 	 */
 	public List<OrderVO> getAbnormalOrder () {
-		OrderList myList = new OrderList();
+		OrderList mylist = new OrderList();
 		try {
-			myList.setOrderList(dao.getAbnormalOrderPO());
-			return myList.getOrderListVO();
+			mylist.setOrderList(dao.getAbnormalOrderPO());
+			return mylist.getOrderListVO();
 		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;
 		}
@@ -94,11 +95,14 @@ public class OrderUtil {
 	通过用户userID 和 orderType 来获得该用户该类型订单的的列表
 	 */
 	public List<OrderVO> getUserOrderList (String userID, OrderType type) {		
-		OrderList myList = new OrderList();
+		OrderList mylist = new OrderList();
 		try {
-			myList.setOrderList(dao.getUserOrderPO(userID, type));
-			return myList.getOrderListVO();
+			//if (dao.getUserOrderPO(userID, type).size() != 0) {
+			mylist.setOrderList(dao.getUserOrderPO(userID, type));
+			//}
+			return mylist.getOrderListVO();
 		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;
 		}
@@ -108,11 +112,14 @@ public class OrderUtil {
 	通过酒店orderID 和 orderType 来获得该酒店该类型订单的的列表
 	 */
 	public List<OrderVO> getHotelOrderList (String hotelID, OrderType type) {
-		OrderList myList = new OrderList();
+		OrderList mylist = new OrderList();
 		try {
-			myList.setOrderList(dao.getHotelOrderPO(hotelID, type));
-			return myList.getOrderListVO();
+			//if (dao.getHotelOrderPO(hotelID, type).size() != 0) {
+			mylist.setOrderList(dao.getHotelOrderPO(hotelID, type));
+			//}
+			return mylist.getOrderListVO();
 		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;
 		}
@@ -122,11 +129,12 @@ public class OrderUtil {
 	通过用户userID 来获得该用户历史预订过的酒店id列表
 	 */
 	public List<String> getHistoryHotels(String userId) {
-		OrderList myList = new OrderList();
+		OrderList mylist = new OrderList();
 		try {
-			myList.setOrderList(dao.getUserOrderPO(userId, OrderType.EXECUTED));
-			return myList.getHotelList();
+			mylist.setOrderList(dao.getUserOrderPO(userId, OrderType.EXECUTED));
+			return mylist.getHotelList();
 		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;
 		}
@@ -140,40 +148,46 @@ public class OrderUtil {
 		if (uservo.credit <= 0) {
 			return ResultMessage.CREDIT_NOT_ENOUGH;
 		}
-		Order myOrder = new Order();
-		myOrder.setOrder(vo);
-		return myOrder.create();
+		Order myorder = new Order();
+		myorder.setOrder(vo);
+		return myorder.create();
 	}
 
 	/*
 	通过orderVO 来新建一个线下订单
 	 */
 	public ResultMessage createOffLineOrder(OrderVO vo) {
-		Order myOrder = new Order();
-		myOrder.setOrder(vo);
-		return myOrder.create();
+		Order myorder = new Order();
+		myorder.setOrder(vo);
+		return myorder.create();
 	}
 
 	/*
 	通过orderID 来对该订单做撤销操作
 	 */
 	public ResultMessage cancelOrder (String orderID) {
-		OrderPO orderPO = null;
+		OrderPO orderpo = null;
 		try {
-			orderPO = dao.getOrderPO(orderID);
+			orderpo = dao.getOrderPO(orderID);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			return ResultMessage.CONNECTION_FAIL;
 		}
 		
-		Order myOrder = new Order();
-		myOrder.setOrder(orderPO);
-		ResultMessage executeMessage = myOrder.cancel();
-		if (executeMessage != ResultMessage.SUCCESS) {
-			return executeMessage;
+		Order myorder = new Order();
+		myorder.setOrder(orderpo);
+		ResultMessage excuteMessage = myorder.cancel();
+		if (excuteMessage != ResultMessage.SUCCESS) {
+			return excuteMessage;
 		}
-		
-		myOrder.addCreditRecord(-myOrder.totalPrice, CreditOperation.CANCELORDER.getString());
+		try {
+			long between = (myorder.latestTime.getTime() - timedao.getDate().getTime()) / 1000;
+			if (between <= 21600) {
+				myorder.addCreditRecord(-myorder.totalPrice, CreditOperation.CANCELORDER.getString());
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		return ResultMessage.SUCCESS;
 	}
 
@@ -181,22 +195,22 @@ public class OrderUtil {
 	通过orderID 来对该订单做执行操作
 	 */
 	public ResultMessage executeOrder (String orderID) {
-		OrderPO orderPO = null;
+		OrderPO orderpo = null;
 		try {
-			orderPO = dao.getOrderPO(orderID);
+			orderpo = dao.getOrderPO(orderID);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			return ResultMessage.CONNECTION_FAIL;
 		}
 		
-		Order myOrder = new Order();
-		myOrder.setOrder(orderPO);
-		ResultMessage executeMessage = myOrder.execute();
-		if (executeMessage != ResultMessage.SUCCESS) {
-			return executeMessage;
+		Order myorder = new Order();
+		myorder.setOrder(orderpo);
+		ResultMessage excuteMessage = myorder.execute();
+		if (excuteMessage != ResultMessage.SUCCESS) {
+			return excuteMessage;
 		}
 		
-		myOrder.addCreditRecord(myOrder.totalPrice, CreditOperation.FINISHORDER.getString());
+		myorder.addCreditRecord(myorder.totalPrice, CreditOperation.FINISHORDER.getString());
 		return ResultMessage.SUCCESS;
 	}
 
@@ -204,26 +218,26 @@ public class OrderUtil {
 	通过orderID 来对该订单做撤销异常订单操作
 	 */
 	public ResultMessage cancelAbnormalOrder (String orderID,Boolean isHalf) {
-		Order myOrder = new Order();
-		OrderPO orderPO = null;
+		Order myorder = new Order();
+		OrderPO orderpo = null;
 		try {
-			orderPO = dao.getOrderPO(orderID);
+			orderpo = dao.getOrderPO(orderID);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 			return ResultMessage.CONNECTION_FAIL;
 		}
 		
-		myOrder.setOrder(orderPO);
-		ResultMessage cancelMessage = myOrder.cancelAbnormal();
+		myorder.setOrder(orderpo);
+		ResultMessage cancelMessage = myorder.cancelAbnormal();
 		if (cancelMessage != ResultMessage.SUCCESS) {
 			return cancelMessage;
 		}
 		
-		double temp = myOrder.totalPrice;
+		double temp = myorder.totalPrice;
 		if (isHalf) {
 			temp = temp / 2.0;
 		}
-		myOrder.addCreditRecord(temp, CreditOperation.EXCEPTIONORDER.getString());
+		myorder.addCreditRecord(temp, CreditOperation.EXCEPTIONORDER.getString());
 		return ResultMessage.SUCCESS;
 	}
 
@@ -235,11 +249,12 @@ public class OrderUtil {
 		try {
 			po = dao.getOrderPO(ID);
 		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		Order myOrder = new Order();
-		myOrder.setOrder(po);
-		ResultMessage checkOutMessage = myOrder.checkOut();
+		Order myorder = new Order();
+		myorder.setOrder(po);
+		ResultMessage checkOutMessage = myorder.checkOut();
 		if (checkOutMessage != ResultMessage.SUCCESS) {
 			return checkOutMessage;
 		}
@@ -254,11 +269,12 @@ public class OrderUtil {
 		try {
 			po = dao.getOrderPO(orderID);
 		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		Order myOrder = new Order();
-		myOrder.setOrder(po);
-		return myOrder.comment();
+		Order myorder = new Order();
+		myorder.setOrder(po);
+		return myorder.comment();
 	}
 
 	/*
@@ -272,14 +288,15 @@ public class OrderUtil {
 		int[] res = new int[10000];
 		int n = 0;
 		while (startDay.compareTo(stopDay) != 0) {
-			OrderList myList = new OrderList();
+			OrderList mylist = new OrderList();
 			try {
 				Date nowDate = startDay.getTime();
-				myList.setOrderList(dao.getDateOrderPO(hotelID, nowDate));
+				mylist.setOrderList(dao.getDateOrderPO(hotelID, nowDate));
 			} catch (RemoteException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			res[n] = myList.getTypeRoomNum(roomType);
+			res[n] = mylist.getTypeRoomNum(roomType);
 			++n;
 			startDay.add(Calendar.DATE, 1);
 		}

@@ -224,7 +224,7 @@ public class Order {
 		if (type != OrderType.ABNORMAL) {
 			return ResultMessage.NOT_EXIST;
 		}
-		type = OrderType.UNEXECUTED;
+		type = OrderType.CANCELED;
 		return modify();
 	}
 

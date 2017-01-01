@@ -83,16 +83,31 @@ public class CustomerModifyInfo {
 	@FXML
 	void confirmChangeInfo() {
 		boolean isFormatRight = true;
+		Alert alert;
 		if (!checkPhoneNumberFormat()) {
+			alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Sorry, please check your entry again.");
+			alert.setHeaderText(null);
+			alert.setContentText("电话格式不正确(应为11位中国区号码)");
+			alert.showAndWait();
 			isFormatRight = false;
 		}
 		if (!checkName()) {
+			alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Sorry, please check your entry again.");
+			alert.setHeaderText(null);
+			alert.setContentText("姓名不正确");
+			alert.showAndWait();
 			isFormatRight = false;
 		}
 		if (!checkCompanyName()) {
+			alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Sorry, please check your entry again.");
+			alert.setHeaderText(null);
+			alert.setContentText("公司名不正确");
+			alert.showAndWait();
 			isFormatRight = false;
 		}
-		Alert alert;
 		if (isFormatRight) {
 			UserVO userVO = SwitchSceneUtil.getUserVO();
 			getModifiedUserVO(userVO);
@@ -109,13 +124,8 @@ public class CustomerModifyInfo {
 				alert.setHeaderText(null);
 				alert.setContentText(modifyInfoResult.toString());
 			}
-		} else {
-			alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Sorry, please check your entry again.");
-			alert.setHeaderText(null);
-			alert.setContentText("电话格式不正确(应为11位中国区号码)");
 		}
-		alert.showAndWait();
+
 	}
 	
 	@FXML
@@ -183,17 +193,13 @@ public class CustomerModifyInfo {
 	
 	private boolean checkCompanyName() {
 		if (vo.type.equals(UserType.PERSONALCUSTOMER.getString())) {
-			return companyLabel.getText().isEmpty();
+			return true;
 		} else {
 			return CheckStyle.checkCompanyName(companyLabel.getText());
 		}
 	}
 	
 	private boolean checkName() {
-		if (vo.type.equals(UserType.COMPANYCUSTOMER.getString())) {
-			return name.getText().isEmpty();
-		} else {
-			return CheckStyle.checkName(name.getText());
-		}
+		return CheckStyle.checkName(name.getText());
 	}
 }
