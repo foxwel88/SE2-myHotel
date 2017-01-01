@@ -56,7 +56,7 @@ public class HotelDataServiceImpl_stub extends UnicastRemoteObject implements Ho
 
 	public List<RoomPO> getRooms(String hotelID) throws RemoteException {
 		List<RoomPO> list = new ArrayList<>();
-		list.add(new RoomPO("单人间",0,0));
+		list.add(new RoomPO("单人间",1,100));
 		return list;
 	}
 
@@ -66,7 +66,7 @@ public class HotelDataServiceImpl_stub extends UnicastRemoteObject implements Ho
 
 	public ArrayList<HotelPO> findHotels(HotelFilter filter) throws RemoteException {
 		ArrayList<HotelPO> hotels = new ArrayList<>();
-		hotels.add(new HotelPO("123", "n", "a", "c", "a", "i", 1, 1, "f", "c", "com", ""));
+		hotels.add(new HotelPO("123", "n", "a", "c", "a", "i", 1, 3, "f", "c", "com", ""));
 		return hotels;
 	}
 

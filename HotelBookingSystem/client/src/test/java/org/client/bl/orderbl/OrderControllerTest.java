@@ -11,6 +11,7 @@ import org.common.utility.ResultMessage;
 import org.common.utility.RoomType;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.server.rmi.RMIHelper;
 
@@ -18,6 +19,7 @@ import org.server.rmi.RMIHelper;
  * Orderbl模块集成测试，用到的Orderbl类均为真实类，dao和其它bl模块的类为stub
  *
  */
+@Ignore
 public class OrderControllerTest {
 	
 	OrderController controller;

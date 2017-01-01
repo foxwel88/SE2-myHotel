@@ -40,13 +40,13 @@ public class HotelControllerTest {
 	@Test
 	public void testFindHotels() {
 		HotelFilter filter = new HotelFilter();
-		filter.setLocation("南京", "仙林中心");
+		filter.setLocation("南京", "新街口");
 		Orderblservice orderstub = new Order_stub();
 		controller.setOrderblservice(orderstub);
 				
 		List<HotelVO> hotels = null;
 		try {
-			hotels = controller.findHotels(filter, "小红", true);
+			hotels = controller.findHotels(filter, "1234567890", false);
 			assertEquals(false, hotels.isEmpty());
 		} catch (NullPointerException e) {
 			e.printStackTrace();

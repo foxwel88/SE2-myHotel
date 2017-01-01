@@ -45,16 +45,15 @@ public class HotelTest {
 	public void testFindHotels() {
 		HotelFilter filter = new HotelFilter();
 		filter.setLocation("南京", "新街口");
+		filter.setSchFromDate(new Date(108,0,1));
+		filter.setSchToDate(new Date(109,0,1));
 		Orderblservice orderController = OrderController.getInstance();
 		controller.setOrderblservice(orderController);
 
 		List<HotelVO> hotels = null;
-		try {
-			hotels = controller.findHotels(filter, null, false);
-			assertEquals(false, hotels.isEmpty());
-		} catch (NullPointerException e) {
-			e.printStackTrace();
-		}
+
+		hotels = controller.findHotels(filter, null, false);
+		assertEquals(false, hotels.isEmpty());
 
 		assertEquals(false, hotels.isEmpty());
 	}
