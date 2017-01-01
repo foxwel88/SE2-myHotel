@@ -224,10 +224,6 @@ public class Promotion implements Comparable<Promotion> {
 	}
 	
 	private boolean isInPromotionHotel(String hid) {
-		if (!hotelID.equals(hid)) {
-			return false;
-		} else {
-			return true;
-		}
+		return hotelID.equals(hid);
 	}
 }

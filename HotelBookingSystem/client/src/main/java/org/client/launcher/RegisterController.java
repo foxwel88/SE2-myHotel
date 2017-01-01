@@ -1,16 +1,14 @@
 package org.client.launcher;
 
 import java.io.IOException;
-import java.time.Instant;
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.util.Date;
 
 import javafx.scene.control.*;
 import org.client.bl.userbl.UserController;
 import org.client.blservice.userblservice.Userblservice;
 import org.client.presentation.util.CheckStyle;
+import org.client.presentation.util.DateUtil;
 import org.client.presentation.util.ResultInfoHelper;
 import org.client.vo.UserVO;
 import org.common.utility.ResultMessage;
@@ -109,7 +107,7 @@ public class RegisterController {
 		if (typeChoiceBox.getValue().equals(UserType.PERSONALCUSTOMER.getString())) {
 			
 		} else {
-			if (! CheckStyle.checkCompanyname(companyTextField.getText())) {
+			if (! CheckStyle.checkCompanyName(companyTextField.getText())) {
 				show("请填写公司名称");
 				return false;
 			}
@@ -126,12 +124,7 @@ public class RegisterController {
 			ResultMessage message = null;
 			if (typeChoiceBox.getValue().equals(UserType.PERSONALCUSTOMER.getString())) {
 				//记录生日
-				Date birthDate = null;
-				
-				LocalDate localBirthDate = birthDatePicker.getValue();
-				ZonedDateTime endZonedTime = localBirthDate.atStartOfDay(ZoneId.systemDefault());
-				Instant endInstant = Instant.from(endZonedTime);
-				birthDate = Date.from(endInstant);
+				Date birthDate = DateUtil.toDate(birthDatePicker.getValue());
 				
 				UserVO vo = new UserVO(typeChoiceBox.getValue(), userNameTextField.getText(), nameTextField.getText(), null,
 						passwordField.getText(), phoneTextField.getText(), 200, birthDate, null, null, null);

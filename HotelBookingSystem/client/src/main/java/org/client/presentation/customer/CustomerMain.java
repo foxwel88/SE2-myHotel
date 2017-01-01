@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import org.client.bl.promotionbl.PromotionController;
-import org.client.presentation.util.LiveDatePicker;
+import org.client.presentation.util.DateUtil;
 import org.client.vo.AreaVO;
 import org.client.vo.CityVO;
 import org.client.vo.PromotionVO;
@@ -159,8 +159,8 @@ public class CustomerMain {
 	private void search() {
 		HotelFilter hotelFilter = new HotelFilter();
 		hotelFilter.setLocation(city.getValue(), area.getValue());
-		hotelFilter.setSchFromDate(LiveDatePicker.toDate(startDate.getValue()));
-		hotelFilter.setSchToDate(LiveDatePicker.toDate(endDate.getValue()));
+		hotelFilter.setSchFromDate(DateUtil.toDate(startDate.getValue()));
+		hotelFilter.setSchToDate(DateUtil.toDate(endDate.getValue()));
 		SwitchSceneUtil.previousHotelSceneInfo = new PreviousHotelSceneInfo(hotelFilter, false, 1);
 		SwitchSceneUtil.isBack = true;
 		SwitchSceneUtil.customerController.turnToCusController_HotelList();
@@ -203,11 +203,11 @@ public class CustomerMain {
 	private void setStartDate() {
 		DatePicker banBeforeTodayPicker = new DatePicker();
 		banBeforeTodayPicker.setValue(LocalDate.now().minusDays(1));
-		LiveDatePicker.initDatePicker(banBeforeTodayPicker, startDate);
+		DateUtil.initDatePicker(banBeforeTodayPicker, startDate);
 	}
 	
 	private void setEndDate() {
-		LiveDatePicker.initDatePicker(startDate, endDate);
+		DateUtil.initDatePicker(startDate, endDate);
 	}
 	
 	private int calMaxPage(ArrayList<PromotionVO> voList) {

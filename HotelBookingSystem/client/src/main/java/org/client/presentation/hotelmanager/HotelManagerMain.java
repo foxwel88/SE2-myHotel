@@ -3,10 +3,7 @@ package org.client.presentation.hotelmanager;
 import java.io.IOException;
 import java.net.URL;
 import java.rmi.RemoteException;
-import java.time.Instant;
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.util.*;
 
 import javafx.application.Platform;
@@ -20,6 +17,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.util.Callback;
 import org.client.launcher.Resources;
+import org.client.presentation.util.DateUtil;
 import org.client.rmi.RMIHelper;
 
 import javafx.animation.Animation;
@@ -124,22 +122,16 @@ public class HotelManagerMain {
 	}
 
 	void refreshBookedRoomNum() {
-		LocalDate fromDate = startTimePicker.getValue();
-		LocalDate toDate = endTimePicker.getValue();
+		Date fromDate = DateUtil.toDate(startTimePicker.getValue());
+		Date toDate = DateUtil.toDate(endTimePicker.getValue());
 
-		if (toDate.isBefore(fromDate)) {
+		if (toDate.before(fromDate)) {
 			return;
 		}
 
-		ZonedDateTime fromZonedTime = fromDate.atStartOfDay(ZoneId.systemDefault());
-		Instant fromInstant = Instant.from(fromZonedTime);
-
-		ZonedDateTime toZonedTime = toDate.atStartOfDay(ZoneId.systemDefault());
-		Instant toInstant = Instant.from(toZonedTime);
-
-		singleBookedLabel.setText(String.valueOf(HotelManagerController.getInstance().getBookedRoomNum(RoomType.SINGLE, Date.from(fromInstant), Date.from(toInstant))));
-		bigBookedLabel.setText(String.valueOf(HotelManagerController.getInstance().getBookedRoomNum(RoomType.BIG, Date.from(fromInstant), Date.from(toInstant))));
-		doubleBookedLabel.setText(String.valueOf(HotelManagerController.getInstance().getBookedRoomNum(RoomType.DOUBLE, Date.from(fromInstant), Date.from(toInstant))));
+		singleBookedLabel.setText(String.valueOf(HotelManagerController.getInstance().getBookedRoomNum(RoomType.SINGLE, fromDate, toDate)));
+		bigBookedLabel.setText(String.valueOf(HotelManagerController.getInstance().getBookedRoomNum(RoomType.BIG, fromDate, toDate)));
+		doubleBookedLabel.setText(String.valueOf(HotelManagerController.getInstance().getBookedRoomNum(RoomType.DOUBLE, fromDate, toDate)));
 	}
 
 	@FXML

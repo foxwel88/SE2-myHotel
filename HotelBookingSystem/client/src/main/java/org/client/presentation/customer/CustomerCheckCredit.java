@@ -2,7 +2,7 @@ package org.client.presentation.customer;
 
 import java.util.ArrayList;
 
-import org.client.presentation.util.LiveDatePicker;
+import org.client.presentation.util.DateUtil;
 import org.client.vo.CreditRecordVO;
 
 import javafx.fxml.FXML;
@@ -192,7 +192,7 @@ public class CustomerCheckCredit {
 	private String time(int i) {
 		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_CREDITRECORD_ONE_OAGE + i;
 		try {
-			return LiveDatePicker.dateToCoarseString(recordList.get(seq).date);
+			return DateUtil.dateToCoarseString(recordList.get(seq).date);
 		} catch (IndexOutOfBoundsException nullex) {
 			return null;
 		}

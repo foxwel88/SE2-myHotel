@@ -83,7 +83,6 @@ public class PromotionUtil {
 			List<PromotionPO> promotionPOList = promotionDataService.showHotelPromotion(hotelID);
 			
 			if (promotionPOList == null) {
-				promotionList.add(new Promotion(new PromotionVO(ResultMessage.NOT_EXIST)));
 				return promotionList;
 			}
 			

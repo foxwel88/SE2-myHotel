@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import org.client.bl.promotionbl.PromotionController;
-import org.client.presentation.util.LiveDatePicker;
+import org.client.presentation.util.DateUtil;
 import org.client.vo.CommentVO;
 import org.client.vo.HotelVO;
 import org.client.vo.OrderVO;
@@ -612,7 +612,7 @@ public class CustomerCheckHotel {
 			} else {
 				tempDate = abnormalOrderList.get(seq).generatedDate;
 			}
-			return LiveDatePicker.dateToCoarseString(tempDate);
+			return DateUtil.dateToCoarseString(tempDate);
 		} catch (IndexOutOfBoundsException nullex) {
 			return null;
 		}
@@ -673,7 +673,7 @@ public class CustomerCheckHotel {
 		Date tempDate;
 		try {
 			tempDate = commentList.get(seq).date;
-			return LiveDatePicker.dateToCoarseString(tempDate);
+			return DateUtil.dateToCoarseString(tempDate);
 		} catch (IndexOutOfBoundsException nullex) {
 			return null;
 		}

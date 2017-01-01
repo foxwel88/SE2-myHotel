@@ -1,6 +1,6 @@
 package org.client.presentation.customer;
 
-import org.client.presentation.util.LiveDatePicker;
+import org.client.presentation.util.DateUtil;
 import org.client.vo.OrderVO;
 
 import javafx.fxml.FXML;
@@ -81,9 +81,9 @@ public class CustomerAbnomoralOrder {
 		}
 		customerNameLabel.setText(vo.customerName);
 		phoneLabel.setText(vo.phoneNumber);
-		latestTimeLabel.setText(LiveDatePicker.dateToDetaildString(vo.latestTime));
-		schTimeLabel.setText(LiveDatePicker.dateToCoarseString(vo.schFrom) + " - " + LiveDatePicker.dateToCoarseString(vo.schTo));
-		generatedTimeLabel.setText(LiveDatePicker.dateToDetaildString(vo.generatedDate));
+		latestTimeLabel.setText(DateUtil.dateToDetaildString(vo.latestTime));
+		schTimeLabel.setText(DateUtil.dateToCoarseString(vo.schFrom) + " - " + DateUtil.dateToCoarseString(vo.schTo));
+		generatedTimeLabel.setText(DateUtil.dateToDetaildString(vo.generatedDate));
 		priceLabel.setText(String.valueOf(vo.totalPrice));
 		creditLabel.setText("-" + String.valueOf(vo.totalPrice));
 		

@@ -34,7 +34,7 @@ public class CommentUtil {
 				commentVOList.add(new CommentVO(po.userName, po.hotelID, po.orderID, po.date, po.rank, po.comment));
 			}
 		} catch (RemoteException rex) {
-			commentVOList.add(new CommentVO(ResultMessage.CONNECTION_FAIL));
+			rex.printStackTrace();
 		}
 		return commentVOList;
 	}

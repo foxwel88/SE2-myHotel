@@ -1,7 +1,7 @@
 package org.client.presentation.customer;
 
 import org.client.launcher.Resources;
-import org.client.presentation.util.LiveDatePicker;
+import org.client.presentation.util.DateUtil;
 import org.client.vo.OrderVO;
 
 import javafx.fxml.FXML;
@@ -89,9 +89,9 @@ public class CustomerExecutedOrder {
 		}
 		customerNameLabel.setText(vo.customerName);
 		phoneLabel.setText(vo.phoneNumber);
-		actFromLabel.setText(LiveDatePicker.dateToDetaildString(vo.actFrom));
-		actToLabel.setText(LiveDatePicker.dateToDetaildString(vo.actTo));
-		generatedTimeLabel.setText(LiveDatePicker.dateToDetaildString(vo.generatedDate));
+		actFromLabel.setText(DateUtil.dateToDetaildString(vo.actFrom));
+		actToLabel.setText(DateUtil.dateToDetaildString(vo.actTo));
+		generatedTimeLabel.setText(DateUtil.dateToDetaildString(vo.generatedDate));
 		priceLabel.setText(String.valueOf(vo.totalPrice));
 		if (vo.isCommented) {
 			commentButton.setText("查看评价");

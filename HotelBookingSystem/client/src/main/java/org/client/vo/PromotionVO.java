@@ -35,8 +35,6 @@ public class PromotionVO implements Serializable {
 	
 	public String name;
 	
-	public ResultMessage resultMessage;
-	
 	public PromotionVO(String promotionID, String provider, String type, Date startTime, Date endTime, String hotelName, String hotelID,
 			int level, String city, String area, double discount, String name) {
 		this.promotionID = promotionID;
@@ -51,14 +49,10 @@ public class PromotionVO implements Serializable {
 		this.area = area;
 		this.discount = discount;
 		this.name = name;
-		resultMessage = ResultMessage.SUCCESS;
 	}
 	
 	public PromotionVO() {
 		
 	}
-	
-	public PromotionVO(ResultMessage resultMessage) {
-		this.resultMessage = resultMessage;
-	}
+
 }

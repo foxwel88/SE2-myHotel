@@ -3,7 +3,7 @@ package org.client.presentation.customer;
 import java.time.LocalDate;
 
 import org.client.launcher.Resources;
-import org.client.presentation.util.LiveDatePicker;
+import org.client.presentation.util.DateUtil;
 import org.client.vo.OrderVO;
 import org.common.utility.ResultMessage;
 
@@ -70,8 +70,8 @@ public class CustomerConfirmOrder {
 		address.setText(order.hotelAddress);
 		roomType.setText(order.roomType);
 		roomNum.setText(String.valueOf(order.roomNum));
-		latestArrivalTime.setText(LiveDatePicker.dateToDetaildString(order.latestTime));
-		appointedLivingTime.setText(LiveDatePicker.dateToCoarseString(order.schFrom) + "到" + LiveDatePicker.dateToCoarseString(order.schTo));
+		latestArrivalTime.setText(DateUtil.dateToDetaildString(order.latestTime));
+		appointedLivingTime.setText(DateUtil.dateToCoarseString(order.schFrom) + "到" + DateUtil.dateToCoarseString(order.schTo));
 		resident.setText(order.customerName);
 		phoneNumber.setText(order.phoneNumber);
 		totalPrice.setText(String.valueOf(order.totalPrice));

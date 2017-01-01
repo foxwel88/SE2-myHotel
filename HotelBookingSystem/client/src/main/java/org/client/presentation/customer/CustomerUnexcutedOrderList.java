@@ -5,7 +5,7 @@ import java.util.Collections;
 
 import org.client.launcher.Resources;
 import org.client.presentation.util.GenerateTimeComparator;
-import org.client.presentation.util.LiveDatePicker;
+import org.client.presentation.util.DateUtil;
 import org.client.vo.OrderVO;
 
 import javafx.animation.KeyFrame;
@@ -262,7 +262,7 @@ public class CustomerUnexcutedOrderList {
 	private String date(int i) {
 		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_ORDER_ONE_OAGE + i;	// 计算当前页面第i个信息字段在arraylist中的实际位置；
 		try {
-			return LiveDatePicker.dateToCoarseString(unExcutedOrderList.get(seq).generatedDate);
+			return DateUtil.dateToCoarseString(unExcutedOrderList.get(seq).generatedDate);
 		} catch (IndexOutOfBoundsException nullex) {
 			return null;
 		}
@@ -298,7 +298,7 @@ public class CustomerUnexcutedOrderList {
 	private String latestDate(int i) {
 		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_ORDER_ONE_OAGE + i;
 		try {
-			return LiveDatePicker.dateToCoarseString(unExcutedOrderList.get(seq).latestTime);
+			return DateUtil.dateToCoarseString(unExcutedOrderList.get(seq).latestTime);
 		} catch (IndexOutOfBoundsException nullex) {
 			return null;
 		}

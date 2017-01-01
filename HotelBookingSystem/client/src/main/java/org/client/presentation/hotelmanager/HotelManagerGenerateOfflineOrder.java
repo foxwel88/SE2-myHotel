@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import org.client.presentation.util.LiveDatePicker;
+import org.client.presentation.util.DateUtil;
 import org.client.presentation.util.CheckStyle;
 import org.client.vo.OrderVO;
 import org.common.utility.OrderType;
@@ -53,8 +53,8 @@ public class HotelManagerGenerateOfflineOrder {
 
 	@FXML
 	void initialize() {
-		LiveDatePicker.initDatePicker(null, schFromDate);
-		LiveDatePicker.initDatePicker(schFromDate, schToDate);
+		DateUtil.initDatePicker(null, schFromDate);
+		DateUtil.initDatePicker(schFromDate, schToDate);
 		setRoomType();
 		roomType.setValue("单人间");
 		roomNum.setText("1");
@@ -76,8 +76,8 @@ public class HotelManagerGenerateOfflineOrder {
 			alert.showAndWait();
 		} else {
 			try {
-				OrderVO newOrder = new OrderVO("", OrderType.OFFLINE.getString(), null, LiveDatePicker.toDate(schFromDate.getValue()), LiveDatePicker.toDate(schToDate.getValue()),
-						null, null, LiveDatePicker.toDate(schFromDate.getValue().plusDays(1)), null, HotelManagerController.getInstance().hotelID,
+				OrderVO newOrder = new OrderVO("", OrderType.OFFLINE.getString(), null, DateUtil.toDate(schFromDate.getValue()), DateUtil.toDate(schToDate.getValue()),
+						null, null, DateUtil.toDate(schFromDate.getValue().plusDays(1)), null, HotelManagerController.getInstance().hotelID,
 						HotelManagerController.getInstance().hotelName, "", HotelManagerController.getInstance().hotelAddress, roomType.getValue(), 0, Integer.parseInt(roomNum.getText()), Integer.parseInt(residentNum.getText()),
 						hasChildren.isSelected(), customerName.getText(), phoneNumber.getText(), false, false);
 				HotelManagerController.getInstance().addOfflineOrder(newOrder);

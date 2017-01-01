@@ -12,11 +12,12 @@ import javafx.util.Callback;
 
 
 /**
- * 用来控制时间的显示格式的工具类，包括初始化datepicker和把date转化成string的方法
+ * 用来控制时间的显示格式的工具类
+ * 包括初始化datepicker、把date转化成string、Date与LocalDate相互转换的方法
  * @author fraliphsoft
  * @version fraliphsoft 11/29
  */
-public class LiveDatePicker {
+public class DateUtil {
 	
 	/**
 	 * 此方法用于初始化时间选择器

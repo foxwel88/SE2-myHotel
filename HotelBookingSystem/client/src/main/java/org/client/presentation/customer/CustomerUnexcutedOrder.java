@@ -3,7 +3,7 @@ package org.client.presentation.customer;
 import org.client.bl.orderbl.OrderController;
 import org.client.blservice.orderblservice.Orderblservice;
 import org.client.launcher.Resources;
-import org.client.presentation.util.LiveDatePicker;
+import org.client.presentation.util.DateUtil;
 import org.client.vo.OrderVO;
 import org.common.utility.ResultMessage;
 
@@ -90,9 +90,9 @@ public class CustomerUnexcutedOrder {
 		}
 		customerNameLabel.setText(vo.customerName);
 		phoneLabel.setText(vo.phoneNumber);
-		latestTimeLabel.setText(LiveDatePicker.dateToDetaildString(vo.latestTime));
-		schTimeLabel.setText(LiveDatePicker.dateToCoarseString(vo.schFrom) + " - " + LiveDatePicker.dateToCoarseString(vo.schTo));
-		generatedTimeLabel.setText(LiveDatePicker.dateToDetaildString(vo.generatedDate));
+		latestTimeLabel.setText(DateUtil.dateToDetaildString(vo.latestTime));
+		schTimeLabel.setText(DateUtil.dateToCoarseString(vo.schFrom) + " - " + DateUtil.dateToCoarseString(vo.schTo));
+		generatedTimeLabel.setText(DateUtil.dateToDetaildString(vo.generatedDate));
 		priceLabel.setText(String.valueOf(vo.totalPrice));
 		
 		SwitchSceneUtil.showNewSceneAnimation(root);

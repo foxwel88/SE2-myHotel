@@ -8,7 +8,7 @@ import org.client.launcher.Resources;
 import org.client.presentation.util.ActFromComparator;
 import org.client.presentation.util.CancelTimeComparator;
 import org.client.presentation.util.LatestTimeComparator;
-import org.client.presentation.util.LiveDatePicker;
+import org.client.presentation.util.DateUtil;
 import org.client.vo.OrderVO;
 
 import javafx.animation.KeyFrame;
@@ -513,7 +513,7 @@ public class CustomerHistoryOrder {
 			} else {
 				tempDate = abnormalOrderList.get(seq).generatedDate;
 			}
-			return LiveDatePicker.dateToCoarseString(tempDate);
+			return DateUtil.dateToCoarseString(tempDate);
 		} catch (IndexOutOfBoundsException nullex) {
 			return null;
 		}

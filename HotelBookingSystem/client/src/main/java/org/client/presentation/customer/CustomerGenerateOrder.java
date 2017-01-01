@@ -7,7 +7,7 @@ import java.util.Objects;
 import org.client.bl.hotelbl.HotelController;
 import org.client.bl.promotionbl.PromotionController;
 import org.client.presentation.util.CheckStyle;
-import org.client.presentation.util.LiveDatePicker;
+import org.client.presentation.util.DateUtil;
 import org.client.vo.HotelVO;
 import org.client.vo.OrderVO;
 import org.client.vo.PromotionVO;
@@ -117,10 +117,10 @@ public class CustomerGenerateOrder {
 		hotelAddress.setText(hotel.address);
 		city.setText(hotel.city.cityName);
 		area.setText(hotel.area.address);
-		LiveDatePicker.initDatePicker(null, schFromDate);
-		LiveDatePicker.initDatePicker(schFromDate, schToDate);
-		schFromDate.setValue(LiveDatePicker.toLocalDate(SwitchSceneUtil.previousHotelSceneInfo.hotelFilter.schFrom));
-		schToDate.setValue(LiveDatePicker.toLocalDate(SwitchSceneUtil.previousHotelSceneInfo.hotelFilter.schTo));
+		DateUtil.initDatePicker(null, schFromDate);
+		DateUtil.initDatePicker(schFromDate, schToDate);
+		schFromDate.setValue(DateUtil.toLocalDate(SwitchSceneUtil.previousHotelSceneInfo.hotelFilter.schFrom));
+		schToDate.setValue(DateUtil.toLocalDate(SwitchSceneUtil.previousHotelSceneInfo.hotelFilter.schTo));
 		if (Objects.equals(user.type, "个人客户")) {
 			customerName.setText(user.name);
 		} else {
@@ -154,10 +154,10 @@ public class CustomerGenerateOrder {
 				alert.showAndWait();
 			}
 			if (tempRoomNum > 0 && tempResidentNum > 0) {
-				int tempAvailableRoomNum = HotelController.getInstance().getAvailableRoomNum(LiveDatePicker.toDate(schFromDate.getValue()), LiveDatePicker.toDate(schToDate.getValue()), hotel.id, RoomType.getType(roomType.getValue()));
+				int tempAvailableRoomNum = HotelController.getInstance().getAvailableRoomNum(DateUtil.toDate(schFromDate.getValue()), DateUtil.toDate(schToDate.getValue()), hotel.id, RoomType.getType(roomType.getValue()));
 				if (tempRoomNum <= tempAvailableRoomNum) {
-					OrderVO newOrder = new OrderVO(user.ID, OrderType.UNEXECUTED.getString(), null, LiveDatePicker.toDate(schFromDate.getValue()), LiveDatePicker.toDate(schToDate.getValue()),
-							new Date(0, 0, 1), new Date(0, 0, 1), LiveDatePicker.toDate(schFromDate.getValue().plusDays(1)), new Date(0, 0, 1), hotel.id, 
+					OrderVO newOrder = new OrderVO(user.ID, OrderType.UNEXECUTED.getString(), null, DateUtil.toDate(schFromDate.getValue()), DateUtil.toDate(schToDate.getValue()),
+							new Date(0, 0, 1), new Date(0, 0, 1), DateUtil.toDate(schFromDate.getValue().plusDays(1)), new Date(0, 0, 1), hotel.id, 
 							hotel.hotelName, null, hotel.address, roomType.getValue(), getCurrentTotalPrice(), tempRoomNum, tempResidentNum,
 							hasChildren.isSelected(), user.name, phoneNumber.getText(), false, false);
 					SwitchSceneUtil.turnToConfirmOrderScene((GridPane)root.getParent(), newOrder);

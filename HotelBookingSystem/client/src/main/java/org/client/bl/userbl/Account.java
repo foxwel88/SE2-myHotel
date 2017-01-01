@@ -25,7 +25,7 @@ public class Account {
 		}
 		return account;
 	}
-	
+
 	public ResultMessage login(String userName, String password) {
 		UserDataService dao = RMIHelper.getInstance().getUserDataServiceImpl();
 		if (dao == null) {

@@ -13,6 +13,7 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.*;
 
+import org.client.presentation.util.DateUtil;
 import org.client.presentation.util.ResultInfoHelper;
 import org.client.vo.PromotionVO;
 import org.common.utility.ResultMessage;
@@ -83,19 +84,10 @@ public class HotelManagerModifyPromotion {
 		vo.name = nameLabel.getText();
 
 		//startTime, at the start of the day
-		LocalDate startDate = startTimePicker.getValue();
-
-		ZonedDateTime startZonedTime = startDate.atStartOfDay(ZoneId.systemDefault());
-		Instant startInstant = Instant.from(startZonedTime);
-		vo.startTime = Date.from(startInstant);
+		vo.startTime = DateUtil.toDate(startTimePicker.getValue());
 
 		//endTime, at the start of the day
-		LocalDate endDate = endTimePicker.getValue();
-
-		ZonedDateTime endZonedTime = endDate.atStartOfDay(ZoneId.systemDefault());
-		Instant endInstant = Instant.from(endZonedTime);
-		vo.endTime = Date.from(endInstant);
-
+		vo.endTime = DateUtil.toDate(endTimePicker.getValue());
 
 		vo.type = typeBox.getValue();
 		

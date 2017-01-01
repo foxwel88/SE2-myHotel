@@ -14,7 +14,7 @@ public class UserLevelVO implements Serializable {
 	public double creditToNext;
 	
 	public int level;
-	
+
 	public ResultMessage resultMessage;
 	
 	public UserLevelVO(double creditToNext, int level) {
@@ -22,7 +22,7 @@ public class UserLevelVO implements Serializable {
 		this.creditToNext = creditToNext;
 		this.resultMessage = ResultMessage.SUCCESS;
 	}
-	
+
 	public UserLevelVO(ResultMessage resultMessage) {
 		this.resultMessage = resultMessage;
 	}

@@ -8,7 +8,7 @@ package org.client.presentation.util;
  */
 public class CheckStyle {
 	//判断是否只含字母和数字
-	public static boolean containsNumberAndLetter(String s) {
+	public static boolean onlyContainsNumberAndLetter(String s) {
 		for (int i = 0; i < s.length(); ++i) {
 			if (!( ((s.charAt(i) >= '0') && (s.charAt(i) <= '9')) ||
 					((s.charAt(i) >= 'a') && (s.charAt(i) <= 'z')) ||
@@ -29,43 +29,23 @@ public class CheckStyle {
 	}
 	
 	public static boolean checkUsername(String username) {
-		if (! (containsNumberAndLetter(username) && (username.length() > 0)) ) {
-			return false;
-		} else {
-			return true;
-		}
+		return onlyContainsNumberAndLetter(username) && (username.length() > 0);
 	}
 	
 	public static boolean checkPassword(String password) {
-		if (! (containsNumberAndLetter(password) && (password.length() >= 6)) ) {
-			return false;
-		} else {
-			return true;
-		}
+		return onlyContainsNumberAndLetter(password) && (password.length() >= 6);
 	}
 	
 	public static boolean checkName(String name) {
-		if (! (name.length() > 0)) {
-			return false;
-		} else {
-			return true;
-		}
+		return name.length() > 0;
 	}
 	
 	public static boolean checkPhone(String phone) {
-		if (! (containsNumber(phone) && (phone.length() == 11))) {
-			return false;
-		} else {
-			return true;
-		}
+		return containsNumber(phone) && (phone.length() == 11);
 	}
 	
-	public static boolean checkCompanyname(String companyname) {
-		if (! (companyname.length() > 0)) {
-			return false;
-		} else {
-			return true;
-		}
+	public static boolean checkCompanyName(String companyName) {
+		return companyName.length() > 0;
 	}
 	
 }

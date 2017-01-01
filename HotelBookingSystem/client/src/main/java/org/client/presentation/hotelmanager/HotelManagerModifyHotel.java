@@ -240,18 +240,12 @@ public class HotelManagerModifyHotel {
 
 	/**检查名称、地址、城市、商圈是否不为空 */
 	boolean basicInfoCorrect() {
-		if (name.getText().isEmpty() || address.getText().isEmpty() || city.getValue() == null || area.getValue() == null) {
-			return false;
-		}
-		return true;
+		return !(name.getText().isEmpty() || address.getText().isEmpty() || city.getValue() == null || area.getValue() == null);
 	}
 
 	/**图片链接格式是否正确 */
 	boolean urlFormatCorrect() {
-		if (!imageURLField.getText().isEmpty() && !imageURLField.getText().contains("http")) {
-			return false;
-		}
-		return true;
+		return !(!imageURLField.getText().isEmpty() && !imageURLField.getText().contains("http"));
 	}
 
 	/**保存当前选择的房间信息 */

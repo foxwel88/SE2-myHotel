@@ -1,7 +1,7 @@
 package org.client.presentation.customer;
 
 import org.client.launcher.Resources;
-import org.client.presentation.util.LiveDatePicker;
+import org.client.presentation.util.DateUtil;
 import org.client.vo.UserVO;
 
 import javafx.fxml.FXML;
@@ -59,7 +59,7 @@ public class CustomerCheckInfo {
 		credit.setText(String.valueOf(vo.credit));
 		level.setText(String.valueOf(SwitchSceneUtil.promotionController.calLevel(vo.credit)));
 		if (vo.type.equals(UserType.PERSONALCUSTOMER.getString())) {
-			birthday.setText(LiveDatePicker.dateToCoarseString(vo.birthday));
+			birthday.setText(DateUtil.dateToCoarseString(vo.birthday));
 			birthcompanyLabel.setText("生日");
 		} else {
 			birthday.setText(vo.companyName);

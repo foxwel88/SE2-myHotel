@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
 
-import org.client.presentation.util.LiveDatePicker;
+import org.client.presentation.util.DateUtil;
 import org.client.presentation.util.CheckStyle;
 import org.client.vo.UserVO;
 import org.common.utility.ResultMessage;
@@ -66,7 +66,7 @@ public class WebManagerModifyCustomer {
 		userNameTextField.setText(nowvo.userName);
 		nameTextField.setText(nowvo.name);
 		phoneTextField.setText(nowvo.phoneNumber);
-		String[] dateStringArray = LiveDatePicker.dateToCoarseString(vo.birthday).split("/");
+		String[] dateStringArray = DateUtil.dateToCoarseString(vo.birthday).split("/");
 		birthDatePicker.setValue(LocalDate.of(Integer.parseInt(dateStringArray[0]), Integer.parseInt(dateStringArray[1]), Integer.parseInt(dateStringArray[2])));
 		companyTextField.setText(nowvo.companyName);
 		typeChoiceBox.setItems(FXCollections.observableArrayList("个人客户","企业客户"));
@@ -113,7 +113,7 @@ public class WebManagerModifyCustomer {
 		if (typeChoiceBox.getValue().equals(UserType.PERSONALCUSTOMER.getString())) {
 			
 		} else {
-			if (! CheckStyle.checkCompanyname(companyTextField.getText())) {
+			if (! CheckStyle.checkCompanyName(companyTextField.getText())) {
 				resultLabel.setText("请填写公司名称");
 				return false;
 			}

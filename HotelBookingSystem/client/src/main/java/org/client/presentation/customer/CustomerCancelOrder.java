@@ -1,6 +1,6 @@
 package org.client.presentation.customer;
 
-import org.client.presentation.util.LiveDatePicker;
+import org.client.presentation.util.DateUtil;
 import org.client.vo.OrderVO;
 
 import javafx.fxml.FXML;
@@ -74,9 +74,9 @@ public class CustomerCancelOrder {
 		}
 		customerNameLabel.setText(vo.customerName);
 		phoneLabel.setText(vo.phoneNumber);
-		cancelTimeLabel.setText(LiveDatePicker.dateToDetaildString(vo.cancelTime));
-		schTimeLabel.setText(LiveDatePicker.dateToCoarseString(vo.schFrom) + " - " + LiveDatePicker.dateToCoarseString(vo.schTo));
-		generatedTimeLabel.setText(LiveDatePicker.dateToDetaildString(vo.generatedDate));
+		cancelTimeLabel.setText(DateUtil.dateToDetaildString(vo.cancelTime));
+		schTimeLabel.setText(DateUtil.dateToCoarseString(vo.schFrom) + " - " + DateUtil.dateToCoarseString(vo.schTo));
+		generatedTimeLabel.setText(DateUtil.dateToDetaildString(vo.generatedDate));
 		priceLabel.setText(String.valueOf(vo.totalPrice));
 		
 		SwitchSceneUtil.showNewSceneAnimation(root);

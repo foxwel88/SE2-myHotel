@@ -5,14 +5,13 @@ import java.net.URL;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
 import org.client.launcher.Resources;
+import org.client.presentation.util.DateUtil;
 import org.client.presentation.util.ResultInfoHelper;
 import org.client.vo.AreaVO;
 import org.client.vo.CityVO;
@@ -167,18 +166,10 @@ public class WebMarketerModifyPromotion {
 		}
 		if (!startTimePicker.isDisable()) {
 			//startTime, at the start of the day
-			LocalDate startDate = startTimePicker.getValue();
-			
-			ZonedDateTime startZonedTime = startDate.atStartOfDay(ZoneId.systemDefault());
-			Instant startInstant = Instant.from(startZonedTime);
-			vo.startTime = Date.from(startInstant);
+			vo.startTime = DateUtil.toDate(startTimePicker.getValue());
 			
 			//endTime, at the start of the day
-			LocalDate endDate = endTimePicker.getValue();
-			
-			ZonedDateTime endZonedTime = endDate.atStartOfDay(ZoneId.systemDefault());
-			Instant endInstant = Instant.from(endZonedTime);
-			vo.endTime = Date.from(endInstant);
+			vo.endTime = DateUtil.toDate(endTimePicker.getValue());
 		}
 		if (!levelBox.isDisable()) {
 			vo.level = levelBox.getValue();
@@ -380,10 +371,6 @@ public class WebMarketerModifyPromotion {
 		}
 		
 		//has a name
-		if (nameLabel.getText() == null || nameLabel.getText().equals("")) {
-			return false;
-		}
-
-		return true;
+		return !(nameLabel.getText() == null || nameLabel.getText().equals(""));
 	}
 }

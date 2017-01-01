@@ -302,10 +302,7 @@ public class HotelManagerGuide {
 		for (int i = 0; i < roomNum.size(); i++) {
 			totalNum += roomNum.get(i);
 		}
-		if (totalNum == 0 && hotelVO.checkInInfos.isEmpty()) {
-			return true;
-		}
-		return false;
+		return totalNum == 0 && hotelVO.checkInInfos.isEmpty();
 	}
 	
 	@FXML

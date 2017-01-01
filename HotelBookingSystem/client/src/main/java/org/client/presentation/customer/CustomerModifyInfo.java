@@ -5,7 +5,7 @@ import java.util.Date;
 
 import org.client.launcher.Resources;
 import org.client.presentation.util.CheckStyle;
-import org.client.presentation.util.LiveDatePicker;
+import org.client.presentation.util.DateUtil;
 import org.client.vo.UserVO;
 import org.common.utility.ResultMessage;
 import org.common.utility.UserType;
@@ -68,8 +68,8 @@ public class CustomerModifyInfo {
 		name.setText(vo.name);
 		phoneNumber.setText(vo.phoneNumber);
 		if (vo.type.equals(UserType.PERSONALCUSTOMER.getString())) {
-			LiveDatePicker.initDatePicker(null, birthday);
-			String[] dateStringArray = LiveDatePicker.dateToCoarseString(vo.birthday).split("/");
+			DateUtil.initDatePicker(null, birthday);
+			String[] dateStringArray = DateUtil.dateToCoarseString(vo.birthday).split("/");
 			birthday.setValue(LocalDate.of(Integer.parseInt(dateStringArray[0]), Integer.parseInt(dateStringArray[1]), Integer.parseInt(dateStringArray[2])));
 			company.setDisable(true);
 			companyLabel.setDisable(true);
@@ -163,7 +163,7 @@ public class CustomerModifyInfo {
 		vo.name = name.getText();
 		vo.phoneNumber = phoneNumber.getText();
 		if (UserType.getType(vo.type) == UserType.PERSONALCUSTOMER) {
-			Date newBirthday = LiveDatePicker.toDate(birthday.getValue());			
+			Date newBirthday = DateUtil.toDate(birthday.getValue());			
 			vo.birthday = newBirthday;
 		} else {
 			vo.companyName = company.getText();
@@ -183,23 +183,15 @@ public class CustomerModifyInfo {
 	
 	private boolean checkCompanyName() {
 		if (vo.type.equals(UserType.PERSONALCUSTOMER)) {
-			if (companyLabel.getText().isEmpty()) {
-				return true;
-			} else {
-				return false;
-			}
+			return companyLabel.getText().isEmpty();
 		} else {
-			return CheckStyle.checkCompanyname(companyLabel.getText());
+			return CheckStyle.checkCompanyName(companyLabel.getText());
 		}
 	}
 	
 	private boolean checkName() {
 		if (vo.type.equals(UserType.COMPANYCUSTOMER)) {
-			if (name.getText().isEmpty()) {
-				return true;
-			} else {
-				return false;
-			}
+			return name.getText().isEmpty();
 		} else {
 			return CheckStyle.checkName(name.getText());
 		}

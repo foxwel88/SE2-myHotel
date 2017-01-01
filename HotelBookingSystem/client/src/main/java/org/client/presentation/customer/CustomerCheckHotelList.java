@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import org.client.launcher.Resources;
-import org.client.presentation.util.LiveDatePicker;
+import org.client.presentation.util.DateUtil;
 import org.client.vo.AreaVO;
 import org.client.vo.CityVO;
 import org.client.vo.HotelVO;
@@ -240,8 +240,8 @@ public class CustomerCheckHotelList {
 			if (previousFilter.roomNum != 1) {
 				roomNum.setText(String.valueOf(previousFilter.roomNum));
 			}
-			fromDate.setValue(LiveDatePicker.toLocalDate(previousFilter.schFrom));
-			toDate.setValue(LiveDatePicker.toLocalDate(previousFilter.schTo));
+			fromDate.setValue(DateUtil.toLocalDate(previousFilter.schFrom));
+			toDate.setValue(DateUtil.toLocalDate(previousFilter.schTo));
 			SwitchSceneUtil.isBack = false;
 		}
 		showHotelList();
@@ -569,11 +569,11 @@ public class CustomerCheckHotelList {
 	private void setStartDate() {
 		DatePicker banBeforeTodayPicker = new DatePicker();
 		banBeforeTodayPicker.setValue(LocalDate.now().minusDays(1));
-		LiveDatePicker.initDatePicker(banBeforeTodayPicker, fromDate);
+		DateUtil.initDatePicker(banBeforeTodayPicker, fromDate);
 	}
 	
 	private void setEndDate() {
-		LiveDatePicker.initDatePicker(fromDate, toDate);
+		DateUtil.initDatePicker(fromDate, toDate);
 	}
 	
 	private void setRoomType() {
@@ -621,8 +621,8 @@ public class CustomerCheckHotelList {
 
 		filter.hotelName = hotelName.getText();
 
-		filter.setSchFromDate(LiveDatePicker.toDate(fromDate.getValue()));
-		filter.setSchToDate(LiveDatePicker.toDate(toDate.getValue()));
+		filter.setSchFromDate(DateUtil.toDate(fromDate.getValue()));
+		filter.setSchToDate(DateUtil.toDate(toDate.getValue()));
 		return filter;
 	}
 	
