@@ -64,7 +64,7 @@ public class CustomerMain {
 	DatePicker endDate;
 
 	// 该字段表示同时显示的最大促销策略的数量
-	private static final int MAX_PROMOTION_ONE_OAGE = 4;
+	private static final int MAX_PROMOTION_ONE_PAGE = 4;
 	
 	private ArrayList<Label> promotionLabelList;
 	
@@ -167,7 +167,7 @@ public class CustomerMain {
 	}
 	
 	private void setContent() {
-		for (int i = 0; i < MAX_PROMOTION_ONE_OAGE; i++) {
+		for (int i = 0; i < MAX_PROMOTION_ONE_PAGE; i++) {
 			if (promotion(i) != null) {
 				promotionLabelList.get(i).setVisible(true);
 				promotionLabelList.get(i).setText(promotion(i));
@@ -211,11 +211,11 @@ public class CustomerMain {
 	}
 	
 	private int calMaxPage(ArrayList<PromotionVO> voList) {
-		return (voList.size() / MAX_PROMOTION_ONE_OAGE) + 1;
+		return (voList.size() / MAX_PROMOTION_ONE_PAGE) + 1;
 	}
 	
 	private String promotion(int i) {
-		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_PROMOTION_ONE_OAGE + i;	// 计算当前页面第i个信息字段在arraylist中的实际位置；
+		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_PROMOTION_ONE_PAGE + i;	// 计算当前页面第i个信息字段在arraylist中的实际位置；
 		try {
 			StringBuilder sb = new StringBuilder();
 			PromotionVO vo = promotionVOList.get(seq);

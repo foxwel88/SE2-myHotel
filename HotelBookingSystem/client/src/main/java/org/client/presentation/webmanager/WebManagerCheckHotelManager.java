@@ -92,11 +92,11 @@ public class WebManagerCheckHotelManager {
 	void handleModifyAction(MouseEvent event) throws IOException {
 		if (!userNameLabel.getText().equals("")) {
 			FXMLLoader fxmlLoader = new FXMLLoader();
-			Parent mypane = fxmlLoader.load(getClass().getResource("/网站管理人员/修改酒店工作人员界面.fxml").openStream());
+			Parent myPane = fxmlLoader.load(getClass().getResource("/网站管理人员/修改酒店工作人员界面.fxml").openStream());
 			WebManagerModifyHotelManager webController = (WebManagerModifyHotelManager) fxmlLoader.getController();
 			webController.changeContent(nowvo);
 			WebManagerController.getInstance().nowvo = nowvo;
-			ChangePane.getInstance().turn(mypane);
+			ChangePane.getInstance().turn(myPane);
 		}
 	}
 

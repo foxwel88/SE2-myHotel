@@ -62,11 +62,11 @@ public class WebManagerCheckWebMarketer {
 	@FXML
 	void handleAddAction(MouseEvent event) throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader();
-		Parent mypane = fxmlLoader.load(getClass().getResource("/网站管理人员/新增网站营销人员界面.fxml").openStream());
+		Parent myPane = fxmlLoader.load(getClass().getResource("/网站管理人员/新增网站营销人员界面.fxml").openStream());
 		WebManagerAddWebMarketer webController = (WebManagerAddWebMarketer) fxmlLoader.getController();
 		webController.changeContent(nowvo);
 		WebManagerController.getInstance().nowvo = nowvo;
-		ChangePane.getInstance().turn(mypane);
+		ChangePane.getInstance().turn(myPane);
 	}
 
 	void clear() {
@@ -99,11 +99,11 @@ public class WebManagerCheckWebMarketer {
 	void handleModifyAction(MouseEvent event) throws IOException {
 		if (!userNameLabel.getText().equals("")) {
 			FXMLLoader fxmlLoader = new FXMLLoader();
-			Parent mypane = fxmlLoader.load(getClass().getResource("/网站管理人员/修改网站营销人员界面.fxml").openStream());
+			Parent myPane = fxmlLoader.load(getClass().getResource("/网站管理人员/修改网站营销人员界面.fxml").openStream());
 			WebManagerModifyWebMarketer webController = (WebManagerModifyWebMarketer) fxmlLoader.getController();
 			webController.changeContent(nowvo);
 			WebManagerController.getInstance().nowvo = nowvo;
-			ChangePane.getInstance().turn(mypane);
+			ChangePane.getInstance().turn(myPane);
 		}
 	}
 	/*

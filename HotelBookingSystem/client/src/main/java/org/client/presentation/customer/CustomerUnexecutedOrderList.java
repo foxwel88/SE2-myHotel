@@ -67,7 +67,7 @@ public class CustomerUnexecutedOrderList {
 	
 	private ArrayList<HBox> boxList;
 	
-	private ArrayList<OrderVO> unExcutedOrderList;
+	private ArrayList<OrderVO> unExecutedOrderList;
 	
 	private Resources resources;
 	
@@ -85,12 +85,12 @@ public class CustomerUnexecutedOrderList {
 		boxList.add(order4);
 		boxList.add(order5);
 		boxList.add(order6);
-		showUnExcutedOrderList();
+		showUnExecutedOrderList();
 		
 		if (SwitchSceneUtil.isBack) {
 			int goalPage = checkGoalPage(SwitchSceneUtil.previousOrderSceneInfo.currentPage);
 			currentPage.setText(String.valueOf(goalPage));
-			showUnExcutedOrderList();
+			showUnExecutedOrderList();
 		}
 		
 		SwitchSceneUtil.showGuideAnimation(root, 200);
@@ -98,9 +98,9 @@ public class CustomerUnexecutedOrderList {
 	
 	@FXML
 	void turnToNextPage() {
-		if (Integer.parseInt(currentPage.getText()) < calMaxPage(unExcutedOrderList)) {
+		if (Integer.parseInt(currentPage.getText()) < calMaxPage(unExecutedOrderList)) {
 			currentPage.setText(String.valueOf(Integer.parseInt(currentPage.getText()) + 1));
-			showUnExcutedOrderList();
+			showUnExecutedOrderList();
 		}
 	}
 	
@@ -108,7 +108,7 @@ public class CustomerUnexecutedOrderList {
 	void turnToPreviousPage() {
 		if (Integer.parseInt(currentPage.getText()) > 1) {
 			currentPage.setText(String.valueOf(Integer.parseInt(currentPage.getText()) - 1));
-			showUnExcutedOrderList();
+			showUnExecutedOrderList();
 		}
 	}
 	
@@ -123,7 +123,7 @@ public class CustomerUnexecutedOrderList {
 			}
 			goalPage = checkGoalPage(goalPage);
 			currentPage.setText(String.valueOf(goalPage));
-			showUnExcutedOrderList();
+			showUnExecutedOrderList();
 		}
 	}
 	
@@ -137,7 +137,7 @@ public class CustomerUnexecutedOrderList {
 		try {
 			for (int i = 0; i < MAX_ORDER_ONE_PAGE; i++) {
 				if (((event.getSource())).equals(boxList.get(i))) {
-					orderID = unExcutedOrderList.get((page - 1) * MAX_ORDER_ONE_PAGE + i).orderID;
+					orderID = unExecutedOrderList.get((page - 1) * MAX_ORDER_ONE_PAGE + i).orderID;
 					KeyFrame animationFrame = new KeyFrame(Duration.seconds(0), actionEvent -> {
 						SwitchSceneUtil.showOldSceneAnimation(root);
 					});
@@ -180,9 +180,9 @@ public class CustomerUnexecutedOrderList {
 		}
 	}
 	
-	private void showUnExcutedOrderList() {
-		unExcutedOrderList = new ArrayList<>(SwitchSceneUtil.getUnExecutedOrderList());
-		Collections.sort(unExcutedOrderList, new GenerateTimeComparator());
+	private void showUnExecutedOrderList() {
+		unExecutedOrderList = new ArrayList<>(SwitchSceneUtil.getUnExecutedOrderList());
+		Collections.sort(unExecutedOrderList, new GenerateTimeComparator());
 		setContent();
 	}
 	
@@ -217,8 +217,8 @@ public class CustomerUnexecutedOrderList {
 		if (goalPage < 1) {
 			goalPage = 1;
 		}
-		if (goalPage > calMaxPage(unExcutedOrderList)) {
-			goalPage = calMaxPage(unExcutedOrderList);
+		if (goalPage > calMaxPage(unExecutedOrderList)) {
+			goalPage = calMaxPage(unExecutedOrderList);
 		}
 		toPage.setText(String.valueOf(goalPage));
 		return goalPage;
@@ -262,7 +262,7 @@ public class CustomerUnexecutedOrderList {
 	private String date(int i) {
 		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_ORDER_ONE_PAGE + i;	// 计算当前页面第i个信息字段在arraylist中的实际位置；
 		try {
-			return DateUtil.dateToCoarseString(unExcutedOrderList.get(seq).generatedDate);
+			return DateUtil.dateToCoarseString(unExecutedOrderList.get(seq).generatedDate);
 		} catch (IndexOutOfBoundsException nullex) {
 			return null;
 		}
@@ -271,7 +271,7 @@ public class CustomerUnexecutedOrderList {
 	private String hotelName(int i) {
 		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_ORDER_ONE_PAGE + i;
 		try {
-			return unExcutedOrderList.get(seq).hotelName;
+			return unExecutedOrderList.get(seq).hotelName;
 		} catch (IndexOutOfBoundsException nullex) {
 			return null;
 		}
@@ -280,7 +280,7 @@ public class CustomerUnexecutedOrderList {
 	private String roomType(int i) {
 		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_ORDER_ONE_PAGE + i;
 		try {
-			return unExcutedOrderList.get(seq).roomType;
+			return unExecutedOrderList.get(seq).roomType;
 		} catch (IndexOutOfBoundsException nullex) {
 			return null;
 		}
@@ -289,7 +289,7 @@ public class CustomerUnexecutedOrderList {
 	private int roomNum(int i) {
 		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_ORDER_ONE_PAGE + i;
 		try {
-			return unExcutedOrderList.get(seq).roomNum;
+			return unExecutedOrderList.get(seq).roomNum;
 		} catch (IndexOutOfBoundsException nullex) {
 			return -1;
 		}
@@ -298,7 +298,7 @@ public class CustomerUnexecutedOrderList {
 	private String latestDate(int i) {
 		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_ORDER_ONE_PAGE + i;
 		try {
-			return DateUtil.dateToCoarseString(unExcutedOrderList.get(seq).latestTime);
+			return DateUtil.dateToCoarseString(unExecutedOrderList.get(seq).latestTime);
 		} catch (IndexOutOfBoundsException nullex) {
 			return null;
 		}

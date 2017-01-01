@@ -40,7 +40,7 @@ public class WebMarketerAbnormalOrder {
 	private Text orderIdLabel;
 
 	@FXML
-	private Text hotelAdressLabel;
+	private Text hotelAddressLabel;
 
 	@FXML
 	private Text typeLabel;
@@ -105,7 +105,7 @@ public class WebMarketerAbnormalOrder {
 		assert orderDetail != null : "fx:id=\"orderDetail\" was not injected: check your FXML file '异常订单详细信息界面.fxml'.";
 		assert cancelButton != null : "fx:id=\"cancelButton\" was not injected: check your FXML file '异常订单详细信息界面.fxml'.";
 		assert orderIdLabel != null : "fx:id=\"orderIdLabel\" was not injected: check your FXML file '异常订单详细信息界面.fxml'.";
-		assert hotelAdressLabel != null : "fx:id=\"hotelAdressLabel\" was not injected: check your FXML file '异常订单详细信息界面.fxml'.";
+		assert hotelAddressLabel != null : "fx:id=\"hotelAddressLabel\" was not injected: check your FXML file '异常订单详细信息界面.fxml'.";
 		assert typeLabel != null : "fx:id=\"typeLabel\" was not injected: check your FXML file '异常订单详细信息界面.fxml'.";
 		assert numLabel != null : "fx:id=\"numLabel\" was not injected: check your FXML file '异常订单详细信息界面.fxml'.";
 		assert arriveTimeLabel != null : "fx:id=\"arriveTimeLabel\" was not injected: check your FXML file '异常订单详细信息界面.fxml'.";
@@ -127,7 +127,7 @@ public class WebMarketerAbnormalOrder {
 		
 		// show info
 		orderIdLabel.setText(vo.orderID);
-		hotelAdressLabel.setText(vo.hotelAddress);
+		hotelAddressLabel.setText(vo.hotelAddress);
 		typeLabel.setText(vo.roomType);
 		numLabel.setText(String.valueOf(vo.roomNum));
 		arriveTimeLabel.setText(dateFormat.format(vo.schFrom));

@@ -68,9 +68,9 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 			double credit = resultSet.getDouble("Credit");
 			Date birthday = resultSet.getDate("Birthday");
 			String companyName = resultSet.getString("companyName");
-			String hotelAdress = resultSet.getString("HotelAddress");
+			String hotelAddress = resultSet.getString("HotelAddress");
 			String hotelID = resultSet.getString("HotelID");
-			po = new UserPO(type, userName, name, id, passWord, phoneNumber, credit, birthday, companyName, hotelID, hotelAdress);
+			po = new UserPO(type, userName, name, id, passWord, phoneNumber, credit, birthday, companyName, hotelID, hotelAddress);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

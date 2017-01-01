@@ -48,10 +48,10 @@ public class WebManagerModifyHotelManager {
 	 */
 	void returnPane(UserVO vo) throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader();
-		Parent mypane = fxmlLoader.load(getClass().getResource("/网站管理人员/浏览酒店工作人员信息界面.fxml").openStream());
+		Parent myPane = fxmlLoader.load(getClass().getResource("/网站管理人员/浏览酒店工作人员信息界面.fxml").openStream());
 		WebManagerCheckHotelManager webController = (WebManagerCheckHotelManager) fxmlLoader.getController();
 		webController.changeContent(vo);
-		ChangePane.getInstance().turn(mypane);
+		ChangePane.getInstance().turn(myPane);
 	}
 
 	/*
@@ -101,10 +101,10 @@ public class WebManagerModifyHotelManager {
 			if (message == ResultMessage.SUCCESS) {
 				resultLabel.setText("修改成功");
 				FXMLLoader fxmlLoader = new FXMLLoader();
-				Parent mypane = fxmlLoader.load(getClass().getResource("/网站管理人员/浏览酒店工作人员信息界面.fxml").openStream());
+				Parent myPane = fxmlLoader.load(getClass().getResource("/网站管理人员/浏览酒店工作人员信息界面.fxml").openStream());
 				WebManagerCheckHotelManager webController = (WebManagerCheckHotelManager) fxmlLoader.getController();
 				webController.changeContent(newvo);
-				ChangePane.getInstance().turn(mypane);
+				ChangePane.getInstance().turn(myPane);
 			}
 		}
 	}

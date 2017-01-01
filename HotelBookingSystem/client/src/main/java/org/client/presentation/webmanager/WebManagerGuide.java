@@ -239,8 +239,8 @@ public class WebManagerGuide {
 
 		ChangePane.getInstance().setMainPane(mainPane);
 		try {
-			AnchorPane mypane = FXMLLoader.load(getClass().getResource("/网站管理人员/网站管理人员主界面.fxml"));
-			mainPane.add(mypane, 1, 0);
+			AnchorPane myPane = FXMLLoader.load(getClass().getResource("/网站管理人员/网站管理人员主界面.fxml"));
+			mainPane.add(myPane, 1, 0);
 			CurrentItem.setInstance(toHomeLabel, toHomePane, GuideLabelType.HOME);
 		} catch (IOException e) {
 			e.printStackTrace();

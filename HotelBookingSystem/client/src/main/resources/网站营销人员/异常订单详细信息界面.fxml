@@ -144,7 +144,7 @@
                </children></AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0,20,81,0.45);" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <Text fx:id="hotelAdressLabel" fill="WHITE" layoutX="31.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="xx路xx街" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="28.0" AnchorPane.topAnchor="11.0">
+                  <Text fx:id="hotelAddressLabel" fill="WHITE" layoutX="31.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="xx路xx街" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="28.0" AnchorPane.topAnchor="11.0">
                      <font>
                         <Font name="Microsoft YaHei" size="18.0" />
                      </font>

@@ -160,7 +160,7 @@ public class CustomerCheckHotelList {
 	private ArrayList<Pane> historyMarkList;
 	
 	// 该字段表示同时显示的最大酒店数量
-	private static final int MAX_HOTEL_ONE_OAGE = 5;
+	private static final int MAX_HOTEL_ONE_PAGE = 5;
 
 	private static final double IMAGE_WIDTH = 100;
 	
@@ -297,10 +297,10 @@ public class CustomerCheckHotelList {
 		String hotelID;
 		int page = Integer.parseInt(currentPage.getText());
 		try {
-			for (int i = 0; i < MAX_HOTEL_ONE_OAGE; i++) {
+			for (int i = 0; i < MAX_HOTEL_ONE_PAGE; i++) {
 				HBox hbox = (HBox)(event.getSource());
 				if (hbox.equals(hotelBoxList.get(i)) && isTargetInOrder != 1) {
-					hotelID = hotelList.get((page - 1) * MAX_HOTEL_ONE_OAGE + i).id;
+					hotelID = hotelList.get((page - 1) * MAX_HOTEL_ONE_PAGE + i).id;
 					KeyFrame animationFrame = new KeyFrame(Duration.seconds(0), actionEvent -> {
 						SwitchSceneUtil.showOldSceneAnimation(root);
 					});
@@ -328,12 +328,12 @@ public class CustomerCheckHotelList {
 	void turnToGenerateOrderScene(MouseEvent event) {
 		String hotelID;
 		int page = Integer.parseInt(currentPage.getText());
-		for (int i = 0; i < MAX_HOTEL_ONE_OAGE; i++) {
+		for (int i = 0; i < MAX_HOTEL_ONE_PAGE; i++) {
 			Label clickedLabel = (Label)(event.getSource());
 			if (clickedLabel.equals(getMakeOrderLabel(i))) {
 				if (clickedLabel.getText() != null) {
 					isTargetInOrder = 1;
-					hotelID = hotelList.get((page - 1) * MAX_HOTEL_ONE_OAGE + i).id;
+					hotelID = hotelList.get((page - 1) * MAX_HOTEL_ONE_PAGE + i).id;
 					SwitchSceneUtil.previousHotelSceneInfo = new PreviousHotelSceneInfo(getCurrentFilter(), everOrdered.isSelected(), Integer.parseInt(currentPage.getText()));
 					SwitchSceneUtil.isBackToDetail = false;
 					SwitchSceneUtil.currentScene = CustomerBackableScene.GENERATE_ORDER_SCENE;
@@ -476,7 +476,7 @@ public class CustomerCheckHotelList {
 	}
 	
 	private void refreshHotelList() {
-		for (int i = 0; i < MAX_HOTEL_ONE_OAGE; i++) {
+		for (int i = 0; i < MAX_HOTEL_ONE_PAGE; i++) {
 			if (getName(i) != null) {
 				getImageLabel(i).setGraphic(getImageView(i));
 				getNameLabel(i).setText(getName(i));
@@ -653,12 +653,12 @@ public class CustomerCheckHotelList {
 	 * 此方法用于计算订单列表能够展开的最大页数
 	 */
 	private int calMaxPage(ArrayList<HotelVO> voList) {
-		return (voList.size() / MAX_HOTEL_ONE_OAGE) + 1;
+		return (voList.size() / MAX_HOTEL_ONE_PAGE) + 1;
 	}
 	
 	/**
 	 * 下面几个方法分别用于获得单个酒店的不同信息字段的Label的引用
-	 * @param i 取值为0到MAX_HOTEL_ONE_OAGE - 1 表示页面上的第i个酒店
+	 * @param i 取值为0到MAX_HOTEL_ONE_PAGE - 1 表示页面上的第i个酒店
 	 */
 	private Label getImageLabel(int i) {
 		return (Label)hotelBoxList.get(i).getChildren().get(0);
@@ -710,10 +710,10 @@ public class CustomerCheckHotelList {
 	
 	/**
 	 * 下面5种方法分别用来获得某个酒店的酒店图片、名称、星级、评分、酒店地址、最低价格
-	 * @param i 范围是 0 到 MAX_HOTEL_ONE_OAGE - 1
+	 * @param i 范围是 0 到 MAX_HOTEL_ONE_PAGE - 1
 	 */
 	private ImageView getImageView(int i) {
-		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_HOTEL_ONE_OAGE + i;	// 计算当前页面第i个信息字段在arraylist中的实际位置；
+		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_HOTEL_ONE_PAGE + i;	// 计算当前页面第i个信息字段在arraylist中的实际位置；
 		try {
 			return CustomerImageGrabber.getHotelImageView((hotelList.get(seq).id), IMAGE_WIDTH, IMAGE_HEIGHT);
 		} catch (IndexOutOfBoundsException indexOutOfBoundsException) {
@@ -724,7 +724,7 @@ public class CustomerCheckHotelList {
 	}
 	
 	private String getName(int i) {
-		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_HOTEL_ONE_OAGE + i;
+		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_HOTEL_ONE_PAGE + i;
 		try {
 			return hotelList.get(seq).hotelName;
 		} catch (IndexOutOfBoundsException indexOutOfBoundsException) {
@@ -733,7 +733,7 @@ public class CustomerCheckHotelList {
 	}
 	
 	private ImageView getStar(int i) {
-		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_HOTEL_ONE_OAGE + i;
+		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_HOTEL_ONE_PAGE + i;
 		try {
 			int starNum = hotelList.get(seq).star;
 			switch (starNum) {
@@ -755,7 +755,7 @@ public class CustomerCheckHotelList {
 	}
 	
 	private double getScore(int i) {
-		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_HOTEL_ONE_OAGE + i;
+		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_HOTEL_ONE_PAGE + i;
 		try {
 			DecimalFormat formator = new DecimalFormat("0.00");
 			return Double.parseDouble(formator.format(hotelList.get(seq).rank));
@@ -765,7 +765,7 @@ public class CustomerCheckHotelList {
 	}
 	
 	private String getAddress(int i) {
-		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_HOTEL_ONE_OAGE + i;
+		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_HOTEL_ONE_PAGE + i;
 		try {
 			return hotelList.get(seq).address;
 		} catch (IndexOutOfBoundsException indexOutOfBoundsException) {
@@ -774,7 +774,7 @@ public class CustomerCheckHotelList {
 	}
 	
 	private double getPrice(int i) {
-		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_HOTEL_ONE_OAGE + i;
+		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_HOTEL_ONE_PAGE + i;
 		try {
 			ArrayList<Double> priceList = new ArrayList<>(hotelList.get(seq).roomPrice);
 			double minPrice = priceList.get(0);
@@ -790,7 +790,7 @@ public class CustomerCheckHotelList {
 	}
 	
 	private boolean getHistoryMark(int i) {
-		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_HOTEL_ONE_OAGE + i;
+		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_HOTEL_ONE_PAGE + i;
 		ArrayList<HotelVO> historyHotels = SwitchSceneUtil.getFilteredHotels(getCurrentFilter(), true);
 		HotelVO tempHotel = hotelList.get(seq);
 		for (int j = 0; j < historyHotels.size(); j++) {

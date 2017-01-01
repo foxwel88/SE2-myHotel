@@ -42,7 +42,7 @@ public class Customer_Guide {
 	AnchorPane historyTab;
 	
 	@FXML
-	AnchorPane unexcutedTab;
+	AnchorPane unexecutedTab;
 	
 	@FXML
 	Label welcomeLabel;
@@ -122,7 +122,7 @@ public class Customer_Guide {
 	}
 	
 	@FXML
-	void turnToCusController_UnexcutedOrderList() {
+	void turnToCusController_UnexecutedOrderList() {
 		initGuideTab();
 		changeGuideTab(4);
 		SwitchSceneUtil.turnToAnotherScene(gridpane, resources.customerCheckUnexecutedOrderList);
@@ -165,7 +165,7 @@ public class Customer_Guide {
 						break;
 					case UNEXECUTED_ORDER_SCENE:
 						SwitchSceneUtil.isBack = true;
-						turnToCusController_UnexcutedOrderList();
+						turnToCusController_UnexecutedOrderList();
 						SwitchSceneUtil.isBack = false;
 						break;
 					case MAKE_COMMENT_SCENE:

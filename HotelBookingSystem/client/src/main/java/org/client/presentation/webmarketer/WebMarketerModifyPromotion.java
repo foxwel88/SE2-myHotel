@@ -211,7 +211,7 @@ public class WebMarketerModifyPromotion {
         assert confirmButton != null : "fx:id=\"confirmButton\" was not injected: check your FXML file '修改促销策略界面.fxml'.";
         assert resultLabel != null : "fx:id=\"resultLabel\" was not injected: check your FXML file '修改促销策略界面.fxml'.";
         assert deleteButton != null : "fx:id=\"deleteButton\" was not injected: check your FXML file '修改促销策略界面.fxml'.";
-        assert delResultLabel != null : "fx:id=\"delRedultLabel\" was not injected: check your FXML file '修改促销策略界面.fxml'.";
+        assert delResultLabel != null : "fx:id=\"delResultLabel\" was not injected: check your FXML file '修改促销策略界面.fxml'.";
         
         // 初始化controller
 		controller = WebMarketerController.getInstance();
