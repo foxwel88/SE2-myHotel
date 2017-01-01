@@ -28,7 +28,7 @@ import javafx.util.Duration;
  * @author fraliphsoft
  * @version fraliphsoft 11/30
  */
-public class CustomerUnexcutedOrderList {
+public class CustomerUnexecutedOrderList {
 	@FXML
 	AnchorPane root;
 	

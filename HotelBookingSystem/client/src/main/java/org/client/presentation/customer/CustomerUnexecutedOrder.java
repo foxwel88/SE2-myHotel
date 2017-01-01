@@ -21,7 +21,7 @@ import javafx.scene.layout.GridPane;
  * @author fraliphsoft
  * @version Foxwel 12/13
  */
-public class CustomerUnexcutedOrder {
+public class CustomerUnexecutedOrder {
 	@FXML
 	private AnchorPane root;
 
