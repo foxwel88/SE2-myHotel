@@ -103,9 +103,6 @@ public class CustomerGenerateOrder {
 	Button cancelButton;
 	
 	@FXML
-	Label promotionLabel;
-	
-	@FXML
 	Pane promotionPane;
 	
 	private HotelVO hotel;
@@ -229,13 +226,14 @@ public class CustomerGenerateOrder {
 		} else {
 			hotelPromotionLabel.setText("您当前不享用任何酒店促销活动");
 		}
-		promotionLabel.setVisible(true);
+		totalPrice.setStyle("-fx-background-color:rgba(255,255,255,0.4)");
+		promotionPane.setLayoutX(totalPrice.getLayoutX() + totalPrice.getWidth());
 		promotionPane.setVisible(true);
 	}
 	
 	@FXML
 	void hidePromotion() {
-		promotionLabel.setVisible(false);
+		totalPrice.setStyle(null);
 		promotionPane.setVisible(false);
 	}
 	

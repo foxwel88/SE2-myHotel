@@ -58,10 +58,15 @@ public class PromotionUtil {
 		ArrayList<PromotionVO> bestPromotion = new ArrayList<>();
 		try {
 			bestPromotion.add(hotelPromotion.get(0).toVO());
+		} catch (IndexOutOfBoundsException indexOutOfBoundsException) {
+			// nothing to  do
+			// 出现此异常说明没有可享用的酒店促销策略
+		}
+		try {
 			bestPromotion.add(webPromotion.get(0).toVO());
 		} catch (IndexOutOfBoundsException indexOutOfBoundsException) {
 			// nothing to  do
-			// 出现此异常说明没有可享用的网站或酒店促销策略
+			// 出现此异常说明没有可享用的网站促销策略
 		}
 		return bestPromotion;
 	}
