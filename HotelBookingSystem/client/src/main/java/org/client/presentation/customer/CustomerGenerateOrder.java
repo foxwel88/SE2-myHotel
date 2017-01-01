@@ -200,10 +200,14 @@ public class CustomerGenerateOrder {
 			tempRoomNum = 0;
 		}
 		ArrayList<PromotionVO> bestPromotions = new ArrayList<>(PromotionController.getInstance().getPromotion(hotel.id, user.ID, tempRoomNum));
+		System.out.println(bestPromotions.size());
 		if (bestPromotions.size() == 2) {
 			if (bestPromotions.get(0).provider.equals("web")) {
 				webPromotionVO = bestPromotions.get(0);
 				hotelPromotionVO = bestPromotions.get(1);
+			} else {
+				hotelPromotionVO = bestPromotions.get(0);
+				webPromotionVO = bestPromotions.get(1);
 			}
 		} else if (bestPromotions.size() == 1) {
 			if (bestPromotions.get(0).provider.equals("web")) {
