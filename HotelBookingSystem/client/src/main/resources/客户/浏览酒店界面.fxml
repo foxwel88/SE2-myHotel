@@ -73,19 +73,19 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="starSortor" layoutY="61.0" mnemonicParsing="false" onMouseClicked="#showByStar" onMouseEntered="#activeStarSortorButton" onMouseExited="#deactiveStarSortorButton" prefHeight="20.0" prefWidth="60.0" style="-fx-background-color: rgba(255,255,255,0.4);" text="星级↓">
+            <Button fx:id="starSort" layoutY="61.0" mnemonicParsing="false" onMouseClicked="#showByStar" onMouseEntered="#activeStarSortButton" onMouseExited="#deactiveStarSortButton" prefHeight="20.0" prefWidth="60.0" style="-fx-background-color: rgba(255,255,255,0.4);" text="星级↓">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
             <ChoiceBox fx:id="upperStar" layoutX="139.0" layoutY="61.0" prefHeight="23.0" prefWidth="55.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.leftAnchor="139.0" AnchorPane.rightAnchor="681.0" />
             <ChoiceBox fx:id="lowerStar" layoutX="66.0" layoutY="61.0" prefHeight="3.0" prefWidth="55.0" style="-fx-background-color: rgba(255,255,255,0.4);" AnchorPane.leftAnchor="66.0" AnchorPane.rightAnchor="756.0" AnchorPane.topAnchor="61.0" />
-            <Button fx:id="rankSortor" layoutX="237.0" layoutY="61.0" mnemonicParsing="false" onMouseClicked="#showByRank" onMouseEntered="#activeRankSortorButton" onMouseExited="#deactiveRankSortorButton" prefHeight="20.0" prefWidth="60.0" style="-fx-background-color: rgba(255,255,255,0.4);" text="评分↓">
+            <Button fx:id="rankSort" layoutX="237.0" layoutY="61.0" mnemonicParsing="false" onMouseClicked="#showByRank" onMouseEntered="#activeRankSortButton" onMouseExited="#deactiveRankSortButton" prefHeight="20.0" prefWidth="60.0" style="-fx-background-color: rgba(255,255,255,0.4);" text="评分↓">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="priceSortor" layoutX="470.0" layoutY="61.0" mnemonicParsing="false" onMouseClicked="#showByPrice" onMouseEntered="#activePriceSortorButton" onMouseExited="#deactivePriceSortorButton" prefHeight="20.0" prefWidth="60.0" style="-fx-background-color: rgba(255,255,255,0.4);" text="价格↑">
+            <Button fx:id="priceSort" layoutX="470.0" layoutY="61.0" mnemonicParsing="false" onMouseClicked="#showByPrice" onMouseEntered="#activePriceSortButton" onMouseExited="#deactivePriceSortButton" prefHeight="20.0" prefWidth="60.0" style="-fx-background-color: rgba(255,255,255,0.4);" text="价格↑">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
