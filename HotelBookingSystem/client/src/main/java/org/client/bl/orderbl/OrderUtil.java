@@ -180,8 +180,14 @@ public class OrderUtil {
 		if (excuteMessage != ResultMessage.SUCCESS) {
 			return excuteMessage;
 		}
-		
-		myorder.addCreditRecord(-myorder.totalPrice, CreditOperation.CANCELORDER.getString());
+		try {
+			long between = (myorder.latestTime.getTime() - timedao.getDate().getTime()) / 1000;
+			if (between <= 21600) {
+				myorder.addCreditRecord(-myorder.totalPrice, CreditOperation.CANCELORDER.getString());
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		return ResultMessage.SUCCESS;
 	}
 
