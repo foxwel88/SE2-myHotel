@@ -349,13 +349,6 @@ public class CustomerCheckHotelList {
 	}
 	
 	@FXML
-	void search_causedByKeyboard(KeyEvent keyEvent) {
-		if (keyEvent.getCode() == KeyCode.ENTER) {
-			search();
-		}
-	}
-	
-	@FXML
 	void showByStar() {
 		if (hotelList != null && hotelList.size() > 0) {
 			currentSortor = 1;

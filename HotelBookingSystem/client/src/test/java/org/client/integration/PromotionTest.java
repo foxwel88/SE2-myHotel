@@ -47,15 +47,10 @@ public class PromotionTest {
 	}
 	
 	@Test
-	public void testAdd1() {
+	public void testAdd() {
 		PromotionVO vo = new PromotionVO(null, "hotel", PromotionType.BIRTHDAYBONUS.getString(), new Date(100000), new Date(100000), "查大'酒店", "00008", 10, "南京", "湖南路", 2, "两折大促销");
-		assertEquals(ResultMessage.SUCCESS, controller.add(vo));
-	}
-	
-	@Test
-	public void testAdd2() {
-		PromotionVO vo = new PromotionVO(null, "hotel", PromotionType.BIRTHDAYBONUS.getString(), new Date(100000), new Date(100000), "查大'酒店", "98888", 10, "南京", "中关村", 2, "两折大促销");
-		assertEquals(ResultMessage.NOT_EXIST, controller.add(vo));
+		controller.add(vo);
+		assertEquals(ResultMessage.WRONG_VALUE, controller.add(vo));
 	}
 
 	public void testGetPromotion() {
