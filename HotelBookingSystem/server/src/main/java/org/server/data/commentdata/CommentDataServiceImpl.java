@@ -28,6 +28,7 @@ public class CommentDataServiceImpl extends UnicastRemoteObject implements Comme
 	/**
 	 * 如果出现SQLException，此方法可能返回null
 	 */
+	@Override
 	public List<CommentPO> find(String hotelID) throws RemoteException {
 		try {
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(
@@ -40,6 +41,7 @@ public class CommentDataServiceImpl extends UnicastRemoteObject implements Comme
 		return null;
 	}
 
+	@Override
 	public ResultMessage insert(CommentPO po) throws RemoteException {
 		try {
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(

@@ -17,9 +17,11 @@ import org.common.utility.TimeService;
 /**
  * 
  * bl层order模块的order类
- * 用于存放一个order 并在VO PO之间转化
+ * 用于存放一个order的信息
+ * 与一个orderDao绑定
+ * 支持VO PO之间转化，对该order对象执行新建、执行、退房、撤销、恢复、评价方法，都将与数据层同步
  * @author Foxwel
- * @version 2017/1/1 Foxwel
+ * @version 2017/1/1 Hirico
  * 
  */
 

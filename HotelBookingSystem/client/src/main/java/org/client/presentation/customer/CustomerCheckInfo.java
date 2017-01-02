@@ -49,15 +49,15 @@ public class CustomerCheckInfo {
 	
 	@FXML
 	void initialize() {
-		SwitchSceneUtil.canBack = false;
+		CustomerController.canBack = false;
 		resources = Resources.getInstance();
-		UserVO vo = SwitchSceneUtil.getUserVO();
+		UserVO vo = CustomerController.getUserVO();
 		account.setText(vo.userName);
 		name.setText(vo.name);
 		accountType.setText(vo.type);
 		phoneNumber.setText(vo.phoneNumber);
 		credit.setText(String.valueOf(vo.credit));
-		level.setText(String.valueOf(SwitchSceneUtil.promotionController.calLevel(vo.credit)));
+		level.setText(String.valueOf(CustomerController.calculateLevel(vo.credit)));
 		if (vo.type.equals(UserType.PERSONALCUSTOMER.getString())) {
 			birthday.setText(DateUtil.dateToCoarseString(vo.birthday));
 			birthcompanyLabel.setText("生日");
@@ -66,18 +66,18 @@ public class CustomerCheckInfo {
 			birthcompanyLabel.setText("企业名称");
 		}
 
-		SwitchSceneUtil.showGuideAnimation(root, -100);
+		CustomerController.showGuideAnimation(root, -100);
 	}
 	
 	@FXML
 	void turnToCustomerCheckCredit() {
-		SwitchSceneUtil.savePreviousScene(CustomerBackableScene.CREDITS_RECORD_SCENE);
-		SwitchSceneUtil.turnToAnotherScene((GridPane)root.getParent(), resources.customerCheckCredits);
+		CustomerController.savePreviousScene(CustomerBackableScene.CREDITS_RECORD_SCENE);
+		CustomerController.turnToAnotherScene((GridPane)root.getParent(), resources.customerCheckCredits);
 	}
 	
 	@FXML
 	void turnToCustomerModifyInfo() {
-		SwitchSceneUtil.savePreviousScene(CustomerBackableScene.MODIFY_INFO_SCENE);
-		SwitchSceneUtil.turnToAnotherScene((GridPane)root.getParent(), resources.customerModifyInfo);
+		CustomerController.savePreviousScene(CustomerBackableScene.MODIFY_INFO_SCENE);
+		CustomerController.turnToAnotherScene((GridPane)root.getParent(), resources.customerModifyInfo);
 	}
 }

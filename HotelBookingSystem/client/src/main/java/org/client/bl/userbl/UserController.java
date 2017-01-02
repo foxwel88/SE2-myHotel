@@ -35,6 +35,7 @@ public class UserController implements Userblservice {
 	/**
 	 * 登录
 	 */
+	@Override
 	public ResultMessage login(String userName, String password) {
 		return Account.getInstance().login(userName, password);
 	}
@@ -42,6 +43,7 @@ public class UserController implements Userblservice {
 	/**
 	 * 登出
 	 */
+	@Override
 	public ResultMessage logout(String userName) {
 		return Account.getInstance().logout(userName);
 	}
@@ -49,6 +51,7 @@ public class UserController implements Userblservice {
 	/**
 	 * 增加用户
 	 */
+	@Override
 	public ResultMessage add(UserVO vo) {
 		return UserUtil.getInstance().add(vo);
 	}
@@ -56,6 +59,7 @@ public class UserController implements Userblservice {
 	/**
 	 * 用ID获取用户VO
 	 */
+	@Override
 	public UserVO findbyID(String ID) {
 		return UserUtil.getInstance().findbyID(ID);
 	}
@@ -63,6 +67,7 @@ public class UserController implements Userblservice {
 	/**
 	 * 用UserName获取用户VO
 	 */
+	@Override
 	public UserVO findbyUserName(String userName) {
 		return UserUtil.getInstance().findbyUserName(userName);
 	}
@@ -70,6 +75,7 @@ public class UserController implements Userblservice {
 	/**
 	 * 更改用户密码
 	 */
+	@Override
 	public ResultMessage modifyPassword(String userName, String oldPassword, String newPassword) {
 		return UserUtil.getInstance().modifyPassword(userName, oldPassword, newPassword);
 	}
@@ -77,6 +83,7 @@ public class UserController implements Userblservice {
 	/**
 	 * 更改用户VO
 	 */
+	@Override
 	public ResultMessage modify(UserVO vo) {
 		return UserUtil.getInstance().modify(vo);
 	}
@@ -84,6 +91,7 @@ public class UserController implements Userblservice {
 	/**
 	 * 增加信用记录
 	 */
+	@Override
 	public ResultMessage addCreditRecord(CreditRecordVO vo) {
 		return UserUtil.getInstance().addCreditRecord(vo);
 	}
@@ -91,6 +99,7 @@ public class UserController implements Userblservice {
 	/**
 	 * 查找信用记录列表
 	 */
+	@Override
 	public List<CreditRecordVO> findCreditRecord(String ID) {
 		return UserUtil.getInstance().findCreditRecord(ID);
 	}
@@ -98,6 +107,7 @@ public class UserController implements Userblservice {
 	/**
 	 * 获得该用户的等级VO
 	 */
+	@Override
 	public UserLevelVO getLevel(String userName) {
 		return UserUtil.getInstance().getLevel(userName);
 	}
@@ -105,6 +115,7 @@ public class UserController implements Userblservice {
 	/**
 	 * 删除用户
 	 */
+	@Override
 	public ResultMessage deleteUser(String userName) {
 		return UserUtil.getInstance().deleteUser(userName);
 	}

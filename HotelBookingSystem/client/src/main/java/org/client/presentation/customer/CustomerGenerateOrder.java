@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
 
-import org.client.bl.hotelbl.HotelController;
-import org.client.bl.promotionbl.PromotionController;
 import org.client.presentation.util.CheckStyle;
 import org.client.presentation.util.DateUtil;
 import org.client.vo.HotelVO;
@@ -111,22 +109,22 @@ public class CustomerGenerateOrder {
 	
 	@FXML
 	void initialize() {
-		hotel = SwitchSceneUtil.getHotelVO();
-		user = SwitchSceneUtil.getUserVO();
+		hotel = CustomerController.getHotelVO();
+		user = CustomerController.getUserVO();
 		hotelName.setText(hotel.hotelName);
 		hotelAddress.setText(hotel.address);
 		city.setText(hotel.city.cityName);
 		area.setText(hotel.area.address);
 		DateUtil.initDatePicker(null, schFromDate);
 		DateUtil.initDatePicker(schFromDate, schToDate);
-		schFromDate.setValue(DateUtil.toLocalDate(SwitchSceneUtil.previousHotelSceneInfo.hotelFilter.schFrom));
-		schToDate.setValue(DateUtil.toLocalDate(SwitchSceneUtil.previousHotelSceneInfo.hotelFilter.schTo));
+		schFromDate.setValue(DateUtil.toLocalDate(CustomerController.previousHotelSceneInfo.hotelFilter.schFrom));
+		schToDate.setValue(DateUtil.toLocalDate(CustomerController.previousHotelSceneInfo.hotelFilter.schTo));
 		if (Objects.equals(user.type, "个人客户")) {
 			customerName.setText(user.name);
 		} else {
 			customerName.setText(user.companyName);
 		}
-		level.setText(String.valueOf(SwitchSceneUtil.promotionController.calLevel(user.credit)));
+		level.setText(String.valueOf(CustomerController.calculateLevel(user.credit)));
 		credit.setText(String.valueOf(user.credit));
 		phoneNumber.setText(user.phoneNumber);
 		setRoomType();
@@ -154,13 +152,13 @@ public class CustomerGenerateOrder {
 				alert.showAndWait();
 			}
 			if (tempRoomNum > 0 && tempResidentNum > 0) {
-				int tempAvailableRoomNum = HotelController.getInstance().getAvailableRoomNum(DateUtil.toDate(schFromDate.getValue()), DateUtil.toDate(schToDate.getValue()), hotel.id, RoomType.getType(roomType.getValue()));
+				int tempAvailableRoomNum = CustomerController.getAvailableRoomNum(DateUtil.toDate(schFromDate.getValue()), DateUtil.toDate(schToDate.getValue()), hotel.id, RoomType.getType(roomType.getValue()));
 				if (tempRoomNum <= tempAvailableRoomNum) {
 					OrderVO newOrder = new OrderVO(user.ID, OrderType.UNEXECUTED.getString(), null, DateUtil.toDate(schFromDate.getValue()), DateUtil.toDate(schToDate.getValue()),
 							new Date(0, 0, 1), new Date(0, 0, 1), DateUtil.toDate(schFromDate.getValue().plusDays(1)), new Date(0, 0, 1), hotel.id, 
 							hotel.hotelName, null, hotel.address, roomType.getValue(), getCurrentTotalPrice(), tempRoomNum, tempResidentNum,
 							hasChildren.isSelected(), user.name, phoneNumber.getText(), false, false);
-					SwitchSceneUtil.turnToConfirmOrderScene((GridPane)root.getParent(), newOrder);
+					CustomerController.turnToConfirmOrderScene((GridPane)root.getParent(), newOrder);
 				} else {
 					Alert alert = new Alert(AlertType.WARNING);
 					alert.setTitle("Sorry, please check your entry again.");
@@ -186,7 +184,7 @@ public class CustomerGenerateOrder {
 	
 	@FXML
 	void cancel() {
-		SwitchSceneUtil.turnToDetailedHotelScene((GridPane)root.getParent(), SwitchSceneUtil.hotelID);
+		CustomerController.turnToDetailedHotelScene((GridPane)root.getParent(), CustomerController.hotelID);
 	}
 	
 	@FXML
@@ -199,7 +197,7 @@ public class CustomerGenerateOrder {
 		} catch (NumberFormatException numberFormatException) {
 			tempRoomNum = 0;
 		}
-		ArrayList<PromotionVO> bestPromotions = new ArrayList<>(PromotionController.getInstance().getPromotion(hotel.id, user.ID, tempRoomNum));
+		ArrayList<PromotionVO> bestPromotions = new ArrayList<>(CustomerController.getBestPromotions(hotel.id, user.ID, tempRoomNum));
 		System.out.println(bestPromotions.size());
 		if (bestPromotions.size() == 2) {
 			if (bestPromotions.get(0).provider.equals("web")) {
@@ -268,7 +266,7 @@ public class CustomerGenerateOrder {
 	}
 	
 	private void setSingleRoomPrice() {
-		double price = SwitchSceneUtil.getSingleRoomPrice(RoomType.getType(roomType.getValue()));
+		double price = CustomerController.getSingleRoomPrice(RoomType.getType(roomType.getValue()));
 		roomPrice.setText(String.valueOf(price) + "元");
 	}
 	
@@ -284,7 +282,7 @@ public class CustomerGenerateOrder {
 	
 	private void setTotalPrice() {
 		try {
-			double price = SwitchSceneUtil.getCurrentPrice(getRoomNum(), getCurrentRawPrice());
+			double price = CustomerController.getCurrentPrice(getRoomNum(), getCurrentRawPrice());
 			totalPrice.setText(String.valueOf(price) + "元");
 		} catch (NullPointerException nullPointerException) {
 			totalPrice.setText("0.0元");
@@ -299,7 +297,8 @@ public class CustomerGenerateOrder {
 			return 0;
 		}
 	}
-	
+
+	/** */
 	private double getCurrentSingleRoomPrice() {
 		try {
 			return Double.parseDouble(roomPrice.getText().replaceAll("元", ""));

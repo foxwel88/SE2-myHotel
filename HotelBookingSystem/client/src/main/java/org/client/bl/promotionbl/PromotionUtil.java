@@ -49,7 +49,10 @@ public class PromotionUtil {
 			return ResultMessage.CONNECTION_FAIL;
 		}
 	}
-	
+
+	/**获得可以使用的最便宜的一个酒店促销策略和一个网站促销策略
+	 * @return bestPromotion, 顺序是酒店、网站，list size <= 2 */
+	//通过排序两个种类的促销策略列表实现
 	static List<PromotionVO> getPromotion (String hotelID, String userID, int roomNum) {
 		List<Promotion> hotelPromotion = getCanBeUsedHotelPromotion(hotelID, userID, roomNum);
 		List<Promotion> webPromotion = getCanBeUsedWebsitePromotion(hotelID, userID, roomNum);
@@ -70,7 +73,8 @@ public class PromotionUtil {
 		}
 		return bestPromotion;
 	}
-	
+
+	/**获得酒店的所有促销策略 */
 	static List<Promotion> showHotelPromotion (String hotelID) {
 		if (promotionDataService == null) {
 			RMIHelper rmihelper = RMIHelper.getInstance();
@@ -89,13 +93,14 @@ public class PromotionUtil {
 			for (int i = 0; i < promotionPOList.size(); i++) {
 				promotionList.add(new Promotion(promotionPOList.get(i)));
 			}
-			
-			return promotionList;
+
 		} catch (RemoteException rex) {
-			return null;
+			rex.printStackTrace();
 		}
+		return promotionList;
 	}
-	
+
+	/**获得网站的所有促销策略 */
 	static List<Promotion> showWebsitePromotion() {
 		if (promotionDataService == null) {
 			RMIHelper rmihelper = RMIHelper.getInstance();
@@ -109,19 +114,15 @@ public class PromotionUtil {
 			for (int i = 0; i < promotionPOList.size(); i++) {
 				promotionList.add(new Promotion(promotionPOList.get(i)));
 			}
-			
-			return promotionList;
+
 		} catch (RemoteException rex) {
-			return null;
+			rex.printStackTrace();
 		}
+		return promotionList;
 	}
 	
 	/**
-	 * 这个方法会分别找到适用于某人的酒店促销策略和网站促销策略，然后交给PromotionPriceCalculater计算价格
-	 * @param userID
-	 * @param hotelID
-	 * @param rawPrice
-	 * @return
+	 * 这个方法会分别找到适用于某人的所有酒店促销策略和网站促销策略，然后交给PromotionPriceCalculator计算价格
 	 */
 	static double getPrice (String userID, String hotelID, int roomNum, double rawPrice) {
 		ArrayList<Promotion> hotelPromotionList = getCanBeUsedHotelPromotion(hotelID, userID, roomNum);
@@ -135,9 +136,9 @@ public class PromotionUtil {
 		List<Promotion> hotelPromotionList = showHotelPromotion(hotelID);
 		ArrayList<Promotion> canBeUsedHotelPromotion = new ArrayList<>();
 		
-		for (int i = 0; i < hotelPromotionList.size(); i++) {
-			if (checkCanBeUse(hotelPromotionList.get(i), hotelID, userID, roomNum)) {
-				canBeUsedHotelPromotion.add(hotelPromotionList.get(i));
+		for (Promotion hotelPromotion: hotelPromotionList) {
+			if (hotelPromotion.canBeUsed(hotelID, userID, roomNum)) {
+				canBeUsedHotelPromotion.add(hotelPromotion);
 			}
 		}
 		
@@ -148,9 +149,9 @@ public class PromotionUtil {
 		List<Promotion> websitePromotionList = showWebsitePromotion();
 		ArrayList<Promotion> canBeUsedWebsitePromotion = new ArrayList<>();
 		
-		for (int i = 0; i < websitePromotionList.size(); i++) {
-			if (checkCanBeUse(websitePromotionList.get(i), hotelID, userID, roomNum)) {
-				canBeUsedWebsitePromotion.add(websitePromotionList.get(i));
+		for (Promotion webPromotion: websitePromotionList) {
+			if (webPromotion.canBeUsed(hotelID, userID, roomNum)) {
+				canBeUsedWebsitePromotion.add(webPromotion);
 			}
 		}
 		
@@ -168,17 +169,6 @@ public class PromotionUtil {
 			e.printStackTrace();
 			return new ArrayList<>();
 		}
-	}
-
-	/**
-	 * 检查某个酒店的促销策略或者网站促销策略是否适用于某人
-	 * @param promotion
-	 * @param hotelID
-	 * @param userID
-	 * @return
-	 */
-	private static boolean checkCanBeUse(Promotion promotion, String hotelID, String userID, int roomNum) {
-		return promotion.canBeUsed(hotelID, userID, roomNum);
 	}
 
 

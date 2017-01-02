@@ -2,8 +2,6 @@ package org.client.presentation.customer;
 
 import java.io.File;
 
-import org.client.bl.hotelbl.HotelController;
-import org.client.blservice.hotelblservice.Hotelblservice;
 import org.client.vo.HotelVO;
 
 import javafx.geometry.Rectangle2D;
@@ -12,13 +10,8 @@ import javafx.scene.image.ImageView;
 
 public class CustomerImageGrabber {
 	
-	private static Hotelblservice hotelController = null;
-	
 	public static ImageView getHotelImageView(String hotelID, double width, double height) {
-		if (hotelController == null) {
-			hotelController = HotelController.getInstance();
-		}
-		HotelVO hotelVO = hotelController.getHotelVO(hotelID);
+		HotelVO hotelVO = CustomerController.getHotelVO(hotelID);
 		String httpAddress = hotelVO.imgURL;
 
 		Image hotelImage = new Image("file:hotelimgtemp" + File.separator + hotelID + ".jpg");

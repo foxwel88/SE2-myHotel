@@ -60,7 +60,7 @@ public class CustomerCancelOrder {
 	
 	@FXML
 	void initialize() {
-		vo = SwitchSceneUtil.getCurrentOrder();
+		vo = CustomerController.getCurrentOrder();
 		orderIDLabel.setText(vo.orderID);
 		hotelAddressLabel.setText(vo.hotelAddress);
 		hotelNameLabel.setText(vo.hotelName);
@@ -79,6 +79,6 @@ public class CustomerCancelOrder {
 		generatedTimeLabel.setText(DateUtil.dateToDetailedString(vo.generatedDate));
 		priceLabel.setText(String.valueOf(vo.totalPrice));
 		
-		SwitchSceneUtil.showNewSceneAnimation(root);
+		CustomerController.showNewSceneAnimation(root);
 	}
 }

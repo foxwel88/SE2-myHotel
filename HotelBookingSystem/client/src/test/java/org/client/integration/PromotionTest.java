@@ -107,7 +107,7 @@ public class PromotionTest {
 	@Test
 	public void testCalLevel() {
 		// 由于junit测试没有规定顺序，因此测试此方法时，modifyLevel测试方法可能已经执行，也可能未执行，所以考虑两种情况
-		int level = controller.calLevel(2810);
+		int level = controller.calculateLevel(2810);
 		boolean isRight = (level == 5) || (level == 9);
 		assertTrue(isRight);
 	}

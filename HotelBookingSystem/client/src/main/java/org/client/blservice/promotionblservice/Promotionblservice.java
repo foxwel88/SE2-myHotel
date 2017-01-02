@@ -26,7 +26,7 @@ public interface Promotionblservice {
 	
 	public double getPrice (String userID, String hotelID, int roomNum, double rawPrice);
 	
-	public int calLevel(double credit);
+	public int calculateLevel(double credit);
 
 	public List<String> getAdvertisedHotels();
 }

@@ -31,6 +31,8 @@ import org.common.utility.TimeService;
 public class OrderUtil {
 	
 	private static OrderUtil util;
+
+	private static final int LATEST_CANCEL_TIME_IN_SECONDS = 6 * 60 * 60; //在最晚执行时间之前的这个时间之后再撤销，会扣除信用值
 	
 	protected OrderDataService dao;
 	
@@ -172,9 +174,11 @@ public class OrderUtil {
 		if (executeMessage != ResultMessage.SUCCESS) {
 			return executeMessage;
 		}
+
+		//检查是否过晚撤销
 		try {
 			long between = (myOrder.latestTime.getTime() - timeDao.getDate().getTime()) / 1000;
-			if (between <= 21600) {
+			if (between <= LATEST_CANCEL_TIME_IN_SECONDS) {
 				myOrder.addCreditRecord(-myOrder.totalPrice, CreditOperation.CANCELORDER.getString());
 			}
 		} catch (RemoteException e) {
@@ -207,7 +211,7 @@ public class OrderUtil {
 	}
 
 	/*
-	通过orderID 来对该订单做撤销异常订单操作
+	通过orderID 来对该订单做撤销异常订单操作，并恢复一半或全部的信用值
 	 */
 	public ResultMessage cancelAbnormalOrder (String orderID,Boolean isHalf) {
 		Order myOrder = new Order();
@@ -269,13 +273,14 @@ public class OrderUtil {
 
 	/*
 	通过酒店 hotelID 房间类型 roomType 起始和结束日期 fromDate toDate 来获得给定日期内该酒店该房间类型已被预订的房间数量
+	算法是对中间每天作为起始日期的订单进行比对、统计
 	 */
 	public int getBookedRoomNum(String hotelID, RoomType roomType, Date fromDate, Date toDate) {
 		Calendar startDay = new GregorianCalendar();
 		startDay.setTime(fromDate);
 		Calendar stopDay = new GregorianCalendar();
 		stopDay.setTime(toDate);
-		int[] res = new int[10000];
+		int[] res = new int[10000];  //安全起见开了一个大数组，不过日期选择其实已经由界面层做过一次范围限制
 		int n = 0;
 		while (startDay.compareTo(stopDay) != 0) {
 			OrderList myList = new OrderList();

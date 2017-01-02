@@ -74,8 +74,6 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		if (po == null) {
-		}
 		return po;
 	}
 	
@@ -100,6 +98,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 		return po;
 	}
 
+	@Override
 	public ResultMessage add(UserPO po) throws RemoteException {
 		try {
 			if (po.ID == null) {
@@ -128,6 +127,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 		}
 	}
 
+	@Override
 	public UserPO findbyID(String ID) throws RemoteException {
 		UserPO po = null;
 		PreparedStatement preparedStatement;
@@ -144,6 +144,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 		return po;
 	}
 
+	@Override
 	public UserPO findbyUserName(String userName) throws RemoteException {
 		UserPO po = null;
 		try {
@@ -160,6 +161,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 		return po;
 	}
 
+	@Override
 	public ResultMessage modify(UserPO po) throws RemoteException {
 		try {
 			// 检查该用户是否存在
@@ -185,6 +187,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 		return ResultMessage.SUCCESS;
 	}
 
+	@Override
 	public ResultMessage Check(String userName, String password) throws RemoteException {
 		if (userName.equals("") || password.equals("")) {
 			return ResultMessage.WRONG_VALUE;
@@ -210,6 +213,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 		return info;
 	}
 
+	@Override
 	public ResultMessage addCreditRecord(CreditRecordPO po) throws RemoteException {
 		try {
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance()
@@ -224,6 +228,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 		}
 	}
 
+	@Override
 	public List<CreditRecordPO> findCreditRecords(String ID) throws RemoteException {
 		List<CreditRecordPO> res = new ArrayList<>();
 		PreparedStatement preparedStatement;

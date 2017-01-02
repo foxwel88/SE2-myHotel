@@ -30,14 +30,14 @@ public class CustomerCheckComment {
 	
 	@FXML
 	void initialize() {
-		OrderVO vo = SwitchSceneUtil.getCurrentOrder();
+		OrderVO vo = CustomerController.getCurrentOrder();
 		orderID.setText(vo.orderID);
 		String hotel = vo.hotelName + "，" + vo.hotelAddress;
 		hotelInfo.setText(hotel);
 		roomType.setText(vo.roomType);
 		roomNum.setText(String.valueOf(vo.roomNum));
 		totalPrice.setText(String.valueOf(vo.totalPrice) + "元");
-		CommentVO commentVO = SwitchSceneUtil.getComment();
+		CommentVO commentVO = CustomerController.getComment();
 		rank.setText(commentVO.rank + "分");
 		comment.setText("评论： " + commentVO.comment);
 	}

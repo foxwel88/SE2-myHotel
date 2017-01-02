@@ -76,7 +76,7 @@ public class CustomerUnexecutedOrderList {
 	
 	@FXML
 	void initialize() {
-		SwitchSceneUtil.canBack = false;
+		CustomerController.canBack = false;
 		resources = Resources.getInstance();
 		boxList = new ArrayList<>();
 		boxList.add(order1);
@@ -87,13 +87,13 @@ public class CustomerUnexecutedOrderList {
 		boxList.add(order6);
 		showUnExecutedOrderList();
 		
-		if (SwitchSceneUtil.isBack) {
-			int goalPage = checkGoalPage(SwitchSceneUtil.previousOrderSceneInfo.currentPage);
+		if (CustomerController.isBack) {
+			int goalPage = checkGoalPage(CustomerController.previousOrderSceneInfo.currentPage);
 			currentPage.setText(String.valueOf(goalPage));
 			showUnExecutedOrderList();
 		}
 		
-		SwitchSceneUtil.showGuideAnimation(root, 200);
+		CustomerController.showGuideAnimation(root, 200);
 	}
 	
 	@FXML
@@ -139,12 +139,12 @@ public class CustomerUnexecutedOrderList {
 				if (((event.getSource())).equals(boxList.get(i))) {
 					orderID = unExecutedOrderList.get((page - 1) * MAX_ORDER_ONE_PAGE + i).orderID;
 					KeyFrame animationFrame = new KeyFrame(Duration.seconds(0), actionEvent -> {
-						SwitchSceneUtil.showOldSceneAnimation(root);
+						CustomerController.showOldSceneAnimation(root);
 					});
 					KeyFrame changeSceneFrame = new KeyFrame(Duration.seconds(0.4), actionEvent -> {
-						SwitchSceneUtil.currentScene = CustomerBackableScene.UNEXECUTED_ORDER_SCENE;
-						SwitchSceneUtil.previousOrderSceneInfo = new PreviousOrderSceneInfo(Integer.parseInt(currentPage.getText()));
-						SwitchSceneUtil.turnToDetailedOrderScene((GridPane)root.getParent(), resources.customerCheckUnexecutedOrder, orderID);
+						CustomerController.currentScene = CustomerBackableScene.UNEXECUTED_ORDER_SCENE;
+						CustomerController.previousOrderSceneInfo = new PreviousOrderSceneInfo(Integer.parseInt(currentPage.getText()));
+						CustomerController.turnToDetailedOrderScene((GridPane)root.getParent(), resources.customerCheckUnexecutedOrder, orderID);
 					});
 					Timeline timeline = new Timeline(animationFrame, changeSceneFrame);
 					timeline.play();
@@ -181,7 +181,7 @@ public class CustomerUnexecutedOrderList {
 	}
 	
 	private void showUnExecutedOrderList() {
-		unExecutedOrderList = new ArrayList<>(SwitchSceneUtil.getUnExecutedOrderList());
+		unExecutedOrderList = new ArrayList<>(CustomerController.getUnExecutedOrderList());
 		Collections.sort(unExecutedOrderList, new GenerateTimeComparator());
 		setContent();
 	}

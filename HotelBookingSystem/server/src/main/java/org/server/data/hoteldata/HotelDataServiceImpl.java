@@ -27,6 +27,7 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 		System.out.println("hotel start");
 	}
 
+	@Override
 	public ResultMessage addHotelInfo(HotelPO po) throws RemoteException {
 
 		//获取新ID
@@ -67,6 +68,7 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 
 	}
 
+	@Override
 	public ResultMessage modifyHotelInfo(HotelPO po) throws RemoteException {
 		try {
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(
@@ -124,6 +126,7 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 		return po;
 	}
 
+	@Override
 	public HotelPO getHotelInfo(String hotelID) throws RemoteException {
 		HotelPO po = null;
 		PreparedStatement preparedStatement;
@@ -140,6 +143,7 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 		return po;
 	}
 
+	@Override
 	public List<HotelPO> findHotels(HotelFilter filter) throws RemoteException {
 		List<HotelPO> list = new ArrayList<>();
 		try {
@@ -169,6 +173,7 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 		return list;
 	}
 
+	@Override
 	public List<CityPO> getCitys() throws RemoteException {
 		List<CityPO> list = new ArrayList<>();
 		PreparedStatement preparedStatement;
@@ -193,6 +198,7 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 		return list;
 	}
 
+	@Override
 	public List<AreaPO> getAreas(CityPO po) throws RemoteException {
 		List<AreaPO> list = new ArrayList<>();
 		PreparedStatement preparedStatement;
@@ -210,6 +216,7 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 		return list;
 	}
 
+	@Override
 	public List<RoomPO> getRooms(String hotelID) throws RemoteException {
 		List<RoomPO> list = new ArrayList<>();
 		PreparedStatement preparedStatement;
@@ -227,6 +234,7 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 		return list;
 	}
 
+	@Override
 	public ResultMessage modifyRooms(String hotelID, List<RoomPO> po) throws RemoteException {
 
 		try {

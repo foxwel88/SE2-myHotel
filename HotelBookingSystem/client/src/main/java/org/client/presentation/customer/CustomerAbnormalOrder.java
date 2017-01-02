@@ -67,7 +67,7 @@ public class CustomerAbnormalOrder {
 	
 	@FXML
 	void initialize() {
-		vo = SwitchSceneUtil.getCurrentOrder();
+		vo = CustomerController.getCurrentOrder();
 		orderIDLabel.setText(vo.orderID);
 		hotelAddressLabel.setText(vo.hotelAddress);
 		hotelNameLabel.setText(vo.hotelName);
@@ -87,6 +87,6 @@ public class CustomerAbnormalOrder {
 		priceLabel.setText(String.valueOf(vo.totalPrice));
 		creditLabel.setText("-" + String.valueOf(vo.totalPrice));
 		
-		SwitchSceneUtil.showNewSceneAnimation(root);
+		CustomerController.showNewSceneAnimation(root);
 	}
 }

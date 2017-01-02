@@ -1,6 +1,5 @@
 package org.client.presentation.customer;
 
-import org.client.bl.orderbl.OrderController;
 import org.client.blservice.orderblservice.Orderblservice;
 import org.client.launcher.Resources;
 import org.client.presentation.util.DateUtil;
@@ -76,7 +75,7 @@ public class CustomerUnexecutedOrder {
 	@FXML
 	void initialize() {
 		resources = Resources.getInstance();
-		vo = SwitchSceneUtil.getCurrentOrder();
+		vo = CustomerController.getCurrentOrder();
 		orderIDLabel.setText(vo.orderID);
 		hotelAddressLabel.setText(vo.hotelAddress);
 		hotelNameLabel.setText(vo.hotelName);
@@ -95,7 +94,7 @@ public class CustomerUnexecutedOrder {
 		generatedTimeLabel.setText(DateUtil.dateToDetailedString(vo.generatedDate));
 		priceLabel.setText(String.valueOf(vo.totalPrice));
 		
-		SwitchSceneUtil.showNewSceneAnimation(root);
+		CustomerController.showNewSceneAnimation(root);
 	}
 	
 	@FXML
@@ -107,12 +106,11 @@ public class CustomerUnexecutedOrder {
 			alert.setHeaderText(null);
 			alert.setContentText("成功撤销订单");
 			alert.showAndWait();
-			SwitchSceneUtil.turnToAnotherScene((GridPane)(root.getParent()), resources.customerCheckUnexecutedOrderList);
+			CustomerController.turnToAnotherScene((GridPane)(root.getParent()), resources.customerCheckUnexecutedOrderList);
 		}
 	}
 	
 	private ResultMessage cancel() {
-		orderController = OrderController.getInstance();
-		return orderController.cancelOrder(vo.orderID);
+		return CustomerController.cancelOrder(vo.orderID);
 	}
 }

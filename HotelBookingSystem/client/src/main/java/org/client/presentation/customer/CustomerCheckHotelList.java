@@ -189,7 +189,7 @@ public class CustomerCheckHotelList {
 		historyMarkList.add(hitoryMark4);
 		historyMarkList.add(hitoryMark5);
 		
-		SwitchSceneUtil.canBack = false;
+		CustomerController.canBack = false;
 		setCity();
 		setArea();
 		setLowerStar();
@@ -200,11 +200,11 @@ public class CustomerCheckHotelList {
 		setEndDate();
 		setRoomType();
 		
-		SwitchSceneUtil.isBackToDetail = false;
-		if (SwitchSceneUtil.isBack) {
-			HotelFilter previousFilter = SwitchSceneUtil.previousHotelSceneInfo.hotelFilter;
-			currentPage.setText(String.valueOf(SwitchSceneUtil.previousHotelSceneInfo.currentPage));
-			everOrdered.setSelected(SwitchSceneUtil.previousHotelSceneInfo.everOrdered);
+		CustomerController.isBackToDetail = false;
+		if (CustomerController.isBack) {
+			HotelFilter previousFilter = CustomerController.previousHotelSceneInfo.hotelFilter;
+			currentPage.setText(String.valueOf(CustomerController.previousHotelSceneInfo.currentPage));
+			everOrdered.setSelected(CustomerController.previousHotelSceneInfo.everOrdered);
 			if (previousFilter.city != null) {
 				city.setValue(previousFilter.city);
 			}
@@ -243,10 +243,10 @@ public class CustomerCheckHotelList {
 			}
 			fromDate.setValue(DateUtil.toLocalDate(previousFilter.schFrom));
 			toDate.setValue(DateUtil.toLocalDate(previousFilter.schTo));
-			SwitchSceneUtil.isBack = false;
+			CustomerController.isBack = false;
 		}
 		showHotelList();
-		SwitchSceneUtil.showGuideAnimation(root, 0);
+		CustomerController.showGuideAnimation(root, 0);
 	}
 	
 	@FXML
@@ -302,12 +302,12 @@ public class CustomerCheckHotelList {
 				if (hbox.equals(hotelBoxList.get(i)) && isTargetInOrder != 1) {
 					hotelID = hotelList.get((page - 1) * MAX_HOTEL_ONE_PAGE + i).id;
 					KeyFrame animationFrame = new KeyFrame(Duration.seconds(0), actionEvent -> {
-						SwitchSceneUtil.showOldSceneAnimation(root);
+						CustomerController.showOldSceneAnimation(root);
 					});
 					KeyFrame changeSceneFrame = new KeyFrame(Duration.seconds(0.4), actionEvent -> {
-						SwitchSceneUtil.currentScene = CustomerBackableScene.HOTEL_INFO_SCENE;
-						SwitchSceneUtil.previousHotelSceneInfo = new PreviousHotelSceneInfo(getCurrentFilter(), everOrdered.isSelected(), Integer.parseInt(currentPage.getText()));
-						SwitchSceneUtil.turnToDetailedHotelScene((GridPane)root.getParent(), hotelID);
+						CustomerController.currentScene = CustomerBackableScene.HOTEL_INFO_SCENE;
+						CustomerController.previousHotelSceneInfo = new PreviousHotelSceneInfo(getCurrentFilter(), everOrdered.isSelected(), Integer.parseInt(currentPage.getText()));
+						CustomerController.turnToDetailedHotelScene((GridPane)root.getParent(), hotelID);
 					});
 					Timeline timeline = new Timeline(animationFrame, changeSceneFrame);
 					timeline.play();
@@ -334,10 +334,10 @@ public class CustomerCheckHotelList {
 				if (clickedLabel.getText() != null) {
 					isTargetInOrder = 1;
 					hotelID = hotelList.get((page - 1) * MAX_HOTEL_ONE_PAGE + i).id;
-					SwitchSceneUtil.previousHotelSceneInfo = new PreviousHotelSceneInfo(getCurrentFilter(), everOrdered.isSelected(), Integer.parseInt(currentPage.getText()));
-					SwitchSceneUtil.isBackToDetail = false;
-					SwitchSceneUtil.currentScene = CustomerBackableScene.GENERATE_ORDER_SCENE;
-					SwitchSceneUtil.turnToGenerateOrderScene((GridPane)root.getParent(), hotelID);
+					CustomerController.previousHotelSceneInfo = new PreviousHotelSceneInfo(getCurrentFilter(), everOrdered.isSelected(), Integer.parseInt(currentPage.getText()));
+					CustomerController.isBackToDetail = false;
+					CustomerController.currentScene = CustomerBackableScene.GENERATE_ORDER_SCENE;
+					CustomerController.turnToGenerateOrderScene((GridPane)root.getParent(), hotelID);
 					break;
 				}
 			}
@@ -470,7 +470,7 @@ public class CustomerCheckHotelList {
 	private void showHotelList() {
 		HotelFilter filter = getCurrentFilter();
 		boolean searchHistoryOnly = everOrdered.isSelected();
-		hotelList = new ArrayList<>(SwitchSceneUtil.getFilteredHotels(filter, searchHistoryOnly));
+		hotelList = new ArrayList<>(CustomerController.getFilteredHotels(filter, searchHistoryOnly));
 		
 		refreshHotelList();
 	}
@@ -519,7 +519,7 @@ public class CustomerCheckHotelList {
 	
 	private void setCity() {
 		ArrayList<String> cityNameList = new ArrayList<>();
-		ArrayList<CityVO> cityVOList = SwitchSceneUtil.getCities();
+		ArrayList<CityVO> cityVOList = CustomerController.getCities();
 		for (CityVO vo : cityVOList) {
 			cityNameList.add(vo.cityName);
 		}
@@ -529,7 +529,7 @@ public class CustomerCheckHotelList {
 	private void setArea() {
 		ArrayList<String> areaNameList = new ArrayList<>();
 		try {
-			ArrayList<AreaVO> areaVOList = SwitchSceneUtil.getAreas(city.getValue());
+			ArrayList<AreaVO> areaVOList = CustomerController.getAreas(city.getValue());
 			for (AreaVO vo : areaVOList) {
 				areaNameList.add(vo.address);
 			}
@@ -791,7 +791,7 @@ public class CustomerCheckHotelList {
 	
 	private boolean getHistoryMark(int i) {
 		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_HOTEL_ONE_PAGE + i;
-		ArrayList<HotelVO> historyHotels = SwitchSceneUtil.getFilteredHotels(getCurrentFilter(), true);
+		ArrayList<HotelVO> historyHotels = CustomerController.getFilteredHotels(getCurrentFilter(), true);
 		HotelVO tempHotel = hotelList.get(seq);
 		for (int j = 0; j < historyHotels.size(); j++) {
 			if (historyHotels.get(j).id.equals(tempHotel.id)) {

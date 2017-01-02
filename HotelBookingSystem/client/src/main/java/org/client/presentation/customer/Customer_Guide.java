@@ -64,7 +64,7 @@ public class Customer_Guide {
 	
 	@FXML
 	void initialize() {
-		welcomeLabel.setText("Welcome," + SwitchSceneUtil.getUserVO().name + "!");
+		welcomeLabel.setText("Welcome," + CustomerController.getUserVO().name + "!");
 		resources = Resources.getInstance();
 		
 		ImageView avatarImgView = new ImageView();
@@ -78,7 +78,7 @@ public class Customer_Guide {
 	
 	@FXML
 	void logOut() {
-		UserController.getInstance().logout(SwitchSceneUtil.getUserVO().userName);
+		UserController.getInstance().logout(CustomerController.getUserVO().userName);
 		Stage stage = (Stage)welcomeLabel.getScene().getWindow();
 		Resources resources = Resources.getInstance();
 		try {
@@ -97,35 +97,35 @@ public class Customer_Guide {
 	void turnToCusController_Main() {
 		initGuideTab();
 		changeGuideTab(0);
-		SwitchSceneUtil.turnToAnotherScene(gridpane, resources.customerMain);
+		CustomerController.turnToAnotherScene(gridpane, resources.customerMain);
 	}
 	
 	@FXML
 	void turnToCusController_CusInfo() {
 		initGuideTab();
 		changeGuideTab(1);
-		SwitchSceneUtil.turnToAnotherScene(gridpane, resources.customerCheckInfo);
+		CustomerController.turnToAnotherScene(gridpane, resources.customerCheckInfo);
 	}
 	
 	@FXML
 	void turnToCusController_HotelList() {
 		initGuideTab();
 		changeGuideTab(2);
-		SwitchSceneUtil.turnToAnotherScene(gridpane, resources.customerCheckHotelList);
+		CustomerController.turnToAnotherScene(gridpane, resources.customerCheckHotelList);
 	}
 	
 	@FXML
 	void turnToCusController_HistoryOrderList() {
 		initGuideTab();
 		changeGuideTab(3);
-		SwitchSceneUtil.turnToAnotherScene(gridpane, resources.customerCheckHistoryOrderList);
+		CustomerController.turnToAnotherScene(gridpane, resources.customerCheckHistoryOrderList);
 	}
 	
 	@FXML
 	void turnToCusController_UnexecutedOrderList() {
 		initGuideTab();
 		changeGuideTab(4);
-		SwitchSceneUtil.turnToAnotherScene(gridpane, resources.customerCheckUnexecutedOrderList);
+		CustomerController.turnToAnotherScene(gridpane, resources.customerCheckUnexecutedOrderList);
 	}
 	/*************************************************************/
 	
@@ -134,9 +134,9 @@ public class Customer_Guide {
 	 */
 	@FXML
 	void goBack() {
-		if (SwitchSceneUtil.canBack) {
+		if (CustomerController.canBack) {
 			try {
-				switch (SwitchSceneUtil.currentScene) {
+				switch (CustomerController.currentScene) {
 					case CREDITS_RECORD_SCENE:
 						turnToCusController_CusInfo();
 						break;
@@ -144,45 +144,45 @@ public class Customer_Guide {
 						turnToCusController_CusInfo();
 						break;
 					case HOTEL_INFO_SCENE:
-						SwitchSceneUtil.isBack = true;
+						CustomerController.isBack = true;
 						turnToCusController_HotelList();
-						SwitchSceneUtil.isBack = false;
+						CustomerController.isBack = false;
 						break;
 					case EXECUTED_ORDER_SCENE:
-						SwitchSceneUtil.isBack = true;
+						CustomerController.isBack = true;
 						turnToCusController_HistoryOrderList();
-						SwitchSceneUtil.isBack = false;
+						CustomerController.isBack = false;
 						break;
 					case CANCELED_ORDER_SCENE:
-						SwitchSceneUtil.isBack = true;
+						CustomerController.isBack = true;
 						turnToCusController_HistoryOrderList();
-						SwitchSceneUtil.isBack = false;
+						CustomerController.isBack = false;
 						break;
 					case ABNORMAL_ORDER_SCENE:
-						SwitchSceneUtil.isBack = true;
+						CustomerController.isBack = true;
 						turnToCusController_HistoryOrderList();
-						SwitchSceneUtil.isBack = false;
+						CustomerController.isBack = false;
 						break;
 					case UNEXECUTED_ORDER_SCENE:
-						SwitchSceneUtil.isBack = true;
+						CustomerController.isBack = true;
 						turnToCusController_UnexecutedOrderList();
-						SwitchSceneUtil.isBack = false;
+						CustomerController.isBack = false;
 						break;
 					case MAKE_COMMENT_SCENE:
-						SwitchSceneUtil.isBack = true;
-						SwitchSceneUtil.turnToDetailedOrderScene(gridpane, Resources.getInstance().customerCheckExecutedOrder, SwitchSceneUtil.orderID);
-						SwitchSceneUtil.currentScene = CustomerBackableScene.EXECUTED_ORDER_SCENE;
-						SwitchSceneUtil.isBack = false;
+						CustomerController.isBack = true;
+						CustomerController.turnToDetailedOrderScene(gridpane, Resources.getInstance().customerCheckExecutedOrder, CustomerController.orderID);
+						CustomerController.currentScene = CustomerBackableScene.EXECUTED_ORDER_SCENE;
+						CustomerController.isBack = false;
 						break;
 					case GENERATE_ORDER_SCENE:
-						SwitchSceneUtil.isBack = true;
-						if (SwitchSceneUtil.isBackToDetail) {
-							SwitchSceneUtil.currentScene = CustomerBackableScene.HOTEL_INFO_SCENE;
-							SwitchSceneUtil.turnToDetailedHotelScene(gridpane, SwitchSceneUtil.hotelID);
+						CustomerController.isBack = true;
+						if (CustomerController.isBackToDetail) {
+							CustomerController.currentScene = CustomerBackableScene.HOTEL_INFO_SCENE;
+							CustomerController.turnToDetailedHotelScene(gridpane, CustomerController.hotelID);
 						} else {
 							turnToCusController_HotelList();
 						}
-						SwitchSceneUtil.isBack = false;
+						CustomerController.isBack = false;
 						break;
 				}
 			} catch (NullPointerException nullPointerException) {

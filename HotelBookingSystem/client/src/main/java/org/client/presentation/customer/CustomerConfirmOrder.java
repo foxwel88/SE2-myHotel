@@ -65,7 +65,7 @@ public class CustomerConfirmOrder {
 	
 	@FXML
 	void initialize() {
-		order = SwitchSceneUtil.toBeGeneratedOrder;
+		order = CustomerController.toBeGeneratedOrder;
 		hotelname.setText(order.hotelName);
 		address.setText(order.hotelAddress);
 		roomType.setText(order.roomType);
@@ -80,12 +80,12 @@ public class CustomerConfirmOrder {
 	
 	@FXML
 	void cancel() {
-		SwitchSceneUtil.returnToGenerateOrderScene((GridPane)root.getParent());
+		CustomerController.returnToGenerateOrderScene((GridPane)root.getParent());
 	}
 	
 	@FXML
 	void confirm() {
-		ResultMessage commitResult = SwitchSceneUtil.commitOrder(order);
+		ResultMessage commitResult = CustomerController.commitOrder(order);
 		Alert alert;
 		if (commitResult.equals(ResultMessage.SUCCESS)) {
 			alert = new Alert(AlertType.INFORMATION);
@@ -93,14 +93,14 @@ public class CustomerConfirmOrder {
 			alert.setHeaderText(null);
 			alert.setContentText("成功生成订单");
 			// 返回前一界面
-			SwitchSceneUtil.isBack = true;
-			if (SwitchSceneUtil.isBackToDetail) {
-				SwitchSceneUtil.currentScene = CustomerBackableScene.HOTEL_INFO_SCENE;
-				SwitchSceneUtil.turnToDetailedHotelScene((GridPane)root.getParent(), SwitchSceneUtil.hotelID);
+			CustomerController.isBack = true;
+			if (CustomerController.isBackToDetail) {
+				CustomerController.currentScene = CustomerBackableScene.HOTEL_INFO_SCENE;
+				CustomerController.turnToDetailedHotelScene((GridPane)root.getParent(), CustomerController.hotelID);
 			} else {
-				SwitchSceneUtil.turnToAnotherScene((GridPane)root.getParent(), Resources.getInstance().customerCheckHotelList);
+				CustomerController.turnToAnotherScene((GridPane)root.getParent(), Resources.getInstance().customerCheckHotelList);
 			}
-			SwitchSceneUtil.isBack = false;
+			CustomerController.isBack = false;
 		} else if (commitResult.equals(ResultMessage.ROOM_NOT_ENOUGH)) {
 			alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Sorry, please check your entry again.");

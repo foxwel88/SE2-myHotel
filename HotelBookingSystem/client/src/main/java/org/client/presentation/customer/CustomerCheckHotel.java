@@ -2,8 +2,8 @@ package org.client.presentation.customer;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-import org.client.bl.promotionbl.PromotionController;
 import org.client.presentation.util.DateUtil;
 import org.client.vo.CommentVO;
 import org.client.vo.HotelVO;
@@ -224,37 +224,37 @@ public class CustomerCheckHotel {
 
 	private int currentLabel = 0;
 	
-	private ArrayList<OrderVO> executedOrderList;
+	private List<OrderVO> executedOrderList;
 	
-	private ArrayList<OrderVO> canceledOrderList;
+	private List<OrderVO> canceledOrderList;
 	
-	private ArrayList<OrderVO> abnormalOrderList;
+	private List<OrderVO> abnormalOrderList;
 	
-	private ArrayList<CommentVO> commentList;
+	private List<CommentVO> commentList;
 
-	private ArrayList<Label> orderDateList;
+	private List<Label> orderDateList;
 	
-	private ArrayList<Label> orderRoomTypeList;
+	private List<Label> orderRoomTypeList;
 	
-	private ArrayList<Label> orderRoomNumList;
+	private List<Label> orderRoomNumList;
 	
-	private ArrayList<Label> orderPriceList;
+	private List<Label> orderPriceList;
 	
-	private ArrayList<Label> commentRankList;
+	private List<Label> commentRankList;
 	
-	private ArrayList<Label> commentContentList;
+	private List<Label> commentContentList;
 	
-	private ArrayList<Label> commentDateAndMakerList;
+	private List<Label> commentDateAndMakerList;
 	
-	private ArrayList<Label> promotionLabelList;
+	private List<Label> promotionLabelList;
 	
-	private ArrayList<PromotionVO> promotionVOList;
+	private List<PromotionVO> promotionVOList;
 	
 	private HotelVO hotel;
 	
 	@FXML
 	void initialize() {
-		hotel = SwitchSceneUtil.getHotelVO();
+		hotel = CustomerController.getHotelVO();
 		hotelName.setText(hotel.hotelName);
 		introduce.setText(hotel.introduction);
 		address.setText(hotel.address);
@@ -263,27 +263,27 @@ public class CustomerCheckHotel {
 		for (int i = 0; i < hotel.roomType.size(); i++) {
 			switch (hotel.roomType.get(i)) {
 				case "单人间":
-					tempRoomNum = SwitchSceneUtil.getLeftRoomNum(SwitchSceneUtil.previousHotelSceneInfo.hotelFilter.schFrom, SwitchSceneUtil.previousHotelSceneInfo.hotelFilter.schTo, SwitchSceneUtil.hotelID, RoomType.SINGLE.getString());
+					tempRoomNum = CustomerController.getLeftRoomNum(CustomerController.previousHotelSceneInfo.hotelFilter.schFrom, CustomerController.previousHotelSceneInfo.hotelFilter.schTo, CustomerController.hotelID, RoomType.SINGLE.getString());
 					leftNum1.setText(String.valueOf(tempRoomNum));
 					rawPrice1.setText(String.valueOf(hotel.roomPrice.get(i)));
-					currentPrice1.setText(String.valueOf(SwitchSceneUtil.getCurrentPrice(1, hotel.roomPrice.get(i))));
+					currentPrice1.setText(String.valueOf(CustomerController.getCurrentPrice(1, hotel.roomPrice.get(i))));
 					break;
 				case "套间":
-					tempRoomNum = SwitchSceneUtil.getLeftRoomNum(SwitchSceneUtil.previousHotelSceneInfo.hotelFilter.schFrom, SwitchSceneUtil.previousHotelSceneInfo.hotelFilter.schTo, SwitchSceneUtil.hotelID, RoomType.BIG.getString());
+					tempRoomNum = CustomerController.getLeftRoomNum(CustomerController.previousHotelSceneInfo.hotelFilter.schFrom, CustomerController.previousHotelSceneInfo.hotelFilter.schTo, CustomerController.hotelID, RoomType.BIG.getString());
 					leftNum2.setText(String.valueOf(tempRoomNum));
 					rawPrice2.setText(String.valueOf(hotel.roomPrice.get(i)));
-					currentPrice2.setText(String.valueOf(SwitchSceneUtil.getCurrentPrice(1, hotel.roomPrice.get(i))));
+					currentPrice2.setText(String.valueOf(CustomerController.getCurrentPrice(1, hotel.roomPrice.get(i))));
 					break;
 				case "标间":
-					tempRoomNum = SwitchSceneUtil.getLeftRoomNum(SwitchSceneUtil.previousHotelSceneInfo.hotelFilter.schFrom, SwitchSceneUtil.previousHotelSceneInfo.hotelFilter.schTo, SwitchSceneUtil.hotelID, RoomType.DOUBLE.getString());
+					tempRoomNum = CustomerController.getLeftRoomNum(CustomerController.previousHotelSceneInfo.hotelFilter.schFrom, CustomerController.previousHotelSceneInfo.hotelFilter.schTo, CustomerController.hotelID, RoomType.DOUBLE.getString());
 					leftNum3.setText(String.valueOf(tempRoomNum));
 					rawPrice3.setText(String.valueOf(hotel.roomPrice.get(i)));
-					currentPrice3.setText(String.valueOf(SwitchSceneUtil.getCurrentPrice(1, hotel.roomPrice.get(i))));
+					currentPrice3.setText(String.valueOf(CustomerController.getCurrentPrice(1, hotel.roomPrice.get(i))));
 					break;
 			}
 		}
 		
-		SwitchSceneUtil.showNewSceneAnimation(root);
+		CustomerController.showNewSceneAnimation(root);
 
 		orderDateList = new ArrayList<>();
 		orderRoomTypeList = new ArrayList<>();
@@ -319,14 +319,14 @@ public class CustomerCheckHotel {
 		promotionLabelList.add(promotion2);
 		promotionLabelList.add(promotion3);
 		promotionLabelList.add(promotion4);
-		promotionVOList = (ArrayList<PromotionVO>)PromotionController.getInstance().showHotelPromotion(SwitchSceneUtil.hotelID);
+		promotionVOList = CustomerController.getHotelPromotions();
 	}
 	
 	@FXML
 	void turnToCustomerGenerateOrder() {
-		SwitchSceneUtil.isBackToDetail = true;
-		SwitchSceneUtil.currentScene = CustomerBackableScene.GENERATE_ORDER_SCENE;
-		SwitchSceneUtil.turnToGenerateOrderScene((GridPane)root.getParent(), hotel.id);
+		CustomerController.isBackToDetail = true;
+		CustomerController.currentScene = CustomerBackableScene.GENERATE_ORDER_SCENE;
+		CustomerController.turnToGenerateOrderScene((GridPane)root.getParent(), hotel.id);
 	}
 	
 	/*
@@ -540,22 +540,22 @@ public class CustomerCheckHotel {
 	}
 	
 	void showExecutedOrderList() {
-		executedOrderList = new ArrayList<>(SwitchSceneUtil.getFinishedOrderListOfCurrentHotel());
+		executedOrderList = new ArrayList<>(CustomerController.getFinishedOrderListOfCurrentHotel());
 		setOrderContent();
 	}
 	
 	void showCanceledOrderList() {
-		canceledOrderList = new ArrayList<>(SwitchSceneUtil.getCanceledOrderListOfCurrentHotel());
+		canceledOrderList = new ArrayList<>(CustomerController.getCanceledOrderListOfCurrentHotel());
 		setOrderContent();
 	}
 	
 	void showAbnormalOrderList() {
-		abnormalOrderList = new ArrayList<>(SwitchSceneUtil.getAbnormalOrderListOfCurrentHotel());
+		abnormalOrderList = new ArrayList<>(CustomerController.getAbnormalOrderListOfCurrentHotel());
 		setOrderContent();
 	}
 	
 	void showCommentList() {
-		commentList = SwitchSceneUtil.getComments();
+		commentList = CustomerController.getComments();
 		setCommentContent();
 	}
 	
@@ -589,11 +589,11 @@ public class CustomerCheckHotel {
 		}
 	}
 	
-	private int calOrderMaxPage(ArrayList<OrderVO> voList) {
+	private int calOrderMaxPage(List<OrderVO> voList) {
 		return (voList.size() / MAX_ORDER_ONE_PAGE) + 1;
 	}
 	
-	private int calCommentMaxPage(ArrayList<CommentVO> voList) {
+	private int calCommentMaxPage(List<CommentVO> voList) {
 		return (voList.size() / MAX_COMMENT_ONE_PAGE) + 1;
 	}
 	
@@ -730,7 +730,7 @@ public class CustomerCheckHotel {
 		}
 	}
 	
-	private int calPromotionMaxPage(ArrayList<PromotionVO> voList) {
+	private int calPromotionMaxPage(List<PromotionVO> voList) {
 		return (voList.size() / MAX_PROMOTION_ONE_PAGE) + 1;
 	}
 	

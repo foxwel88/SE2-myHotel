@@ -1,13 +1,7 @@
 package org.client.presentation.customer;
 
-import java.rmi.RemoteException;
-
-import org.client.bl.commentbl.CommentController;
-import org.client.bl.orderbl.OrderController;
 import org.client.blservice.commentblservice.Commentblservice;
 import org.client.launcher.Resources;
-import org.client.rmi.RMIHelper;
-import org.client.vo.CommentVO;
 import org.client.vo.OrderVO;
 
 import javafx.fxml.FXML;
@@ -80,7 +74,7 @@ public class CustomerComment {
 	@FXML
 	void initialize() {
 		resources = Resources.getInstance();
-		OrderVO vo = SwitchSceneUtil.getCurrentOrder();
+		OrderVO vo = CustomerController.getCurrentOrder();
 		orderID.setText(vo.orderID);
 		String hotel = vo.hotelName + "，" + vo.hotelAddress;
 		hotelInfo.setText(hotel);
@@ -90,7 +84,6 @@ public class CustomerComment {
 	
 	@FXML
 	void commitComment() {
-		commentController = CommentController.getInstance();
 		String commentContent = comment.getText();
 		double rankValue = 5;
 		if (selectedRank == -1) {
@@ -100,18 +93,13 @@ public class CustomerComment {
 			scoreTip.setText("");
 			if (commentContent.length() >= 15) {
 				commentTip.setText("");
-				try {
-					commentController.addComment(new CommentVO(SwitchSceneUtil.getUserVO().name, SwitchSceneUtil.getCurrentOrder().hotelID, SwitchSceneUtil.orderID, RMIHelper.getInstance().getTimeServiceImpl().getDate(), rankValue, commentContent));
-				} catch (RemoteException e) {
-					e.printStackTrace();
-				}
-				OrderController.getInstance().comment(orderID.getText());
+				CustomerController.addComment(rankValue, commentContent);
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Success");
 				alert.setHeaderText(null);
 				alert.setContentText("感谢您的评价！");
 				alert.showAndWait();
-				SwitchSceneUtil.turnToAnotherScene((GridPane)root.getParent(), resources.customerCheckExecutedOrder);
+				CustomerController.turnToAnotherScene((GridPane)root.getParent(), resources.customerCheckExecutedOrder);
 			} else {
 				commentTip.setText("评论不能少于15字!");
 			}

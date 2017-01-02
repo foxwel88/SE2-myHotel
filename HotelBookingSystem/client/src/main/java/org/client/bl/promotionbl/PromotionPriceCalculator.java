@@ -29,9 +29,11 @@ public class PromotionPriceCalculator {
 			this.websitePromotionList.add(new Promotion());
 		}
 	}
-	
+
+	/**根据一个最佳酒店促销策略和一个最佳网站促销策略，对原始价格进行二次计算 */
 	double getPrice(double rawPrice) {
 		setMostSuitableStrategy();
+
 		// 由于仅有折扣类型的promotion，没有考虑优先级导致的先后折扣问题
 		return websitePromotionStrategy.getPrice(hotelPromotionStrategy.getPrice(rawPrice));
 	}

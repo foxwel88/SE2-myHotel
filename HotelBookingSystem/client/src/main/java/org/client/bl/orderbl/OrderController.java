@@ -42,6 +42,7 @@ public class OrderController implements Orderblservice {
 	/*
 	通过orderVO 来新建一个订单
 	 */
+	@Override
 	public ResultMessage createOrder(OrderVO vo) {
 		return orderUtil.createOrder(vo);
 	}
@@ -49,6 +50,7 @@ public class OrderController implements Orderblservice {
 	/*
 	通过orderID 来对该订单做撤销操作
 	 */
+	@Override
 	public ResultMessage cancelOrder(String orderID) {
 		return orderUtil.cancelOrder(orderID);
 	}
@@ -56,6 +58,7 @@ public class OrderController implements Orderblservice {
 	/*
 	通过orderID 获取orderVO
 	 */
+	@Override
 	public OrderVO getOrder(String orderID) {
 		return orderUtil.getOrder(orderID);
 	}
@@ -63,6 +66,7 @@ public class OrderController implements Orderblservice {
 	/*
 	获得所有异常订单列表
 	 */
+	@Override
 	public List<OrderVO> getAbnormalOrder() {
 		return orderUtil.getAbnormalOrder();
 	}
@@ -70,6 +74,7 @@ public class OrderController implements Orderblservice {
 	/*
 	通过用户userID 和 orderType 来获得该用户该类型订单的的列表
 	 */
+	@Override
 	public List<OrderVO> getUserOrderList(String userID, OrderType type) {
 		return orderUtil.getUserOrderList(userID, type);
 	}
@@ -77,6 +82,7 @@ public class OrderController implements Orderblservice {
 	/*
 	通过酒店hotelID 和 orderType 来获得该酒店该类型订单的的列表
 	 */
+	@Override
 	public List<OrderVO> getHotelOrderList(String hotelID, OrderType type) {
 		return orderUtil.getHotelOrderList(hotelID, type);
 	}
@@ -85,6 +91,7 @@ public class OrderController implements Orderblservice {
 	/*
 	通过orderID 来对该订单做执行操作
 	 */
+	@Override
 	public ResultMessage executeOrder(String orderID) {
 		return orderUtil.executeOrder(orderID);
 	}
@@ -92,6 +99,7 @@ public class OrderController implements Orderblservice {
 	/*
 	通过orderID 来对该订单做撤销异常订单操作
 	 */
+	@Override
 	public ResultMessage cancelAbnormalOrder(String orderID, Boolean isHalf) {
 		return orderUtil.cancelAbnormalOrder(orderID,isHalf);
 	}
@@ -99,6 +107,7 @@ public class OrderController implements Orderblservice {
 	/*
 	通过用户userID 来获得该用户历史预订过的酒店id列表
 	 */
+	@Override
 	public List<String> getHistoryHotels(String userId) {
 		return orderUtil.getHistoryHotels(userId);
 	}

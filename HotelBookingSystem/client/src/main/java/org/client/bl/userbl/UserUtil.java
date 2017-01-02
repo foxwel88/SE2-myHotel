@@ -28,8 +28,7 @@ public class UserUtil {
 	private User user;
 	
 	private CreditRecord creditRecord;
-	
-	
+
 	private UserUtil() {
 		user = new User();
 		creditRecord = new CreditRecord();
@@ -135,9 +134,9 @@ public class UserUtil {
 		return message;
 	}
 	
-	public List<CreditRecordVO> findCreditRecord(String ID) {
+	public List<CreditRecordVO> findCreditRecord(String userID) {
 		CreditRecordList list = new CreditRecordList();
-		list.initList(ID);
+		list.initList(userID);
 		return list.getVOs();
 	}
 	

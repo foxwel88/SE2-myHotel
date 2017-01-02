@@ -73,9 +73,9 @@ public class CustomerExecutedOrder {
 	@FXML
 	void initialize() {
 		resources = Resources.getInstance();
-		vo = SwitchSceneUtil.getCurrentOrder();
+		vo = CustomerController.getCurrentOrder();
 		resources = Resources.getInstance();
-		vo = SwitchSceneUtil.getCurrentOrder();
+		vo = CustomerController.getCurrentOrder();
 		orderIDLabel.setText(vo.orderID);
 		hotelAddressLabel.setText(vo.hotelAddress);
 		hotelNameLabel.setText(vo.hotelName);
@@ -97,7 +97,7 @@ public class CustomerExecutedOrder {
 			commentButton.setText("查看评价");
 		}
 		
-		SwitchSceneUtil.showNewSceneAnimation(root);
+		CustomerController.showNewSceneAnimation(root);
 	}
 	
 	@FXML
@@ -107,12 +107,12 @@ public class CustomerExecutedOrder {
 	
 	@FXML
 	void makeComment() {
-		if (SwitchSceneUtil.getCurrentOrder().isCommented) {
-			SwitchSceneUtil.currentScene = CustomerBackableScene.MAKE_COMMENT_SCENE;
-			SwitchSceneUtil.turnToAnotherScene((GridPane)(root.getParent()), resources.customerCheckComment);
+		if (CustomerController.getCurrentOrder().isCommented) {
+			CustomerController.currentScene = CustomerBackableScene.MAKE_COMMENT_SCENE;
+			CustomerController.turnToAnotherScene((GridPane)(root.getParent()), resources.customerCheckComment);
 		} else {
-			SwitchSceneUtil.currentScene = CustomerBackableScene.MAKE_COMMENT_SCENE;
-			SwitchSceneUtil.turnToAnotherScene((GridPane)(root.getParent()), resources.customerMakeComments);
+			CustomerController.currentScene = CustomerBackableScene.MAKE_COMMENT_SCENE;
+			CustomerController.turnToAnotherScene((GridPane)(root.getParent()), resources.customerMakeComments);
 		}
 	}
 }

@@ -2,8 +2,8 @@ package org.client.presentation.customer;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
-import org.client.bl.promotionbl.PromotionController;
 import org.client.presentation.util.DateUtil;
 import org.client.vo.AreaVO;
 import org.client.vo.CityVO;
@@ -66,9 +66,9 @@ public class CustomerMain {
 	// 该字段表示同时显示的最大促销策略的数量
 	private static final int MAX_PROMOTION_ONE_PAGE = 4;
 	
-	private ArrayList<Label> promotionLabelList;
+	private List<Label> promotionLabelList;
 	
-	private ArrayList<PromotionVO> promotionVOList;
+	private List<PromotionVO> promotionVOList;
 
 	@FXML
 	void initialize() {
@@ -82,14 +82,14 @@ public class CustomerMain {
 		setStartDate();
 		setEndDate();
 				
-		SwitchSceneUtil.showGuideAnimation(root, -200);
+		CustomerController.showGuideAnimation(root, -200);
 		
 		promotionLabelList = new ArrayList<>();
 		promotionLabelList.add(promotion1);
 		promotionLabelList.add(promotion2);
 		promotionLabelList.add(promotion3);
 		promotionLabelList.add(promotion4);
-		promotionVOList = (ArrayList<PromotionVO>)PromotionController.getInstance().showWebsitePromotion();
+		promotionVOList = CustomerController.getWebSitePromotions();
 	}
 	
 	@FXML
@@ -161,9 +161,9 @@ public class CustomerMain {
 		hotelFilter.setLocation(city.getValue(), area.getValue());
 		hotelFilter.setSchFromDate(DateUtil.toDate(startDate.getValue()));
 		hotelFilter.setSchToDate(DateUtil.toDate(endDate.getValue()));
-		SwitchSceneUtil.previousHotelSceneInfo = new PreviousHotelSceneInfo(hotelFilter, false, 1);
-		SwitchSceneUtil.isBack = true;
-		SwitchSceneUtil.customerController.turnToCusController_HotelList();
+		CustomerController.previousHotelSceneInfo = new PreviousHotelSceneInfo(hotelFilter, false, 1);
+		CustomerController.isBack = true;
+		CustomerController.customerGuideController.turnToCusController_HotelList();
 	}
 	
 	private void setContent() {
@@ -180,7 +180,7 @@ public class CustomerMain {
 	
 	private void setCity() {
 		ArrayList<String> cityNameList = new ArrayList<>();
-		ArrayList<CityVO> cityVOList = SwitchSceneUtil.getCities();
+		ArrayList<CityVO> cityVOList = CustomerController.getCities();
 		for (CityVO vo : cityVOList) {
 			cityNameList.add(vo.cityName);
 		}
@@ -190,7 +190,7 @@ public class CustomerMain {
 	private void setArea() {
 		ArrayList<String> areaNameList = new ArrayList<>();
 		try {
-			ArrayList<AreaVO> areaVOList = SwitchSceneUtil.getAreas(city.getValue());
+			ArrayList<AreaVO> areaVOList = CustomerController.getAreas(city.getValue());
 			for (AreaVO vo : areaVOList) {
 				areaNameList.add(vo.address);
 			}
@@ -210,7 +210,7 @@ public class CustomerMain {
 		DateUtil.initDatePicker(startDate, endDate);
 	}
 	
-	private int calMaxPage(ArrayList<PromotionVO> voList) {
+	private int calMaxPage(List<PromotionVO> voList) {
 		return (voList.size() / MAX_PROMOTION_ONE_PAGE) + 1;
 	}
 	

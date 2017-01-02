@@ -2,6 +2,7 @@ package org.client.presentation.customer;
 
 import java.io.IOException;
 import java.net.URL;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -17,13 +18,8 @@ import org.client.blservice.orderblservice.Orderblservice;
 import org.client.blservice.promotionblservice.Promotionblservice;
 import org.client.blservice.userblservice.Userblservice;
 import org.client.launcher.Resources;
-import org.client.vo.AreaVO;
-import org.client.vo.CityVO;
-import org.client.vo.CommentVO;
-import org.client.vo.CreditRecordVO;
-import org.client.vo.HotelVO;
-import org.client.vo.OrderVO;
-import org.client.vo.UserVO;
+import org.client.rmi.RMIHelper;
+import org.client.vo.*;
 import org.common.utility.HotelFilter;
 import org.common.utility.OrderType;
 import org.common.utility.ResultMessage;
@@ -40,24 +36,25 @@ import javafx.util.Duration;
 
 /**
  * 
- * 客户-工具类
+ * 客户界面-负责界面跳转和界面向下调用logic层方法的controller
  * @author fraliphsoft
  * @version fraliphsoft 11/27
  */
-public class SwitchSceneUtil {
+public class CustomerController {
 	static Stage stage = null;
 	
-	static Customer_Guide customerController;
+	static Customer_Guide customerGuideController;
 	
-	static Userblservice userController;
+	static Userblservice userBlService
+			;
 	
-	static Orderblservice orderController;
+	static Orderblservice orderBlService;
 	
-	static Hotelblservice hotelController;
+	static Hotelblservice hotelBlService;
 	
-	static Promotionblservice promotionController;
+	static Promotionblservice promotionBlService;
 	
-	static Commentblservice commentController;
+	static Commentblservice commentBlService;
 	
 	// 记录当前登录客户的客户ID
 	static String userID;
@@ -92,11 +89,11 @@ public class SwitchSceneUtil {
 	/********************************************/
 	
 	private static void setStage(Stage stage) {
-		SwitchSceneUtil.stage = stage;
+		CustomerController.stage = stage;
 	}
 
 	private static void setUser(String userID) {
-		SwitchSceneUtil.userID = userID;
+		CustomerController.userID = userID;
 	}
 	
 	/**
@@ -105,45 +102,50 @@ public class SwitchSceneUtil {
 	 * @param userID 当前登录客户的标识ID
 	 */
 	public static void init(Stage stage, String userID) {
-		userController = UserController.getInstance();
-		promotionController = PromotionController.getInstance();
-		orderController = OrderController.getInstance();
-		hotelController = HotelController.getInstance();
-		commentController = CommentController.getInstance();
+		userBlService
+				= UserController.getInstance();
+		promotionBlService = PromotionController.getInstance();
+		orderBlService = OrderController.getInstance();
+		hotelBlService = HotelController.getInstance();
+		commentBlService = CommentController.getInstance();
 		setStage(stage);
 		setUser(userID);
 	}
 	
 	public static UserVO getUserVO() {
-		return userController.findbyID(userID);
+		return userBlService
+				.findbyID(userID);
 	}
 	
 	public static ArrayList<CreditRecordVO> getRecordList() {
-		return (ArrayList<CreditRecordVO>)userController.findCreditRecord(userID);
+		return (ArrayList<CreditRecordVO>)userBlService
+				.findCreditRecord(userID);
 	}
 	
 	public static ResultMessage modifyPassword(String oldPassword, String newPassword) {
-		return userController.modifyPassword(getUserVO().userName, oldPassword, newPassword);
+		return userBlService
+				.modifyPassword(getUserVO().userName, oldPassword, newPassword);
 	}
 	
 	public static ResultMessage modifyInfo(UserVO vo) {
-		return userController.modify(vo);
+		return userBlService
+				.modify(vo);
 	}
 	
 	public static List<OrderVO> getFinishedOrderList() {
-		return orderController.getUserOrderList(userID, OrderType.EXECUTED);
+		return orderBlService.getUserOrderList(userID, OrderType.EXECUTED);
 	}
 	
 	public static List<OrderVO> getCanceledOrderList() {
-		return orderController.getUserOrderList(userID, OrderType.CANCELED);
+		return orderBlService.getUserOrderList(userID, OrderType.CANCELED);
 	}
 	
 	public static List<OrderVO> getAbnormalOrderList() {
-		return orderController.getUserOrderList(userID, OrderType.ABNORMAL);
+		return orderBlService.getUserOrderList(userID, OrderType.ABNORMAL);
 	}
 	
 	public static List<OrderVO> getUnExecutedOrderList() {
-		return orderController.getUserOrderList(userID, OrderType.UNEXECUTED);
+		return orderBlService.getUserOrderList(userID, OrderType.UNEXECUTED);
 	}
 	
 	public static ArrayList<OrderVO> getFinishedOrderListOfCurrentHotel() {
@@ -167,7 +169,24 @@ public class SwitchSceneUtil {
 		}
 		return hotelCanceledOrder;
 	}
-	
+
+	public static int calculateLevel(double credit) {
+		return promotionBlService.calculateLevel(credit);
+	}
+
+	/**添加评论，会添加评论的持久化对象，以及对订单做标记 */
+	public static ResultMessage addComment(double rankValue, String commentContent) {
+		CommentVO commentVO = null;
+		try {
+			commentVO = new CommentVO(getUserVO().userName, hotelID, orderID, RMIHelper.getInstance().getTimeServiceImpl().getDate()
+								, rankValue, commentContent);
+			OrderController.getInstance().comment(orderID);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return commentBlService.addComment(commentVO);
+	}
+
 	public static ArrayList<OrderVO> getAbnormalOrderListOfCurrentHotel() {
 		ArrayList<OrderVO> allAbnormalOrder = (ArrayList<OrderVO>)getAbnormalOrderList();
 		ArrayList<OrderVO> hotelAbnormalOrder = new ArrayList<>();
@@ -180,11 +199,27 @@ public class SwitchSceneUtil {
 	}
 	
 	public static int getLeftRoomNum(Date from, Date to, String hid, String roomTypeString) {
-		return hotelController.getAvailableRoomNum(from, to, hid, RoomType.getType(roomTypeString));
+		return hotelBlService.getAvailableRoomNum(from, to, hid, RoomType.getType(roomTypeString));
 	}
-	
+
+	public static List<PromotionVO> getBestPromotions(String hotelID, String userID, int num) {
+		return promotionBlService.getPromotion(hotelID, userID, num);
+	}
+
+	public static int getAvailableRoomNum(Date from, Date to, String hotelID, RoomType type) {
+		return hotelBlService.getAvailableRoomNum(from, to, hotelID, type);
+	}
+
+	public static HotelVO getHotelVO(String hotelID) {
+		return hotelBlService.getHotelVO(hotelID);
+	}
+
+	public static ResultMessage cancelOrder(String orderID) {
+		return orderBlService.cancelOrder(orderID);
+	}
+
 	public static double getSingleRoomPrice(RoomType roomType) {
-		ArrayList<Double> priceList = (ArrayList<Double>)hotelController.getHotelVO(hotelID).roomPrice;
+		ArrayList<Double> priceList = (ArrayList<Double>)hotelBlService.getHotelVO(hotelID).roomPrice;
 		switch (roomType) {
 			case SINGLE:
 				return priceList.get(0);
@@ -197,19 +232,19 @@ public class SwitchSceneUtil {
 	}
 	
 	public static double getCurrentPrice(int roomNum, double rawPrice) {
-		return promotionController.getPrice(userID, hotelID, roomNum, rawPrice);
+		return promotionBlService.getPrice(userID, hotelID, roomNum, rawPrice);
 	}
 	
 	public static ArrayList<CommentVO> getComments() {
-		return (ArrayList<CommentVO>)commentController.getComment(hotelID);
+		return (ArrayList<CommentVO>)commentBlService.getComment(hotelID);
 	}
 	
 	public static CommentVO getComment() {
 		String hotelID = getCurrentOrder().hotelID;
-		ArrayList<CommentVO> commentVOList = (ArrayList<CommentVO>)commentController.getComment(hotelID);
+		ArrayList<CommentVO> commentVOList = (ArrayList<CommentVO>)commentBlService.getComment(hotelID);
 		CommentVO commentVO = null;
 		for (CommentVO tempVO:commentVOList) {
-			if (tempVO.orderID.equals(SwitchSceneUtil.orderID)) {
+			if (tempVO.orderID.equals(CustomerController.orderID)) {
 				commentVO = tempVO;
 				break;
 			}
@@ -218,28 +253,28 @@ public class SwitchSceneUtil {
 	}
 	
 	public static OrderVO getCurrentOrder() {
-		return orderController.getOrder(orderID);
+		return orderBlService.getOrder(orderID);
 	}
 	
 	public static ArrayList<HotelVO> getFilteredHotels(HotelFilter filter, boolean historyOnly) {
-		return (ArrayList<HotelVO>)hotelController.findHotels(filter, userID, historyOnly);
+		return (ArrayList<HotelVO>)hotelBlService.findHotels(filter, userID, historyOnly);
 	}
 	
 	public static ArrayList<CityVO> getCities() {
-		return new ArrayList<>(hotelController.getCitys());
+		return new ArrayList<>(hotelBlService.getCitys());
 	}
 	
 	public static ArrayList<AreaVO> getAreas(String city) {
 		CityVO cityVO = new CityVO(city);
-		return (ArrayList<AreaVO>)hotelController.getAreas(cityVO);
+		return (ArrayList<AreaVO>)hotelBlService.getAreas(cityVO);
 	}
 	
 	public static HotelVO getHotelVO() {
-		return hotelController.getHotelVO(hotelID);
+		return hotelBlService.getHotelVO(hotelID);
 	}
 	
 	public static ResultMessage commitOrder(OrderVO orderVO) {
-		return orderController.createOrder(orderVO);
+		return orderBlService.createOrder(orderVO);
 	}
 	
 	/**
@@ -248,7 +283,7 @@ public class SwitchSceneUtil {
 	 */
 	public static void savePreviousScene(CustomerBackableScene currentScene) {
 		canBack = true;
-		SwitchSceneUtil.currentScene = currentScene;
+		CustomerController.currentScene = currentScene;
 	}
 	
 	/**
@@ -258,8 +293,16 @@ public class SwitchSceneUtil {
 	 */
 	public static void savePreviousScene(CustomerBackableScene currentScene, PreviousHotelSceneInfo previousHotelSceneInfo) {
 		canBack = true;
-		SwitchSceneUtil.currentScene = currentScene;
-		SwitchSceneUtil.previousHotelSceneInfo = previousHotelSceneInfo;
+		CustomerController.currentScene = currentScene;
+		CustomerController.previousHotelSceneInfo = previousHotelSceneInfo;
+	}
+
+	public static List<PromotionVO> getHotelPromotions() {
+		return promotionBlService.showHotelPromotion(hotelID);
+	}
+
+	public static List<PromotionVO> getWebSitePromotions() {
+		return promotionBlService.showWebsitePromotion();
 	}
 	
 	/**
@@ -269,8 +312,8 @@ public class SwitchSceneUtil {
 	 */
 	public static void savePreviousScene(CustomerBackableScene currentScene, PreviousOrderSceneInfo previousOrderSceneInfo) {
 		canBack = true;
-		SwitchSceneUtil.currentScene = currentScene;
-		SwitchSceneUtil.previousOrderSceneInfo = previousOrderSceneInfo;
+		CustomerController.currentScene = currentScene;
+		CustomerController.previousOrderSceneInfo = previousOrderSceneInfo;
 	}
 	
 	/**
@@ -304,7 +347,7 @@ public class SwitchSceneUtil {
 	 */
 	public static void turnToDetailedOrderScene(GridPane gridpane, URL resource, String orderID) {
 		canBack = true;
-		SwitchSceneUtil.orderID = orderID;
+		CustomerController.orderID = orderID;
 		turnToAnotherScene(gridpane, resource);
 	}
 	
@@ -316,7 +359,7 @@ public class SwitchSceneUtil {
 	public static void turnToDetailedHotelScene(GridPane gridpane, String hotelID) {
 		canBack = true;
 		Resources resources = Resources.getInstance();
-		SwitchSceneUtil.hotelID = hotelID;
+		CustomerController.hotelID = hotelID;
 		turnToAnotherScene(gridpane, resources.customerCheckHotel);
 	}
 	
@@ -328,7 +371,7 @@ public class SwitchSceneUtil {
 	public static void turnToGenerateOrderScene(GridPane gridpane, String hotelID) {
 		canBack = true;
 		Resources resources = Resources.getInstance();
-		SwitchSceneUtil.hotelID = hotelID;
+		CustomerController.hotelID = hotelID;
 		turnToAnotherScene(gridpane, resources.customerGenerateOrder);
 	}
 	
@@ -340,7 +383,7 @@ public class SwitchSceneUtil {
 	public static void turnToConfirmOrderScene(GridPane gridpane, OrderVO orderVO) {
 		canBack = true;
 		Resources resources = Resources.getInstance();
-		SwitchSceneUtil.toBeGeneratedOrder = orderVO;
+		CustomerController.toBeGeneratedOrder = orderVO;
 		turnToAnotherScene(gridpane, resources.customerConfirmGenerateOrder);
 	}
 	
@@ -405,7 +448,9 @@ public class SwitchSceneUtil {
 		parallelTransition.play();
 	}
 
-	public static void setController(Customer_Guide controller) {
-		SwitchSceneUtil.customerController = controller;
+	public static void setGuideController(Customer_Guide controller) {
+		CustomerController.customerGuideController = controller;
 	}
+
+
 }

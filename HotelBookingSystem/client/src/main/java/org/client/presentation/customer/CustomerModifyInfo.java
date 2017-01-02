@@ -64,7 +64,7 @@ public class CustomerModifyInfo {
 	@FXML
 	void initialize() {
 		resources = Resources.getInstance();
-		vo = SwitchSceneUtil.getUserVO();
+		vo = CustomerController.getUserVO();
 		name.setText(vo.name);
 		phoneNumber.setText(vo.phoneNumber);
 		if (vo.type.equals(UserType.PERSONALCUSTOMER.getString())) {
@@ -109,15 +109,15 @@ public class CustomerModifyInfo {
 			isFormatRight = false;
 		}
 		if (isFormatRight) {
-			UserVO userVO = SwitchSceneUtil.getUserVO();
+			UserVO userVO = CustomerController.getUserVO();
 			getModifiedUserVO(userVO);
-			ResultMessage modifyInfoResult = SwitchSceneUtil.modifyInfo(userVO);
+			ResultMessage modifyInfoResult = CustomerController.modifyInfo(userVO);
 			if (modifyInfoResult.equals(ResultMessage.SUCCESS)) {
 				alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Success");
 				alert.setHeaderText(null);
 				alert.setContentText("修改成功");
-				SwitchSceneUtil.turnToAnotherScene((GridPane)root.getParent(), resources.customerCheckInfo);
+				CustomerController.turnToAnotherScene((GridPane)root.getParent(), resources.customerCheckInfo);
 			} else {
 				alert = new Alert(AlertType.ERROR);
 				alert.setTitle("Sorry, please check your entry again.");
@@ -130,7 +130,7 @@ public class CustomerModifyInfo {
 	
 	@FXML
 	void cancelChangeInfo() {
-		SwitchSceneUtil.turnToAnotherScene((GridPane)root.getParent(), resources.customerCheckInfo);
+		CustomerController.turnToAnotherScene((GridPane)root.getParent(), resources.customerCheckInfo);
 	}
 	
 	@FXML
@@ -141,7 +141,7 @@ public class CustomerModifyInfo {
 		Alert alert;
 		if (newPassword1.equals(newPassword2)) {
 			if (checkPasswordFormat(newPassword1)) {
-				ResultMessage resultMessage = SwitchSceneUtil.modifyPassword(originPassword.getText(), newPassword1);
+				ResultMessage resultMessage = CustomerController.modifyPassword(originPassword.getText(), newPassword1);
 				if (!resultMessage.equals(ResultMessage.SUCCESS)) {
 					alert = new Alert(AlertType.ERROR);
 					alert.setTitle("Sorry, please check your entry again.");
@@ -152,7 +152,7 @@ public class CustomerModifyInfo {
 					alert.setTitle("Success");
 					alert.setHeaderText(null);
 					alert.setContentText("修改成功");
-					SwitchSceneUtil.turnToAnotherScene((GridPane)root.getParent(), resources.customerModifyInfo);
+					CustomerController.turnToAnotherScene((GridPane)root.getParent(), resources.customerModifyInfo);
 				}
 			} else {
 				alert = new Alert(AlertType.ERROR);

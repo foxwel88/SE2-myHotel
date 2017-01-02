@@ -16,9 +16,10 @@ import org.common.utility.ResultMessage;
 import org.common.utility.UserType;
 
 /**
- * 实现了修改促销策略的逻辑
+ * 调用该类的modify()将会修改数据层的持久化数据
+ * 可进行VO PO的转换，以及对其保存的促销策略是否适用某类对象的检查方法
  * @author fraliphsoft
- * @version fraliphsoft 12/6
+ * @version Hirico 2017/01/01
  */
 public class Promotion implements Comparable<Promotion> {
 	String promotionID;
@@ -72,7 +73,7 @@ public class Promotion implements Comparable<Promotion> {
 		
 		name = vo.name;
 		
-		promotionStrategy = PromotionStrategyFactory.getSuitableStrategy(type, discount);
+		promotionStrategy = PromotionStrategyFactory.getStrategy(type, discount);
 	}
 	
 	Promotion(PromotionPO po) {
@@ -100,14 +101,14 @@ public class Promotion implements Comparable<Promotion> {
 		
 		name = po.name;
 		
-		promotionStrategy = PromotionStrategyFactory.getSuitableStrategy(type, discount);
+		promotionStrategy = PromotionStrategyFactory.getStrategy(type, discount);
 	}
-	
+
 	// 默认构造方法，用于构建空的促销策略
 	Promotion() {
-		discount = 10;		// 我认为应该把discount去掉了.............
-		
-		promotionStrategy = PromotionStrategyFactory.getSuitableStrategy(type, discount);
+		discount = 10;		//不打折
+
+		promotionStrategy = PromotionStrategyFactory.getStrategy(type, discount);
 	}
 	
 	PromotionVO toVO() {
@@ -153,12 +154,12 @@ public class Promotion implements Comparable<Promotion> {
 				case "特定日期促销":			// nothing to check
 					break;
 				case "VIP促销":				// level
-					if (PromotionController.getInstance().calLevel(userVO.credit) < level) {
+					if (PromotionController.getInstance().calculateLevel(userVO.credit) < level) {
 						isAvailable = false;
 					}
 					break;
 				case "商圈促销":				// level、city、area
-					if (PromotionController.getInstance().calLevel(userVO.credit) < level) {
+					if (PromotionController.getInstance().calculateLevel(userVO.credit) < level) {
 						isAvailable = false;
 					}
 					if (!(hotelVO.city.cityName.equals(city) && hotelVO.area.address.equals(area))) {
@@ -208,7 +209,8 @@ public class Promotion implements Comparable<Promotion> {
 		}
 		return 0;
 	}
-	
+
+	//当前时间是否在promotion的适用日期范围
 	private boolean isInPromotionPeriod() {
 		try {
 			if (startTime.after(RMIHelper.getInstance().getTimeServiceImpl().getDate())) {
@@ -222,8 +224,9 @@ public class Promotion implements Comparable<Promotion> {
 		}
 		return true;
 	}
-	
-	private boolean isInPromotionHotel(String hid) {
-		return hotelID.equals(hid);
+
+	//promotion是否是该酒店的
+	private boolean isInPromotionHotel(String id) {
+		return hotelID.equals(id);
 	}
 }

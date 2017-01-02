@@ -77,6 +77,7 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 		return po;
 	}
 
+	@Override
 	public OrderPO getOrderPO(String orderID) throws RemoteException {
 		OrderPO po = null;
 		PreparedStatement preparedStatement;
@@ -92,6 +93,7 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 		return po;
 	}
 
+	@Override
 	public List<OrderPO> getUserOrderPO(String userID, OrderType type) throws RemoteException {
 		List<OrderPO> res = new ArrayList<OrderPO>();
 		PreparedStatement preparedStatement;
@@ -107,6 +109,7 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 		return res;
 	}
 
+	@Override
 	public List<OrderPO> getHotelOrderPO(String hotelID, OrderType type) throws RemoteException {
 		List<OrderPO> res = new ArrayList<OrderPO>();
 		PreparedStatement preparedStatement;
@@ -122,6 +125,7 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 		return res;
 	}
 
+	@Override
 	public List<OrderPO> getAbnormalOrderPO() throws RemoteException {
 		List<OrderPO> res = new ArrayList<OrderPO>();
 		PreparedStatement preparedStatement;
@@ -137,6 +141,7 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 		return res;
 	}
 
+	@Override
 	public ResultMessage add(OrderPO po) throws RemoteException {
 		try {
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("select * from `Order` where OrderID='" + po.orderID + "'");
@@ -162,6 +167,7 @@ public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDa
 		return ResultMessage.SUCCESS;
 	}
 
+	@Override
 	public ResultMessage modify(OrderPO po) throws RemoteException {
 		try {
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(

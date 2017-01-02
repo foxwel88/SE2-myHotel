@@ -73,7 +73,7 @@ public class CustomerCheckCredit {
 		boxList.add(record5);
 		boxList.add(record6);
 		boxList.add(record7);
-		recordList = SwitchSceneUtil.getRecordList();
+		recordList = CustomerController.getRecordList();
 		showRecord();
 	}
 	

@@ -121,8 +121,7 @@ public class WebMarketerGuide {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		
+
 		userName = WebMarketerController.getInstance().getUserName();
 		welcomeLabel.setText("Welcome, " + WebMarketerController.getInstance().getName());
 

@@ -118,8 +118,8 @@ public class CustomerHistoryOrder {
 		boxList.add(order5);
 		boxList.add(order6);
 		showExecutedOrderList();
-		if (SwitchSceneUtil.isBack) {
-			switch (SwitchSceneUtil.currentScene) {
+		if (CustomerController.isBack) {
+			switch (CustomerController.currentScene) {
 				case EXECUTED_ORDER_SCENE:
 					switchToExecutedOrder();
 					break;
@@ -130,8 +130,8 @@ public class CustomerHistoryOrder {
 					switchToAbnormalOrder();
 					break;
 			}
-			currentPage.setText(String.valueOf(SwitchSceneUtil.previousOrderSceneInfo.currentPage));
-			switch (SwitchSceneUtil.currentScene) {
+			currentPage.setText(String.valueOf(CustomerController.previousOrderSceneInfo.currentPage));
+			switch (CustomerController.currentScene) {
 				case EXECUTED_ORDER_SCENE:
 					showExecutedOrderList();
 					break;
@@ -143,7 +143,7 @@ public class CustomerHistoryOrder {
 					break;
 			}
 		}
-		SwitchSceneUtil.showGuideAnimation(root, 100);
+		CustomerController.showGuideAnimation(root, 100);
 	}
 	
 	/*
@@ -261,32 +261,32 @@ public class CustomerHistoryOrder {
 			for (int i = 0; i < MAX_ORDER_ONE_PAGE; i++) {
 				HBox clickedBox = (HBox)(event.getSource());
 				if (clickedBox.equals(boxList.get(i))) {
-					SwitchSceneUtil.previousOrderSceneInfo = new PreviousOrderSceneInfo(Integer.parseInt(currentPage.getText()));
+					CustomerController.previousOrderSceneInfo = new PreviousOrderSceneInfo(Integer.parseInt(currentPage.getText()));
 					
 					KeyFrame animationFrame = new KeyFrame(Duration.seconds(0), actionEvent -> {
-						SwitchSceneUtil.showOldSceneAnimation(root);
+						CustomerController.showOldSceneAnimation(root);
 					});
 					KeyFrame changeSceneFrame = null;
 					switch (currentLabel) {
 						case 0:
 							orderID = executedOrderList.get((page - 1) * MAX_ORDER_ONE_PAGE + i).orderID;
 							changeSceneFrame = new KeyFrame(Duration.seconds(0.4), actionEvent -> {
-								SwitchSceneUtil.currentScene = CustomerBackableScene.EXECUTED_ORDER_SCENE;
-								SwitchSceneUtil.turnToDetailedOrderScene((GridPane)root.getParent(), resources.customerCheckExecutedOrder, orderID);
+								CustomerController.currentScene = CustomerBackableScene.EXECUTED_ORDER_SCENE;
+								CustomerController.turnToDetailedOrderScene((GridPane)root.getParent(), resources.customerCheckExecutedOrder, orderID);
 							});
 							break;
 						case 1:
 							orderID = canceledOrderList.get((page - 1) * MAX_ORDER_ONE_PAGE + i).orderID;
 							changeSceneFrame = new KeyFrame(Duration.seconds(0.4), actionEvent -> {
-								SwitchSceneUtil.currentScene = CustomerBackableScene.CANCELED_ORDER_SCENE;
-								SwitchSceneUtil.turnToDetailedOrderScene((GridPane)root.getParent(), resources.customerCheckCanceledOrder, orderID);
+								CustomerController.currentScene = CustomerBackableScene.CANCELED_ORDER_SCENE;
+								CustomerController.turnToDetailedOrderScene((GridPane)root.getParent(), resources.customerCheckCanceledOrder, orderID);
 							});
 							break;
 						case 2:
 							orderID = abnormalOrderList.get((page - 1) * MAX_ORDER_ONE_PAGE + i).orderID;
 							changeSceneFrame = new KeyFrame(Duration.seconds(0.4), actionEvent -> {
-								SwitchSceneUtil.currentScene = CustomerBackableScene.ABNORMAL_ORDER_SCENE;
-								SwitchSceneUtil.turnToDetailedOrderScene((GridPane)root.getParent(), resources.customerCheckAbnormalOrder, orderID);
+								CustomerController.currentScene = CustomerBackableScene.ABNORMAL_ORDER_SCENE;
+								CustomerController.turnToDetailedOrderScene((GridPane)root.getParent(), resources.customerCheckAbnormalOrder, orderID);
 							});
 							break;
 					}
@@ -435,19 +435,19 @@ public class CustomerHistoryOrder {
 	}
 	
 	void showExecutedOrderList() {
-		executedOrderList = new ArrayList<>(SwitchSceneUtil.getFinishedOrderList());
+		executedOrderList = new ArrayList<>(CustomerController.getFinishedOrderList());
 		Collections.sort(executedOrderList, new ActFromComparator());
 		setContent();
 	}
 	
 	void showCanceledOrderList() {
-		canceledOrderList = new ArrayList<>(SwitchSceneUtil.getCanceledOrderList());
+		canceledOrderList = new ArrayList<>(CustomerController.getCanceledOrderList());
 		Collections.sort(canceledOrderList, new CancelTimeComparator());
 		setContent();
 	}
 	
 	void showAbnormalOrderList() {
-		abnormalOrderList = new ArrayList<>(SwitchSceneUtil.getAbnormalOrderList());
+		abnormalOrderList = new ArrayList<>(CustomerController.getAbnormalOrderList());
 		Collections.sort(abnormalOrderList, new LatestTimeComparator());
 		setContent();
 	}

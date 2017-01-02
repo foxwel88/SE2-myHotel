@@ -99,8 +99,8 @@ public class PromotionController implements Promotionblservice {
 	}
 
 	@Override
-	public int calLevel(double credit) {
-		return new Level().calLevel(credit);
+	public int calculateLevel(double credit) {
+		return new Level().calculateLevel(credit);
 	}
 
 	@Override

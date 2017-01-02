@@ -10,7 +10,6 @@ import static org.easymock.EasyMock.*;
 
 import org.client.vo.OrderVO;
 import org.common.po.OrderPO;
-import org.common.utility.HotelFilter;
 import org.common.utility.OrderType;
 import org.common.utility.ResultMessage;
 import org.common.utility.RoomType;

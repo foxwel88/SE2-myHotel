@@ -8,7 +8,7 @@ import org.client.bl.userbl.UserController;
 import org.client.blservice.userblservice.Userblservice;
 import org.client.presentation.customer.CustomerHTTPPictureDownloader;
 import org.client.presentation.customer.Customer_Guide;
-import org.client.presentation.customer.SwitchSceneUtil;
+import org.client.presentation.customer.CustomerController;
 import org.client.presentation.hotelmanager.HotelManagerController;
 import org.client.presentation.webmanager.WebManagerController;
 import org.client.presentation.webmarketer.WebMarketerController;
@@ -89,18 +89,18 @@ public class LoginController {
 					root = FXMLLoader.load(getClass().getResource("/网站营销人员/guide.fxml"));
 					break;
 				case "个人客户":
-					SwitchSceneUtil.init(stage, uservo.ID);
+					CustomerController.init(stage, uservo.ID);
 					FXMLLoader loader1 = new FXMLLoader();
 					root = loader1.load(getClass().getResource("/客户/导航_主界面.fxml").openStream());
 					Customer_Guide customerController1 = (Customer_Guide) loader1.getController();
-					SwitchSceneUtil.setController(customerController1);
+					CustomerController.setGuideController(customerController1);
 					break;
 				case "企业客户":
-					SwitchSceneUtil.init(stage, uservo.ID);
+					CustomerController.init(stage, uservo.ID);
 					FXMLLoader loader2 = new FXMLLoader();
 					root = loader2.load(getClass().getResource("/客户/导航_主界面.fxml").openStream());
 					Customer_Guide customerController2 = (Customer_Guide) loader2.getController();
-					SwitchSceneUtil.setController(customerController2);
+					CustomerController.setGuideController(customerController2);
 					break;
 			}
 
