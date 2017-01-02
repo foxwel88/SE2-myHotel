@@ -2,13 +2,13 @@ package org.client.blstub;
 
 import java.util.*;
 
-import org.client.blservice.promotionblservice.Promotionblservice;
+import org.client.blservice.promotionblservice.PromotionBlService;
 import org.client.vo.LevelVO;
 import org.client.vo.PromotionVO;
 import org.common.utility.PromotionType;
 import org.common.utility.ResultMessage;
 
-public class Promotion_stub implements Promotionblservice {
+public class Promotion_stub implements PromotionBlService {
 	
 	PromotionVO vo1 = new PromotionVO("i'm an id", "hotel", PromotionType.SPECIALDATE.getString()
 			, Calendar.getInstance().getTime(), Calendar.getInstance().getTime(), "goodhotel","address",2 , "", "", 7.5, "期末特惠");

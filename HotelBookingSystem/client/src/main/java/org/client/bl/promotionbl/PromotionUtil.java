@@ -131,7 +131,8 @@ public class PromotionUtil {
 		PromotionPriceCalculator priceCalculator = new PromotionPriceCalculator(hotelPromotionList, websitePromotionList);
 		return priceCalculator.getPrice(rawPrice);
 	}
-	
+
+	//拿到酒店的所有HotelPromotion转换成Promotion对象再调用Promotion对象的canBeUsed()检查
 	private static ArrayList<Promotion> getCanBeUsedHotelPromotion(String hotelID, String userID, int roomNum) {
 		List<Promotion> hotelPromotionList = showHotelPromotion(hotelID);
 		ArrayList<Promotion> canBeUsedHotelPromotion = new ArrayList<>();
@@ -144,7 +145,8 @@ public class PromotionUtil {
 		
 		return canBeUsedHotelPromotion;
 	}
-	
+
+	//拿到网站的所有WebsitePromotion转换成Promotion对象再调用Promotion对象的canBeUsed()检查
 	private static ArrayList<Promotion> getCanBeUsedWebsitePromotion(String hotelID, String userID, int roomNum) {
 		List<Promotion> websitePromotionList = showWebsitePromotion();
 		ArrayList<Promotion> canBeUsedWebsitePromotion = new ArrayList<>();
@@ -158,6 +160,7 @@ public class PromotionUtil {
 		return canBeUsedWebsitePromotion;
 	}
 
+	/**从dao获得广告位酒店的ID */
 	static List<String> getAdvertisedHotels() {
 		if (promotionDataService == null) {
 			RMIHelper rmihelper = RMIHelper.getInstance();

@@ -5,13 +5,13 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
-import org.client.blservice.orderblservice.Orderblservice;
+import org.client.blservice.orderblservice.OrderBlService;
 import org.client.vo.OrderVO;
 import org.common.utility.OrderType;
 import org.common.utility.ResultMessage;
 import org.common.utility.RoomType;
 
-public class Order_stub implements Orderblservice {
+public class Order_stub implements OrderBlService {
 
 	OrderVO vo1 = new OrderVO("i'm a userid",OrderType.ABNORMAL.getString()
 			,new Date(),new Date(),new Date(),new Date()

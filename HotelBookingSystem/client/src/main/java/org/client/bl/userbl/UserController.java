@@ -2,7 +2,7 @@ package org.client.bl.userbl;
 
 import java.util.List;
 
-import org.client.blservice.userblservice.Userblservice;
+import org.client.blservice.userblservice.UserBlService;
 import org.client.vo.CreditRecordVO;
 import org.client.vo.UserLevelVO;
 import org.client.vo.UserVO;
@@ -14,7 +14,7 @@ import org.common.utility.ResultMessage;
  * @version 2016/11/27 gyue
  *
  */
-public class UserController implements Userblservice {
+public class UserController implements UserBlService {
 	
 	private static UserController controller;
 	

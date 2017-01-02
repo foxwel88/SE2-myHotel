@@ -16,7 +16,7 @@ import org.common.utility.RoomType;
  * @author Hirico
  * @version 2016/12/20 Hirico
  */
-public interface Hotelblservice {
+public interface HotelBlService {
 	public List<HotelVO> findHotels(HotelFilter filter, String userId, boolean historyOnly);
 	
 	public ResultMessage addHotel(HotelVO hotelVO, UserVO userVO);

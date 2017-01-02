@@ -4,7 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import org.client.bl.userbl.UserController;
-import org.client.blservice.userblservice.Userblservice;
+import org.client.blservice.userblservice.UserBlService;
 import org.client.presentation.util.CheckStyle;
 import org.common.utility.ResultMessage;
 
@@ -73,7 +73,7 @@ public class PwModify {
 			infoLabel.setText("两次密码不一致");
 			return;
 		}
-		Userblservice userbl = UserController.getInstance();
+		UserBlService userbl = UserController.getInstance();
 		ResultMessage info = userbl.modifyPassword(userName, oldPassword, newPassword);
 		if (info == ResultMessage.WRONG_PASSWORD) {
 			infoLabel.setText("原始密码错误");

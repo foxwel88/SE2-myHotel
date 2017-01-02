@@ -3,8 +3,8 @@ package org.client.integration;
 import org.client.bl.hotelbl.HotelController;
 import org.client.bl.orderbl.OrderController;
 import org.client.bl.userbl.UserController;
-import org.client.blservice.orderblservice.Orderblservice;
-import org.client.blservice.userblservice.Userblservice;
+import org.client.blservice.orderblservice.OrderBlService;
+import org.client.blservice.userblservice.UserBlService;
 import org.client.vo.AreaVO;
 import org.client.vo.CityVO;
 import org.client.vo.HotelVO;
@@ -47,7 +47,7 @@ public class HotelTest {
 		filter.setLocation("南京", "新街口");
 		filter.setSchFromDate(new Date(108,0,1));
 		filter.setSchToDate(new Date(108,2,1));
-		Orderblservice orderController = OrderController.getInstance();
+		OrderBlService orderController = OrderController.getInstance();
 		controller.setOrderblservice(orderController);
 
 		List<HotelVO> hotels = null;
@@ -64,7 +64,7 @@ public class HotelTest {
 		AreaVO area = new AreaVO("仙林中心");
 		HotelVO vo = new HotelVO(null, "love love", org.client.rmi.RMIHelper.getInstance().getIDUtil().generateNewHotelID(), city, area, "niconiconi", 5, 5, "", "", null, null, null, null, "");
 		UserVO uvo = new UserVO("酒店工作人员", "X", "Y", null, "first0xaa55", "12233345678", 21.21, new Date(19890604), "μs", null, "unknown");
-		Userblservice userController = UserController.getInstance();
+		UserBlService userController = UserController.getInstance();
 		controller.setUserblservice(userController);
 
 		ResultMessage result = controller.addHotel(vo, uvo);

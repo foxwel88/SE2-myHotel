@@ -3,7 +3,7 @@ package org.client.blstub;
 import java.util.ArrayList;
 import java.util.Date;
 
-import org.client.blservice.userblservice.Userblservice;
+import org.client.blservice.userblservice.UserBlService;
 import org.client.vo.CreditRecordVO;
 import org.client.vo.UserLevelVO;
 import org.client.vo.UserVO;
@@ -11,7 +11,7 @@ import org.common.utility.CreditOperation;
 import org.common.utility.ResultMessage;
 import org.common.utility.UserType;
 
-public class User_stub implements Userblservice {
+public class User_stub implements UserBlService {
 	@SuppressWarnings("deprecation")
 	Date date = new Date("1997/1/1");
 	

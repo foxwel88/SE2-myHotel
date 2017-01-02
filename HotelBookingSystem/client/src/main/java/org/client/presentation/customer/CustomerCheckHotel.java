@@ -614,7 +614,6 @@ public class CustomerCheckHotel {
 			}
 			return DateUtil.dateToCoarseString(tempDate);
 		} catch (IndexOutOfBoundsException ex) {
-			ex.printStackTrace();
 			return null;
 		}
 	}
@@ -630,7 +629,6 @@ public class CustomerCheckHotel {
 				return abnormalOrderList.get(seq).roomType;
 			}
 		} catch (IndexOutOfBoundsException ex) {
-			ex.printStackTrace();
 			return null;
 		}
 	}
@@ -646,7 +644,6 @@ public class CustomerCheckHotel {
 				return abnormalOrderList.get(seq).roomNum;
 			}
 		} catch (IndexOutOfBoundsException ex) {
-			ex.printStackTrace();
 			return -1;
 		}
 	}
@@ -662,7 +659,6 @@ public class CustomerCheckHotel {
 				return abnormalOrderList.get(seq).totalPrice;
 			}
 		} catch (IndexOutOfBoundsException ex) {
-			ex.printStackTrace();
 			return -1;
 		}
 	}
@@ -679,7 +675,6 @@ public class CustomerCheckHotel {
 			tempDate = commentList.get(seq).date;
 			return DateUtil.dateToCoarseString(tempDate);
 		} catch (IndexOutOfBoundsException ex) {
-			ex.printStackTrace();
 			return null;
 		}
 	}
@@ -689,7 +684,6 @@ public class CustomerCheckHotel {
 		try {
 			return commentList.get(seq).userName;
 		} catch (IndexOutOfBoundsException ex) {
-			ex.printStackTrace();
 			return null;
 		}
 	}
@@ -699,7 +693,6 @@ public class CustomerCheckHotel {
 		try {
 			return commentList.get(seq).comment;
 		} catch (IndexOutOfBoundsException ex) {
-			ex.printStackTrace();
 			return null;
 		}
 	}
@@ -709,7 +702,6 @@ public class CustomerCheckHotel {
 		try {
 			return commentList.get(seq).rank;
 		} catch (IndexOutOfBoundsException ex) {
-			ex.printStackTrace();
 			return -1;
 		}
 	}
@@ -740,7 +732,6 @@ public class CustomerCheckHotel {
 		try {
 			return promotionVOList.get(seq).name;
 		} catch (IndexOutOfBoundsException ex) {
-			ex.printStackTrace();
 			return null;
 		}
 	}

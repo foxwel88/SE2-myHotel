@@ -4,6 +4,7 @@ import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import org.client.launcher.Resources;
 import org.client.presentation.util.DateUtil;
@@ -484,7 +485,7 @@ public class CustomerCheckHotelList {
 				getScoreHeadLabel(i).setText("评分：");
 				getScoreLabel(i).setText(String.valueOf(getScore(i)));
 				getAddressLabel(i).setText(getAddress(i));
-				getPriceLabel(i).setText("¥" + String.valueOf(getPrice(i)));
+				getPriceLabel(i).setText("¥" + String.valueOf(getMinPrice(i)));
 				getPriceTailLabel(i).setText("起");
 				getMakeOrderLabel(i).setVisible(true);
 				getHistoryMarkPane(i).setVisible(getHistoryMark(i));
@@ -518,8 +519,8 @@ public class CustomerCheckHotelList {
 	}
 	
 	private void setCity() {
-		ArrayList<String> cityNameList = new ArrayList<>();
-		ArrayList<CityVO> cityVOList = CustomerController.getCities();
+		List<String> cityNameList = new ArrayList<>();
+		List<CityVO> cityVOList = CustomerController.getCities();
 		for (CityVO vo : cityVOList) {
 			cityNameList.add(vo.cityName);
 		}
@@ -529,7 +530,7 @@ public class CustomerCheckHotelList {
 	private void setArea() {
 		ArrayList<String> areaNameList = new ArrayList<>();
 		try {
-			ArrayList<AreaVO> areaVOList = CustomerController.getAreas(city.getValue());
+			List<AreaVO> areaVOList = CustomerController.getAreas(city.getValue());
 			for (AreaVO vo : areaVOList) {
 				areaNameList.add(vo.address);
 			}
@@ -757,8 +758,8 @@ public class CustomerCheckHotelList {
 	private double getScore(int i) {
 		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_HOTEL_ONE_PAGE + i;
 		try {
-			DecimalFormat formator = new DecimalFormat("0.00");
-			return Double.parseDouble(formator.format(hotelList.get(seq).rank));
+			DecimalFormat decimalFormat = new DecimalFormat("0.00");
+			return Double.parseDouble(decimalFormat.format(hotelList.get(seq).rank));
 		} catch (IndexOutOfBoundsException indexOutOfBoundsException) {
 			return -1;
 		}
@@ -772,8 +773,9 @@ public class CustomerCheckHotelList {
 			return null;
 		}
 	}
-	
-	private double getPrice(int i) {
+
+	/**获得酒店原始房间价格中的最低价格 */
+	private double getMinPrice(int i) {
 		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_HOTEL_ONE_PAGE + i;
 		try {
 			ArrayList<Double> priceList = new ArrayList<>(hotelList.get(seq).roomPrice);
@@ -791,7 +793,7 @@ public class CustomerCheckHotelList {
 	
 	private boolean getHistoryMark(int i) {
 		int seq = (Integer.parseInt(currentPage.getText()) - 1) * MAX_HOTEL_ONE_PAGE + i;
-		ArrayList<HotelVO> historyHotels = CustomerController.getFilteredHotels(getCurrentFilter(), true);
+		List<HotelVO> historyHotels = CustomerController.getFilteredHotels(getCurrentFilter(), true);
 		HotelVO tempHotel = hotelList.get(seq);
 		for (int j = 0; j < historyHotels.size(); j++) {
 			if (historyHotels.get(j).id.equals(tempHotel.id)) {

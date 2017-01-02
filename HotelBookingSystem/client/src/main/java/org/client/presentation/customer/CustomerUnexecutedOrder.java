@@ -1,6 +1,6 @@
 package org.client.presentation.customer;
 
-import org.client.blservice.orderblservice.Orderblservice;
+import org.client.blservice.orderblservice.OrderBlService;
 import org.client.launcher.Resources;
 import org.client.presentation.util.DateUtil;
 import org.client.vo.OrderVO;
@@ -68,7 +68,7 @@ public class CustomerUnexecutedOrder {
 	
 	private OrderVO vo;
 	
-	private Orderblservice orderController;
+	private OrderBlService orderController;
 	
 	private Resources resources;
 	

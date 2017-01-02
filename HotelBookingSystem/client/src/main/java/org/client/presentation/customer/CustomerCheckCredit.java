@@ -1,6 +1,7 @@
 package org.client.presentation.customer;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.client.presentation.util.DateUtil;
 import org.client.vo.CreditRecordVO;
@@ -59,7 +60,7 @@ public class CustomerCheckCredit {
 	
 	private ArrayList<HBox> boxList;
 	
-	private ArrayList<CreditRecordVO> recordList;
+	private List<CreditRecordVO> recordList;
 	
 	private static final int MAX_CREDITRECORD_ONE_PAGE = 7;
 	
@@ -148,7 +149,7 @@ public class CustomerCheckCredit {
 	/*
 	 * 此方法用于计算信用记录列表能够展开的最大页数
 	 */
-	private int calMaxPage(ArrayList<CreditRecordVO> voList) {
+	private int calMaxPage(List<CreditRecordVO> voList) {
 		return (voList.size() / MAX_CREDITRECORD_ONE_PAGE) + 1;
 	}
 	

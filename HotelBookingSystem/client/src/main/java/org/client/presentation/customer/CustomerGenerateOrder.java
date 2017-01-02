@@ -56,10 +56,10 @@ public class CustomerGenerateOrder {
 	Label credit;
 	
 	@FXML
-	Label roomPrice;
+	Label roomPrice; //现价
 	
 	@FXML
-	Label totalPrice;
+	Label totalPrice; //原价
 	
 	@FXML
 	Label rawPrice;
@@ -198,7 +198,6 @@ public class CustomerGenerateOrder {
 			tempRoomNum = 0;
 		}
 		ArrayList<PromotionVO> bestPromotions = new ArrayList<>(CustomerController.getBestPromotions(hotel.id, user.ID, tempRoomNum));
-		System.out.println(bestPromotions.size());
 		if (bestPromotions.size() == 2) {
 			if (bestPromotions.get(0).provider.equals("web")) {
 				webPromotionVO = bestPromotions.get(0);
@@ -238,7 +237,8 @@ public class CustomerGenerateOrder {
 		totalPrice.setStyle(null);
 		promotionPane.setVisible(false);
 	}
-	
+
+	/**将房间原价、现价设为合适值并刷新总价 */
 	@FXML
 	void refreshPrice() {
 		setSingleRoomPrice();
@@ -298,7 +298,7 @@ public class CustomerGenerateOrder {
 		}
 	}
 
-	/** */
+	/**获得当前房型现价label的double */
 	private double getCurrentSingleRoomPrice() {
 		try {
 			return Double.parseDouble(roomPrice.getText().replaceAll("元", ""));
@@ -306,7 +306,8 @@ public class CustomerGenerateOrder {
 			return 0;
 		}
 	}
-	
+
+	/**获得当前房型原价label的double */
 	private double getCurrentRawPrice() {
 		try {
 			return Double.parseDouble(rawPrice.getText().replaceAll("元", ""));

@@ -4,7 +4,7 @@ import java.rmi.RemoteException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import org.client.blservice.userblservice.Userblservice;
+import org.client.blservice.userblservice.UserBlService;
 import org.client.vo.CreditRecordVO;
 import org.client.vo.OrderVO;
 import org.common.dataservice.OrderDataService.OrderDataService;
@@ -31,7 +31,7 @@ public class Order {
 	
 	private TimeService timeDao;
 	
-	private Userblservice userbl;
+	private UserBlService userbl;
 	
 	public OrderType type;
 	

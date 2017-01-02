@@ -8,10 +8,10 @@ import org.client.bl.hotelbl.HotelController;
 import org.client.bl.orderbl.OrderController;
 import org.client.bl.promotionbl.PromotionController;
 import org.client.bl.userbl.UserController;
-import org.client.blservice.hotelblservice.Hotelblservice;
-import org.client.blservice.orderblservice.Orderblservice;
-import org.client.blservice.promotionblservice.Promotionblservice;
-import org.client.blservice.userblservice.Userblservice;
+import org.client.blservice.hotelblservice.HotelBlService;
+import org.client.blservice.orderblservice.OrderBlService;
+import org.client.blservice.promotionblservice.PromotionBlService;
+import org.client.blservice.userblservice.UserBlService;
 import org.client.vo.AreaVO;
 import org.client.vo.CityVO;
 import org.client.vo.HotelVO;
@@ -28,13 +28,13 @@ import org.common.utility.RoomType;
  */
 public class HotelManagerController {
 	
-	private Hotelblservice hotelbl;
+	private HotelBlService hotelbl;
 	
-	private Promotionblservice promotionbl;
+	private PromotionBlService promotionbl;
 	
-	private Orderblservice orderbl;
+	private OrderBlService orderbl;
 
-	private Userblservice userbl;
+	private UserBlService userbl;
 	
 	private static HotelManagerController controller;
 	

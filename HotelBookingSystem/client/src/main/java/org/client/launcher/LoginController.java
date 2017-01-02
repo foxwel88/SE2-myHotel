@@ -5,7 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import org.client.bl.userbl.UserController;
-import org.client.blservice.userblservice.Userblservice;
+import org.client.blservice.userblservice.UserBlService;
 import org.client.presentation.customer.CustomerHTTPPictureDownloader;
 import org.client.presentation.customer.Customer_Guide;
 import org.client.presentation.customer.CustomerController;
@@ -68,7 +68,7 @@ public class LoginController {
 	private void handleLoginAction(ActionEvent event) throws IOException {
 		String account = accountField.getText().trim();
 		String passWord = pwField.getText().trim();
-		Userblservice userBl = UserController.getInstance();
+		UserBlService userBl = UserController.getInstance();
 		ResultMessage result = userBl.login(account, passWord);
 		Stage stage = (Stage)accountField.getScene().getWindow();
 		Parent root = null;

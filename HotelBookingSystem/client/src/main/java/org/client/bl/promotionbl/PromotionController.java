@@ -3,7 +3,7 @@ package org.client.bl.promotionbl;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.client.blservice.promotionblservice.Promotionblservice;
+import org.client.blservice.promotionblservice.PromotionBlService;
 import org.client.vo.LevelVO;
 import org.client.vo.PromotionVO;
 import org.common.utility.ResultMessage;
@@ -13,7 +13,7 @@ import org.common.utility.ResultMessage;
  * @author fraliphsoft
  * @version fraliphsoft 12/7
  */
-public class PromotionController implements Promotionblservice {
+public class PromotionController implements PromotionBlService {
 	
 	private static PromotionController promotionController;
 	

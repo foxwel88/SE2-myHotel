@@ -15,9 +15,9 @@ public class PromotionPriceCalculator {
 	
 	ArrayList<Promotion> websitePromotionList;
 	
-	PromotionStrategy hotelPromotionStrategy;
+	Promotion bestHotelPromotion;
 	
-	PromotionStrategy websitePromotionStrategy;
+	Promotion bestWebsitePromotion;
 	
 	PromotionPriceCalculator(ArrayList<Promotion> hotelPromotionList, ArrayList<Promotion> websitePromotionList) {
 		this.hotelPromotionList = hotelPromotionList;
@@ -32,17 +32,17 @@ public class PromotionPriceCalculator {
 
 	/**根据一个最佳酒店促销策略和一个最佳网站促销策略，对原始价格进行二次计算 */
 	double getPrice(double rawPrice) {
-		setMostSuitableStrategy();
+		setBestPromotions();
 
 		// 由于仅有折扣类型的promotion，没有考虑优先级导致的先后折扣问题
-		return websitePromotionStrategy.getPrice(hotelPromotionStrategy.getPrice(rawPrice));
+		return bestWebsitePromotion.getPrice(bestHotelPromotion.getPrice(rawPrice));
 	}
 	
 	// 由于每人最多同时享用1种酒店促销策略和1种网站促销策略，因此需要筛选出最优的促销策略
-	private void setMostSuitableStrategy() {
+	private void setBestPromotions() {
 		Collections.sort(hotelPromotionList);
 		Collections.sort(websitePromotionList);
-		hotelPromotionStrategy = hotelPromotionList.get(0).promotionStrategy;
-		websitePromotionStrategy = websitePromotionList.get(0).promotionStrategy;
+		bestHotelPromotion = hotelPromotionList.get(0);
+		bestWebsitePromotion = websitePromotionList.get(0);
 	}
 }

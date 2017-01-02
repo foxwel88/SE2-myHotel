@@ -6,7 +6,7 @@ import org.client.vo.LevelVO;
 import org.client.vo.PromotionVO;
 import org.common.utility.ResultMessage;
 
-public interface Promotionblservice {
+public interface PromotionBlService {
 	
 	public ResultMessage add(PromotionVO vo);
 	

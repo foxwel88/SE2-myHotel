@@ -12,11 +12,11 @@ import org.client.bl.hotelbl.HotelController;
 import org.client.bl.orderbl.OrderController;
 import org.client.bl.promotionbl.PromotionController;
 import org.client.bl.userbl.UserController;
-import org.client.blservice.commentblservice.Commentblservice;
-import org.client.blservice.hotelblservice.Hotelblservice;
-import org.client.blservice.orderblservice.Orderblservice;
-import org.client.blservice.promotionblservice.Promotionblservice;
-import org.client.blservice.userblservice.Userblservice;
+import org.client.blservice.commentblservice.CommentBlService;
+import org.client.blservice.hotelblservice.HotelBlService;
+import org.client.blservice.orderblservice.OrderBlService;
+import org.client.blservice.promotionblservice.PromotionBlService;
+import org.client.blservice.userblservice.UserBlService;
 import org.client.launcher.Resources;
 import org.client.rmi.RMIHelper;
 import org.client.vo.*;
@@ -36,7 +36,7 @@ import javafx.util.Duration;
 
 /**
  * 
- * 客户界面-负责界面跳转和界面向下调用logic层方法的controller
+ * 客户界面-负责界面跳转(逻辑和动画)和界面向下调用logic层方法的controller
  * @author fraliphsoft
  * @version fraliphsoft 11/27
  */
@@ -45,16 +45,15 @@ public class CustomerController {
 	
 	static Customer_Guide customerGuideController;
 	
-	static Userblservice userBlService
-			;
+	static UserBlService userBlService;
 	
-	static Orderblservice orderBlService;
+	static OrderBlService orderBlService;
 	
-	static Hotelblservice hotelBlService;
+	static HotelBlService hotelBlService;
 	
-	static Promotionblservice promotionBlService;
+	static PromotionBlService promotionBlService;
 	
-	static Commentblservice commentBlService;
+	static CommentBlService commentBlService;
 	
 	// 记录当前登录客户的客户ID
 	static String userID;
@@ -102,8 +101,7 @@ public class CustomerController {
 	 * @param userID 当前登录客户的标识ID
 	 */
 	public static void init(Stage stage, String userID) {
-		userBlService
-				= UserController.getInstance();
+		userBlService = UserController.getInstance();
 		promotionBlService = PromotionController.getInstance();
 		orderBlService = OrderController.getInstance();
 		hotelBlService = HotelController.getInstance();
@@ -117,9 +115,8 @@ public class CustomerController {
 				.findbyID(userID);
 	}
 	
-	public static ArrayList<CreditRecordVO> getRecordList() {
-		return (ArrayList<CreditRecordVO>)userBlService
-				.findCreditRecord(userID);
+	public static List<CreditRecordVO> getRecordList() {
+		return userBlService.findCreditRecord(userID);
 	}
 	
 	public static ResultMessage modifyPassword(String oldPassword, String newPassword) {
@@ -187,9 +184,9 @@ public class CustomerController {
 		return commentBlService.addComment(commentVO);
 	}
 
-	public static ArrayList<OrderVO> getAbnormalOrderListOfCurrentHotel() {
-		ArrayList<OrderVO> allAbnormalOrder = (ArrayList<OrderVO>)getAbnormalOrderList();
-		ArrayList<OrderVO> hotelAbnormalOrder = new ArrayList<>();
+	public static List<OrderVO> getAbnormalOrderListOfCurrentHotel() {
+		List<OrderVO> allAbnormalOrder = getAbnormalOrderList();
+		List<OrderVO> hotelAbnormalOrder = new ArrayList<>();
 		for (int i = 0; i < allAbnormalOrder.size(); i++) {
 			if (allAbnormalOrder.get(i).hotelID.equals(hotelID)) {
 				hotelAbnormalOrder.add(allAbnormalOrder.get(i));
@@ -218,8 +215,9 @@ public class CustomerController {
 		return orderBlService.cancelOrder(orderID);
 	}
 
+	/**获得某房间类型原价 */
 	public static double getSingleRoomPrice(RoomType roomType) {
-		ArrayList<Double> priceList = (ArrayList<Double>)hotelBlService.getHotelVO(hotelID).roomPrice;
+		List<Double> priceList = hotelBlService.getHotelVO(hotelID).roomPrice;
 		switch (roomType) {
 			case SINGLE:
 				return priceList.get(0);
@@ -230,18 +228,21 @@ public class CustomerController {
 		}
 		return -1;
 	}
-	
+
+	/**促销后的现价 */
 	public static double getCurrentPrice(int roomNum, double rawPrice) {
 		return promotionBlService.getPrice(userID, hotelID, roomNum, rawPrice);
 	}
-	
-	public static ArrayList<CommentVO> getComments() {
-		return (ArrayList<CommentVO>)commentBlService.getComment(hotelID);
+
+	/**获得酒店的全部评价 */
+	public static List<CommentVO> getComments() {
+		return commentBlService.getComment(hotelID);
 	}
-	
+
+	/**获得客户当前订单中的评价 */
 	public static CommentVO getComment() {
 		String hotelID = getCurrentOrder().hotelID;
-		ArrayList<CommentVO> commentVOList = (ArrayList<CommentVO>)commentBlService.getComment(hotelID);
+		List<CommentVO> commentVOList = commentBlService.getComment(hotelID);
 		CommentVO commentVO = null;
 		for (CommentVO tempVO:commentVOList) {
 			if (tempVO.orderID.equals(CustomerController.orderID)) {
@@ -256,17 +257,17 @@ public class CustomerController {
 		return orderBlService.getOrder(orderID);
 	}
 	
-	public static ArrayList<HotelVO> getFilteredHotels(HotelFilter filter, boolean historyOnly) {
-		return (ArrayList<HotelVO>)hotelBlService.findHotels(filter, userID, historyOnly);
+	public static List<HotelVO> getFilteredHotels(HotelFilter filter, boolean historyOnly) {
+		return hotelBlService.findHotels(filter, userID, historyOnly);
 	}
 	
-	public static ArrayList<CityVO> getCities() {
+	public static List<CityVO> getCities() {
 		return new ArrayList<>(hotelBlService.getCitys());
 	}
 	
-	public static ArrayList<AreaVO> getAreas(String city) {
+	public static List<AreaVO> getAreas(String city) {
 		CityVO cityVO = new CityVO(city);
-		return (ArrayList<AreaVO>)hotelBlService.getAreas(cityVO);
+		return hotelBlService.getAreas(cityVO);
 	}
 	
 	public static HotelVO getHotelVO() {
@@ -285,17 +286,6 @@ public class CustomerController {
 		canBack = true;
 		CustomerController.currentScene = currentScene;
 	}
-	
-	/**
-	 * 跳转到可能执行返回上一界面的操作的界面时被调用，记录目标界面的名称和前一界面的信息
-	 * @param currentScene
-	 * @param previousHotelSceneInfo
-	 */
-	public static void savePreviousScene(CustomerBackableScene currentScene, PreviousHotelSceneInfo previousHotelSceneInfo) {
-		canBack = true;
-		CustomerController.currentScene = currentScene;
-		CustomerController.previousHotelSceneInfo = previousHotelSceneInfo;
-	}
 
 	public static List<PromotionVO> getHotelPromotions() {
 		return promotionBlService.showHotelPromotion(hotelID);
@@ -303,17 +293,6 @@ public class CustomerController {
 
 	public static List<PromotionVO> getWebSitePromotions() {
 		return promotionBlService.showWebsitePromotion();
-	}
-	
-	/**
-	 * 跳转到可能执行返回上一界面的操作的界面时被调用，记录目标界面的名称和前一界面的信息
-	 * @param currentScene
-	 * @param previousOrderSceneInfo
-	 */
-	public static void savePreviousScene(CustomerBackableScene currentScene, PreviousOrderSceneInfo previousOrderSceneInfo) {
-		canBack = true;
-		CustomerController.currentScene = currentScene;
-		CustomerController.previousOrderSceneInfo = previousOrderSceneInfo;
 	}
 	
 	/**

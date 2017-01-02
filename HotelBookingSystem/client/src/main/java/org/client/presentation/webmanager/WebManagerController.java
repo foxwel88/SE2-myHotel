@@ -5,8 +5,8 @@ import java.util.List;
 
 import org.client.bl.hotelbl.HotelController;
 import org.client.bl.userbl.UserController;
-import org.client.blservice.hotelblservice.Hotelblservice;
-import org.client.blservice.userblservice.Userblservice;
+import org.client.blservice.hotelblservice.HotelBlService;
+import org.client.blservice.userblservice.UserBlService;
 import org.client.vo.AreaVO;
 import org.client.vo.CityVO;
 import org.client.vo.HotelVO;
@@ -26,9 +26,9 @@ public class WebManagerController {
 	
 	UserVO nowvo;
 	
-	private Hotelblservice hotelbl;
+	private HotelBlService hotelbl;
 	
-	private Userblservice userbl;
+	private UserBlService userbl;
 	
 	String userID;
 	

@@ -9,8 +9,8 @@ import java.util.Date;
 import java.util.List;
 
 import org.client.bl.hotelbl.HotelController;
-import org.client.blservice.orderblservice.Orderblservice;
-import org.client.blservice.userblservice.Userblservice;
+import org.client.blservice.orderblservice.OrderBlService;
+import org.client.blservice.userblservice.UserBlService;
 import org.client.blstub.Order_stub;
 import org.client.blstub.User_stub;
 import org.client.vo.AreaVO;
@@ -47,7 +47,7 @@ public class HotelModuleTest {
 	public void testFindHotels() {
 		HotelFilter filter = new HotelFilter();
 		filter.setLocation("南京", "新街口");
-		Orderblservice orderstub = new Order_stub();
+		OrderBlService orderstub = new Order_stub();
 		controller.setOrderblservice(orderstub);
 
 		List<HotelVO> hotels = controller.findHotels(filter, null, false);
@@ -60,7 +60,7 @@ public class HotelModuleTest {
 		AreaVO area = new AreaVO("仙林中心");
 		HotelVO vo = new HotelVO(null,"lovelive", org.client.rmi.RMIHelper.getInstance().getIDUtil().generateNewHotelID(), city, area, "niconiconi", 5, 5, "", "", null, null, null, null, "");
 		UserVO uvo = new UserVO("客户", "X", "Y", null, "first0xaa55", "12233345678", 21.21, new Date(19890604), "μ's", null, "unknown");
-		Userblservice userstub = new User_stub();
+		UserBlService userstub = new User_stub();
 		controller.setUserblservice(userstub);
 
 		ResultMessage result = controller.addHotel(vo, uvo);

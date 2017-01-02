@@ -4,7 +4,7 @@ import java.rmi.RemoteException;
 import java.util.List;
 
 import org.client.bl.promotionbl.PromotionController;
-import org.client.blservice.promotionblservice.Promotionblservice;
+import org.client.blservice.promotionblservice.PromotionBlService;
 import org.client.rmi.RMIHelper;
 import org.client.vo.CreditRecordVO;
 import org.client.vo.LevelVO;
@@ -189,7 +189,7 @@ public class UserUtil {
 			return new UserLevelVO(ResultMessage.NOT_EXIST);
 		}
 		
-		Promotionblservice promotionbl = PromotionController.getInstance();
+		PromotionBlService promotionbl = PromotionController.getInstance();
 		LevelVO levelVO = promotionbl.showLevel();
 		int level = 0;
 		double credit = userVO.credit;

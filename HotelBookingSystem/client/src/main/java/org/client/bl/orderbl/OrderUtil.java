@@ -7,7 +7,7 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.client.bl.userbl.UserController;
-import org.client.blservice.userblservice.Userblservice;
+import org.client.blservice.userblservice.UserBlService;
 import org.client.rmi.RMIHelper;
 import org.client.vo.OrderVO;
 import org.client.vo.UserVO;
@@ -38,7 +38,7 @@ public class OrderUtil {
 	
 	protected TimeService timeDao;
 	
-	protected Userblservice userController;
+	protected UserBlService userController;
 	
 	private OrderUtil() {
 		dao = RMIHelper.getInstance().getOrderDataServiceImpl();
@@ -54,7 +54,7 @@ public class OrderUtil {
 		return util;
 	}
 	
-	public void setUserblservice(Userblservice userController) {
+	public void setUserblservice(UserBlService userController) {
 		this.userController = userController;
 	}
 

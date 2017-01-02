@@ -46,7 +46,15 @@ public class Promotion implements Comparable<Promotion> {
 	
 	String name;
 	
-	PromotionStrategy promotionStrategy;
+	private PromotionStrategy promotionStrategy;
+
+	public void setStrategy(PromotionStrategy strategy) {
+		promotionStrategy = strategy;
+	}
+
+	public double getPrice(double rawPrice) {
+		return promotionStrategy.getPrice(rawPrice);
+	}
 	
 	Promotion(PromotionVO vo) {
 		promotionID = vo.promotionID;

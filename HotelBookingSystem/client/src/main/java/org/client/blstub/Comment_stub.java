@@ -3,11 +3,11 @@ package org.client.blstub;
 import java.util.ArrayList;
 import java.util.Date;
 
-import org.client.blservice.commentblservice.Commentblservice;
+import org.client.blservice.commentblservice.CommentBlService;
 import org.client.vo.CommentVO;
 import org.common.utility.ResultMessage;
 
-public class Comment_stub implements Commentblservice {
+public class Comment_stub implements CommentBlService {
 
 	public ArrayList<CommentVO> getComment(String hotelAddress) {
 		CommentVO vo1 = new CommentVO("Tom","上海路233号XX酒店", "订单号", 

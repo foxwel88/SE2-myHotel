@@ -179,8 +179,8 @@ public class CustomerMain {
 	}
 	
 	private void setCity() {
-		ArrayList<String> cityNameList = new ArrayList<>();
-		ArrayList<CityVO> cityVOList = CustomerController.getCities();
+		List<String> cityNameList = new ArrayList<>();
+		List<CityVO> cityVOList = CustomerController.getCities();
 		for (CityVO vo : cityVOList) {
 			cityNameList.add(vo.cityName);
 		}
@@ -188,9 +188,9 @@ public class CustomerMain {
 	}
 
 	private void setArea() {
-		ArrayList<String> areaNameList = new ArrayList<>();
+		List<String> areaNameList = new ArrayList<>();
 		try {
-			ArrayList<AreaVO> areaVOList = CustomerController.getAreas(city.getValue());
+			List<AreaVO> areaVOList = CustomerController.getAreas(city.getValue());
 			for (AreaVO vo : areaVOList) {
 				areaNameList.add(vo.address);
 			}

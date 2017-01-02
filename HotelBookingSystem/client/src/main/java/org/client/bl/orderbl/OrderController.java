@@ -3,8 +3,8 @@ package org.client.bl.orderbl;
 import java.util.Date;
 import java.util.List;
 
-import org.client.blservice.orderblservice.Orderblservice;
-import org.client.blservice.userblservice.Userblservice;
+import org.client.blservice.orderblservice.OrderBlService;
+import org.client.blservice.userblservice.UserBlService;
 import org.client.vo.OrderVO;
 import org.common.utility.OrderType;
 import org.common.utility.ResultMessage;
@@ -18,7 +18,7 @@ import org.common.utility.RoomType;
  * 
  */
 
-public class OrderController implements Orderblservice {
+public class OrderController implements OrderBlService {
 
 	private static OrderController controller;
 	
@@ -35,7 +35,7 @@ public class OrderController implements Orderblservice {
 		return controller;
 	}
 
-	public void setUserblservice(Userblservice userController) {
+	public void setUserblservice(UserBlService userController) {
 		this.orderUtil.setUserblservice(userController);
 	}
 

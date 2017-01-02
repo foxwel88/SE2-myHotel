@@ -7,7 +7,7 @@ import org.client.vo.UserLevelVO;
 import org.client.vo.UserVO;
 import org.common.utility.ResultMessage;
 
-public interface Userblservice {
+public interface UserBlService {
 	public ResultMessage login(String userName, String password);
 	
 	public ResultMessage logout(String userName);

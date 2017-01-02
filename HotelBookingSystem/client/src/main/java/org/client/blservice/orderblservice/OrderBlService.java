@@ -8,7 +8,7 @@ import org.common.utility.OrderType;
 import org.common.utility.ResultMessage;
 import org.common.utility.RoomType;
 
-public interface Orderblservice {
+public interface OrderBlService {
 	public ResultMessage createOrder(OrderVO vo);
 	
 	public ResultMessage cancelOrder(String orderID);

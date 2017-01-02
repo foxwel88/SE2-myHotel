@@ -1,6 +1,6 @@
 package org.client.presentation.customer;
 
-import org.client.blservice.commentblservice.Commentblservice;
+import org.client.blservice.commentblservice.CommentBlService;
 import org.client.launcher.Resources;
 import org.client.vo.OrderVO;
 
@@ -67,7 +67,7 @@ public class CustomerComment {
 	
 	private Resources resources;
 	
-	private Commentblservice commentController;
+	private CommentBlService commentController;
 	
 	private int selectedRank = -1;
 	

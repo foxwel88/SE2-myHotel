@@ -6,7 +6,7 @@ import java.util.Date;
 
 import javafx.scene.control.*;
 import org.client.bl.userbl.UserController;
-import org.client.blservice.userblservice.Userblservice;
+import org.client.blservice.userblservice.UserBlService;
 import org.client.presentation.util.CheckStyle;
 import org.client.presentation.util.DateUtil;
 import org.client.presentation.util.ResultInfoHelper;
@@ -121,7 +121,7 @@ public class RegisterController {
 	
 	@FXML
 	void handleSignUpAction(MouseEvent event) {
-		Userblservice userBl = UserController.getInstance();
+		UserBlService userBl = UserController.getInstance();
 		
 			
 		if (check()) {
