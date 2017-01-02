@@ -1,12 +1,12 @@
-package org.server;
+package org.server.launcher;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.rmi.RemoteException;
 
 import org.server.data.datafactory.DataFactory;
-import org.server.mysql.DatabaseCommunicator;
 import org.server.rmi.RMIHelper;
+import org.server.util.mysql.DatabaseCommunicator;
 
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;

@@ -15,7 +15,7 @@ import org.common.po.OrderPO;
 import org.common.utility.OrderType;
 import org.common.utility.ResultMessage;
 import org.common.utility.RoomType;
-import org.server.mysql.DatabaseCommunicator;
+import org.server.util.mysql.DatabaseCommunicator;
 
 public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDataService {
 

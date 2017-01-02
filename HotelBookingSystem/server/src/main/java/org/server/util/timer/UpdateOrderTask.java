@@ -1,4 +1,4 @@
-package org.server.timer;
+package org.server.util.timer;
 
 import java.rmi.RemoteException;
 import java.util.Calendar;

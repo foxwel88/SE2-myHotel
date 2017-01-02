@@ -13,8 +13,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
-import org.server.mysql.DatabaseCommunicator;
 import org.server.rmi.RMIHelper;
+import org.server.util.mysql.DatabaseCommunicator;
 
 
 public class UserTest {

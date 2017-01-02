@@ -79,48 +79,48 @@ public class OrderControllerTest {
 	@Test
 	public void testGetAbnormalOrder() {
 		
-		List<OrderVO> orderlist = null;
+		List<OrderVO> orderList = null;
 		
 		try {
-			orderlist = controller.getAbnormalOrder();
+			orderList = controller.getAbnormalOrder();
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 		}
 		
 		//assert
-		assertEquals(false, orderlist.isEmpty());
+		assertEquals(false, orderList.isEmpty());
 	}
 	
 	@Test
 	public void testGetUserOrderList1() {
 		
-		List<OrderVO> orderlist = null;
+		List<OrderVO> orderList = null;
 		String username = null;
 		
 		try {
-			orderlist = controller.getUserOrderList("0000000001", OrderType.UNEXECUTED);
-			username = orderlist.get(0).customerName;
+			orderList = controller.getUserOrderList("0000000001", OrderType.UNEXECUTED);
+			username = orderList.get(0).customerName;
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 		}
 		
 		//assert
-		assertEquals(false, orderlist.isEmpty());
+		assertEquals(false, orderList.isEmpty());
 		assertEquals("foxwel", username);
 	}
 	
 	@Test
 	public void testGetUserOrderList2() {
-		List<OrderVO> orderlist = null;
+		List<OrderVO> orderList = null;
 		
 		try {
-			orderlist = controller.getUserOrderList("0000000002", OrderType.UNEXECUTED);
+			orderList = controller.getUserOrderList("0000000002", OrderType.UNEXECUTED);
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 		}
 		
 		//assert
-		assertEquals(true, orderlist.isEmpty());
+		assertEquals(true, orderList.isEmpty());
 	}
 	
 	@Test

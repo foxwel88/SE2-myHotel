@@ -59,13 +59,13 @@ public class PromotionUtil {
 		try {
 			bestPromotion.add(hotelPromotion.get(0).toVO());
 		} catch (IndexOutOfBoundsException indexOutOfBoundsException) {
-			// nothing to  do
+			// nothing to do
 			// 出现此异常说明没有可享用的酒店促销策略
 		}
 		try {
 			bestPromotion.add(webPromotion.get(0).toVO());
 		} catch (IndexOutOfBoundsException indexOutOfBoundsException) {
-			// nothing to  do
+			// nothing to do
 			// 出现此异常说明没有可享用的网站促销策略
 		}
 		return bestPromotion;
@@ -156,7 +156,20 @@ public class PromotionUtil {
 		
 		return canBeUsedWebsitePromotion;
 	}
-	
+
+	static List<String> getAdvertisedHotels() {
+		if (promotionDataService == null) {
+			RMIHelper rmihelper = RMIHelper.getInstance();
+			setDAO(rmihelper.getPromotionDataServiceImpl());
+		}
+		try {
+			return promotionDataService.getAdvertisedHotels();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			return new ArrayList<>();
+		}
+	}
+
 	/**
 	 * 检查某个酒店的促销策略或者网站促销策略是否适用于某人
 	 * @param promotion
@@ -167,4 +180,6 @@ public class PromotionUtil {
 	private static boolean checkCanBeUse(Promotion promotion, String hotelID, String userID, int roomNum) {
 		return promotion.canBeUsed(hotelID, userID, roomNum);
 	}
+
+
 }

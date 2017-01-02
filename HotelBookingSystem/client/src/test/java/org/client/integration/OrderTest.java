@@ -1,3 +1,4 @@
+
 package org.client.integration;
 
 import static org.junit.Assert.assertEquals;
@@ -14,8 +15,8 @@ import org.common.utility.RoomType;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.server.mysql.DatabaseCommunicator;
 import org.server.rmi.RMIHelper;
+import org.server.util.mysql.DatabaseCommunicator;
 
 
 public class OrderTest {
@@ -44,7 +45,7 @@ public class OrderTest {
 	}
 
 	@Test
-	public void testgetOrder1() {
+	public void testGetOrder1() {
 		OrderVO vo = controller.getOrder("123456789020080606143055");
 		//assert
 		assertEquals("123456789020080606143055",vo.orderID);
@@ -52,7 +53,7 @@ public class OrderTest {
 	}
 	
 	@Test
-	public void testgetOrder2() {
+	public void testGetOrder2() {
 		OrderVO vo = controller.getOrder("123456789020090606130505");
 		//assert
 		assertEquals("123456789020090606130505",vo.orderID);
@@ -62,154 +63,154 @@ public class OrderTest {
 	@Test
 	public void testGetAbnormalOrder() {
 		
-		List<OrderVO> orderlist = null;
+		List<OrderVO> orderList = null;
 		
 		try {
-			orderlist = controller.getAbnormalOrder();
+			orderList = controller.getAbnormalOrder();
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 		}
 		
 		//assert
-		for (int i = 0; i < orderlist.size(); ++i) {
-			assertEquals("异常订单", orderlist.get(i).type);
+		for (int i = 0; i < orderList.size(); ++i) {
+			assertEquals("异常订单", orderList.get(i).type);
 		}
 		
 	}
 	
 	@Test
 	public void testGetUserOrderList1() {
-		List<OrderVO> orderlist = null;
+		List<OrderVO> orderList = null;
 		
 		try {
-			orderlist = controller.getUserOrderList("1234567890", OrderType.UNEXECUTED);
+			orderList = controller.getUserOrderList("1234567890", OrderType.UNEXECUTED);
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 		}
-		assertEquals(false, orderlist.isEmpty());
+		assertEquals(false, orderList.isEmpty());
 		//assert
-		for (int i = 0; i < orderlist.size(); ++i) {
-			assertEquals("未执行订单", orderlist.get(i).type);
-			assertEquals("1234567890", orderlist.get(i).userID);
+		for (int i = 0; i < orderList.size(); ++i) {
+			assertEquals("未执行订单", orderList.get(i).type);
+			assertEquals("1234567890", orderList.get(i).userID);
 		}
 	}
 	
 	@Test
 	public void testGetUserOrderList2() {
-		List<OrderVO> orderlist = null;
+		List<OrderVO> orderList = null;
 		
 		try {
-			orderlist = controller.getUserOrderList("1234567890", OrderType.EXECUTED);
+			orderList = controller.getUserOrderList("1234567890", OrderType.EXECUTED);
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 		}
-		assertEquals(false, orderlist.isEmpty());
+		assertEquals(false, orderList.isEmpty());
 		//assert
-		for (int i = 0; i < orderlist.size(); ++i) {
-			assertEquals("已执行订单", orderlist.get(i).type);
-			assertEquals("1234567890", orderlist.get(i).userID);
+		for (int i = 0; i < orderList.size(); ++i) {
+			assertEquals("已执行订单", orderList.get(i).type);
+			assertEquals("1234567890", orderList.get(i).userID);
 		}
 	}
 	
 	@Test
 	public void testGetUserOrderList3() {
-		List<OrderVO> orderlist = null;
+		List<OrderVO> orderList = null;
 		
 		try {
-			orderlist = controller.getUserOrderList("1234567890", OrderType.ABNORMAL);
+			orderList = controller.getUserOrderList("1234567890", OrderType.ABNORMAL);
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 		}
-		assertEquals(false, orderlist.isEmpty());
+		assertEquals(false, orderList.isEmpty());
 		//assert
-		for (int i = 0; i < orderlist.size(); ++i) {
-			assertEquals("异常订单", orderlist.get(i).type);
-			assertEquals("1234567890", orderlist.get(i).userID);
+		for (int i = 0; i < orderList.size(); ++i) {
+			assertEquals("异常订单", orderList.get(i).type);
+			assertEquals("1234567890", orderList.get(i).userID);
 		}
 	}
 	
 	@Test
 	public void testGetUserOrderList4() {
-		List<OrderVO> orderlist = null;
+		List<OrderVO> orderList = null;
 		
 		try {
-			orderlist = controller.getUserOrderList("1234567890", OrderType.CANCELED);
+			orderList = controller.getUserOrderList("1234567890", OrderType.CANCELED);
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 		}
-		assertEquals(false, orderlist.isEmpty());
+		assertEquals(false, orderList.isEmpty());
 		//assert
-		for (int i = 0; i < orderlist.size(); ++i) {
-			assertEquals("已撤销订单", orderlist.get(i).type);
-			assertEquals("1234567890", orderlist.get(i).userID);
+		for (int i = 0; i < orderList.size(); ++i) {
+			assertEquals("已撤销订单", orderList.get(i).type);
+			assertEquals("1234567890", orderList.get(i).userID);
 		}
 	}
 	
 	@Test
 	public void testGetHotelOrderList1() {
-		List<OrderVO> orderlist = null;
+		List<OrderVO> orderList = null;
 		
 		try {
-			orderlist = controller.getHotelOrderList("00001", OrderType.UNEXECUTED);
+			orderList = controller.getHotelOrderList("00001", OrderType.UNEXECUTED);
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 		}
-		assertEquals(false, orderlist.isEmpty());
+		assertEquals(false, orderList.isEmpty());
 		//assert
-		for (int i = 0; i < orderlist.size(); ++i) {
-			assertEquals("未执行订单", orderlist.get(i).type);
-			assertEquals("00001", orderlist.get(i).hotelID);
+		for (int i = 0; i < orderList.size(); ++i) {
+			assertEquals("未执行订单", orderList.get(i).type);
+			assertEquals("00001", orderList.get(i).hotelID);
 		}
 	}
 	
 	@Test
 	public void testGetHotelOrderList2() {
-		List<OrderVO> orderlist = null;
+		List<OrderVO> orderList = null;
 		
 		try {
-			orderlist = controller.getHotelOrderList("00001", OrderType.EXECUTED);
+			orderList = controller.getHotelOrderList("00001", OrderType.EXECUTED);
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 		}
-		assertEquals(false, orderlist.isEmpty());
+		assertEquals(false, orderList.isEmpty());
 		//assert
-		for (int i = 0; i < orderlist.size(); ++i) {
-			assertEquals("已执行订单", orderlist.get(i).type);
-			assertEquals("00001", orderlist.get(i).hotelID);
+		for (int i = 0; i < orderList.size(); ++i) {
+			assertEquals("已执行订单", orderList.get(i).type);
+			assertEquals("00001", orderList.get(i).hotelID);
 		}
 	}
 	
 	@Test
 	public void testGetHotelOrderList3() {
-		List<OrderVO> orderlist = null;
+		List<OrderVO> orderList = null;
 		
 		try {
-			orderlist = controller.getHotelOrderList("00001", OrderType.ABNORMAL);
+			orderList = controller.getHotelOrderList("00001", OrderType.ABNORMAL);
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 		}
-		assertEquals(false, orderlist.isEmpty());
+		assertEquals(false, orderList.isEmpty());
 		//assert
-		for (int i = 0; i < orderlist.size(); ++i) {
-			assertEquals("异常订单", orderlist.get(i).type);
-			assertEquals("00001", orderlist.get(i).hotelID);
+		for (int i = 0; i < orderList.size(); ++i) {
+			assertEquals("异常订单", orderList.get(i).type);
+			assertEquals("00001", orderList.get(i).hotelID);
 		}
 	}
 	
 	@Test
 	public void testGetHotelOrderList4() {
-		List<OrderVO> orderlist = null;
+		List<OrderVO> orderList = null;
 		
 		try {
-			orderlist = controller.getHotelOrderList("00001", OrderType.CANCELED);
+			orderList = controller.getHotelOrderList("00001", OrderType.CANCELED);
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 		}
-		assertEquals(false, orderlist.isEmpty());
+		assertEquals(false, orderList.isEmpty());
 		//assert
-		for (int i = 0; i < orderlist.size(); ++i) {
-			assertEquals("已撤销订单", orderlist.get(i).type);
-			assertEquals("00001", orderlist.get(i).hotelID);
+		for (int i = 0; i < orderList.size(); ++i) {
+			assertEquals("已撤销订单", orderList.get(i).type);
+			assertEquals("00001", orderList.get(i).hotelID);
 		}
 	}
 	
@@ -233,18 +234,18 @@ public class OrderTest {
 	@Test
 	public void testCreateOrder1() {
 		ResultMessage message = controller.createOrder(vo3);
-		List<OrderVO> orderlist = controller.getUserOrderList("0000000003", OrderType.UNEXECUTED);
+		List<OrderVO> orderList = controller.getUserOrderList("0000000003", OrderType.UNEXECUTED);
 
 		//assert
 		assertEquals(ResultMessage.SUCCESS, message);
-		assertEquals(false, orderlist.isEmpty());
+		assertEquals(false, orderList.isEmpty());
 	}
 
 	@Test
 	public void testCancelOrder1() {
 		ResultMessage message1 = controller.createOrder(vo1);
-		List<OrderVO> orderlist = controller.getUserOrderList("0000000001", OrderType.UNEXECUTED);
-		String orderID = orderlist.get(orderlist.size() - 1).orderID;
+		List<OrderVO> orderList = controller.getUserOrderList("0000000001", OrderType.UNEXECUTED);
+		String orderID = orderList.get(orderList.size() - 1).orderID;
 		ResultMessage message2 = controller.cancelOrder(orderID);
 		OrderVO vo = controller.getOrder(orderID);
 		
@@ -255,10 +256,10 @@ public class OrderTest {
 	}
 	
 	@Test
-	public void testExcueteOrder1() {
+	public void testExecuteOrder1() {
 		ResultMessage message1 = controller.createOrder(vo2);
-		List<OrderVO> orderlist = controller.getUserOrderList("0000000002", OrderType.UNEXECUTED);
-		String orderID = orderlist.get(orderlist.size() - 1).orderID;
+		List<OrderVO> orderList = controller.getUserOrderList("0000000002", OrderType.UNEXECUTED);
+		String orderID = orderList.get(orderList.size() - 1).orderID;
 		ResultMessage message2 = controller.executeOrder(orderID);
 		OrderVO vo = controller.getOrder(orderID);
 		

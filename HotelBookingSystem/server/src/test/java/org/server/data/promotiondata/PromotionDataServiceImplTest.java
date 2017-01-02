@@ -15,7 +15,7 @@ import org.common.utility.ResultMessage;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.server.data.datafactory.DataFactory;
-import org.server.mysql.DatabaseCommunicator;
+import org.server.util.mysql.DatabaseCommunicator;
 
 
 public class PromotionDataServiceImplTest {

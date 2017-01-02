@@ -30,4 +30,6 @@ public interface PromotionDataService extends Remote {
 	public ResultMessage modifyLevel(LevelPO po) throws RemoteException;
 	//更新一个POs
 
+	public List<String> getAdvertisedHotels() throws RemoteException;
+
 }

@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.common.dataservice.PromotionDataService.PromotionDataService;
 import org.common.po.LevelPO;
@@ -56,6 +57,11 @@ public class PromotionDataServiceImpl_stub extends UnicastRemoteObject implement
 
 	public ResultMessage modifyLevel(LevelPO po) throws RemoteException {
 		return ResultMessage.SUCCESS;
+	}
+
+	@Override
+	public List<String> getAdvertisedHotels() throws RemoteException {
+		return new ArrayList<>();
 	}
 
 }

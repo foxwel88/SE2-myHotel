@@ -7,8 +7,8 @@ import org.server.data.hoteldata.HotelDataServiceImpl;
 import org.server.data.orderdata.OrderDataServiceImpl;
 import org.server.data.promotiondata.PromotionDataServiceImpl;
 import org.server.data.userdata.UserDataServiceImpl;
-import org.server.id.IDUtil;
-import org.server.time.TimeServiceImpl;
+import org.server.util.id.IDUtil;
+import org.server.util.time.TimeServiceImpl;
 
 /**
  * 负责各类dao的创建工作

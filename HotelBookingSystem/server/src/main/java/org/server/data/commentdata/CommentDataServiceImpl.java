@@ -12,7 +12,7 @@ import java.util.List;
 import org.common.dataservice.CommentDataService.CommentDataService;
 import org.common.po.CommentPO;
 import org.common.utility.ResultMessage;
-import org.server.mysql.DatabaseCommunicator;
+import org.server.util.mysql.DatabaseCommunicator;
 
 public class CommentDataServiceImpl extends UnicastRemoteObject implements CommentDataService {
 

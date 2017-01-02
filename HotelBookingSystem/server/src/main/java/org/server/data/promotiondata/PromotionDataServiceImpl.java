@@ -1,5 +1,6 @@
 package org.server.data.promotiondata;
 
+import java.io.*;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.Date;
@@ -8,13 +9,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import org.common.dataservice.PromotionDataService.PromotionDataService;
 import org.common.po.LevelPO;
 import org.common.po.PromotionPO;
 import org.common.utility.PromotionType;
 import org.common.utility.ResultMessage;
-import org.server.mysql.DatabaseCommunicator;
+import org.server.util.mysql.DatabaseCommunicator;
 
 public class PromotionDataServiceImpl extends UnicastRemoteObject implements PromotionDataService {
 
@@ -23,10 +25,13 @@ public class PromotionDataServiceImpl extends UnicastRemoteObject implements Pro
 	 */
 	private static final long serialVersionUID = -8003664894492865142L;
 
+	private static final String ADVERTISED_HOTEL_FILE_LOCATION = "/adHotels.txt";
+
 	public PromotionDataServiceImpl() throws RemoteException {
 		System.out.println("promotion start");
 	}
-	
+
+	@Override
 	public ResultMessage add(PromotionPO po) throws RemoteException {
 		ResultMessage styleMessage = checkNewPromotionStyle(po);
 		if (!styleMessage.equals(ResultMessage.SUCCESS)) {
@@ -49,12 +54,14 @@ public class PromotionDataServiceImpl extends UnicastRemoteObject implements Pro
 		return ResultMessage.CONNECTION_FAIL;
 	}
 
+	@Override
 	public ResultMessage modify(PromotionPO po) throws RemoteException {
 		delete(po.promotionID);
 		add(po);
 		return ResultMessage.SUCCESS;
 	}
-	
+
+	@Override
 	public ResultMessage delete(String promotionID) throws RemoteException {
 		try {
 			PreparedStatement deleteStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(
@@ -67,6 +74,7 @@ public class PromotionDataServiceImpl extends UnicastRemoteObject implements Pro
 		return ResultMessage.WRONG_VALUE;
 	}
 
+	@Override
 	public List<PromotionPO> showHotelPromotion(String hotelID) throws RemoteException {
 		try {
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(
@@ -79,6 +87,7 @@ public class PromotionDataServiceImpl extends UnicastRemoteObject implements Pro
 		return null;
 	}
 
+	@Override
 	public List<PromotionPO> showWebsitePromotion() throws RemoteException {
 		try {
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement(
@@ -95,6 +104,7 @@ public class PromotionDataServiceImpl extends UnicastRemoteObject implements Pro
 	 * 获得等级制度信息
 	 * 注意，此方法如果没有成功，可能返回null
 	 */
+	@Override
 	public LevelPO showLevel() throws RemoteException {
 		ArrayList<Double> creditsList = new ArrayList<>();
 		LevelPO levelPO = null;
@@ -111,6 +121,7 @@ public class PromotionDataServiceImpl extends UnicastRemoteObject implements Pro
 		return levelPO;
 	}
 
+	@Override
 	public ResultMessage modifyLevel(LevelPO po) throws RemoteException {
 		PreparedStatement preparedStatement;
 		try {
@@ -127,7 +138,23 @@ public class PromotionDataServiceImpl extends UnicastRemoteObject implements Pro
 		}
 		return ResultMessage.WRONG_VALUE;
 	}
-	
+
+	/**从文件中获取当前广告位的酒店id */
+	@Override
+	public List<String> getAdvertisedHotels() throws RemoteException {
+		List<String> result = new ArrayList<>();
+		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(ADVERTISED_HOTEL_FILE_LOCATION)));
+		String input;
+		try {
+			while ((input = bufferedReader.readLine().trim()) != null) {
+				result.add(input);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
 	private String getNewID() throws RemoteException {
 		try {
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("select promotionid from promotion", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);

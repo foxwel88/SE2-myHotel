@@ -1,4 +1,4 @@
-package org.server;
+package org.server.launcher;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.common.utility.ResultMessage;
 import org.server.data.datafactory.DataFactory;
+import org.server.util.timer.UpdateOrderTimer;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -16,7 +17,6 @@ import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.util.Duration;
-import org.server.timer.UpdateOrderTimer;
 
 /**
  * Server端的单件服务类

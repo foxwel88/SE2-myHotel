@@ -1,4 +1,4 @@
-package org.server;
+package org.server.launcher;
 
 
 import javafx.application.Application;

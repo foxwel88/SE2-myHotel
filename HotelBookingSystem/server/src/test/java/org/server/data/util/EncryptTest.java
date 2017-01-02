@@ -2,7 +2,7 @@ package org.server.data.util;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
-import org.server.security.EncryptUtil;
+import org.server.util.security.EncryptUtil;
 
 /**
  * 测试加密工具是否能正确进行加密和解密

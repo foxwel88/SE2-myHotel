@@ -26,14 +26,15 @@ public class PromotionController implements Promotionblservice {
 		
 		websitePromotionList = new ArrayList<>();
 	}
-	
+
 	public static PromotionController getInstance() {
 		if (promotionController == null) {
 			promotionController = new PromotionController();
 		}
 		return promotionController;
 	}
-	
+
+	@Override
 	public ResultMessage add(PromotionVO vo) {
 		return PromotionUtil.add(vo);
 	}
@@ -41,10 +42,12 @@ public class PromotionController implements Promotionblservice {
 	/**
 	 * 获得两个Promotion，分别是最优的网站促销策略和最优的酒店促销策略
 	 */
+	@Override
 	public List<PromotionVO> getPromotion(String hotelID, String userID, int roomNum) {
 		return PromotionUtil.getPromotion(hotelID, userID, roomNum);
 	}
 
+	@Override
 	public List<PromotionVO> showHotelPromotion(String hotelID) {
 		hotelPromotionList = PromotionUtil.showHotelPromotion(hotelID);
 		
@@ -57,6 +60,7 @@ public class PromotionController implements Promotionblservice {
 		return tempVOList;
 	}
 
+	@Override
 	public List<PromotionVO> showWebsitePromotion() {
 		websitePromotionList = PromotionUtil.showWebsitePromotion();
 		
@@ -69,28 +73,39 @@ public class PromotionController implements Promotionblservice {
 		return tempVOList;
 	}
 
+	@Override
 	public ResultMessage modify(PromotionVO vo) {
 		return new Promotion().modify(vo);
 	}
-	
+
+	@Override
 	public ResultMessage delete(String promotionID) {
 		return PromotionUtil.delete(promotionID);
 	}
 
+	@Override
 	public LevelVO showLevel() {
 		return new Level().showLevel();
 	}
 
+	@Override
 	public ResultMessage modifyLevel(LevelVO vo) {
 		return new Level().modifyLevel(vo);
 	}
-	
-	public double getPrice (String userID, String hotelID, int roomNum, double rawPrice) {
+
+	@Override
+	public double getPrice(String userID, String hotelID, int roomNum, double rawPrice) {
 		return PromotionUtil.getPrice(userID, hotelID, roomNum, rawPrice);
 	}
-	
+
+	@Override
 	public int calLevel(double credit) {
 		return new Level().calLevel(credit);
+	}
+
+	@Override
+	public List<String> getAdvertisedHotels() {
+		return PromotionUtil.getAdvertisedHotels();
 	}
 
 }

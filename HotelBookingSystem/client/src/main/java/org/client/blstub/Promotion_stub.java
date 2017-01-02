@@ -1,9 +1,6 @@
 package org.client.blstub;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.*;
 
 import org.client.blservice.promotionblservice.Promotionblservice;
 import org.client.vo.LevelVO;
@@ -80,5 +77,10 @@ public class Promotion_stub implements Promotionblservice {
 	public int calLevel(double credit) {
 		// TODO Auto-generated method stub
 		return 3;
+	}
+
+	@Override
+	public List<String> getAdvertisedHotels() {
+		return new ArrayList<>();
 	}
 }

@@ -13,7 +13,7 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.server.data.datafactory.DataFactory;
-import org.server.mysql.DatabaseCommunicator;
+import org.server.util.mysql.DatabaseCommunicator;
 
 /**
  * UserDataServiceImpl的测试类

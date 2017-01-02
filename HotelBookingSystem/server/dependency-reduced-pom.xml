@@ -23,7 +23,7 @@
             <configuration>
               <transformers>
                 <transformer>
-                  <mainClass>org.server.ServerLauncher</mainClass>
+                  <mainClass>org.server.launcher.ServerLauncher</mainClass>
                 </transformer>
               </transformers>
             </configuration>

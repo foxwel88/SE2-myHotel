@@ -22,8 +22,8 @@ import org.common.utility.ResultMessage;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.server.mysql.DatabaseCommunicator;
 import org.server.rmi.RMIHelper;
+import org.server.util.mysql.DatabaseCommunicator;
 
 /**
  * hotel模块集成测试，用到的hotelbl类和hoteldao均为真实类，其它模块的类为stub

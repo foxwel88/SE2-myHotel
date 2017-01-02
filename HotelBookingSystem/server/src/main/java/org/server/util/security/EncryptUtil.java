@@ -1,4 +1,4 @@
-package org.server.security;
+package org.server.util.security;
 
 import java.io.*;
 import java.security.InvalidAlgorithmParameterException;

@@ -16,10 +16,10 @@ import org.common.po.UserPO;
 import org.common.utility.CreditOperation;
 import org.common.utility.ResultMessage;
 import org.common.utility.UserType;
-import org.server.ServerUtil;
 import org.server.data.datafactory.DataFactory;
-import org.server.mysql.DatabaseCommunicator;
-import org.server.security.EncryptUtil;
+import org.server.launcher.ServerUtil;
+import org.server.util.mysql.DatabaseCommunicator;
+import org.server.util.security.EncryptUtil;
 
 /**
  * user模块数据层

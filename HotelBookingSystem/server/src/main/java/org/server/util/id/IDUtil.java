@@ -1,4 +1,4 @@
-package org.server.id;
+package org.server.util.id;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.common.utility.IDService;
-import org.server.mysql.DatabaseCommunicator;
+import org.server.util.mysql.DatabaseCommunicator;
 
 /**
  * 用来生成新的ID

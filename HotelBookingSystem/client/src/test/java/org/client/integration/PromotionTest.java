@@ -12,8 +12,8 @@ import org.client.vo.PromotionVO;
 import org.common.utility.PromotionType;
 import org.common.utility.ResultMessage;
 import org.junit.*;
-import org.server.mysql.DatabaseCommunicator;
 import org.server.rmi.RMIHelper;
+import org.server.util.mysql.DatabaseCommunicator;
 
 
 public class PromotionTest {

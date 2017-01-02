@@ -1,4 +1,4 @@
-package org.server.timer;
+package org.server.util.timer;
 
 import java.util.Calendar;
 import java.util.Date;

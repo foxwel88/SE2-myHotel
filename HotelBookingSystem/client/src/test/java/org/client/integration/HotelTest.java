@@ -14,8 +14,8 @@ import org.common.utility.ResultMessage;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.server.mysql.DatabaseCommunicator;
 import org.server.rmi.RMIHelper;
+import org.server.util.mysql.DatabaseCommunicator;
 
 import java.rmi.RemoteException;
 import java.util.Date;
@@ -46,7 +46,7 @@ public class HotelTest {
 		HotelFilter filter = new HotelFilter();
 		filter.setLocation("南京", "新街口");
 		filter.setSchFromDate(new Date(108,0,1));
-		filter.setSchToDate(new Date(109,0,1));
+		filter.setSchToDate(new Date(108,2,1));
 		Orderblservice orderController = OrderController.getInstance();
 		controller.setOrderblservice(orderController);
 

@@ -14,7 +14,7 @@ import org.common.utility.HotelFilter;
 import org.common.utility.ResultMessage;
 import org.common.utility.RoomType;
 import org.server.data.datafactory.DataFactory;
-import org.server.mysql.DatabaseCommunicator;
+import org.server.util.mysql.DatabaseCommunicator;
 
 public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDataService {
 

@@ -1,4 +1,4 @@
-package org.server.time;
+package org.server.util.time;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
