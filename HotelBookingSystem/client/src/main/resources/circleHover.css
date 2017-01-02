@@ -1,0 +1,3 @@
+.circle:hover {
+    -fx-effect: dropshadow(three-pass-box, #EEEEEE, 3, 0, 0, 0);
+}

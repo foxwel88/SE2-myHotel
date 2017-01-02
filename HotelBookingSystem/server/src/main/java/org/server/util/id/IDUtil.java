@@ -30,6 +30,11 @@ public class IDUtil extends UnicastRemoteObject implements IDService {
 	
 	private final int MAX_USERID_LENGTH = 10;
 
+	/**
+	 * 获得上个酒店的ID，该ID也代表酒店个数
+	 * 格式：“00000”
+	 * @return
+	 */
 	public String getLastHotelID() {
 		try {
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("SELECT count(*) FROM Hotel ");
@@ -48,7 +53,11 @@ public class IDUtil extends UnicastRemoteObject implements IDService {
 			return null;
 		}
 	}
-	
+
+	/**
+	 * 为一个新的User生成ID
+	 * @return
+	 */
 	public String generateNewUserID() {
 		try {
 			PreparedStatement preparedStatement = DatabaseCommunicator.getConnectionInstance().prepareStatement("SELECT count(*) FROM User ");
@@ -69,6 +78,10 @@ public class IDUtil extends UnicastRemoteObject implements IDService {
 		}
 	}
 
+	/**
+	 * 为一个新酒店生成ID，调用了getLastHotelID()方法
+	 * @return
+	 */
 	public String generateNewHotelID() {
 		String lastID = getLastHotelID();
 		int count = Integer.parseInt(lastID);

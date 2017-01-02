@@ -273,6 +273,10 @@ public class CustomerController {
 	public static HotelVO getHotelVO() {
 		return hotelBlService.getHotelVO(hotelID);
 	}
+
+	public static List<String> getAdvertisedHotels() {
+		return promotionBlService.getAdvertisedHotels();
+	}
 	
 	public static ResultMessage commitOrder(OrderVO orderVO) {
 		return orderBlService.createOrder(orderVO);

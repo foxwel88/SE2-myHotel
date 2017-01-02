@@ -106,10 +106,7 @@ public class CustomerMain {
 	
 	@FXML
 	void search_fromPicture() {
-		city.setValue("南京");
-		refreshAreas();
-		area.setValue("湖南路");
-		search();
+		showAdvertisedHotels();
 	}
 	
 	@FXML
@@ -161,6 +158,17 @@ public class CustomerMain {
 		hotelFilter.setLocation(city.getValue(), area.getValue());
 		hotelFilter.setSchFromDate(DateUtil.toDate(startDate.getValue()));
 		hotelFilter.setSchToDate(DateUtil.toDate(endDate.getValue()));
+		CustomerController.previousHotelSceneInfo = new PreviousHotelSceneInfo(hotelFilter, false, 1);
+		CustomerController.isBack = true;
+		CustomerController.customerGuideController.turnToCusController_HotelList();
+	}
+
+	private void showAdvertisedHotels() {
+		HotelFilter hotelFilter = new HotelFilter();
+		hotelFilter.setLocation(city.getValue(), area.getValue());
+		hotelFilter.setSchFromDate(DateUtil.toDate(startDate.getValue()));
+		hotelFilter.setSchToDate(DateUtil.toDate(endDate.getValue()));
+		hotelFilter.advertisedHotelIDs = CustomerController.getAdvertisedHotels();
 		CustomerController.previousHotelSceneInfo = new PreviousHotelSceneInfo(hotelFilter, false, 1);
 		CustomerController.isBack = true;
 		CustomerController.customerGuideController.turnToCusController_HotelList();

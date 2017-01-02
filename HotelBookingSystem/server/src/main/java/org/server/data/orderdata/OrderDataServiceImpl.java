@@ -17,6 +17,9 @@ import org.common.utility.ResultMessage;
 import org.common.utility.RoomType;
 import org.server.util.mysql.DatabaseCommunicator;
 
+/**
+ * Order模块在data层的实现类
+ */
 public class OrderDataServiceImpl extends UnicastRemoteObject implements OrderDataService {
 
 	/**

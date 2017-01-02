@@ -53,6 +53,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 	
 	/**
 	 * 将从User表查询到的resultSet转换成UserPO
+	 * 会将数据库得到的用户名、姓名、密码、联系方式解密
 	 * @param resultSet
 	 * @return
 	 */
@@ -98,6 +99,7 @@ public class UserDataServiceImpl extends UnicastRemoteObject implements UserData
 		return po;
 	}
 
+	/**添加一个用户。在添加用户的过程中，会对po中传过来的用户名、姓名、密码、联系方式进行加密再存储 */
 	@Override
 	public ResultMessage add(UserPO po) throws RemoteException {
 		try {

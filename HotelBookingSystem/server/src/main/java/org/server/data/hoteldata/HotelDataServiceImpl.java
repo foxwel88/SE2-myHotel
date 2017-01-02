@@ -16,6 +16,11 @@ import org.common.utility.RoomType;
 import org.server.data.datafactory.DataFactory;
 import org.server.util.mysql.DatabaseCommunicator;
 
+/**
+ * Hotel模块在data层的实现
+ * @author Hirico
+ * @version 2017/01/01 Hirico
+ */
 public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDataService {
 
 	/**
@@ -27,6 +32,12 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 		System.out.println("hotel start");
 	}
 
+	/**
+	 * 添加酒店
+	 * @param po
+	 * @return
+	 * @throws RemoteException
+	 */
 	@Override
 	public ResultMessage addHotelInfo(HotelPO po) throws RemoteException {
 
@@ -68,6 +79,12 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 
 	}
 
+	/**
+	 * 修改酒店信息
+	 * @param po
+	 * @return
+	 * @throws RemoteException
+	 */
 	@Override
 	public ResultMessage modifyHotelInfo(HotelPO po) throws RemoteException {
 		try {
@@ -91,6 +108,11 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 		return ResultMessage.SUCCESS;
 	}
 
+	/**
+	 * 将从mysql查询到的resultSet转化成一个hotelPO
+	 * @param set
+	 * @return hotelPo;
+	 */
 	HotelPO getHotelFromSet(ResultSet set) {
 		HotelPO po = null;
 		try {
@@ -113,6 +135,11 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 		return po;
 	}
 
+	/**
+	 * 将从mysql查询到的resultSet转化成一个roomPO
+	 * @param set
+	 * @return roomPO
+	 */
 	RoomPO getRoomFromSet(ResultSet set) {
 		RoomPO po = null;
 		try {
@@ -126,6 +153,12 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 		return po;
 	}
 
+	/**
+	 * 获得单个酒店信息
+	 * @param hotelID
+	 * @return
+	 * @throws RemoteException
+	 */
 	@Override
 	public HotelPO getHotelInfo(String hotelID) throws RemoteException {
 		HotelPO po = null;
@@ -143,10 +176,24 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 		return po;
 	}
 
+	/**
+	 * 根据hotelFilter筛选酒店
+	 * @param filter
+	 * @return
+	 * @throws RemoteException
+	 */
 	@Override
 	public List<HotelPO> findHotels(HotelFilter filter) throws RemoteException {
 		List<HotelPO> list = new ArrayList<>();
 		try {
+			//在查看广告位酒店时，直接根据filter里的列表返回
+			if (filter.advertisedHotelIDs != null) {
+				for (String id: filter.advertisedHotelIDs) {
+					list.add(getHotelInfo(id));
+				}
+				return list;
+			}
+
 			//首先根据星级、评分、地区选择一个范围
 			String query = "SELECT * FROM Hotel WHERE star >= " + filter.minStar + " AND star <= " + filter.maxStar
 					+ " AND rank >= " + filter.minRank + " AND rank <= " + filter.maxRank
@@ -173,6 +220,11 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 		return list;
 	}
 
+	/**
+	 * 获得城市列表
+	 * @return
+	 * @throws RemoteException
+	 */
 	@Override
 	public List<CityPO> getCitys() throws RemoteException {
 		List<CityPO> list = new ArrayList<>();
@@ -198,6 +250,12 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 		return list;
 	}
 
+	/**
+	 * 获得指定城市的商圈列表
+	 * @param po
+	 * @return
+	 * @throws RemoteException
+	 */
 	@Override
 	public List<AreaPO> getAreas(CityPO po) throws RemoteException {
 		List<AreaPO> list = new ArrayList<>();
@@ -216,6 +274,12 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 		return list;
 	}
 
+	/**
+	 * 获得房间信息
+	 * @param hotelID
+	 * @return
+	 * @throws RemoteException
+	 */
 	@Override
 	public List<RoomPO> getRooms(String hotelID) throws RemoteException {
 		List<RoomPO> list = new ArrayList<>();
@@ -234,6 +298,13 @@ public class HotelDataServiceImpl extends UnicastRemoteObject implements HotelDa
 		return list;
 	}
 
+	/**
+	 * 修改房间信息
+	 * @param hotelID
+	 * @param po
+	 * @return
+	 * @throws RemoteException
+	 */
 	@Override
 	public ResultMessage modifyRooms(String hotelID, List<RoomPO> po) throws RemoteException {
 

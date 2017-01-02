@@ -145,8 +145,8 @@ public class PromotionDataServiceImpl extends UnicastRemoteObject implements Pro
 		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(ADVERTISED_HOTEL_FILE_LOCATION)));
 		String input;
 		try {
-			while ((input = bufferedReader.readLine().trim()) != null) {
-				result.add(input);
+			while ((input = bufferedReader.readLine()) != null) {
+				result.add(input.trim());
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

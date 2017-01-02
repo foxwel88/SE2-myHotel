@@ -18,6 +18,8 @@ public class HotelFilter implements Serializable {
 	private static final long serialVersionUID = -421561104499778313L;
 	
 	public List<String> livedHotelIDs;
+
+	public List<String> advertisedHotelIDs;
 	
 	public String hotelName;
 	

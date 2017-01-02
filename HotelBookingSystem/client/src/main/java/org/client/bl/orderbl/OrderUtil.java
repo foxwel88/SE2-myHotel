@@ -58,7 +58,7 @@ public class OrderUtil {
 		this.userController = userController;
 	}
 
-	/*
+	/**
 	通过orderID 获取orderVO
 	 */
 	public OrderVO getOrder (String orderID) {
@@ -78,7 +78,7 @@ public class OrderUtil {
 		}
 	}
 
-	/*
+	/**
 	获得异常订单列表
 	 */
 	public List<OrderVO> getAbnormalOrder () {
@@ -92,7 +92,7 @@ public class OrderUtil {
 		}
 	}
 
-	/*
+	/**
 	通过用户userID 和 orderType 来获得该用户该类型订单的的列表
 	 */
 	public List<OrderVO> getUserOrderList (String userID, OrderType type) {		
@@ -106,7 +106,7 @@ public class OrderUtil {
 		}
 	}
 
-	/*
+	/**
 	通过酒店orderID 和 orderType 来获得该酒店该类型订单的的列表
 	 */
 	public List<OrderVO> getHotelOrderList (String hotelID, OrderType type) {
@@ -120,7 +120,7 @@ public class OrderUtil {
 		}
 	}
 
-	/*
+	/**
 	通过用户userID 来获得该用户历史预订过的酒店id列表
 	 */
 	public List<String> getHistoryHotels(String userId) {
@@ -134,7 +134,7 @@ public class OrderUtil {
 		}
 	}
 
-	/*
+	/**
 	通过orderVO 来新建一个订单
 	 */
 	public ResultMessage createOrder(OrderVO vo) {
@@ -147,7 +147,7 @@ public class OrderUtil {
 		return myOrder.create();
 	}
 
-	/*
+	/**
 	通过orderVO 来新建一个线下订单
 	 */
 	public ResultMessage createOffLineOrder(OrderVO vo) {
@@ -156,7 +156,7 @@ public class OrderUtil {
 		return myOrder.create();
 	}
 
-	/*
+	/**
 	通过orderID 来对该订单做撤销操作
 	 */
 	public ResultMessage cancelOrder (String orderID) {
@@ -187,7 +187,7 @@ public class OrderUtil {
 		return ResultMessage.SUCCESS;
 	}
 
-	/*
+	/**
 	通过orderID 来对该订单做执行操作
 	 */
 	public ResultMessage executeOrder (String orderID) {
@@ -210,7 +210,7 @@ public class OrderUtil {
 		return ResultMessage.SUCCESS;
 	}
 
-	/*
+	/**
 	通过orderID 来对该订单做撤销异常订单操作，并恢复一半或全部的信用值
 	 */
 	public ResultMessage cancelAbnormalOrder (String orderID,Boolean isHalf) {
@@ -237,7 +237,7 @@ public class OrderUtil {
 		return ResultMessage.SUCCESS;
 	}
 
-	/*
+	/**
 	通过orderID 来对该订单做退房操作
 	 */
 	public ResultMessage checkOut(String ID) {
@@ -256,7 +256,7 @@ public class OrderUtil {
 		return ResultMessage.SUCCESS;
 	}
 
-	/*
+	/**
 	通过orderID 来对该订单做标记已评论的操作
 	 */
 	public ResultMessage comment(String orderID) {
@@ -271,7 +271,7 @@ public class OrderUtil {
 		return myOrder.comment();
 	}
 
-	/*
+	/**
 	通过酒店 hotelID 房间类型 roomType 起始和结束日期 fromDate toDate 来获得给定日期内该酒店该房间类型已被预订的房间数量
 	算法是对中间每天作为起始日期的订单进行比对、统计
 	 */
